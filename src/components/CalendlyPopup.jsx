@@ -3,6 +3,7 @@ import PreCalendlyForm from './PreCalendlyForm';
 
 const CalendlyPopup = ({ isOpen, onClose }) => {
   const [showCalendly, setShowCalendly] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   if (!isOpen) return null;
 
@@ -23,12 +24,19 @@ const CalendlyPopup = ({ isOpen, onClose }) => {
             </button>
           </div>
 
+          {isLoading && (
+            <div className="absolute inset-0 flex items-center justify-center bg-white">
+              <div className="w-12 h-12 border-4 border-primary-600 border-t-transparent rounded-full animate-spin"></div>
+            </div>
+          )}
+
           <div className="w-full h-full">
             <iframe
-              src="https://calendly.com/icebergdata/30min"
+              src="https://calendly.com/icedata/dm"
               width="100%"
               height="100%"
               frameBorder="0"
+              onLoad={() => setIsLoading(false)}
             ></iframe>
           </div>
         </div>
@@ -36,7 +44,10 @@ const CalendlyPopup = ({ isOpen, onClose }) => {
         {!showCalendly && (
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
             <PreCalendlyForm
-              onSubmit={() => setShowCalendly(true)}
+              onSubmit={() => {
+                setShowCalendly(true);
+                setIsLoading(true);
+              }}
               onClose={onClose}
             />
           </div>

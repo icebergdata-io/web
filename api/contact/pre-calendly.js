@@ -1,12 +1,27 @@
 import { Resend } from 'resend';
 
-// Initialize Resend client
+// Debug: Log environment check
+console.log('Environment Check:', {
+  hasResendKey: !!process.env.resend_api_key,
+  keyLength: process.env.resend_api_key?.length || 0,
+  nodeEnv: process.env.NODE_ENV,
+  vercelEnv: process.env.VERCEL_ENV,
+});
+
+// Validate Resend API key before initializing
 if (!process.env.resend_api_key) {
   console.error('CRITICAL: Missing Resend API key');
   throw new Error('Missing Resend API key');
 }
 
-const resend = new Resend(process.env.resend_api_key);
+let resend;
+try {
+  resend = new Resend(process.env.resend_api_key);
+  console.log('Resend client initialized successfully');
+} catch (error) {
+  console.error('Failed to initialize Resend client:', error);
+  throw error;
+}
 
 const signature = `
   <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eaeaea;">
@@ -22,6 +37,25 @@ const signature = `
 `;
 
 export default async function handler(req, res) {
+  // Debug: Log request details
+  console.log('Request Details:', {
+    method: req.method,
+    contentType: req.headers['content-type'],
+    body: req.body,
+  });
+
+  // Enable CORS
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  
+  // Handle preflight
+  if (req.method === 'OPTIONS') {
+    console.log('Handling OPTIONS request');
+    res.status(204).end();
+    return;
+  }
+
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' });
   }
@@ -57,7 +91,16 @@ export default async function handler(req, res) {
     console.log('Admin email sent successfully:', adminEmail.id);
     res.status(200).json({ message: 'Email sent successfully' });
   } catch (error) {
-    console.error('Error sending email:', error);
-    res.status(500).json({ message: 'Failed to send email' });
+    console.error('Error details:', {
+      name: error.name,
+      message: error.message,
+      code: error.code,
+      stack: error.stack,
+      resendError: error?.response?.data,
+    });
+    res.status(500).json({ 
+      message: 'Failed to send email',
+      error: error.message
+    });
   }
 } 
