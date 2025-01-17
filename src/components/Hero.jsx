@@ -6,11 +6,28 @@ const Hero = () => {
 
   return (
     <>
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-radial from-white via-primary-50 to-white">
-        <div className="absolute inset-0 bg-mesh-pattern opacity-20"></div>
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Background Video */}
+        <div className="absolute inset-0 w-full h-full">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src="/videos/backgroundheroivideo.mp4" type="video/mp4" />
+          </video>
+          {/* Overlay gradient */}
+          <div className="absolute inset-0 bg-gradient-radial from-white/90 via-primary-50/90 to-white/90"></div>
+          <div className="absolute inset-0 bg-mesh-pattern opacity-20"></div>
+        </div>
+
+        {/* Animated Gradients */}
         <div className="absolute -right-64 -top-64 w-[800px] h-[800px] bg-gradient-to-br from-accent-purple/30 to-primary-300/30 rounded-full blur-3xl animate-pulse-slow"></div>
         <div className="absolute -left-64 -bottom-64 w-[800px] h-[800px] bg-gradient-to-tr from-accent-cyan/30 to-primary-300/30 rounded-full blur-3xl animate-pulse-slow delay-1000"></div>
         
+        {/* Content */}
         <div className="max-w-7xl mx-auto px-4 py-32 relative">
           <div className="text-center">
             <div className="inline-block animate-float mb-6 px-6 py-2 bg-white/50 backdrop-blur-md rounded-2xl border border-white/20 shadow-lg">
