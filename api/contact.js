@@ -2,12 +2,12 @@ import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+export default async function handler(request, response) {
+  if (request.method !== 'POST') {
+    return response.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { name, email, company, phone, message } = req.body;
+  const { name, email, company, phone, message } = request.body;
 
   try {
     // Send notification email to admin
@@ -44,9 +44,9 @@ export default async function handler(req, res) {
       `
     });
 
-    return res.status(200).json({ message: 'Emails sent successfully' });
+    return response.status(200).json({ message: 'Emails sent successfully' });
   } catch (error) {
     console.error('Error sending email:', error);
-    return res.status(500).json({ error: 'Error sending email' });
+    return response.status(500).json({ error: 'Error sending email' });
   }
 } 

@@ -26,20 +26,10 @@
       ]
     }
   ],
-  "functions": {
-    "api/contact.js": {
-      "memory": 1024,
-      "maxDuration": 10
-    }
-  },
-  "routes": [
+  "rewrites": [
     {
-      "src": "/contact",
-      "dest": "/api/contact"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
+      "source": "/contact",
+      "destination": "/api/contact"
     }
   ]
 } 
