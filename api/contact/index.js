@@ -1,38 +1,54 @@
-const { Resend } = require('resend');
+import { Resend } from 'resend';
+
+export const config = {
+  runtime: 'edge'
+};
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-module.exports = async function handler(request, response) {
-  // Add CORS headers
-  response.setHeader('Access-Control-Allow-Credentials', true);
-  response.setHeader('Access-Control-Allow-Origin', '*');
-  response.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
-  response.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
-
+export default async function handler(request) {
   // Handle preflight request
   if (request.method === 'OPTIONS') {
-    return response.status(200).end();
+    return new Response(null, {
+      status: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type'
+      }
+    });
   }
 
   if (request.method !== 'POST') {
-    return response.status(405).json({ error: 'Method not allowed' });
+    return new Response(JSON.stringify({ error: 'Method not allowed' }), {
+      status: 405,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      }
+    });
   }
 
   try {
-    // Log request body for debugging
-    console.log('Request body:', request.body);
+    const body = await request.json();
+    console.log('Request body:', body);
 
-    const { name, email, company, phone, message } = request.body;
+    const { name, email, company, phone, message } = body;
 
     // Validate required fields
     if (!name || !email || !message) {
-      return response.status(400).json({ 
+      return new Response(JSON.stringify({
         error: 'Missing required fields',
         details: { name: !name, email: !email, message: !message }
+      }), {
+        status: 400,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        }
       });
     }
 
-    // Log Resend API key presence (not the actual key)
     console.log('Resend API key present:', !!process.env.RESEND_API_KEY);
 
     try {
@@ -74,23 +90,41 @@ module.exports = async function handler(request, response) {
 
       console.log('User email sent:', userEmail);
 
-      return response.status(200).json({ 
+      return new Response(JSON.stringify({
         message: 'Emails sent successfully',
         adminEmail,
         userEmail
+      }), {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        }
       });
     } catch (emailError) {
       console.error('Resend API error:', emailError);
-      return response.status(500).json({ 
+      return new Response(JSON.stringify({
         error: 'Failed to send email',
         details: emailError.message
+      }), {
+        status: 500,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        }
       });
     }
   } catch (error) {
     console.error('Server error:', error);
-    return response.status(500).json({ 
+    return new Response(JSON.stringify({
       error: 'Server error',
       details: error.message
+    }), {
+      status: 500,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      }
     });
   }
 } 
