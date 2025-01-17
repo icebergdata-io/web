@@ -2,6 +2,7 @@ import React from 'react';
 import Hero from '../components/Hero';
 import About from '../components/About';
 import Problems from '../components/Problems';
+import Solutions from '../components/Solutions';
 import ServiceSection from '../components/ServiceSection';
 import CaseStudies from '../components/CaseStudies';
 import FAQ from '../components/FAQ';
@@ -18,6 +19,9 @@ const Home = () => {
       </div>
       <div id="problems">
         <Problems />
+      </div>
+      <div id="solutions">
+        <Solutions />
       </div>
       <div id="services">
         <ServiceSection />

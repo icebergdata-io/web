@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import CalendlyPopup from './CalendlyPopup';
-import SolutionsPopup from './SolutionsPopup';
 import Logo from './Logo';
 import PropTypes from 'prop-types';
 
@@ -43,7 +42,6 @@ const Navbar = ({ scrolled }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const [showCalendly, setShowCalendly] = useState(false);
-  const [showSolutions, setShowSolutions] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -69,15 +67,10 @@ const Navbar = ({ scrolled }) => {
 
   const handleNavClick = (section, event) => {
     event.preventDefault();
-    if (section === 'solutions') {
-      setShowSolutions(true);
+    const element = document.getElementById(section);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
       setIsOpen(false);
-    } else {
-      const element = document.getElementById(section);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-        setIsOpen(false);
-      }
     }
   };
 
@@ -181,11 +174,6 @@ const Navbar = ({ scrolled }) => {
       <CalendlyPopup 
         isOpen={showCalendly} 
         onClose={() => setShowCalendly(false)} 
-      />
-
-      <SolutionsPopup 
-        isOpen={showSolutions}
-        onClose={() => setShowSolutions(false)}
       />
     </>
   );

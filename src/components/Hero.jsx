@@ -10,7 +10,9 @@ const Hero = () => {
   useEffect(() => {
     const video = document.getElementById('hero-video');
     if (video) {
-      video.addEventListener('loadeddata', () => setIsVideoLoaded(true));
+      video.addEventListener('loadeddata', () => {
+        setIsVideoLoaded(true);
+      });
     }
   }, []);
 
@@ -58,22 +60,35 @@ const Hero = () => {
           className="relative min-h-screen flex items-center justify-center overflow-hidden"
           aria-labelledby="hero-title"
         >
-          {/* Background Video with reduced opacity */}
+          {/* Background Video */}
           <div 
             className="absolute inset-0 w-full h-full"
             aria-hidden="true"
           >
+            {/* Fallback image while video loads */}
+            <img
+              src="/videos/backgroundheroivideo-poster.jpg"
+              alt=""
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+                isVideoLoaded ? 'opacity-0' : 'opacity-90'
+              }`}
+            />
+            
             <video
               id="hero-video"
               autoPlay
               loop
               muted
               playsInline
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${isVideoLoaded ? 'opacity-90' : 'opacity-0'}`}
+              preload="auto"
+              poster="/videos/backgroundheroivideo-poster.jpg"
+              className="absolute inset-0 w-full h-full object-cover opacity-90"
             >
               <source src="/videos/backgroundheroivideo.mp4" type="video/mp4" />
               <track kind="captions" />
             </video>
+
+            {/* Gradient overlays */}
             <div className="absolute inset-0 bg-gradient-radial from-white/85 via-primary-50/85 to-white/85"></div>
             <div className="absolute inset-0 bg-mesh-pattern opacity-15"></div>
           </div>
