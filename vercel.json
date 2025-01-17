@@ -17,5 +17,12 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/dm",
+      "destination": "https://calendly.com/icedata/dm",
+      "permanent": true
+    }
   ]
 } 
