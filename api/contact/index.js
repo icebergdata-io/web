@@ -2,22 +2,22 @@ import { Resend } from 'resend';
 
 // Debug: Log environment check
 console.log('Environment Check:', {
-  hasResendKey: !!process.env.RESEND_API_KEY,
-  keyLength: process.env.RESEND_API_KEY?.length || 0,
+  hasResendKey: !!process.env.resend_api_key,
+  keyLength: process.env.resend_api_key?.length || 0,
   nodeEnv: process.env.NODE_ENV,
   vercelEnv: process.env.VERCEL_ENV,
   allEnvKeys: Object.keys(process.env)
 });
 
 // Validate Resend API key before initializing
-if (!process.env.RESEND_API_KEY) {
+if (!process.env.resend_api_key) {
   console.error('CRITICAL: Missing Resend API key');
   throw new Error('Missing Resend API key');
 }
 
 let resend;
 try {
-  resend = new Resend(process.env.RESEND_API_KEY);
+  resend = new Resend(process.env.resend_api_key);
   console.log('Resend client initialized successfully');
 } catch (error) {
   console.error('Failed to initialize Resend client:', error);

@@ -24,5 +24,11 @@
       "destination": "https://calendly.com/icedata/dm",
       "permanent": true
     }
-  ]
+  ],
+  "functions": {
+    "api/contact/index.js": {
+      "runtime": "nodejs18.x",
+      "memory": 1024
+    }
+  }
 } 
