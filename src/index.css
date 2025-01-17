@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply text-dark-800 bg-light-900;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-600 via-accent-purple to-accent-cyan bg-clip-text text-transparent;
+  }
+
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-lg border border-white/20 shadow-elevation-1 hover:shadow-elevation-2 transition-all duration-300;
+  }
+
+  .button-primary {
+    @apply relative px-6 py-3 rounded-2xl font-semibold text-white overflow-hidden
+           bg-gradient-to-r from-primary-600 via-accent-purple to-primary-600
+           hover:shadow-lg transition-all duration-300
+           focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+  }
+
+  .button-secondary {
+    @apply px-6 py-3 rounded-2xl font-semibold
+           bg-white/80 backdrop-blur-sm text-dark-800
+           border border-gray-200 hover:bg-white hover:border-primary-200
+           transition-all shadow-subtle hover:shadow-elevation-2
+           focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl
+           bg-white/50 border border-gray-200
+           focus:border-primary-500 focus:ring-2 focus:ring-primary-200
+           outline-none transition-all placeholder-gray-400;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-accent-purple;
+  }
+}

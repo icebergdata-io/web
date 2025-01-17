@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://iceberg-data.com/sitemap.xml 
