@@ -1,6 +1,4 @@
 {
-  "version": 2,
-  "framework": "vite",
   "headers": [
     {
       "source": "/(.*)",
@@ -18,16 +16,6 @@
           "value": "1; mode=block"
         }
       ]
-    }
-  ],
-  "routes": [
-    { 
-      "src": "/contact",
-      "dest": "/api/contact.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
     }
   ]
 } 

@@ -44,7 +44,7 @@ const Contact = () => {
     setStatus({ loading: true, success: false, error: null });
 
     try {
-      const response = await fetch('/contact', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -71,7 +71,6 @@ const Contact = () => {
         message: ''
       });
 
-      // Reset success message after 5 seconds
       setTimeout(() => {
         setStatus(prev => ({ ...prev, success: false }));
       }, 5000);
