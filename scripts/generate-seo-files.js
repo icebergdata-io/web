@@ -1,7 +1,33 @@
 const fs = require('fs');
 const path = require('path');
+const sharp = require('sharp');
 
 const DOMAIN = 'https://www.icebergdata.co';
+
+// Generate padded social media image
+async function generatePaddedLogo() {
+  const inputPath = path.join(__dirname, '../public/logo.png');
+  const outputPath = path.join(__dirname, '../public/og-logo.png');
+  
+  try {
+    const metadata = await sharp(inputPath).metadata();
+    const padding = Math.floor(Math.max(metadata.width, metadata.height) * 0.3); // 30% padding
+    
+    await sharp(inputPath)
+      .extend({
+        top: padding,
+        bottom: padding,
+        left: padding,
+        right: padding,
+        background: { r: 255, g: 255, b: 255, alpha: 1 } // White background
+      })
+      .toFile(outputPath);
+      
+    console.log('✅ Generated padded logo for social media');
+  } catch (error) {
+    console.error('Error generating padded logo:', error);
+  }
+}
 
 // Generate robots.txt
 const robotsTxt = `User-agent: *
@@ -34,16 +60,24 @@ const generateSitemap = () => {
   return sitemapXml;
 };
 
-// Ensure public directory exists
-const publicDir = path.join(__dirname, '../public');
-if (!fs.existsSync(publicDir)) {
-  fs.mkdirSync(publicDir);
+// Main execution
+async function main() {
+  // Ensure public directory exists
+  const publicDir = path.join(__dirname, '../public');
+  if (!fs.existsSync(publicDir)) {
+    fs.mkdirSync(publicDir);
+  }
+
+  // Generate padded logo
+  await generatePaddedLogo();
+
+  // Write robots.txt
+  fs.writeFileSync(path.join(publicDir, 'robots.txt'), robotsTxt);
+  console.log('✅ Generated robots.txt');
+
+  // Write sitemap.xml
+  fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), generateSitemap());
+  console.log('✅ Generated sitemap.xml');
 }
 
-// Write robots.txt
-fs.writeFileSync(path.join(publicDir, 'robots.txt'), robotsTxt);
-console.log('✅ Generated robots.txt');
-
-// Write sitemap.xml
-fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), generateSitemap());
-console.log('✅ Generated sitemap.xml'); 
+main().catch(console.error); 
