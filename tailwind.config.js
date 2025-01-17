@@ -51,13 +51,15 @@ export default {
       },
       animation: {
         'bounce-slow': 'bounce 3s infinite',
-        'fade-in-up': 'fadeInUp 0.5s ease-out',
+        'fade-in-up': 'fade-in-up 0.8s ease-out forwards',
+        'fade-in-up-delay': 'fade-in-up 0.8s ease-out 0.2s forwards',
         'fade-in': 'fadeIn 0.5s ease-out',
         'slide-in-right': 'slideInRight 0.5s ease-out',
         'float': 'float 6s ease-in-out infinite',
         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'gradient': 'gradient 8s linear infinite',
         'shimmer': 'shimmer 2s linear infinite',
+        'subtle-gradient': 'subtle-gradient 8s ease infinite',
       },
       keyframes: {
         fadeInUp: {
@@ -107,6 +109,27 @@ export default {
           '100%': {
             transform: 'translateX(100%)',
           },
+        },
+        'fade-in-up': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(20px)'
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)'
+          }
+        },
+        'subtle-gradient': {
+          '0%': {
+            'background-position': '0% 50%'
+          },
+          '50%': {
+            'background-position': '100% 50%'
+          },
+          '100%': {
+            'background-position': '0% 50%'
+          }
         }
       },
       backgroundImage: {
@@ -133,8 +156,31 @@ export default {
         'elevation-2': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.1)',
         'elevation-3': '0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.1)',
       },
+      rotate: {
+        'y-180': '180deg',
+      },
+      transformStyle: {
+        'preserve-3d': 'preserve-3d',
+      },
+      backfaceVisibility: {
+        'hidden': 'hidden',
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      addUtilities({
+        '.preserve-3d': {
+          'transform-style': 'preserve-3d',
+        },
+        '.backface-hidden': {
+          'backface-visibility': 'hidden',
+        },
+        '.rotate-y-180': {
+          'transform': 'rotateY(180deg)',
+        },
+      });
+    },
+  ],
 }
 

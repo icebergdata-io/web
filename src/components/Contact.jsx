@@ -1,3 +1,6 @@
+import React from 'react';
+import Logo from './Logo';
+
 const Contact = () => {
   return (
     <section id="contact" className="relative py-32 overflow-hidden">
@@ -6,6 +9,9 @@ const Contact = () => {
       <div className="max-w-7xl mx-auto px-4 relative">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-16">
+            <div className="flex justify-center mb-8">
+              <Logo size="medium" className="opacity-90" />
+            </div>
             <h2 className="text-4xl md:text-5xl font-display font-bold text-dark-900 mb-6">Start Your Data Journey</h2>
             <p className="text-xl text-dark-700 mb-8">
               Ready to transform your data collection and integration? Let&apos;s discuss your needs.

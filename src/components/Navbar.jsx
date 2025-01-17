@@ -1,6 +1,42 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import CalendlyPopup from './CalendlyPopup';
+import Logo from './Logo';
+import PropTypes from 'prop-types';
+
+const NavLink = ({ href, active, children }) => (
+  <a
+    href={href}
+    className={`px-3 py-2 rounded-xl text-dark-800 hover:text-primary-600 transition-colors ${
+      active ? 'bg-primary-50 text-primary-600 font-medium' : ''
+    }`}
+  >
+    {children}
+  </a>
+);
+
+const MobileNavLink = ({ href, active, children }) => (
+  <a
+    href={href}
+    className={`block px-3 py-2 rounded-xl text-dark-800 hover:text-primary-600 transition-colors ${
+      active ? 'bg-primary-50 text-primary-600 font-medium' : ''
+    }`}
+  >
+    {children}
+  </a>
+);
+
+NavLink.propTypes = {
+  href: PropTypes.string.isRequired,
+  active: PropTypes.bool,
+  children: PropTypes.node.isRequired,
+};
+
+MobileNavLink.propTypes = {
+  href: PropTypes.string.isRequired,
+  active: PropTypes.bool,
+  children: PropTypes.node.isRequired,
+};
 
 const Navbar = ({ scrolled }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,6 +65,12 @@ const Navbar = ({ scrolled }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const navigation = [
+    { name: 'About', href: '#about' },
+    { name: 'Case Studies', href: '#case-studies' },
+    { name: 'Contact', href: '#contact' }
+  ];
+
   return (
     <>
       <nav 
@@ -41,8 +83,9 @@ const Navbar = ({ scrolled }) => {
             {/* Logo */}
             <Link 
               to="/" 
-              className="relative group"
+              className="relative group flex items-center gap-3"
             >
+              <Logo size="small" className="w-12 h-12" />
               <div className="text-2xl font-display font-bold bg-gradient-to-r from-primary-600 via-accent-purple to-accent-cyan bg-clip-text text-transparent">
                 Iceberg Data
               </div>
@@ -54,12 +97,15 @@ const Navbar = ({ scrolled }) => {
               <NavLink href="#about" active={activeSection === 'about'}>About</NavLink>
               <NavLink href="#services" active={activeSection === 'services'}>Services</NavLink>
               <NavLink href="#case-studies" active={activeSection === 'case-studies'}>Case Studies</NavLink>
+              <NavLink href="#solutions" active={activeSection === 'solutions'}>Solutions</NavLink>
+              <NavLink href="#faq" active={activeSection === 'faq'}>FAQ</NavLink>
               <div className="ml-4">
                 <button 
                   onClick={() => setShowCalendly(true)}
-                  className="px-4 py-2 rounded-xl bg-gradient-to-r from-primary-600 to-accent-purple text-white font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300"
+                  className="px-6 py-3 rounded-xl bg-gradient-to-r from-primary-600 to-accent-purple text-white font-bold hover:shadow-lg hover:scale-105 transition-all duration-300 border border-white/20"
                 >
-                  Schedule a Call
+                  Schedule a Demo
+                  <span className="ml-2 text-xs font-normal animate-pulse">Limited Time Offer</span>
                 </button>
               </div>
             </div>
@@ -93,22 +139,25 @@ const Navbar = ({ scrolled }) => {
 
           {/* Mobile Menu */}
           <div
-            className={`md:hidden transition-all duration-300 ease-in-out ${
+            className={`md:hidden transition-all duration-300 ease-in-out bg-white/95 backdrop-blur-lg rounded-2xl shadow-lg border border-gray-100 ${
               isOpen
                 ? 'max-h-96 opacity-100 mt-4'
                 : 'max-h-0 opacity-0 overflow-hidden'
             }`}
           >
-            <div className="py-2 space-y-1">
+            <div className="py-4 px-2 space-y-1">
               <MobileNavLink href="#about" active={activeSection === 'about'}>About</MobileNavLink>
               <MobileNavLink href="#services" active={activeSection === 'services'}>Services</MobileNavLink>
               <MobileNavLink href="#case-studies" active={activeSection === 'case-studies'}>Case Studies</MobileNavLink>
-              <div className="pt-2">
+              <MobileNavLink href="#solutions" active={activeSection === 'solutions'}>Solutions</MobileNavLink>
+              <MobileNavLink href="#faq" active={activeSection === 'faq'}>FAQ</MobileNavLink>
+              <div className="pt-2 px-2">
                 <button
                   onClick={() => setShowCalendly(true)}
-                  className="w-full px-4 py-2 text-center rounded-xl bg-gradient-to-r from-primary-600 to-accent-purple text-white font-semibold hover:shadow-lg transition-all duration-300"
+                  className="w-full px-6 py-3 text-center rounded-xl bg-gradient-to-r from-primary-600 to-accent-purple text-white font-bold hover:shadow-lg transition-all duration-300"
                 >
-                  Schedule a Call
+                  Schedule a Demo
+                  <span className="ml-2 text-xs font-normal animate-pulse">Limited Time Offer</span>
                 </button>
               </div>
             </div>
@@ -124,33 +173,8 @@ const Navbar = ({ scrolled }) => {
   );
 };
 
-const NavLink = ({ href, active, children }) => (
-  <a
-    href={href}
-    className={`relative px-3 py-2 rounded-lg font-medium transition-all duration-300 group ${
-      active
-        ? 'text-primary-600'
-        : 'text-dark-800 hover:text-primary-600'
-    }`}
-  >
-    {children}
-    <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-primary-600 to-accent-purple transform origin-left transition-transform duration-300 ${
-      active ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
-    }`}></span>
-  </a>
-);
-
-const MobileNavLink = ({ href, active, children }) => (
-  <a
-    href={href}
-    className={`block px-4 py-2 text-base rounded-lg transition-all duration-300 ${
-      active
-        ? 'bg-primary-50 text-primary-600 font-medium'
-        : 'text-dark-800 hover:bg-primary-50 hover:text-primary-600'
-    }`}
-  >
-    {children}
-  </a>
-);
+Navbar.propTypes = {
+  scrolled: PropTypes.bool
+};
 
 export default Navbar; 

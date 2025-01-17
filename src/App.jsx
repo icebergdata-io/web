@@ -1,26 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
-import Services from './components/Services';
-import Problems from './components/Problems';
+import ServiceSection from './components/ServiceSection';
 import CaseStudies from './components/CaseStudies';
 import Contact from './components/Contact';
+import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 
-// Policy Components
-import Terms from './policies/Terms';
-import Privacy from './policies/Privacy';
-import Cookies from './policies/Cookies';
-import Refund from './policies/Refund';
-
-const App = () => {
+function App() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 20;
+      const isScrolled = window.scrollY > 10;
       if (isScrolled !== scrolled) {
         setScrolled(isScrolled);
       }
@@ -30,33 +24,34 @@ const App = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [scrolled]);
 
-  const HomePage = () => (
-    <>
-      <Hero />
-      <About />
-      <Services />
-      <Problems />
-      <CaseStudies />
-      <Contact />
-    </>
-  );
-
   return (
     <Router>
-      <div className="min-h-screen bg-light-900">
+      <div className="min-h-screen bg-white">
         <Navbar scrolled={scrolled} />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/terms" element={<Terms />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/cookies" element={<Cookies />} />
-          <Route path="/refund" element={<Refund />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
+        <main>
+          <div id="hero">
+            <Hero />
+          </div>
+          <div id="about">
+            <About />
+          </div>
+          <div id="services">
+            <ServiceSection />
+          </div>
+          <div id="case-studies">
+            <CaseStudies />
+          </div>
+          <div id="faq">
+            <FAQ />
+          </div>
+          <div id="contact">
+            <Contact />
+          </div>
+        </main>
         <Footer />
       </div>
     </Router>
   );
-};
+}
 
 export default App;

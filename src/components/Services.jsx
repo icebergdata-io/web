@@ -1,3 +1,6 @@
+import React from 'react';
+import Logo from './Logo';
+
 const services = [
   {
     title: "Automated Data Collection",
@@ -23,6 +26,9 @@ const Services = () => {
       <div className="absolute inset-0 bg-gradient-to-r from-primary-600/10 via-accent-purple/10 to-accent-cyan/10"></div>
       <div className="max-w-7xl mx-auto px-4 relative">
         <div className="text-center mb-20">
+          <div className="flex justify-center mb-8">
+            <Logo size="medium" className="opacity-90" />
+          </div>
           <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-8">How Our Service is Provided</h2>
         </div>
         <div className="grid md:grid-cols-3 gap-12">

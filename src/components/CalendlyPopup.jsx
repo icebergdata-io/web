@@ -1,6 +1,45 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+
+const CALENDLY_URL = "https://calendly.com/icedata/dm";
 
 const CalendlyPopup = ({ isOpen, onClose }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    // Add Calendly script to head if not already present
+    if (!document.querySelector('script[src="https://assets.calendly.com/assets/external/widget.js"]')) {
+      const script = document.createElement('script');
+      script.src = 'https://assets.calendly.com/assets/external/widget.js';
+      script.async = true;
+      script.onload = () => setIsLoaded(true);
+      document.head.appendChild(script);
+    } else {
+      setIsLoaded(true);
+    }
+
+    // Initialize Calendly as soon as possible
+    const initCalendly = () => {
+      if (window.Calendly) {
+        window.Calendly.initInlineWidget({
+          url: CALENDLY_URL,
+          parentElement: document.getElementById('calendly-inline-widget'),
+          prefill: {},
+          utm: {}
+        });
+      } else {
+        setTimeout(initCalendly, 100);
+      }
+    };
+
+    if (isOpen && isLoaded) {
+      initCalendly();
+    }
+
+    return () => {
+      // Cleanup if needed
+    };
+  }, [isOpen, isLoaded]);
+
   if (!isOpen) return null;
 
   return (
@@ -27,14 +66,20 @@ const CalendlyPopup = ({ isOpen, onClose }) => {
             </button>
           </div>
           
-          <div className="w-full h-full">
-            <iframe
-              src="https://calendly.com/icedata/dm?month=2025-01&hide_gdpr_banner=1&background_color=ffffff&text_color=111827&primary_color=0070f3&layout=horizontal"
-              width="100%"
-              height="100%"
-              frameBorder="0"
-              className="rounded-2xl"
-            ></iframe>
+          <div className="w-full h-full relative">
+            {!isLoaded && (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-8 h-8 border-4 border-primary-600 border-t-transparent rounded-full animate-spin"></div>
+              </div>
+            )}
+            <div 
+              id="calendly-inline-widget"
+              className="w-full h-full rounded-2xl"
+              style={{ 
+                opacity: isLoaded ? 1 : 0,
+                transition: 'opacity 0.3s ease-in-out'
+              }}
+            />
           </div>
         </div>
       </div>
