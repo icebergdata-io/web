@@ -8,9 +8,10 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && npm run generate-seo",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "generate-seo": "node scripts/generate-seo-files.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
