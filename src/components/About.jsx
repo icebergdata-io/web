@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Logo from './Logo';
 import InfoPopup from './InfoPopup';
 import CalendlyPopup from './CalendlyPopup';
+import DataIntegrationAnimation from '../../scripts/matching-animation';
 
 const features = [
   {
@@ -123,7 +124,7 @@ const popupContent = {
       {
         title: "Fuzzy Matching",
         description: "Smart matching that accounts for variations in naming and formatting.",
-        icon: "🎯"
+        icon: "��"
       },
       {
         title: "Confidence Scoring",
@@ -248,39 +249,37 @@ const About = () => {
         </div>
 
         <div className="mb-24 relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary-50 via-accent-purple/5 to-primary-50 rounded-3xl"></div>
-          <div className="relative bg-white/80 backdrop-blur-sm border border-primary-100 rounded-3xl p-12 text-center">
-            <div className="text-6xl mb-8 mx-auto w-24 h-24 bg-gradient-to-br from-primary-100 to-transparent rounded-2xl flex items-center justify-center">
-              🧠
-            </div>
-            <h3 className="text-3xl font-display font-bold text-dark-900 mb-6">
-              Advanced AI Matching Technology
-            </h3>
-            <p className="text-xl text-dark-700 leading-relaxed max-w-4xl mx-auto mb-8">
-              What sets us apart is our proprietary AI-powered matching system. Unlike traditional data integration solutions, 
-              our advanced algorithms intelligently identify, match, and merge related data points across multiple sources, 
-              creating a single, unified database that's always accurate and up-to-date.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <button 
-                onClick={(e) => handlePopupClick('entityMatching', e)}
-                className="px-4 py-2 bg-primary-50 text-primary-700 rounded-xl font-medium hover:bg-primary-100 transition-colors"
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
               >
-                Intelligent Entity Matching
-              </button>
-              <button 
-                onClick={(e) => handlePopupClick('dataAlignment', e)}
-                className="px-4 py-2 bg-primary-50 text-primary-700 rounded-xl font-medium hover:bg-primary-100 transition-colors"
-              >
-                Cross-Source Data Alignment
-              </button>
-              <button 
-                onClick={(e) => handlePopupClick('deduplication', e)}
-                className="px-4 py-2 bg-primary-50 text-primary-700 rounded-xl font-medium hover:bg-primary-100 transition-colors"
-              >
-                Automated Data Deduplication
-              </button>
-            </div>
+                <div className="text-4xl mb-4">{feature.icon}</div>
+                <h3 className="text-xl font-bold text-dark-900 mb-3">{feature.title}</h3>
+                <p className="text-dark-700 mb-4">{feature.description}</p>
+                <button
+                  onClick={(e) => handlePopupClick(feature.title.toLowerCase().replace(/\s+/g, ''), e)}
+                  className="text-primary-600 hover:text-primary-700 font-medium"
+                >
+                  Learn More →
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="text-center mb-16">
+          <h3 className="text-3xl font-display font-bold text-dark-900 mb-6">
+            Advanced AI Matching Technology
+          </h3>
+          <p className="text-xl text-dark-700 leading-relaxed max-w-3xl mx-auto mb-12">
+            Our sophisticated AI algorithms excel at identifying and matching related entities across different data sources,
+            ensuring accurate and reliable data integration.
+          </p>
+          
+          <div className="max-w-4xl mx-auto">
+            <DataIntegrationAnimation />
           </div>
         </div>
 
@@ -354,60 +353,16 @@ const About = () => {
         </div>
       </div>
 
-      <InfoPopup
-        isOpen={popup.type === 'entityMatching'}
-        onClose={() => setPopup({ type: null, position: null })}
-        {...popupContent.entityMatching}
-        position={popup.position}
-        theme="light"
-      />
-
-      <InfoPopup
-        isOpen={popup.type === 'dataAlignment'}
-        onClose={() => setPopup({ type: null, position: null })}
-        {...popupContent.dataAlignment}
-        position={popup.position}
-        theme="light"
-      />
-
-      <InfoPopup
-        isOpen={popup.type === 'deduplication'}
-        onClose={() => setPopup({ type: null, position: null })}
-        {...popupContent.deduplication}
-        position={popup.position}
-        theme="light"
-      />
-
-      <InfoPopup
-        isOpen={popup.type === 'aiIntegration'}
-        onClose={() => setPopup({ type: null, position: null })}
-        {...popupContent.aiIntegration}
-        position={popup.position}
-        theme="dark"
-      />
-
-      <InfoPopup
-        isOpen={popup.type === 'pipeline'}
-        onClose={() => setPopup({ type: null, position: null })}
-        {...popupContent.pipeline}
-        position={popup.position}
-        theme="gradient"
-      />
-
-      {features.map((feature, index) => (
+      {popup.type && (
         <InfoPopup
-          key={index}
-          isOpen={popup.type === `feature-${index}`}
+          content={popupContent[popup.type]}
           onClose={() => setPopup({ type: null, position: null })}
-          {...feature.details}
-          theme="light"
         />
-      ))}
-
-      <CalendlyPopup 
-        isOpen={showCalendly} 
-        onClose={() => setShowCalendly(false)} 
-      />
+      )}
+      
+      {showCalendly && (
+        <CalendlyPopup onClose={() => setShowCalendly(false)} />
+      )}
     </section>
   );
 };
