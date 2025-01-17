@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
+import Problems from './components/Problems';
 import ServiceSection from './components/ServiceSection';
 import CaseStudies from './components/CaseStudies';
 import Contact from './components/Contact';
@@ -10,7 +11,6 @@ import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 
 // Constants
-const DOMAIN = "https://www.icebergdata.co";
 const CALENDLY_URL = "https://calendly.com/icedata/dm";
 
 function App() {
@@ -43,6 +43,9 @@ function App() {
                 </div>
                 <div id="about">
                   <About />
+                </div>
+                <div id="problems">
+                  <Problems />
                 </div>
                 <div id="services">
                   <ServiceSection />

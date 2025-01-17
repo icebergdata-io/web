@@ -60,3 +60,23 @@
     @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-accent-purple;
   }
 }
+
+@keyframes float-shadow {
+  0%, 100% {
+    transform: translateY(50px) scale(1);
+    opacity: 0.10;
+    filter: blur(8px);
+    background: rgb(59, 130, 246); /* Tailwind blue-500 color */
+  }
+  50% {
+    transform: translateY(20px) scale(0.5);
+    opacity: 0.05;
+    filter: blur(12px);
+    background: rgb(59, 130, 246);
+  }
+}
+
+.animate-float-shadow {
+  animation: float-shadow 4s ease-in-out infinite;
+  background: rgb(59, 130, 246);
+}

@@ -5,7 +5,7 @@ import SolutionsPopup from './SolutionsPopup';
 import Logo from './Logo';
 import PropTypes from 'prop-types';
 
-const NavLink = ({ href, active, onClick, children }) => (
+const NavLink = ({ active, onClick, children }) => (
   <button
     onClick={onClick}
     className={`px-3 py-2 rounded-xl text-dark-800 hover:text-primary-600 transition-colors ${
@@ -16,7 +16,7 @@ const NavLink = ({ href, active, onClick, children }) => (
   </button>
 );
 
-const MobileNavLink = ({ href, active, onClick, children }) => (
+const MobileNavLink = ({ active, onClick, children }) => (
   <button
     onClick={onClick}
     className={`block w-full text-left px-3 py-2 rounded-xl text-dark-800 hover:text-primary-600 transition-colors ${
@@ -28,14 +28,12 @@ const MobileNavLink = ({ href, active, onClick, children }) => (
 );
 
 NavLink.propTypes = {
-  href: PropTypes.string,
   active: PropTypes.bool,
   onClick: PropTypes.func,
   children: PropTypes.node.isRequired,
 };
 
 MobileNavLink.propTypes = {
-  href: PropTypes.string,
   active: PropTypes.bool,
   onClick: PropTypes.func,
   children: PropTypes.node.isRequired,
@@ -73,12 +71,12 @@ const Navbar = ({ scrolled }) => {
     event.preventDefault();
     if (section === 'solutions') {
       setShowSolutions(true);
-      setIsOpen(false); // Close mobile menu if open
+      setIsOpen(false);
     } else {
       const element = document.getElementById(section);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
-        setIsOpen(false); // Close mobile menu if open
+        setIsOpen(false);
       }
     }
   };
@@ -87,7 +85,7 @@ const Navbar = ({ scrolled }) => {
     <>
       <nav 
         className={`fixed w-full z-40 transition-all duration-300 ${
-          scrolled ? 'bg-white/80 backdrop-blur-lg shadow-lg' : 'bg-transparent'
+          scrolled ? 'bg-white/80 backdrop-blur-lg border-b border-white/20' : 'bg-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -106,15 +104,15 @@ const Navbar = ({ scrolled }) => {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-1">
-              <NavLink href="#about" active={activeSection === 'about'} onClick={(e) => handleNavClick('about', e)}>About</NavLink>
-              <NavLink href="#services" active={activeSection === 'services'} onClick={(e) => handleNavClick('services', e)}>Services</NavLink>
-              <NavLink href="#case-studies" active={activeSection === 'case-studies'} onClick={(e) => handleNavClick('case-studies', e)}>Case Studies</NavLink>
+              <NavLink active={activeSection === 'about'} onClick={(e) => handleNavClick('about', e)}>About</NavLink>
+              <NavLink active={activeSection === 'services'} onClick={(e) => handleNavClick('services', e)}>Services</NavLink>
+              <NavLink active={activeSection === 'case-studies'} onClick={(e) => handleNavClick('case-studies', e)}>Case Studies</NavLink>
               <NavLink active={activeSection === 'solutions'} onClick={(e) => handleNavClick('solutions', e)}>Solutions</NavLink>
-              <NavLink href="#faq" active={activeSection === 'faq'} onClick={(e) => handleNavClick('faq', e)}>FAQ</NavLink>
+              <NavLink active={activeSection === 'faq'} onClick={(e) => handleNavClick('faq', e)}>FAQ</NavLink>
               <div className="ml-4">
                 <button 
                   onClick={() => setShowCalendly(true)}
-                  className="px-6 py-3 rounded-xl bg-gradient-to-r from-primary-600 to-accent-purple text-white font-bold hover:shadow-lg hover:scale-105 transition-all duration-300 border border-white/20"
+                  className="px-6 py-3 rounded-xl bg-gradient-to-r from-primary-600 to-accent-purple text-white font-bold hover:scale-105 transition-all duration-300 border border-white/20"
                 >
                   Schedule a Demo
                   <span className="ml-2 text-xs font-normal animate-pulse">Limited Time Offer</span>
@@ -151,25 +149,25 @@ const Navbar = ({ scrolled }) => {
 
           {/* Mobile Menu */}
           <div
-            className={`md:hidden transition-all duration-300 ease-in-out bg-white/95 backdrop-blur-lg rounded-2xl shadow-lg border border-gray-100 ${
+            className={`md:hidden transition-all duration-300 ease-in-out bg-white/95 backdrop-blur-lg rounded-2xl border border-white/20 ${
               isOpen
                 ? 'max-h-96 opacity-100 mt-4'
                 : 'max-h-0 opacity-0 overflow-hidden'
             }`}
           >
             <div className="py-4 px-2 space-y-1">
-              <MobileNavLink href="#about" active={activeSection === 'about'} onClick={(e) => handleNavClick('about', e)}>About</MobileNavLink>
-              <MobileNavLink href="#services" active={activeSection === 'services'} onClick={(e) => handleNavClick('services', e)}>Services</MobileNavLink>
-              <MobileNavLink href="#case-studies" active={activeSection === 'case-studies'} onClick={(e) => handleNavClick('case-studies', e)}>Case Studies</MobileNavLink>
+              <MobileNavLink active={activeSection === 'about'} onClick={(e) => handleNavClick('about', e)}>About</MobileNavLink>
+              <MobileNavLink active={activeSection === 'services'} onClick={(e) => handleNavClick('services', e)}>Services</MobileNavLink>
+              <MobileNavLink active={activeSection === 'case-studies'} onClick={(e) => handleNavClick('case-studies', e)}>Case Studies</MobileNavLink>
               <MobileNavLink active={activeSection === 'solutions'} onClick={(e) => handleNavClick('solutions', e)}>Solutions</MobileNavLink>
-              <MobileNavLink href="#faq" active={activeSection === 'faq'} onClick={(e) => handleNavClick('faq', e)}>FAQ</MobileNavLink>
+              <MobileNavLink active={activeSection === 'faq'} onClick={(e) => handleNavClick('faq', e)}>FAQ</MobileNavLink>
               <div className="pt-2 px-2">
                 <button
                   onClick={() => {
                     setShowCalendly(true);
                     setIsOpen(false);
                   }}
-                  className="w-full px-6 py-3 text-center rounded-xl bg-gradient-to-r from-primary-600 to-accent-purple text-white font-bold hover:shadow-lg transition-all duration-300"
+                  className="w-full px-6 py-3 text-center rounded-xl bg-gradient-to-r from-primary-600 to-accent-purple text-white font-bold hover:scale-105 transition-all duration-300"
                 >
                   Schedule a Demo
                   <span className="ml-2 text-xs font-normal animate-pulse">Limited Time Offer</span>

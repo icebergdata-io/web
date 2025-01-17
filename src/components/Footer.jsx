@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import Modal from './Modal';
 import Terms from '../policies/Terms';
 import Privacy from '../policies/Privacy';
