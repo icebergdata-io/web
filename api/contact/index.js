@@ -1,20 +1,35 @@
-const { Resend } = require('resend');
+import { Resend } from 'resend';
 
 // Debug: Log environment check
 console.log('Environment Check:', {
   hasResendKey: !!process.env.RESEND_API_KEY,
   keyLength: process.env.RESEND_API_KEY?.length || 0,
   nodeEnv: process.env.NODE_ENV,
-  vercelEnv: process.env.VERCEL_ENV
+  vercelEnv: process.env.VERCEL_ENV,
+  allEnvKeys: Object.keys(process.env)
 });
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Validate Resend API key before initializing
+if (!process.env.RESEND_API_KEY) {
+  console.error('CRITICAL: Missing Resend API key');
+  throw new Error('Missing Resend API key');
+}
 
-module.exports = async (req, res) => {
+let resend;
+try {
+  resend = new Resend(process.env.RESEND_API_KEY);
+  console.log('Resend client initialized successfully');
+} catch (error) {
+  console.error('Failed to initialize Resend client:', error);
+  throw error;
+}
+
+export default async function handler(req, res) {
   // Debug: Log request details
   console.log('Request Details:', {
     method: req.method,
-    headers: req.headers,
+    contentType: req.headers['content-type'],
+    contentLength: req.headers['content-length'],
     url: req.url
   });
 
@@ -37,8 +52,14 @@ module.exports = async (req, res) => {
   }
 
   try {
+    // Validate request body exists
+    if (!req.body) {
+      console.error('No request body received');
+      return res.status(400).json({ error: 'No request body' });
+    }
+
     // Debug: Log raw body
-    console.log('Raw request body:', req.body);
+    console.log('Raw request body:', typeof req.body, req.body);
 
     const { name, email, company, phone, message } = req.body;
 
@@ -48,7 +69,8 @@ module.exports = async (req, res) => {
       hasEmail: !!email,
       nameLength: name?.length,
       emailLength: email?.length,
-      messageLength: message?.length
+      messageLength: message?.length,
+      bodyType: typeof req.body
     });
 
     // Validate required fields
@@ -81,6 +103,9 @@ module.exports = async (req, res) => {
         <p><strong>Message:</strong></p>
         <p>${message}</p>
       `
+    }).catch(error => {
+      console.error('Admin email failed:', error);
+      throw error;
     });
 
     // Debug: Log admin email result
@@ -108,6 +133,9 @@ module.exports = async (req, res) => {
         <p>Best regards,</p>
         <p>David Martin<br/>Iceberg Data</p>
       `
+    }).catch(error => {
+      console.error('User email failed:', error);
+      throw error;
     });
 
     // Debug: Log user email result
@@ -129,13 +157,15 @@ module.exports = async (req, res) => {
       code: error.code,
       stack: error.stack,
       resendError: error?.response?.data,
-      statusCode: error?.response?.status
+      statusCode: error?.response?.status,
+      isResendError: error instanceof Error && error.name === 'ResendError'
     });
 
     return res.status(500).json({ 
       error: 'Failed to send email',
       details: error.message,
-      code: error.code
+      code: error.code,
+      type: error.name
     });
   }
-}; 
+} 
