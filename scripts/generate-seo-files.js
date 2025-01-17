@@ -1,12 +1,16 @@
-const fs = require('fs');
-const path = require('path');
-const sharp = require('sharp');
+import fs from 'fs';
+import path from 'path';
+import sharp from 'sharp';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const DOMAIN = 'https://www.icebergdata.co';
 
 // Generate padded social media image
 async function generatePaddedLogo() {
-  const inputPath = path.join(__dirname, '../public/logo.png');
+  const inputPath = path.join(__dirname, '../public/android-chrome-512x512.png');
   const outputPath = path.join(__dirname, '../public/og-logo.png');
   
   try {
@@ -14,6 +18,7 @@ async function generatePaddedLogo() {
     const padding = Math.floor(Math.max(metadata.width, metadata.height) * 0.3); // 30% padding
     
     await sharp(inputPath)
+      .resize(1200, 1200)  // Resize to optimal size for social media
       .extend({
         top: padding,
         bottom: padding,
