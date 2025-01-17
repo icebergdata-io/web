@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import Logo from './Logo';
 
-const API_URL = import.meta.env.PROD ? '/contact' : 'http://localhost:3000/contact';
-
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -46,7 +44,7 @@ const Contact = () => {
     setStatus({ loading: true, success: false, error: null });
 
     try {
-      const response = await fetch(API_URL, {
+      const response = await fetch('/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

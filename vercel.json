@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "npm run build:all",
+  "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "vite",
   "github": {
@@ -33,7 +33,6 @@
     }
   ],
   "env": {
-    "resend_api_key": "@resend_api_key",
-    "NODE_ENV": "production"
+    "resend_api_key": "@resend_api_key"
   }
 } 

@@ -7,11 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "server": "node server.js",
-    "start": "NODE_ENV=production node server.js",
-    "dev:all": "concurrently \"npm run dev\" \"npm run server\"",
-    "build:all": "npm run build && npm run start"
+    "preview": "vite preview"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -28,7 +24,6 @@
     "@types/react-dom": "^18.3.5",
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.20",
-    "concurrently": "^8.2.2",
     "eslint": "^9.17.0",
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.0.0",
