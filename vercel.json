@@ -27,7 +27,7 @@
   ],
   "functions": {
     "api/contact/index.js": {
-      "runtime": "@vercel/node@2.15.10",
+      "runtime": "@vercel/node@2.8.2",
       "maxDuration": 10
     }
   },
@@ -35,5 +35,9 @@
     "env": {
       "NODE_VERSION": "18.x"
     }
-  }
+  },
+  "framework": "vite",
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install"
 } 
