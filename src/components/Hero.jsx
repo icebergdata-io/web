@@ -1,8 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import CalendlyPopup from './CalendlyPopup';
 
 const Hero = () => {
   const [showCalendly, setShowCalendly] = useState(false);
+  const videoRef = useRef(null);
+  const [opacity, setOpacity] = useState(1);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleTimeUpdate = () => {
+      // Start fading when approaching the end
+      if (video.currentTime >= video.duration - 0.5) {
+        setOpacity(Math.max(0, (video.duration - video.currentTime) * 2));
+      } else if (video.currentTime <= 0.5) {
+        setOpacity(Math.min(1, video.currentTime * 2));
+      } else {
+        setOpacity(1);
+      }
+    };
+
+    const handleEnded = () => {
+      // Smoothly reset to start
+      video.currentTime = 0;
+      video.play();
+    };
+
+    video.addEventListener('timeupdate', handleTimeUpdate);
+    video.addEventListener('ended', handleEnded);
+
+    return () => {
+      video.removeEventListener('timeupdate', handleTimeUpdate);
+      video.removeEventListener('ended', handleEnded);
+    };
+  }, []);
 
   return (
     <>
@@ -10,11 +42,13 @@ const Hero = () => {
         {/* Background Video */}
         <div className="absolute inset-0 w-full h-full">
           <video
+            ref={videoRef}
             autoPlay
             loop
             muted
             playsInline
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
+            style={{ opacity }}
           >
             <source src="/videos/backgroundheroivideo.mp4" type="video/mp4" />
           </video>

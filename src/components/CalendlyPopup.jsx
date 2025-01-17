@@ -13,7 +13,7 @@ const CalendlyPopup = ({ isOpen, onClose }) => {
         ></div>
 
         {/* Modal panel */}
-        <div className="relative inline-block w-full max-w-4xl p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl sm:my-16">
+        <div className="relative inline-block w-full max-w-5xl p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl sm:my-16">
           <div className="absolute top-0 right-0 pt-4 pr-4">
             <button
               type="button"
@@ -27,9 +27,9 @@ const CalendlyPopup = ({ isOpen, onClose }) => {
             </button>
           </div>
           
-          <div className="w-full h-[600px]">
+          <div className="w-full h-[700px]">
             <iframe
-              src="https://calendly.com/icedata/dm?month=2025-01"
+              src="https://calendly.com/icedata/dm?month=2025-01&hide_gdpr_banner=1&background_color=ffffff&text_color=111827&primary_color=0070f3&layout=horizontal"
               width="100%"
               height="100%"
               frameBorder="0"
