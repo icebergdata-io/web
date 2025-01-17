@@ -1,4 +1,4 @@
-import { Resend } from 'resend';
+const { Resend } = require('resend');
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -9,35 +9,32 @@ const corsHeaders = {
   'Content-Type': 'application/json'
 };
 
-export const config = {
-  runtime: 'edge',
-  regions: ['iad1']
-};
-
-export default async function handler(request) {
-  if (request.method === 'OPTIONS') {
-    return new Response(null, { status: 204, headers: corsHeaders });
+module.exports = async (req, res) => {
+  // Handle CORS
+  if (req.method === 'OPTIONS') {
+    res.writeHead(204, corsHeaders);
+    res.end();
+    return;
   }
 
-  if (request.method !== 'POST') {
-    return new Response(
-      JSON.stringify({ error: 'Method not allowed' }), 
-      { status: 405, headers: corsHeaders }
-    );
+  // Only allow POST
+  if (req.method !== 'POST') {
+    res.writeHead(405, corsHeaders);
+    res.end(JSON.stringify({ error: 'Method not allowed' }));
+    return;
   }
 
   try {
-    const body = await request.json();
-    const { name, email, company, phone, message } = body;
+    const { name, email, company, phone, message } = req.body;
 
+    // Validate required fields
     if (!name || !email || !message) {
-      return new Response(
-        JSON.stringify({
-          error: 'Missing required fields',
-          details: { name: !name, email: !email, message: !message }
-        }),
-        { status: 400, headers: corsHeaders }
-      );
+      res.writeHead(400, corsHeaders);
+      res.end(JSON.stringify({
+        error: 'Missing required fields',
+        details: { name: !name, email: !email, message: !message }
+      }));
+      return;
     }
 
     // Send notification email to admin
@@ -74,15 +71,11 @@ export default async function handler(request) {
       `
     });
 
-    return new Response(
-      JSON.stringify({ message: 'Emails sent successfully' }),
-      { status: 200, headers: corsHeaders }
-    );
+    res.writeHead(200, corsHeaders);
+    res.end(JSON.stringify({ message: 'Emails sent successfully' }));
   } catch (error) {
     console.error('Error:', error);
-    return new Response(
-      JSON.stringify({ error: error.message }),
-      { status: 500, headers: corsHeaders }
-    );
+    res.writeHead(500, corsHeaders);
+    res.end(JSON.stringify({ error: error.message }));
   }
-} 
+}; 
