@@ -6,21 +6,12 @@ const CalendlyPopup = ({ isOpen, onClose }) => {
 
   if (!isOpen) return null;
 
-  if (!showCalendly) {
-    return (
-      <PreCalendlyForm
-        onSubmit={() => setShowCalendly(true)}
-        onClose={onClose}
-      />
-    );
-  }
-
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto">
       <div className="flex min-h-full items-center justify-center p-4">
         <div className="fixed inset-0 bg-dark-900/30 backdrop-blur-sm" onClick={onClose}></div>
         
-        <div className="relative bg-white rounded-2xl shadow-xl w-full max-w-4xl h-[80vh] overflow-hidden">
+        <div className={`relative bg-white rounded-2xl shadow-xl w-full max-w-4xl h-[80vh] overflow-hidden transition-opacity duration-500 ${!showCalendly ? 'opacity-20' : 'opacity-100'}`}>
           <div className="absolute right-4 top-4 z-10">
             <button
               onClick={onClose}
@@ -41,6 +32,15 @@ const CalendlyPopup = ({ isOpen, onClose }) => {
             ></iframe>
           </div>
         </div>
+
+        {!showCalendly && (
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
+            <PreCalendlyForm
+              onSubmit={() => setShowCalendly(true)}
+              onClose={onClose}
+            />
+          </div>
+        )}
       </div>
     </div>
   );
