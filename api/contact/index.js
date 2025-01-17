@@ -1,6 +1,14 @@
 const { Resend } = require('resend');
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Debug: Log that we're initializing
+console.log('Initializing API handler');
+
+// Debug: Check API key presence (not the actual key)
+const apiKey = process.env.RESEND_API_KEY;
+console.log('Resend API key present:', !!apiKey);
+console.log('API key length:', apiKey ? apiKey.length : 0);
+
+const resend = new Resend(apiKey);
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -10,6 +18,9 @@ const corsHeaders = {
 };
 
 module.exports = async (req, res) => {
+  // Debug: Log request method
+  console.log('Request method:', req.method);
+
   // Handle CORS
   if (req.method === 'OPTIONS') {
     res.writeHead(204, corsHeaders);
@@ -25,7 +36,13 @@ module.exports = async (req, res) => {
   }
 
   try {
+    // Debug: Log request body
+    console.log('Request body:', req.body);
+
     const { name, email, company, phone, message } = req.body;
+
+    // Debug: Log parsed data
+    console.log('Parsed data:', { name, email, company, phone, messageLength: message?.length });
 
     // Validate required fields
     if (!name || !email || !message) {
@@ -37,8 +54,11 @@ module.exports = async (req, res) => {
       return;
     }
 
+    // Debug: Log before sending admin email
+    console.log('Attempting to send admin email...');
+
     // Send notification email to admin
-    await resend.emails.send({
+    const adminEmailResult = await resend.emails.send({
       from: 'david@web.icebergdata.co',
       to: 'david@icebergdata.co',
       subject: 'New Contact Form Submission',
@@ -53,8 +73,14 @@ module.exports = async (req, res) => {
       `
     });
 
+    // Debug: Log admin email result
+    console.log('Admin email result:', adminEmailResult);
+
+    // Debug: Log before sending user email
+    console.log('Attempting to send user email...');
+
     // Send confirmation email to user
-    await resend.emails.send({
+    const userEmailResult = await resend.emails.send({
       from: 'david@web.icebergdata.co',
       to: email,
       subject: 'Thank you for contacting Iceberg Data',
@@ -71,11 +97,29 @@ module.exports = async (req, res) => {
       `
     });
 
+    // Debug: Log user email result
+    console.log('User email result:', userEmailResult);
+
     res.writeHead(200, corsHeaders);
-    res.end(JSON.stringify({ message: 'Emails sent successfully' }));
+    res.end(JSON.stringify({ 
+      message: 'Emails sent successfully',
+      adminEmailId: adminEmailResult?.id,
+      userEmailId: userEmailResult?.id
+    }));
   } catch (error) {
-    console.error('Error:', error);
+    // Debug: Log detailed error
+    console.error('Error details:', {
+      message: error.message,
+      stack: error.stack,
+      name: error.name,
+      code: error.code
+    });
+
     res.writeHead(500, corsHeaders);
-    res.end(JSON.stringify({ error: error.message }));
+    res.end(JSON.stringify({ 
+      error: 'Failed to send email',
+      details: error.message,
+      code: error.code
+    }));
   }
 }; 
