@@ -26,13 +26,20 @@
       ]
     }
   ],
-  "rewrites": [
-    {
-      "source": "/contact",
-      "destination": "/api/contact"
+  "functions": {
+    "api/contact.js": {
+      "memory": 1024,
+      "maxDuration": 10
     }
-  ],
-  "env": {
-    "resend_api_key": "@resend_api_key"
-  }
+  },
+  "routes": [
+    {
+      "src": "/contact",
+      "dest": "/api/contact"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ]
 } 
