@@ -9,6 +9,8 @@ import Contact from './components/Contact';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 
+// Constants
+const DOMAIN = "https://www.icebergdata.co";
 const CALENDLY_URL = "https://calendly.com/icedata/dm";
 
 function App() {
