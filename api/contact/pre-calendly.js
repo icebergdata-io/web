@@ -60,7 +60,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
-  const { email } = req.body;
+  const { email, role, dataNeeds } = req.body;
 
   if (!email) {
     return res.status(400).json({ message: 'Email is required' });
@@ -71,7 +71,7 @@ export default async function handler(req, res) {
     const adminEmail = await resend.emails.send({
       from: 'david@web.icebergdata.co',
       to: 'david@icebergdata.co',
-      subject: 'New Demo Request - Pre-Calendly Registration',
+      subject: `New Demo Request - ${email}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #333;">
           <div style="background: linear-gradient(135deg, #0066cc, #0099ff); padding: 20px; border-radius: 8px; margin-bottom: 30px;">
@@ -80,8 +80,21 @@ export default async function handler(req, res) {
           
           <div style="background: #f8f9fa; padding: 25px; border-radius: 8px; margin-bottom: 20px;">
             <h2 style="color: #0066cc; margin-top: 0; font-size: 20px;">Lead Details</h2>
-            <p style="margin: 10px 0;"><strong style="color: #555;">Email:</strong> ${email}</p>
-            <p style="margin: 10px 0;">This lead is about to schedule a demo through Calendly.</p>
+            <table style="width: 100%; border-collapse: collapse;">
+              <tr>
+                <td style="padding: 8px 0; border-bottom: 1px solid #eee; width: 150px;"><strong>Email:</strong></td>
+                <td style="padding: 8px 0; border-bottom: 1px solid #eee;">${email}</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>Role:</strong></td>
+                <td style="padding: 8px 0; border-bottom: 1px solid #eee;">${role || 'Not provided'}</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>Data Needs:</strong></td>
+                <td style="padding: 8px 0; border-bottom: 1px solid #eee;">${dataNeeds || 'Not provided'}</td>
+              </tr>
+            </table>
+            <p style="margin: 20px 0 10px;">This lead is about to schedule a demo through Calendly.</p>
           </div>
           ${signature}
         </div>
