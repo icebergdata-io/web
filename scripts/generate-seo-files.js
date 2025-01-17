@@ -15,7 +15,7 @@ async function generatePaddedLogo() {
   
   try {
     const metadata = await sharp(inputPath).metadata();
-    const padding = Math.floor(Math.max(metadata.width, metadata.height) * 0.3); // 30% padding
+    const padding = Math.floor(Math.max(metadata.width, metadata.height) * 0.45); // 45% padding
     
     await sharp(inputPath)
       .resize(1200, 1200)  // Resize to optimal size for social media
