@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet';
 import Logo from './Logo';
 
 const faqs = [
@@ -47,60 +48,77 @@ const faqs = [
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null);
 
-  return (
-    <section id="faq" className="py-32 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-primary-50/30 to-white"></div>
-      
-      <div className="max-w-7xl mx-auto px-4 relative">
-        <div className="text-center mb-20">
-          <div className="flex justify-center mb-8">
-            <Logo size="medium" className="opacity-90" />
-          </div>
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-dark-900 mb-8">
-            Frequently Asked Questions
-          </h2>
-          <p className="text-xl text-dark-700 max-w-3xl mx-auto">
-            Get answers to common questions about our data integration solutions
-          </p>
-        </div>
+  // Create FAQ Schema
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
 
-        <div className="max-w-4xl mx-auto">
-          {faqs.map((faq, index) => (
-            <div 
-              key={index}
-              className="mb-4"
-            >
-              <button
-                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full text-left p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 flex justify-between items-center"
-              >
-                <span className="text-lg font-display font-bold text-dark-900">{faq.question}</span>
-                <svg
-                  className={`w-6 h-6 transform transition-transform duration-300 ${
-                    openIndex === index ? 'rotate-180' : ''
-                  }`}
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-              {openIndex === index && (
-                <div className="mt-2 px-6 py-4 bg-white/50 backdrop-blur-sm rounded-xl">
-                  <p className="text-dark-700 leading-relaxed">{faq.answer}</p>
-                </div>
-              )}
+  return (
+    <>
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(faqSchema)}
+        </script>
+      </Helmet>
+      
+      <section 
+        id="faq" 
+        className="py-32 relative overflow-hidden bg-white"
+        aria-labelledby="faq-title"
+      >
+        <div className="max-w-7xl mx-auto px-4">
+          <header className="text-center mb-20">
+            <div className="flex justify-center mb-8">
+              <Logo size="medium" />
             </div>
-          ))}
+            <h2 
+              id="faq-title"
+              className="text-4xl md:text-5xl font-display font-bold text-dark-900 mb-8"
+            >
+              Frequently Asked Questions
+            </h2>
+          </header>
+
+          <div className="max-w-3xl mx-auto" role="region" aria-label="FAQ Accordion">
+            {faqs.map((faq, index) => (
+              <div 
+                key={index}
+                className="border-b border-gray-200 py-6"
+              >
+                <button
+                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                  className="w-full flex justify-between items-center text-left"
+                  aria-expanded={openIndex === index}
+                  aria-controls={`faq-answer-${index}`}
+                >
+                  <h3 className="text-xl font-medium text-dark-900">{faq.question}</h3>
+                  <span className="ml-6 flex-shrink-0">
+                    {openIndex === index ? '−' : '+'}
+                  </span>
+                </button>
+                <div
+                  id={`faq-answer-${index}`}
+                  className={`mt-4 ${openIndex === index ? 'block' : 'hidden'}`}
+                  role="region"
+                  aria-labelledby={`faq-question-${index}`}
+                >
+                  <p className="text-dark-700">{faq.answer}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
