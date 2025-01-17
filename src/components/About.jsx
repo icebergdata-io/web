@@ -3,6 +3,7 @@ import Logo from './Logo';
 import InfoPopup from './InfoPopup';
 import CalendlyPopup from './CalendlyPopup';
 import DataIntegrationAnimation from '../../scripts/matching-animation';
+import DatabaseConstructionAnimation from '../../scripts/database-construction';
 
 const features = [
   {
@@ -225,10 +226,28 @@ const About = () => {
 
   const handlePopupClick = (type, event) => {
     event.preventDefault();
-    setPopup({
-      type,
-      position: null
-    });
+    // Map feature titles to their corresponding popup types
+    const featureTypeMap = {
+      'multiplatformscraping': 'entityMatching',
+      'endtoendpipeline': 'pipeline',
+      'multisourceintegration': 'dataAlignment',
+      'enterprisescale': 'aiIntegration'
+    };
+
+    // Handle both feature-index format and direct type format
+    if (type.startsWith('feature-')) {
+      const index = parseInt(type.split('-')[1]);
+      setPopup({
+        type: `feature-${index}`,
+        position: null
+      });
+    } else {
+      // Use the mapped type if it exists, otherwise use the original type
+      setPopup({
+        type: featureTypeMap[type] || type,
+        position: null
+      });
+    }
   };
 
   return (
@@ -269,17 +288,47 @@ const About = () => {
           </div>
         </div>
 
+        <div className="mb-24 relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-primary-50 via-accent-purple/5 to-primary-50 rounded-3xl"></div>
+          <div className="relative bg-white/80 backdrop-blur-sm border border-primary-100 rounded-3xl p-12 text-center">
+            <div className="text-6xl mb-8 mx-auto w-24 h-24 bg-gradient-to-br from-primary-100 to-transparent rounded-2xl flex items-center justify-center">
+              🧠
+            </div>
+            <h3 className="text-3xl font-display font-bold text-dark-900 mb-6">
+              Advanced AI Matching Technology
+            </h3>
+            <p className="text-xl text-dark-700 leading-relaxed max-w-4xl mx-auto mb-8">
+              What sets us apart is our proprietary AI-powered matching system. Unlike traditional data integration solutions, 
+              our advanced algorithms intelligently identify, match, and merge related data points across multiple sources, 
+              creating a single, unified database that's always accurate and up-to-date.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <button 
+                onClick={(e) => handlePopupClick('entityMatching', e)}
+                className="px-4 py-2 bg-primary-50 text-primary-700 rounded-xl font-medium hover:bg-primary-100 transition-colors"
+              >
+                Intelligent Entity Matching
+              </button>
+              <button 
+                onClick={(e) => handlePopupClick('dataAlignment', e)}
+                className="px-4 py-2 bg-primary-50 text-primary-700 rounded-xl font-medium hover:bg-primary-100 transition-colors"
+              >
+                Cross-Source Data Alignment
+              </button>
+              <button 
+                onClick={(e) => handlePopupClick('deduplication', e)}
+                className="px-4 py-2 bg-primary-50 text-primary-700 rounded-xl font-medium hover:bg-primary-100 transition-colors"
+              >
+                Automated Data Deduplication
+              </button>
+            </div>
+          </div>
+        </div>
+
         <div className="text-center mb-16">
-          <h3 className="text-3xl font-display font-bold text-dark-900 mb-6">
-            Advanced AI Matching Technology
-          </h3>
-          <p className="text-xl text-dark-700 leading-relaxed max-w-3xl mx-auto mb-12">
-            Our sophisticated AI algorithms excel at identifying and matching related entities across different data sources,
-            ensuring accurate and reliable data integration.
-          </p>
-          
           <div className="max-w-4xl mx-auto">
             <DataIntegrationAnimation />
+            <DatabaseConstructionAnimation />
           </div>
         </div>
 
@@ -355,7 +404,17 @@ const About = () => {
 
       {popup.type && (
         <InfoPopup
-          content={popupContent[popup.type]}
+          isOpen={true}
+          title={popup.type.startsWith('feature-') 
+            ? features[parseInt(popup.type.split('-')[1])].details.title
+            : popupContent[popup.type].title}
+          description={popup.type.startsWith('feature-')
+            ? features[parseInt(popup.type.split('-')[1])].details.description
+            : popupContent[popup.type].description}
+          items={popup.type.startsWith('feature-')
+            ? features[parseInt(popup.type.split('-')[1])].details.items
+            : popupContent[popup.type].items}
+          theme={popup.type === 'aiIntegration' ? 'dark' : popup.type === 'pipeline' ? 'gradient' : 'light'}
           onClose={() => setPopup({ type: null, position: null })}
         />
       )}

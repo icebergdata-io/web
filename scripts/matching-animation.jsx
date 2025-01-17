@@ -1,33 +1,71 @@
 import React, { useState, useEffect } from 'react';
-import { Database, Globe, Server } from 'lucide-react';
+import { Database, Globe, Server, Check } from 'lucide-react';
 import './matching-animation.css';
 
-const RADIUS = 180;
+const RADIUS = 380;
 
-// Define an array of objects representing each data source
+// Simplified data sources
 const dataSources = [
-  { name: 'Amazon', skuFormat: 'B08X7JZ6TY', icon: 'globe' },
-  { name: 'Shopify', skuFormat: 'IPHONE-14-BLK', icon: 'server' },
-  { name: 'eBay', skuFormat: '264878291826', icon: 'globe' },
-  { name: 'Walmart', skuFormat: '00819184020', icon: 'server' }
+  { 
+    name: 'Shopify', 
+    product: 'iPhone 14 Pro 256GB Black',
+    icon: 'server',
+    color: '#69db7c',
+    bgColor: '#ebfbee'
+  },
+  { 
+    name: 'eBay', 
+    product: 'Apple iPhone 14 Pro 256GB Black',
+    icon: 'globe',
+    color: '#4dabf7',
+    bgColor: '#e7f5ff'
+  },
+  { 
+    name: 'Amazon', 
+    product: 'iPhone 14 Pro (256GB, Black)',
+    icon: 'globe',
+    color: '#ffa94d',
+    bgColor: '#fff4e6'
+  },
+  { 
+    name: 'Walmart', 
+    product: 'Apple iPhone 14 Pro 256GB',
+    icon: 'server',
+    color: '#748ffc',
+    bgColor: '#edf2ff'
+  }
 ];
 
 const DataIntegrationAnimation = () => {
   const [animatePackets, setAnimatePackets] = useState(false);
   const [displayAlignment, setDisplayAlignment] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const triggerAnimationCycle = () => {
       setAnimatePackets(true);
       setTimeout(() => setDisplayAlignment(true), 2500);
+      setTimeout(() => setShowSuccess(true), 3500);
       setTimeout(() => {
         setAnimatePackets(false);
         setDisplayAlignment(false);
-      }, 4000);
+        setShowSuccess(false);
+      }, 4500);
     };
 
     triggerAnimationCycle();
-    const intervalId = setInterval(triggerAnimationCycle, 5000);
+    const intervalId = setInterval(triggerAnimationCycle, 6000);
     return () => clearInterval(intervalId);
   }, []);
 
@@ -37,32 +75,38 @@ const DataIntegrationAnimation = () => {
       <div className="central-hub">
         <div className="hub-icon-wrapper">
           <Database className="hub-icon" />
+          {showSuccess && (
+            <div className="success-overlay">
+              <Check className="success-icon" />
+            </div>
+          )}
           {/* Alignment Visualization Overlay */}
           {displayAlignment && (
             <div className="alignment-overlay">
               <div className="pulse-background" />
               <div className="alignment-labels">
-                {dataSources.slice(0, 3).map((source, index) => (
+                {dataSources.slice(0, isMobile ? 2 : 3).map((source, index) => (
                   <div 
                     key={index} 
                     className="alignment-label" 
-                    style={{ backgroundColor: index === 0 ? '#3b82f6' : 
-                                           index === 1 ? '#10b981' : 
-                                           '#eab308' }}
+                    style={{ 
+                      backgroundColor: source.bgColor,
+                      color: source.color,
+                      borderLeft: `4px solid ${source.color}`
+                    }}
                   >
-                    {source.skuFormat}
+                    <div className="product-name">{source.product}</div>
                   </div>
                 ))}
               </div>
             </div>
           )}
         </div>
-        <div className="hub-description"> Matching Hub</div>
+        <div className="hub-description">Matching Hub</div>
       </div>
 
       {/* Data Sources around the central hub */}
       {dataSources.map((source, i) => {
-        // Calculate the position of each data source around a circle
         const angle = (i * Math.PI) / 2;
         const x = Math.cos(angle) * RADIUS;
         const y = Math.sin(angle) * RADIUS;
@@ -78,11 +122,19 @@ const DataIntegrationAnimation = () => {
               transform: 'translate(-50%, -50%)',
             }}
           >
-            <div className="source-icon-container">
-              <IconComponent className="source-icon" />
-              <div className="sku-label">{source.skuFormat}</div>
-            </div>
             <div className="source-name">{source.name}</div>
+            <div 
+              className="source-icon-container"
+              style={{
+                backgroundColor: source.bgColor,
+                borderLeft: `4px solid ${source.color}`
+              }}
+            >
+              <IconComponent className="source-icon" style={{ color: source.color }} />
+              <div className="product-label" style={{ color: '#1a1a1a' }}>
+                {source.product}
+              </div>
+            </div>
 
             {/* Animated Data Packet Visuals */}
             {animatePackets && (
@@ -92,16 +144,10 @@ const DataIntegrationAnimation = () => {
                     className="data-packet" 
                     style={{
                       animation: `moveToCenter${i} 2.5s ease-in-out infinite`,
+                      backgroundColor: source.color,
+                      boxShadow: `0 0 12px ${source.color}80`
                     }}
                   />
-                  <div 
-                    className="packet-label" 
-                    style={{
-                      animation: `moveToCenter${i} 2.5s ease-in-out infinite`,
-                    }}
-                  >
-                    {source.skuFormat}
-                  </div>
                 </div>
               </div>
             )}
