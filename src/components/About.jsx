@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Logo from './Logo';
 import InfoPopup from './InfoPopup';
 import CalendlyPopup from './CalendlyPopup';
@@ -237,16 +237,23 @@ const About = () => {
     // Handle both feature-index format and direct type format
     if (type.startsWith('feature-')) {
       const index = parseInt(type.split('-')[1]);
-      setPopup({
-        type: `feature-${index}`,
-        position: null
-      });
+      if (index >= 0 && index < features.length) {
+        setPopup({
+          type: `feature-${index}`,
+          position: null
+        });
+      }
     } else {
+      // Convert type to lowercase and remove spaces
+      const normalizedType = type.toLowerCase().replace(/\s+/g, '');
       // Use the mapped type if it exists, otherwise use the original type
-      setPopup({
-        type: featureTypeMap[type] || type,
-        position: null
-      });
+      const mappedType = featureTypeMap[normalizedType];
+      if (mappedType && popupContent[mappedType]) {
+        setPopup({
+          type: mappedType,
+          position: null
+        });
+      }
     }
   };
 
@@ -300,7 +307,7 @@ const About = () => {
             <p className="text-xl text-dark-700 leading-relaxed max-w-4xl mx-auto mb-8">
               What sets us apart is our proprietary AI-powered matching system. Unlike traditional data integration solutions, 
               our advanced algorithms intelligently identify, match, and merge related data points across multiple sources, 
-              creating a single, unified database that's always accurate and up-to-date.
+              creating a single, unified database that&apos;s always accurate and up-to-date.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <button 
@@ -350,7 +357,7 @@ const About = () => {
           <div className="space-y-6">
             <h3 className="text-2xl font-display font-bold text-dark-900">Our Approach</h3>
             <p className="text-lg text-dark-700 leading-relaxed">
-              We go beyond simple data collection. Our AI-driven pipeline intelligently matches and aligns data from multiple sources, handling the entire process from collection to integration. This means you get a single, coherent database that's always up-to-date and perfectly aligned.
+              We go beyond simple data collection. Our AI-driven pipeline intelligently matches and aligns data from multiple sources, handling the entire process from collection to integration. This means you get a single, coherent database that&apos;s always up-to-date and perfectly aligned.
             </p>
             <div className="pt-4">
               <button 
