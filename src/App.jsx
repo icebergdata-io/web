@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -8,6 +8,8 @@ import CaseStudies from './components/CaseStudies';
 import Contact from './components/Contact';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
+
+const CALENDLY_URL = "https://calendly.com/icedata/dm";
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
@@ -26,30 +28,38 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-white">
-        <Navbar scrolled={scrolled} />
-        <main>
-          <div id="hero">
-            <Hero />
-          </div>
-          <div id="about">
-            <About />
-          </div>
-          <div id="services">
-            <ServiceSection />
-          </div>
-          <div id="case-studies">
-            <CaseStudies />
-          </div>
-          <div id="faq">
-            <FAQ />
-          </div>
-          <div id="contact">
-            <Contact />
-          </div>
-        </main>
-        <Footer />
-      </div>
+      <Routes>
+        <Route path="/dm" element={<Navigate to={CALENDLY_URL} replace />} />
+        <Route
+          path="/"
+          element={
+            <div className="min-h-screen bg-white">
+              <Navbar scrolled={scrolled} />
+              <main>
+                <div id="hero">
+                  <Hero />
+                </div>
+                <div id="about">
+                  <About />
+                </div>
+                <div id="services">
+                  <ServiceSection />
+                </div>
+                <div id="case-studies">
+                  <CaseStudies />
+                </div>
+                <div id="faq">
+                  <FAQ />
+                </div>
+                <div id="contact">
+                  <Contact />
+                </div>
+              </main>
+              <Footer />
+            </div>
+          }
+        />
+      </Routes>
     </Router>
   );
 }
