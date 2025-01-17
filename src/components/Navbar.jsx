@@ -1,40 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import CalendlyPopup from './CalendlyPopup';
+import SolutionsPopup from './SolutionsPopup';
 import Logo from './Logo';
 import PropTypes from 'prop-types';
 
-const NavLink = ({ href, active, children }) => (
-  <a
-    href={href}
+const NavLink = ({ href, active, onClick, children }) => (
+  <button
+    onClick={onClick}
     className={`px-3 py-2 rounded-xl text-dark-800 hover:text-primary-600 transition-colors ${
       active ? 'bg-primary-50 text-primary-600 font-medium' : ''
     }`}
   >
     {children}
-  </a>
+  </button>
 );
 
-const MobileNavLink = ({ href, active, children }) => (
-  <a
-    href={href}
-    className={`block px-3 py-2 rounded-xl text-dark-800 hover:text-primary-600 transition-colors ${
+const MobileNavLink = ({ href, active, onClick, children }) => (
+  <button
+    onClick={onClick}
+    className={`block w-full text-left px-3 py-2 rounded-xl text-dark-800 hover:text-primary-600 transition-colors ${
       active ? 'bg-primary-50 text-primary-600 font-medium' : ''
     }`}
   >
     {children}
-  </a>
+  </button>
 );
 
 NavLink.propTypes = {
-  href: PropTypes.string.isRequired,
+  href: PropTypes.string,
   active: PropTypes.bool,
+  onClick: PropTypes.func,
   children: PropTypes.node.isRequired,
 };
 
 MobileNavLink.propTypes = {
-  href: PropTypes.string.isRequired,
+  href: PropTypes.string,
   active: PropTypes.bool,
+  onClick: PropTypes.func,
   children: PropTypes.node.isRequired,
 };
 
@@ -42,6 +45,7 @@ const Navbar = ({ scrolled }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const [showCalendly, setShowCalendly] = useState(false);
+  const [showSolutions, setShowSolutions] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -65,11 +69,19 @@ const Navbar = ({ scrolled }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navigation = [
-    { name: 'About', href: '#about' },
-    { name: 'Case Studies', href: '#case-studies' },
-    { name: 'Contact', href: '#contact' }
-  ];
+  const handleNavClick = (section, event) => {
+    event.preventDefault();
+    if (section === 'solutions') {
+      setShowSolutions(true);
+      setIsOpen(false); // Close mobile menu if open
+    } else {
+      const element = document.getElementById(section);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+        setIsOpen(false); // Close mobile menu if open
+      }
+    }
+  };
 
   return (
     <>
@@ -94,11 +106,11 @@ const Navbar = ({ scrolled }) => {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-1">
-              <NavLink href="#about" active={activeSection === 'about'}>About</NavLink>
-              <NavLink href="#services" active={activeSection === 'services'}>Services</NavLink>
-              <NavLink href="#case-studies" active={activeSection === 'case-studies'}>Case Studies</NavLink>
-              <NavLink href="#solutions" active={activeSection === 'solutions'}>Solutions</NavLink>
-              <NavLink href="#faq" active={activeSection === 'faq'}>FAQ</NavLink>
+              <NavLink href="#about" active={activeSection === 'about'} onClick={(e) => handleNavClick('about', e)}>About</NavLink>
+              <NavLink href="#services" active={activeSection === 'services'} onClick={(e) => handleNavClick('services', e)}>Services</NavLink>
+              <NavLink href="#case-studies" active={activeSection === 'case-studies'} onClick={(e) => handleNavClick('case-studies', e)}>Case Studies</NavLink>
+              <NavLink active={activeSection === 'solutions'} onClick={(e) => handleNavClick('solutions', e)}>Solutions</NavLink>
+              <NavLink href="#faq" active={activeSection === 'faq'} onClick={(e) => handleNavClick('faq', e)}>FAQ</NavLink>
               <div className="ml-4">
                 <button 
                   onClick={() => setShowCalendly(true)}
@@ -146,14 +158,17 @@ const Navbar = ({ scrolled }) => {
             }`}
           >
             <div className="py-4 px-2 space-y-1">
-              <MobileNavLink href="#about" active={activeSection === 'about'}>About</MobileNavLink>
-              <MobileNavLink href="#services" active={activeSection === 'services'}>Services</MobileNavLink>
-              <MobileNavLink href="#case-studies" active={activeSection === 'case-studies'}>Case Studies</MobileNavLink>
-              <MobileNavLink href="#solutions" active={activeSection === 'solutions'}>Solutions</MobileNavLink>
-              <MobileNavLink href="#faq" active={activeSection === 'faq'}>FAQ</MobileNavLink>
+              <MobileNavLink href="#about" active={activeSection === 'about'} onClick={(e) => handleNavClick('about', e)}>About</MobileNavLink>
+              <MobileNavLink href="#services" active={activeSection === 'services'} onClick={(e) => handleNavClick('services', e)}>Services</MobileNavLink>
+              <MobileNavLink href="#case-studies" active={activeSection === 'case-studies'} onClick={(e) => handleNavClick('case-studies', e)}>Case Studies</MobileNavLink>
+              <MobileNavLink active={activeSection === 'solutions'} onClick={(e) => handleNavClick('solutions', e)}>Solutions</MobileNavLink>
+              <MobileNavLink href="#faq" active={activeSection === 'faq'} onClick={(e) => handleNavClick('faq', e)}>FAQ</MobileNavLink>
               <div className="pt-2 px-2">
                 <button
-                  onClick={() => setShowCalendly(true)}
+                  onClick={() => {
+                    setShowCalendly(true);
+                    setIsOpen(false);
+                  }}
                   className="w-full px-6 py-3 text-center rounded-xl bg-gradient-to-r from-primary-600 to-accent-purple text-white font-bold hover:shadow-lg transition-all duration-300"
                 >
                   Schedule a Demo
@@ -168,6 +183,11 @@ const Navbar = ({ scrolled }) => {
       <CalendlyPopup 
         isOpen={showCalendly} 
         onClose={() => setShowCalendly(false)} 
+      />
+
+      <SolutionsPopup 
+        isOpen={showSolutions}
+        onClose={() => setShowSolutions(false)}
       />
     </>
   );

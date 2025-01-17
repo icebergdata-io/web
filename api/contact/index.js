@@ -24,6 +24,19 @@ try {
   throw error;
 }
 
+const signature = `
+  <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eaeaea;">
+    <p style="margin: 0; font-size: 16px; font-weight: 600; color: #333;">David Martin Riveros</p>
+    <p style="margin: 2px 0; color: #666;">CEO, Iceberg Data LLC</p>
+    <div style="margin-top: 15px;">
+      <a href="https://www.icebergdata.co" style="color: #0066cc; text-decoration: none; display: block; margin: 2px 0;">www.icebergdata.co</a>
+      <a href="https://linkedin.com/in/davidmartinriveros/" style="color: #0066cc; text-decoration: none; display: block; margin: 2px 0;">linkedin.com/in/davidmartinriveros/</a>
+      <a href="https://calendly.com/icedata/dm" style="color: #0066cc; text-decoration: none; display: block; margin: 2px 0;">calendly.com/icedata/dm</a>
+      <p style="margin: 2px 0; color: #666;">+1 (607) 358-0021</p>
+    </div>
+  </div>
+`;
+
 export default async function handler(req, res) {
   // Debug: Log request details
   console.log('Request Details:', {
@@ -95,13 +108,25 @@ export default async function handler(req, res) {
       to: 'david@icebergdata.co',
       subject: 'New Contact Form Submission',
       html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Company:</strong> ${company || 'Not provided'}</p>
-        <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message}</p>
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #333;">
+          <div style="background: linear-gradient(135deg, #0066cc, #0099ff); padding: 20px; border-radius: 8px; margin-bottom: 30px;">
+            <h1 style="color: white; margin: 0; font-size: 24px;">New Contact Form Submission</h1>
+          </div>
+          
+          <div style="background: #f8f9fa; padding: 25px; border-radius: 8px; margin-bottom: 20px;">
+            <h2 style="color: #0066cc; margin-top: 0; font-size: 20px;">Contact Details</h2>
+            <p style="margin: 10px 0;"><strong style="color: #555;">Name:</strong> ${name}</p>
+            <p style="margin: 10px 0;"><strong style="color: #555;">Email:</strong> ${email}</p>
+            <p style="margin: 10px 0;"><strong style="color: #555;">Company:</strong> ${company || 'Not provided'}</p>
+            <p style="margin: 10px 0;"><strong style="color: #555;">Phone:</strong> ${phone || 'Not provided'}</p>
+          </div>
+
+          <div style="background: #f8f9fa; padding: 25px; border-radius: 8px;">
+            <h2 style="color: #0066cc; margin-top: 0; font-size: 20px;">Message</h2>
+            <p style="line-height: 1.6; white-space: pre-wrap;">${message}</p>
+          </div>
+          ${signature}
+        </div>
       `
     }).catch(error => {
       console.error('Admin email failed:', error);
@@ -123,15 +148,28 @@ export default async function handler(req, res) {
       to: email,
       subject: 'Thank you for contacting Iceberg Data',
       html: `
-        <h2>Thank you for reaching out!</h2>
-        <p>Dear ${name},</p>
-        <p>Thank you for your interest in Iceberg Data. We have received your message and will get back to you shortly.</p>
-        <p>Here's a summary of your message:</p>
-        <hr/>
-        <p>${message}</p>
-        <hr/>
-        <p>Best regards,</p>
-        <p>David Martin<br/>Iceberg Data</p>
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #333;">
+          <div style="background: linear-gradient(135deg, #0066cc, #0099ff); padding: 20px; border-radius: 8px; margin-bottom: 30px;">
+            <h1 style="color: white; margin: 0; font-size: 24px;">Thank You for Reaching Out!</h1>
+          </div>
+          
+          <div style="background: #f8f9fa; padding: 25px; border-radius: 8px; margin-bottom: 20px;">
+            <p style="margin-top: 0; font-size: 16px;">Dear ${name},</p>
+            <p style="line-height: 1.6;">Thank you for your interest in Iceberg Data. I have received your message and will personally review it shortly. You can expect to hear back from me within 1-2 business days.</p>
+            <p style="line-height: 1.6;">In the meantime, feel free to:</p>
+            <ul style="line-height: 1.6;">
+              <li>Schedule a quick call using my <a href="https://calendly.com/icedata/dm" style="color: #0066cc; text-decoration: none;">Calendly link</a></li>
+              <li>Check out our <a href="https://www.icebergdata.co" style="color: #0066cc; text-decoration: none;">website</a> for more information</li>
+              <li>Connect with me on <a href="https://linkedin.com/in/davidmartinriveros/" style="color: #0066cc; text-decoration: none;">LinkedIn</a></li>
+            </ul>
+          </div>
+
+          <div style="background: #f8f9fa; padding: 25px; border-radius: 8px;">
+            <h2 style="color: #0066cc; margin-top: 0; font-size: 20px;">Your Message</h2>
+            <p style="line-height: 1.6; white-space: pre-wrap;">${message}</p>
+          </div>
+          ${signature}
+        </div>
       `
     }).catch(error => {
       console.error('User email failed:', error);
