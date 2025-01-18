@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Database, Globe, Server, Check } from 'lucide-react';
 import './matching-animation.css';
 
-const RADIUS = 380;
+const RADIUS = 260;
 
 // Simplified data sources
 const dataSources = [
