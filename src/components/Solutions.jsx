@@ -182,6 +182,64 @@ const travelSolutions = [
         }
       }
     ]
+  },
+  {
+    title: "UI Components & Modals",
+    description: "Ready-to-use travel industry components and modal templates for seamless user experience.",
+    icon: "🎨",
+    examples: [
+      {
+        name: "Booking Components",
+        sources: ["travel platforms"],
+        schema: {
+          componentId: "string",
+          type: "string",
+          templates: "array",
+          modals: "object",
+          styling: "object",
+          interactions: "array",
+          accessibility: "object",
+          localization: "array"
+        }
+      },
+      {
+        name: "Travel Search Interface",
+        sources: ["booking systems"],
+        schema: {
+          searchId: "string",
+          filters: "array",
+          results: "object",
+          sorting: "object",
+          pagination: "object",
+          modals: "array",
+          responsive: "object"
+        }
+      },
+      {
+        name: "Reservation System UI",
+        sources: ["multiple platforms"],
+        schema: {
+          bookingFlow: "object",
+          forms: "array",
+          validation: "object",
+          payment: "object",
+          confirmation: "object",
+          notifications: "array"
+        }
+      },
+      {
+        name: "Travel Dashboard Components",
+        sources: ["management systems"],
+        schema: {
+          widgets: "array",
+          analytics: "object",
+          reports: "array",
+          controls: "object",
+          modals: "object",
+          charts: "array"
+        }
+      }
+    ]
   }
 ];
 
@@ -352,6 +410,61 @@ const ecommerceSolutions = [
         }
       }
     ]
+  },
+  {
+    title: "Interface Components & Modals",
+    description: "Comprehensive collection of e-commerce UI components and modal templates for enhanced shopping experience.",
+    icon: "🎯",
+    examples: [
+      {
+        name: "Product Components",
+        sources: ["e-commerce platforms"],
+        schema: {
+          productCards: "array",
+          galleries: "object",
+          quickView: "object",
+          modals: "array",
+          filters: "object",
+          cart: "object"
+        }
+      },
+      {
+        name: "Checkout Interface",
+        sources: ["shopping platforms"],
+        schema: {
+          steps: "array",
+          forms: "object",
+          validation: "object",
+          payment: "object",
+          modals: "array",
+          confirmation: "object"
+        }
+      },
+      {
+        name: "Store Management UI",
+        sources: ["admin platforms"],
+        schema: {
+          dashboard: "object",
+          inventory: "object",
+          orders: "array",
+          modals: "object",
+          reports: "array",
+          settings: "object"
+        }
+      },
+      {
+        name: "Shopping Cart System",
+        sources: ["multiple platforms"],
+        schema: {
+          cart: "object",
+          checkout: "object",
+          modals: "array",
+          notifications: "object",
+          persistence: "object",
+          sync: "array"
+        }
+      }
+    ]
   }
 ];
 
@@ -514,6 +627,61 @@ const realEstateSolutions = [
           maintenance: "array",
           tenants: "object",
           financials: "array"
+        }
+      }
+    ]
+  },
+  {
+    title: "Property Interface & Modals",
+    description: "Specialized real estate UI components and modal templates for property listing and management.",
+    icon: "🏗️",
+    examples: [
+      {
+        name: "Property Components",
+        sources: ["real estate platforms"],
+        schema: {
+          listings: "array",
+          galleries: "object",
+          virtualTour: "object",
+          modals: "array",
+          forms: "object",
+          maps: "object"
+        }
+      },
+      {
+        name: "Agent Dashboard UI",
+        sources: ["agent platforms"],
+        schema: {
+          leads: "array",
+          properties: "object",
+          calendar: "object",
+          modals: "array",
+          reports: "object",
+          communications: "array"
+        }
+      },
+      {
+        name: "Property Search Interface",
+        sources: ["listing platforms"],
+        schema: {
+          filters: "object",
+          results: "array",
+          maps: "object",
+          modals: "array",
+          saved: "object",
+          alerts: "array"
+        }
+      },
+      {
+        name: "Property Management System",
+        sources: ["management platforms"],
+        schema: {
+          units: "array",
+          tenants: "object",
+          maintenance: "object",
+          modals: "array",
+          billing: "object",
+          documents: "array"
         }
       }
     ]
