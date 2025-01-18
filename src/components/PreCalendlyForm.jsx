@@ -44,30 +44,31 @@ const PreCalendlyForm = ({ onSubmit, onClose }) => {
   };
 
   return (
-    <div className="relative transform overflow-hidden rounded-2xl bg-white px-8 py-12 text-left shadow-xl transition-all w-full max-w-md">
-      <div className="absolute right-4 top-4">
+    <div className="relative transform overflow-hidden rounded-2xl bg-white px-3 sm:px-8 py-6 sm:py-12 text-left shadow-xl transition-all w-[98%] sm:w-full max-w-md mx-auto">
+      <div className="absolute right-2 sm:right-4 top-2 sm:top-4">
         <button
           onClick={onClose}
-          className="text-dark-400 hover:text-dark-600 transition-colors"
+          className="text-dark-400 hover:text-dark-600 transition-colors p-1.5"
+          aria-label="Close form"
         >
-          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
       </div>
 
-      <div className="text-center mb-8">
-        <h3 className="text-2xl font-bold text-dark-900">
+      <div className="text-center mb-4 sm:mb-8">
+        <h3 className="text-xl sm:text-2xl font-bold text-dark-900">
           Schedule Your Demo
         </h3>
-        <p className="mt-2 text-dark-600">
+        <p className="mt-1.5 text-sm sm:text-base text-dark-600">
           Please tell us a bit about yourself to help us prepare for the demo
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-6">
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-dark-700">
+          <label htmlFor="email" className="block text-sm font-medium text-dark-700 mb-1">
             Work Email
           </label>
           <input
@@ -77,13 +78,13 @@ const PreCalendlyForm = ({ onSubmit, onClose }) => {
             required
             value={formData.email}
             onChange={handleChange}
-            className="mt-1 block w-full rounded-xl border border-dark-200 px-4 py-3 text-dark-900 placeholder-dark-400 focus:border-primary-500 focus:ring-primary-500"
+            className="mt-1 block w-full rounded-xl border border-dark-200 px-4 py-2.5 sm:py-3 text-dark-900 placeholder-dark-400 focus:border-primary-500 focus:ring-primary-500 text-base"
             placeholder="you@company.com"
           />
         </div>
 
         <div>
-          <label htmlFor="role" className="block text-sm font-medium text-dark-700">
+          <label htmlFor="role" className="block text-sm font-medium text-dark-700 mb-1">
             Your Role
           </label>
           <select
@@ -92,7 +93,7 @@ const PreCalendlyForm = ({ onSubmit, onClose }) => {
             required
             value={formData.role}
             onChange={handleChange}
-            className="mt-1 block w-full rounded-xl border border-dark-200 px-4 py-3 text-dark-900 focus:border-primary-500 focus:ring-primary-500"
+            className="mt-1 block w-full rounded-xl border border-dark-200 px-4 py-2.5 sm:py-3 text-dark-900 focus:border-primary-500 focus:ring-primary-500 text-base bg-white"
           >
             <option value="">Select your role</option>
             <option value="Engineering">Engineering</option>
@@ -105,7 +106,7 @@ const PreCalendlyForm = ({ onSubmit, onClose }) => {
         </div>
 
         <div>
-          <label htmlFor="dataNeeds" className="block text-sm font-medium text-dark-700">
+          <label htmlFor="dataNeeds" className="block text-sm font-medium text-dark-700 mb-1">
             What are your primary data needs?
           </label>
           <select
@@ -114,7 +115,7 @@ const PreCalendlyForm = ({ onSubmit, onClose }) => {
             required
             value={formData.dataNeeds}
             onChange={handleChange}
-            className="mt-1 block w-full rounded-xl border border-dark-200 px-4 py-3 text-dark-900 focus:border-primary-500 focus:ring-primary-500"
+            className="mt-1 block w-full rounded-xl border border-dark-200 px-4 py-2.5 sm:py-3 text-dark-900 focus:border-primary-500 focus:ring-primary-500 text-base bg-white"
           >
             <option value="">Select your primary need</option>
             <option value="Web Scraping">Web Scraping</option>
@@ -126,13 +127,13 @@ const PreCalendlyForm = ({ onSubmit, onClose }) => {
         </div>
 
         {error && (
-          <p className="text-red-500 text-sm">{error}</p>
+          <p className="text-red-500 text-sm mt-2">{error}</p>
         )}
 
         <button
           type="submit"
           disabled={loading}
-          className="w-full rounded-xl bg-gradient-to-r from-primary-600 to-accent-purple px-6 py-3 text-white font-bold hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:hover:scale-100"
+          className="w-full rounded-xl bg-gradient-to-r from-primary-600 to-accent-purple px-6 py-3 text-white font-bold hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:hover:scale-100 text-base mt-4"
         >
           {loading ? 'Processing...' : 'Continue to Schedule'}
         </button>

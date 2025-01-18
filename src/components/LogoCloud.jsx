@@ -45,29 +45,29 @@ const LogoCloud = () => {
   const secondRow = validLogos.slice(Math.ceil(validLogos.length / 2));
 
   return (
-    <div className="relative py-8 bg-gradient-to-b from-white/30 via-white/80 to-white">
+    <div className="relative py-4 md:py-2 bg-gradient-to-b from-white/30 via-white/80 to-white h-[30vh] md:h-[40vh] flex flex-col justify-between">
       <div 
         ref={containerRef}
-        className="relative max-w-7xl mx-auto px-4"
+        className="relative w-full mx-auto px-4 h-full flex flex-col"
       >
-        <p className="text-center text-dark-800 text-base font-semibold mb-8">
+        <p className="text-center text-dark-800 text-base font-semibold mb-4 md:mb-4">
           Trusted by innovative companies worldwide
         </p>
 
         {/* Mobile View: Two separate carousels */}
-        <div className="md:hidden">
+        <div className="md:hidden flex-1 flex flex-col justify-center">
           {/* First row - scrolling left */}
           <div className="relative overflow-hidden py-4">
-            <div className="flex animate-scroll space-x-12 whitespace-nowrap overflow-visible w-full justify-center">
+            <div className="flex animate-scroll space-x-8 whitespace-nowrap overflow-visible w-full justify-center">
               {firstRow.map((logo, index) => (
                 <div 
                   key={`first-${index}`}
-                  className="w-20 h-20 flex-shrink-0 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-110 bg-white/95 backdrop-blur shadow-lg rounded-full overflow-hidden"
+                  className="w-16 h-16 flex-shrink-0 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-110 bg-white/95 backdrop-blur shadow-lg rounded-full overflow-hidden"
                 >
                   <img
                     src={logo.src}
                     alt={`Customer Logo ${index + 1}`}
-                    className="w-full h-full object-cover"
+                    className="w-[100%] h-[100%] object-contain"
                     loading="lazy"
                   />
                 </div>
@@ -75,12 +75,12 @@ const LogoCloud = () => {
               {firstRow.map((logo, index) => (
                 <div 
                   key={`first-duplicate-${index}`}
-                  className="w-20 h-20 flex-shrink-0 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-110 bg-white/95 backdrop-blur shadow-lg rounded-full overflow-hidden"
+                  className="w-16 h-16 flex-shrink-0 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-110 bg-white/95 backdrop-blur shadow-lg rounded-full overflow-hidden"
                 >
                   <img
                     src={logo.src}
                     alt={`Customer Logo ${index + 1}`}
-                    className="w-full h-full object-cover"
+                    className="w-[100%] h-[100%] object-contain"
                     loading="lazy"
                   />
                 </div>
@@ -90,16 +90,16 @@ const LogoCloud = () => {
 
           {/* Second row - scrolling right */}
           <div className="relative overflow-hidden py-4">
-            <div className="flex animate-scroll-reverse space-x-12 whitespace-nowrap overflow-visible w-full justify-center">
+            <div className="flex animate-scroll-reverse space-x-8 whitespace-nowrap overflow-visible w-full justify-center">
               {secondRow.map((logo, index) => (
                 <div 
                   key={`second-${index}`}
-                  className="w-20 h-20 flex-shrink-0 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-110 bg-white/95 backdrop-blur shadow-lg rounded-full overflow-hidden"
+                  className="w-16 h-16 flex-shrink-0 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-110 bg-white/95 backdrop-blur shadow-lg rounded-full overflow-hidden"
                 >
                   <img
                     src={logo.src}
                     alt={`Customer Logo ${index + firstRow.length + 1}`}
-                    className="w-full h-full object-cover"
+                    className="w-[100%] h-[100%] object-contain"
                     loading="lazy"
                   />
                 </div>
@@ -107,12 +107,12 @@ const LogoCloud = () => {
               {secondRow.map((logo, index) => (
                 <div 
                   key={`second-duplicate-${index}`}
-                  className="w-20 h-20 flex-shrink-0 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-110 bg-white/95 backdrop-blur shadow-lg rounded-full overflow-hidden"
+                  className="w-16 h-16 flex-shrink-0 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-110 bg-white/95 backdrop-blur shadow-lg rounded-full overflow-hidden"
                 >
                   <img
                     src={logo.src}
                     alt={`Customer Logo ${index + firstRow.length + 1}`}
-                    className="w-full h-full object-cover"
+                    className="w-[100%] h-[100%] object-contain"
                     loading="lazy"
                   />
                 </div>
@@ -122,8 +122,8 @@ const LogoCloud = () => {
         </div>
 
         {/* Desktop View: Single long carousel */}
-        <div className="hidden md:block relative overflow-hidden py-4">
-          <div className="flex animate-scroll space-x-16 whitespace-nowrap overflow-visible w-full justify-center">
+        <div className="hidden md:block relative overflow-hidden py-4 flex-1">
+          <div className="flex animate-scroll space-x-12 whitespace-nowrap overflow-visible w-full justify-center">
             {validLogos.map((logo, index) => (
               <div 
                 key={`desktop-${index}`}
@@ -132,7 +132,7 @@ const LogoCloud = () => {
                 <img
                   src={logo.src}
                   alt={`Customer Logo ${index + 1}`}
-                  className="w-full h-full object-cover"
+                  className="w-[100%] h-[100%] object-contain"
                   loading="lazy"
                 />
               </div>
@@ -145,13 +145,18 @@ const LogoCloud = () => {
                 <img
                   src={logo.src}
                   alt={`Customer Logo ${index + 1}`}
-                  className="w-full h-full object-cover"
+                  className="w-[100%] h-[100%] object-contain"
                   loading="lazy"
                 />
               </div>
             ))}
           </div>
         </div>
+
+        {/* Added text below logos */}
+        <p className="text-center text-dark-700 text-lg md:text-xl font-light mt-2 md:mt-4 italic pb-2">
+          30+ companies trust us
+        </p>
       </div>
     </div>
   );

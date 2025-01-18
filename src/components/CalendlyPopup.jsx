@@ -18,7 +18,7 @@ const CalendlyPopup = ({ isOpen, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-[100] overflow-y-auto">
-      <div className="flex min-h-full items-center justify-center p-4">
+      <div className="flex min-h-full items-center justify-center p-1 sm:p-4">
         <div className="fixed inset-0 bg-dark-900/30 backdrop-blur-sm" onClick={onClose}></div>
         
         <div className={`relative bg-white rounded-2xl shadow-xl w-full max-w-6xl h-[85vh] overflow-hidden transition-opacity duration-500 ${!showCalendly ? 'opacity-20' : 'opacity-100'}`}>
