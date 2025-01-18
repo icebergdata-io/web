@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Database, Globe, Server, Check } from 'lucide-react';
-import './matching-animation.css';
+import './matching-animation-desktop.css';
 
 const RADIUS = 260;
 
@@ -36,7 +36,7 @@ const dataSources = [
   }
 ];
 
-const DataIntegrationAnimation = () => {
+const DataIntegrationAnimationDesktop = () => {
   const [animatePackets, setAnimatePackets] = useState(false);
   const [displayAlignment, setDisplayAlignment] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
@@ -94,7 +94,7 @@ const DataIntegrationAnimation = () => {
         <div className="hub-description">Matching Hub</div>
       </div>
 
-      {/* Data Sources */}
+      {/* Data Sources around the central hub */}
       {dataSources.map((source, i) => {
         const angle = (i * Math.PI) / 2;
         const x = Math.cos(angle) * RADIUS;
@@ -147,4 +147,4 @@ const DataIntegrationAnimation = () => {
   );
 };
 
-export default DataIntegrationAnimation;
+export default DataIntegrationAnimationDesktop; 

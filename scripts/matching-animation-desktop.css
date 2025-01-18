@@ -10,6 +10,7 @@
   padding: 4rem;
   margin: 3rem auto;
   max-width: 1200px;
+  display: block;
 }
 
 .central-hub {
@@ -103,7 +104,7 @@
   justify-content: flex-start;
   gap: 0.75rem;
   padding: 2rem;
-  padding-top: calc(10% + 1rem);
+  padding-top: calc(50% + 2rem);
 }
 
 .alignment-label {
@@ -125,12 +126,6 @@
   margin-bottom: 0.375rem;
   font-family: system-ui, -apple-system, sans-serif;
   color: #1a1a1a;
-}
-
-.sku-value {
-  font-size: 0.75rem;
-  opacity: 0.9;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 .hub-description {
@@ -192,26 +187,6 @@
   color: #1a1a1a;
 }
 
-.sku-label {
-  font-size: 0.875rem;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  text-align: center;
-  font-weight: 500;
-  letter-spacing: 0.025em;
-  transition: all 0.3s ease;
-  margin-bottom: 0.75rem;
-  opacity: 0.9;
-}
-
-.source-subtitle {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  opacity: 0.9;
-  font-weight: 500;
-  margin-top: 0.5rem;
-}
-
 .source-name {
   text-align: center;
   font-weight: 600;
@@ -241,42 +216,36 @@
   transition: all 0.3s ease;
 }
 
-.packet-label {
-  position: absolute;
-  top: -1.75rem;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.75rem;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  padding: 0.375rem 0.75rem;
-  border-radius: 0.5rem;
-  white-space: nowrap;
-  font-weight: 500;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  transition: all 0.3s ease;
-  backdrop-filter: blur(4px);
-}
-
 @keyframes moveToCenter0 {
   0% { transform: translate(0, 0); opacity: 1; }
   85% { opacity: 1; }
-  100% { transform: translate(-380px, 0); opacity: 0; }
+  100% { transform: translate(-260px, 0); opacity: 0; }
 }
 
 @keyframes moveToCenter1 {
   0% { transform: translate(0, 0); opacity: 1; }
   85% { opacity: 1; }
-  100% { transform: translate(0, -380px); opacity: 0; }
+  100% { transform: translate(0, -260px); opacity: 0; }
 }
 
 @keyframes moveToCenter2 {
   0% { transform: translate(0, 0); opacity: 1; }
   85% { opacity: 1; }
-  100% { transform: translate(380px, 0); opacity: 0; }
+  100% { transform: translate(260px, 0); opacity: 0; }
 }
 
 @keyframes moveToCenter3 {
   0% { transform: translate(0, 0); opacity: 1; }
   85% { opacity: 1; }
-  100% { transform: translate(0, 380px); opacity: 0; }
+  100% { transform: translate(0, 260px); opacity: 0; }
 }
+
+@media screen and (max-width: 768px) {
+  .data-integration-container {
+    display: none !important;
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+  }
+} 
