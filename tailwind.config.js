@@ -60,6 +60,8 @@ export default {
         'gradient': 'gradient 8s linear infinite',
         'shimmer': 'shimmer 2s linear infinite',
         'subtle-gradient': 'subtle-gradient 8s ease infinite',
+        'scroll': 'scroll 60s linear infinite',
+        'scroll-reverse': 'scroll-reverse 60s linear infinite',
       },
       keyframes: {
         fadeInUp: {
@@ -130,7 +132,15 @@ export default {
           '100%': {
             'background-position': '0% 50%'
           }
-        }
+        },
+        'scroll': {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        'scroll-reverse': {
+          '0%': { transform: 'translateX(-50%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
