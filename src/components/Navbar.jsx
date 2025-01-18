@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import CalendlyPopup from './CalendlyPopup';
 import Logo from './Logo';
 import PropTypes from 'prop-types';
@@ -42,10 +42,11 @@ const Navbar = ({ scrolled }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const [showCalendly, setShowCalendly] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['hero', 'about', 'services', 'case-studies', 'contact'];
+      const sections = ['hero', 'about', 'services', 'case-studies', 'faq', 'contact'];
       let current = '';
 
       sections.forEach(section => {
@@ -70,6 +71,10 @@ const Navbar = ({ scrolled }) => {
     const element = document.getElementById(section);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+      setIsOpen(false);
+    } else {
+      // If we're not on the home page, navigate there with the section to scroll to
+      navigate('/', { state: { scrollTo: section } });
       setIsOpen(false);
     }
   };
@@ -100,7 +105,6 @@ const Navbar = ({ scrolled }) => {
               <NavLink active={activeSection === 'about'} onClick={(e) => handleNavClick('about', e)}>About</NavLink>
               <NavLink active={activeSection === 'services'} onClick={(e) => handleNavClick('services', e)}>Services</NavLink>
               <NavLink active={activeSection === 'case-studies'} onClick={(e) => handleNavClick('case-studies', e)}>Case Studies</NavLink>
-              <NavLink active={activeSection === 'solutions'} onClick={(e) => handleNavClick('solutions', e)}>Solutions</NavLink>
               <NavLink active={activeSection === 'faq'} onClick={(e) => handleNavClick('faq', e)}>FAQ</NavLink>
               <div className="ml-4">
                 <button 
@@ -152,7 +156,6 @@ const Navbar = ({ scrolled }) => {
               <MobileNavLink active={activeSection === 'about'} onClick={(e) => handleNavClick('about', e)}>About</MobileNavLink>
               <MobileNavLink active={activeSection === 'services'} onClick={(e) => handleNavClick('services', e)}>Services</MobileNavLink>
               <MobileNavLink active={activeSection === 'case-studies'} onClick={(e) => handleNavClick('case-studies', e)}>Case Studies</MobileNavLink>
-              <MobileNavLink active={activeSection === 'solutions'} onClick={(e) => handleNavClick('solutions', e)}>Solutions</MobileNavLink>
               <MobileNavLink active={activeSection === 'faq'} onClick={(e) => handleNavClick('faq', e)}>FAQ</MobileNavLink>
               <div className="pt-2 px-2">
                 <button

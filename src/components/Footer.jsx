@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Modal from './Modal';
 import Terms from '../policies/Terms';
 import Privacy from '../policies/Privacy';
@@ -8,8 +9,13 @@ import Logo from './Logo';
 
 const Footer = () => {
   const [activeModal, setActiveModal] = useState(null);
+  const navigate = useNavigate();
 
   const closeModal = () => setActiveModal(null);
+
+  const handleNavClick = (section) => {
+    navigate('/', { state: { scrollTo: section } });
+  };
 
   const renderModalContent = () => {
     switch (activeModal) {
@@ -85,9 +91,43 @@ const Footer = () => {
             <div>
               <h3 className="text-xl font-display font-bold mb-4">Solutions</h3>
               <ul className="space-y-2">
-                <li><a href="#about" className="text-light-600 hover:text-white transition-colors">About</a></li>
-                <li><a href="#services" className="text-light-600 hover:text-white transition-colors">Services</a></li>
-                <li><a href="#case-studies" className="text-light-600 hover:text-white transition-colors">Case Studies</a></li>
+                <li>
+                  <button 
+                    onClick={() => handleNavClick('about')} 
+                    className="text-light-600 hover:text-white transition-colors"
+                  >
+                    About
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => handleNavClick('services')} 
+                    className="text-light-600 hover:text-white transition-colors"
+                  >
+                    Services
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => handleNavClick('case-studies')} 
+                    className="text-light-600 hover:text-white transition-colors"
+                  >
+                    Case Studies
+                  </button>
+                </li>
+                <li>
+                  <Link to="/press" className="text-light-600 hover:text-white transition-colors">
+                    Press
+                  </Link>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => handleNavClick('faq')} 
+                    className="text-light-600 hover:text-white transition-colors"
+                  >
+                    FAQ
+                  </button>
+                </li>
               </ul>
             </div>
 
