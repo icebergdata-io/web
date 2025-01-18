@@ -441,7 +441,7 @@ const About = () => {
       )}
       
       {showCalendly && (
-        <CalendlyPopup onClose={() => setShowCalendly(false)} />
+        <CalendlyPopup isOpen={showCalendly} onClose={() => setShowCalendly(false)} />
       )}
     </section>
   );
