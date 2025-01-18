@@ -228,9 +228,9 @@ const About = () => {
     event.preventDefault();
     // Map feature titles to their corresponding popup types
     const featureTypeMap = {
-      'multiplatformscraping': 'entityMatching',
-      'endtoendpipeline': 'pipeline',
-      'multisourceintegration': 'dataAlignment',
+      'multi-platformscraping': 'entityMatching',
+      'end-to-endpipeline': 'pipeline',
+      'multi-sourceintegration': 'dataAlignment',
       'enterprisescale': 'aiIntegration'
     };
 
@@ -244,16 +244,42 @@ const About = () => {
         });
       }
     } else {
-      // Convert type to lowercase and remove spaces
-      const normalizedType = type.toLowerCase().replace(/\s+/g, '');
-      // Use the mapped type if it exists, otherwise use the original type
-      const mappedType = featureTypeMap[normalizedType];
-      if (mappedType && popupContent[mappedType]) {
+      // If it's a direct popup type (like 'entityMatching'), use it directly
+      if (popupContent[type]) {
         setPopup({
-          type: mappedType,
+          type: type,
           position: null
         });
+      } else {
+        // Convert spaces to dashes and lowercase for consistent mapping
+        const normalizedType = type.toLowerCase().replace(/\s+/g, '-');
+        const mappedType = featureTypeMap[normalizedType];
+        if (mappedType && popupContent[mappedType]) {
+          setPopup({
+            type: mappedType,
+            position: null
+          });
+        }
       }
+    }
+  };
+
+  // Update the feature button click handler
+  const handleFeatureClick = (feature, event) => {
+    event.preventDefault();
+    const featureTypeMap = {
+      'Multi-Platform Scraping': 'entityMatching',
+      'End-to-End Pipeline': 'pipeline',
+      'Multi-Source Integration': 'dataAlignment',
+      'Enterprise Scale': 'aiIntegration'
+    };
+    
+    const mappedType = featureTypeMap[feature.title];
+    if (mappedType) {
+      setPopup({
+        type: mappedType,
+        position: null
+      });
     }
   };
 
@@ -285,7 +311,7 @@ const About = () => {
                 <h3 className="text-xl font-bold text-dark-900 mb-3">{feature.title}</h3>
                 <p className="text-dark-700 mb-4">{feature.description}</p>
                 <button
-                  onClick={(e) => handlePopupClick(feature.title.toLowerCase().replace(/\s+/g, ''), e)}
+                  onClick={(e) => handleFeatureClick(feature, e)}
                   className="text-primary-600 hover:text-primary-700 font-medium"
                 >
                   Learn More →
@@ -333,9 +359,13 @@ const About = () => {
         </div>
 
         <div className="text-center mb-16">
-          <div className="max-w-4xl mx-auto">
-            <DataIntegrationAnimation />
-            <DatabaseConstructionAnimation />
+          <div className="max-w-4xl mx-auto flex flex-col items-center justify-center">
+            <div className="w-full flex justify-center">
+              <DataIntegrationAnimation />
+            </div>
+            <div className="w-full flex justify-center">
+              <DatabaseConstructionAnimation />
+            </div>
           </div>
         </div>
 
@@ -368,22 +398,6 @@ const About = () => {
               </button>
             </div>
           </div>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {features.map((feature, index) => (
-            <button 
-              key={index}
-              onClick={(e) => handlePopupClick(`feature-${index}`, e)}
-              className="text-left group bg-white/70 backdrop-blur-sm p-8 rounded-3xl hover:bg-white transition-all duration-300 hover:shadow-xl border border-gray-100"
-            >
-              <div className="text-4xl mb-4 bg-gradient-to-br from-primary-100 to-transparent w-16 h-16 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                {feature.icon}
-              </div>
-              <h3 className="text-xl font-display font-bold text-dark-900 mb-3">{feature.title}</h3>
-              <p className="text-dark-700 leading-relaxed">{feature.description}</p>
-            </button>
-          ))}
         </div>
 
         <div className="mt-24 text-center">

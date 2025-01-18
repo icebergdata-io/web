@@ -57,9 +57,9 @@ const DatabaseConstructionAnimation = () => {
           )}
         </div>
         <div className="stage-description">
-          {stage === 0 && 'Constructing Database Schema'}
-          {stage === 1 && 'Populating Data Records'}
-          {stage === 2 && 'Normalizing Relations'}
+          {stage === 0 && 'Building Schema'}
+          {stage === 1 && 'Adding Records'}
+          {stage === 2 && 'Normalizing '}
         </div>
       </div>
     </div>
