@@ -3,7 +3,6 @@ import Logo from './Logo';
 import InfoPopup from './InfoPopup';
 import CalendlyPopup from './CalendlyPopup';
 import DataIntegrationAnimation from '../../scripts/matching-animation';
-import DatabaseConstructionAnimation from '../../scripts/database-construction';
 
 const features = [
   {
@@ -362,9 +361,6 @@ const About = () => {
           <div className="max-w-4xl mx-auto flex flex-col items-center justify-center">
             <div className="w-full flex justify-center">
               <DataIntegrationAnimation />
-            </div>
-            <div className="w-full flex justify-center">
-              <DatabaseConstructionAnimation />
             </div>
           </div>
         </div>
