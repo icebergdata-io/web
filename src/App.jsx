@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import PressCoverage from './pages/PressCoverage';
+import BookingConfirmation from './pages/BookingConfirmation';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
       {
         path: 'press',
         element: <PressCoverage />,
+      },
+      {
+        path: 'booking-confirmation',
+        element: <BookingConfirmation />,
       },
     ],
   },
