@@ -1,54 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Helmet } from 'react-helmet';
-import CalendlyPopup from './CalendlyPopup';
-import Logo from './Logo';
-import LogoCloud from './LogoCloud';
+import CalendlyPopup from '../CalendlyPopup';
+import Logo from '../Logo';
+import VideoBackground from './VideoBackground';
 
 const Hero = () => {
   const [showCalendly, setShowCalendly] = useState(false);
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  useEffect(() => {
-    const video = document.getElementById('hero-video');
-    if (video) {
-      // Add event listeners for video loading and error handling
-      const handleVideoLoad = () => {
-        setIsVideoLoaded(true);
-        // Explicitly play the video after load on mobile
-        video.play().catch(error => {
-          console.log('Video autoplay failed:', error);
-          // Fallback to showing the poster image
-          setIsVideoLoaded(false);
-        });
-      };
-
-      video.addEventListener('loadeddata', handleVideoLoad);
-
-      // Optimize video loading for mobile
-      if (isMobile) {
-        video.setAttribute('preload', 'metadata');
-        // Force low-power mode for mobile
-        video.setAttribute('playsinline', '');
-        video.setAttribute('webkit-playsinline', '');
-      } else {
-        video.setAttribute('preload', 'auto');
-      }
-
-      return () => {
-        video.removeEventListener('loadeddata', handleVideoLoad);
-      };
-    }
-  }, [isMobile]);
 
   // Structured data for SEO
   const structuredData = {
@@ -91,57 +48,10 @@ const Hero = () => {
 
       <main>
         <section 
-          className="relative min-h-[100svh] md:h-screen flex flex-col justify-between overflow-hidden"
+          className="relative min-h-[70vh] md:h-[85vh] flex flex-col justify-between overflow-hidden"
           aria-labelledby="hero-title"
         >
-          {/* Background Video with enhanced overlay */}
-          <div 
-            className="absolute inset-0 w-full h-full z-0"
-            aria-hidden="true"
-          >
-            {/* Fallback image while video loads */}
-            <img
-              src="/videos/backgroundheroivideo-poster.jpg"
-              alt=""
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                isVideoLoaded ? 'opacity-0' : 'opacity-90'
-              }`}
-              loading="eager"
-            />
-            
-            <video
-              id="hero-video"
-              autoPlay
-              loop
-              muted
-              playsInline
-              webkit-playsinline="true"
-              poster="/videos/backgroundheroivideo-poster.jpg"
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                isVideoLoaded ? 'opacity-90' : 'opacity-0'
-              }`}
-              style={{ objectFit: 'cover' }}
-            >
-              <source 
-                src={isMobile ? "/videos/backgroundheroivideo-mobile.mp4" : "/videos/backgroundheroivideo.mp4"} 
-                type="video/mp4" 
-              />
-              <track kind="captions" />
-            </video>
-
-            {/* Enhanced gradient overlays */}
-            <div className="absolute inset-0 bg-gradient-radial from-white/90 via-primary-50/90 to-white/90"></div>
-            <div className="absolute inset-0 bg-gradient-to-b from-dark-900/10 to-transparent"></div>
-            <div className="absolute inset-0 bg-mesh-pattern opacity-10"></div>
-          </div>
-
-          {/* Animated Gradients - reduced complexity on mobile */}
-          {!isMobile && (
-            <>
-              <div className="absolute -right-64 -top-64 w-[800px] h-[800px] bg-gradient-to-br from-accent-purple/15 to-primary-300/15 rounded-full blur-3xl animate-pulse-slow z-1" aria-hidden="true"></div>
-              <div className="absolute -left-64 -bottom-64 w-[800px] h-[800px] bg-gradient-to-tr from-accent-cyan/15 to-primary-300/15 rounded-full blur-3xl animate-pulse-slow delay-1000 z-1" aria-hidden="true"></div>
-            </>
-          )}
+          <VideoBackground />
           
           {/* Main Content with improved mobile spacing */}
           <div className="relative flex-grow flex items-center z-10">
@@ -156,7 +66,6 @@ const Hero = () => {
                   </div>
                 </header>
 
-                {/* Enhanced headline with better mobile text sizing */}
                 <h1 
                   id="hero-title"
                   className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-display font-bold text-dark-900 mb-6 md:mb-8 leading-tight opacity-0 animate-fade-in-up drop-shadow-sm"
@@ -167,12 +76,10 @@ const Hero = () => {
                   </span>
                 </h1>
 
-                {/* Improved subheading with mobile optimization */}
                 <p className="text-base md:text-xl text-dark-700 mb-8 md:mb-10 max-w-3xl mx-auto leading-relaxed opacity-0 animate-fade-in-up-delay font-light px-4 md:px-0">
                   Expert-built web scrapers with 24/7 monitoring and maintenance. Get your data reliably, every single day.
                 </p>
 
-                {/* Enhanced CTA section with better mobile touch targets */}
                 <div className="flex flex-col items-center gap-4 md:gap-6 px-4 md:px-0">
                   <button 
                     onClick={() => setShowCalendly(true)}
@@ -197,7 +104,6 @@ const Hero = () => {
                     </span>
                   </button>
 
-                  {/* Security badge - visible on all screen sizes */}
                   <div className="flex items-center gap-2 bg-white/70 backdrop-blur px-3 py-1.5 md:px-4 md:py-2 rounded-xl border border-white/30 shadow-md transition-all duration-300 hover:bg-white/80" role="status">
                     <svg 
                       className="w-4 h-4 md:w-5 md:h-5 text-green-500" 
@@ -213,11 +119,6 @@ const Hero = () => {
                 </div>
               </div>
             </div>
-          </div>
-
-          {/* Logo Cloud Section */}
-          <div className="relative w-full z-10">
-            <LogoCloud />
           </div>
         </section>
       </main>

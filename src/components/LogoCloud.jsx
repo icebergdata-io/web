@@ -200,10 +200,6 @@ const LogoCloud = () => {
             ))}
           </div>
         </div>
-
-        <p className="text-center text-dark-700 text-sm md:text-base font-light mt-2 italic">
-          30+ companies trust us
-        </p>
       </div>
     </div>
   );

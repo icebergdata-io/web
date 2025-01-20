@@ -1,6 +1,7 @@
 import { useLayoutEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Hero from '../components/Hero';
+import LogoCloud from '../components/LogoCloud';
 import About from '../components/About';
 import Problems from '../components/Problems';
 import Solutions from '../components/Solutions';
@@ -26,8 +27,13 @@ const Home = () => {
 
   return (
     <>
-      <div id="hero">
-        <Hero />
+      <div className="min-h-screen flex flex-col">
+        <div id="hero" className="flex-grow">
+          <Hero />
+        </div>
+        <section className="bg-gradient-to-b from-white via-white to-white/80 h-[25vh]">
+          <LogoCloud />
+        </section>
       </div>
       <div id="about">
         <About />
