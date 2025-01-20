@@ -4,6 +4,7 @@ import Layout from './components/Layout';
 import Home from './pages/Home';
 import PressCoverage from './pages/PressCoverage';
 import BookingConfirmation from './pages/BookingConfirmation';
+import NotFound from './pages/NotFound';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: 'booking-confirmation',
         element: <BookingConfirmation />,
+      },
+      {
+        path: '*',
+        element: <NotFound />,
       },
     ],
   },
