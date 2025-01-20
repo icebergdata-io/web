@@ -31,7 +31,7 @@ const Home = () => {
         <div id="hero" className="flex-grow">
           <Hero />
         </div>
-        <section className="bg-gradient-to-b from-white via-white to-white/80 h-[25vh]">
+        <section className="h-[27vh]">
           <LogoCloud />
         </section>
       </div>
