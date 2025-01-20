@@ -71,9 +71,6 @@ const LogoCloud = () => {
   const [isScrolling, setIsScrolling] = useState(false);
 
   useEffect(() => {
-    // In a real app, you might skip checking existence and assume these logos exist.
-    // Or, if you must, you'd fetch each to verify it. We'll skip that for clarity.
-
     const shuffled = shuffleArray(
       LOGO_FILES.map((filename, index) => ({
         src: `/customer-logos-new/${filename}`,
@@ -82,7 +79,6 @@ const LogoCloud = () => {
     );
     setValidLogos(shuffled);
 
-    // Split in half for mobile rows
     const midPoint = Math.ceil(shuffled.length / 2);
     setFirstRowLogos([
       ...shuffled.slice(0, midPoint),
@@ -94,39 +90,49 @@ const LogoCloud = () => {
     ]);
   }, []);
 
-  const handleTouchStart = () => setIsScrolling(true);
+  const handleTouchStart = () => {
+    setIsScrolling(true);
+  };
+
   const handleTouchEnd = () => {
-    setTimeout(() => {
-      setIsScrolling(false);
-    }, 100);
+    // Short delay before resuming animation
+    setTimeout(() => setIsScrolling(false), 50);
   };
 
   return (
     <div className="relative py-2 md:py-1 h-full flex flex-col justify-between">
-      <div
-        ref={containerRef}
-        className="relative w-full mx-auto px-4 h-full flex flex-col justify-center"
-      >
+      <div ref={containerRef} className="relative w-full mx-auto h-full flex flex-col justify-center">
         <h2 className="text-center text-dark-800 text-sm md:text-base font-semibold mb-2 md:mb-3">
           Trusted by innovative companies worldwide
         </h2>
 
-        {/* === Mobile View === */}
-        <div className="md:hidden flex-1 flex flex-col justify-center gap-2">
-          {/* First row, forward scroll */}
-          <div
-            className="relative overflow-x-auto touch-pan-x scrollbar-hide"
+        {/* Mobile View */}
+        <div className="md:hidden flex-1 flex flex-col justify-center gap-4">
+          {/* First row */}
+          <div 
+            className="relative overflow-x-auto touch-pan-x"
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
           >
-            <div
-              className={`flex space-x-6 whitespace-nowrap w-max ${
-                !isScrolling ? 'animate-scroll' : ''
-              }`}
-            >
+            <div className={`flex gap-6 whitespace-nowrap ${!isScrolling ? 'animate-scroll' : ''}`}>
+              {/* Three sets of logos for smoother scrolling */}
               {firstRowLogos.map((logo, index) => (
                 <LogoItem
-                  key={`row1-${logo.id}-${index}`}
+                  key={`first-${logo.id}-${index}`}
+                  src={logo.src}
+                  alt={`Logo ${logo.id}`}
+                />
+              ))}
+              {firstRowLogos.map((logo, index) => (
+                <LogoItem
+                  key={`first-dup1-${logo.id}-${index}`}
+                  src={logo.src}
+                  alt={`Logo ${logo.id}`}
+                />
+              ))}
+              {firstRowLogos.map((logo, index) => (
+                <LogoItem
+                  key={`first-dup2-${logo.id}-${index}`}
                   src={logo.src}
                   alt={`Logo ${logo.id}`}
                 />
@@ -134,20 +140,31 @@ const LogoCloud = () => {
             </div>
           </div>
 
-          {/* Second row, reverse scroll */}
-          <div
-            className="relative overflow-x-auto touch-pan-x scrollbar-hide"
+          {/* Second row */}
+          <div 
+            className="relative overflow-x-auto touch-pan-x"
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
           >
-            <div
-              className={`flex space-x-6 whitespace-nowrap w-max ${
-                !isScrolling ? 'animate-scroll-reverse' : ''
-              }`}
-            >
+            <div className={`flex gap-6 whitespace-nowrap ${!isScrolling ? 'animate-scroll-reverse' : ''}`}>
+              {/* Three sets of logos for smoother scrolling */}
               {secondRowLogos.map((logo, index) => (
                 <LogoItem
-                  key={`row2-${logo.id}-${index}`}
+                  key={`second-${logo.id}-${index}`}
+                  src={logo.src}
+                  alt={`Logo ${logo.id}`}
+                />
+              ))}
+              {secondRowLogos.map((logo, index) => (
+                <LogoItem
+                  key={`second-dup1-${logo.id}-${index}`}
+                  src={logo.src}
+                  alt={`Logo ${logo.id}`}
+                />
+              ))}
+              {secondRowLogos.map((logo, index) => (
+                <LogoItem
+                  key={`second-dup2-${logo.id}-${index}`}
                   src={logo.src}
                   alt={`Logo ${logo.id}`}
                 />
@@ -156,10 +173,10 @@ const LogoCloud = () => {
           </div>
         </div>
 
-        {/* === Desktop View === */}
+        {/* Desktop View */}
         <div className="hidden md:block relative overflow-hidden flex-1">
-          <div className="flex animate-scroll space-x-8 whitespace-nowrap w-full">
-            {/* First set of logos */}
+          <div className="flex gap-8 whitespace-nowrap animate-scroll">
+            {/* Three sets of logos for smoother scrolling */}
             {validLogos.map((logo, index) => (
               <LogoItem
                 key={`desktop-${logo.id}-${index}`}
@@ -167,10 +184,16 @@ const LogoCloud = () => {
                 alt={`Logo ${logo.id}`}
               />
             ))}
-            {/* Duplicated set for seamless scrolling */}
             {validLogos.map((logo, index) => (
               <LogoItem
-                key={`desktop-dup-${logo.id}-${index}`}
+                key={`desktop-dup1-${logo.id}-${index}`}
+                src={logo.src}
+                alt={`Logo ${logo.id}`}
+              />
+            ))}
+            {validLogos.map((logo, index) => (
+              <LogoItem
+                key={`desktop-dup2-${logo.id}-${index}`}
                 src={logo.src}
                 alt={`Logo ${logo.id}`}
               />

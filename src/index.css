@@ -80,3 +80,40 @@
   animation: float-shadow 4s ease-in-out infinite;
   background: rgb(59, 130, 246);
 }
+
+/* Logo carousel animations */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.333%);
+  }
+}
+
+@keyframes scroll-reverse {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(33.333%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+  will-change: transform;
+}
+
+.animate-scroll-reverse {
+  animation: scroll-reverse 30s linear infinite;
+  will-change: transform;
+}
+
+/* Only pause on hover for desktop devices */
+@media (hover: hover) and (pointer: fine) {
+  .animate-scroll:hover,
+  .animate-scroll-reverse:hover {
+    animation-play-state: paused;
+  }
+}
