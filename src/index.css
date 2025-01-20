@@ -80,36 +80,3 @@
   animation: float-shadow 4s ease-in-out infinite;
   background: rgb(59, 130, 246);
 }
-
-/* Logo carousel animations */
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes scroll-reverse {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(50%);
-  }
-}
-
-.animate-scroll {
-  animation: scroll 30s linear infinite;
-}
-
-.animate-scroll-reverse {
-  animation: scroll-reverse 30s linear infinite;
-}
-
-/* Optional: Pause animation on hover */
-.animate-scroll:hover,
-.animate-scroll-reverse:hover {
-  animation-play-state: paused;
-}

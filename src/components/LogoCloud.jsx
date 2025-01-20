@@ -1,7 +1,10 @@
 import { useRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-// Array of logo filenames
+/* 
+  List all valid logo filenames that actually exist in /public/customer-logos-new. 
+  (If you need dynamic checks, you can add the fetch calls back, but that can cause extra network overhead.)
+*/
 const LOGO_FILES = [
   'customer-logo-037a6b45-fada-4fa0-812a-ec90e6dc7864.png',
   'customer-logo-08bb7e58-e404-46e1-90b9-110802e11390.png',
@@ -33,26 +36,6 @@ const LOGO_FILES = [
   'customer-logo-fb953010-5de0-427b-a714-a44b4ce0df1b.png'
 ];
 
-// Utility function to fetch valid logos
-const fetchValidLogos = async () => {
-  const logoPromises = LOGO_FILES.map(async (filename, index) => {
-    const src = `/customer-logos-new/${filename}`;
-    try {
-      const response = await fetch(src);
-      if (response.ok) {
-        return { src, id: index + 1 };
-      }
-      return null;
-    } catch (error) {
-      console.error('Error fetching logo:', error);
-      return null;
-    }
-  });
-
-  const results = await Promise.all(logoPromises);
-  return results.filter(Boolean);
-};
-
 // Fisher-Yates shuffle
 const shuffleArray = (array) => {
   const newArray = [...array];
@@ -68,14 +51,13 @@ const LogoItem = ({ src, alt }) => (
     <img
       src={src}
       alt={alt}
-      className="w-[100%] h-[100%] object-contain"
+      className="w-full h-full object-contain"
       loading="lazy"
       draggable="false"
     />
   </div>
 );
 
-// Add PropTypes
 LogoItem.propTypes = {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired
@@ -89,24 +71,27 @@ const LogoCloud = () => {
   const [isScrolling, setIsScrolling] = useState(false);
 
   useEffect(() => {
-    const initLogos = async () => {
-      const existingLogos = await fetchValidLogos();
-      const shuffledLogos = shuffleArray(existingLogos);
+    // In a real app, you might skip checking existence and assume these logos exist.
+    // Or, if you must, you'd fetch each to verify it. We'll skip that for clarity.
 
-      setValidLogos(shuffledLogos);
+    const shuffled = shuffleArray(
+      LOGO_FILES.map((filename, index) => ({
+        src: `/customer-logos-new/${filename}`,
+        id: index + 1
+      }))
+    );
+    setValidLogos(shuffled);
 
-      const midPoint = Math.ceil(shuffledLogos.length / 2);
-      setFirstRowLogos([
-        ...shuffledLogos.slice(0, midPoint),
-        ...shuffledLogos.slice(0, midPoint),
-      ]);
-      setSecondRowLogos([
-        ...shuffledLogos.slice(midPoint),
-        ...shuffledLogos.slice(midPoint),
-      ]);
-    };
-
-    initLogos();
+    // Split in half for mobile rows
+    const midPoint = Math.ceil(shuffled.length / 2);
+    setFirstRowLogos([
+      ...shuffled.slice(0, midPoint),
+      ...shuffled.slice(0, midPoint)
+    ]);
+    setSecondRowLogos([
+      ...shuffled.slice(midPoint),
+      ...shuffled.slice(midPoint)
+    ]);
   }, []);
 
   const handleTouchStart = () => setIsScrolling(true);
@@ -118,63 +103,76 @@ const LogoCloud = () => {
 
   return (
     <div className="relative py-2 md:py-1 h-full flex flex-col justify-between">
-      <div ref={containerRef} className="relative w-full mx-auto px-4 h-full flex flex-col justify-center">
+      <div
+        ref={containerRef}
+        className="relative w-full mx-auto px-4 h-full flex flex-col justify-center"
+      >
         <h2 className="text-center text-dark-800 text-sm md:text-base font-semibold mb-2 md:mb-3">
           Trusted by innovative companies worldwide
         </h2>
 
-        {/* Mobile View */}
+        {/* === Mobile View === */}
         <div className="md:hidden flex-1 flex flex-col justify-center gap-2">
-          {/* First row */}
+          {/* First row, forward scroll */}
           <div
             className="relative overflow-x-auto touch-pan-x scrollbar-hide"
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
           >
-            <div className={`flex space-x-6 whitespace-nowrap w-max pl-4 pr-4 ${!isScrolling ? 'animate-scroll' : ''}`}>
+            <div
+              className={`flex space-x-6 whitespace-nowrap w-max ${
+                !isScrolling ? 'animate-scroll' : ''
+              }`}
+            >
               {firstRowLogos.map((logo, index) => (
                 <LogoItem
-                  key={`first-${logo.id}-${index}`}
+                  key={`row1-${logo.id}-${index}`}
                   src={logo.src}
-                  alt={`Customer Logo ${logo.id}`}
+                  alt={`Logo ${logo.id}`}
                 />
               ))}
             </div>
           </div>
 
-          {/* Second row */}
+          {/* Second row, reverse scroll */}
           <div
             className="relative overflow-x-auto touch-pan-x scrollbar-hide"
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
           >
-            <div className={`flex space-x-6 whitespace-nowrap w-max pl-4 pr-4 ${!isScrolling ? 'animate-scroll-reverse' : ''}`}>
+            <div
+              className={`flex space-x-6 whitespace-nowrap w-max ${
+                !isScrolling ? 'animate-scroll-reverse' : ''
+              }`}
+            >
               {secondRowLogos.map((logo, index) => (
                 <LogoItem
-                  key={`second-${logo.id}-${index}`}
+                  key={`row2-${logo.id}-${index}`}
                   src={logo.src}
-                  alt={`Customer Logo ${logo.id}`}
+                  alt={`Logo ${logo.id}`}
                 />
               ))}
             </div>
           </div>
         </div>
 
-        {/* Desktop View */}
+        {/* === Desktop View === */}
         <div className="hidden md:block relative overflow-hidden flex-1">
-          <div className="flex animate-scroll space-x-8 whitespace-nowrap overflow-visible w-full justify-center">
+          <div className="flex animate-scroll space-x-8 whitespace-nowrap w-full">
+            {/* First set of logos */}
             {validLogos.map((logo, index) => (
               <LogoItem
                 key={`desktop-${logo.id}-${index}`}
                 src={logo.src}
-                alt={`Customer Logo ${logo.id}`}
+                alt={`Logo ${logo.id}`}
               />
             ))}
+            {/* Duplicated set for seamless scrolling */}
             {validLogos.map((logo, index) => (
               <LogoItem
                 key={`desktop-dup-${logo.id}-${index}`}
                 src={logo.src}
-                alt={`Customer Logo ${logo.id}`}
+                alt={`Logo ${logo.id}`}
               />
             ))}
           </div>
