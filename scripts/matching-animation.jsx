@@ -2,6 +2,24 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Server, Globe, Database, Check } from 'lucide-react';
 import './matching-animation.css';
 
+// Add mobile detection hook
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  return isMobile;
+};
+
 // Define multiple products, each with their own data sources (stores)
 const products = [
   {
@@ -92,8 +110,14 @@ const DataIntegrationAnimation = () => {
   const [showConstruction, setShowConstruction] = useState(false);
   const [showTable, setShowTable] = useState(false);
   const timers = useRef([]);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
+    // Don't run animation on mobile
+    if (isMobile) {
+      return;
+    }
+
     const triggerAnimationCycle = () => {
       // Start animation for current product
       setAnimatePackets(true);
@@ -137,10 +161,49 @@ const DataIntegrationAnimation = () => {
       timers.current.forEach(timer => clearTimeout(timer));
       clearInterval(intervalId);
     };
-  }, []);
+  }, [isMobile]);
 
   // Get the current product
   const currentProduct = products[currentProductIndex];
+
+  // If mobile, show a static version without animations
+  if (isMobile) {
+    return (
+      <div className="data-integration-container">
+        <div className="data-sources-row">
+          {currentProduct.dataSources.map(source => {
+            const IconComponent = iconMap[source.icon] || Globe;
+            return (
+              <div key={source.id} className="data-source">
+                <div 
+                  className="source-icon-container"
+                  style={{
+                    backgroundColor: source.bgColor,
+                    borderLeft: `4px solid ${source.color}`
+                  }}
+                  aria-label={`${source.storeName} data source`}
+                  role="button"
+                  tabIndex={0}
+                >
+                  <IconComponent className="source-icon" style={{ color: source.color }} aria-hidden="true" />
+                  <div className="product-label">
+                    {source.description}
+                  </div>
+                </div>
+                <div className="source-name">{source.storeName}</div>
+              </div>
+            );
+          })}
+        </div>
+        <div className="central-hub">
+          <div className="hub-icon-wrapper">
+            <Database className="hub-icon" aria-label="Central Matching Hub" />
+          </div>
+          <div className="hub-description">Matching Hub</div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="data-integration-container">
