@@ -10,6 +10,7 @@ import CaseStudies from '../components/CaseStudies';
 import FAQ from '../components/FAQ';
 import Contact from '../components/Contact';
 import Press from '../components/Press';
+import SEO from '../components/SEO';
 
 const Home = () => {
   const location = useLocation();
@@ -27,6 +28,10 @@ const Home = () => {
 
   return (
     <>
+    <SEO 
+    title="Iceberg Data - Trusted Web Scraping & Data Extraction Solutions"
+    description="Iceberg Data specializes in reliable web scraping and data extraction services, delivering trustable data sources to empower businesses with actionable insights and competitive intelligence."
+    />
       <div className="min-h-screen flex flex-col">
         <div id="hero" className="flex-grow">
           <Hero />
