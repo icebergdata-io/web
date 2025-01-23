@@ -6,7 +6,7 @@ import { slugify } from '../src/utils/slugify.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const BASE_URL = 'https://icebergdata.co'; // Production URL
+const BASE_URL = 'https://www.icebergdata.co'; // Production URL with www
 const casesDir = path.join(__dirname, '../public/articles/cases');
 
 async function generateSitemap() {
