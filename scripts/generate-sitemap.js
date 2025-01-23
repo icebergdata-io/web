@@ -1,17 +1,19 @@
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import { slugify } from '../src/utils/slugify.js';
 
-const BASE_URL = 'https://icebergdata.co';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const BASE_URL = 'https://icebergdata.co'; // Production URL
+const casesDir = path.join(__dirname, '../public/articles/cases');
 
 async function generateSitemap() {
   console.log('🔄 Generating sitemap...');
   
-  // Get all case studies
-  const casesDir = path.join(process.cwd(), 'public/articles/cases');
+  // Get all case study files
   const caseStudies = [];
-  
-  // Read all case study files
   const files = fs.readdirSync(casesDir)
     .filter(file => file.endsWith('.json'))
     .sort((a, b) => {
@@ -20,45 +22,60 @@ async function generateSitemap() {
       return numA - numB;
     });
 
+  // Process each case study
   for (const file of files) {
     const content = fs.readFileSync(path.join(casesDir, file), 'utf8');
-    const data = JSON.parse(content);
+    const caseData = JSON.parse(content);
+    const sectorSlug = slugify(caseData.Sector);
+    const titleSlug = slugify(`${caseData.Title}-${caseData.Subtitle}`);
+    
+    // Use the publication date from the case study
     caseStudies.push({
-      sector: slugify(data.Sector),
-      slug: slugify(`${data.Title}-${data.Subtitle}`),
-      lastmod: data.publicationDate || new Date().toISOString().split('T')[0]
+      sector: sectorSlug,
+      slug: titleSlug,
+      lastmod: caseData.publicationDate
     });
   }
+
+  // Sort case studies by publication date (newest first)
+  caseStudies.sort((a, b) => {
+    if (!a.lastmod && !b.lastmod) return 0;
+    if (!a.lastmod) return 1;
+    if (!b.lastmod) return -1;
+    return new Date(b.lastmod) - new Date(a.lastmod);
+  });
 
   // Generate sitemap XML
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>${BASE_URL}</loc>
+    <loc>${BASE_URL}/</loc>
     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>${BASE_URL}/case-studies</loc>
+    <loc>${BASE_URL}/press</loc>
     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>${BASE_URL}/case-studies</loc>
+    <lastmod>${caseStudies[0]?.lastmod || new Date().toISOString().split('T')[0]}</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-  <url>
-    <loc>${BASE_URL}/contact</loc>
-    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
-    <priority>0.8</priority>
-  </url>
-  ${caseStudies.map(study => `
-  <url>
+  ${caseStudies.map(study => `  <url>
     <loc>${BASE_URL}/case-study/${study.sector}/${study.slug}</loc>
-    <lastmod>${study.lastmod}</lastmod>
+    <lastmod>${study.lastmod || new Date().toISOString().split('T')[0]}</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>`).join('')}
+  </url>`).join('\n')}
 </urlset>`;
 
-  // Write sitemap file
-  const publicDir = path.join(process.cwd(), 'public');
-  fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), sitemap);
+  // Write sitemap to file
+  fs.writeFileSync(path.join(__dirname, '../public/sitemap.xml'), sitemap);
   console.log('✅ Sitemap generated successfully!');
 }
 
