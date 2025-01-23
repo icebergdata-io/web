@@ -12,5 +12,149 @@
   "Output Schema": "A JSON object detailing aggregated competitor amenities, package descriptions, and policy comparisons. Example: { 'competitor': 'ResortX', 'amenities': ['spa', 'tennis court'], 'packages': [{...}], 'cancellation_policy': 'Free cancellation until 24h before arrival' }",
   "Matching algorithm used to integrate the data": "Text scraping via HTML parsing, followed by a category-matching algorithm that groups amenities and packages into standardized taxonomies for easy comparison.",
   "Story": "A chain of upscale hotels was keen on distinguishing itself from the fierce competition in tourist hotspots. They recognized that modern travelers often base their booking decisions on amenities like spas, fitness centers, kid-friendly areas, or pet accommodations. Looking beyond mere price competition, the hotel chain outsourced a comprehensive competitor analysis solution. The vendor employed robust web crawlers to scan competitor websites weekly, extracting details such as package inclusions (like spa credits or city tours), loyalty program benefits, and updated cancellation policies. The aggregator then mapped these findings into organized categories, enabling the hotel’s marketing department to easily compare and contrast their own offerings. Over a short period, they noticed a growing trend among leading resorts to promote green initiatives, such as carbon offset programs and eco-friendly spa treatments, targeting environmentally conscious travelers. Armed with this data, the chain quickly adapted their own packages to include green-themed features, collaborating with local eco-tourism partners. They also revamped their loyalty program to match competitor perks like free room upgrades and extended check-out times. As a direct result, the hotel’s brand image improved among eco-minded guests, and bookings from that segment rose by nearly 20%. By outsourcing the competitor analysis to a specialized team, the hotels eliminated the need for complex in-house data wrangling. The marketing team could focus solely on interpreting the data and implementing swift strategic changes, ultimately securing a stronger foothold in an industry where maintaining service quality and unique perks is vital to sustaining year-round occupancy.",
-  "publicationDate": "2023-04-07"
+  "publicationDate": "2023-04-07",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "competitors": {
+        "type": "array",
+        "description": "A list of competitor names",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        },
+        "minItems": 1,
+        "uniqueItems": true,
+        "example": [
+          "ResortX",
+          "HotelY",
+          "LodgeZ"
+        ]
+      },
+      "data_fields": {
+        "type": "array",
+        "description": "Fields of data to collect from each competitor",
+        "items": {
+          "type": "string",
+          "enum": [
+            "amenities",
+            "packages",
+            "cancellation_policy",
+            "pricing",
+            "reviews"
+          ]
+        },
+        "minItems": 1,
+        "uniqueItems": true,
+        "example": [
+          "amenities",
+          "packages",
+          "cancellation_policy"
+        ]
+      },
+      "update_frequency": {
+        "type": "string",
+        "description": "How often the data should be updated",
+        "enum": [
+          "daily",
+          "weekly",
+          "monthly",
+          "quarterly"
+        ],
+        "example": "weekly"
+      }
+    },
+    "required": [
+      "competitors",
+      "data_fields",
+      "update_frequency"
+    ],
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "competitor": {
+        "type": "string",
+        "description": "The name of the competing resort",
+        "example": "ResortX"
+      },
+      "amenities": {
+        "type": "array",
+        "description": "A list of amenities offered by the competitor",
+        "items": {
+          "type": "string"
+        },
+        "example": [
+          "spa",
+          "tennis court",
+          "golf course",
+          "fitness center",
+          "pool"
+        ]
+      },
+      "packages": {
+        "type": "array",
+        "description": "A list of package deals offered by the competitor",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "The name of the package",
+              "example": "Romantic Getaway"
+            },
+            "description": {
+              "type": "string",
+              "description": "A brief description of the package",
+              "example": "Enjoy a romantic weekend with your partner, including a couples massage and candlelit dinner."
+            },
+            "price": {
+              "type": "number",
+              "description": "The price of the package per person",
+              "example": 499.99
+            },
+            "duration": {
+              "type": "integer",
+              "description": "The duration of the package in nights",
+              "example": 2
+            },
+            "inclusions": {
+              "type": "array",
+              "description": "A list of amenities and services included in the package",
+              "items": {
+                "type": "string"
+              },
+              "example": [
+                "Deluxe room accommodation",
+                "Couples massage",
+                "Candlelit dinner",
+                "Champagne breakfast"
+              ]
+            }
+          },
+          "required": [
+            "name",
+            "description",
+            "price",
+            "duration",
+            "inclusions"
+          ]
+        }
+      },
+      "cancellation_policy": {
+        "type": "string",
+        "description": "The competitor's cancellation policy",
+        "example": "Free cancellation until 24h before arrival"
+      }
+    },
+    "required": [
+      "competitor",
+      "amenities",
+      "packages",
+      "cancellation_policy"
+    ]
+  }
 }

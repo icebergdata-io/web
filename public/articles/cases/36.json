@@ -12,5 +12,159 @@
   "Output Schema": "A JSON object detailing each competitor’s loyalty tier system, user sentiment from forums, and recommended enhancements for your program. Example: { 'competitor': 'StoreX', 'tiers': [...], 'forum_reactions': [...], 'improvement_tips': [...] }",
   "Matching algorithm used to integrate the data": "Site scraping aggregates loyalty terms (points per dollar, bonus thresholds). Forum scanning matches brand references to gather qualitative sentiment about reward satisfaction.",
   "Story": "A midsize home décor retailer saw diminishing returns from its long-standing loyalty program. Suspecting that competitor perks might be overshadowing their offers, they hired a web scraping firm to gather all publicly displayed loyalty structures across rival websites. The data included how many points per dollar spent, how many tiers existed, and the specifics of referral or birthday bonuses. Additionally, the scraping partner captured user forum discussions where customers casually compared programs. The results highlighted that some direct competitors offered double points during certain promotional windows, and others provided exclusive VIP events once members reached a certain tier. Seeing how positively customers spoke about these benefits, the retailer decided to introduce a multi-tier system, run limited-time double-point days, and add free design consultations for top-tier members. By outsourcing the monitoring, they always stayed updated when a competitor launched or changed a perk. In a matter of months, membership reactivation soared, with existing customers re-engaging due to newly attractive benefits. Overall, adopting best practices gleaned from publicly visible competitor loyalty data breathed new life into the retailer’s program, boosting repeat purchases and building brand loyalty.",
-  "publicationDate": "2024-12-24"
+  "publicationDate": "2024-12-24",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "competitor_loyalty_pages": {
+        "type": "array",
+        "description": "An array of URLs linking to competitor's loyalty program pages",
+        "items": {
+          "type": "string",
+          "format": "uri"
+        },
+        "examples": [
+          "https://www.storex.com/rewards",
+          "https://www.companyy.com/loyalty-program"
+        ]
+      },
+      "forum_links": {
+        "type": "array",
+        "description": "An array of URLs linking to relevant forum threads discussing loyalty/membership programs",
+        "items": {
+          "type": "string",
+          "format": "uri"
+        },
+        "examples": [
+          "https://loyaltyforums.net/thread/123456",
+          "https://www.reddit.com/r/Rewards/comments/abcdef/"
+        ]
+      },
+      "keywords": {
+        "type": "array",
+        "description": "An array of keywords and phrases related to loyalty programs in this sector",
+        "items": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 50
+        },
+        "examples": [
+          "referral bonus",
+          "VIP tier",
+          "points multiplier",
+          "free shipping"
+        ]
+      }
+    },
+    "required": [
+      "competitor_loyalty_pages",
+      "forum_links",
+      "keywords"
+    ],
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "competitor": {
+        "type": "string",
+        "description": "The name of the competitor's store or loyalty program"
+      },
+      "tiers": {
+        "type": "array",
+        "description": "An array detailing each tier in the competitor's loyalty program",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "The name of the loyalty tier"
+            },
+            "requirements": {
+              "type": "string",
+              "description": "The requirements to qualify for this loyalty tier"
+            },
+            "benefits": {
+              "type": "array",
+              "description": "An array of the benefits and perks offered at this loyalty tier",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "name",
+            "requirements",
+            "benefits"
+          ]
+        }
+      },
+      "forum_reactions": {
+        "type": "array",
+        "description": "An array of user comments and sentiment from online forums about the competitor's loyalty program",
+        "items": {
+          "type": "object",
+          "properties": {
+            "source": {
+              "type": "string",
+              "description": "The name or URL of the forum where the comment was posted"
+            },
+            "date": {
+              "type": "string",
+              "format": "date",
+              "description": "The date the comment was posted, in YYYY-MM-DD format"
+            },
+            "comment": {
+              "type": "string",
+              "description": "The text of the user's comment about the loyalty program"
+            },
+            "sentiment": {
+              "type": "string",
+              "enum": [
+                "positive",
+                "negative",
+                "neutral"
+              ],
+              "description": "The overall sentiment expressed in the user's comment"
+            }
+          },
+          "required": [
+            "source",
+            "date",
+            "comment",
+            "sentiment"
+          ]
+        }
+      },
+      "improvement_tips": {
+        "type": "array",
+        "description": "An array of suggestions for how to improve our loyalty program based on the competitor analysis",
+        "items": {
+          "type": "object",
+          "properties": {
+            "tip": {
+              "type": "string",
+              "description": "A suggestion for improving or differentiating our loyalty program"
+            },
+            "reasoning": {
+              "type": "string",
+              "description": "The justification for why this improvement is recommended based on the competitor research"
+            }
+          },
+          "required": [
+            "tip",
+            "reasoning"
+          ]
+        }
+      }
+    },
+    "required": [
+      "competitor",
+      "tiers",
+      "forum_reactions",
+      "improvement_tips"
+    ]
+  }
 }

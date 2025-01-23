@@ -12,5 +12,202 @@
   "Output Schema": "A JSON object detailing current fleet availability, competitor fleet availability, and analytics on demand trends. Example: { 'location': 'NYC', 'available_fleet': { 'Sedan': 120, 'SUV': 60 }, 'competitor_availability': {...}, 'trend_analysis': {...} }",
   "Matching algorithm used to integrate the data": "A custom aggregator script that uses location-based matching and model classification to merge data from multiple sources, augmented by a logistic regression approach for fleet demand prediction.",
   "Story": "A car rental provider operating across multiple states struggled to align their diverse fleet with fluctuating customer demands. During peak travel seasons in bustling cities, they found themselves short on high-demand vehicles, while smaller towns saw an oversupply of underused assets. To address this, the company collaborated with a specialized data solutions firm. First, they mapped out the key data points they needed: competitor fleet counts by location, daily demand fluctuations, and historical booking records. By systematically scraping competitor websites, they established a database that updated multiple times per day, capturing changes in availability for various vehicle segments such as economy cars, SUVs, and luxury models. The data, enriched with internal booking trends, was fed into a forecasting engine. This engine used machine learning algorithms to predict upcoming demand spikes and identify overstocked locations. Within weeks of implementing the system, the company noticed immediate efficiency gains. Vehicles that used to sit idle in certain regions were reallocated to areas of growing demand. The improved alignment between supply and demand reduced operational costs by cutting unnecessary vehicle transfers and boosted revenue by keeping popular vehicle types readily available. As a result, the rental firm achieved a more consistent occupancy rate and better customer satisfaction. Outsourcing allowed them to onboard a pre-built technology stack and expert-level data teams, accelerating the entire process. Ultimately, the new inventory scraping and forecasting capability became a cornerstone in the company’s strategic approach to fleet optimization.",
-  "publicationDate": "2023-01-24"
+  "publicationDate": "2023-01-24",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Data Request Schema",
+    "description": "A JSON object with location identifiers, vehicle types, and data request intervals",
+    "type": "object",
+    "properties": {
+      "locations": {
+        "description": "An array of location identifiers",
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "NYC",
+            "LA",
+            "CHI",
+            "HOU",
+            "PHX",
+            "PHI",
+            "SAN",
+            "DAL",
+            "ATL",
+            "BOS"
+          ],
+          "examples": [
+            "NYC",
+            "LA"
+          ]
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      },
+      "vehicle_types": {
+        "description": "An array of vehicle types",
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "Sedan",
+            "SUV",
+            "Truck",
+            "Van",
+            "Coupe",
+            "Convertible",
+            "Wagon",
+            "Hybrid",
+            "Electric"
+          ],
+          "examples": [
+            "Sedan",
+            "SUV"
+          ]
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      },
+      "request_frequency": {
+        "description": "The frequency at which data should be requested",
+        "type": "string",
+        "enum": [
+          "daily",
+          "weekly",
+          "monthly",
+          "yearly"
+        ],
+        "examples": [
+          "daily"
+        ]
+      }
+    },
+    "required": [
+      "locations",
+      "vehicle_types",
+      "request_frequency"
+    ],
+    "additionalProperties": false,
+    "examples": [
+      {
+        "locations": [
+          "NYC",
+          "LA"
+        ],
+        "vehicle_types": [
+          "Sedan",
+          "SUV"
+        ],
+        "request_frequency": "daily"
+      }
+    ]
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "location": {
+        "type": "string",
+        "description": "The city or region for the fleet data"
+      },
+      "available_fleet": {
+        "type": "object",
+        "description": "Current available vehicles by type",
+        "properties": {
+          "Sedan": {
+            "type": "integer",
+            "description": "Number of available sedans",
+            "minimum": 0
+          },
+          "SUV": {
+            "type": "integer",
+            "description": "Number of available SUVs",
+            "minimum": 0
+          }
+        },
+        "additionalProperties": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "competitor_availability": {
+        "type": "object",
+        "description": "Competitor fleet availability data",
+        "properties": {
+          "Competitor1": {
+            "type": "object",
+            "description": "Availability data for a competitor",
+            "properties": {
+              "Sedan": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "SUV": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "additionalProperties": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "additionalProperties": {
+          "$ref": "#/properties/competitor_availability/properties/Competitor1"
+        }
+      },
+      "trend_analysis": {
+        "type": "object",
+        "description": "Demand trends and analytics",
+        "properties": {
+          "last_30_days": {
+            "type": "object",
+            "description": "Demand trends over last 30 days",
+            "properties": {
+              "trips_per_day": {
+                "type": "number",
+                "description": "Average daily trip requests"
+              },
+              "peak_day": {
+                "type": "string",
+                "description": "Day of week with highest demand"
+              },
+              "peak_hours": {
+                "type": "array",
+                "description": "Hours with highest demand",
+                "items": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 23
+                }
+              }
+            }
+          },
+          "vehicle_type_demand": {
+            "type": "object",
+            "description": "Relative demand by vehicle type",
+            "properties": {
+              "Sedan": {
+                "type": "number",
+                "description": "Percentage of demand for Sedans"
+              },
+              "SUV": {
+                "type": "number",
+                "description": "Percentage of demand for SUVs"
+              }
+            },
+            "additionalProperties": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "required": [
+      "location",
+      "available_fleet"
+    ],
+    "additionalProperties": false
+  }
 }

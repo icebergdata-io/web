@@ -12,5 +12,116 @@
   "Output Schema": "A JSON object returning updated competitor prices, recommended price adjustments, and confidence scores. Example: { 'SKU1234': { 'competitor_price': 24.99, 'recommended_price': 23.99, 'confidence': 0.9 }, 'SKU5678': {...} }",
   "Matching algorithm used to integrate the data": "HTML parsers for product pages, combined with a fuzzy matching algorithm to correlate product descriptions and SKUs between different e-commerce sites, supported by a rules-based price optimization engine.",
   "Story": "A mid-market online electronics retailer found itself under intense pressure from well-known competitors who frequently adjusted their pricing. Sales were dipping, and the marketing team noticed that potential customers often abandoned carts when prices were higher than elsewhere. Eager to implement a proactive strategy, they enlisted a data solutions provider to build a price comparison engine. The vendor set up sophisticated web crawlers to scan competitor websites for a list of critical products and extracted real-time price updates. These raw data feeds were then normalized and mapped to the retailer’s SKUs, ensuring an accurate one-to-one comparison. The system fed into a dynamic pricing module that adjusted the retailer’s online prices based on competitor data, factoring in stock levels, promotional campaigns, and profit margins. The marketing team then used the consolidated data to power flash sales, ensuring that their most popular products remained competitively priced. Within a month of implementation, the retailer noticed a marked decrease in cart abandonment rates and a corresponding rise in sales. Customer feedback improved, with shoppers praising the store for consistently offering competitive deals. By outsourcing the complex tasks of data collection and real-time updates, the retailer avoided the pitfalls of building unproven technology in-house. The entire process—from identifying the need to seeing tangible sales results—transpired in just five weeks, illustrating the power of integrated price intelligence in a fast-moving e-commerce landscape.",
-  "publicationDate": "2023-04-25"
+  "publicationDate": "2023-04-25",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "products": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^SKU\\d+$"
+        },
+        "minItems": 1,
+        "uniqueItems": true,
+        "description": "An array of product identifiers (SKUs) to monitor"
+      },
+      "competitor_urls": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "format": "uri"
+        },
+        "minItems": 1,
+        "uniqueItems": true,
+        "description": "An array of competitor website URLs to check prices on"
+      },
+      "update_frequency": {
+        "type": "string",
+        "enum": [
+          "hourly",
+          "daily",
+          "weekly"
+        ],
+        "description": "How often to check prices on the competitor websites"
+      }
+    },
+    "required": [
+      "products",
+      "competitor_urls",
+      "update_frequency"
+    ],
+    "additionalProperties": false,
+    "examples": [
+      {
+        "products": [
+          "SKU1234",
+          "SKU5678",
+          "SKU9876"
+        ],
+        "competitor_urls": [
+          "https://competitorA.com",
+          "https://competitorB.com",
+          "https://competitorC.com"
+        ],
+        "update_frequency": "daily"
+      }
+    ]
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Competitor Pricing Analysis",
+    "description": "A JSON object returning updated competitor prices, recommended price adjustments, and confidence scores.",
+    "type": "object",
+    "additionalProperties": {
+      "type": "object",
+      "description": "Data for each individual SKU",
+      "properties": {
+        "competitor_price": {
+          "type": "number",
+          "description": "The current competitor price for the SKU",
+          "minimum": 0,
+          "example": 24.99
+        },
+        "recommended_price": {
+          "type": "number",
+          "description": "The recommended price for the SKU based on competitor analysis",
+          "minimum": 0,
+          "example": 23.99
+        },
+        "confidence": {
+          "type": "number",
+          "description": "The confidence score for the recommended price, from 0 to 1",
+          "minimum": 0,
+          "maximum": 1,
+          "example": 0.9
+        }
+      },
+      "required": [
+        "competitor_price",
+        "recommended_price",
+        "confidence"
+      ]
+    },
+    "examples": [
+      {
+        "SKU1234": {
+          "competitor_price": 24.99,
+          "recommended_price": 23.99,
+          "confidence": 0.9
+        },
+        "SKU5678": {
+          "competitor_price": 17.5,
+          "recommended_price": 16.99,
+          "confidence": 0.85
+        },
+        "SKU9012": {
+          "competitor_price": 7.99,
+          "recommended_price": 8.49,
+          "confidence": 0.75
+        }
+      }
+    ]
+  }
 }

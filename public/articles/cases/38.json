@@ -12,5 +12,125 @@
   "Output Schema": "A JSON object detailing upcoming events, estimated attendance, competitor ties, and suggested promotions. Example: { 'event': 'County Fair', 'expected_attendance': 5000, 'competitor_involvement': true, 'promotion_ideas': [...] }",
   "Matching algorithm used to integrate the data": "Event data is filtered by date and category. Competitor mentions or sponsorship announcements on the same sites or social pages are flagged for strategic comparisons.",
   "Story": "A local hardware chain found that certain weekends brought in random spikes of store visitors, but they couldn’t pin down why. Hiring a web scraping service, they compiled all major municipal and community-led event postings from city websites, neighborhood blogs, and social media invites. The data revealed that a popular home renovation expo was scheduled three blocks away, which perfectly matched the store’s audience. Meanwhile, a competitor had begun sponsoring a smaller community fair—publicly announced on the fair’s website and Facebook page—and was offering discount coupons to attendees. Armed with these insights, the hardware chain quickly arranged an in-store demonstration tied to the renovation expo. They also cross-promoted a limited-time paint discount for event attendees. As a result, foot traffic soared, with expo-goers stopping by the store for home improvement supplies. By outsourcing the scraping, the hardware chain had a constant feed of upcoming event details without dedicating staff time to manual research. Over the next months, they expanded this approach, aligning marketing promotions with local cultural festivals and sports tournaments. Not only did they compete more effectively with the rival store, but they also strengthened their community image—shoppers appreciated the store’s timely alignment with local happenings, fueling loyalty and repeat visits.",
-  "publicationDate": "2025-01-12"
+  "publicationDate": "2025-01-12",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "calendar_links": {
+        "type": "array",
+        "description": "An array of URLs for event calendars to scrape",
+        "items": {
+          "type": "string",
+          "format": "uri"
+        },
+        "example": [
+          "https://citygovernment.com/events",
+          "https://localtourism.org/calendar"
+        ]
+      },
+      "categories": {
+        "type": "array",
+        "description": "Relevant event categories to filter for",
+        "items": {
+          "type": "string",
+          "enum": [
+            "sports",
+            "culture",
+            "music",
+            "food",
+            "business",
+            "tech",
+            "outdoor",
+            "fair"
+          ]
+        },
+        "example": [
+          "sports",
+          "culture",
+          "food",
+          "fair"
+        ]
+      },
+      "date_range": {
+        "type": "string",
+        "description": "Date range to filter events, in a flexible human-readable format",
+        "example": "June - August 2025"
+      },
+      "competitor_brands": {
+        "type": "array",
+        "description": "Names of competitor brands to scan event descriptions for mentions of",
+        "items": {
+          "type": "string"
+        },
+        "example": [
+          "MegaSuperStore",
+          "ShopMart"
+        ]
+      }
+    },
+    "required": [
+      "calendar_links",
+      "categories"
+    ],
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "event": {
+        "type": "string",
+        "description": "The name of the upcoming event.",
+        "example": "County Fair"
+      },
+      "expected_attendance": {
+        "type": "integer",
+        "minimum": 0,
+        "description": "The estimated number of attendees for the event.",
+        "example": 5000
+      },
+      "competitor_involvement": {
+        "type": "boolean",
+        "description": "Indicates whether competitors are involved in the event.",
+        "example": true
+      },
+      "promotion_ideas": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "The name of the promotional idea.",
+              "example": "Social Media Contest"
+            },
+            "description": {
+              "type": "string",
+              "description": "A brief description of the promotional idea.",
+              "example": "Run a social media contest to engage attendees and generate buzz."
+            },
+            "cost_estimate": {
+              "type": "number",
+              "minimum": 0,
+              "description": "The estimated cost of implementing the promotional idea.",
+              "example": 500
+            }
+          },
+          "required": [
+            "name",
+            "description",
+            "cost_estimate"
+          ]
+        },
+        "description": "An array of suggested promotional ideas for the event."
+      }
+    },
+    "required": [
+      "event",
+      "expected_attendance",
+      "competitor_involvement",
+      "promotion_ideas"
+    ]
+  }
 }

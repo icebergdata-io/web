@@ -12,5 +12,125 @@
   "Output Schema": "A JSON array where each element includes company info, contact person, role, and associated link to the data source. Example: [ { 'company_name': 'BuildMaster Inc.', 'contact_name': 'Alice Green', 'role': 'Project Manager', 'source_link': '...' }, ... ]",
   "Matching algorithm used to integrate the data": "Industry-specific keyword matching, plus a hierarchical classification system to ensure that only leads with relevant job titles and company focus are returned to the user.",
   "Story": "A specialized manufacturing firm sought to expand into new verticals but lacked the industry networks to do so effectively. They identified healthcare and construction as growth targets but found their existing lead databases too broad to yield results. By partnering with a data acquisition firm, they embarked on a highly targeted lead generation strategy. The vendor examined niche forums, association directories, and trade magazine subscriber lists to locate key decision-makers and influencers within those fields. To make sure they were capturing the most valuable contacts, they incorporated domain-specific filters—like focusing on project managers for construction or clinical directors for healthcare. Each lead record contained essential details such as contact names, direct email addresses, and company size. With this refined dataset, the manufacturing firm’s marketing campaigns saw a measurable boost in engagement; recipients were more inclined to respond to relevant offerings that addressed sector-specific challenges. Sales cycles shortened because the leads understood the value proposition without excessive education. Having these meticulously curated leads also helped the firm pivot quickly if one segment showed more promise than another. Outsourcing the data scraping efforts removed the technical hurdles and guesswork of navigating specialized platforms. The partner had established scraping protocols that avoided mislabeling or capturing outdated information. Ultimately, this industry-specific strategy allowed the manufacturing firm to quickly gain traction in new markets, demonstrating that a quality-over-quantity approach to lead generation can significantly outperform traditional mass outreach tactics.",
-  "publicationDate": "2023-06-05"
+  "publicationDate": "2023-06-05",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "industry": {
+        "type": "string",
+        "description": "The industry focus for the data collection.",
+        "examples": [
+          "Construction",
+          "Healthcare",
+          "Technology"
+        ]
+      },
+      "target_roles": {
+        "type": "array",
+        "description": "An array of specific job roles to target within the industry.",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          [
+            "Project Manager",
+            "Site Supervisor"
+          ],
+          [
+            "Nurse",
+            "Physician"
+          ],
+          [
+            "Software Engineer",
+            "Data Scientist"
+          ]
+        ],
+        "minItems": 1
+      },
+      "sources": {
+        "type": "array",
+        "description": "An array of URLs for websites to use as data sources.",
+        "items": {
+          "type": "string",
+          "format": "uri"
+        },
+        "examples": [
+          [
+            "https://constructionforum.com",
+            "https://buildingindustry.org"
+          ],
+          [
+            "https://medicalnews.com",
+            "https://healthcareforum.net"
+          ],
+          [
+            "https://techblog.com",
+            "https://developernews.org"
+          ]
+        ],
+        "minItems": 1
+      }
+    },
+    "required": [
+      "industry",
+      "target_roles",
+      "sources"
+    ]
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "company_name": {
+          "type": "string",
+          "description": "The name of the company",
+          "examples": [
+            "BuildMaster Inc.",
+            "Acme Corporation",
+            "Global Industries LLC"
+          ]
+        },
+        "contact_name": {
+          "type": "string",
+          "description": "The name of the contact person at the company",
+          "examples": [
+            "Alice Green",
+            "John Smith",
+            "Jane Doe"
+          ]
+        },
+        "role": {
+          "type": "string",
+          "description": "The role or job title of the contact person",
+          "examples": [
+            "Project Manager",
+            "Sales Representative",
+            "Chief Technology Officer"
+          ]
+        },
+        "source_link": {
+          "type": "string",
+          "format": "uri",
+          "description": "A link to the source where the company and contact information was obtained",
+          "examples": [
+            "https://example.com/companies/buildmaster-inc",
+            "https://acmecorp.com/contacts",
+            "http://globalindustries.net/about-us"
+          ]
+        }
+      },
+      "required": [
+        "company_name",
+        "contact_name",
+        "role",
+        "source_link"
+      ],
+      "additionalProperties": false
+    },
+    "minItems": 1,
+    "uniqueItems": true
+  }
 }

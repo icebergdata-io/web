@@ -12,5 +12,119 @@
   "Output Schema": "A JSON object summarizing sentiment polarity, key themes, and urgency markers. Example: { 'sentiment_score': 0.85, 'themes': ['customer service', 'vehicle cleanliness'], 'urgency': 'low' }",
   "Matching algorithm used to integrate the data": "Named Entity Recognition (NER) combined with a sentiment analysis pipeline. Reviews were matched by source and date, then processed using a transformer-based NLP model to gauge sentiment polarity and categorize feedback themes.",
   "Story": "A leading regional car rental firm was experiencing fluctuations in customer satisfaction, yet they lacked a systematic way to identify the specific causes behind negative reviews. Determined to remain competitive, they partnered with a data analytics provider to build a sentiment analysis engine. This solution pulled reviews from popular travel sites, social media platforms, and internal customer feedback forms on a daily basis, aggregating them into a single repository. Using advanced NLP, each review was broken down into sentences, scored for sentiment polarity, and tagged with relevant themes like wait times, vehicle cleanliness, and customer support experience. The data was then displayed in an intuitive dashboard, allowing managers to see both high-level trends and drill down into specific complaints or praises. In the first few weeks, they discovered a recurring theme of dissatisfaction relating to long queues at certain airport locations. Armed with this insight, the firm quickly reassigned personnel to high-traffic areas, improved check-in processes, and introduced online pre-check options. Almost immediately, they saw a spike in positive reviews and higher overall satisfaction scores. Long-standing issues, like inconsistent cleaning standards, were also highlighted, leading to a standardized checklist for vehicle preparation. By outsourcing the NLP and data management aspects, the car rental firm saved months of development time and ensured the model was trained on a broad set of industry-specific data. Ultimately, this approach strengthened their reputation, cut response times to negative feedback, and enabled a customer-focused strategy that boosted loyalty and sales.",
-  "publicationDate": "2023-02-14"
+  "publicationDate": "2023-02-14",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "review_text": {
+        "type": "string",
+        "description": "The text content of the review.",
+        "example": "I had a great experience at this hotel! The staff was friendly, the room was clean and comfortable, and the location was perfect. I would definitely stay here again."
+      },
+      "rating": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 5,
+        "description": "The rating score given by the reviewer, on a scale of 1 to 5.",
+        "example": 4
+      },
+      "source": {
+        "type": "string",
+        "description": "The platform or website where the review was originally posted.",
+        "example": "Expedia"
+      },
+      "date": {
+        "type": "string",
+        "format": "date",
+        "description": "The date when the review was posted, in YYYY-MM-DD format.",
+        "example": "2023-05-15"
+      },
+      "metadata": {
+        "type": "object",
+        "description": "Additional metadata about the review.",
+        "properties": {
+          "reviewer_name": {
+            "type": "string",
+            "description": "The name or username of the person who wrote the review.",
+            "example": "John_Doe_123"
+          },
+          "reviewer_location": {
+            "type": "string",
+            "description": "The self-reported location of the reviewer.",
+            "example": "New York, NY"
+          },
+          "review_title": {
+            "type": "string",
+            "description": "The title or headline of the review, if provided.",
+            "example": "Great hotel in the heart of downtown"
+          },
+          "language": {
+            "type": "string",
+            "description": "The language the review is written in, in ISO 639-1 format.",
+            "example": "en"
+          }
+        },
+        "required": [
+          "reviewer_name",
+          "language"
+        ]
+      }
+    },
+    "required": [
+      "review_text",
+      "rating",
+      "source",
+      "date",
+      "metadata"
+    ]
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "sentiment_score": {
+        "type": "number",
+        "minimum": -1,
+        "maximum": 1,
+        "description": "The overall sentiment score between -1 (most negative) and 1 (most positive).",
+        "examples": [
+          0.85
+        ]
+      },
+      "themes": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "description": "A key theme or topic extracted from the text.",
+          "examples": [
+            "customer service",
+            "vehicle cleanliness"
+          ]
+        },
+        "minItems": 1,
+        "uniqueItems": true,
+        "description": "The main themes or topics mentioned in the text."
+      },
+      "urgency": {
+        "type": "string",
+        "enum": [
+          "low",
+          "medium",
+          "high"
+        ],
+        "description": "The level of urgency or priority indicated in the text.",
+        "examples": [
+          "low"
+        ]
+      }
+    },
+    "required": [
+      "sentiment_score",
+      "themes",
+      "urgency"
+    ],
+    "additionalProperties": false,
+    "description": "A summary of sentiment polarity, key themes, and urgency markers extracted from a text."
+  }
 }

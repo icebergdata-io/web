@@ -12,5 +12,203 @@
   "Output Schema": "A JSON object listing each market’s compliance steps, competitor disclaimers, and recommended go-to-market actions. Example: { 'market': 'Japan', 'compliance_requirements': [...], 'competitor_notes': [...], 'action_plan': [{...}] }",
   "Matching algorithm used to integrate the data": "Official site pages are mapped via product codes (e.g., cosmetics vs. electronics). Competitor disclaimers referencing compliance issues are tagged to the corresponding regulation sections.",
   "Story": "A European cosmetic brand prepared to enter the Japanese market but feared repeating its earlier launch fiasco in a different country, caused by unknown ingredient restrictions. To avoid a similar mistake, they hired a web scraping provider to gather official regulations from Japan’s health ministry pages and competitor disclaimers about product safety. By analyzing competitor sites, they noticed disclaimers referencing specific prohibited substances in lotions—info that was publicly posted to reassure local consumers. That single clue saved the brand from finalizing a formula that included a regulated preservative. Additionally, the scraping solution captured consumer advocacy reports praising or criticizing certain competitor products. Using this intelligence, the brand reformulated items to align with local preferences and streamlined packaging details per posted guidelines. Because the scraping agency handled the complex process of retrieving frequently updated or hidden regulation pages, the brand enjoyed real-time clarity on compliance needs. As a result, their Japanese launch was smoother than prior expansions, with no forced product recalls. This success story underscores how thorough, public data-driven research can dramatically reduce risk when entering new markets.",
-  "publicationDate": "2024-11-16"
+  "publicationDate": "2024-11-16",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "target_countries": {
+        "description": "An array of countries where the product will be marketed",
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          [
+            "Japan",
+            "South Korea",
+            "China"
+          ]
+        ]
+      },
+      "product_codes": {
+        "description": "An array of product category codes",
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          [
+            "Cosmetics",
+            "OTC Drugs",
+            "Medical Devices"
+          ]
+        ]
+      },
+      "regulatory_websites": {
+        "description": "An array of relevant government regulatory agency websites",
+        "type": "array",
+        "items": {
+          "type": "string",
+          "format": "uri"
+        },
+        "examples": [
+          [
+            "https://www.mhlw.go.jp/english/",
+            "https://www.mfds.go.kr/eng/"
+          ]
+        ]
+      }
+    },
+    "required": [
+      "target_countries",
+      "product_codes",
+      "regulatory_websites"
+    ]
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "market": {
+        "type": "string",
+        "description": "The name of the market, e.g. 'Japan', 'USA', 'Germany'",
+        "examples": [
+          "Japan",
+          "USA",
+          "Germany"
+        ]
+      },
+      "compliance_requirements": {
+        "type": "array",
+        "description": "An array of compliance requirements specific to the market",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "The name of the compliance requirement",
+              "examples": [
+                "JPAL Certification",
+                "FDA Approval",
+                "CE Marking"
+              ]
+            },
+            "description": {
+              "type": "string",
+              "description": "A brief description of the compliance requirement",
+              "examples": [
+                "Japanese Pharmaceutical Affairs Law certification required for medical devices",
+                "Food and Drug Administration approval required for pharmaceuticals",
+                "CE marking required for products sold in the European Economic Area"
+              ]
+            },
+            "deadline": {
+              "type": "string",
+              "format": "date",
+              "description": "The deadline for meeting the compliance requirement",
+              "examples": [
+                "2023-12-31",
+                "2024-06-30",
+                "2025-03-31"
+              ]
+            }
+          },
+          "required": [
+            "name",
+            "description",
+            "deadline"
+          ]
+        }
+      },
+      "competitor_notes": {
+        "type": "array",
+        "description": "An array of notes about competitors in the market",
+        "items": {
+          "type": "object",
+          "properties": {
+            "competitor_name": {
+              "type": "string",
+              "description": "The name of the competitor",
+              "examples": [
+                "Acme Inc.",
+                "XYZ Corporation",
+                "GlobalCorp"
+              ]
+            },
+            "product": {
+              "type": "string",
+              "description": "The name of the competitor's product",
+              "examples": [
+                "Acme Widget",
+                "XYZ Gizmo",
+                "GlobalGadget"
+              ]
+            },
+            "note": {
+              "type": "string",
+              "description": "A note about the competitor or their product",
+              "examples": [
+                "Acme Inc. has a strong presence in the Japanese market with their Widget product line.",
+                "XYZ Corporation's Gizmo product has recently gained market share in Germany.",
+                "GlobalCorp's Gadget is a direct competitor to our product in the USA market."
+              ]
+            }
+          },
+          "required": [
+            "competitor_name",
+            "product",
+            "note"
+          ]
+        }
+      },
+      "action_plan": {
+        "type": "array",
+        "description": "An array of recommended go-to-market actions for the market",
+        "items": {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "A recommended action to take in the market",
+              "examples": [
+                "Partner with local distributor to navigate compliance requirements",
+                "Launch targeted marketing campaign to highlight product differentiation",
+                "Attend industry trade shows to build brand awareness and generate leads"
+              ]
+            },
+            "timeline": {
+              "type": "string",
+              "description": "The timeline for implementing the recommended action",
+              "examples": [
+                "Q3 2023",
+                "H1 2024",
+                "Q4 2024 - Q1 2025"
+              ]
+            },
+            "budget": {
+              "type": "integer",
+              "description": "The estimated budget required for implementing the recommended action",
+              "examples": [
+                50000,
+                250000,
+                1000000
+              ]
+            }
+          },
+          "required": [
+            "action",
+            "timeline",
+            "budget"
+          ]
+        }
+      }
+    },
+    "required": [
+      "market",
+      "compliance_requirements",
+      "competitor_notes",
+      "action_plan"
+    ]
+  }
 }

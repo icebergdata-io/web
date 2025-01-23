@@ -12,5 +12,194 @@
   "Output Schema": "A JSON object summarizing frequent chatbot issues, competitor best practices, and recommended fixes. Example: { 'common_issues': ['language confusion', 'booking glitch'], 'competitor_strategies': [...], 'implementation_roadmap': [{...}] }",
   "Matching algorithm used to integrate the data": "Posts are scanned for keywords referencing competitor chatbots or general hotel chatbot experiences. A text clustering model groups related feedback (e.g., ‘language issues’).",
   "Story": "A luxury hotel brand wanted to enhance its AI chatbot’s performance but lacked a solid benchmark. They reached out to a web scraping vendor to collect public comments from travelers discussing any hotel chatbot experiences. The vendor’s scrapers parsed forum threads on TripAdvisor and other niche travel communities, capturing posts about chatbots that either disappointed or impressed guests. Certain recurring themes emerged: many users expressed annoyance when the chatbot couldn’t handle multi-language queries or more complex booking modifications. Others praised competitor bots that seamlessly integrated loyalty account information for upselling. By overlaying this intelligence on their chatbot design, the hotel adjusted its AI training to support multi-language basics, ensuring standard questions (like “Can I book a spa slot?”) were recognized in multiple languages. They also introduced an upsell logic that recognized returning loyalty members and offered room upgrades proactively. Partnering with the web scraping firm saved time and provided real-world traveler perspectives otherwise scattered across hundreds of forum threads. In short order, the hotel’s chatbot saw a spike in positive interactions, fewer escalations to human support, and an uptick in in-stay upsells. Ultimately, public feedback about competitor chatbots became a valuable blueprint for improvements, driving better guest engagement and revenue gains.",
-  "publicationDate": "2024-05-17"
+  "publicationDate": "2024-05-17",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "forum_links": {
+        "type": "array",
+        "description": "An array of URLs linking to relevant online forums.",
+        "items": {
+          "type": "string",
+          "format": "uri"
+        },
+        "examples": [
+          [
+            "https://www.tripadvisor.com/ShowForum-g1-i12567-Industry_Discussion.html",
+            "https://hotelmanagement.net/operate/front-desk-forum"
+          ]
+        ]
+      },
+      "keywords": {
+        "type": "array",
+        "description": "An array of keywords or phrases to monitor, such as mentions of chatbots or virtual concierges.",
+        "items": {
+          "type": "string",
+          "minLength": 2
+        },
+        "examples": [
+          [
+            "chatbot",
+            "AI concierge",
+            "virtual agent",
+            "automated check-in"
+          ]
+        ],
+        "uniqueItems": true,
+        "minItems": 1
+      },
+      "competitors": {
+        "type": "array",
+        "description": "An array of competitor brand or company names to track mentions of.",
+        "items": {
+          "type": "string",
+          "minLength": 2
+        },
+        "examples": [
+          [
+            "HotelCorpX",
+            "Stay Solutions Ltd",
+            "Concierge.ai"
+          ]
+        ],
+        "uniqueItems": true
+      }
+    },
+    "required": [
+      "forum_links",
+      "keywords"
+    ],
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Chatbot Issues Analysis",
+    "description": "A JSON object summarizing frequent chatbot issues, competitor best practices, and recommended fixes.",
+    "type": "object",
+    "properties": {
+      "common_issues": {
+        "description": "An array of strings representing the most frequent issues encountered with the chatbot.",
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "example": [
+          "language confusion",
+          "booking glitch",
+          "unresponsive UI",
+          "payment processing errors"
+        ]
+      },
+      "competitor_strategies": {
+        "description": "An array of objects detailing successful strategies employed by competitors to address similar issues.",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "competitor": {
+              "description": "The name of the competitor.",
+              "type": "string"
+            },
+            "issue": {
+              "description": "The specific issue addressed by the competitor's strategy.",
+              "type": "string"
+            },
+            "strategy": {
+              "description": "A detailed description of the strategy employed by the competitor.",
+              "type": "string"
+            },
+            "effectiveness": {
+              "description": "A rating of the effectiveness of the competitor's strategy (1-5).",
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          "required": [
+            "competitor",
+            "issue",
+            "strategy",
+            "effectiveness"
+          ]
+        },
+        "example": [
+          {
+            "competitor": "Acme AI",
+            "issue": "language confusion",
+            "strategy": "Implemented a context-aware language model to better understand user intent.",
+            "effectiveness": 4
+          },
+          {
+            "competitor": "BotBuddy",
+            "issue": "booking glitch",
+            "strategy": "Integrated a more robust booking API and added validation checks.",
+            "effectiveness": 5
+          }
+        ]
+      },
+      "implementation_roadmap": {
+        "description": "An array of objects outlining the recommended steps to address the identified issues.",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "issue": {
+              "description": "The specific issue to be addressed.",
+              "type": "string"
+            },
+            "solution": {
+              "description": "A detailed description of the proposed solution.",
+              "type": "string"
+            },
+            "timeline": {
+              "description": "The estimated timeline for implementing the solution (in weeks).",
+              "type": "integer",
+              "minimum": 1
+            },
+            "resources": {
+              "description": "An array of resources required to implement the solution.",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "issue",
+            "solution",
+            "timeline",
+            "resources"
+          ]
+        },
+        "example": [
+          {
+            "issue": "language confusion",
+            "solution": "Train a new language model using customer conversation data to improve understanding of user intent.",
+            "timeline": 6,
+            "resources": [
+              "Data science team",
+              "Customer conversation logs",
+              "Cloud computing resources"
+            ]
+          },
+          {
+            "issue": "booking glitch",
+            "solution": "Refactor the booking module to handle edge cases and add more comprehensive error handling.",
+            "timeline": 3,
+            "resources": [
+              "Backend development team",
+              "QA team",
+              "Booking API documentation"
+            ]
+          }
+        ]
+      }
+    },
+    "required": [
+      "common_issues",
+      "competitor_strategies",
+      "implementation_roadmap"
+    ]
+  }
 }

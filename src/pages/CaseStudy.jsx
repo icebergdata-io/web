@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { JsonView } from 'react-json-view-lite';
+import 'react-json-view-lite/dist/index.css';
 import SEO from '../components/SEO';
 import { slugify } from '../utils/slugify';
 
@@ -12,7 +14,7 @@ const formatDate = (dateString) => {
 };
 
 const CaseStudy = () => {
-  const { slug } = useParams();
+  const { sector, slug } = useParams();
   const navigate = useNavigate();
   const [caseData, setCaseData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -20,13 +22,14 @@ const CaseStudy = () => {
   useEffect(() => {
     const fetchCaseStudies = async () => {
       try {
-        // Fetch all case studies to find the matching slug
+        // Fetch all case studies to find the matching slug and sector
         for (let i = 1; i <= 38; i++) {
           const response = await fetch(`/articles/cases/${i}.json`);
           const data = await response.json();
           const currentSlug = slugify(`${data.Title}-${data.Subtitle}`);
+          const currentSector = slugify(data.Sector);
           
-          if (currentSlug === slug) {
+          if (currentSlug === slug && currentSector === sector) {
             setCaseData({ id: i, ...data });
             break;
           }
@@ -39,7 +42,7 @@ const CaseStudy = () => {
     };
 
     fetchCaseStudies();
-  }, [slug]);
+  }, [slug, sector]);
 
   useEffect(() => {
     // Redirect to 404 if case study not found after loading
@@ -144,19 +147,37 @@ const CaseStudy = () => {
           <div className="bg-primary-50 rounded-2xl p-8 mb-8">
             <h2 className="text-2xl font-bold mb-6">Technical Details</h2>
             
-            <div className="space-y-6">
+            <div className="space-y-8">
               <div>
                 <h3 className="font-bold mb-2">Input Schema</h3>
-                <pre className="bg-white p-4 rounded-xl overflow-x-auto">
-                  {caseData["Input Schema"]}
-                </pre>
+                <div className="bg-white p-4 rounded-xl overflow-x-auto">
+                  {caseData["Exact_Input_Schema"] ? (
+                    <div className="schema-viewer">
+                      <JsonView 
+                        data={caseData["Exact_Input_Schema"]} 
+                        shouldExpandNode={(level) => level < 2}
+                      />
+                    </div>
+                  ) : (
+                    <pre className="text-sm">{caseData["Input Schema"]}</pre>
+                  )}
+                </div>
               </div>
               
               <div>
                 <h3 className="font-bold mb-2">Output Schema</h3>
-                <pre className="bg-white p-4 rounded-xl overflow-x-auto">
-                  {caseData["Output Schema"]}
-                </pre>
+                <div className="bg-white p-4 rounded-xl overflow-x-auto">
+                  {caseData["Exact_Output_Schema"] ? (
+                    <div className="schema-viewer">
+                      <JsonView 
+                        data={caseData["Exact_Output_Schema"]} 
+                        shouldExpandNode={(level) => level < 2}
+                      />
+                    </div>
+                  ) : (
+                    <pre className="text-sm">{caseData["Output Schema"]}</pre>
+                  )}
+                </div>
               </div>
               
               <div>

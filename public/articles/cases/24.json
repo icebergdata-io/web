@@ -12,5 +12,187 @@
   "Output Schema": "A JSON object listing top return reasons, competitor policy comparisons, and recommended interventions. Example: { 'common_reasons': ['size mismatch', 'poor packaging'], 'competitor_policies': [...], 'improvement_suggestions': [...] }",
   "Matching algorithm used to integrate the data": "A text mining model keyed to return-related phrases. Complaints referencing competitor brand names are collated to show how different policies or product attributes affect consumer satisfaction.",
   "Story": "A fashion e-tailer was grappling with high return rates but lacked a clear understanding of broader industry challenges. They suspected packaging issues and inconsistent sizing were part of the problem, yet they had no external benchmark. By employing a web scraping firm, the company harvested real user complaints on major consumer forums and e-commerce discussion sites. They discovered that competitor BrandX’s switch to simpler, more robust packaging drastically cut damage-related returns—reflected in user posts praising minimal wasted material. Additionally, multiple threads mentioned frustration with complex return shipping labels. Recognizing an opportunity, the e-tailer streamlined its label printing process and tested stronger shipping envelopes. Subsequent internal metrics saw fewer damaged items returned, and satisfaction on social media rose. The outsourced scrapers kept monitoring publicly visible updates from competitor sites and user feedback channels, fueling continuous policy refinements. Over time, not only did returns fall, but customers also began praising the brand’s easy return steps and sturdy packaging, improving overall brand perception. In short, scraping public complaints across competitor networks offered game-changing perspective—something not easily gleaned from the e-tailer’s own data alone.",
-  "publicationDate": "2024-07-28"
+  "publicationDate": "2024-07-28",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "forums": {
+        "type": "array",
+        "description": "An array of forum URLs to monitor for mentions",
+        "items": {
+          "type": "string",
+          "format": "uri"
+        },
+        "examples": [
+          [
+            "https://www.reddit.com/r/ecommerce",
+            "https://community.ecommerceforum.com"
+          ]
+        ]
+      },
+      "competitor_brands": {
+        "type": "array",
+        "description": "An array of competitor brand names to track",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          [
+            "ShopifyX",
+            "BigCommerceY"
+          ]
+        ]
+      },
+      "complaint_triggers": {
+        "type": "array",
+        "description": "An array of keywords indicating return or complaint issues",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          [
+            "return policy",
+            "wrong size",
+            "damaged item",
+            "never received"
+          ]
+        ]
+      }
+    },
+    "required": [
+      "forums",
+      "competitor_brands",
+      "complaint_triggers"
+    ],
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "common_reasons": {
+        "type": "array",
+        "description": "List of the most common reasons for product returns",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          [
+            "size mismatch",
+            "poor packaging",
+            "item damaged",
+            "incorrect item",
+            "product quality issue"
+          ]
+        ]
+      },
+      "competitor_policies": {
+        "type": "array",
+        "description": "Comparison of return policies with key competitors",
+        "items": {
+          "type": "object",
+          "properties": {
+            "competitor_name": {
+              "type": "string",
+              "description": "Name of the competitor"
+            },
+            "return_window_days": {
+              "type": "integer",
+              "description": "Number of days allowed for returns by the competitor"
+            },
+            "free_return_shipping": {
+              "type": "boolean",
+              "description": "Indicates if the competitor offers free return shipping"
+            },
+            "restocking_fee_percent": {
+              "type": "number",
+              "description": "Percentage charged as a restocking fee by the competitor"
+            }
+          },
+          "required": [
+            "competitor_name",
+            "return_window_days",
+            "free_return_shipping"
+          ]
+        },
+        "examples": [
+          [
+            {
+              "competitor_name": "Acme Inc.",
+              "return_window_days": 30,
+              "free_return_shipping": true,
+              "restocking_fee_percent": 0
+            },
+            {
+              "competitor_name": "Widgets LLC",
+              "return_window_days": 14,
+              "free_return_shipping": false,
+              "restocking_fee_percent": 10
+            }
+          ]
+        ]
+      },
+      "improvement_suggestions": {
+        "type": "array",
+        "description": "Recommended actions to reduce returns and improve the returns process",
+        "items": {
+          "type": "object",
+          "properties": {
+            "suggestion": {
+              "type": "string",
+              "description": "Description of the suggested improvement"
+            },
+            "impact_estimate": {
+              "type": "string",
+              "description": "Estimated impact of implementing the suggestion",
+              "enum": [
+                "High",
+                "Medium",
+                "Low"
+              ]
+            },
+            "effort_estimate": {
+              "type": "string",
+              "description": "Estimated effort required to implement the suggestion",
+              "enum": [
+                "High",
+                "Medium",
+                "Low"
+              ]
+            }
+          },
+          "required": [
+            "suggestion",
+            "impact_estimate",
+            "effort_estimate"
+          ]
+        },
+        "examples": [
+          [
+            {
+              "suggestion": "Improve product sizing information and size charts",
+              "impact_estimate": "High",
+              "effort_estimate": "Medium"
+            },
+            {
+              "suggestion": "Use more durable packaging materials",
+              "impact_estimate": "Medium",
+              "effort_estimate": "Low"
+            },
+            {
+              "suggestion": "Implement an extended 90 day return policy",
+              "impact_estimate": "Medium",
+              "effort_estimate": "High"
+            }
+          ]
+        ]
+      }
+    },
+    "required": [
+      "common_reasons",
+      "competitor_policies",
+      "improvement_suggestions"
+    ]
+  }
 }

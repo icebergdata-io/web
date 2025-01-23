@@ -12,5 +12,158 @@
   "Output Schema": "A JSON object for each country listing import duty rates, VAT percentages, competitor shipping approaches, and recommended final prices. Example: { 'country': 'Canada', 'import_duty': 5.0, 'vat': 2.5, 'recommended_price': 80.00 }",
   "Matching algorithm used to integrate the data": "HS codes and product categories are matched against official tariff tables. The system cross-references competitor shipping details to create a total landed cost suggestion.",
   "Story": "A mid-range fashion brand started receiving global traffic to its online store but saw low conversion rates in cross-border checkouts. Customers complained on social media that final shipping costs and duties were unclear. The company hired a web scraping team to systematically gather up-to-date duty and tax data from government portals in Canada, the UK, and the EU. They also scraped competitor websites—publicly visible shipping calculators or check-out pages—to see how others displayed cross-border pricing. Powered by these combined data sets, the brand integrated a real-time landed cost module: at checkout, international customers now saw a precise breakdown of product price, import duty, local tax, and shipping fees. By showcasing accurate final costs, cart abandonment dropped dramatically. The web scraping agency maintained compliance with government site usage policies and updated data whenever tariff policies shifted. Meanwhile, the brand’s internal teams focused on marketing and fulfilling new international orders, confident that pricing remained transparent. Ultimately, converting public customs data into a user-friendly display gave the brand a significant competitive edge, boosting international sales and brand loyalty among cross-border shoppers.",
-  "publicationDate": "2024-06-23"
+  "publicationDate": "2024-06-23",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "countries": {
+        "type": "array",
+        "description": "Array of target country names.",
+        "items": {
+          "type": "string",
+          "description": "Name of a country."
+        },
+        "uniqueItems": true,
+        "minItems": 1,
+        "examples": [
+          [
+            "Canada",
+            "UK",
+            "Germany",
+            "France"
+          ]
+        ]
+      },
+      "product_categories": {
+        "type": "array",
+        "description": "Array of relevant product category names.",
+        "items": {
+          "type": "string",
+          "description": "Name of a product category."
+        },
+        "uniqueItems": true,
+        "minItems": 1,
+        "examples": [
+          [
+            "Electronics",
+            "Apparel",
+            "Home & Garden"
+          ]
+        ]
+      },
+      "weight_ranges_kg": {
+        "type": "array",
+        "description": "Array of shipping weight ranges, in kilograms.",
+        "items": {
+          "type": "object",
+          "description": "Weight range with minimum and maximum values.",
+          "required": [
+            "min",
+            "max"
+          ],
+          "properties": {
+            "min": {
+              "type": "number",
+              "description": "Minimum weight in kilograms (inclusive).",
+              "minimum": 0
+            },
+            "max": {
+              "type": "number",
+              "description": "Maximum weight in kilograms (exclusive).",
+              "exclusiveMinimum": 0
+            }
+          }
+        },
+        "minItems": 1,
+        "examples": [
+          [
+            {
+              "min": 0,
+              "max": 2
+            },
+            {
+              "min": 2,
+              "max": 5
+            },
+            {
+              "min": 5,
+              "max": 10
+            }
+          ]
+        ]
+      }
+    },
+    "required": [
+      "countries",
+      "product_categories",
+      "weight_ranges_kg"
+    ]
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Country Pricing Information",
+    "description": "A JSON object for each country listing import duty rates, VAT percentages, competitor shipping approaches, and recommended final prices.",
+    "type": "object",
+    "properties": {
+      "country": {
+        "description": "The name of the country.",
+        "type": "string",
+        "example": "Canada"
+      },
+      "import_duty": {
+        "description": "The import duty rate as a percentage.",
+        "type": "number",
+        "minimum": 0,
+        "maximum": 100,
+        "example": 5
+      },
+      "vat": {
+        "description": "The value-added tax (VAT) percentage.",
+        "type": "number",
+        "minimum": 0,
+        "maximum": 100,
+        "example": 2.5
+      },
+      "competitor_shipping": {
+        "description": "An object containing information about competitor shipping approaches.",
+        "type": "object",
+        "properties": {
+          "fastest": {
+            "description": "The fastest shipping method used by competitors.",
+            "type": "string",
+            "example": "Express"
+          },
+          "cheapest": {
+            "description": "The cheapest shipping method used by competitors.",
+            "type": "string",
+            "example": "Standard"
+          },
+          "most_common": {
+            "description": "The most common shipping method used by competitors.",
+            "type": "string",
+            "example": "Priority"
+          }
+        },
+        "required": [
+          "fastest",
+          "cheapest",
+          "most_common"
+        ]
+      },
+      "recommended_price": {
+        "description": "The recommended final price for the product in this country.",
+        "type": "number",
+        "minimum": 0,
+        "example": 80
+      }
+    },
+    "required": [
+      "country",
+      "import_duty",
+      "vat",
+      "competitor_shipping",
+      "recommended_price"
+    ]
+  }
 }

@@ -12,5 +12,138 @@
   "Output Schema": "A JSON object listing each location, available vehicle types, suggested rotations, and expected gains. Example: { 'location': 'LAX', 'available_competitor_vehicles': [...], 'rotation_recommendations': [...], 'utilization_boost': 0.15 }",
   "Matching algorithm used to integrate the data": "A location-based matching engine that compares competitor listings with internal data, prioritizing moves to branches reporting high demand and low inventory for specific categories.",
   "Story": "A mid-sized car rental firm noticed that while certain locations constantly ran low on premium SUVs, other sites had them idling. To tackle this, they tapped a web scraping company to gather public data on competitor vehicle availability posted on competitor websites. The scraper ran every few hours, collecting local inventory details and pricing for each vehicle category. With these fresh insights, the firm identified demand surges—especially around business districts for premium models—well before missing out on bookings. Thanks to a near-real-time view of competitor listings, the company began relocating SUVs to high-demand spots right before peak hours. This resulted in a tighter alignment of supply with local demand, raising utilization and reducing unnecessary cross-city shuttles. Had the firm tried to manually track these competitor changes, they would have faced stale or incomplete data. By outsourcing to experts, they gained fast, reliable, and compliant scraping that boosted fleet efficiency while respecting each competitor site’s public data. Ultimately, leveraging public online listings brought clarity to rotation decisions, improving both profitability and customer satisfaction.",
-  "publicationDate": "2023-07-07"
+  "publicationDate": "2023-07-07",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "competitor_sites": {
+        "type": "array",
+        "description": "An array of competitor website URLs to scrape vehicle data from.",
+        "items": {
+          "type": "string",
+          "format": "uri",
+          "example": "https://competitorA.com"
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      },
+      "vehicle_categories": {
+        "type": "array",
+        "description": "The types of vehicle categories to track and scrape data for.",
+        "items": {
+          "type": "string",
+          "enum": [
+            "SUV",
+            "Sedan",
+            "Truck",
+            "Van",
+            "Coupe",
+            "Wagon",
+            "Convertible",
+            "Hatchback"
+          ]
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      },
+      "scrape_interval": {
+        "type": "string",
+        "description": "How frequently to run the scraper on the specified competitor sites.",
+        "enum": [
+          "hourly",
+          "daily",
+          "weekly",
+          "monthly"
+        ],
+        "example": "daily"
+      }
+    },
+    "required": [
+      "competitor_sites",
+      "vehicle_categories",
+      "scrape_interval"
+    ],
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "location": {
+        "type": "string",
+        "description": "The airport code for the location",
+        "example": "LAX"
+      },
+      "available_competitor_vehicles": {
+        "type": "array",
+        "description": "An array listing the types of competitor vehicles available at this location",
+        "items": {
+          "type": "object",
+          "properties": {
+            "company": {
+              "type": "string",
+              "description": "The name of the competitor car rental company",
+              "example": "Avis"
+            },
+            "vehicle_type": {
+              "type": "string",
+              "description": "The type of vehicle available from this competitor",
+              "example": "Compact"
+            },
+            "daily_rate": {
+              "type": "number",
+              "description": "The competitor's daily rental rate for this vehicle type",
+              "example": 45.99
+            }
+          },
+          "required": [
+            "company",
+            "vehicle_type",
+            "daily_rate"
+          ]
+        }
+      },
+      "rotation_recommendations": {
+        "type": "array",
+        "description": "An array of suggested vehicle rotations to optimize utilization",
+        "items": {
+          "type": "object",
+          "properties": {
+            "vehicle_type": {
+              "type": "string",
+              "description": "The type of vehicle to rotate in",
+              "example": "Standard"
+            },
+            "source_location": {
+              "type": "string",
+              "description": "The airport code of the location to source the vehicle from",
+              "example": "SFO"
+            },
+            "quantity": {
+              "type": "integer",
+              "description": "The number of vehicles of this type to rotate",
+              "example": 10
+            }
+          },
+          "required": [
+            "vehicle_type",
+            "source_location",
+            "quantity"
+          ]
+        }
+      },
+      "utilization_boost": {
+        "type": "number",
+        "description": "The projected boost in utilization rate if recommendations are implemented",
+        "example": 0.15
+      }
+    },
+    "required": [
+      "location",
+      "available_competitor_vehicles",
+      "rotation_recommendations",
+      "utilization_boost"
+    ]
+  }
 }

@@ -12,5 +12,211 @@
   "Output Schema": "A JSON object categorizing corporate accounts by potential volume, listing competitor discounts found, and recommended outreach strategies. Example: { 'corporate_leads': [...], 'identified_discounts': [...], 'targeting_recommendations': [{...}] }",
   "Matching algorithm used to integrate the data": "A pattern-matching engine identifies repeated usage of specific corporate codes, location-based frequency, and competitor offers. Data is sorted by total booking estimates.",
   "Story": "A car rental agency aimed to grow its corporate client base but had limited visibility into which businesses consistently booked rentals through aggregator sites. By partnering with a web scraping firm, they extracted data on publicly posted corporate discount codes, cross-checked aggregator usage stats, and monitored business travel forums where professionals often shared tips on discount rates. This combined dataset let the agency see which companies or industries were actively renting multiple cars at once, and how competitor deals stacked up in those segments. For example, a logistics firm appeared to be using a ‘BusinessPro’ code that shaved off 20% of each booking on a rival platform—a strong indicator of high rental volume. The data also highlighted certain tech startups frequently referencing short-term corporate codes in online travel discussions. Equipped with this intelligence, the rental agency tailored a specialized B2B offer, bundling premium fleet options with expedited pickup. Outsourcing the scraping was critical because it ensured compliance with aggregator rules and forum guidelines. The corporate leads thus generated helped the rental agency secure new corporate accounts and nurture them with premium service, boosting loyalty and revenue in a previously under-tapped space.",
-  "publicationDate": "2023-09-29"
+  "publicationDate": "2023-09-29",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "aggregator_urls": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "format": "uri"
+        },
+        "description": "An array of URLs for aggregator platforms to monitor for discount codes",
+        "examples": [
+          [
+            "https://www.retailmenot.com/",
+            "https://www.groupon.com/",
+            "https://slickdeals.net/"
+          ]
+        ]
+      },
+      "corporate_discount_keywords": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "An array of keywords or phrases commonly used for corporate/business discount codes",
+        "examples": [
+          [
+            "corp code",
+            "business rate",
+            "corporate discount"
+          ]
+        ]
+      },
+      "forums": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "An array of online forums focused on business travel where users may share discount codes",
+        "examples": [
+          [
+            "LinkedIn Groups",
+            "FlyerTalk",
+            "Business Travel Forum",
+            "Corporate Travel Community"
+          ]
+        ]
+      }
+    },
+    "required": [
+      "aggregator_urls",
+      "corporate_discount_keywords",
+      "forums"
+    ],
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "corporate_leads": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "account_name": {
+              "type": "string",
+              "description": "The name of the corporate account"
+            },
+            "potential_volume": {
+              "type": "string",
+              "enum": [
+                "high",
+                "medium",
+                "low"
+              ],
+              "description": "The estimated potential sales volume for the account"
+            },
+            "industry": {
+              "type": "string",
+              "description": "The industry sector of the corporate account"
+            },
+            "contact_info": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "The name of the primary contact at the account"
+                },
+                "title": {
+                  "type": "string",
+                  "description": "The job title of the primary contact"
+                },
+                "email": {
+                  "type": "string",
+                  "format": "email",
+                  "description": "The email address of the primary contact"
+                },
+                "phone": {
+                  "type": "string",
+                  "description": "The phone number of the primary contact"
+                }
+              },
+              "required": [
+                "name",
+                "email"
+              ],
+              "description": "Contact information for the primary contact at the account"
+            }
+          },
+          "required": [
+            "account_name",
+            "potential_volume",
+            "industry",
+            "contact_info"
+          ]
+        },
+        "description": "An array of corporate accounts categorized by potential sales volume"
+      },
+      "identified_discounts": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "competitor_name": {
+              "type": "string",
+              "description": "The name of the competitor offering the discount"
+            },
+            "discount_amount": {
+              "type": "number",
+              "description": "The percentage amount of the competitor's discount"
+            },
+            "discount_type": {
+              "type": "string",
+              "enum": [
+                "percentage",
+                "dollar_value"
+              ],
+              "description": "Indicates if the discount is a percentage or fixed dollar amount"
+            },
+            "end_date": {
+              "type": "string",
+              "format": "date",
+              "description": "The expiration date of the competitor's discount offer"
+            }
+          },
+          "required": [
+            "competitor_name",
+            "discount_amount",
+            "discount_type"
+          ],
+          "description": "Details on a competitor discount that was identified"
+        },
+        "description": "An array of discounts offered by competitors that were found"
+      },
+      "targeting_recommendations": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "account_name": {
+              "type": "string",
+              "description": "The corporate account the recommendation applies to"
+            },
+            "recommendation_type": {
+              "type": "string",
+              "enum": [
+                "email_campaign",
+                "sales_call",
+                "direct_mail",
+                "webinar_invite",
+                "custom_offer"
+              ],
+              "description": "The type of outreach tactic being recommended"
+            },
+            "message_summary": {
+              "type": "string",
+              "description": "A brief description of the messaging to use in the outreach"
+            },
+            "offer_details": {
+              "type": "string",
+              "description": "Specifics of any special offer or promotion to include"
+            },
+            "target_date": {
+              "type": "string",
+              "format": "date",
+              "description": "The recommended date to initiate this outreach"
+            }
+          },
+          "required": [
+            "account_name",
+            "recommendation_type",
+            "message_summary",
+            "target_date"
+          ],
+          "description": "A recommended outreach action to take with a specific account"
+        },
+        "description": "An array of recommended targeting actions based on the lead analysis"
+      }
+    },
+    "required": [
+      "corporate_leads",
+      "identified_discounts",
+      "targeting_recommendations"
+    ]
+  }
 }

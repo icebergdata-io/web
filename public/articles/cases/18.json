@@ -12,5 +12,131 @@
   "Output Schema": "A JSON object summarizing aggregated ratings, top positive/negative themes, and comparison with competitor properties. Example: { 'overall_rating': 4.3, 'themes': { 'positive': [...], 'negative': [...] }, 'competitor_comparison': [...] }",
   "Matching algorithm used to integrate the data": "Property IDs matched with OTA listings via direct URL or known IDs. Reviews are cleansed, normalized, and sorted into topics or sentiment clusters for side-by-side comparisons.",
   "Story": "A boutique hotel wanted a comprehensive snapshot of its performance across multiple OTAs, from Booking.com to Expedia. Although it had separate management logins for each platform, managers found it cumbersome to track new comments or rating changes every day. By partnering with a web scraping company, the hotel gained a single feed of updated OTA reviews aggregated at the end of each day. The scraper captured numerical ratings as well as guest comments about location convenience, staff friendliness, or room quality—data that was fully visible on the public booking pages. Simultaneously, competitor listings were monitored so the hotel could compare star averages and trending topics. Over a few weeks, managers uncovered consistent praise for the hotel’s cozy design but also repeated complaints about slow Wi-Fi. Noticing that a key competitor had recently upgraded internet services—and posted it prominently in its OTA listing—the boutique hotel followed suit, marketing a new high-speed Wi-Fi rollout. This proactive approach caused guest satisfaction metrics to climb on subsequent daily scrapes. Without automated public scraping, staff might have overlooked how vital Wi-Fi was to modern travelers or how significantly competitor improvements influenced booking decisions. Ultimately, centralizing these reviews reshaped the hotel’s operational priorities, improved star averages, and boosted overall occupancy rates.",
-  "publicationDate": "2023-12-24"
+  "publicationDate": "2023-12-24",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "property_listings": {
+        "type": "array",
+        "description": "An array of strings representing URLs for the property's OTA listings",
+        "items": {
+          "type": "string",
+          "format": "uri"
+        },
+        "minItems": 1,
+        "uniqueItems": true,
+        "example": [
+          "https://www.expedia.com/hotel-abc",
+          "https://www.booking.com/hotel-xyz"
+        ]
+      },
+      "competitor_listings": {
+        "type": "array",
+        "description": "An array of strings representing URLs for competitor OTA listings",
+        "items": {
+          "type": "string",
+          "format": "uri"
+        },
+        "uniqueItems": true,
+        "example": [
+          "https://www.hotels.com/hotel-123",
+          "https://www.tripadvisor.com/hotel-789"
+        ]
+      },
+      "review_window": {
+        "type": "string",
+        "description": "A string specifying the time window for reviews to analyze, e.g. '90 days'",
+        "pattern": "^\\d+\\s+(day|days|week|weeks|month|months|year|years)$",
+        "example": "90 days"
+      }
+    },
+    "required": [
+      "property_listings",
+      "review_window"
+    ],
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "overall_rating": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5,
+        "description": "The aggregated overall rating of the property, on a scale of 0 to 5."
+      },
+      "themes": {
+        "type": "object",
+        "properties": {
+          "positive": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "A positive theme mentioned in the reviews."
+            },
+            "example": [
+              "Great location",
+              "Friendly staff",
+              "Clean rooms"
+            ]
+          },
+          "negative": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "A negative theme mentioned in the reviews."
+            },
+            "example": [
+              "Noisy rooms",
+              "Slow service",
+              "Limited parking"
+            ]
+          }
+        },
+        "required": [
+          "positive",
+          "negative"
+        ],
+        "description": "The top positive and negative themes extracted from the reviews."
+      },
+      "competitor_comparison": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "competitor_name": {
+              "type": "string",
+              "description": "The name of the competitor property."
+            },
+            "rating_difference": {
+              "type": "number",
+              "description": "The difference between the property's rating and the competitor's rating (property rating - competitor rating)."
+            }
+          },
+          "required": [
+            "competitor_name",
+            "rating_difference"
+          ]
+        },
+        "example": [
+          {
+            "competitor_name": "Hotel A",
+            "rating_difference": 0.2
+          },
+          {
+            "competitor_name": "Hotel B",
+            "rating_difference": -0.1
+          }
+        ],
+        "description": "A comparison of the property's rating with its competitors."
+      }
+    },
+    "required": [
+      "overall_rating",
+      "themes",
+      "competitor_comparison"
+    ]
+  }
 }

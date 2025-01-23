@@ -12,5 +12,133 @@
   "Output Schema": "A JSON object summarizing each competitor’s ad volume, top themes, engagement rates, and recommended counter-strategies. Example: { 'competitor': 'BrandA', 'ad_count': 10, 'dominant_theme': 'Holiday Sale', 'engagement': {...}, 'recommendations': [...] }",
   "Matching algorithm used to integrate the data": "Brand references and campaign hashtags are identified in publicly displayed ads. Engagement stats (likes, shares) are aggregated and cross-linked to ad copy for performance analysis.",
   "Story": "A mid-sized cosmetics company was consistently outbid by bigger rivals on social media ad placements. Hoping to make its budget stretch further, the firm engaged a web scraping agency to continuously watch competitors’ public ads and glean insights from user interactions. The scrapers hit official Facebook Ad Library pages, scanning all newly published promotional campaigns from major cosmetic brands. They also captured engagement metrics (like comment volumes) to see which competitor promotions sparked real interest. Through these daily data feeds, the cosmetics firm noted that Competitor X had switched to a ‘clean beauty’ narrative, flooding Instagram with influencer tie-ins that garnered high shares. Recognizing a potential brand positioning gap, the firm adjusted its next wave of ads to emphasize natural ingredients and highlight a new organic certification. Additionally, they scheduled new promotions to coincide with competitor silence on weekends, capturing users’ attention at a fraction of the cost. Offloading the scraping task allowed the marketing team to pivot quickly, refining content and timing in near real-time. This shift yielded a higher click-through rate, improved brand perception, and a more efficient ad budget overall—directly attributable to the constantly updated competitor intel gleaned from public ad spaces.",
-  "publicationDate": "2024-10-28"
+  "publicationDate": "2024-10-28",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "competitor_handles": {
+        "type": "array",
+        "description": "Array of competitor brand handles to track",
+        "items": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_]{1,15}$"
+        },
+        "examples": [
+          [
+            "BrandAOfficial",
+            "BrandBGlobal",
+            "BrandC_USA"
+          ]
+        ]
+      },
+      "ad_library_links": {
+        "type": "array",
+        "description": "Array of URLs to competitor ad libraries",
+        "items": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^(https?://)?([\\w\\-])+\\.com/ads/library/[\\w\\-/%?=]+"
+        },
+        "examples": [
+          [
+            "fb.com/ads/library/BrandA",
+            "twitter.com/ads/library/BrandB?ref=business"
+          ]
+        ]
+      },
+      "metrics": {
+        "type": "array",
+        "description": "Engagement metrics to track for competitor content",
+        "items": {
+          "type": "string",
+          "enum": [
+            "likes",
+            "shares",
+            "comments",
+            "views",
+            "clicks"
+          ]
+        },
+        "default": [
+          "likes",
+          "shares"
+        ],
+        "uniqueItems": true,
+        "minItems": 1
+      }
+    },
+    "required": [
+      "competitor_handles",
+      "metrics"
+    ],
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "competitor": {
+        "type": "string",
+        "description": "The name of the competitor brand.",
+        "example": "BrandA"
+      },
+      "ad_count": {
+        "type": "integer",
+        "description": "The total number of ads run by the competitor.",
+        "example": 10,
+        "minimum": 0
+      },
+      "dominant_theme": {
+        "type": "string",
+        "description": "The most frequent or prominent theme in the competitor's ads.",
+        "example": "Holiday Sale"
+      },
+      "engagement": {
+        "type": "object",
+        "description": "Metrics summarizing user engagement with the competitor's ads.",
+        "properties": {
+          "impressions": {
+            "type": "integer",
+            "description": "Total ad impressions.",
+            "example": 500000,
+            "minimum": 0
+          },
+          "clicks": {
+            "type": "integer",
+            "description": "Total ad clicks.",
+            "example": 12500,
+            "minimum": 0
+          },
+          "ctr": {
+            "type": "number",
+            "description": "Average click-through rate (CTR) across all ads.",
+            "example": 0.025,
+            "minimum": 0,
+            "maximum": 1
+          }
+        },
+        "required": [
+          "impressions",
+          "clicks",
+          "ctr"
+        ]
+      },
+      "recommendations": {
+        "type": "array",
+        "description": "Suggested strategies to counter the competitor's advertising.",
+        "items": {
+          "type": "string",
+          "example": "Emphasize product quality over discounts."
+        }
+      }
+    },
+    "required": [
+      "competitor",
+      "ad_count",
+      "dominant_theme",
+      "engagement",
+      "recommendations"
+    ]
+  }
 }

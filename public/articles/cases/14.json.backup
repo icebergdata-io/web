@@ -1,0 +1,16 @@
+{
+  "Title": "Mobile App Feedback Insights via Public Scraping",
+  "Subtitle": "Gathering User Reviews and Ratings for Feature Optimization",
+  "Business Impact": "Analyzing publicly posted feedback and star ratings for competitors’ rental apps drives better design decisions, yielding up to 20% higher user retention.",
+  "Sector": "Car Rental",
+  "What data was collected": "App store reviews, star ratings, competitor app changelogs, and user comments, all publicly posted on digital storefronts (Google Play, Apple App Store).",
+  "Why this matters": "Real user sentiments about car rental mobile apps can expose navigation pain points, must-have features, and missing elements—crucial for refining an agency’s own application.",
+  "Implementation time": "4 to 6 weeks, covering the development of app review scrapers, text sentiment analysis, and integration with UI/UX improvement workflows.",
+  "Problems this solves": "1) Blind spots about how customers perceive the booking process in competitor apps. 2) Unclear reasons behind high uninstall or churn rates. 3) Reactive approach to feature updates.",
+  "Why it was better to outsource this solution": "Expert scrapers already have stable frameworks to gather store reviews and ratings at scale, ensuring continuous, compliant access without risking IP blocks or data gaps.",
+  "Input Schema": "A JSON object containing app store URLs, competitor app IDs, and date range for reviews. Example: { 'app_store_links': ['...'], 'competitor_app_ids': ['com.rentalapp.pro'], 'review_date_range': '2025-01-01 to 2025-03-01' }",
+  "Output Schema": "A JSON object summarizing sentiment trends, top user complaints, and recommended UI improvements. Example: { 'average_rating': 4.2, 'common_requests': ['faster checkouts', 'clear insurance options'], 'ux_recommendations': [{...}] }",
+  "Matching algorithm used to integrate the data": "Keyword-based text analytics to cluster similar feedback themes, combined with a sentiment scoring model that flags recurring negative or positive aspects.",
+  "Story": "A global car rental brand struggled to interpret why users gave competitor apps higher ratings, suspecting it had something to do with a smoother interface. By hiring a specialized web scraping firm, they collected thousands of public reviews from both Google Play and Apple’s App Store. The aggregator parsed the text for recurring phrases—like “insurance confusion,” “faster check-in,” or “promo codes not working.” This trove of feedback provided a roadmap: adding simpler insurance explanations, streamlining user flows, and implementing a robust promo code system became top priorities. Within a few weeks, the rental brand’s own app updates addressed these insights, resulting in improved ratings and happier customers. Meanwhile, the scraping partner handled regulatory compliance, maintained up-to-date scraping scripts, and efficiently delivered fresh reviews in user-friendly dashboards. This approach kept the internal product team focused on building better features rather than grappling with store data collection. Overall, leveraging publicly accessible user feedback turned competitor app reviews into actionable intelligence, boosting the client’s mobile app performance considerably.",
+  "publicationDate": "2023-08-19"
+}

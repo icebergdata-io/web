@@ -12,5 +12,134 @@
   "Output Schema": "A JSON object summarizing aggregated reviews, average rating, dominant sentiment categories, and key improvement areas. Example: { 'average_rating': 4.2, 'sentiment': 'positive', 'common_themes': ['friendly staff', 'clean rooms'], 'action_items': {...} }",
   "Matching algorithm used to integrate the data": "A multi-source ingestion process that uses unique hotel IDs and consistent naming conventions, followed by sentiment analysis with a neural network model to classify reviews into positive, neutral, or negative categories.",
   "Story": "A luxury hotel group discovered that while their properties enjoyed generally favorable reviews, they had difficulty staying on top of emerging criticisms. Keen to improve brand perception and guest loyalty, they sought a centralized review aggregation system. The outsourced team built a platform that automatically pulled reviews from TripAdvisor, Google Reviews, and other travel forums on a nightly basis, parsing key details such as star rating, date of stay, and traveler demographics. The data was then standardized and run through a sentiment analysis model, tagging each review with themes like service quality, cleanliness, and amenities. Managers gained a live dashboard displaying trending issues and overall sentiment scores for each property, enabling them to prioritize operational improvements. In the initial weeks of use, the platform highlighted repeated complaints about slow Wi-Fi in one of their business-centric hotels, prompting a swift upgrade to the internet infrastructure. Guest satisfaction at that property surged within months, reflected in the subsequent uptick in positive feedback. Moreover, the system flagged rare but influential negative comments about inconsistent housekeeping in another location. Through prompt corrective measures, the hotel brand preempted long-term reputational harm. By entrusting a specialized vendor with the technical heavy-lifting, the hotel group integrated ongoing feedback into their daily operations without straining internal resources. The solution has become an essential tool for ensuring that management can act quickly on real-time insights, reinforcing a culture of continuous improvement and excellence in guest service throughout the organization.",
-  "publicationDate": "2023-04-08"
+  "publicationDate": "2023-04-08",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "source": {
+        "type": "string",
+        "description": "The source platform of the reviews",
+        "examples": [
+          "TripAdvisor",
+          "Yelp",
+          "Google Reviews"
+        ]
+      },
+      "date_range": {
+        "type": "string",
+        "description": "The date range for the reviews, in 'YYYY-MM-DD to YYYY-MM-DD' format",
+        "pattern": "^\\d{4}-\\d{2}-\\d{2} to \\d{4}-\\d{2}-\\d{2}$",
+        "examples": [
+          "2025-01-01 to 2025-01-31",
+          "2024-12-01 to 2024-12-31"
+        ]
+      },
+      "filters": {
+        "type": "object",
+        "description": "Optional filters to apply to the reviews",
+        "properties": {
+          "rating": {
+            "type": "array",
+            "description": "An array of integer ratings to include (e.g., [4, 5] for 4 and 5-star reviews)",
+            "items": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 5
+            },
+            "examples": [
+              [
+                4,
+                5
+              ],
+              [
+                3,
+                4,
+                5
+              ]
+            ]
+          }
+        }
+      }
+    },
+    "required": [
+      "source",
+      "date_range"
+    ],
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "average_rating": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5,
+        "description": "The average rating across all reviews, on a scale of 0 to 5."
+      },
+      "sentiment": {
+        "type": "string",
+        "enum": [
+          "positive",
+          "neutral",
+          "negative",
+          "mixed"
+        ],
+        "description": "The dominant sentiment category derived from the reviews."
+      },
+      "common_themes": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "A list of the most frequently mentioned positive themes or aspects from the reviews.",
+        "examples": [
+          [
+            "friendly staff",
+            "clean rooms",
+            "great location"
+          ]
+        ]
+      },
+      "action_items": {
+        "type": "object",
+        "description": "Key areas for improvement based on negative feedback, with specific action items.",
+        "properties": {
+          "category": {
+            "type": "string",
+            "description": "The main category or aspect that needs improvement.",
+            "examples": [
+              "Bathroom cleanliness",
+              "Check-in process",
+              "Room noise"
+            ]
+          },
+          "tasks": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Specific action items to address the improvement area.",
+            "examples": [
+              [
+                "Retrain housekeeping staff on bathroom cleaning procedures",
+                "Implement a bathroom cleanliness checklist for each room"
+              ]
+            ]
+          }
+        },
+        "required": [
+          "category",
+          "tasks"
+        ]
+      }
+    },
+    "required": [
+      "average_rating",
+      "sentiment",
+      "common_themes",
+      "action_items"
+    ]
+  }
 }

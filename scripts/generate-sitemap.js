@@ -2,69 +2,64 @@ import fs from 'fs';
 import path from 'path';
 import { slugify } from '../src/utils/slugify.js';
 
-const generateSitemap = async () => {
-  const baseUrl = 'https://icebergdata.co';
-  const casesDir = path.join(process.cwd(), 'public/articles/cases');
+const BASE_URL = 'https://icebergdata.co';
+
+async function generateSitemap() {
+  console.log('🔄 Generating sitemap...');
   
-  // Start XML content
-  let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+  // Get all case studies
+  const casesDir = path.join(process.cwd(), 'public/articles/cases');
+  const caseStudies = [];
+  
+  // Read all case study files
+  const files = fs.readdirSync(casesDir)
+    .filter(file => file.endsWith('.json'))
+    .sort((a, b) => {
+      const numA = parseInt(a.match(/\d+/)[0]);
+      const numB = parseInt(b.match(/\d+/)[0]);
+      return numA - numB;
+    });
+
+  for (const file of files) {
+    const content = fs.readFileSync(path.join(casesDir, file), 'utf8');
+    const data = JSON.parse(content);
+    caseStudies.push({
+      sector: slugify(data.Sector),
+      slug: slugify(`${data.Title}-${data.Subtitle}`),
+      lastmod: data.publicationDate || new Date().toISOString().split('T')[0]
+    });
+  }
+
+  // Generate sitemap XML
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>${baseUrl}/</loc>
+    <loc>${BASE_URL}</loc>
     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
-    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>${baseUrl}/press</loc>
+    <loc>${BASE_URL}/case-studies</loc>
     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>${baseUrl}/case-studies</loc>
+    <loc>${BASE_URL}/contact</loc>
     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>`;
-
-  // Read all case study files
-  const files = fs.readdirSync(casesDir);
-  const caseStudies = [];
-  
-  // First collect all case studies with their dates
-  for (const file of files) {
-    if (file.endsWith('.json')) {
-      const content = fs.readFileSync(path.join(casesDir, file), 'utf8');
-      const caseStudy = JSON.parse(content);
-      const slug = slugify(`${caseStudy.Title}-${caseStudy.Subtitle}`);
-      caseStudies.push({
-        slug,
-        publicationDate: caseStudy.publicationDate
-      });
-    }
-  }
-
-  // Sort case studies by publication date (newest first)
-  caseStudies.sort((a, b) => new Date(b.publicationDate) - new Date(a.publicationDate));
-  
-  // Add sorted case studies to sitemap
-  for (const study of caseStudies) {
-    sitemap += `
-  <url>
-    <loc>${baseUrl}/case-study/${study.slug}</loc>
-    <lastmod>${study.publicationDate}</lastmod>
-    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>`;
-  }
+  </url>
+  ${caseStudies.map(study => `
+  <url>
+    <loc>${BASE_URL}/case-study/${study.sector}/${study.slug}</loc>
+    <lastmod>${study.lastmod}</lastmod>
+    <priority>0.8</priority>
+  </url>`).join('')}
+</urlset>`;
 
-  // Close XML
-  sitemap += '\n</urlset>';
-
-  // Write sitemap
-  fs.writeFileSync(path.join(process.cwd(), 'public/sitemap.xml'), sitemap);
-  console.log('Sitemap generated successfully!');
-};
+  // Write sitemap file
+  const publicDir = path.join(process.cwd(), 'public');
+  fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), sitemap);
+  console.log('✅ Sitemap generated successfully!');
+}
 
 generateSitemap().catch(console.error); 

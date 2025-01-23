@@ -12,5 +12,132 @@
   "Output Schema": "A JSON object with recommended rental price suggestions, confidence scores, and supporting competitor data. Example: { 'recommended_price': 55.99, 'confidence_score': 0.92, 'competitor_data': [{...}] }",
   "Matching algorithm used to integrate the data": "A combination of web scraping scripts, pattern matching for identifying vehicle categories, and a dynamic pricing algorithm powered by a gradient-boosted regression model that factors in competitor prices, historical rental data, and seasonal trends.",
   "Story": "Car rental companies operate in a highly competitive landscape where a single dollar can swing consumer decisions. Recognizing that travelers often compare prices across multiple platforms before making a reservation, a mid-sized car rental enterprise decided to implement a dynamic price monitoring system. The project began with a thorough analysis of competitor rates in key markets. By partnering with a specialized data provider, they established reliable pipelines to scrape competitor websites and aggregator platforms daily, capturing not only base rental prices but also special offers and loyalty discounts. The data was fed into a centralized repository where analysts could spot trends, such as rising prices near holiday weekends or surges in discounts during off-peak periods. Armed with these insights, the company created an adaptive pricing algorithm. The algorithm adjusted rental rates in real time, capitalizing on opportunities to match the best offers in the market while preserving the desired profit margins. As a result, the company saw an uptick in bookings across both popular and niche vehicle categories, with fewer missed opportunities and higher customer satisfaction due to transparent and fair pricing. Over time, these adjustments led to a measurable revenue increase—by as much as 15%—while enabling more agile responses to market fluctuations. By outsourcing the solution, the company gained specialized expertise and reduced implementation time, ensuring a fast and successful rollout that set them apart in a price-sensitive market.",
-  "publicationDate": "2023-01-24"
+  "publicationDate": "2023-01-24",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "location": {
+        "type": "object",
+        "properties": {
+          "city": {
+            "type": "string",
+            "description": "The city where the vehicle rental will take place.",
+            "example": "Los Angeles"
+          },
+          "state": {
+            "type": "string",
+            "description": "The state where the vehicle rental will take place.",
+            "example": "California"
+          }
+        },
+        "required": [
+          "city",
+          "state"
+        ]
+      },
+      "vehicle_type": {
+        "type": "string",
+        "description": "The category or type of vehicle being rented.",
+        "example": "SUV"
+      },
+      "date_range": {
+        "type": "string",
+        "description": "The range of dates for the vehicle rental, in the format 'YYYY-MM-DD to YYYY-MM-DD'.",
+        "example": "2025-03-01 to 2025-03-05",
+        "pattern": "^\\d{4}-\\d{2}-\\d{2} to \\d{4}-\\d{2}-\\d{2}$"
+      },
+      "competitor_prices": {
+        "type": "array",
+        "description": "An array of objects containing competitor pricing information for the specified location, vehicle type, and date range.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "competitor_name": {
+              "type": "string",
+              "description": "The name of the competitor.",
+              "example": "Acme Rentals"
+            },
+            "price_per_day": {
+              "type": "number",
+              "description": "The competitor's daily rental price for the specified vehicle type.",
+              "example": 75.99
+            },
+            "total_price": {
+              "type": "number",
+              "description": "The competitor's total rental price for the specified date range.",
+              "example": 379.95
+            }
+          },
+          "required": [
+            "competitor_name",
+            "price_per_day",
+            "total_price"
+          ]
+        }
+      }
+    },
+    "required": [
+      "location",
+      "vehicle_type",
+      "date_range",
+      "competitor_prices"
+    ]
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Rental Price Recommendation",
+    "type": "object",
+    "properties": {
+      "recommended_price": {
+        "type": "number",
+        "minimum": 0,
+        "description": "The recommended rental price in USD"
+      },
+      "confidence_score": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1,
+        "description": "The confidence level of the price recommendation, from 0 to 1"
+      },
+      "competitor_data": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "competitor_name": {
+              "type": "string",
+              "description": "The name of the competitor"
+            },
+            "competitor_price": {
+              "type": "number",
+              "minimum": 0,
+              "description": "The rental price offered by the competitor in USD"
+            },
+            "competitor_url": {
+              "type": "string",
+              "format": "uri",
+              "description": "The URL of the competitor's rental listing"
+            },
+            "last_updated": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The timestamp of when the competitor data was last updated"
+            }
+          },
+          "required": [
+            "competitor_name",
+            "competitor_price"
+          ]
+        },
+        "description": "An array of objects containing data on competitors' rental prices"
+      }
+    },
+    "required": [
+      "recommended_price",
+      "confidence_score",
+      "competitor_data"
+    ],
+    "additionalProperties": false
+  }
 }

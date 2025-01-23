@@ -12,5 +12,169 @@
   "Output Schema": "A JSON object summarizing frequent chatbot issues, competitor best practices, and recommended fixes. Example: { 'common_issues': ['language confusion', 'booking glitch'], 'competitor_strategies': [...], 'implementation_roadmap': [{...}] }",
   "Matching algorithm used to integrate the data": "Posts are scanned for keywords referencing competitor chatbots or general hotel chatbot experiences. A text clustering model groups related feedback (e.g., ‘language issues’).",
   "Story": "A luxury hotel brand wanted to enhance its AI chatbot’s performance but lacked a solid benchmark. They reached out to a web scraping vendor to collect public comments from travelers discussing any hotel chatbot experiences. The vendor’s scrapers parsed forum threads on TripAdvisor and other niche travel communities, capturing posts about chatbots that either disappointed or impressed guests. Certain recurring themes emerged: many users expressed annoyance when the chatbot couldn’t handle multi-language queries or more complex booking modifications. Others praised competitor bots that seamlessly integrated loyalty account information for upselling. By overlaying this intelligence on their chatbot design, the hotel adjusted its AI training to support multi-language basics, ensuring standard questions (like “Can I book a spa slot?”) were recognized in multiple languages. They also introduced an upsell logic that recognized returning loyalty members and offered room upgrades proactively. Partnering with the web scraping firm saved time and provided real-world traveler perspectives otherwise scattered across hundreds of forum threads. In short order, the hotel’s chatbot saw a spike in positive interactions, fewer escalations to human support, and an uptick in in-stay upsells. Ultimately, public feedback about competitor chatbots became a valuable blueprint for improvements, driving better guest engagement and revenue gains.",
-  "publicationDate": "2024-03-08"
+  "publicationDate": "2024-03-08",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "forum_links": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "format": "uri",
+          "description": "URLs to online forums relevant to the business"
+        },
+        "examples": [
+          [
+            "https://www.tripadvisor.com/ShowForum-g1-i12105-Travel_Technology.html",
+            "https://www.flyertalk.com/forum/hotel-technology-620/",
+            "https://community.withairbnb.com/t5/Hosting/ct-p/hosting"
+          ]
+        ]
+      },
+      "keywords": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "description": "Keywords to monitor, such as product names or industry terms"
+        },
+        "examples": [
+          [
+            "chatbot",
+            "AI concierge",
+            "virtual assistant",
+            "digital check-in"
+          ]
+        ]
+      },
+      "competitors": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "description": "Names of competitor brands to track mentions of"
+        },
+        "examples": [
+          [
+            "Marriott International",
+            "Hilton Worldwide",
+            "InterContinental Hotels Group",
+            "Wyndham Hotels & Resorts"
+          ]
+        ]
+      }
+    },
+    "required": [
+      "forum_links",
+      "keywords",
+      "competitors"
+    ],
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Chatbot Analysis",
+    "description": "A JSON object summarizing frequent chatbot issues, competitor best practices, and recommended fixes.",
+    "type": "object",
+    "properties": {
+      "common_issues": {
+        "description": "An array of strings listing frequent problems encountered with the chatbot.",
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          "language confusion",
+          "booking glitch",
+          "slow response times",
+          "irrelevant responses"
+        ]
+      },
+      "competitor_strategies": {
+        "description": "An array of objects detailing effective tactics used by rival chatbots.",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "competitor": {
+              "description": "The name of the competing chatbot or company.",
+              "type": "string"
+            },
+            "strategy": {
+              "description": "A description of the successful approach used by the competitor.",
+              "type": "string"
+            },
+            "impact": {
+              "description": "The measured or perceived effect of employing this strategy.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "competitor",
+            "strategy",
+            "impact"
+          ]
+        },
+        "examples": [
+          {
+            "competitor": "Acme AI Assistant",
+            "strategy": "Multilingual support for 25 languages",
+            "impact": "20% increase in international usage"
+          }
+        ]
+      },
+      "implementation_roadmap": {
+        "description": "An array of objects outlining suggested improvements and the steps to achieve them.",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "recommendation": {
+              "description": "A specific fix or feature to enhance the chatbot's performance.",
+              "type": "string"
+            },
+            "benefit": {
+              "description": "The expected gains from implementing this recommendation.",
+              "type": "string"
+            },
+            "steps": {
+              "description": "An ordered list of actions to take to apply the fix.",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "priority": {
+              "description": "The importance or urgency of this recommendation, from 1-5.",
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          "required": [
+            "recommendation",
+            "benefit",
+            "steps",
+            "priority"
+          ]
+        },
+        "examples": [
+          {
+            "recommendation": "Expand training data for language understanding model.",
+            "benefit": "Reduce fallback rate by 10% and increase conversational fluidity.",
+            "steps": [
+              "Identify top 50 conversational failure points.",
+              "Gather 1000 new training examples for each failure point.",
+              "Retrain language model and A/B test performance."
+            ],
+            "priority": 4
+          }
+        ]
+      }
+    },
+    "required": [
+      "common_issues",
+      "competitor_strategies",
+      "implementation_roadmap"
+    ]
+  }
 }

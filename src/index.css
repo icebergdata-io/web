@@ -117,3 +117,75 @@
     animation-play-state: paused;
   }
 }
+
+/* JSON Schema Viewer Styles */
+.schema-viewer {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.schema-viewer .json-view-container {
+  background: transparent !important;
+}
+
+.schema-viewer .json-view-container .json-view {
+  padding: 0.75rem;
+}
+
+.schema-viewer .json-view-container .json-view-dark {
+  color: #1F2937;
+}
+
+.schema-viewer .json-view-container .json-view-label {
+  color: #6366F1;  /* Indigo color for property names */
+  font-weight: 600;
+}
+
+.schema-viewer .json-view-container .json-view-string {
+  color: #10B981;  /* Emerald color for strings */
+}
+
+.schema-viewer .json-view-container .json-view-number {
+  color: #F59E0B;  /* Amber color for numbers */
+}
+
+.schema-viewer .json-view-container .json-view-boolean {
+  color: #EC4899;  /* Pink color for booleans */
+}
+
+.schema-viewer .json-view-container .json-view-null {
+  color: #6B7280;  /* Gray color for null */
+}
+
+.schema-viewer .json-view-container .json-view-bracket {
+  color: #4B5563;
+  font-weight: 600;
+}
+
+/* Add some spacing between items */
+.schema-viewer .json-view-container .json-view-item {
+  margin: 0.35rem 0;
+  padding: 0.15rem 0;
+}
+
+/* Style the expand/collapse arrows */
+.schema-viewer .json-view-container .json-view-arrow {
+  color: #8B5CF6;  /* Purple color for arrows */
+  margin-right: 0.5rem;
+  font-weight: bold;
+}
+
+/* Hover effect on items */
+.schema-viewer .json-view-container .json-view-item:hover {
+  background-color: rgba(243, 244, 246, 0.8);
+  border-radius: 0.25rem;
+  transition: all 0.2s ease;
+}
+
+/* Description text style */
+.schema-viewer .json-view-container .json-view-description {
+  color: #6B7280;
+  font-style: italic;
+  margin-left: 0.5rem;
+}

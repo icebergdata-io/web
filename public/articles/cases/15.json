@@ -12,5 +12,134 @@
   "Output Schema": "A JSON object detailing competitor rate structures, potential hidden fees found, and recommended price alignment. Example: { 'competitor': 'RentalX', 'base_rate': 49.99, 'hidden_fees': ['airport surcharge'], 'recommendations': [...] }",
   "Matching algorithm used to integrate the data": "Rate data is matched by vehicle class and location. Forum scraping relies on keyword triggers (e.g., “surcharge,” “hidden fee”) to locate relevant user complaints, which are correlated to competitor names.",
   "Story": "A nationwide car rental chain suspected it was leaving money on the table by not aligning surcharges with competitor standards, but it lacked a reliable way to track ongoing changes. Through a web scraping company, the firm collected publicly visible rate details from competitor websites—carefully parsing disclaimers, footnotes, and promotional pages. The same partner also scraped traveler forums on sites like TripAdvisor, picking up real customer stories of hidden fees. This data revealed a pattern: one competitor had quietly introduced a new airport pick-up surcharge that boosted final costs by around 15%. Another competitor undercut the base rate but hiked insurance add-on fees. Armed with these insights, the rental chain adjusted its own pricing strategy to remain competitive while ensuring that surcharges were properly disclosed and matched market norms. They also flagged potential improvements in clarity for their own booking process, preventing negative feedback about unexpected fees. By outsourcing the scraping work, the firm received curated, real-time feeds with minimal manual effort, enabling quick billing reconciliations and more strategic revenue management.",
-  "publicationDate": "2023-09-24"
+  "publicationDate": "2023-09-24",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "competitor_urls": {
+        "type": "array",
+        "description": "An array of URLs for competitor rate pages to monitor.",
+        "items": {
+          "type": "string",
+          "format": "uri"
+        },
+        "examples": [
+          [
+            "https://www.competitorsite.com/rates",
+            "https://www.othercompetitor.com/pricing"
+          ]
+        ]
+      },
+      "promo_keywords": {
+        "type": "array",
+        "description": "An array of keywords or phrases to watch for that may indicate promotional discounts.",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          [
+            "weekend deal",
+            "holiday sale",
+            "limited time offer"
+          ]
+        ]
+      },
+      "forums": {
+        "type": "array",
+        "description": "An array of social media sites or forums to monitor for relevant discussions.",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          [
+            "TripAdvisor",
+            "Reddit/r/travel",
+            "Fodors Travel Talk"
+          ]
+        ]
+      }
+    },
+    "required": [
+      "competitor_urls",
+      "promo_keywords",
+      "forums"
+    ],
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "competitor": {
+        "type": "string",
+        "description": "The name of the competitor being analyzed",
+        "example": "RentalX"
+      },
+      "base_rate": {
+        "type": "number",
+        "description": "The base rental rate offered by the competitor, without any additional fees",
+        "example": 49.99
+      },
+      "hidden_fees": {
+        "type": "array",
+        "description": "A list of potential hidden fees found in the competitor's rate structure",
+        "items": {
+          "type": "string"
+        },
+        "example": [
+          "airport surcharge",
+          "young driver fee",
+          "additional driver fee"
+        ]
+      },
+      "recommendations": {
+        "type": "array",
+        "description": "A list of recommended actions for price alignment based on the competitor analysis",
+        "items": {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The recommended action to take",
+              "example": "lower base rate"
+            },
+            "target_price": {
+              "type": "number",
+              "description": "The target price for the recommended action",
+              "example": 45.99
+            },
+            "justification": {
+              "type": "string",
+              "description": "The reason for the recommended action",
+              "example": "To remain competitive with RentalX's base rate"
+            }
+          },
+          "required": [
+            "action",
+            "target_price",
+            "justification"
+          ]
+        },
+        "example": [
+          {
+            "action": "lower base rate",
+            "target_price": 45.99,
+            "justification": "To remain competitive with RentalX's base rate"
+          },
+          {
+            "action": "remove hidden fees",
+            "target_price": 0,
+            "justification": "To provide transparent pricing and avoid customer dissatisfaction"
+          }
+        ]
+      }
+    },
+    "required": [
+      "competitor",
+      "base_rate",
+      "hidden_fees",
+      "recommendations"
+    ]
+  }
 }

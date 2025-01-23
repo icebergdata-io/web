@@ -12,5 +12,129 @@
   "Output Schema": "A JSON object summarizing sentiment trends, top user complaints, and recommended UI improvements. Example: { 'average_rating': 4.2, 'common_requests': ['faster checkouts', 'clear insurance options'], 'ux_recommendations': [{...}] }",
   "Matching algorithm used to integrate the data": "Keyword-based text analytics to cluster similar feedback themes, combined with a sentiment scoring model that flags recurring negative or positive aspects.",
   "Story": "A global car rental brand struggled to interpret why users gave competitor apps higher ratings, suspecting it had something to do with a smoother interface. By hiring a specialized web scraping firm, they collected thousands of public reviews from both Google Play and Apple’s App Store. The aggregator parsed the text for recurring phrases—like “insurance confusion,” “faster check-in,” or “promo codes not working.” This trove of feedback provided a roadmap: adding simpler insurance explanations, streamlining user flows, and implementing a robust promo code system became top priorities. Within a few weeks, the rental brand’s own app updates addressed these insights, resulting in improved ratings and happier customers. Meanwhile, the scraping partner handled regulatory compliance, maintained up-to-date scraping scripts, and efficiently delivered fresh reviews in user-friendly dashboards. This approach kept the internal product team focused on building better features rather than grappling with store data collection. Overall, leveraging publicly accessible user feedback turned competitor app reviews into actionable intelligence, boosting the client’s mobile app performance considerably.",
-  "publicationDate": "2023-08-19"
+  "publicationDate": "2023-08-19",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "AppReviewRequest",
+    "type": "object",
+    "required": [
+      "app_store_links",
+      "competitor_app_ids",
+      "review_date_range"
+    ],
+    "properties": {
+      "app_store_links": {
+        "type": "array",
+        "description": "An array of URLs pointing to the app's listing in various app stores.",
+        "items": {
+          "type": "string",
+          "format": "uri"
+        },
+        "examples": [
+          [
+            "https://apps.apple.com/us/app/rental-app-pro/id1234567890",
+            "https://play.google.com/store/apps/details?id=com.rentalapp.pro"
+          ]
+        ],
+        "minItems": 1,
+        "uniqueItems": true
+      },
+      "competitor_app_ids": {
+        "type": "array",
+        "description": "An array of unique app IDs representing competitor apps to compare against.",
+        "items": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*(\\.[a-z0-9_]+)+[0-9a-z_]$"
+        },
+        "examples": [
+          [
+            "com.competitorapp1.basic",
+            "com.competitorapp2.premium"
+          ]
+        ],
+        "minItems": 1,
+        "uniqueItems": true
+      },
+      "review_date_range": {
+        "type": "string",
+        "description": "A date range string specifying the start and end dates for reviews to include, in 'YYYY-MM-DD to YYYY-MM-DD' format.",
+        "pattern": "^\\d{4}-\\d{2}-\\d{2} to \\d{4}-\\d{2}-\\d{2}$",
+        "examples": [
+          "2025-01-01 to 2025-03-01"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "average_rating": {
+        "type": "number",
+        "minimum": 1,
+        "maximum": 5,
+        "description": "The average user rating on a scale of 1 to 5"
+      },
+      "common_requests": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "List of the most frequently requested features or improvements"
+      },
+      "ux_recommendations": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "recommendation_id": {
+              "type": "string",
+              "description": "Unique identifier for the recommendation"
+            },
+            "title": {
+              "type": "string",
+              "description": "Brief title summarizing the recommendation"
+            },
+            "description": {
+              "type": "string",
+              "description": "Detailed explanation of the recommended UX improvement"
+            },
+            "priority": {
+              "type": "string",
+              "enum": [
+                "low",
+                "medium",
+                "high"
+              ],
+              "description": "Priority level for implementing the recommendation"
+            },
+            "estimated_effort": {
+              "type": "string",
+              "enum": [
+                "low",
+                "medium",
+                "high"
+              ],
+              "description": "Estimated level of effort required to implement the recommendation"
+            }
+          },
+          "required": [
+            "recommendation_id",
+            "title",
+            "description",
+            "priority",
+            "estimated_effort"
+          ]
+        },
+        "description": "List of recommended user experience improvements"
+      }
+    },
+    "required": [
+      "average_rating",
+      "common_requests",
+      "ux_recommendations"
+    ],
+    "additionalProperties": false
+  }
 }

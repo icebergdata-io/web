@@ -12,5 +12,98 @@
   "Output Schema": "A JSON array listing speaker names, job titles, companies, and public links. Example: [ { 'name': 'Dr. Alice Carter', 'title': 'CISO', 'company': 'SecureNow', 'linkedin': '...', 'session_time': '2025-04-10 10:00AM' }, ... ]",
   "Matching algorithm used to integrate the data": "Agenda items are parsed for speaker details; any LinkedIn or social handle is validated for accurate job titles. Additional metadata helps rank speaker influence (e.g., session keynotes).",
   "Story": "An enterprise security solutions provider aimed to connect with senior cybersecurity professionals. They recognized that many such leaders frequently speak at industry events, but manually scanning conference websites was tedious. The provider partnered with a web scraping firm specialized in event-based data extraction. The scrapers crawled official summit pages, extracting session titles and speaker lineups. They also monitored social media announcements from organizers who tagged scheduled participants. Whenever the system found a CISO or CTO role, it cross-referenced public LinkedIn data to confirm their corporate affiliation. Within just a few weeks, the solutions provider compiled a robust database of upcoming conference speakers—potential high-value leads. Their outreach team then sent personalized invitations to speak about mutual security challenges or requested product demos. Because all data was publicly available, the approach remained compliant, and the quick follow-up impressed many keynote-level speakers. Some of these interactions blossomed into strategic partnerships, proof-of-concept engagements, or even co-authored white papers. By outsourcing the scraping process, the provider seamlessly tracked new additions to event agendas, ensuring they never missed an opportunity to connect with top industry minds.",
-  "publicationDate": "2024-10-02"
+  "publicationDate": "2024-10-02",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "summit_pages": {
+        "type": "array",
+        "description": "An array of URLs for conference agenda or speaker pages to scrape.",
+        "items": {
+          "type": "string",
+          "format": "uri"
+        },
+        "examples": [
+          [
+            "https://cybersummit.com/agenda",
+            "https://datasecconf.com/speakers"
+          ]
+        ]
+      },
+      "target_roles": {
+        "type": "array",
+        "description": "An array of target speaker roles or titles to search for.",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          [
+            "CISO",
+            "CTO",
+            "Chief Information Security Officer"
+          ]
+        ]
+      },
+      "industry": {
+        "type": "string",
+        "description": "The target industry or sector for the conference and speakers.",
+        "examples": [
+          "Cybersecurity",
+          "FinTech",
+          "Healthcare IT"
+        ]
+      }
+    },
+    "required": [
+      "summit_pages",
+      "target_roles",
+      "industry"
+    ],
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The full name of the speaker",
+          "example": "Dr. Alice Carter"
+        },
+        "title": {
+          "type": "string",
+          "description": "The job title of the speaker",
+          "example": "CISO"
+        },
+        "company": {
+          "type": "string",
+          "description": "The company the speaker works for",
+          "example": "SecureNow"
+        },
+        "linkedin": {
+          "type": "string",
+          "format": "uri",
+          "description": "The LinkedIn profile URL of the speaker",
+          "example": "https://www.linkedin.com/in/alice-carter"
+        },
+        "session_time": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date and time of the speaker's session in ISO 8601 format",
+          "example": "2025-04-10T10:00:00"
+        }
+      },
+      "required": [
+        "name",
+        "title",
+        "company",
+        "linkedin",
+        "session_time"
+      ],
+      "additionalProperties": false
+    }
+  }
 }

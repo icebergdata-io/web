@@ -12,5 +12,130 @@
   "Output Schema": "A JSON object indicating peak foot traffic windows, recommended product re-zoning, and predicted sales uplift. Example: { 'store_id': 302, 'peak_traffic': 'Saturday 2-4pm', 'layout_changes': [...], 'sales_uplift_estimate': 0.15 }",
   "Matching algorithm used to integrate the data": "Location-based matching merges public check-in times with store sensor logs. Product adjacency suggestions follow from linking high-traffic hours to category sales conversions.",
   "Story": "A regional supermarket chain had basic in-store sensors but wanted a fuller picture of foot traffic influences from surrounding businesses and local events. They enlisted a web scraping vendor to gather social media check-in data for nearby shops, restaurants, and event venues. The aggregated data showed that on Saturdays, foot traffic spiked at lunchtime when a popular farmer’s market opened next door. Understanding that wave, the supermarket repositioned grab-and-go meals and bakery items at the front, anticipating increased midday visitors. Meanwhile, competitor store images posted by customers hinted at successful produce aisle designs that funneled shoppers towards high-margin items like fresh juices. Incorporating these layout ideas, the chain improved the path to its own produce section, raising basket sizes. By outsourcing the scraping, the supermarket leveraged publicly accessible data without overburdening internal teams. Within weeks, managers saw less congestion near the registers and higher sales in impulse-buy sections. Ultimately, layering public foot traffic info on top of existing sensor data generated more nuanced store layout strategies, delighting shoppers with an easier flow and boosting revenue for the supermarket.",
-  "publicationDate": "2025-01-04"
+  "publicationDate": "2025-01-04",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "store_coordinates": {
+        "description": "An array of store geolocations in 'latitude,longitude' format.",
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?),\\s*[-+]?(180(\\.0+)?|((1[0-7]\\d)|([1-9]?\\d))(\\.\\d+)?)$"
+        },
+        "example": [
+          "37.7749,-122.4194",
+          "40.7128,-74.0060"
+        ]
+      },
+      "social_endpoints": {
+        "description": "An array of social media check-in endpoints.",
+        "type": "array",
+        "items": {
+          "type": "string",
+          "format": "uri"
+        },
+        "example": [
+          "https://api.foursquare.com/v2/venues/search",
+          "https://api.yelp.com/v3/businesses/search"
+        ]
+      },
+      "competitor_stores": {
+        "description": "An array of competitor store names.",
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "example": [
+          "StoreB",
+          "StoreC",
+          "StoreD"
+        ]
+      },
+      "time_frames": {
+        "description": "An array of time frames of interest.",
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "weekdays",
+            "weekends",
+            "holidays",
+            "mornings",
+            "afternoons",
+            "evenings"
+          ]
+        },
+        "example": [
+          "weekends",
+          "holidays",
+          "evenings"
+        ]
+      }
+    },
+    "required": [
+      "store_coordinates"
+    ],
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "store_id": {
+        "type": "integer",
+        "description": "The unique identifier of the store.",
+        "example": 302
+      },
+      "peak_traffic": {
+        "type": "string",
+        "description": "The day and time range when foot traffic is highest in the store.",
+        "example": "Saturday 2-4pm",
+        "pattern": "^[A-Za-z]+ \\d{1,2}[ap]m-\\d{1,2}[ap]m$"
+      },
+      "layout_changes": {
+        "type": "array",
+        "description": "A list of recommended changes to the store layout and product placement.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "category": {
+              "type": "string",
+              "description": "The product category affected by the change.",
+              "example": "Snacks"
+            },
+            "current_zone": {
+              "type": "string",
+              "description": "The current location of the product category in the store.",
+              "example": "Aisle 3"
+            },
+            "recommended_zone": {
+              "type": "string",
+              "description": "The recommended new location for the product category.",
+              "example": "Aisle 1, Near Checkout"
+            }
+          },
+          "required": [
+            "category",
+            "current_zone",
+            "recommended_zone"
+          ]
+        }
+      },
+      "sales_uplift_estimate": {
+        "type": "number",
+        "description": "The predicted percentage increase in sales resulting from the recommended layout changes.",
+        "example": 0.15,
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    "required": [
+      "store_id",
+      "peak_traffic",
+      "layout_changes",
+      "sales_uplift_estimate"
+    ]
+  }
 }

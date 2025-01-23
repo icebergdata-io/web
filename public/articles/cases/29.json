@@ -12,5 +12,123 @@
   "Output Schema": "A JSON array highlighting businesses with synergy scores, describing recommended contact approaches. Example: [ { 'company_name': 'HealthEdge Inc.', 'synergy_score': 0.85, 'recommended_pitch': 'Co-branded subscription boxes' }, ... ]",
   "Matching algorithm used to integrate the data": "A synergy engine that compares each company’s declared product lines with the user’s lines, weighting shared demographic or complementary offerings for joint marketing potential.",
   "Story": "A fitness subscription box service was searching for health-centric partners—like dietary supplement brands, local wellness events, or eco-friendly product makers—to cross-promote. Rather than guess, they enlisted a web scraping vendor to systematically comb through publicly available business directories and state registration sites. The scrapers identified companies in the ‘Wellness’ or ‘Fitness’ sectors, aggregated each listing’s product descriptions, and then applied a synergy filter. The box service discovered a mid-sized smoothie ingredient supplier with a loyal West Coast following. Since the listings showed robust social media engagement, the synergy score was high. The subscription box team reached out with a co-branding proposal: monthly boxes that included the ingredient supplier’s product samples. The synergy quickly proved successful—customers enjoyed the new offering, and the supplier gained exposure to new audiences. By outsourcing the scraping tasks, the fitness brand consistently replenished its pipeline of fresh potential partners, all found in the public domain. These collaborative efforts not only boosted short-term revenue but also positioned the subscription box service as a dynamic brand forging meaningful cross-industry collaborations.",
-  "publicationDate": "2024-10-16"
+  "publicationDate": "2024-10-16",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "target_sectors": {
+        "type": "array",
+        "description": "An array of target business sectors or verticals to focus on.",
+        "items": {
+          "type": "string",
+          "description": "A specific sector such as 'Wellness', 'Fitness', 'Healthcare', 'Technology', etc."
+        },
+        "minItems": 1,
+        "uniqueItems": true,
+        "examples": [
+          [
+            "Wellness",
+            "Fitness"
+          ],
+          [
+            "Healthcare",
+            "Technology",
+            "Consumer Goods"
+          ]
+        ]
+      },
+      "synergy_filter": {
+        "type": "string",
+        "description": "Specifies the type of synergy or partnership opportunity to prioritize.",
+        "enum": [
+          "sharedCustomers",
+          "complementaryOfferings",
+          "jointMarketing",
+          "technologyIntegration"
+        ],
+        "examples": [
+          "sharedCustomers",
+          "complementaryOfferings"
+        ]
+      },
+      "locations": {
+        "type": "array",
+        "description": "An array of geographic regions, states, or cities to target.",
+        "items": {
+          "type": "string",
+          "description": "A specific location such as a country, state, city or region."
+        },
+        "minItems": 1,
+        "uniqueItems": true,
+        "examples": [
+          [
+            "California"
+          ],
+          [
+            "United States",
+            "Canada"
+          ],
+          [
+            "New York",
+            "Los Angeles",
+            "Chicago"
+          ]
+        ]
+      }
+    },
+    "required": [
+      "target_sectors",
+      "synergy_filter",
+      "locations"
+    ]
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "company_name": {
+          "type": "string",
+          "description": "The name of the company being recommended for outreach.",
+          "example": "HealthEdge Inc."
+        },
+        "synergy_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "A decimal score from 0 to 1 indicating the level of potential synergy with the company, with 1 being the highest.",
+          "example": 0.85
+        },
+        "recommended_pitch": {
+          "type": "string",
+          "description": "A brief description of the recommended approach for contacting and partnering with this company.",
+          "example": "Co-branded subscription boxes"
+        }
+      },
+      "required": [
+        "company_name",
+        "synergy_score",
+        "recommended_pitch"
+      ]
+    },
+    "examples": [
+      {
+        "company_name": "HealthEdge Inc.",
+        "synergy_score": 0.85,
+        "recommended_pitch": "Co-branded subscription boxes"
+      },
+      {
+        "company_name": "Vitality Wellness",
+        "synergy_score": 0.92,
+        "recommended_pitch": "Joint webinar series on healthy habits"
+      },
+      {
+        "company_name": "FitTech Wearables",
+        "synergy_score": 0.78,
+        "recommended_pitch": "Bundle fitness trackers with memberships"
+      }
+    ]
+  }
 }

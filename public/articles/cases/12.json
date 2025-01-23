@@ -12,5 +12,113 @@
   "Output Schema": "A JSON array with structured lead information, including profile links and summary stats (years of experience, endorsements). Example: [ { 'name': 'Jane Smith', 'title': 'VP Engineering', 'company': 'TechDrive', 'location': 'San Francisco', 'profile_link': '...' }, ... ]",
   "Matching algorithm used to integrate the data": "Profile-based scraping that cross-references job roles and industries, applying text classification to filter out irrelevant titles and using location-based matching for regional targeting.",
   "Story": "A global IT solutions provider wanted to break into new markets. Although they had a robust sales team, their approach to identifying and prioritizing leads often felt haphazard. Knowing that LinkedIn is a key platform for professionals, they commissioned an outsourced data intelligence service to develop a system that continually scanned the platform for high-potential profiles. The system identified individuals based on location, job title, experience level, and connections to relevant tech communities. A daily feed synced with the provider’s CRM, adding newly discovered leads or updating job changes among existing contacts. This real-time intelligence became instrumental for account-based marketing campaigns. For instance, if an existing account contact became a CTO at a new firm, the system flagged this transition, enabling a timely and well-informed outreach. Within months, the provider reported a notable uptick in new business opportunities, thanks in large part to the targeted approach that focused on capturing real-time changes in professional roles—one of the strongest indicators of a readiness to adopt new solutions. By outsourcing the project, the IT solutions provider spared itself from the technical and regulatory complexities of scraping social media. The vendor managed best practices to avoid breaching user privacy and platform terms. Freed from these burdens, the provider’s sales teams could focus purely on nurturing relationships with the newly discovered leads. The result was a more strategic, data-driven approach that transformed LinkedIn into a fertile source of high-quality B2B prospects.",
-  "publicationDate": "2023-06-13"
+  "publicationDate": "2023-06-13",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "industry": {
+        "type": "string",
+        "description": "The target industry for the job search.",
+        "examples": [
+          "Software",
+          "Finance",
+          "Healthcare"
+        ]
+      },
+      "job_roles": {
+        "type": "array",
+        "description": "An array of desired job roles.",
+        "items": {
+          "type": "string",
+          "examples": [
+            "CTO",
+            "VP Engineering",
+            "Software Architect",
+            "Product Manager"
+          ]
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      },
+      "locations": {
+        "type": "array",
+        "description": "An array of preferred job locations.",
+        "items": {
+          "type": "string",
+          "examples": [
+            "San Francisco",
+            "New York",
+            "Seattle",
+            "Remote"
+          ]
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      }
+    },
+    "required": [
+      "industry",
+      "job_roles",
+      "locations"
+    ],
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "LeadInformation",
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Full name of the lead",
+          "example": "Jane Smith"
+        },
+        "title": {
+          "type": "string",
+          "description": "Current job title of the lead",
+          "example": "VP Engineering"
+        },
+        "company": {
+          "type": "string",
+          "description": "Current company where the lead works",
+          "example": "TechDrive"
+        },
+        "location": {
+          "type": "string",
+          "description": "Geographic location of the lead",
+          "example": "San Francisco"
+        },
+        "profile_link": {
+          "type": "string",
+          "description": "URL link to the lead's professional profile",
+          "format": "uri",
+          "example": "https://www.linkedin.com/in/janesmith"
+        },
+        "years_of_experience": {
+          "type": "integer",
+          "description": "Number of years of professional experience the lead has",
+          "minimum": 0,
+          "example": 12
+        },
+        "endorsements": {
+          "type": "integer",
+          "description": "Number of professional endorsements the lead has received",
+          "minimum": 0,
+          "example": 87
+        }
+      },
+      "required": [
+        "name",
+        "title",
+        "company",
+        "location",
+        "profile_link",
+        "years_of_experience",
+        "endorsements"
+      ]
+    }
+  }
 }

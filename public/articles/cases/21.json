@@ -12,5 +12,166 @@
   "Output Schema": "A JSON object summarizing each OTA's public fee structure, competitor tie-ins, and recommended channel allocations. Example: { 'ota_fees': [...], 'competitor_promotions': [...], 'channel_strategy': [{...}] }",
   "Matching algorithm used to integrate the data": "Data is grouped by OTA brand, location, and any unique disclaimers or promotional text referencing commissions or fees, then mapped back to competitor listings for side-by-side comparisons.",
   "Story": "A major hotel group found itself paying high commissions to certain OTAs but lacked the knowledge to confidently renegotiate or shift bookings to its website. By working with a web scraping agency, the group regularly pulled public commission details from multiple OTAs’ listing pages, T&C sections, and promotional disclaimers. The scraping process also captured competitor promotions that might reflect negotiated lower fees. In one instance, the data showed that a direct competitor brand had begun funneling more inventory to a specific OTA after that platform reduced listing fees. This acted as a strong indicator that the same OTA might be open to a similar deal. Additionally, user discussions on social media revealed dissatisfaction with hidden booking fees, suggesting certain OTAs were less transparent—potentially harming the user experience. Armed with this intelligence, the hotel group negotiated new terms with one OTA while transferring some inventory to direct channels and alternative booking platforms for better margins. By outsourcing the data collection, the brand stayed current on every public update—no matter how subtle—and made swift changes to its channel mix. The end result was a more balanced distribution strategy, reduced commission outflow, and improved profitability without risking the loss of vital OTA exposure.",
-  "publicationDate": "2024-06-12"
+  "publicationDate": "2024-06-12",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "ota_listings": {
+        "type": "array",
+        "description": "An array of OTA site URLs where the hotel is listed.",
+        "items": {
+          "type": "string",
+          "format": "uri"
+        },
+        "minItems": 1,
+        "uniqueItems": true,
+        "example": [
+          "https://www.expedia.com/hotels/property1234",
+          "https://www.booking.com/hotel/us/property1234.html"
+        ]
+      },
+      "competitors": {
+        "type": "array",
+        "description": "An array of competitor hotel names.",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        },
+        "uniqueItems": true,
+        "example": [
+          "HotelX",
+          "HotelY"
+        ]
+      },
+      "tracking_keywords": {
+        "type": "array",
+        "description": "An array of keywords to track that trigger commission or listing fee highlights.",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        },
+        "minItems": 1,
+        "uniqueItems": true,
+        "example": [
+          "commission",
+          "listing fee",
+          "booking fee"
+        ]
+      }
+    },
+    "required": [
+      "ota_listings",
+      "competitors",
+      "tracking_keywords"
+    ],
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "ota_fees": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "ota_name": {
+              "type": "string",
+              "description": "The name of the online travel agency (OTA)"
+            },
+            "fee_type": {
+              "type": "string",
+              "description": "The type of fee charged by the OTA (e.g., commission, flat fee, etc.)"
+            },
+            "fee_amount": {
+              "type": "number",
+              "description": "The amount of the fee, either as a percentage or a fixed value"
+            },
+            "fee_description": {
+              "type": "string",
+              "description": "A brief description of the fee structure"
+            }
+          },
+          "required": [
+            "ota_name",
+            "fee_type",
+            "fee_amount"
+          ]
+        }
+      },
+      "competitor_promotions": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "competitor_name": {
+              "type": "string",
+              "description": "The name of the competitor offering the promotion"
+            },
+            "ota_name": {
+              "type": "string",
+              "description": "The name of the OTA where the promotion is offered"
+            },
+            "promotion_type": {
+              "type": "string",
+              "description": "The type of promotion (e.g., discount, bonus, etc.)"
+            },
+            "promotion_details": {
+              "type": "string",
+              "description": "A brief description of the promotion"
+            },
+            "valid_from": {
+              "type": "string",
+              "format": "date",
+              "description": "The start date of the promotion"
+            },
+            "valid_to": {
+              "type": "string",
+              "format": "date",
+              "description": "The end date of the promotion"
+            }
+          },
+          "required": [
+            "competitor_name",
+            "ota_name",
+            "promotion_type",
+            "valid_from",
+            "valid_to"
+          ]
+        }
+      },
+      "channel_strategy": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "ota_name": {
+              "type": "string",
+              "description": "The name of the OTA"
+            },
+            "recommended_allocation": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100,
+              "description": "The recommended percentage of inventory to allocate to this OTA"
+            },
+            "rationale": {
+              "type": "string",
+              "description": "A brief explanation for the recommended allocation"
+            }
+          },
+          "required": [
+            "ota_name",
+            "recommended_allocation"
+          ]
+        }
+      }
+    },
+    "required": [
+      "ota_fees",
+      "competitor_promotions",
+      "channel_strategy"
+    ]
+  }
 }

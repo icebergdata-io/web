@@ -12,5 +12,162 @@
   "Output Schema": "A JSON object correlating mention spikes with footfall changes, competitor insights, and recommended marketing actions. Example: { 'location': 'StoreLocation1', 'mention_spike': 'Saturday 5pm', 'footfall_delta': 0.12, 'marketing_suggestions': [...] }",
   "Matching algorithm used to integrate the data": "Social posts tagged with a location or brand hashtag are matched to store coordinates. Footfall sensor logs are cross-referenced by time to detect correlation between online buzz and offline visits.",
   "Story": "A regional clothing chain noticed certain days had unusually high foot traffic, though promotional calendars indicated no special sales. To understand why, they hired a web scraping service that monitored social media geotags and brand hashtags in real time. The data showed a pattern: local influencers would occasionally post from the store, spiking mentions by curious followers. The correlation to in-store visits was immediate—foot traffic would jump within hours of such a post. Conversely, a competitor’s store across town had pre-planned events generating check-ins, overshadowing the chain’s location on weekends. With this intelligence, the clothing chain started orchestrating micro-promotions whenever mention volume climbed, like flash sales or influencer partnerships to amplify the buzz. By outsourcing social media scraping, the marketing team had accurate, up-to-date metrics on how social chatter translated into offline visits. Within a few months, the chain synchronized online and offline efforts more effectively, boosting weekend foot traffic and average purchase size. In short, public check-in data and brand mentions became key indicators of real-world momentum, enabling quick action to entice and retain walk-in shoppers.",
-  "publicationDate": "2024-12-05"
+  "publicationDate": "2024-12-05",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "hashtags": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^#[A-Za-z0-9_]+"
+        },
+        "description": "Array of brand-related hashtags to scrape",
+        "examples": [
+          "#ShopXYZ",
+          "#XYZSale",
+          "#XYZNewArrivals"
+        ]
+      },
+      "geotags": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Array of store location geotags to scrape",
+        "examples": [
+          "XYZ Store NYC",
+          "XYZ Store LA",
+          "XYZ Store Chicago"
+        ]
+      },
+      "competitors": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Array of competitor store names to scrape for mentions",
+        "examples": [
+          "StoreABC",
+          "StoreDEF",
+          "StoreGHI"
+        ]
+      },
+      "time_frames": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "weekend",
+            "weekday",
+            "morning",
+            "afternoon",
+            "evening"
+          ]
+        },
+        "description": "Array of time frame keywords to scrape within",
+        "examples": [
+          "weekend",
+          "morning"
+        ]
+      }
+    },
+    "required": [
+      "hashtags",
+      "geotags",
+      "competitors",
+      "time_frames"
+    ],
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "location": {
+        "type": "string",
+        "description": "The identifier or name of the store location.",
+        "example": "StoreLocation1"
+      },
+      "mention_spike": {
+        "type": "string",
+        "description": "The day and time when a significant increase in online mentions occurred.",
+        "example": "Saturday 5pm",
+        "pattern": "^[A-Za-z]+ \\d{1,2}(am|pm)$"
+      },
+      "footfall_delta": {
+        "type": "number",
+        "description": "The change in footfall (customer visits) represented as a decimal. Positive values indicate an increase, while negative values indicate a decrease.",
+        "example": 0.12,
+        "minimum": -1,
+        "maximum": 1
+      },
+      "competitor_insights": {
+        "type": "array",
+        "description": "An array of objects containing information about competitors' activities or performance.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "competitor_name": {
+              "type": "string",
+              "description": "The name of the competitor.",
+              "example": "CompetitorA"
+            },
+            "activity": {
+              "type": "string",
+              "description": "The specific activity or event related to the competitor.",
+              "example": "Launched a new product"
+            },
+            "impact_score": {
+              "type": "integer",
+              "description": "A score indicating the potential impact of the competitor's activity on the business, ranging from 1 (low impact) to 5 (high impact).",
+              "example": 3,
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          "required": [
+            "competitor_name",
+            "activity",
+            "impact_score"
+          ]
+        }
+      },
+      "marketing_suggestions": {
+        "type": "array",
+        "description": "An array of suggested marketing actions based on the mention spike, footfall change, and competitor insights.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The recommended marketing action to take.",
+              "example": "Run a targeted social media campaign"
+            },
+            "priority": {
+              "type": "string",
+              "description": "The priority level of the suggested action, indicating its importance or urgency.",
+              "example": "high",
+              "enum": [
+                "low",
+                "medium",
+                "high"
+              ]
+            }
+          },
+          "required": [
+            "action",
+            "priority"
+          ]
+        }
+      }
+    },
+    "required": [
+      "location",
+      "mention_spike",
+      "footfall_delta",
+      "marketing_suggestions"
+    ]
+  }
 }

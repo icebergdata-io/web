@@ -12,5 +12,187 @@
   "Output Schema": "A JSON object summarizing competitor stock levels, potential trends, and recommended restocking or promotional actions. Example: { 'category': 'Electronics', 'stock_levels': { 'SKU123': 'low stock', 'SKU456': 'out of stock' }, 'recommendations': {...} }",
   "Matching algorithm used to integrate the data": "A direct mapping of product SKUs where available, alongside text-based matching for product names and descriptions. The data is then pushed through a time-series analysis model to detect trends and anomalies.",
   "Story": "An up-and-coming e-commerce retailer specializing in home appliances noticed frequent spikes in demand that often caught them off guard. Sometimes, they’d run out of a bestseller just as customers flooded in, leading to lost sales and disappointed shoppers. Determined to be more proactive, the retailer partnered with a data intelligence firm to implement product availability monitoring. Multiple times a day, specialized bots scraped competitor websites to check product listings for stock status. The solution consolidated these findings in a dashboard that flagged patterns such as consistent low-stock status for a popular kitchen gadget or sudden surges in demand for certain air purifiers during allergy seasons. This alerted the retailer’s purchasing department to reorder critical items before they hit zero, leveraging the insight that a competitor might be trending out of stock. Furthermore, historical data showed that one competitor typically restocked items just before a major holiday sale, providing an opportunity for the retailer to promote those same items first, capturing early-bird shoppers. In just a few months, the retailer saw a noticeable increase in sales and fewer missed opportunities. By offloading the development of the scraping and analytics modules, they tapped into cutting-edge technology without burdening their internal developers. With real-time visibility, the company was able to forecast their own inventory needs more accurately, reduce stockouts, and even negotiate better supplier terms by demonstrating data-driven demand forecasts. The solution quickly became a core element of their competitive strategy in a crowded marketplace.",
-  "publicationDate": "2023-05-11"
+  "publicationDate": "2023-05-11",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "categories": {
+        "type": "array",
+        "description": "An array of product categories to scrape data for.",
+        "items": {
+          "type": "string"
+        },
+        "minItems": 1,
+        "uniqueItems": true,
+        "example": [
+          "Electronics",
+          "Home Appliances"
+        ]
+      },
+      "competitor_urls": {
+        "type": "array",
+        "description": "An array of competitor website URLs to scrape data from.",
+        "items": {
+          "type": "string",
+          "format": "uri"
+        },
+        "minItems": 1,
+        "uniqueItems": true,
+        "example": [
+          "https://competitor1.com",
+          "https://competitor2.com"
+        ]
+      },
+      "fields": {
+        "type": "array",
+        "description": "An array of specific data fields to scrape for each product.",
+        "items": {
+          "type": "string",
+          "enum": [
+            "stock_status",
+            "price",
+            "product_name",
+            "product_description",
+            "product_url",
+            "product_image_url",
+            "product_brand",
+            "product_category",
+            "product_id"
+          ]
+        },
+        "minItems": 1,
+        "uniqueItems": true,
+        "example": [
+          "stock_status",
+          "price",
+          "product_name",
+          "product_url"
+        ]
+      }
+    },
+    "required": [
+      "categories",
+      "competitor_urls",
+      "fields"
+    ],
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "category": {
+        "type": "string",
+        "description": "The product category being analyzed"
+      },
+      "stock_levels": {
+        "type": "object",
+        "description": "Competitor stock levels for specific SKUs",
+        "patternProperties": {
+          "^SKU\\d+$": {
+            "type": "string",
+            "enum": [
+              "in stock",
+              "low stock",
+              "out of stock"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "trends": {
+        "type": "array",
+        "description": "Potential trends in competitor stock and pricing",
+        "items": {
+          "type": "object",
+          "properties": {
+            "description": {
+              "type": "string"
+            },
+            "confidence": {
+              "type": "string",
+              "enum": [
+                "low",
+                "medium",
+                "high"
+              ]
+            }
+          },
+          "required": [
+            "description",
+            "confidence"
+          ]
+        }
+      },
+      "recommendations": {
+        "type": "object",
+        "description": "Recommended restocking or promotional actions",
+        "properties": {
+          "restocking": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "sku": {
+                  "type": "string",
+                  "pattern": "^SKU\\d+$"
+                },
+                "quantity": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "urgency": {
+                  "type": "string",
+                  "enum": [
+                    "low",
+                    "medium",
+                    "high"
+                  ]
+                }
+              },
+              "required": [
+                "sku",
+                "quantity",
+                "urgency"
+              ]
+            }
+          },
+          "promotions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "sku": {
+                  "type": "string",
+                  "pattern": "^SKU\\d+$"
+                },
+                "promo_type": {
+                  "type": "string",
+                  "enum": [
+                    "discount",
+                    "bundle",
+                    "gift with purchase"
+                  ]
+                },
+                "description": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "sku",
+                "promo_type",
+                "description"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "required": [
+      "category",
+      "stock_levels",
+      "recommendations"
+    ]
+  }
 }

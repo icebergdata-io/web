@@ -12,5 +12,124 @@
   "Output Schema": "A JSON object mapping competitor coverage density, regional demand indicators, and recommended entry points. Example: { 'region': 'Northern California', 'competitor_coverage': 'Low', 'demand_score': 0.9, 'entry_suggestions': [...] }",
   "Matching algorithm used to integrate the data": "Competitor store coordinates are pinned on a map, then overlaid with demographic layers from public records, factoring in population size and median income for a composite ‘white space’ score.",
   "Story": "A sustainable home goods retailer wanted to expand beyond its existing territories, but worried about oversaturating markets. They hired a web scraping service to automatically retrieve competitor store addresses from each rival’s ‘Find a Store’ page. The resulting dataset was cross-referenced with public census data about income levels, population growth, and eco-conscious consumer indices. In certain neighborhoods, the brand discovered strong potential demand but minimal competitor presence—an ideal expansion zone. For instance, part of Northern California displayed higher-than-average interest in green lifestyles, yet competitor footprints were practically nonexistent. Using these insights, the retailer opened a pilot store in that region, combining strong local marketing with an appealing product mix. Sales exceeded projections, confirming that the data-driven location choice was sound. By outsourcing the scraping, the brand maintained an up-to-date competitor location map without having to manually check or replicate each store address. This continuous feed of location intelligence has since become a core pillar of their growth strategy, helping them navigate expansion with confidence in an increasingly crowded retail market.",
-  "publicationDate": "2024-11-15"
+  "publicationDate": "2024-11-15",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "competitor_locators": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL for a competitor's store locator page"
+        },
+        "minItems": 1,
+        "uniqueItems": true,
+        "example": [
+          "https://www.competitorx.com/store-locator",
+          "https://www.competitory.com/find-a-store"
+        ]
+      },
+      "demographics": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "median_income",
+            "population_density",
+            "age_distribution",
+            "education_level",
+            "household_size"
+          ],
+          "description": "Demographic metric to fetch for each store location"
+        },
+        "minItems": 1,
+        "uniqueItems": true,
+        "example": [
+          "median_income",
+          "population_density",
+          "age_distribution"
+        ]
+      },
+      "regions": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^[A-Z]{2}$",
+          "description": "Two-letter abbreviation for a US state or territory to filter locations by"
+        },
+        "minItems": 0,
+        "uniqueItems": true,
+        "example": [
+          "CA",
+          "TX",
+          "NY",
+          "FL"
+        ]
+      }
+    },
+    "required": [
+      "competitor_locators",
+      "demographics"
+    ],
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "region": {
+        "type": "string",
+        "description": "The geographic region being analyzed",
+        "example": "Northern California"
+      },
+      "competitor_coverage": {
+        "type": "string",
+        "description": "The assessed level of competitor coverage in the region",
+        "enum": [
+          "Low",
+          "Medium",
+          "High"
+        ],
+        "example": "Low"
+      },
+      "demand_score": {
+        "type": "number",
+        "description": "A decimal value from 0 to 1 indicating the estimated demand in the region",
+        "minimum": 0,
+        "maximum": 1,
+        "example": 0.9
+      },
+      "entry_suggestions": {
+        "type": "array",
+        "description": "A list of recommended market entry points in the region",
+        "items": {
+          "type": "object",
+          "properties": {
+            "location": {
+              "type": "string",
+              "description": "The suggested city or area to enter",
+              "example": "San Francisco"
+            },
+            "rationale": {
+              "type": "string",
+              "description": "The reasoning behind the entry point recommendation",
+              "example": "Large market size with low competition"
+            }
+          },
+          "required": [
+            "location",
+            "rationale"
+          ]
+        }
+      }
+    },
+    "required": [
+      "region",
+      "competitor_coverage",
+      "demand_score",
+      "entry_suggestions"
+    ]
+  }
 }

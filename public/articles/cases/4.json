@@ -12,5 +12,145 @@
   "Output Schema": "A JSON object with recommended daily rates, competitor average price, and historical booking trends. Example: { 'recommended_rate': 149.00, 'competitor_average': 155.00, 'historical_trends': {...} }",
   "Matching algorithm used to integrate the data": "An automated web scraping system combined with fuzzy matching to harmonize room categories across different booking portals, supplemented by a dynamic yield management algorithm leveraging linear regression models.",
   "Story": "A mid-sized boutique hotel in a popular tourist city wanted to boost its occupancy rate while maintaining healthy profit margins. Traditionally, the hotel’s revenue manager manually monitored competitor websites, making occasional adjustments to room rates. However, manual processes proved slow and prone to oversight, especially during peak season or major local events. To overcome these limitations, the hotel outsourced the development of a real-time rate comparison tool. The external team quickly built web scrapers to monitor room prices across multiple OTAs, scanning for discounts, flash sales, and last-minute deals. After a few weeks, the system began delivering daily updates on competitor pricing, room availability, and booking terms. Using this data, a yield management algorithm recommended optimal rates for each day, room type, and booking window. The tool factored in historical booking data, seasonality, and local event calendars to predict demand. As a result, the hotel made more frequent and precise price adjustments. Following the rollout, the property experienced a significant uptick in bookings for both weekdays and weekends, as the pricing tool allowed them to undercut or match competitor rates in a timely manner. Coupled with strategic promotional offers, the hotel saw an overall increase in RevPAR, boosting total revenue without compromising on margins. By leaving the technical complexities of data scraping and algorithm design to specialists, the hotel was free to focus on delivering exceptional guest experiences, reinforcing its market position and guest loyalty in a fiercely competitive hospitality sector.",
-  "publicationDate": "2023-02-23"
+  "publicationDate": "2023-02-23",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "hotel_id": {
+        "type": "integer",
+        "description": "Unique identifier for the hotel",
+        "example": 123
+      },
+      "location": {
+        "type": "string",
+        "description": "Location of the hotel",
+        "example": "Downtown Miami"
+      },
+      "date_range": {
+        "type": "object",
+        "description": "Start and end dates for the hotel stay",
+        "properties": {
+          "start_date": {
+            "type": "string",
+            "format": "date",
+            "description": "Start date of the hotel stay (YYYY-MM-DD)",
+            "example": "2025-03-10"
+          },
+          "end_date": {
+            "type": "string",
+            "format": "date",
+            "description": "End date of the hotel stay (YYYY-MM-DD)",
+            "example": "2025-03-15"
+          }
+        },
+        "required": [
+          "start_date",
+          "end_date"
+        ]
+      },
+      "room_type": {
+        "type": "string",
+        "description": "Type of hotel room",
+        "enum": [
+          "Standard",
+          "Deluxe",
+          "Suite"
+        ],
+        "example": "Deluxe"
+      },
+      "competitors": {
+        "type": "array",
+        "description": "Array of competitor hotel names",
+        "items": {
+          "type": "string",
+          "description": "Name of a competitor hotel"
+        },
+        "minItems": 1,
+        "example": [
+          "Hotel A",
+          "Hotel B"
+        ]
+      }
+    },
+    "required": [
+      "hotel_id",
+      "location",
+      "date_range",
+      "room_type",
+      "competitors"
+    ]
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "recommended_rate": {
+        "type": "number",
+        "description": "The recommended daily rate based on analysis",
+        "minimum": 0,
+        "example": 149
+      },
+      "competitor_average": {
+        "type": "number",
+        "description": "The average daily rate of competitors",
+        "minimum": 0,
+        "example": 155
+      },
+      "historical_trends": {
+        "type": "object",
+        "description": "Historical booking trend data",
+        "properties": {
+          "avg_booking_window_days": {
+            "type": "integer",
+            "description": "Average number of days between booking and check-in",
+            "minimum": 0,
+            "example": 21
+          },
+          "avg_length_of_stay": {
+            "type": "number",
+            "description": "Average number of nights per booking",
+            "minimum": 1,
+            "example": 2.7
+          },
+          "booking_curve_data": {
+            "type": "array",
+            "description": "Array of booking pace data points",
+            "items": {
+              "type": "object",
+              "properties": {
+                "days_before_checkin": {
+                  "type": "integer",
+                  "description": "Number of days prior to check-in date",
+                  "minimum": 0,
+                  "example": 30
+                },
+                "bookings": {
+                  "type": "integer",
+                  "description": "Number of bookings received for that day before check-in",
+                  "minimum": 0,
+                  "example": 17
+                }
+              },
+              "required": [
+                "days_before_checkin",
+                "bookings"
+              ]
+            },
+            "minItems": 1
+          }
+        },
+        "required": [
+          "avg_booking_window_days",
+          "avg_length_of_stay",
+          "booking_curve_data"
+        ]
+      }
+    },
+    "required": [
+      "recommended_rate",
+      "competitor_average",
+      "historical_trends"
+    ]
+  }
 }

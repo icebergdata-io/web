@@ -12,5 +12,93 @@
   "Output Schema": "A JSON array of attendee leads, each with name, role, company, and contact detail if publicly available. Example: [ { 'name': 'Jane Doe', 'role': 'CTO', 'company': 'TechCorp', 'linkedin': '...' }, ... ]",
   "Matching algorithm used to integrate the data": "Public participant rosters are cross-referenced with LinkedIn or other open directories to confirm job titles, ensuring the leads truly match the target profile.",
   "Story": "A specialized software consultancy sought to penetrate the AI healthcare market but found conventional lead lists too broad. They hired a web scraping outfit to track public workshop attendee lists for AI in healthcare events. The scrapers monitored event registration pages, pull speaker rosters, and even watched social media announcements where participants publicly tagged themselves. Within weeks, the consultancy gained a curated feed of professionals who were actively seeking knowledge on AI-driven diagnostics—a prime indicator of readiness for a commercial solution. Cross-checking LinkedIn profiles confirmed that many were CTOs or senior data scientists at midsized hospital networks. This real-time approach gave the consultancy’s sales team a fresh pipeline of potential clients, which they contacted shortly after each workshop ended. Because all data was publicly visible, they avoided any privacy red flags and adhered to event site policies. Ultimately, timing proved everything—several leads were impressed by how quickly the consultancy followed up, translating to deeper product demos and a stronger conversion rate. By outsourcing the scraping, the firm saved hundreds of hours and ensured steady updates on newly registered attendees, fueling a sustainable growth strategy within the AI healthcare niche.",
-  "publicationDate": "2024-08-16"
+  "publicationDate": "2024-08-16",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "event_pages": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "format": "uri",
+          "example": "https://workshopsite.com"
+        },
+        "description": "An array of URLs for the event pages."
+      },
+      "time_window": {
+        "type": "string",
+        "description": "The desired date range for the events, in a human-readable format.",
+        "example": "May 2025"
+      },
+      "target_roles": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "example": "CTO"
+        },
+        "description": "An array of desired attendee roles or industries."
+      }
+    },
+    "required": [
+      "event_pages",
+      "time_window",
+      "target_roles"
+    ],
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The full name of the attendee lead",
+          "example": "Jane Doe"
+        },
+        "role": {
+          "type": "string",
+          "description": "The job title or role of the attendee lead",
+          "example": "CTO"
+        },
+        "company": {
+          "type": "string",
+          "description": "The company the attendee lead works for",
+          "example": "TechCorp"
+        },
+        "contact": {
+          "type": "object",
+          "description": "Contact details for the attendee lead, if publicly available",
+          "properties": {
+            "linkedin": {
+              "type": "string",
+              "description": "The LinkedIn profile URL of the attendee lead",
+              "example": "https://www.linkedin.com/in/jane-doe",
+              "format": "uri"
+            },
+            "email": {
+              "type": "string",
+              "description": "The email address of the attendee lead",
+              "example": "jane.doe@techcorp.com",
+              "format": "email"
+            },
+            "phone": {
+              "type": "string",
+              "description": "The phone number of the attendee lead",
+              "example": "+1-555-123-4567"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "name",
+        "role",
+        "company"
+      ],
+      "additionalProperties": false
+    }
+  }
 }

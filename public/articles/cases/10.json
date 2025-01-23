@@ -12,5 +12,120 @@
   "Output Schema": "A JSON array of lead objects, each containing contact details and confidence scores. Example: [ { 'name': 'John Doe', 'company': 'TechCorp', 'email': 'john@techcorp.com', 'phone': '555-1234', 'confidence': 0.95 }, ... ]",
   "Matching algorithm used to integrate the data": "Regex-based pattern matching for emails and phone numbers, plus an entity-resolution approach that cross-references multiple data sources to confirm accurate contact records.",
   "Story": "A fast-growing SaaS company was looking for a steady stream of qualified leads to feed its ambitious expansion plans. However, the process of manually trawling through directories, LinkedIn, and company websites proved too time-consuming. Recognizing the need for efficiency, the firm brought in an outsourcing partner specializing in automated lead generation. The project kicked off with a clear set of criteria defining the target profile: certain industries, specific job titles like CTO or VP of Engineering, and a shortlist of geographic regions. Using specialized scraping tools, the partner regularly crawled public directories and corporate sites to unearth contact information that aligned with these requirements. Where phone numbers or emails were not immediately visible, advanced extraction techniques and pattern recognition were used to glean details from less obvious places. Once collected, the data was scrubbed for duplicates, validated through email verification APIs, and organized into neatly structured records. As soon as the system went live, the SaaS company’s sales team gained access to a steady pipeline of leads updated weekly. Instead of spending hours hunting for qualified contacts, they could dedicate more time to actual outreach and relationship-building. Better still, verified emails and phone numbers dramatically reduced bounce rates, making marketing campaigns more cost-effective. By relying on an outsourced partner, the SaaS firm avoided the technical overhead of building and maintaining custom web scraping technology. Overall, the initiative not only saved resources but also boosted the team’s morale by allowing them to focus on their core strength—closing deals with warm leads rather than sifting through unstructured data.",
-  "publicationDate": "2023-06-03"
+  "publicationDate": "2023-06-03",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "target_sites": {
+        "type": "array",
+        "description": "An array of website URLs or directory paths to search for matching companies",
+        "items": {
+          "type": "string",
+          "format": "uri"
+        },
+        "minItems": 1,
+        "uniqueItems": true,
+        "example": [
+          "https://www.itdirectory.com",
+          "https://cloud-companies.org"
+        ]
+      },
+      "search_criteria": {
+        "type": "object",
+        "description": "An object specifying the criteria to filter matching companies",
+        "properties": {
+          "industry": {
+            "type": "string",
+            "description": "The target industry of companies to search for",
+            "example": "Cloud Computing"
+          },
+          "location": {
+            "type": "string",
+            "description": "The geographic location of companies, such as a city, state, or country",
+            "example": "San Francisco Bay Area"
+          },
+          "job_title": {
+            "type": "string",
+            "description": "The job title of executives at companies to search for",
+            "example": "Chief Technology Officer"
+          }
+        },
+        "required": [
+          "industry"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "required": [
+      "target_sites",
+      "search_criteria"
+    ],
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "LeadArray",
+    "type": "array",
+    "items": {
+      "title": "Lead",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Full name of the lead contact",
+          "type": "string",
+          "example": "John Doe"
+        },
+        "company": {
+          "description": "Company name the lead is associated with",
+          "type": "string",
+          "example": "TechCorp"
+        },
+        "email": {
+          "description": "Email address of the lead contact",
+          "type": "string",
+          "format": "email",
+          "example": "john@techcorp.com"
+        },
+        "phone": {
+          "description": "Phone number of the lead contact",
+          "type": "string",
+          "pattern": "^\\d{3}-\\d{3}-\\d{4}$",
+          "example": "555-1234"
+        },
+        "confidence": {
+          "description": "Confidence score of the lead data accuracy, ranging from 0 to 1",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "example": 0.95
+        }
+      },
+      "required": [
+        "name",
+        "company",
+        "email",
+        "phone",
+        "confidence"
+      ]
+    },
+    "examples": [
+      [
+        {
+          "name": "Jane Smith",
+          "company": "DataTech",
+          "email": "jane.smith@datatech.com",
+          "phone": "555-5678",
+          "confidence": 0.87
+        },
+        {
+          "name": "Mark Johnson",
+          "company": "InnovationLabs",
+          "email": "mjohnson@innovationlabs.net",
+          "phone": "555-2468",
+          "confidence": 0.92
+        }
+      ]
+    ]
+  }
 }

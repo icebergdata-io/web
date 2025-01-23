@@ -12,5 +12,151 @@
   "Output Schema": "A JSON object detailing each competitor’s loyalty tier system, user sentiment from forums, and recommended enhancements for your program. Example: { 'competitor': 'StoreX', 'tiers': [...], 'forum_reactions': [...], 'improvement_tips': [...] }",
   "Matching algorithm used to integrate the data": "Site scraping aggregates loyalty terms (points per dollar, bonus thresholds). Forum scanning matches brand references to gather qualitative sentiment about reward satisfaction.",
   "Story": "A midsize home décor retailer saw diminishing returns from its long-standing loyalty program. Suspecting that competitor perks might be overshadowing their offers, they hired a web scraping firm to gather all publicly displayed loyalty structures across rival websites. The data included how many points per dollar spent, how many tiers existed, and the specifics of referral or birthday bonuses. Additionally, the scraping partner captured user forum discussions where customers casually compared programs. The results highlighted that some direct competitors offered double points during certain promotional windows, and others provided exclusive VIP events once members reached a certain tier. Seeing how positively customers spoke about these benefits, the retailer decided to introduce a multi-tier system, run limited-time double-point days, and add free design consultations for top-tier members. By outsourcing the monitoring, they always stayed updated when a competitor launched or changed a perk. In a matter of months, membership reactivation soared, with existing customers re-engaging due to newly attractive benefits. Overall, adopting best practices gleaned from publicly visible competitor loyalty data breathed new life into the retailer’s program, boosting repeat purchases and building brand loyalty.",
-  "publicationDate": "2024-12-15"
+  "publicationDate": "2024-12-15",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "competitor_loyalty_pages": {
+        "type": "array",
+        "description": "Array of URLs for competitor loyalty/membership pages",
+        "items": {
+          "type": "string",
+          "format": "uri",
+          "example": "https://www.storex.com/rewards"
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      },
+      "forum_links": {
+        "type": "array",
+        "description": "Array of URLs to relevant forum/discussion threads about loyalty programs",
+        "items": {
+          "type": "string",
+          "format": "uri",
+          "example": "https://www.loyaltyforum.net/thread/1234"
+        }
+      },
+      "keywords": {
+        "type": "array",
+        "description": "Array of relevant keywords related to loyalty/membership programs",
+        "items": {
+          "type": "string",
+          "example": "referral bonus"
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      },
+      "notes": {
+        "type": "string",
+        "description": "Optional free-text notes about the competitor research",
+        "example": "StoreX recently revamped their loyalty program with new perks"
+      },
+      "created_date": {
+        "type": "string",
+        "description": "Date this competitor research was created, in ISO 8601 format",
+        "format": "date-time",
+        "example": "2023-03-15T08:30:00Z"
+      }
+    },
+    "required": [
+      "competitor_loyalty_pages",
+      "keywords"
+    ],
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "competitor": {
+        "type": "string",
+        "description": "Name of the competitor",
+        "example": "StoreX"
+      },
+      "tiers": {
+        "type": "array",
+        "description": "Details of each loyalty tier offered by the competitor",
+        "items": {
+          "type": "object",
+          "properties": {
+            "tier_name": {
+              "type": "string",
+              "description": "Name of the loyalty tier",
+              "example": "Silver"
+            },
+            "min_points": {
+              "type": "integer",
+              "description": "Minimum points required to reach this tier",
+              "example": 1000
+            },
+            "benefits": {
+              "type": "array",
+              "description": "List of benefits offered at this tier",
+              "items": {
+                "type": "string",
+                "example": "Free shipping"
+              }
+            }
+          },
+          "required": [
+            "tier_name",
+            "min_points",
+            "benefits"
+          ]
+        }
+      },
+      "forum_reactions": {
+        "type": "array",
+        "description": "User sentiment from forums about the competitor's loyalty program",
+        "items": {
+          "type": "object",
+          "properties": {
+            "source": {
+              "type": "string",
+              "description": "Name of the forum or website",
+              "example": "RetailWire"
+            },
+            "sentiment": {
+              "type": "string",
+              "description": "Overall sentiment of the user comments (positive, neutral, negative)",
+              "enum": [
+                "positive",
+                "neutral",
+                "negative"
+              ],
+              "example": "positive"
+            },
+            "comments": {
+              "type": "array",
+              "description": "Notable user comments about the loyalty program",
+              "items": {
+                "type": "string",
+                "example": "I love the rewards at StoreX, I always feel appreciated!"
+              }
+            }
+          },
+          "required": [
+            "source",
+            "sentiment",
+            "comments"
+          ]
+        }
+      },
+      "improvement_tips": {
+        "type": "array",
+        "description": "Recommended enhancements for your loyalty program based on competitor analysis",
+        "items": {
+          "type": "string",
+          "example": "Consider adding a tier between 1000-2000 points to boost customer engagement"
+        }
+      }
+    },
+    "required": [
+      "competitor",
+      "tiers",
+      "forum_reactions",
+      "improvement_tips"
+    ]
+  }
 }
