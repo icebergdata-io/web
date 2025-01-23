@@ -3,6 +3,13 @@ import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { slugify } from '../utils/slugify';
 
+const formatDate = (dateString) => {
+  return new Date(dateString).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long'
+  });
+};
+
 const CaseStudies = () => {
   const [caseStudies, setCaseStudies] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -21,8 +28,14 @@ const CaseStudies = () => {
             console.error(`Error fetching case study ${i}:`, error);
           }
         }
-        // Sort case studies by sector for better organization
-        studies.sort((a, b) => a.Sector.localeCompare(b.Sector));
+        // Sort case studies by publication date (newest first) and then by sector
+        studies.sort((a, b) => {
+          const dateComparison = new Date(b.publicationDate) - new Date(a.publicationDate);
+          if (dateComparison === 0) {
+            return a.Sector.localeCompare(b.Sector);
+          }
+          return dateComparison;
+        });
         setCaseStudies(studies);
       } catch (error) {
         console.error('Error fetching case studies:', error);
@@ -34,12 +47,15 @@ const CaseStudies = () => {
     fetchAllCaseStudies();
   }, []);
 
-  // Group case studies by sector
+  // Group case studies by year and month
   const groupedStudies = caseStudies.reduce((acc, study) => {
-    if (!acc[study.Sector]) {
-      acc[study.Sector] = [];
+    const date = new Date(study.publicationDate);
+    const yearMonth = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
+    
+    if (!acc[yearMonth]) {
+      acc[yearMonth] = [];
     }
-    acc[study.Sector].push(study);
+    acc[yearMonth].push(study);
     return acc;
   }, {});
 
@@ -66,9 +82,9 @@ const CaseStudies = () => {
             </p>
           </div>
 
-          {Object.entries(groupedStudies).map(([sector, studies]) => (
-            <div key={sector} className="mb-16">
-              <h2 className="text-2xl font-bold mb-8 text-dark-900">{sector}</h2>
+          {Object.entries(groupedStudies).map(([yearMonth, studies]) => (
+            <div key={yearMonth} className="mb-16">
+              <h2 className="text-2xl font-bold mb-8 text-dark-900">{yearMonth}</h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {studies.map((study) => (
                   <Link
@@ -77,7 +93,10 @@ const CaseStudies = () => {
                     className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
                   >
                     <div className="flex flex-col h-full">
-                      <div className="text-sm text-primary-600 mb-3">{study.Sector}</div>
+                      <div className="flex justify-between items-center mb-3">
+                        <span className="text-sm text-primary-600">{study.Sector}</span>
+                        <span className="text-sm text-dark-500">{formatDate(study.publicationDate)}</span>
+                      </div>
                       <h3 className="text-xl font-bold text-dark-900 mb-3 group-hover:text-primary-600 transition-colors">
                         {study.Title}
                       </h3>

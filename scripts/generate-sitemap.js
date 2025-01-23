@@ -30,21 +30,33 @@ const generateSitemap = async () => {
 
   // Read all case study files
   const files = fs.readdirSync(casesDir);
+  const caseStudies = [];
   
+  // First collect all case studies with their dates
   for (const file of files) {
     if (file.endsWith('.json')) {
       const content = fs.readFileSync(path.join(casesDir, file), 'utf8');
       const caseStudy = JSON.parse(content);
       const slug = slugify(`${caseStudy.Title}-${caseStudy.Subtitle}`);
-      
-      sitemap += `
+      caseStudies.push({
+        slug,
+        publicationDate: caseStudy.publicationDate
+      });
+    }
+  }
+
+  // Sort case studies by publication date (newest first)
+  caseStudies.sort((a, b) => new Date(b.publicationDate) - new Date(a.publicationDate));
+  
+  // Add sorted case studies to sitemap
+  for (const study of caseStudies) {
+    sitemap += `
   <url>
-    <loc>${baseUrl}/case-study/${slug}</loc>
-    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+    <loc>${baseUrl}/case-study/${study.slug}</loc>
+    <lastmod>${study.publicationDate}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>`;
-    }
   }
 
   // Close XML

@@ -12,7 +12,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "generate-seo": "node scripts/generate-seo-files.js",
-    "generate-sitemap": "node scripts/generate-sitemap.js"
+    "generate-sitemap": "node scripts/generate-sitemap.js",
+    "dev:add-dates": "node scripts/add-publication-dates.js"
   },
   "dependencies": {
     "cors": "^2.8.5",

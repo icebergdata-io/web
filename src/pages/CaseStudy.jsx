@@ -3,6 +3,14 @@ import { useParams, useNavigate } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { slugify } from '../utils/slugify';
 
+const formatDate = (dateString) => {
+  return new Date(dateString).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+};
+
 const CaseStudy = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
@@ -81,7 +89,10 @@ const CaseStudy = () => {
       />
       
       <script type="application/ld+json">
-        {JSON.stringify(schemaData)}
+        {JSON.stringify({
+          ...schemaData,
+          datePublished: caseData.publicationDate,
+        })}
       </script>
       
       <div className="min-h-screen pt-24 pb-12 bg-gradient-to-b from-white to-light-50">
@@ -91,9 +102,12 @@ const CaseStudy = () => {
             <h1 className="text-4xl md:text-5xl font-display font-bold text-dark-900 mb-4">
               {caseData.Title}
             </h1>
-            <p className="text-xl text-dark-700">
+            <p className="text-xl text-dark-700 mb-4">
               {caseData.Subtitle}
             </p>
+            <div className="text-sm text-dark-500">
+              Published on {formatDate(caseData.publicationDate)}
+            </div>
           </div>
 
           <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
