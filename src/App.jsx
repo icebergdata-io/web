@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Layout from './components/Layout';
 import Home from './pages/Home';
@@ -16,6 +16,7 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="case-studies" element={<CaseStudies />} />
+            <Route path="case-study" element={<Navigate to="/case-studies" replace />} />
             <Route path="case-study/:sector/:slug" element={<CaseStudy />} />
             <Route path="press" element={<PressCoverage />} />
             <Route path="booking-confirmation" element={<BookingConfirmation />} />
