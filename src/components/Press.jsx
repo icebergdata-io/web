@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 export const pressArticles = [
   {
     title: "How Iceberg Data Extracts Business Insights",
-    description: "Learn how our CEO transforms raw data into actionable business intelligence",
+    description: "Learn how we transforms raw data into actionable business intelligence",
     link: "https://ceoweekly.com/iceberg-data-how-david-martin-riveros-extracts-insights/",
     date: "2024"
   },
@@ -30,6 +30,30 @@ export const pressArticles = [
     description: "Exploring the innovative AI technology behind our data collection solutions",
     link: "https://www.digitaljournal.com/tech-science/how-david-martin-riveros-agentic-ai-revolutionizes-data-collection/article",
     date: "2024"
+  },
+  {
+    title: "Iceberg Data Transforms Public Data into Strategic Decisions",
+    description: "Learn how Iceberg Data is revolutionizing the way businesses leverage public data for strategic decision-making.",
+    date: "March 2024",
+    link: "https://elmundoempresa.com/mexico/iceberg-data-la-solucion-para-transformar-datos-publicos-en-decisiones-estrategicas/",
+    image: "/images/press/article1.jpg",
+    imageAlt: "Iceberg Data's data transformation process visualization"
+  },
+  {
+    title: "From Recipe Books to Big Data: Iceberg Data Redefines Business Data Integration",
+    description: "Discover how Iceberg Data is bridging the gap between traditional data sources and modern big data analytics.",
+    date: "March 2024",
+    link: "https://ciudademprendedores.com/argentina/desde-el-recetario-hasta-el-big-data-iceberg-data-reevalua-la-integracion-de-datos-empresariales/",
+    image: "/images/press/article2.jpg",
+    imageAlt: "Data integration workflow diagram by Iceberg Data"
+  },
+  {
+    title: "Iceberg Data Turns Digital Chaos into Organization",
+    description: "See how Iceberg Data's innovative approach is helping businesses organize and make sense of their digital data.",
+    date: "February 2024",
+    link: "https://elmundoempresa.com/argentina/iceberg-data-convierte-el-desorden-digital-en-organizacion/",
+    image: "/images/press/article3.jpg",
+    imageAlt: "Digital organization system showcase by Iceberg Data"
   }
 ];
 

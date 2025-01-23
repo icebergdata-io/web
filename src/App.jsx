@@ -6,6 +6,8 @@ import Home from './pages/Home';
 import PressCoverage from './pages/PressCoverage';
 import BookingConfirmation from './pages/BookingConfirmation';
 import NotFound from './pages/NotFound';
+import CaseStudy from './pages/CaseStudy';
+import CaseStudies from './pages/CaseStudies';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +21,14 @@ const router = createBrowserRouter([
       {
         path: 'press',
         element: <PressCoverage />,
+      },
+      {
+        path: 'case-studies',
+        element: <CaseStudies />,
+      },
+      {
+        path: 'case-study/:slug',
+        element: <CaseStudy />,
       },
       {
         path: 'booking-confirmation',

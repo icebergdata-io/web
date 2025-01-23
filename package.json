@@ -8,10 +8,11 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build && npm run generate-seo",
+    "build": "vite build && npm run generate-sitemap",
     "lint": "eslint .",
     "preview": "vite preview",
-    "generate-seo": "node scripts/generate-seo-files.js"
+    "generate-seo": "node scripts/generate-seo-files.js",
+    "generate-sitemap": "node scripts/generate-sitemap.js"
   },
   "dependencies": {
     "cors": "^2.8.5",

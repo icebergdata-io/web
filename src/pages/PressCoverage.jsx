@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { pressArticles } from '../components/Press';
 import PublicationsModal from '../components/PublicationsModal';
+import SEO from '../components/SEO';
 
 const pressPublications = [
   // Argentina
@@ -77,6 +78,12 @@ const PressCoverage = () => {
 
   return (
     <>
+      <SEO 
+        title="Press Coverage - Iceberg Data in Global Media"
+        description="Explore Iceberg Data's comprehensive media coverage across different countries. Read about our data solutions and industry insights in leading publications."
+        keywords="press coverage, media coverage, news articles, Iceberg Data news, data analytics press"
+        type="article"
+      />
       {/* SEO-friendly links (visually hidden) */}
       <div className="sr-only">
         <h2>All Press Coverage by Country</h2>
