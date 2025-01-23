@@ -23,9 +23,21 @@ const CaseStudies = () => {
             const response = await fetch(`/articles/cases/${i}.json`);
             const data = await response.json();
             const slug = slugify(`${data.Title}-${data.Subtitle}`);
-            studies.push({ id: i, slug, ...data });
+            const sectorSlug = slugify(data.Sector);
+            
+            console.log(`📄 Case study ${i}:`);
+            console.log(`   Title: ${data.Title}`);
+            console.log(`   Sector: ${data.Sector}`);
+            console.log(`   Generated URL: /case-study/${sectorSlug}/${slug}`);
+            
+            studies.push({ 
+              id: i, 
+              slug,
+              sectorSlug,
+              ...data 
+            });
           } catch (error) {
-            console.error(`Error fetching case study ${i}:`, error);
+            console.error(`❌ Error fetching case study ${i}:`, error);
           }
         }
         // Sort case studies by publication date (newest first) and then by sector
@@ -38,7 +50,7 @@ const CaseStudies = () => {
         });
         setCaseStudies(studies);
       } catch (error) {
-        console.error('Error fetching case studies:', error);
+        console.error('❌ Error fetching case studies:', error);
       } finally {
         setLoading(false);
       }
@@ -89,7 +101,7 @@ const CaseStudies = () => {
                 {studies.map((study) => (
                   <Link
                     key={study.id}
-                    to={`/case-study/${slugify(study.Sector)}/${slugify(`${study.Title}-${study.Subtitle}`)}`}
+                    to={`/case-study/${study.sectorSlug}/${study.slug}`}
                     className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
                   >
                     <div className="flex flex-col h-full">

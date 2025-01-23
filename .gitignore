@@ -37,3 +37,9 @@ yarn-error.log*
 .env
 .env.local
 .env.*.local
+
+# Backup and copy files
+*.backup
+*.backup.*
+*copy/
+*copy.*

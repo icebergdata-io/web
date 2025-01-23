@@ -14,7 +14,12 @@
     "generate-seo": "node scripts/generate-seo-files.js",
     "generate-sitemap": "node scripts/generate-sitemap.js",
     "dev:add-dates": "node scripts/add-publication-dates.js",
-    "dev:generate-schemas": "node scripts/generate-exact-schemas.js"
+    "dev:generate-schemas": "node scripts/generate-exact-schemas.js",
+    "dev:format-stories": "node scripts/format-stories.js",
+    "dev:list-cases": "node scripts/list-case-studies.js",
+    "dev:improve-stories": "node scripts/improve-stories.js",
+    "dev:check-stories": "node scripts/check-processed-stories.js",
+    "dev:improve-story": "node scripts/improve-single-story.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
