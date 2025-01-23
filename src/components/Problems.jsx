@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import PropTypes from 'prop-types';
 import Logo from './Logo';
 
 const problems = [
@@ -101,78 +102,95 @@ const problems = [
   }
 ];
 
-const ProblemCard = ({ problem, onClick, isSelected }) => (
-  <motion.div
-    layout
-    onClick={onClick}
-    className={`relative cursor-pointer ${isSelected ? 'md:col-span-2 row-span-2' : ''}`}
-    whileHover={{ scale: isSelected ? 1 : 1.02 }}
-    transition={{ duration: 0.2 }}
-  >
+const ProblemCard = ({ problem, onClick, isSelected }) => {
+  return (
     <motion.div
-      layout
-      className="h-full bg-white/70 backdrop-blur-sm p-8 rounded-3xl transition-all duration-300 hover:shadow-2xl border border-gray-100 relative overflow-hidden"
+      onClick={onClick}
+      className="group cursor-pointer"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
     >
-      <motion.div layout className="relative z-10">
-        <motion.div 
-          layout
-          className="text-4xl mb-6 bg-gradient-to-br from-primary-100 to-transparent w-16 h-16 rounded-2xl flex items-center justify-center"
-        >
-          {problem.icon}
-        </motion.div>
-        <motion.h3 layout className="text-xl font-display font-bold text-dark-900 mb-4">
-          {problem.title}
-        </motion.h3>
-        <motion.p layout className="text-dark-600 leading-relaxed">
-          {problem.description}
-        </motion.p>
+      <div className="bg-white rounded-2xl shadow-elevation-2 p-4 sm:p-6 md:p-8 h-full transition-all duration-300 hover:shadow-elevation-3 hover:-translate-y-1">
+        <div className="flex flex-col h-full">
+          <div className="mb-3 sm:mb-4 md:mb-6">
+            <div className="inline-block p-2 sm:p-3 bg-primary-100 text-primary-600 rounded-xl">
+              {problem.icon}
+            </div>
+          </div>
+          <h3 className="text-lg sm:text-xl font-display font-bold text-dark-900 mb-2 sm:mb-3 md:mb-4 group-hover:text-primary-600 transition-colors">
+            {problem.title}
+          </h3>
+          <p className="text-sm sm:text-base text-dark-600 mb-3 sm:mb-4 md:mb-6 flex-grow">
+            {problem.description}
+          </p>
+          <div className="flex items-center text-primary-600 font-medium group-hover:translate-x-2 transition-transform">
+            Learn More
+            <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </div>
+        </div>
+      </div>
 
-        <AnimatePresence>
-          {isSelected && (
+      <AnimatePresence>
+        {isSelected && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="overflow-hidden"
+          >
+            <h4 className="text-lg font-semibold text-dark-900 mb-4">{problem.details.title}</h4>
+            <ul className="space-y-3">
+              {problem.details.points.map((point, index) => (
+                <motion.li
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="flex items-center gap-3 text-dark-600"
+                >
+                  <svg className="w-5 h-5 text-primary-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  {point}
+                </motion.li>
+              ))}
+            </ul>
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="mt-6 pt-6 border-t border-gray-200"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              className="mt-6 p-4 bg-primary-50 rounded-xl"
             >
-              <h4 className="text-lg font-semibold text-dark-900 mb-4">{problem.details.title}</h4>
-              <ul className="space-y-3">
-                {problem.details.points.map((point, index) => (
-                  <motion.li
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="flex items-center gap-3 text-dark-600"
-                  >
-                    <svg className="w-5 h-5 text-primary-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    {point}
-                  </motion.li>
-                ))}
-              </ul>
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.4 }}
-                className="mt-6 p-4 bg-primary-50 rounded-xl"
-              >
-                <p className="text-primary-600 font-medium">
-                  <span className="font-bold">Impact: </span>
-                  {problem.details.impact}
-                </p>
-              </motion.div>
+              <p className="text-primary-600 font-medium">
+                <span className="font-bold">Impact: </span>
+                {problem.details.impact}
+              </p>
             </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.div>
-
-      <div className={`absolute inset-0 bg-gradient-to-br ${problem.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl -z-10`}></div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
-  </motion.div>
-);
+  );
+};
+
+ProblemCard.propTypes = {
+  problem: PropTypes.shape({
+    icon: PropTypes.node.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    details: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      points: PropTypes.arrayOf(PropTypes.string).isRequired,
+      impact: PropTypes.string.isRequired
+    }).isRequired,
+    gradient: PropTypes.string.isRequired
+  }).isRequired,
+  onClick: PropTypes.func.isRequired,
+  isSelected: PropTypes.bool.isRequired
+};
 
 const Problems = () => {
   const [selectedProblem, setSelectedProblem] = useState(null);
@@ -212,12 +230,17 @@ const Problems = () => {
           className="grid md:grid-cols-3 gap-8"
         >
           {problems.map((problem, index) => (
-            <ProblemCard
-              key={index}
-              problem={problem}
-              onClick={() => setSelectedProblem(selectedProblem === index ? null : index)}
-              isSelected={selectedProblem === index}
-            />
+            <motion.div
+              key={problem.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              onClick={() => setSelectedProblem(problem)}
+              className="group cursor-pointer"
+            >
+              <ProblemCard problem={problem} onClick={() => setSelectedProblem(problem)} isSelected={selectedProblem === problem} />
+            </motion.div>
           ))}
         </motion.div>
       </div>

@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 export const pressArticles = [
   {
@@ -58,53 +60,76 @@ export const pressArticles = [
 ];
 
 const Press = () => {
+  const [randomArticles, setRandomArticles] = useState([]);
+
+  useEffect(() => {
+    // Randomly select 3 articles from the pressArticles array
+    const shuffledArticles = [...pressArticles].sort(() => Math.random() - 0.5);
+    setRandomArticles(shuffledArticles.slice(0, 3));
+  }, []);
+
   return (
-    <section id="press" className="py-24 bg-gradient-to-b from-white to-light-50">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-dark-900 mb-6">
-            Press & Media
-          </h2>
-          <p className="text-xl text-dark-700 max-w-3xl mx-auto">
-            Featured articles and media coverage about Iceberg Data and our CEO David Martin Riveros
-          </p>
+    <section className="py-24 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-white via-primary-50/30 to-white">
+        <div className="absolute inset-0 bg-mesh-pattern opacity-10"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="text-center mb-12 sm:mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="space-y-3 sm:space-y-4"
+          >
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-dark-900">
+              In the{' '}
+              <span className="bg-gradient-to-r from-primary-600 via-accent-purple to-accent-cyan bg-clip-text text-transparent">
+                Press
+              </span>
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl text-dark-600 max-w-2xl mx-auto">
+              Read what others are saying about our innovative data solutions
+            </p>
+          </motion.div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {pressArticles.map((article, index) => (
-            <a
-              key={index}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          {randomArticles.map((article, index) => (
+            <motion.a
+              key={article.title}
               href={article.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="group"
             >
-              <div className="flex flex-col h-full">
-                <div className="text-sm text-primary-600 mb-3">{article.date}</div>
-                <h3 className="text-xl font-bold text-dark-900 mb-3 group-hover:text-primary-600 transition-colors">
-                  {article.title}
-                </h3>
-                <p className="text-dark-700 mb-4 flex-grow">
-                  {article.description}
-                </p>
-                <div className="flex items-center text-primary-600 font-medium">
-                  Read Article
-                  <svg
-                    className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 8l4 4m0 0l-4 4m4-4H3"
-                    />
-                  </svg>
+              <div className="bg-white rounded-2xl shadow-elevation-2 p-8 h-full transition-all duration-300 hover:shadow-elevation-3 hover:-translate-y-1">
+                <div className="flex flex-col h-full">
+                  <div className="mb-6">
+                    <div className="inline-block px-4 py-2 bg-primary-100 text-primary-600 rounded-lg text-sm font-medium">
+                      {article.date}
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-display font-bold text-dark-900 mb-4 group-hover:text-primary-600 transition-colors">
+                    {article.title}
+                  </h3>
+                  <p className="text-dark-600 mb-6 flex-grow">
+                    {article.description}
+                  </p>
+                  <div className="flex items-center text-primary-600 font-medium group-hover:translate-x-2 transition-transform">
+                    Read Article
+                    <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </div>
                 </div>
               </div>
-            </a>
+            </motion.a>
           ))}
         </div>
 
