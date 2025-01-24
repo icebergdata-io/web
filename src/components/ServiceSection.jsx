@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Logo from './Logo';
+import CalendlyPopup from './CalendlyPopup';
+import PropTypes from 'prop-types';
 
 const services = [
   {
@@ -86,7 +88,7 @@ const services = [
   }
 ];
 
-const DetailedPopup = ({ service, onClose }) => {
+const DetailedPopup = ({ service, onClose, onGetStarted }) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -190,7 +192,10 @@ const DetailedPopup = ({ service, onClose }) => {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             className="w-full px-6 py-3 bg-gradient-to-r from-primary-600 to-accent-purple text-white font-medium rounded-xl flex items-center justify-center gap-2 mt-8"
-            onClick={onClose}
+            onClick={(e) => {
+              e.stopPropagation();
+              onGetStarted();
+            }}
           >
             Get Started
             <motion.span
@@ -206,9 +211,15 @@ const DetailedPopup = ({ service, onClose }) => {
   );
 };
 
+DetailedPopup.propTypes = {
+  service: PropTypes.object.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onGetStarted: PropTypes.func.isRequired
+};
+
 const ServiceSection = () => {
-  const [activeCard, setActiveCard] = useState(null);
   const [selectedService, setSelectedService] = useState(null);
+  const [showCalendly, setShowCalendly] = useState(false);
 
   const containerVariants = {
     hidden: {},
@@ -229,56 +240,6 @@ const ServiceSection = () => {
       y: 0,
       transition: {
         duration: 0.5,
-        ease: "easeOut"
-      }
-    }
-  };
-
-  const expandedCardVariants = {
-    initial: {
-      height: "400px",
-      backgroundColor: "rgba(255, 255, 255, 1)",
-    },
-    expanded: {
-      height: "500px",
-      backgroundColor: "rgba(255, 255, 255, 0.98)",
-      transition: {
-        height: {
-          duration: 0.4,
-          ease: [0.04, 0.62, 0.23, 0.98]
-        },
-        backgroundColor: {
-          duration: 0.3
-        }
-      }
-    }
-  };
-
-  const contentVariants = {
-    initial: {
-      opacity: 1,
-      y: 0
-    },
-    expanded: {
-      opacity: 0,
-      y: -10,
-      transition: {
-        duration: 0.2
-      }
-    }
-  };
-
-  const expandedContentVariants = {
-    initial: {
-      opacity: 0,
-      y: 20
-    },
-    expanded: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: 0.2,
-        duration: 0.4,
         ease: "easeOut"
       }
     }
@@ -321,102 +282,39 @@ const ServiceSection = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid md:grid-cols-3 gap-6 lg:gap-8"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8"
         >
           {services.map((service, index) => (
             <motion.div
               key={index}
               variants={cardVariants}
-              className="relative"
-              style={{ height: "400px" }}
+              className="relative min-h-[300px] cursor-pointer group"
+              onClick={() => setSelectedService(service)}
             >
-              <motion.div
-                className="absolute inset-0 rounded-2xl cursor-pointer overflow-hidden"
-                variants={expandedCardVariants}
-                initial="initial"
-                animate={activeCard === index ? "expanded" : "initial"}
-                onClick={() => setActiveCard(activeCard === index ? null : index)}
-              >
-                <motion.div
-                  className="h-full bg-white rounded-2xl shadow-elevation-2 p-8 flex flex-col"
-                  variants={contentVariants}
-                  animate={activeCard === index ? "expanded" : "initial"}
-                >
-                  <div className="text-4xl mb-6">
-                    <motion.div 
-                      className="w-16 h-16 bg-gradient-to-br from-primary-100 to-primary-50 rounded-xl flex items-center justify-center"
-                      whileHover={{ scale: 1.05, rotate: 5 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      {service.icon}
-                    </motion.div>
-                  </div>
-                  <h3 className="text-2xl font-display font-bold text-dark-900 mb-4">{service.title}</h3>
-                  <p className="text-dark-600 leading-relaxed flex-grow">{service.description}</p>
-                  <div className="mt-6 text-primary-600 font-medium flex items-center gap-2">
-                    Click to learn more
-                    <motion.svg
-                      className="w-5 h-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      animate={{ x: activeCard === index ? 5 : 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </motion.svg>
-                  </div>
-                </motion.div>
-
-                <AnimatePresence>
-                  {activeCard === index && (
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-br from-primary-600 to-accent-purple text-white rounded-2xl p-8 flex flex-col"
-                      variants={expandedContentVariants}
-                      initial="initial"
-                      animate="expanded"
-                      exit="initial"
-                    >
-                      <div className="flex items-start justify-between mb-6">
-                        <div>
-                          <h3 className="text-2xl font-display font-bold mb-2">{service.title}</h3>
-                          <p className="text-white/80">{service.description}</p>
-                        </div>
-                        <motion.button
-                          className="text-white/80 hover:text-white"
-                          whileHover={{ scale: 1.1 }}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setActiveCard(null);
-                          }}
-                        >
-                          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                          </svg>
-                        </motion.button>
-                      </div>
-                      <p className="leading-relaxed flex-grow">{service.details}</p>
-                      <motion.button 
-                        className="mt-6 px-6 py-3 bg-white/20 hover:bg-white/30 rounded-xl text-white font-medium group flex items-center justify-center gap-2"
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setSelectedService(service);
-                        }}
-                      >
-                        Learn More
-                        <motion.span
-                          animate={{ x: [0, 5, 0] }}
-                          transition={{ duration: 1, repeat: Infinity, repeatDelay: 1 }}
-                        >
-                          →
-                        </motion.span>
-                      </motion.button>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
+              <div className="h-full bg-white rounded-2xl shadow-elevation-2 p-4 sm:p-6 flex flex-col transition-all duration-300 hover:shadow-elevation-3 hover:-translate-y-1">
+                <div className="text-4xl mb-4">
+                  <motion.div 
+                    className="w-10 sm:w-12 h-10 sm:h-12 bg-gradient-to-br from-primary-100 to-primary-50 rounded-xl flex items-center justify-center"
+                    whileHover={{ scale: 1.05, rotate: 5 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {service.icon}
+                  </motion.div>
+                </div>
+                <h3 className="text-lg sm:text-xl font-display font-bold text-dark-900 mb-2 group-hover:text-primary-600 transition-colors">{service.title}</h3>
+                <p className="text-sm text-dark-600 leading-relaxed flex-grow">{service.description}</p>
+                <div className="mt-4 text-primary-600 font-medium flex items-center gap-2 group-hover:translate-x-2 transition-transform">
+                  Learn More
+                  <motion.svg
+                    className="w-5 h-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </motion.svg>
+                </div>
+              </div>
             </motion.div>
           ))}
         </motion.div>
@@ -427,9 +325,18 @@ const ServiceSection = () => {
           <DetailedPopup 
             service={selectedService} 
             onClose={() => setSelectedService(null)} 
+            onGetStarted={() => {
+              setSelectedService(null);
+              setShowCalendly(true);
+            }}
           />
         )}
       </AnimatePresence>
+
+      <CalendlyPopup 
+        isOpen={showCalendly} 
+        onClose={() => setShowCalendly(false)} 
+      />
     </section>
   );
 };

@@ -113,7 +113,7 @@ const features = [
 
 const popupContent = {
   entityMatching: {
-    title: "Intelligent Entity Matching",
+    title: "Intelligent Entity Matching ",
     description: "Our advanced AI algorithms identify and match related entities across different data sources with unprecedented accuracy.",
     items: [
       {
@@ -339,19 +339,19 @@ const About = () => {
                 onClick={(e) => handlePopupClick('entityMatching', e)}
                 className="px-4 py-2 bg-primary-50 text-primary-700 rounded-xl font-medium hover:bg-primary-100 transition-colors"
               >
-                Intelligent Entity Matching
+                Intelligent Entity Matching→
               </button>
               <button 
                 onClick={(e) => handlePopupClick('dataAlignment', e)}
                 className="px-4 py-2 bg-primary-50 text-primary-700 rounded-xl font-medium hover:bg-primary-100 transition-colors"
               >
-                Cross-Source Data Alignment
+                Cross-Source Data Alignment→
               </button>
               <button 
                 onClick={(e) => handlePopupClick('deduplication', e)}
                 className="px-4 py-2 bg-primary-50 text-primary-700 rounded-xl font-medium hover:bg-primary-100 transition-colors"
               >
-                Automated Data Deduplication
+                Automated Data Deduplication→
               </button>
             </div>
           </div>
@@ -376,7 +376,7 @@ const About = () => {
                 onClick={(e) => handlePopupClick('aiIntegration', e)}
                 className="inline-block px-4 py-2 bg-dark-900 text-white rounded-xl font-medium hover:bg-dark-800 transition-colors"
               >
-                Advanced AI Integration
+                Advanced AI Integration→
               </button>
             </div>
           </div>
@@ -390,7 +390,7 @@ const About = () => {
                 onClick={(e) => handlePopupClick('pipeline', e)}
                 className="inline-block px-4 py-2 bg-gradient-to-r from-primary-600 to-accent-purple text-white rounded-xl font-medium hover:shadow-lg transition-all duration-300"
               >
-                Full Integration Pipeline
+                Full Integration Pipeline→
               </button>
             </div>
           </div>

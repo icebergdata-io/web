@@ -108,7 +108,7 @@ TabPanel.propTypes = {
 
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null);
-  const [activeSection, setActiveSection] = useState('general');
+  const [activeSection, setActiveSection] = useState('ecommerce');
 
   // Create FAQ Schema
   const faqSchema = {
@@ -201,22 +201,68 @@ const FAQ = () => {
             </h2>
           </header>
 
+          {/* General Questions Section */}
+          <div className="mb-24">
+            <div className="max-w-3xl mx-auto">
+              <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-elevation-2 border border-white/20">
+                <h3 className="text-2xl font-display font-bold mb-8 text-center">
+                  <span className="bg-gradient-to-r from-primary-600 to-accent-purple bg-clip-text text-transparent">
+                    General Questions
+                  </span>
+                </h3>
+                {generalFaqs.map((faq, index) => (
+                  <div 
+                    key={index}
+                    className="border-b border-gray-200 py-6 last:border-none"
+                  >
+                    <button
+                      onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                      className="w-full flex justify-between items-center text-left group"
+                      aria-expanded={openIndex === index}
+                      aria-controls={`faq-answer-${index}`}
+                    >
+                      <h4 className="text-xl font-medium text-dark-900 group-hover:text-primary-600 transition-colors">
+                        {faq.question}
+                      </h4>
+                      <span className="ml-6 flex-shrink-0 w-8 h-8 rounded-lg bg-primary-50 flex items-center justify-center group-hover:bg-primary-100 transition-colors">
+                        {openIndex === index ? '−' : '+'}
+                      </span>
+                    </button>
+                    <div
+                      id={`faq-answer-${index}`}
+                      className={`mt-4 transition-all duration-300 ${
+                        openIndex === index 
+                          ? 'opacity-100 max-h-96' 
+                          : 'opacity-0 max-h-0 overflow-hidden'
+                      }`}
+                      role="region"
+                      aria-labelledby={`faq-question-${index}`}
+                    >
+                      <p className="text-dark-600 leading-relaxed">
+                        {faq.answer}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Industry-Specific Questions */}
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-display font-bold">
+              <span className="bg-gradient-to-r from-accent-purple to-accent-cyan bg-clip-text text-transparent">
+                Industry-Specific Questions
+              </span>
+            </h3>
+          </div>
+
           {/* FAQ Section Tabs */}
-          <div className="flex justify-center mb-16">
-            <div className="inline-flex rounded-xl bg-white/50 backdrop-blur-sm shadow-lg p-1.5 border border-white/20">
-              <button
-                onClick={() => setActiveSection('general')}
-                className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
-                  activeSection === 'general'
-                    ? 'bg-gradient-to-r from-primary-600 to-accent-purple text-white shadow-lg'
-                    : 'text-dark-600 hover:text-dark-900'
-                }`}
-              >
-                General
-              </button>
+          <div className="flex justify-center mb-16 overflow-x-auto px-4 -mx-4 scrollbar-hide">
+            <div className="inline-flex flex-nowrap sm:flex-wrap gap-2 rounded-xl bg-white/50 backdrop-blur-sm shadow-lg p-1.5 border border-white/20">
               <button
                 onClick={() => setActiveSection('travel')}
-                className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
+                className={`whitespace-nowrap px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-medium transition-all duration-300 ${
                   activeSection === 'travel'
                     ? 'bg-gradient-to-r from-accent-purple to-accent-cyan text-white shadow-lg'
                     : 'text-dark-600 hover:text-dark-900'
@@ -226,7 +272,7 @@ const FAQ = () => {
               </button>
               <button
                 onClick={() => setActiveSection('ecommerce')}
-                className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
+                className={`whitespace-nowrap px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-medium transition-all duration-300 ${
                   activeSection === 'ecommerce'
                     ? 'bg-gradient-to-r from-accent-cyan to-primary-600 text-white shadow-lg'
                     : 'text-dark-600 hover:text-dark-900'
@@ -236,7 +282,7 @@ const FAQ = () => {
               </button>
               <button
                 onClick={() => setActiveSection('realestate')}
-                className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
+                className={`whitespace-nowrap px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-medium transition-all duration-300 ${
                   activeSection === 'realestate'
                     ? 'bg-gradient-to-r from-primary-600 to-accent-purple text-white shadow-lg'
                     : 'text-dark-600 hover:text-dark-900'
@@ -249,9 +295,6 @@ const FAQ = () => {
 
           {/* FAQ Content */}
           <div className="relative min-h-[400px]">
-            <TabPanel isActive={activeSection === 'general'}>
-              {renderFaqSection(generalFaqs, "General Questions")}
-            </TabPanel>
             <TabPanel isActive={activeSection === 'travel'}>
               {renderFaqSection(travelFaqs, "Travel Industry FAQs")}
             </TabPanel>

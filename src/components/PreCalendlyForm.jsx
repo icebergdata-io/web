@@ -59,10 +59,10 @@ const PreCalendlyForm = ({ onSubmit, onClose }) => {
 
       <div className="text-center mb-4 sm:mb-8">
         <h3 className="text-xl sm:text-2xl font-bold text-dark-900">
-          Schedule Your Demo
+          Get Started
         </h3>
         <p className="mt-1.5 text-sm sm:text-base text-dark-600">
-          Please tell us a bit about yourself to help us prepare for the demo
+          Please tell us a bit about yourself to help us prepare
         </p>
       </div>
 
@@ -135,7 +135,7 @@ const PreCalendlyForm = ({ onSubmit, onClose }) => {
           disabled={loading}
           className="w-full rounded-xl bg-gradient-to-r from-primary-600 to-accent-purple px-6 py-3 text-white font-bold hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:hover:scale-100 text-base mt-4"
         >
-          {loading ? 'Processing...' : 'Continue to Schedule'}
+          {loading ? 'Processing...' : 'Continue to Get Started'}
         </button>
       </form>
     </div>
