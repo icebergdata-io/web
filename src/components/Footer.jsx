@@ -108,12 +108,36 @@ const Footer = () => {
                   </button>
                 </li>
                 <li>
-                  <button 
-                    onClick={() => handleNavClick('services')} 
+                  <Link 
+                    to="/services"
                     className="text-light-400 hover:text-white transition-colors"
                   >
                     Services
-                  </button>
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/services/web-scraping"
+                    className="text-light-400 hover:text-white transition-colors"
+                  >
+                    Web Scraping
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/services/data-integration"
+                    className="text-light-400 hover:text-white transition-colors"
+                  >
+                    Data Integration
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/services/custom-solutions"
+                    className="text-light-400 hover:text-white transition-colors"
+                  >
+                    Custom Solutions
+                  </Link>
                 </li>
                 <li>
                   <button 

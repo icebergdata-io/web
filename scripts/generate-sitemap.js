@@ -9,69 +9,42 @@ const __dirname = path.dirname(__filename);
 const BASE_URL = 'https://www.icebergdata.co'; // Production URL with www
 const casesDir = path.join(__dirname, '../public/articles/cases');
 
+// Static pages
+const staticPages = [
+  '',  // homepage
+  '/services',
+  '/services/web-scraping',
+  '/services/data-integration',
+  '/services/custom-solutions',
+  '/case-studies',
+  '/press',
+  '/dm', // calendly redirect
+];
+
 async function generateSitemap() {
-  console.log('🔄 Generating sitemap...');
+  const today = new Date().toISOString();
   
-  // Get all case study files
-  const caseStudies = [];
-  const files = fs.readdirSync(casesDir)
+  // Get case studies
+  const cases = fs.readdirSync(casesDir)
     .filter(file => file.endsWith('.json'))
-    .sort((a, b) => {
-      const numA = parseInt(a.match(/\d+/)[0]);
-      const numB = parseInt(b.match(/\d+/)[0]);
-      return numA - numB;
+    .map(file => {
+      const caseData = JSON.parse(fs.readFileSync(path.join(casesDir, file), 'utf8'));
+      return `/case-study/${slugify(caseData.sector)}/${slugify(caseData.title)}`;
     });
 
-  // Process each case study
-  for (const file of files) {
-    const content = fs.readFileSync(path.join(casesDir, file), 'utf8');
-    const caseData = JSON.parse(content);
-    const sectorSlug = slugify(caseData.Sector);
-    const titleSlug = slugify(`${caseData.Title}-${caseData.Subtitle}`);
-    
-    // Use the publication date from the case study
-    caseStudies.push({
-      sector: sectorSlug,
-      slug: titleSlug,
-      lastmod: caseData.publicationDate
-    });
-  }
-
-  // Sort case studies by publication date (newest first)
-  caseStudies.sort((a, b) => {
-    if (!a.lastmod && !b.lastmod) return 0;
-    if (!a.lastmod) return 1;
-    if (!b.lastmod) return -1;
-    return new Date(b.lastmod) - new Date(a.lastmod);
-  });
+  // Combine all URLs
+  const urls = [...staticPages, ...cases];
 
   // Generate sitemap XML
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  ${urls.map(url => `
   <url>
-    <loc>${BASE_URL}/</loc>
-    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>${BASE_URL}/press</loc>
-    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>${BASE_URL}/case-studies</loc>
-    <lastmod>${caseStudies[0]?.lastmod || new Date().toISOString().split('T')[0]}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  ${caseStudies.map(study => `  <url>
-    <loc>${BASE_URL}/case-study/${study.sector}/${study.slug}</loc>
-    <lastmod>${study.lastmod || new Date().toISOString().split('T')[0]}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>`).join('\n')}
+    <loc>${BASE_URL}${url}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>${url === '' ? 'daily' : 'weekly'}</changefreq>
+    <priority>${url === '' ? '1.0' : '0.8'}</priority>
+  </url>`).join('')}
 </urlset>`;
 
   // Write sitemap to file

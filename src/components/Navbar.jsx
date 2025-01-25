@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import CalendlyPopup from './CalendlyPopup';
 import Logo from './Logo';
 import PropTypes from 'prop-types';
@@ -26,6 +26,50 @@ const MobileNavLink = ({ active, onClick, children }) => (
   </button>
 );
 
+const ServicesDropdown = ({ isOpen, onClose }) => (
+  <div 
+    className={`absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-lg ring-1 ring-black/5 transition-all duration-200 ${
+      isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
+    }`}
+  >
+    <div className="p-2">
+      <Link
+        to="/services"
+        className="block px-4 py-3 rounded-lg hover:bg-primary-50 text-dark-800 hover:text-primary-600 transition-colors"
+        onClick={onClose}
+      >
+        Overview
+      </Link>
+      <Link
+        to="/services/web-scraping"
+        className="block px-4 py-3 rounded-lg hover:bg-primary-50 text-dark-800 hover:text-primary-600 transition-colors"
+        onClick={onClose}
+      >
+        Web Scraping Solutions
+      </Link>
+      <Link
+        to="/services/data-integration"
+        className="block px-4 py-3 rounded-lg hover:bg-primary-50 text-dark-800 hover:text-primary-600 transition-colors"
+        onClick={onClose}
+      >
+        Data Integration
+      </Link>
+      <Link
+        to="/services/custom-solutions"
+        className="block px-4 py-3 rounded-lg hover:bg-primary-50 text-dark-800 hover:text-primary-600 transition-colors"
+        onClick={onClose}
+      >
+        Custom Solutions
+      </Link>
+    </div>
+  </div>
+);
+
+ServicesDropdown.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+};
+
 NavLink.propTypes = {
   active: PropTypes.bool,
   onClick: PropTypes.func,
@@ -43,7 +87,9 @@ const Navbar = ({ scrolled }) => {
   const [activeSection, setActiveSection] = useState('');
   const [showCalendly, setShowCalendly] = useState(false);
   const [touchStart, setTouchStart] = useState(null);
+  const [showServicesDropdown, setShowServicesDropdown] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleTouchStart = (e) => {
     setTouchStart(e.touches[0].clientY);
@@ -83,15 +129,20 @@ const Navbar = ({ scrolled }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    setShowServicesDropdown(false);
+  }, [location.pathname]);
+
   const handleNavClick = (section, event) => {
     event.preventDefault();
+    if (location.pathname !== '/') {
+      navigate('/', { state: { scrollTo: section } });
+      setIsOpen(false);
+      return;
+    }
     const element = document.getElementById(section);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
-      setIsOpen(false);
-    } else {
-      // If we're not on the home page, navigate there with the section to scroll to
-      navigate('/', { state: { scrollTo: section } });
       setIsOpen(false);
     }
   };
@@ -111,15 +162,10 @@ const Navbar = ({ scrolled }) => {
               to="/" 
               className="relative group flex items-center gap-2 md:gap-3"
               onClick={(e) => {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                const heroElement = document.getElementById('hero');
-                if (heroElement) {
-                  heroElement.scrollIntoView({ behavior: 'smooth' });
-                } else {
-                  navigate('/', { state: { scrollTo: 'hero' } });
+                if (location.pathname === '/') {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
-                setIsOpen(false);
               }}
             >
               <Logo size="small" className="w-8 h-8 md:w-12 md:h-12 transition-transform duration-300 group-hover:scale-110" />
@@ -131,7 +177,26 @@ const Navbar = ({ scrolled }) => {
             <div className="hidden md:flex items-center space-x-1">
               <NavLink active={activeSection === 'about'} onClick={(e) => handleNavClick('about', e)}>About</NavLink>
               <NavLink active={activeSection === 'solutions'} onClick={(e) => handleNavClick('solutions', e)}>Solutions</NavLink>
-              <NavLink active={activeSection === 'services'} onClick={(e) => handleNavClick('services', e)}>Services</NavLink>
+              <div className="relative">
+                <button
+                  onMouseEnter={() => setShowServicesDropdown(true)}
+                  onMouseLeave={() => setShowServicesDropdown(false)}
+                  className={`px-3 py-2 rounded-xl text-dark-800 hover:text-primary-600 transition-colors ${
+                    location.pathname.includes('/services') ? 'bg-primary-50 text-primary-600 font-medium' : ''
+                  }`}
+                >
+                  Services
+                </button>
+                <div
+                  onMouseEnter={() => setShowServicesDropdown(true)}
+                  onMouseLeave={() => setShowServicesDropdown(false)}
+                >
+                  <ServicesDropdown 
+                    isOpen={showServicesDropdown} 
+                    onClose={() => setShowServicesDropdown(false)} 
+                  />
+                </div>
+              </div>
               <NavLink active={activeSection === 'case-studies'} onClick={(e) => handleNavClick('case-studies', e)}>Case Studies</NavLink>
               <NavLink active={activeSection === 'faq'} onClick={(e) => handleNavClick('faq', e)}>FAQ</NavLink>
               <div className="ml-4">
@@ -192,7 +257,32 @@ const Navbar = ({ scrolled }) => {
             <div className="py-6 px-4 space-y-2">
               <MobileNavLink active={activeSection === 'about'} onClick={(e) => handleNavClick('about', e)}>About</MobileNavLink>
               <MobileNavLink active={activeSection === 'solutions'} onClick={(e) => handleNavClick('solutions', e)}>Solutions</MobileNavLink>
-              <MobileNavLink active={activeSection === 'services'} onClick={(e) => handleNavClick('services', e)}>Services</MobileNavLink>
+              <Link to="/services" className="block w-full">
+                <MobileNavLink active={location.pathname.includes('/services')}>Services</MobileNavLink>
+              </Link>
+              <div className="pl-4 space-y-2 mt-2">
+                <Link
+                  to="/services/web-scraping"
+                  className="block px-4 py-3 rounded-lg text-dark-800 hover:text-primary-600 transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Web Scraping Solutions
+                </Link>
+                <Link
+                  to="/services/data-integration"
+                  className="block px-4 py-3 rounded-lg text-dark-800 hover:text-primary-600 transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Data Integration
+                </Link>
+                <Link
+                  to="/services/custom-solutions"
+                  className="block px-4 py-3 rounded-lg text-dark-800 hover:text-primary-600 transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Custom Solutions
+                </Link>
+              </div>
               <MobileNavLink active={activeSection === 'case-studies'} onClick={(e) => handleNavClick('case-studies', e)}>Case Studies</MobileNavLink>
               <MobileNavLink active={activeSection === 'faq'} onClick={(e) => handleNavClick('faq', e)}>FAQ</MobileNavLink>
               <div className="pt-4 px-2">

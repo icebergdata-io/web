@@ -7,6 +7,10 @@ import CaseStudy from './pages/CaseStudy';
 import CaseStudies from './pages/CaseStudies';
 import PressCoverage from './pages/PressCoverage';
 import BookingConfirmation from './pages/BookingConfirmation';
+import ServicesPage from './pages/services';
+import WebScrapingPage from './pages/services/web-scraping';
+import DataIntegrationPage from './pages/services/data-integration';
+import CustomSolutionsPage from './pages/services/custom-solutions';
 
 function App() {
   return (
@@ -15,6 +19,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
+            <Route path="services" element={<ServicesPage />} />
+            <Route path="services/web-scraping" element={<WebScrapingPage />} />
+            <Route path="services/data-integration" element={<DataIntegrationPage />} />
+            <Route path="services/custom-solutions" element={<CustomSolutionsPage />} />
             <Route path="case-studies" element={<CaseStudies />} />
             <Route path="case-study" element={<Navigate to="/case-studies" replace />} />
             <Route path="case-study/:sector/:slug" element={<CaseStudy />} />
