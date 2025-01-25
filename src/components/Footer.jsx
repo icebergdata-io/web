@@ -97,8 +97,8 @@ const Footer = () => {
 
             {/* Quick Links */}
             <div className="lg:col-span-2 sm:col-span-1">
-              <h3 className="text-base sm:text-lg font-display font-bold mb-3 sm:mb-4 text-white/90">Quick Links</h3>
-              <ul className="space-y-2 sm:space-y-3">
+              <h3 className="text-base sm:text-lg font-display font-bold mb-3 sm:mb-4 text-white/90 text-center sm:text-left">Quick Links</h3>
+              <ul className="space-y-2 sm:space-y-3 text-center sm:text-left">
                 <li>
                   <button 
                     onClick={() => handleNavClick('about')} 
@@ -117,23 +117,23 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link 
-                    to="/services/web-scraping"
+                    to="/services/web-scraping#web-scraping"
                     className="text-light-400 hover:text-white transition-colors"
                   >
-                    Web Scraping
+                    Web Scraping Solutions
                   </Link>
                 </li>
                 <li>
                   <Link 
-                    to="/services/data-integration"
+                    to="/services/data-integration#data-integration"
                     className="text-light-400 hover:text-white transition-colors"
                   >
-                    Data Integration
+                   Data Normalization
                   </Link>
                 </li>
                 <li>
                   <Link 
-                    to="/services/custom-solutions"
+                    to="/services/custom-solutions#custom-solutions"
                     className="text-light-400 hover:text-white transition-colors"
                   >
                     Custom Solutions
@@ -154,6 +154,14 @@ const Footer = () => {
                   >
                     FAQ
                   </button>
+                </li>
+                <li>
+                  <Link 
+                    to="/press"
+                    className="text-light-400 hover:text-white transition-colors"
+                  >
+                    Press
+                  </Link>
                 </li>
               </ul>
             </div>

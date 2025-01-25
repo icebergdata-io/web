@@ -94,7 +94,7 @@ const Contact = () => {
             <div className="flex justify-center mb-8">
               <Logo size="medium" className="opacity-90" />
             </div>
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-dark-900 mb-6">Start Your Data Journey</h2>
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-dark-900 mb-6">Start Collecting Data</h2>
             <p className="text-xl text-dark-700 mb-8">
               Ready to transform your data collection and integration? Let&apos;s discuss your needs.
             </p>
