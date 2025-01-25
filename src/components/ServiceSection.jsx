@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import Logo from './Logo';
 import CalendlyPopup from './CalendlyPopup';
 import PropTypes from 'prop-types';
@@ -9,6 +10,7 @@ const services = [
     title: "Automated Data Collection",
     description: "Advanced scraping tools that adapt to website changes, ensuring reliable data streams.",
     details: "Our intelligent bots continuously monitor and collect data from multiple sources, automatically adjusting to site updates and structural changes. With built-in rate limiting and proxy management, we ensure optimal collection performance.",
+    link: "/services/web-scraping",
     extendedInfo: {
       features: [
         "AI-powered web scraping that adapts to site changes",
@@ -36,6 +38,7 @@ const services = [
     title: "Data Cleaning & Normalization",
     description: "Transform raw data into structured, consistent formats ready for analysis.",
     details: "Using advanced AI algorithms, we clean, standardize, and enrich your data. Our system handles duplicates, missing values, and inconsistencies, ensuring your data is always analysis-ready.",
+    link: "/services/data-integration",
     extendedInfo: {
       features: [
         "AI-powered data cleaning and standardization",
@@ -63,6 +66,7 @@ const services = [
     title: "Seamless Integration & Delivery",
     description: "Flexible data delivery through APIs, databases, or custom integrations.",
     details: "Choose how you want your data delivered - whether it's through our RESTful API, direct database access, or custom integration with your existing systems. Real-time updates ensure you're always working with the latest data.",
+    link: "/services/custom-solutions",
     extendedInfo: {
       features: [
         "RESTful API with comprehensive documentation",
@@ -288,8 +292,7 @@ const ServiceSection = () => {
             <motion.div
               key={index}
               variants={cardVariants}
-              className="relative min-h-[300px] cursor-pointer group"
-              onClick={() => setSelectedService(service)}
+              className="relative min-h-[300px] group"
             >
               <div className="h-full bg-white rounded-2xl shadow-elevation-2 p-4 sm:p-6 flex flex-col transition-all duration-300 hover:shadow-elevation-3 hover:-translate-y-1">
                 <div className="text-4xl mb-4">
@@ -303,16 +306,36 @@ const ServiceSection = () => {
                 </div>
                 <h3 className="text-lg sm:text-xl font-display font-bold text-dark-900 mb-2 group-hover:text-primary-600 transition-colors">{service.title}</h3>
                 <p className="text-sm text-dark-600 leading-relaxed flex-grow">{service.description}</p>
-                <div className="mt-4 text-primary-600 font-medium flex items-center gap-2 group-hover:translate-x-2 transition-transform">
-                  Learn More
-                  <motion.svg
-                    className="w-5 h-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
+                <div className="mt-4 flex items-center justify-between">
+                  <button 
+                    onClick={() => setSelectedService(service)}
+                    className="text-primary-600 font-medium flex items-center gap-2 hover:translate-x-2 transition-transform"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </motion.svg>
+                    Quick Overview
+                    <motion.svg
+                      className="w-5 h-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </motion.svg>
+                  </button>
+                  <Link 
+                    to={service.link}
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                    className="text-primary-600 font-medium flex items-center gap-2 hover:translate-x-2 transition-transform"
+                  >
+                    Learn More
+                    <motion.svg
+                      className="w-5 h-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </motion.svg>
+                  </Link>
                 </div>
               </div>
             </motion.div>
