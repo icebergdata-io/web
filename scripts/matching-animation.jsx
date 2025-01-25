@@ -107,53 +107,110 @@ const DataIntegrationAnimation = () => {
   const [currentProductIndex, setCurrentProductIndex] = useState(0);
   const [animatePackets, setAnimatePackets] = useState(false);
   const [showCheck, setShowCheck] = useState(false);
-  const [showConstruction, setShowConstruction] = useState(false);
-  const [showTable, setShowTable] = useState(false);
+  const [activityLabel, setActivityLabel] = useState('');
+  const [filledRows, setFilledRows] = useState([]);
+  const [mobileFilledRows, setMobileFilledRows] = useState([]);
   const timers = useRef([]);
   const isMobile = useIsMobile();
 
+  // Combine all data sources into a single array for display
+  const allDataSources = [...products[0].dataSources, ...products[1].dataSources];
+
+  // Desktop animation effect
   useEffect(() => {
-    // Don't run animation on mobile
     if (isMobile) {
       return;
     }
 
     const triggerAnimationCycle = () => {
-      // Start animation for current product
-      setAnimatePackets(true);
+      // Reset states at the start of the cycle
+      setAnimatePackets(false);
       setShowCheck(false);
-      setShowConstruction(false);
-      setShowTable(false);
+      setActivityLabel('');
+      setFilledRows([]);
+      setCurrentProductIndex(0);
 
-      // After 3 seconds, show the checkmark
-      timers.current.push(setTimeout(() => {
-        setAnimatePackets(false);
-        setShowCheck(true);
-      }, 3000));
+      // First Round - First SKU
+      const processFirstSKU = () => {
+        // Start collecting data
+        timers.current.push(setTimeout(() => {
+          setActivityLabel('Collecting data...');
+          setAnimatePackets(true);
+        }, 0));
 
-      // After 4 seconds, start database construction
-      timers.current.push(setTimeout(() => {
-        setShowConstruction(true);
-      }, 4000));
+        // After 1.5 seconds, show the checkmark
+        timers.current.push(setTimeout(() => {
+          setAnimatePackets(false);
+          setShowCheck(true);
+        }, 1500));
 
-      // After 6 seconds, show the table
-      timers.current.push(setTimeout(() => {
-        setShowConstruction(false);
-        setShowTable(true);
-      }, 6000));
+        // After 2 seconds, start processing
+        timers.current.push(setTimeout(() => {
+          setShowCheck(false);
+          setActivityLabel('Processing data...');
+        }, 2000));
 
-      // After 12 seconds, move to the next product
-      timers.current.push(setTimeout(() => {
-        setShowTable(false);
-        setCurrentProductIndex((prevIndex) => (prevIndex + 1) % products.length);
-      }, 12000));
+        // After 2.5 seconds, start filling first SKU rows
+        timers.current.push(setTimeout(() => {
+          // Fill first 3 rows (indexes 0-2)
+          products[0].dataSources.forEach((_, index) => {
+            timers.current.push(setTimeout(() => {
+              setFilledRows(prev => [...prev, index]);
+            }, 250 * index)); // Faster row filling
+          });
+        }, 2500));
+      };
+
+      // Second Round - Second SKU
+      const processSecondSKU = () => {
+        // Start second round at 4 seconds
+        timers.current.push(setTimeout(() => {
+          setCurrentProductIndex(1);
+          setActivityLabel('Collecting data...');
+          setAnimatePackets(true);
+          setShowCheck(false);
+        }, 4000));
+
+        // Show checkmark for second SKU
+        timers.current.push(setTimeout(() => {
+          setAnimatePackets(false);
+          setShowCheck(true);
+        }, 5500));
+
+        // Start processing second SKU
+        timers.current.push(setTimeout(() => {
+          setShowCheck(false);
+          setActivityLabel('Processing data...');
+        }, 6000));
+
+        // Fill remaining rows (indexes 3-5)
+        timers.current.push(setTimeout(() => {
+          products[1].dataSources.forEach((_, index) => {
+            const rowIndex = index + 3; // Start from index 3
+            timers.current.push(setTimeout(() => {
+              setFilledRows(prev => [...prev, rowIndex]);
+            }, 250 * index)); // Faster row filling
+          });
+        }, 6500));
+
+        // Complete cycle after 8 seconds
+        timers.current.push(setTimeout(() => {
+          setFilledRows([]);
+          setCurrentProductIndex(0);
+          setActivityLabel('');
+        }, 8000));
+      };
+
+      // Start both rounds
+      processFirstSKU();
+      processSecondSKU();
     };
 
     // Start the first animation cycle
     triggerAnimationCycle();
 
-    // Repeat the animation cycle every 12 seconds
-    const intervalId = setInterval(triggerAnimationCycle, 12000);
+    // Repeat the animation cycle every 8 seconds
+    const intervalId = setInterval(triggerAnimationCycle, 8000);
     timers.current.push(intervalId);
 
     // Cleanup on unmount
@@ -163,53 +220,89 @@ const DataIntegrationAnimation = () => {
     };
   }, [isMobile]);
 
-  // Get the current product
-  const currentProduct = products[currentProductIndex];
+  // Mobile animation effect
+  useEffect(() => {
+    if (!isMobile) {
+      return;
+    }
 
-  // If mobile, show a static version without animations
+    const mobileAnimationCycle = () => {
+      // Clear rows
+      setMobileFilledRows([]);
+      
+      // Animate rows one by one
+      allDataSources.forEach((_, index) => {
+        setTimeout(() => {
+          setMobileFilledRows(prev => [...prev, index]);
+        }, index * 250);
+      });
+    };
+
+    // Start first cycle
+    mobileAnimationCycle();
+
+    // Repeat every 8 seconds
+    const intervalId = setInterval(mobileAnimationCycle, 8000);
+
+    return () => clearInterval(intervalId);
+  }, [isMobile]);
+
+  // Mobile-specific render
   if (isMobile) {
     return (
       <div className="data-integration-container">
-        <div className="data-sources-row">
-          {currentProduct.dataSources.map(source => {
-            const IconComponent = iconMap[source.icon] || Globe;
-            return (
-              <div key={source.id} className="data-source">
-                <div 
-                  className="source-icon-container"
-                  style={{
-                    backgroundColor: source.bgColor,
-                    borderLeft: `4px solid ${source.color}`
-                  }}
-                  aria-label={`${source.storeName} data source`}
-                  role="button"
-                  tabIndex={0}
-                >
-                  <IconComponent className="source-icon" style={{ color: source.color }} aria-hidden="true" />
-                  <div className="product-label">
-                    {source.description}
-                  </div>
-                </div>
-                <div className="source-name">{source.storeName}</div>
-              </div>
-            );
-          })}
-        </div>
-        <div className="central-hub">
-          <div className="hub-icon-wrapper">
-            <Database className="hub-icon" aria-label="Central Matching Hub" />
+        <div className="data-table-container overflow-x-auto">
+          <div className="mb-4 text-center">
+            <div className="hub-icon-wrapper inline-flex">
+              <Database className="hub-icon" aria-label="Central Matching Hub" />
+            </div>
+            <h3 className="text-lg font-semibold mt-2">Central Matching Hub</h3>
           </div>
-          <div className="hub-description">Matching Hub</div>
+          <table className="data-table min-w-full">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Master SKU</th>
+                <th>Product Description</th>
+                <th>Store Name</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              {allDataSources.map((item, index) => {
+                const currentSKU = index < 3 ? products[0] : products[1];
+                return (
+                  <tr 
+                    key={`${currentSKU.masterSKU}-${item.id}`}
+                    className={`transition-all duration-300 ${
+                      mobileFilledRows.includes(index) 
+                        ? 'opacity-100' 
+                        : 'opacity-40 bg-slate-50'
+                    }`}
+                  >
+                    <td>{mobileFilledRows.includes(index) ? index + 1 : ''}</td>
+                    <td className={`master-sku ${mobileFilledRows.includes(index) ? 'highlighted' : ''}`}>
+                      {mobileFilledRows.includes(index) ? currentSKU.masterSKU : ''}
+                    </td>
+                    <td>{mobileFilledRows.includes(index) ? item.description : ''}</td>
+                    <td>{mobileFilledRows.includes(index) ? item.storeName : ''}</td>
+                    <td>{mobileFilledRows.includes(index) ? item.price : ''}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
       </div>
     );
   }
 
+  // Desktop render with full animation
   return (
     <div className="data-integration-container">
       {/* Data Sources Row */}
       <div className="data-sources-row">
-        {currentProduct.dataSources.map(source => {
+        {products[currentProductIndex].dataSources.map(source => {
           const IconComponent = iconMap[source.icon] || Globe;
           return (
             <div key={source.id} className="data-source">
@@ -237,7 +330,7 @@ const DataIntegrationAnimation = () => {
                     <div 
                       className="data-packet" 
                       style={{
-                        animation: `moveToHub${source.id} 3s ease-in-out forwards`,
+                        animation: `moveToHub${source.id} 1.5s ease-in-out forwards`,
                         backgroundColor: source.color,
                         boxShadow: `0 0 12px ${source.color}80`
                       }}
@@ -263,49 +356,50 @@ const DataIntegrationAnimation = () => {
         </div>
         <div className="hub-description">Matching Hub</div>
 
-        {/* Database Construction Animation */}
-        {showConstruction && (
-          <div className="database-construction-container">
-            <div className="construction-stage">
-              <div className="database-icon-wrapper">
-                <Database className="database-icon" />
-              </div>
-              <div className="stage-description">Building Database...</div>
-            </div>
-          </div>
+        {/* Activity Label */}
+        {activityLabel && (
+          <div className="processing-text">{activityLabel}</div>
         )}
 
-        {/* Table Output */}
-        {showTable && (
-          <div className="data-table-container">
-            <table className="data-table">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Master SKU</th>
-                  <th>Store Name</th>
-                  <th>Product Description</th>
-                  <th>Price</th>
-                  <th>Additional Info</th>
-                </tr>
-              </thead>
-              <tbody>
-                {products.slice(0, currentProductIndex + 1).flatMap(product => 
-                  product.dataSources.map((item, index) => (
-                    <tr key={`${product.masterSKU}-${item.id}`}>
-                      <td>{index + 1}</td>
-                      <td className="master-sku highlighted">{product.masterSKU}</td>
-                      <td>{item.storeName}</td>
-                      <td>{item.description}</td>
-                      <td>{item.price}</td>
-                      <td>{item.additionalData}</td>
-                    </tr>
-                  ))
-                )}
-              </tbody>
-            </table>
-          </div>
-        )}
+        {/* Always visible table with all 6 rows */}
+        <div className="data-table-container">
+          <table className="data-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Master SKU</th>
+                <th>Store Name</th>
+                <th>Product Description</th>
+                <th>Price</th>
+                <th>Additional Info</th>
+              </tr>
+            </thead>
+            <tbody>
+              {allDataSources.map((item, index) => {
+                const currentSKU = index < 3 ? products[0] : products[1];
+                return (
+                  <tr 
+                    key={`${currentSKU.masterSKU}-${item.id}`}
+                    className={`transition-all duration-300 ${
+                      filledRows.includes(index) 
+                        ? 'opacity-100' 
+                        : 'opacity-40 bg-slate-50'
+                    }`}
+                  >
+                    <td>{filledRows.includes(index) ? index + 1 : ''}</td>
+                    <td className={`master-sku ${filledRows.includes(index) ? 'highlighted' : ''}`}>
+                      {filledRows.includes(index) ? currentSKU.masterSKU : ''}
+                    </td>
+                    <td>{filledRows.includes(index) ? item.storeName : ''}</td>
+                    <td>{filledRows.includes(index) ? item.description : ''}</td>
+                    <td>{filledRows.includes(index) ? item.price : ''}</td>
+                    <td>{filledRows.includes(index) ? item.additionalData : ''}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
