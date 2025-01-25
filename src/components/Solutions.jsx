@@ -1,692 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Logo from './Logo';
-
-const travelSolutions = [
-  {
-    title: "Hotel Data Collection",
-    description: "Comprehensive hotel data including rates, availability, amenities, and reviews from multiple OTAs and direct sources.",
-    icon: "🏨",
-    examples: [
-      {
-        name: "Booking.com Hotels Database",
-        sources: ["booking.com"],
-        schema: {
-          hotelName: "string",
-          starRating: "number",
-          address: "object",
-          roomTypes: "array",
-          prices: "object",
-          amenities: "array",
-          reviews: "array",
-          availability: "object",
-          images: "array",
-          coordinates: "object"
-        }
-      },
-      {
-        name: "Expedia Properties Database",
-        sources: ["expedia.com"],
-        schema: {
-          propertyId: "string",
-          name: "string",
-          category: "string",
-          rates: "object",
-          policies: "object",
-          facilities: "array",
-          roomOptions: "array",
-          guestRatings: "object"
-        }
-      },
-      {
-        name: "Airbnb Listings Database",
-        sources: ["airbnb.com"],
-        schema: {
-          listingId: "string",
-          title: "string",
-          hostInfo: "object",
-          pricing: "object",
-          availability: "object",
-          amenities: "array",
-          rules: "object",
-          reviews: "array",
-          location: "object"
-        }
-      },
-      {
-        name: "Hotels.com Inventory",
-        sources: ["hotels.com"],
-        schema: {
-          hotelId: "string",
-          details: "object",
-          rooms: "array",
-          pricing: "object",
-          availability: "object",
-          amenities: "array",
-          photos: "array",
-          ratings: "object"
-        }
-      }
-    ]
-  },
-  {
-    title: "Flight Information",
-    description: "Real-time flight prices, schedules, and availability across multiple airlines and booking platforms.",
-    icon: "✈️",
-    examples: [
-      {
-        name: "Kayak Flights Database",
-        sources: ["kayak.com"],
-        schema: {
-          flightNumber: "string",
-          airline: "object",
-          route: "object",
-          pricing: "array",
-          schedule: "object",
-          availability: "number",
-          aircraft: "object"
-        }
-      },
-      {
-        name: "Skyscanner Routes Database",
-        sources: ["skyscanner.com"],
-        schema: {
-          routeId: "string",
-          origin: "object",
-          destination: "object",
-          carriers: "array",
-          prices: "array",
-          schedules: "array",
-          stops: "array"
-        }
-      },
-      {
-        name: "Google Flights Data",
-        sources: ["google.com/flights"],
-        schema: {
-          searchId: "string",
-          itineraries: "array",
-          priceHistory: "array",
-          airlines: "array",
-          priceAlerts: "object",
-          legDetails: "array"
-        }
-      },
-      {
-        name: "Direct Airlines Database",
-        sources: ["multiple airline websites"],
-        schema: {
-          carrier: "string",
-          routes: "array",
-          fares: "object",
-          classes: "array",
-          availability: "object",
-          rules: "object"
-        }
-      }
-    ]
-  },
-  {
-    title: "Travel Reviews & Ratings",
-    description: "Aggregated customer reviews, ratings, and sentiment analysis from various travel platforms.",
-    icon: "⭐",
-    examples: [
-      {
-        name: "TripAdvisor Reviews",
-        sources: ["tripadvisor.com"],
-        schema: {
-          reviewId: "string",
-          propertyRef: "string",
-          rating: "number",
-          text: "string",
-          date: "date",
-          userInfo: "object",
-          helpful: "number",
-          photos: "array",
-          response: "object"
-        }
-      },
-      {
-        name: "Yelp Travel Database",
-        sources: ["yelp.com"],
-        schema: {
-          businessId: "string",
-          reviews: "array",
-          ratings: "object",
-          categories: "array",
-          attributes: "object",
-          photos: "array"
-        }
-      },
-      {
-        name: "Google Places Reviews",
-        sources: ["google.com/maps"],
-        schema: {
-          placeId: "string",
-          reviews: "array",
-          rating: "number",
-          types: "array",
-          attributes: "object",
-          photos: "array"
-        }
-      },
-      {
-        name: "Trustpilot Travel Reviews",
-        sources: ["trustpilot.com"],
-        schema: {
-          companyId: "string",
-          reviews: "array",
-          rating: "object",
-          tags: "array",
-          responses: "array",
-          verified: "boolean"
-        }
-      }
-    ]
-  },
-  {
-    title: "UI Components & Modals",
-    description: "Ready-to-use travel industry components and modal templates for seamless user experience.",
-    icon: "🎨",
-    examples: [
-      {
-        name: "Booking Components",
-        sources: ["travel platforms"],
-        schema: {
-          componentId: "string",
-          type: "string",
-          templates: "array",
-          modals: "object",
-          styling: "object",
-          interactions: "array",
-          accessibility: "object",
-          localization: "array"
-        }
-      },
-      {
-        name: "Travel Search Interface",
-        sources: ["booking systems"],
-        schema: {
-          searchId: "string",
-          filters: "array",
-          results: "object",
-          sorting: "object",
-          pagination: "object",
-          modals: "array",
-          responsive: "object"
-        }
-      },
-      {
-        name: "Reservation System UI",
-        sources: ["multiple platforms"],
-        schema: {
-          bookingFlow: "object",
-          forms: "array",
-          validation: "object",
-          payment: "object",
-          confirmation: "object",
-          notifications: "array"
-        }
-      },
-      {
-        name: "Travel Dashboard Components",
-        sources: ["management systems"],
-        schema: {
-          widgets: "array",
-          analytics: "object",
-          reports: "array",
-          controls: "object",
-          modals: "object",
-          charts: "array"
-        }
-      }
-    ]
-  }
-];
-
-const ecommerceSolutions = [
-  {
-    title: "Product Data Monitoring",
-    description: "Track prices, inventory, and product details across multiple e-commerce platforms and marketplaces.",
-    icon: "🛍️",
-    examples: [
-      {
-        name: "Amazon Products Database",
-        sources: ["amazon.com"],
-        schema: {
-          asin: "string",
-          title: "string",
-          brand: "string",
-          category: "array",
-          price: "object",
-          features: "array",
-          specs: "object",
-          inventory: "object",
-          reviews: "array"
-        }
-      },
-      {
-        name: "Walmart Catalog Data",
-        sources: ["walmart.com"],
-        schema: {
-          productId: "string",
-          details: "object",
-          pricing: "object",
-          availability: "object",
-          specifications: "array",
-          reviews: "array",
-          variants: "array"
-        }
-      },
-      {
-        name: "eBay Listings Database",
-        sources: ["ebay.com"],
-        schema: {
-          listingId: "string",
-          title: "string",
-          seller: "object",
-          price: "object",
-          condition: "string",
-          shipping: "object",
-          bids: "array"
-        }
-      },
-      {
-        name: "Best Buy Products",
-        sources: ["bestbuy.com"],
-        schema: {
-          sku: "string",
-          productInfo: "object",
-          pricing: "object",
-          availability: "object",
-          specs: "array",
-          reviews: "array",
-          warranty: "object"
-        }
-      }
-    ]
-  },
-  {
-    title: "Competitor Analysis",
-    description: "Monitor competitor pricing, promotions, and product launches with automated data collection.",
-    icon: "📊",
-    examples: [
-      {
-        name: "Price Comparison Database",
-        sources: ["multiple retailers"],
-        schema: {
-          productId: "string",
-          retailers: "array",
-          prices: "array",
-          promotions: "array",
-          availability: "object",
-          history: "array"
-        }
-      },
-      {
-        name: "Promotional Campaigns",
-        sources: ["retailer websites"],
-        schema: {
-          campaignId: "string",
-          retailer: "string",
-          products: "array",
-          discounts: "object",
-          duration: "object",
-          terms: "string"
-        }
-      },
-      {
-        name: "Product Launch Tracker",
-        sources: ["multiple sources"],
-        schema: {
-          productId: "string",
-          brand: "string",
-          launchDate: "date",
-          pricing: "object",
-          channels: "array",
-          marketing: "object"
-        }
-      },
-      {
-        name: "Market Share Analysis",
-        sources: ["multiple platforms"],
-        schema: {
-          category: "string",
-          competitors: "array",
-          sales: "object",
-          trends: "array",
-          rankings: "object"
-        }
-      }
-    ]
-  },
-  {
-    title: "Market Intelligence",
-    description: "Gather market trends, customer reviews, and product performance data for informed decision-making.",
-    icon: "📈",
-    examples: [
-      {
-        name: "Consumer Reviews Database",
-        sources: ["multiple review sites"],
-        schema: {
-          productId: "string",
-          platform: "string",
-          reviews: "array",
-          sentiment: "object",
-          ratings: "object",
-          topics: "array"
-        }
-      },
-      {
-        name: "Category Trends",
-        sources: ["market research sites"],
-        schema: {
-          category: "string",
-          trends: "array",
-          growth: "object",
-          demographics: "object",
-          forecasts: "array"
-        }
-      },
-      {
-        name: "Brand Performance",
-        sources: ["multiple sources"],
-        schema: {
-          brand: "string",
-          metrics: "object",
-          sentiment: "object",
-          share: "object",
-          competitors: "array"
-        }
-      },
-      {
-        name: "Search Trends Database",
-        sources: ["search engines"],
-        schema: {
-          keyword: "string",
-          volume: "object",
-          trends: "array",
-          related: "array",
-          demographics: "object"
-        }
-      }
-    ]
-  },
-  {
-    title: "Interface Components & Modals",
-    description: "Comprehensive collection of e-commerce UI components and modal templates for enhanced shopping experience.",
-    icon: "🎯",
-    examples: [
-      {
-        name: "Product Components",
-        sources: ["e-commerce platforms"],
-        schema: {
-          productCards: "array",
-          galleries: "object",
-          quickView: "object",
-          modals: "array",
-          filters: "object",
-          cart: "object"
-        }
-      },
-      {
-        name: "Checkout Interface",
-        sources: ["shopping platforms"],
-        schema: {
-          steps: "array",
-          forms: "object",
-          validation: "object",
-          payment: "object",
-          modals: "array",
-          confirmation: "object"
-        }
-      },
-      {
-        name: "Store Management UI",
-        sources: ["admin platforms"],
-        schema: {
-          dashboard: "object",
-          inventory: "object",
-          orders: "array",
-          modals: "object",
-          reports: "array",
-          settings: "object"
-        }
-      },
-      {
-        name: "Shopping Cart System",
-        sources: ["multiple platforms"],
-        schema: {
-          cart: "object",
-          checkout: "object",
-          modals: "array",
-          notifications: "object",
-          persistence: "object",
-          sync: "array"
-        }
-      }
-    ]
-  }
-];
-
-const realEstateSolutions = [
-  {
-    title: "Property Listings Monitor",
-    description: "Track real-time property listings, prices, and availability across multiple real estate platforms and MLS systems.",
-    icon: "🏠",
-    examples: [
-      {
-        name: "Zillow Properties Database",
-        sources: ["zillow.com"],
-        schema: {
-          zpid: "string",
-          address: "object",
-          price: "object",
-          details: "object",
-          history: "array",
-          schools: "array",
-          taxes: "object",
-          zestimate: "object"
-        }
-      },
-      {
-        name: "Realtor.com Listings",
-        sources: ["realtor.com"],
-        schema: {
-          listingId: "string",
-          property: "object",
-          price: "object",
-          features: "array",
-          history: "array",
-          agent: "object",
-          photos: "array"
-        }
-      },
-      {
-        name: "Redfin Database",
-        sources: ["redfin.com"],
-        schema: {
-          propertyId: "string",
-          location: "object",
-          details: "object",
-          pricing: "object",
-          history: "array",
-          insights: "object",
-          photos: "array"
-        }
-      },
-      {
-        name: "Trulia Properties",
-        sources: ["trulia.com"],
-        schema: {
-          listingId: "string",
-          details: "object",
-          price: "object",
-          neighborhood: "object",
-          history: "array",
-          schools: "array",
-          crime: "object"
-        }
-      }
-    ]
-  },
-  {
-    title: "Market Analytics",
-    description: "Collect and analyze property values, rental rates, and market trends for different locations and property types.",
-    icon: "📊",
-    examples: [
-      {
-        name: "Market Trends Database",
-        sources: ["multiple sources"],
-        schema: {
-          location: "object",
-          metrics: "object",
-          trends: "array",
-          forecasts: "object",
-          comparisons: "array"
-        }
-      },
-      {
-        name: "Rental Rates Analysis",
-        sources: ["rental platforms"],
-        schema: {
-          area: "string",
-          rates: "object",
-          trends: "array",
-          occupancy: "object",
-          amenities: "object"
-        }
-      },
-      {
-        name: "Property Value Index",
-        sources: ["multiple sources"],
-        schema: {
-          location: "object",
-          values: "array",
-          appreciation: "object",
-          comparables: "array",
-          factors: "object"
-        }
-      },
-      {
-        name: "Investment Metrics",
-        sources: ["investment platforms"],
-        schema: {
-          market: "string",
-          roi: "object",
-          risks: "array",
-          opportunities: "array",
-          projections: "object"
-        }
-      }
-    ]
-  },
-  {
-    title: "Investment Insights",
-    description: "Gather data on property investment opportunities, ROI metrics, and neighborhood analytics for informed decisions.",
-    icon: "💰",
-    examples: [
-      {
-        name: "Investment Properties",
-        sources: ["investment sites"],
-        schema: {
-          propertyId: "string",
-          financials: "object",
-          roi: "object",
-          expenses: "array",
-          projections: "object"
-        }
-      },
-      {
-        name: "Neighborhood Analytics",
-        sources: ["multiple sources"],
-        schema: {
-          area: "string",
-          demographics: "object",
-          amenities: "array",
-          development: "object",
-          scores: "object"
-        }
-      },
-      {
-        name: "Market Opportunity Index",
-        sources: ["research platforms"],
-        schema: {
-          market: "string",
-          score: "object",
-          factors: "array",
-          trends: "object",
-          risks: "array"
-        }
-      },
-      {
-        name: "Property Management Data",
-        sources: ["management platforms"],
-        schema: {
-          property: "string",
-          operations: "object",
-          maintenance: "array",
-          tenants: "object",
-          financials: "array"
-        }
-      }
-    ]
-  },
-  {
-    title: "Property Interface & Modals",
-    description: "Specialized real estate UI components and modal templates for property listing and management.",
-    icon: "🏗️",
-    examples: [
-      {
-        name: "Property Components",
-        sources: ["real estate platforms"],
-        schema: {
-          listings: "array",
-          galleries: "object",
-          virtualTour: "object",
-          modals: "array",
-          forms: "object",
-          maps: "object"
-        }
-      },
-      {
-        name: "Agent Dashboard UI",
-        sources: ["agent platforms"],
-        schema: {
-          leads: "array",
-          properties: "object",
-          calendar: "object",
-          modals: "array",
-          reports: "object",
-          communications: "array"
-        }
-      },
-      {
-        name: "Property Search Interface",
-        sources: ["listing platforms"],
-        schema: {
-          filters: "object",
-          results: "array",
-          maps: "object",
-          modals: "array",
-          saved: "object",
-          alerts: "array"
-        }
-      },
-      {
-        name: "Property Management System",
-        sources: ["management platforms"],
-        schema: {
-          units: "array",
-          tenants: "object",
-          maintenance: "object",
-          modals: "array",
-          billing: "object",
-          documents: "array"
-        }
-      }
-    ]
-  }
-];
+import PropTypes from 'prop-types';
+import { travelSolutions, ecommerceSolutions, realEstateSolutions } from './SolutionData';
 
 const TabPanel = ({ children, isActive }) => (
   <div className={`transition-all duration-300 ${isActive ? 'opacity-100' : 'opacity-0 absolute inset-0 pointer-events-none'}`}>
@@ -694,25 +9,38 @@ const TabPanel = ({ children, isActive }) => (
   </div>
 );
 
+TabPanel.propTypes = {
+  children: PropTypes.node.isRequired,
+  isActive: PropTypes.bool.isRequired
+};
+
 const Solutions = () => {
   const [activeTab, setActiveTab] = useState('travel');
   const [activeExample, setActiveExample] = useState(null);
+  const [expandedCards, setExpandedCards] = useState({});
+
+  const toggleCard = (index) => {
+    setExpandedCards(prev => ({
+      ...prev,
+      [index]: !prev[index]
+    }));
+  };
 
   const renderExampleDetails = (example) => (
-    <div className="mt-4 p-6 bg-white/50 backdrop-blur-sm rounded-2xl border border-white/20">
-      <div className="flex justify-between items-start mb-4">
-        <h4 className="text-lg font-bold text-dark-900">{example.name}</h4>
-        <div className="text-sm text-dark-600">
+    <div className="mt-4 p-4 md:p-6 bg-white/80 backdrop-blur-sm rounded-xl border border-slate-200/60 shadow-sm hover:shadow-md transition-shadow duration-300">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2 mb-4">
+        <h4 className="text-base md:text-lg font-bold text-slate-900">{example.name}</h4>
+        <div className="text-sm text-slate-600">
           Sources: {example.sources.join(', ')}
         </div>
       </div>
-      <div className="bg-dark-900/5 rounded-xl p-4">
-        <h5 className="text-sm font-medium text-dark-900 mb-2">Schema Structure:</h5>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="bg-slate-50/80 rounded-xl p-4">
+        <h5 className="text-sm font-medium text-slate-900 mb-3">Schema Structure:</h5>
+        <div className="grid grid-cols-1 gap-2 font-mono text-sm">
           {Object.entries(example.schema).map(([key, type]) => (
-            <div key={key} className="flex items-start space-x-2">
-              <span className="text-primary-600 font-mono text-sm">{key}:</span>
-              <span className="text-dark-600 font-mono text-sm">{type}</span>
+            <div key={key} className="flex items-start gap-4 pl-4">
+              <span className="text-primary-600 font-medium min-w-[120px] md:min-w-[160px]">{key}:</span>
+              <span className="text-slate-600">{type}</span>
             </div>
           ))}
         </div>
@@ -720,37 +48,83 @@ const Solutions = () => {
     </div>
   );
 
-  const renderSolutionCard = (solution, index) => (
+  const renderMobileSolution = (solution, index) => (
+    <div key={index} className="border-b border-slate-200 last:border-b-0">
+      <button
+        onClick={() => toggleCard(index)}
+        className="w-full py-4 px-4 md:px-6 flex items-center justify-between gap-4 text-left hover:bg-slate-50/50 transition-colors duration-200"
+      >
+        <div className="flex items-center gap-4">
+          <span className="text-2xl md:text-3xl bg-gradient-to-br from-primary-100 to-transparent w-12 h-12 rounded-xl flex items-center justify-center">{solution.icon}</span>
+          <div>
+            <h3 className="text-base md:text-lg font-bold text-slate-900 mb-1">{solution.title}</h3>
+            <p className="text-sm text-slate-600 line-clamp-1">{solution.description}</p>
+          </div>
+        </div>
+        <svg 
+          className={`w-5 h-5 flex-shrink-0 transition-transform duration-300 text-slate-400 ${expandedCards[index] ? 'rotate-180' : ''}`}
+          fill="none" 
+          viewBox="0 0 24 24" 
+          stroke="currentColor"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      
+      {expandedCards[index] && (
+        <div className="pb-4 px-4 md:px-6 space-y-4">
+          <div className="grid grid-cols-2 gap-3">
+            {solution.examples.map((example, exampleIndex) => (
+              <button
+                key={exampleIndex}
+                onClick={() => setActiveExample(activeExample === exampleIndex ? null : exampleIndex)}
+                className={`p-3 text-left rounded-xl transition-all duration-300 hover:-translate-y-0.5 ${
+                  activeExample === exampleIndex
+                    ? 'bg-primary-50 text-primary-600 shadow-sm'
+                    : 'hover:bg-slate-50 text-slate-600 hover:shadow-sm'
+                }`}
+              >
+                <div className="text-sm font-medium truncate">{example.name}</div>
+                <div className="text-xs opacity-75 truncate">{example.sources[0]}</div>
+              </button>
+            ))}
+          </div>
+          {activeExample !== null && renderExampleDetails(solution.examples[activeExample])}
+        </div>
+      )}
+    </div>
+  );
+
+  const renderDesktopSolution = (solution, index) => (
     <div
       key={index}
-      className="group bg-white/80 backdrop-blur-sm p-8 rounded-3xl hover:shadow-xl transition-all duration-300 border border-white/20"
+      className="group bg-white/80 backdrop-blur-sm p-6 md:p-8 rounded-3xl hover:shadow-xl transition-all duration-300 border border-slate-200/60 hover:-translate-y-1"
     >
-      <div className="text-4xl mb-6 bg-gradient-to-br from-primary-100 to-transparent w-16 h-16 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+      <div className="text-3xl md:text-4xl mb-6 bg-gradient-to-br from-primary-100 to-transparent w-16 h-16 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
         {solution.icon}
       </div>
-      <h3 className="text-2xl font-display font-bold text-dark-900 mb-4 group-hover:text-primary-600 transition-colors">
+      <h3 className="text-xl md:text-2xl font-display font-bold text-slate-900 mb-3 group-hover:text-primary-600 transition-colors">
         {solution.title}
       </h3>
-      <p className="text-dark-600 leading-relaxed mb-6">
+      <p className="text-slate-600 leading-relaxed mb-6">
         {solution.description}
       </p>
       
-      {/* Database Examples */}
       <div className="space-y-4">
-        <h4 className="text-lg font-semibold text-dark-900">Available Databases:</h4>
-        <div className="grid grid-cols-2 gap-2">
+        <h4 className="text-base md:text-lg font-semibold text-slate-900">Available Databases:</h4>
+        <div className="grid grid-cols-2 gap-3">
           {solution.examples.map((example, exampleIndex) => (
             <button
               key={exampleIndex}
               onClick={() => setActiveExample(activeExample === exampleIndex ? null : exampleIndex)}
-              className={`p-3 text-left rounded-xl transition-all duration-300 ${
+              className={`p-4 text-left rounded-xl transition-all duration-300 hover:-translate-y-0.5 ${
                 activeExample === exampleIndex
-                  ? 'bg-primary-50 text-primary-600'
-                  : 'hover:bg-dark-50 text-dark-600'
+                  ? 'bg-primary-50 text-primary-600 shadow-sm'
+                  : 'hover:bg-slate-50 text-slate-600 hover:shadow-sm'
               }`}
             >
-              <div className="text-sm font-medium">{example.name}</div>
-              <div className="text-xs opacity-75">{example.sources[0]}</div>
+              <div className="text-sm md:text-base font-medium">{example.name}</div>
+              <div className="text-xs md:text-sm opacity-75">{example.sources[0]}</div>
             </button>
           ))}
         </div>
@@ -759,55 +133,69 @@ const Solutions = () => {
     </div>
   );
 
+  const renderSolutions = (solutions) => (
+    <>
+      {/* Mobile Layout */}
+      <div className="md:hidden bg-white/90 backdrop-blur-sm rounded-xl shadow-lg divide-y divide-slate-200">
+        {solutions.map((solution, index) => renderMobileSolution(solution, index))}
+      </div>
+
+      {/* Desktop Layout */}
+      <div className="hidden md:grid md:grid-cols-2 gap-8 lg:gap-12">
+        {solutions.map((solution, index) => renderDesktopSolution(solution, index))}
+      </div>
+    </>
+  );
+
   return (
-    <section id="solutions" className="py-32 relative overflow-hidden bg-gradient-to-b from-white via-primary-50/30 to-white">
+    <section id="solutions" className="py-16 md:py-32 relative overflow-hidden bg-gradient-to-b from-white via-primary-50/30 to-white">
       <div className="absolute inset-0 bg-mesh-pattern opacity-5"></div>
       <div className="absolute inset-0 bg-gradient-to-r from-primary-600/5 via-accent-purple/5 to-accent-cyan/5"></div>
       
-      <div className="max-w-7xl mx-auto px-4 relative">
-        <div className="text-center mb-20">
-          <div className="flex justify-center mb-8">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 relative">
+        <div className="text-center mb-12 md:mb-20">
+          <div className="flex justify-center mb-6 md:mb-8">
             <Logo size="medium" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-display font-bold mb-8">
+          <h2 className="text-3xl md:text-5xl font-display font-bold mb-4 md:mb-8">
             <span className="bg-gradient-to-r from-primary-600 via-accent-purple to-accent-cyan bg-clip-text text-transparent">
               Industry Solutions
             </span>
           </h2>
-          <p className="text-xl text-dark-700 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto">
             Specialized web scraping solutions tailored for your industry needs
           </p>
         </div>
 
         {/* Tabs */}
-        <div className="flex justify-center mb-16">
-          <div className="inline-flex rounded-xl bg-white/50 backdrop-blur-sm shadow-lg p-1.5 border border-white/20">
+        <div className="flex justify-center mb-8 md:mb-16 px-4">
+          <div className="inline-flex rounded-xl bg-white/50 backdrop-blur-sm shadow-lg p-1.5 border border-slate-200/60">
             <button
               onClick={() => setActiveTab('travel')}
-              className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
+              className={`px-3 md:px-6 py-2 md:py-3 rounded-lg font-medium transition-all duration-300 ${
                 activeTab === 'travel'
                   ? 'bg-gradient-to-r from-primary-600 to-accent-purple text-white shadow-lg'
-                  : 'text-dark-600 hover:text-dark-900'
+                  : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               Travel Industry
             </button>
             <button
               onClick={() => setActiveTab('ecommerce')}
-              className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
+              className={`px-3 md:px-6 py-2 md:py-3 rounded-lg font-medium transition-all duration-300 ${
                 activeTab === 'ecommerce'
                   ? 'bg-gradient-to-r from-accent-purple to-accent-cyan text-white shadow-lg'
-                  : 'text-dark-600 hover:text-dark-900'
+                  : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               E-commerce
             </button>
             <button
               onClick={() => setActiveTab('realestate')}
-              className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
+              className={`px-3 md:px-6 py-2 md:py-3 rounded-lg font-medium transition-all duration-300 ${
                 activeTab === 'realestate'
                   ? 'bg-gradient-to-r from-accent-cyan to-primary-600 text-white shadow-lg'
-                  : 'text-dark-600 hover:text-dark-900'
+                  : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               Real Estate
@@ -818,21 +206,15 @@ const Solutions = () => {
         {/* Tab Panels */}
         <div className="relative min-h-[400px]">
           <TabPanel isActive={activeTab === 'travel'}>
-            <div className="grid md:grid-cols-2 gap-12">
-              {travelSolutions.map((solution, index) => renderSolutionCard(solution, index))}
-            </div>
+            {renderSolutions(travelSolutions)}
           </TabPanel>
 
           <TabPanel isActive={activeTab === 'ecommerce'}>
-            <div className="grid md:grid-cols-2 gap-12">
-              {ecommerceSolutions.map((solution, index) => renderSolutionCard(solution, index))}
-            </div>
+            {renderSolutions(ecommerceSolutions)}
           </TabPanel>
 
           <TabPanel isActive={activeTab === 'realestate'}>
-            <div className="grid md:grid-cols-2 gap-12">
-              {realEstateSolutions.map((solution, index) => renderSolutionCard(solution, index))}
-            </div>
+            {renderSolutions(realEstateSolutions)}
           </TabPanel>
         </div>
       </div>
