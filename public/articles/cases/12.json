@@ -1,0 +1,124 @@
+{
+  "Title": "Social Media Insights for B2B Leads",
+  "Subtitle": "Extracting Data from Platforms Like LinkedIn to Identify High-Potential Prospects",
+  "Business Impact": "By systematically harvesting social media information, sales teams can more effectively engage with decision-makers and influencers, translating into increased conversion rates and shorter sales cycles.",
+  "Sector": "Lead Generation",
+  "What data was collected": "Professional profiles, job titles, work history, and industry affiliations from LinkedIn and similar platforms, focusing on B2B contexts and corporate decision-making roles.",
+  "Why this matters": "LinkedIn profiles often reflect up-to-date career information, allowing businesses to identify potential leads by role changes, new hires, or expansions—key indicators of a company’s readiness to invest.",
+  "Implementation time": "6 to 8 weeks, covering compliance checks, building scraper APIs, and establishing data pipelines into the CRM or marketing automation system.",
+  "Problems this solves": "1) Reliance on outdated or unreliable lead databases. 2) Difficulty in discovering new hires or role changes quickly. 3) Limited visibility into the organizational hierarchy of target accounts.",
+  "Why it was better to outsource this solution": "The outsourced team was well-versed in navigating social media platforms without violating terms of service, using stealthy scraping techniques and respecting data privacy regulations. This limited the risk of account bans and compliance breaches.",
+  "Input Schema": "A JSON object with the target industry, job roles, and location preferences. Example: { 'industry': 'Software', 'job_roles': ['CTO', 'VP Engineering'], 'locations': ['San Francisco'] }",
+  "Output Schema": "A JSON array with structured lead information, including profile links and summary stats (years of experience, endorsements). Example: [ { 'name': 'Jane Smith', 'title': 'VP Engineering', 'company': 'TechDrive', 'location': 'San Francisco', 'profile_link': '...' }, ... ]",
+  "Matching algorithm used to integrate the data": "Profile-based scraping that cross-references job roles and industries, applying text classification to filter out irrelevant titles and using location-based matching for regional targeting.",
+  "Story": "<p>For a global IT solutions provider, expanding into new markets is an exciting yet challenging prospect. Despite having a robust sales team, the company found that their approach to identifying and prioritizing B2B leads often felt haphazard and inefficient. Recognizing the untapped potential of LinkedIn as a key platform for connecting with professionals and generating high-quality prospects, the provider turned to Iceberg Data for a sophisticated lead generation solution.</p>\n\n<p>Iceberg Data's web scraping experts developed a powerful system designed to continuously scan LinkedIn profiles, identifying individuals based on several key criteria, including location, job title, experience level, and connections to relevant tech communities. The real-time data feed seamlessly integrated with the provider's CRM, ensuring that newly discovered leads and job changes among existing contacts were always up-to-date.</p>\n\n<p>The intelligent system became the backbone of the provider's account-based marketing campaigns, enabling timely and well-informed outreach. <strong>For example, when an existing account contact became a CTO at a new firm, the system immediately flagged this transition.</strong> Armed with this insight, the provider's sales team could quickly reach out, demonstrating their understanding of the contact's new role and offering tailored solutions.</p>\n\n<p>By outsourcing the project to Iceberg Data, the IT solutions provider avoided the technical and regulatory complexities of scraping social media data. Iceberg Data expertly managed best practices to ensure compliance with user privacy and platform terms, allowing the provider's sales teams to focus solely on nurturing relationships with the newly discovered leads.</p>\n\n<p>Iceberg Data's solution utilized a JSON object input schema specifying the target industry, job roles, and location preferences. The output was a JSON array with structured lead information, including profile links and summary stats like years of experience and endorsements. The matching algorithm employed profile-based scraping that cross-referenced job roles and industries, applying text classification to filter out irrelevant titles and using location-based matching for regional targeting.</p>\n\n<p><strong>The results were impressive: within months, the provider reported a notable uptick in new business opportunities.</strong> The targeted approach transformed LinkedIn into a fertile source of high-quality B2B prospects, and the data-driven strategy enabled more strategic and efficient lead generation efforts.</p>\n\n<p>By systematically harvesting social media information through Iceberg Data's expertise, the IT solutions provider's sales teams could more effectively engage with decision-makers and influencers. <strong>This translated into increased conversion rates and shorter sales cycles, accelerating the company's growth in new markets.</strong> Iceberg Data's innovative approach to B2B lead generation, focusing on real-time professional changes, proved to be a game-changer for the global IT solutions provider.</p>",
+  "publicationDate": "2023-06-13",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "industry": {
+        "type": "string",
+        "description": "The target industry for the job search.",
+        "examples": [
+          "Software",
+          "Finance",
+          "Healthcare"
+        ]
+      },
+      "job_roles": {
+        "type": "array",
+        "description": "An array of desired job roles.",
+        "items": {
+          "type": "string",
+          "examples": [
+            "CTO",
+            "VP Engineering",
+            "Software Architect",
+            "Product Manager"
+          ]
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      },
+      "locations": {
+        "type": "array",
+        "description": "An array of preferred job locations.",
+        "items": {
+          "type": "string",
+          "examples": [
+            "San Francisco",
+            "New York",
+            "Seattle",
+            "Remote"
+          ]
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      }
+    },
+    "required": [
+      "industry",
+      "job_roles",
+      "locations"
+    ],
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "LeadInformation",
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Full name of the lead",
+          "example": "Jane Smith"
+        },
+        "title": {
+          "type": "string",
+          "description": "Current job title of the lead",
+          "example": "VP Engineering"
+        },
+        "company": {
+          "type": "string",
+          "description": "Current company where the lead works",
+          "example": "TechDrive"
+        },
+        "location": {
+          "type": "string",
+          "description": "Geographic location of the lead",
+          "example": "San Francisco"
+        },
+        "profile_link": {
+          "type": "string",
+          "description": "URL link to the lead's professional profile",
+          "format": "uri",
+          "example": "https://www.linkedin.com/in/janesmith"
+        },
+        "years_of_experience": {
+          "type": "integer",
+          "description": "Number of years of professional experience the lead has",
+          "minimum": 0,
+          "example": 12
+        },
+        "endorsements": {
+          "type": "integer",
+          "description": "Number of professional endorsements the lead has received",
+          "minimum": 0,
+          "example": 87
+        }
+      },
+      "required": [
+        "name",
+        "title",
+        "company",
+        "location",
+        "profile_link",
+        "years_of_experience",
+        "endorsements"
+      ]
+    }
+  }
+}

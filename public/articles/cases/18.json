@@ -1,0 +1,142 @@
+{
+  "Title": "Ratings Aggregation from Public OTA Listings",
+  "Subtitle": "Centralizing Guest Feedback to Enhance Hotel Offerings",
+  "Business Impact": "Collecting property ratings from multiple public OTA platforms (like Booking.com and Expedia) enables hotels to address repeating issues faster, improving guest satisfaction by over 10%.",
+  "Sector": "Hotels",
+  "What data was collected": "Public star ratings, textual reviews, amenity mentions, location commentary, and competitor properties’ rating breakdowns displayed on OTAs’ public pages.",
+  "Why this matters": "Each OTA might have slightly different rating systems, and guests often post distinct reviews on different sites. A unified, web-scraped view reveals property strengths and weaknesses at scale.",
+  "Implementation time": "4 to 6 weeks, focusing on OTA data scraping pipelines, data normalization, and generating a consolidated dashboard.",
+  "Problems this solves": "1) Duplicate manual effort to check multiple OTA dashboards. 2) Missed trends when reviews are scattered across different websites. 3) Limited insight into how competitor ratings stack up publicly.",
+  "Why it was better to outsource this solution": "Professional scrapers have established frameworks and back-end knowledge of OTA sites, ensuring continuous data capture without risking account blocking or incomplete results.",
+  "Input Schema": "A JSON object specifying OTA property URLs, competitor listings, and the time window for reviews. Example: { 'property_listings': ['urlA', 'urlB'], 'competitor_listings': ['urlC'], 'review_window': '90 days' }",
+  "Output Schema": "A JSON object summarizing aggregated ratings, top positive/negative themes, and comparison with competitor properties. Example: { 'overall_rating': 4.3, 'themes': { 'positive': [...], 'negative': [...] }, 'competitor_comparison': [...] }",
+  "Matching algorithm used to integrate the data": "Property IDs matched with OTA listings via direct URL or known IDs. Reviews are cleansed, normalized, and sorted into topics or sentiment clusters for side-by-side comparisons.",
+  "Story": "<p>For hotels, understanding guest sentiment across multiple online travel agencies (OTAs) is crucial for improving offerings and staying competitive. However, manually tracking reviews on various platforms like Booking.com and Expedia is time-consuming and often misses key trends. A boutique hotel faced this challenge, struggling to gain a comprehensive view of its performance and identify areas for improvement.</p>\n\n<p>The hotel's managers found it cumbersome to check separate dashboards daily for new comments or rating changes. They risked overlooking repeated complaints or losing sight of how their offerings compared to competitors. Duplicate effort, scattered insights, and a lack of competitive benchmarking hindered their ability to enhance the guest experience.</p>\n\n<p>Iceberg Data's web scraping experts provided an innovative solution, delivering a centralized feed of OTA reviews aggregated daily. By specifying the hotel's listings, competitor URLs, and review timeframe in a structured JSON input, Iceberg Data captured and normalized key data points from public booking pages. The output schema consolidated overall ratings, trending positive and negative themes, and competitor comparisons for streamlined analysis.</p>\n\n<p>The scraping solution matched properties to OTA listings, cleansed and sorted reviews, and generated actionable insights within <strong>4 to 6 weeks</strong>. Managers quickly spotted consistent praise for the hotel's cozy design but also repeatedly mentioned issues with slow Wi-Fi. A concurrent scrape revealed a competitor had recently upgraded internet services, prominently marketing it on their listing.</p>\n\n<p>Armed with these insights, the hotel rolled out high-speed Wi-Fi and promoted the upgrade to guests. Subsequent daily scrapes showed the proactive approach <strong>increased guest satisfaction scores by over 10%</strong>. The hotel reshaped its priorities, boosted review ratings, and ultimately drove higher occupancy rates. By outsourcing to Iceberg Data's scraping professionals, the hotel accessed vital guest feedback while avoiding the technical challenges of collecting OTA data at scale.</p>\n\n<p>Iceberg Data's tailored web scraping solution empowered the boutique hotel to uncover actionable insights, outpace competitors, and measurably improve the guest experience. The <strong>10% increase in satisfaction scores</strong> demonstrates the significant ROI and value of a centralized, professionally scraped OTA review strategy. With Iceberg Data, hotels can harness the power of guest feedback to drive revenue and remain competitive in a rapidly evolving market.</p>",
+  "publicationDate": "2023-12-24",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "property_listings": {
+        "type": "array",
+        "description": "An array of strings representing URLs for the property's OTA listings",
+        "items": {
+          "type": "string",
+          "format": "uri"
+        },
+        "minItems": 1,
+        "uniqueItems": true,
+        "example": [
+          "https://www.expedia.com/hotel-abc",
+          "https://www.booking.com/hotel-xyz"
+        ]
+      },
+      "competitor_listings": {
+        "type": "array",
+        "description": "An array of strings representing URLs for competitor OTA listings",
+        "items": {
+          "type": "string",
+          "format": "uri"
+        },
+        "uniqueItems": true,
+        "example": [
+          "https://www.hotels.com/hotel-123",
+          "https://www.tripadvisor.com/hotel-789"
+        ]
+      },
+      "review_window": {
+        "type": "string",
+        "description": "A string specifying the time window for reviews to analyze, e.g. '90 days'",
+        "pattern": "^\\d+\\s+(day|days|week|weeks|month|months|year|years)$",
+        "example": "90 days"
+      }
+    },
+    "required": [
+      "property_listings",
+      "review_window"
+    ],
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "overall_rating": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5,
+        "description": "The aggregated overall rating of the property, on a scale of 0 to 5."
+      },
+      "themes": {
+        "type": "object",
+        "properties": {
+          "positive": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "A positive theme mentioned in the reviews."
+            },
+            "example": [
+              "Great location",
+              "Friendly staff",
+              "Clean rooms"
+            ]
+          },
+          "negative": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "A negative theme mentioned in the reviews."
+            },
+            "example": [
+              "Noisy rooms",
+              "Slow service",
+              "Limited parking"
+            ]
+          }
+        },
+        "required": [
+          "positive",
+          "negative"
+        ],
+        "description": "The top positive and negative themes extracted from the reviews."
+      },
+      "competitor_comparison": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "competitor_name": {
+              "type": "string",
+              "description": "The name of the competitor property."
+            },
+            "rating_difference": {
+              "type": "number",
+              "description": "The difference between the property's rating and the competitor's rating (property rating - competitor rating)."
+            }
+          },
+          "required": [
+            "competitor_name",
+            "rating_difference"
+          ]
+        },
+        "example": [
+          {
+            "competitor_name": "Hotel A",
+            "rating_difference": 0.2
+          },
+          {
+            "competitor_name": "Hotel B",
+            "rating_difference": -0.1
+          }
+        ],
+        "description": "A comparison of the property's rating with its competitors."
+      }
+    },
+    "required": [
+      "overall_rating",
+      "themes",
+      "competitor_comparison"
+    ]
+  }
+}

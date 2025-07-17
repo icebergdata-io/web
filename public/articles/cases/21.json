@@ -1,0 +1,177 @@
+{
+  "Title": "OTA Commission Optimization through Public Price & Fee Scraping",
+  "Subtitle": "Comparing OTA Fee Structures to Fine-Tune Hotel Channel Mix",
+  "Business Impact": "Monitoring publicly advertised commission rates and listing fees can help hotels adapt channel strategies, potentially reducing OTA expenses by 10-15%.",
+  "Sector": "Hotels",
+  "What data was collected": "Public OTA listings and commission disclaimers, competitor brand promotions, visible discount structures, and user complaints about hidden fees on forums or social media.",
+  "Why this matters": "OTAs may periodically adjust commission policies or offer special promotions to hotels, impacting final margins. Scraping publicly posted fees ensures that hotels negotiate or shift inventory intelligently.",
+  "Implementation time": "8 to 10 weeks, covering aggregator scraping for multiple OTAs, analysis of competitor promotional tie-ins, and forecasting how fee changes impact direct bookings.",
+  "Problems this solves": "1) Blindly allocating inventory without knowing real-time OTA commission changes. 2) Failing to leverage competitor deals that hint at better or worse commissions. 3) Limited insight into how these fees affect overall profitability.",
+  "Why it was better to outsource this solution": "Professional web scrapers excel at capturing changes in publicly displayed fees or disclaimers across OTA sites, ensuring hotels are always up to date on commission fluctuations.",
+  "Input Schema": "A JSON object with OTA site URLs, competitor hotel references, and commission highlight triggers. Example: { 'ota_listings': ['Expedia.com/hotels', 'Booking.com/hotels'], 'competitors': ['HotelX'], 'tracking_keywords': ['commission', 'listing fee'] }",
+  "Output Schema": "A JSON object summarizing each OTA's public fee structure, competitor tie-ins, and recommended channel allocations. Example: { 'ota_fees': [...], 'competitor_promotions': [...], 'channel_strategy': [{...}] }",
+  "Matching algorithm used to integrate the data": "Data is grouped by OTA brand, location, and any unique disclaimers or promotional text referencing commissions or fees, then mapped back to competitor listings for side-by-side comparisons.",
+  "Story": "<p>In the highly competitive hotel industry, managing Online Travel Agency (OTA) commissions is a critical challenge. High commission rates can significantly impact a hotel's bottom line, but without visibility into the constantly changing fee structures, it's difficult to negotiate better terms or optimize channel mix. One major hotel group faced this exact problem, lacking the insights needed to effectively balance OTA exposure and profitability.</p>\n\n<p>The hotel group struggled with several key issues:\n<ul>\n<li>Blindly allocating inventory without knowing real-time OTA commission changes</li>\n<li>Failing to leverage competitor deals that hint at better or worse commissions</li>\n<li>Limited insight into how these fees affect overall profitability</li>\n</ul>\nTo overcome these challenges, they turned to Iceberg Data's web scraping experts.</p>\n\n<p>Iceberg Data implemented a comprehensive web scraping solution, targeting multiple data points across various OTA platforms. The <strong>input schema included OTA site URLs, competitor hotel references, and commission highlight triggers</strong>, ensuring the scrapers captured all relevant information. The <strong>output schema provided a clear summary of each OTA's public fee structure, competitor tie-ins, and recommended channel allocations</strong>.</p>\n\n<p>The web scraping process was designed to gather critical data, including:\n<ul>\n<li>Commission details from listing pages</li>\n<li>Terms and conditions sections</li>\n<li>Promotional disclaimers</li>\n<li>Competitor promotions that might indicate negotiated lower fees</li>\n</ul>\nIceberg Data's <strong>advanced matching algorithms grouped the data by OTA brand, location, and unique disclaimers or promotional text</strong>, enabling side-by-side comparisons with competitor listings.</p>\n\n<p>The insights uncovered by Iceberg Data's web scraping were game-changing for the hotel group. In one case, the data revealed that a direct competitor had shifted more inventory to an OTA after securing reduced listing fees. Armed with this knowledge, the hotel group successfully <strong>negotiated new terms with the OTA</strong>. They also discovered user complaints about hidden booking fees on certain platforms, allowing them to <strong>strategically transfer inventory to more transparent channels</strong>.</p>\n\n<p>By partnering with Iceberg Data, the hotel group achieved significant results:\n<ol>\n<li>A more balanced distribution strategy across OTAs and direct channels</li>\n<li>Reduced commission outflow, with potential OTA expense savings of <strong>10-15%</strong></li>\n<li>Improved overall profitability and a stronger market position</li>\n</ol>\nIceberg Data's expertise in web scraping and data analysis empowered the hotel group to <strong>adapt their channel strategies in real-time</strong>, ensuring they always had the most up-to-date and actionable insights.</p>",
+  "publicationDate": "2024-06-12",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "ota_listings": {
+        "type": "array",
+        "description": "An array of OTA site URLs where the hotel is listed.",
+        "items": {
+          "type": "string",
+          "format": "uri"
+        },
+        "minItems": 1,
+        "uniqueItems": true,
+        "example": [
+          "https://www.expedia.com/hotels/property1234",
+          "https://www.booking.com/hotel/us/property1234.html"
+        ]
+      },
+      "competitors": {
+        "type": "array",
+        "description": "An array of competitor hotel names.",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        },
+        "uniqueItems": true,
+        "example": [
+          "HotelX",
+          "HotelY"
+        ]
+      },
+      "tracking_keywords": {
+        "type": "array",
+        "description": "An array of keywords to track that trigger commission or listing fee highlights.",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        },
+        "minItems": 1,
+        "uniqueItems": true,
+        "example": [
+          "commission",
+          "listing fee",
+          "booking fee"
+        ]
+      }
+    },
+    "required": [
+      "ota_listings",
+      "competitors",
+      "tracking_keywords"
+    ],
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "ota_fees": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "ota_name": {
+              "type": "string",
+              "description": "The name of the online travel agency (OTA)"
+            },
+            "fee_type": {
+              "type": "string",
+              "description": "The type of fee charged by the OTA (e.g., commission, flat fee, etc.)"
+            },
+            "fee_amount": {
+              "type": "number",
+              "description": "The amount of the fee, either as a percentage or a fixed value"
+            },
+            "fee_description": {
+              "type": "string",
+              "description": "A brief description of the fee structure"
+            }
+          },
+          "required": [
+            "ota_name",
+            "fee_type",
+            "fee_amount"
+          ]
+        }
+      },
+      "competitor_promotions": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "competitor_name": {
+              "type": "string",
+              "description": "The name of the competitor offering the promotion"
+            },
+            "ota_name": {
+              "type": "string",
+              "description": "The name of the OTA where the promotion is offered"
+            },
+            "promotion_type": {
+              "type": "string",
+              "description": "The type of promotion (e.g., discount, bonus, etc.)"
+            },
+            "promotion_details": {
+              "type": "string",
+              "description": "A brief description of the promotion"
+            },
+            "valid_from": {
+              "type": "string",
+              "format": "date",
+              "description": "The start date of the promotion"
+            },
+            "valid_to": {
+              "type": "string",
+              "format": "date",
+              "description": "The end date of the promotion"
+            }
+          },
+          "required": [
+            "competitor_name",
+            "ota_name",
+            "promotion_type",
+            "valid_from",
+            "valid_to"
+          ]
+        }
+      },
+      "channel_strategy": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "ota_name": {
+              "type": "string",
+              "description": "The name of the OTA"
+            },
+            "recommended_allocation": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100,
+              "description": "The recommended percentage of inventory to allocate to this OTA"
+            },
+            "rationale": {
+              "type": "string",
+              "description": "A brief explanation for the recommended allocation"
+            }
+          },
+          "required": [
+            "ota_name",
+            "recommended_allocation"
+          ]
+        }
+      }
+    },
+    "required": [
+      "ota_fees",
+      "competitor_promotions",
+      "channel_strategy"
+    ]
+  }
+}

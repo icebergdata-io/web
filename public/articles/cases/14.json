@@ -1,0 +1,140 @@
+{
+  "Title": "Mobile App Feedback Insights via Public Scraping",
+  "Subtitle": "Gathering User Reviews and Ratings for Feature Optimization",
+  "Business Impact": "Analyzing publicly posted feedback and star ratings for competitors’ rental apps drives better design decisions, yielding up to 20% higher user retention.",
+  "Sector": "Car Rental",
+  "What data was collected": "App store reviews, star ratings, competitor app changelogs, and user comments, all publicly posted on digital storefronts (Google Play, Apple App Store).",
+  "Why this matters": "Real user sentiments about car rental mobile apps can expose navigation pain points, must-have features, and missing elements—crucial for refining an agency’s own application.",
+  "Implementation time": "4 to 6 weeks, covering the development of app review scrapers, text sentiment analysis, and integration with UI/UX improvement workflows.",
+  "Problems this solves": "1) Blind spots about how customers perceive the booking process in competitor apps. 2) Unclear reasons behind high uninstall or churn rates. 3) Reactive approach to feature updates.",
+  "Why it was better to outsource this solution": "Expert scrapers already have stable frameworks to gather store reviews and ratings at scale, ensuring continuous, compliant access without risking IP blocks or data gaps.",
+  "Input Schema": "A JSON object containing app store URLs, competitor app IDs, and date range for reviews. Example: { 'app_store_links': ['...'], 'competitor_app_ids': ['com.rentalapp.pro'], 'review_date_range': '2025-01-01 to 2025-03-01' }",
+  "Output Schema": "A JSON object summarizing sentiment trends, top user complaints, and recommended UI improvements. Example: { 'average_rating': 4.2, 'common_requests': ['faster checkouts', 'clear insurance options'], 'ux_recommendations': [{...}] }",
+  "Matching algorithm used to integrate the data": "Keyword-based text analytics to cluster similar feedback themes, combined with a sentiment scoring model that flags recurring negative or positive aspects.",
+  "Story": "<p>For a global car rental brand, understanding why competitors' apps earned higher ratings was a puzzle they needed to solve. Suspecting the issue lay in the user interface, they turned to Iceberg Data's web scraping experts for answers. By collecting thousands of public reviews from Google Play and Apple's App Store, Iceberg Data provided the crucial insights needed to <strong>boost the client's app performance and drive up to 20% higher user retention</strong>.</p>\n\n<p>The client faced several challenges, including:</p>\n<ul>\n<li>Blind spots about how customers perceived the booking process in competitor apps</li>\n<li>Unclear reasons behind high uninstall or churn rates</li>\n<li>A reactive approach to feature updates</li>\n</ul>\n\n<p>Iceberg Data's web scraping team developed a comprehensive solution, efficiently gathering app store reviews, star ratings, competitor app changelogs, and user comments. The scrapers parsed the text for recurring phrases, such as \"insurance confusion,\" \"faster check-in,\" or \"promo codes not working.\" This wealth of feedback formed a clear roadmap for the client's app improvements.</p>\n\n<p>The solution involved a robust technical implementation:</p>\n<ul>\n<li>Input: A JSON object specifying app store URLs, competitor app IDs, and a date range for reviews</li>\n<li>Processing: Keyword-based text analytics clustered similar feedback themes, while a sentiment scoring model flagged recurring positive or negative aspects</li>\n<li>Output: A JSON object summarizing sentiment trends, top user complaints, and recommended UI enhancements</li>\n</ul>\n\n<p>Armed with these insights, the rental brand quickly updated their app to address user pain points. <strong>Within a few weeks, they added simpler insurance explanations, streamlined user flows, and implemented a robust promo code system</strong>. Meanwhile, Iceberg Data handled regulatory compliance, maintained up-to-date scraping scripts, and efficiently delivered fresh reviews in user-friendly dashboards.</p>\n\n<p>The results spoke for themselves: <strong>the client's app updates led to improved ratings and happier customers, with user retention increasing by up to 20%</strong>. By leveraging Iceberg Data's expertise in web scraping and analysis, the car rental brand gained a significant competitive edge. The partnership allowed their internal product team to focus on building better features rather than grappling with data collection.</p>\n\n<p>In conclusion, Iceberg Data's unique approach to leveraging publicly accessible user feedback turned competitor app reviews into actionable intelligence. <strong>The client boosted their mobile app performance considerably, achieving a substantial ROI through increased user retention and satisfaction</strong>. This case study demonstrates the immense value of strategic web scraping in driving data-informed business decisions and tangible results.</p>",
+  "publicationDate": "2023-08-19",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "AppReviewRequest",
+    "type": "object",
+    "required": [
+      "app_store_links",
+      "competitor_app_ids",
+      "review_date_range"
+    ],
+    "properties": {
+      "app_store_links": {
+        "type": "array",
+        "description": "An array of URLs pointing to the app's listing in various app stores.",
+        "items": {
+          "type": "string",
+          "format": "uri"
+        },
+        "examples": [
+          [
+            "https://apps.apple.com/us/app/rental-app-pro/id1234567890",
+            "https://play.google.com/store/apps/details?id=com.rentalapp.pro"
+          ]
+        ],
+        "minItems": 1,
+        "uniqueItems": true
+      },
+      "competitor_app_ids": {
+        "type": "array",
+        "description": "An array of unique app IDs representing competitor apps to compare against.",
+        "items": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*(\\.[a-z0-9_]+)+[0-9a-z_]$"
+        },
+        "examples": [
+          [
+            "com.competitorapp1.basic",
+            "com.competitorapp2.premium"
+          ]
+        ],
+        "minItems": 1,
+        "uniqueItems": true
+      },
+      "review_date_range": {
+        "type": "string",
+        "description": "A date range string specifying the start and end dates for reviews to include, in 'YYYY-MM-DD to YYYY-MM-DD' format.",
+        "pattern": "^\\d{4}-\\d{2}-\\d{2} to \\d{4}-\\d{2}-\\d{2}$",
+        "examples": [
+          "2025-01-01 to 2025-03-01"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "average_rating": {
+        "type": "number",
+        "minimum": 1,
+        "maximum": 5,
+        "description": "The average user rating on a scale of 1 to 5"
+      },
+      "common_requests": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "List of the most frequently requested features or improvements"
+      },
+      "ux_recommendations": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "recommendation_id": {
+              "type": "string",
+              "description": "Unique identifier for the recommendation"
+            },
+            "title": {
+              "type": "string",
+              "description": "Brief title summarizing the recommendation"
+            },
+            "description": {
+              "type": "string",
+              "description": "Detailed explanation of the recommended UX improvement"
+            },
+            "priority": {
+              "type": "string",
+              "enum": [
+                "low",
+                "medium",
+                "high"
+              ],
+              "description": "Priority level for implementing the recommendation"
+            },
+            "estimated_effort": {
+              "type": "string",
+              "enum": [
+                "low",
+                "medium",
+                "high"
+              ],
+              "description": "Estimated level of effort required to implement the recommendation"
+            }
+          },
+          "required": [
+            "recommendation_id",
+            "title",
+            "description",
+            "priority",
+            "estimated_effort"
+          ]
+        },
+        "description": "List of recommended user experience improvements"
+      }
+    },
+    "required": [
+      "average_rating",
+      "common_requests",
+      "ux_recommendations"
+    ],
+    "additionalProperties": false
+  }
+}

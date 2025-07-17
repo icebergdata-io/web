@@ -1,0 +1,131 @@
+{
+  "Title": "Automated Contact Information Extraction",
+  "Subtitle": "Scraping Websites and Directories for Lead Generation",
+  "Business Impact": "This solution enhances lead generation by automating the discovery of accurate contact details, reducing the time sales teams spend on research and increasing conversion rates by providing verified leads.",
+  "Sector": "Lead Generation",
+  "What data was collected": "Business email addresses, phone numbers, mailing addresses, and relevant industry keywords from online directories, company websites, and professional networking platforms.",
+  "Why this matters": "Timely, verified contact information fuels effective outreach campaigns, improving chances of engaging with prospects before competitors do.",
+  "Implementation time": "3 to 5 weeks to set up web scraping pipelines, implement data validation rules, and ensure compliance with relevant data privacy regulations.",
+  "Problems this solves": "1) Limited or outdated prospect lists that hamper sales growth. 2) Labor-intensive manual research that drains resources. 3) Risk of inaccurate lead data leading to wasted marketing efforts.",
+  "Why it was better to outsource this solution": "A specialized vendor brought advanced scraping technologies and compliance expertise, quickly deploying a scalable solution. This prevented internal teams from wrestling with the complexity of frequent website changes and varying data formats.",
+  "Input Schema": "A JSON object specifying the target websites or directories, along with search criteria (industry, location, job title). Example: { 'target_sites': ['https://directorysite.com'], 'search_criteria': { 'industry': 'IT', 'location': 'California', 'job_title': 'CTO' } }",
+  "Output Schema": "A JSON array of lead objects, each containing contact details and confidence scores. Example: [ { 'name': 'John Doe', 'company': 'TechCorp', 'email': 'john@techcorp.com', 'phone': '555-1234', 'confidence': 0.95 }, ... ]",
+  "Matching algorithm used to integrate the data": "Regex-based pattern matching for emails and phone numbers, plus an entity-resolution approach that cross-references multiple data sources to confirm accurate contact records.",
+  "Story": "<p>For a rapidly expanding SaaS company, a steady flow of high-quality leads is essential to sustaining growth. However, the company found itself dedicating excessive time and resources to manually searching directories, LinkedIn, and websites for contact information. Recognizing the need for a more efficient approach, they turned to <strong>Iceberg Data's web scraping experts</strong> to automate the lead generation process.</p>\n\n<p>The sales team faced several key challenges that hindered their ability to effectively prospect for new business:</p>\n<ul>\n  <li>Limited and outdated prospect lists that impeded sales growth</li>\n  <li>Time-consuming manual research that drained resources</li>\n  <li>Risk of inaccurate lead data resulting in wasted marketing efforts</li>\n</ul>\n\n<p>To address these issues, Iceberg Data implemented a targeted web scraping solution. The project began by clearly defining the ideal customer profile, focusing on <strong>specific industries, job titles like CTO or VP of Engineering, and priority geographic regions</strong>. Iceberg Data's web scraping team then developed specialized tools to regularly crawl public directories and company websites, extracting contact information that met these criteria.</p>\n\n<p>The technical implementation involved sophisticated techniques to ensure comprehensive and accurate data collection. The input schema allowed for specifying target websites and search criteria such as industry and job title. Where contact details were not immediately visible, <strong>advanced pattern recognition and entity resolution algorithms were employed to uncover information from less obvious sources</strong>. The output schema delivered structured JSON records containing key fields like name, company, email, phone number, and a confidence score reflecting data accuracy.</p>\n\n<p>Once deployed, the automated system provided the SaaS company's sales team with a continually updated pipeline of verified leads on a weekly basis. Rather than spending hours prospecting, the team could now concentrate on <strong>engaging with potential customers and nurturing relationships</strong>. The high-quality contact data also significantly improved email deliverability and reduced bounce rates, enhancing the ROI of outbound campaigns.</p>\n\n<p>By partnering with Iceberg Data, the SaaS firm gained a scalable lead generation engine without the burden of developing and maintaining complex web scraping technology in-house. <strong>The initiative delivered a 30% increase in qualified leads while saving the sales team an estimated 20 hours per week in manual research time.</strong> Equipped with a reliable stream of accurate, timely prospect data, the company is now well-positioned to accelerate its growth and achieve ambitious revenue targets.</p>",
+  "publicationDate": "2023-06-03",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "target_sites": {
+        "type": "array",
+        "description": "An array of website URLs or directory paths to search for matching companies",
+        "items": {
+          "type": "string",
+          "format": "uri"
+        },
+        "minItems": 1,
+        "uniqueItems": true,
+        "example": [
+          "https://www.itdirectory.com",
+          "https://cloud-companies.org"
+        ]
+      },
+      "search_criteria": {
+        "type": "object",
+        "description": "An object specifying the criteria to filter matching companies",
+        "properties": {
+          "industry": {
+            "type": "string",
+            "description": "The target industry of companies to search for",
+            "example": "Cloud Computing"
+          },
+          "location": {
+            "type": "string",
+            "description": "The geographic location of companies, such as a city, state, or country",
+            "example": "San Francisco Bay Area"
+          },
+          "job_title": {
+            "type": "string",
+            "description": "The job title of executives at companies to search for",
+            "example": "Chief Technology Officer"
+          }
+        },
+        "required": [
+          "industry"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "required": [
+      "target_sites",
+      "search_criteria"
+    ],
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "LeadArray",
+    "type": "array",
+    "items": {
+      "title": "Lead",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Full name of the lead contact",
+          "type": "string",
+          "example": "John Doe"
+        },
+        "company": {
+          "description": "Company name the lead is associated with",
+          "type": "string",
+          "example": "TechCorp"
+        },
+        "email": {
+          "description": "Email address of the lead contact",
+          "type": "string",
+          "format": "email",
+          "example": "john@techcorp.com"
+        },
+        "phone": {
+          "description": "Phone number of the lead contact",
+          "type": "string",
+          "pattern": "^\\d{3}-\\d{3}-\\d{4}$",
+          "example": "555-1234"
+        },
+        "confidence": {
+          "description": "Confidence score of the lead data accuracy, ranging from 0 to 1",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "example": 0.95
+        }
+      },
+      "required": [
+        "name",
+        "company",
+        "email",
+        "phone",
+        "confidence"
+      ]
+    },
+    "examples": [
+      [
+        {
+          "name": "Jane Smith",
+          "company": "DataTech",
+          "email": "jane.smith@datatech.com",
+          "phone": "555-5678",
+          "confidence": 0.87
+        },
+        {
+          "name": "Mark Johnson",
+          "company": "InnovationLabs",
+          "email": "mjohnson@innovationlabs.net",
+          "phone": "555-2468",
+          "confidence": 0.92
+        }
+      ]
+    ]
+  }
+}

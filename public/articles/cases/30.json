@@ -1,0 +1,113 @@
+{
+  "Title": "Price Sensitivity Analysis using Public Competitor Offer Scraping",
+  "Subtitle": "Refining Price Points by Monitoring Discount Trends",
+  "Business Impact": "Tuning prices based on real-time competitor promotions—scraped from public sites—can raise profit margins by 5-10% without sacrificing market share.",
+  "Sector": "Market Analytics",
+  "What data was collected": "Public discount codes, banner ads, competitor homepage deals, user posts referencing sale events, and list prices for comparable products.",
+  "Why this matters": "If a competitor repeatedly discounts certain products, your pricing strategy can adapt accordingly to maintain appeal and profitability.",
+  "Implementation time": "6 to 8 weeks, including the building of discount code scrapers, price trackers, and a dynamic modeling system for recommended price adjustments.",
+  "Problems this solves": "1) Setting prices in isolation without knowledge of competitor promos. 2) Slow reaction to big discount windows that drive competitor sales. 3) Inconsistent margin control during market fluctuations.",
+  "Why it was better to outsource this solution": "A specialized web scraping provider ensures continuous, error-free scraping of competitor promotional pages, capturing short-lived deals or banner changes that might otherwise go unnoticed.",
+  "Input Schema": "A JSON object specifying competitor sites, product IDs, and discount code triggers. Example: { 'competitor_urls': ['retailerA.com', 'retailerB.com'], 'product_skus': ['SKU123'], 'discount_keywords': ['Sale', 'Coupon'] }",
+  "Output Schema": "A JSON object with competitor discounts, recommended price or discount adjustments, and forecasted margin changes. Example: { 'sku': 'SKU123', 'competitor_discount': 20, 'suggested_adjustment': 15, 'margin_impact': 0.07 }",
+  "Matching algorithm used to integrate the data": "Product SKUs or close matches (via product name and attributes) are mapped. Discount code text or banner announcements are extracted, then fed into a price elasticity model.",
+  "Story": "<p>In the fast-paced world of e-commerce, staying ahead of the competition requires a keen understanding of market trends and the ability to adapt pricing strategies in real-time. For one online retailer, the challenge of maintaining competitive prices during seasonal promotions proved particularly daunting. Manual monitoring of competitor sites often failed to capture flash sales or exclusive coupon codes, leaving the pricing team struggling to keep pace.</p>\n\n<p>To overcome these hurdles, the retailer partnered with Iceberg Data, a leading web scraping provider. Iceberg Data's experts set up automated monitors that refreshed competitor data multiple times per day, capturing any mention of new discount codes or short-term price drops. This ensured the pricing team had access to <strong>real-time, comprehensive market insights</strong>, empowering them to make informed decisions quickly.</p>\n\n<p>Iceberg Data's solution went beyond simple data collection. The scraped data was seamlessly integrated into a real-time elasticity model, which provided strategic recommendations based on competitor actions. For example, when a competitor reduced a popular item's price by 20%, the system recommended either matching the discount or offering a slightly lower one, taking into account the retailer's brand positioning. This approach enabled <strong>data-backed decisions to be made rapidly and confidently</strong>.</p>\n\n<p>The implementation process was streamlined and efficient, with Iceberg Data handling the complexities of building and maintaining the high-maintenance scraping system. The retailer easily integrated the incoming data into their existing analytics tool, facilitating a smooth transition to a data-driven pricing approach. Key technical details included:\n<ul>\n<li>Input Schema: A JSON object specifying competitor sites, product IDs, and discount code triggers</li>\n<li>Output Schema: A JSON object with competitor discounts, recommended price adjustments, and forecasted margin changes</li>\n<li>Matching Algorithm: Product SKUs or close matches were mapped, and discount codes were extracted and fed into the price elasticity model</li>\n</ul>\n</p>\n\n<p>Over the course of the engagement, the retailer uncovered valuable patterns in competitor behavior, such as specific discount schedules, the impact of influencer-exclusive coupon codes, and the frequency of flash sales during peak seasons. Recognizing these patterns allowed the retailer to develop a <strong>strategic response plan</strong>, optimizing their promotional calendar and pricing strategy.</p>\n\n<p>The impact of Iceberg Data's web scraping solution was substantial:\n<ol>\n<li>Overall profitability increased by <strong>7%</strong></li>\n<li>The retailer maintained a <strong>competitive edge</strong> in the market</li>\n<li>The <strong>speed and accuracy of pricing decisions</strong> improved significantly</li>\n</ol>\n</p>\n\n<p>By leveraging Iceberg Data's expertise in web scraping and real-time analytics, the retailer successfully navigated the challenges of dynamic pricing in a competitive market. The <strong>6-8 week implementation</strong> yielded a solution that drove <strong>substantial business growth and profitability</strong>, with a <strong>5-10% increase in profit margins</strong> without sacrificing market share. This case study demonstrates the power of Iceberg Data's tailored approach to solving complex data challenges and delivering measurable ROI for clients.</p>",
+  "publicationDate": "2024-10-26",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Competitor Discount Tracking Schema",
+    "description": "A schema for tracking competitor sites, product IDs, and discount code triggers",
+    "type": "object",
+    "properties": {
+      "competitor_urls": {
+        "description": "An array of URLs for competitor websites to monitor",
+        "type": "array",
+        "items": {
+          "type": "string",
+          "format": "uri"
+        },
+        "minItems": 1,
+        "uniqueItems": true,
+        "example": [
+          "https://www.retailerA.com",
+          "https://www.retailerB.com"
+        ]
+      },
+      "product_skus": {
+        "description": "An array of product SKUs to track on competitor sites",
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^[A-Z0-9]+$"
+        },
+        "minItems": 1,
+        "uniqueItems": true,
+        "example": [
+          "SKU123",
+          "ABC789",
+          "XYZ456"
+        ]
+      },
+      "discount_keywords": {
+        "description": "An array of keywords that may indicate a discount or sale",
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "minItems": 1,
+        "uniqueItems": true,
+        "example": [
+          "Sale",
+          "Coupon",
+          "Discount",
+          "Promo",
+          "Off"
+        ]
+      }
+    },
+    "required": [
+      "competitor_urls",
+      "product_skus",
+      "discount_keywords"
+    ],
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "sku": {
+        "type": "string",
+        "description": "The unique identifier for the product.",
+        "example": "SKU123"
+      },
+      "competitor_discount": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 100,
+        "description": "The current discount percentage offered by competitors for this product.",
+        "example": 20
+      },
+      "suggested_adjustment": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 100,
+        "description": "The recommended price or discount adjustment in percentage to stay competitive.",
+        "example": 15
+      },
+      "margin_impact": {
+        "type": "number",
+        "minimum": -1,
+        "maximum": 1,
+        "description": "The forecasted change in profit margin as a decimal value if the suggested adjustment is applied.",
+        "example": 0.07
+      }
+    },
+    "required": [
+      "sku",
+      "competitor_discount",
+      "suggested_adjustment",
+      "margin_impact"
+    ]
+  }
+}

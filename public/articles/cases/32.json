@@ -1,0 +1,135 @@
+{
+  "Title": "White Space Detection by Tracking Public Brand Presence",
+  "Subtitle": "Uncovering Underserved Markets through Competitor Location Listings",
+  "Business Impact": "Identifying geographic or demographic ‘white space’ can lead to a 15-25% revenue boost when businesses expand into areas with little direct competition.",
+  "Sector": "Market Analytics",
+  "What data was collected": "Public store locators on competitor websites, brand presence data on Google Maps, user queries about regional product availability, and population/demographic info from public records.",
+  "Why this matters": "Knowing exactly where competitors dominate or underperform helps companies expand into locations where demand is high and rival coverage is thin.",
+  "Implementation time": "6 to 10 weeks, involving competitor store locator scraping, demographic data correlation, and a mapping module that highlights potential market gaps.",
+  "Problems this solves": "1) Random site selection or expansion without competitor insight. 2) Overcrowded markets that lead to high competition and low margins. 3) Missed opportunities in regions where demand remains unfulfilled.",
+  "Why it was better to outsource this solution": "A specialized scraping team can systematically collect competitor location data from public ‘Find a Store’ pages, ensuring accuracy and minimal manual overhead for your analytics staff.",
+  "Input Schema": "A JSON object listing competitor store locator URLs, demographic metrics to fetch, and region filters. Example: { 'competitor_locators': ['CompetitorX.com/locations'], 'demographics': ['median_income'], 'regions': ['CA', 'TX'] }",
+  "Output Schema": "A JSON object mapping competitor coverage density, regional demand indicators, and recommended entry points. Example: { 'region': 'Northern California', 'competitor_coverage': 'Low', 'demand_score': 0.9, 'entry_suggestions': [...] }",
+  "Matching algorithm used to integrate the data": "Competitor store coordinates are pinned on a map, then overlaid with demographic layers from public records, factoring in population size and median income for a composite ‘white space’ score.",
+  "Story": "<p>For retailers, uncovering untapped markets is a critical growth driver, but identifying these opportunities requires deep competitive insights. When a sustainable home goods brand sought to expand into new regions, they needed a data-driven approach to assess the competitive landscape and pinpoint underserved areas with strong demand potential.</p>\n\n<p>Traditionally, mapping out competitor presence would involve manual searches and aggregation, a time-consuming and error-prone process. However, Iceberg Data's web scraping experts offered an innovative solution: <strong>automatically extracting store locations from competitors' 'Find a Store' pages</strong>. By defining the store locator URLs and desired demographic filters, the retailer gained a comprehensive view of rival footprints across target regions.</p>\n\n<p>Iceberg Data's web scraping team delivered the extracted location data in a structured JSON format, including:\n<ul>\n  <li>Competitor coverage density by region</li>\n  <li>Demographic indicators like median income and population density</li>\n  <li>Recommended entry points based on demand scores</li>\n</ul>\n</p>\n\n<p>Behind the scenes, Iceberg Data's <strong>proprietary location matching algorithm</strong> pinpointed competitor coordinates, overlaying demographic data to calculate a composite 'white space' score for each region. This systematic approach eliminated guesswork and manual analysis, surfacing Northern California as a prime expansion opportunity with <strong>high demand but minimal competitor presence</strong>.</p>\n\n<p>Armed with these data-driven insights, the retailer confidently launched a pilot store in the identified region, fine-tuning its product mix and marketing to resonate with the eco-conscious consumer base. The store quickly gained traction, <strong>with sales outpacing projections and validating the opportunity spotted by Iceberg Data's analysis</strong>.</p>\n\n<p>By partnering with Iceberg Data, the sustainable home goods brand unlocked a <strong>15-25% revenue boost from expanding into an untapped market</strong>. The combination of precision web scraping and intelligent location matching empowered the retailer to grow its footprint strategically, even in a fiercely competitive industry. Today, Iceberg Data's location intelligence solution remains a cornerstone of the brand's expansion strategy, guiding smart, sustainable growth in the ever-evolving retail landscape.</p>",
+  "publicationDate": "2024-11-15",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "competitor_locators": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL for a competitor's store locator page"
+        },
+        "minItems": 1,
+        "uniqueItems": true,
+        "example": [
+          "https://www.competitorx.com/store-locator",
+          "https://www.competitory.com/find-a-store"
+        ]
+      },
+      "demographics": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "median_income",
+            "population_density",
+            "age_distribution",
+            "education_level",
+            "household_size"
+          ],
+          "description": "Demographic metric to fetch for each store location"
+        },
+        "minItems": 1,
+        "uniqueItems": true,
+        "example": [
+          "median_income",
+          "population_density",
+          "age_distribution"
+        ]
+      },
+      "regions": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^[A-Z]{2}$",
+          "description": "Two-letter abbreviation for a US state or territory to filter locations by"
+        },
+        "minItems": 0,
+        "uniqueItems": true,
+        "example": [
+          "CA",
+          "TX",
+          "NY",
+          "FL"
+        ]
+      }
+    },
+    "required": [
+      "competitor_locators",
+      "demographics"
+    ],
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "region": {
+        "type": "string",
+        "description": "The geographic region being analyzed",
+        "example": "Northern California"
+      },
+      "competitor_coverage": {
+        "type": "string",
+        "description": "The assessed level of competitor coverage in the region",
+        "enum": [
+          "Low",
+          "Medium",
+          "High"
+        ],
+        "example": "Low"
+      },
+      "demand_score": {
+        "type": "number",
+        "description": "A decimal value from 0 to 1 indicating the estimated demand in the region",
+        "minimum": 0,
+        "maximum": 1,
+        "example": 0.9
+      },
+      "entry_suggestions": {
+        "type": "array",
+        "description": "A list of recommended market entry points in the region",
+        "items": {
+          "type": "object",
+          "properties": {
+            "location": {
+              "type": "string",
+              "description": "The suggested city or area to enter",
+              "example": "San Francisco"
+            },
+            "rationale": {
+              "type": "string",
+              "description": "The reasoning behind the entry point recommendation",
+              "example": "Large market size with low competition"
+            }
+          },
+          "required": [
+            "location",
+            "rationale"
+          ]
+        }
+      }
+    },
+    "required": [
+      "region",
+      "competitor_coverage",
+      "demand_score",
+      "entry_suggestions"
+    ]
+  }
+}

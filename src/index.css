@@ -1,0 +1,224 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply text-dark-800 bg-light-900;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-600 via-accent-purple to-accent-cyan bg-clip-text text-transparent;
+  }
+
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-lg border border-white/20 shadow-elevation-1 hover:shadow-elevation-2 transition-all duration-300;
+  }
+
+  .button-primary {
+    @apply relative px-6 py-3 rounded-2xl font-semibold text-white overflow-hidden
+           bg-gradient-to-r from-primary-600 via-accent-purple to-primary-600
+           hover:shadow-lg transition-all duration-300
+           focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+  }
+
+  .button-secondary {
+    @apply px-6 py-3 rounded-2xl font-semibold
+           bg-white/80 backdrop-blur-sm text-dark-800
+           border border-gray-200 hover:bg-white hover:border-primary-200
+           transition-all shadow-subtle hover:shadow-elevation-2
+           focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl
+           bg-white/50 border border-gray-200
+           focus:border-primary-500 focus:ring-2 focus:ring-primary-200
+           outline-none transition-all placeholder-gray-400;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-accent-purple;
+  }
+}
+
+@keyframes float-shadow {
+  0%, 100% {
+    transform: translateY(50px) scale(1);
+    opacity: 0.10;
+    filter: blur(8px);
+    background: rgb(59, 130, 246); /* Tailwind blue-500 color */
+  }
+  50% {
+    transform: translateY(20px) scale(0.5);
+    opacity: 0.05;
+    filter: blur(12px);
+    background: rgb(59, 130, 246);
+  }
+}
+
+.animate-float-shadow {
+  animation: float-shadow 4s ease-in-out infinite;
+  background: rgb(59, 130, 246);
+}
+
+/* Logo carousel animations */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.333%);
+  }
+}
+
+@keyframes scroll-reverse {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(33.333%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+  will-change: transform;
+}
+
+.animate-scroll-reverse {
+  animation: scroll-reverse 30s linear infinite;
+  will-change: transform;
+}
+
+/* Only pause on hover for desktop devices */
+@media (hover: hover) and (pointer: fine) {
+  .animate-scroll:hover,
+  .animate-scroll-reverse:hover {
+    animation-play-state: paused;
+  }
+}
+
+/* JSON Schema Viewer Styles */
+.schema-viewer {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.schema-viewer .json-view-container {
+  background: transparent !important;
+}
+
+.schema-viewer .json-view-container .json-view {
+  padding: 0.75rem;
+}
+
+.schema-viewer .json-view-container .json-view-dark {
+  color: #1F2937;
+}
+
+.schema-viewer .json-view-container .json-view-label {
+  color: #6366F1;  /* Indigo color for property names */
+  font-weight: 600;
+}
+
+.schema-viewer .json-view-container .json-view-string {
+  color: #10B981;  /* Emerald color for strings */
+}
+
+.schema-viewer .json-view-container .json-view-number {
+  color: #F59E0B;  /* Amber color for numbers */
+}
+
+.schema-viewer .json-view-container .json-view-boolean {
+  color: #EC4899;  /* Pink color for booleans */
+}
+
+.schema-viewer .json-view-container .json-view-null {
+  color: #6B7280;  /* Gray color for null */
+}
+
+.schema-viewer .json-view-container .json-view-bracket {
+  color: #4B5563;
+  font-weight: 600;
+}
+
+/* Add some spacing between items */
+.schema-viewer .json-view-container .json-view-item {
+  margin: 0.35rem 0;
+  padding: 0.15rem 0;
+}
+
+/* Style the expand/collapse arrows */
+.schema-viewer .json-view-container .json-view-arrow {
+  color: #8B5CF6;  /* Purple color for arrows */
+  margin-right: 0.5rem;
+  font-weight: bold;
+}
+
+/* Hover effect on items */
+.schema-viewer .json-view-container .json-view-item:hover {
+  background-color: rgba(243, 244, 246, 0.8);
+  border-radius: 0.25rem;
+  transition: all 0.2s ease;
+}
+
+/* Description text style */
+.schema-viewer .json-view-container .json-view-description {
+  color: #6B7280;
+  font-style: italic;
+  margin-left: 0.5rem;
+}
+
+/* Story Content Styles */
+.story-content p {
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+
+.story-content strong {
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.story-content ul, .story-content ol {
+  margin: 1.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.story-content ul {
+  list-style-type: disc;
+}
+
+.story-content ol {
+  list-style-type: decimal;
+}
+
+.story-content li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.story-content li:last-child {
+  margin-bottom: 0;
+}

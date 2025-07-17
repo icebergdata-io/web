@@ -1,0 +1,521 @@
+/* Container Styling */
+.data-integration-container {
+    width: 100%;
+    background-color: #f8fafc;
+    position: relative;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05),
+                0 4px 6px -2px rgba(0,0,0,0.025);
+    max-width: 1200px;
+    margin: 3rem auto;
+  }
+  
+  /* Data Sources Row */
+  .data-sources-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 4rem;
+    position: relative;
+  }
+  
+  .data-source {
+    position: relative;
+    width: 200px;
+    text-align: center;
+  }
+  
+  /* Source Icon Container */
+  .source-icon-container {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .source-icon-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+                0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  .source-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .product-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #1a1a1a;
+    text-align: center;
+  }
+  
+  .source-name {
+    margin-top: 0.5rem;
+    font-weight: 600;
+    color: #495057;
+    font-size: 1rem;
+  }
+  
+  /* Animated Data Packet */
+  .packet-animation-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none; /* Ensure packets don't interfere with user interactions */
+  }
+  
+  .packet-animation {
+    position: relative;
+  }
+  
+  .data-packet {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    animation-fill-mode: forwards;
+  }
+  
+  /* Animation Keyframes for Each Data Source */
+  @keyframes moveToHub1 {
+    0% { 
+      transform: translate(0, 0); 
+      opacity: 1; 
+    }
+    100% { 
+      transform: translate(100px, 150px); 
+      opacity: 1; 
+    }
+  }
+  
+  @keyframes moveToHub2 {
+    0% { 
+      transform: translate(0, 0); 
+      opacity: 1; 
+    }
+    100% { 
+      transform: translate(0px, 150px); 
+      opacity: 1; 
+    }
+  }
+  
+  @keyframes moveToHub3 {
+    0% { 
+      transform: translate(0, 0); 
+      opacity: 1; 
+    }
+    100% { 
+      transform: translate(-100px, 150px); 
+      opacity: 1; 
+    }
+  }
+  
+  /* Add Keyframes for Android Devices */
+  @keyframes moveToHub4 {
+    0% { 
+      transform: translate(0, 0); 
+      opacity: 1; 
+    }
+    100% { 
+      transform: translate(100px, 150px); 
+      opacity: 1; 
+    }
+  }
+  
+  @keyframes moveToHub5 {
+    0% { 
+      transform: translate(0, 0); 
+      opacity: 1; 
+    }
+    100% { 
+      transform: translate(0px, 150px); 
+      opacity: 1; 
+    }
+  }
+  
+  @keyframes moveToHub6 {
+    0% { 
+      transform: translate(0, 0); 
+      opacity: 1; 
+    }
+    100% { 
+      transform: translate(-100px, 150px); 
+      opacity: 1; 
+    }
+  }
+  
+  /* Central Matching Hub Styling */
+  .central-hub {
+    position: relative;
+    text-align: center;
+  }
+  
+  .hub-icon-wrapper {
+    width: 100px;
+    height: 100px;
+    background-color: #f8f9fa;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05),
+                0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  }
+  
+  .hub-icon {
+    width: 3rem;
+    height: 3rem;
+    color: #495057;
+  }
+  
+  .success-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(37, 208, 171, 0.15);
+    border-radius: 50%;
+    animation: fadeIn 0.3s ease-out;
+    backdrop-filter: blur(4px);
+  }
+  
+  .success-icon {
+    width: 3rem;
+    height: 3rem;
+    color: #12b886;
+    animation: scaleIn 0.3s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from { 
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes scaleIn {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  
+  .hub-description {
+    margin-top: 1rem;
+    font-weight: 600;
+    color: #495057;
+    font-size: 1.2rem;
+  }
+  
+  /* Database Construction Styling */
+  .database-construction-container {
+    width: 100%;
+    height: 16rem;
+    background-color: #f8fafc;
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05),
+                0 4px 6px -2px rgba(0,0,0,0.025);
+    padding: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .construction-stage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  
+  .database-icon-wrapper {
+    width: 8rem;
+    height: 8rem;
+    background-color: #1a1a1a;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  
+  .database-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    color: #fff;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+  }
+  
+  .stage-description {
+    margin-top: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    font-size: 1.125rem;
+    min-height: 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Processing Text */
+  .processing-text {
+    margin-top: 2rem;
+    font-weight: 600;
+    color: #1f2937;
+    font-size: 1.125rem;
+    text-align: center;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  
+  @keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+  }
+  
+  /* Data Table Styling */
+  .data-table-container {
+    margin-top: 2rem;
+    overflow-x: auto;
+    padding: 0;
+  }
+  
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    table-layout: fixed;
+    border: 1px solid #dee2e6;
+  }
+  
+  .data-table th, 
+  .data-table td {
+    padding: 0.75rem;
+    border: 1px solid #dee2e6;
+    text-align: left;
+    transition: all 0.5s ease-in-out;
+  }
+  
+  /* Column widths */
+  .data-table th:nth-child(1),
+  .data-table td:nth-child(1) {
+    width: 50px;
+    text-align: center;
+    padding: 0.75rem 0;
+  }
+  
+  .data-table th:nth-child(2),
+  .data-table td:nth-child(2) {
+    width: 140px;
+  }
+  
+  .data-table th:nth-child(3),
+  .data-table td:nth-child(3) {
+    width: 250px;
+  }
+  
+  .data-table th:nth-child(4),
+  .data-table td:nth-child(4) {
+    width: 120px;
+  }
+  
+  .data-table th:nth-child(5),
+  .data-table td:nth-child(5) {
+    width: 80px;
+    text-align: right;
+  }
+  
+  .data-table th:nth-child(6),
+  .data-table td:nth-child(6) {
+    width: 140px;
+  }
+  
+  .data-table th {
+    background-color: #f1f3f5;
+    font-weight: 600;
+    color: #495057;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0.75rem;
+  }
+  
+  .data-table tbody tr {
+    transition: all 0.5s ease-in-out;
+  }
+  
+  .data-table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+  }
+  
+  .data-table tbody td {
+    position: relative;
+    height: 3.5rem;
+    transition: background-color 0.3s ease-in-out;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .data-table tbody tr.opacity-40 td {
+    color: transparent;
+    background: linear-gradient(90deg, #f1f3f5 25%, #e9ecef 37%, #f1f3f5 63%);
+    background-size: 400% 100%;
+    animation: shimmer 1.4s ease infinite;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0 50%;
+    }
+  }
+  
+  .master-sku {
+    font-weight: 700;
+    color: #1a202c;
+    position: relative;
+  }
+  
+  /* Prominent Highlight for Master SKU */
+  .master-sku.highlighted {
+    animation: glow 4s ease-in-out infinite;
+  }
+  
+  @keyframes glow {
+    0% {
+      box-shadow: 0 0 5px rgba(34, 197, 94, 0.2);
+      background-color: rgba(34, 197, 94, 0.1);
+    }
+    50% {
+      box-shadow: 0 0 15px rgba(34, 197, 94, 0.5);
+      background-color: rgba(34, 197, 94, 0.2);
+    }
+    100% {
+      box-shadow: 0 0 5px rgba(34, 197, 94, 0.2);
+      background-color: rgba(34, 197, 94, 0.1);
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .data-sources-row {
+      flex-direction: column;
+      gap: 2rem;
+    }
+  
+    .data-source {
+      width: 80%;
+    }
+  
+    .packet-animation-container {
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  
+    .central-hub {
+      margin-top: 3rem;
+    }
+  
+    .data-packet {
+      width: 10px;
+      height: 10px;
+    }
+  
+    /* Adjust keyframes for smaller screens if needed */
+    @keyframes moveToHub1 {
+      0% { 
+        transform: translate(0, 0); 
+        opacity: 1; 
+      }
+      100% { 
+        transform: translate(60px, 90px); 
+        opacity: 1; 
+      }
+    }
+  
+    @keyframes moveToHub2 {
+      0% { 
+        transform: translate(0, 0); 
+        opacity: 1; 
+      }
+      100% { 
+        transform: translate(0px, 90px); 
+        opacity: 1; 
+      }
+    }
+  
+    @keyframes moveToHub3 {
+      0% { 
+        transform: translate(0, 0); 
+        opacity: 1; 
+      }
+      100% { 
+        transform: translate(-60px, 90px); 
+        opacity: 1; 
+      }
+    }
+  
+    @keyframes moveToHub4 {
+      0% { 
+        transform: translate(0, 0); 
+        opacity: 1; 
+      }
+      100% { 
+        transform: translate(60px, 90px); 
+        opacity: 1; 
+      }
+    }
+  
+    @keyframes moveToHub5 {
+      0% { 
+        transform: translate(0, 0); 
+        opacity: 1; 
+      }
+      100% { 
+        transform: translate(0px, 90px); 
+        opacity: 1; 
+      }
+    }
+  
+    @keyframes moveToHub6 {
+      0% { 
+        transform: translate(0, 0); 
+        opacity: 1; 
+      }
+      100% { 
+        transform: translate(-60px, 90px); 
+        opacity: 1; 
+      }
+    }
+  }
+  
+  .animate-fadeIn {
+    animation: fadeIn 0.5s ease-out;
+  }
+  

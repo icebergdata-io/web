@@ -1,0 +1,109 @@
+{
+  "Title": "High-Level B2B Lead Extraction from Public Speaker Agendas",
+  "Subtitle": "Scraping Conference Schedules to Connect with Industry Thought Leaders",
+  "Business Impact": "Reaching out to speakers who publicly appear at industry summits can bolster top-of-funnel leads, especially if those individuals hold key decision-making roles.",
+  "Sector": "Lead Generation",
+  "What data was collected": "Public speaker rosters, session abstracts, social media announcements from event organizers, and visible LinkedIn profiles referencing scheduled speaking engagements.",
+  "Why this matters": "Conference speakers typically shape or lead strategies within their companies. Capturing public info on where and when they speak can open doors to significant partnerships or sales opportunities.",
+  "Implementation time": "4 to 6 weeks, focusing on event website scraping, speaker detail extraction, and cross-referencing LinkedIn for role verification.",
+  "Problems this solves": "1) Time-consuming manual checks of event pages. 2) Overlooking influential individuals who only speak at niche or virtual events. 3) Missed relationship-building opportunities if outreach happens too late.",
+  "Why it was better to outsource this solution": "Professional event scrapers keep track of changing agendas, last-minute speaker additions, and do so in a policy-compliant manner to compile fresh leads for each conference.",
+  "Input Schema": "A JSON object with conference URLs, target speaker roles, and desired sectors. Example: { 'summit_pages': ['https://cybersummit.com/agenda'], 'target_roles': ['CISO', 'CTO'], 'industry': 'Cybersecurity' }",
+  "Output Schema": "A JSON array listing speaker names, job titles, companies, and public links. Example: [ { 'name': 'Dr. Alice Carter', 'title': 'CISO', 'company': 'SecureNow', 'linkedin': '...', 'session_time': '2025-04-10 10:00AM' }, ... ]",
+  "Matching algorithm used to integrate the data": "Agenda items are parsed for speaker details; any LinkedIn or social handle is validated for accurate job titles. Additional metadata helps rank speaker influence (e.g., session keynotes).",
+  "Story": "<p>In today's highly competitive cybersecurity landscape, connecting with influential decision-makers is crucial for showcasing cutting-edge solutions. A leading enterprise security provider recognized the untapped potential of engaging with senior professionals who speak at industry events. However, manually scanning numerous conference websites and agendas proved to be a time-consuming and inefficient process, hindering their ability to capitalize on these valuable opportunities.</p>\n\n<p>To overcome this challenge, the provider turned to Iceberg Data's web scraping experts. By leveraging advanced techniques, Iceberg Data's team meticulously extracted speaker details from official summit pages and social media announcements. The system intelligently identified speakers with <strong>CISO or CTO roles</strong>, cross-referencing their affiliations with public LinkedIn data to ensure accuracy and relevance.</p>\n\n<p>Iceberg Data's solution seamlessly integrated with the provider's existing lead generation workflow. The input schema allowed for easy specification of target conferences, roles, and industries, while the output delivered a structured JSON array containing key details for each high-value lead. The matching algorithm ensured that only the most influential speakers were captured, enabling the provider to focus their outreach efforts effectively.</p>\n\n<p>The results of Iceberg Data's web scraping initiative were impressive:</p>\n\n<ul>\n  <li>A comprehensive database of upcoming conference speakers was compiled, representing a rich pool of potential high-level partnerships</li>\n  <li>Personalized invitations were crafted, sparking engaging discussions and product demo requests from keynote-level speakers</li>\n  <li>The targeted approach and timely follow-up fostered positive initial interactions, laying the foundation for long-term relationships</li>\n</ul>\n\n<p>By partnering with Iceberg Data, the security provider gained a significant competitive edge. The continuous tracking of event agenda updates ensured that no valuable lead was missed, maximizing the provider's chances of forging strategic alliances. <strong>Several interactions blossomed into proof-of-concept engagements, co-authored thought leadership pieces, and even joint solution offerings</strong>. These collaborations not only enhanced the provider's credibility but also opened doors to new markets and revenue streams.</p>\n\n<p>Iceberg Data's expertise in web scraping transformed a manual, time-intensive process into a streamlined and highly effective lead generation engine. The combination of targeted data extraction, intelligent matching, and seamless integration empowered the security provider to connect with industry thought leaders on a scale previously unimaginable. <strong>The resulting partnerships and business opportunities demonstrated the immense value of data-driven lead generation in the cybersecurity domain</strong>.</p>",
+  "publicationDate": "2024-10-02",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "summit_pages": {
+        "type": "array",
+        "description": "An array of URLs for conference agenda or speaker pages to scrape.",
+        "items": {
+          "type": "string",
+          "format": "uri"
+        },
+        "examples": [
+          [
+            "https://cybersummit.com/agenda",
+            "https://datasecconf.com/speakers"
+          ]
+        ]
+      },
+      "target_roles": {
+        "type": "array",
+        "description": "An array of target speaker roles or titles to search for.",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          [
+            "CISO",
+            "CTO",
+            "Chief Information Security Officer"
+          ]
+        ]
+      },
+      "industry": {
+        "type": "string",
+        "description": "The target industry or sector for the conference and speakers.",
+        "examples": [
+          "Cybersecurity",
+          "FinTech",
+          "Healthcare IT"
+        ]
+      }
+    },
+    "required": [
+      "summit_pages",
+      "target_roles",
+      "industry"
+    ],
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The full name of the speaker",
+          "example": "Dr. Alice Carter"
+        },
+        "title": {
+          "type": "string",
+          "description": "The job title of the speaker",
+          "example": "CISO"
+        },
+        "company": {
+          "type": "string",
+          "description": "The company the speaker works for",
+          "example": "SecureNow"
+        },
+        "linkedin": {
+          "type": "string",
+          "format": "uri",
+          "description": "The LinkedIn profile URL of the speaker",
+          "example": "https://www.linkedin.com/in/alice-carter"
+        },
+        "session_time": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date and time of the speaker's session in ISO 8601 format",
+          "example": "2025-04-10T10:00:00"
+        }
+      },
+      "required": [
+        "name",
+        "title",
+        "company",
+        "linkedin",
+        "session_time"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

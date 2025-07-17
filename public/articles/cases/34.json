@@ -1,0 +1,173 @@
+{
+  "Title": "Omnichannel Footfall Analysis by Tracking Public Mentions & Store Check-ins",
+  "Subtitle": "Aligning Digital Marketing With Real-World Store Visits",
+  "Business Impact": "By correlating in-store footfall data with public digital check-ins and social media mentions, retailers can adjust promotions to boost overall sales by 10-15%.",
+  "Sector": "Retail",
+  "What data was collected": "Publicly visible store check-ins on social media (e.g., Facebook), user posts tagging store locations, competitor footfall statistics from public news or aggregator sites, and internal sensor data.",
+  "Why this matters": "Foot traffic is increasingly influenced by online buzz. Tying public store mention trends to offline visitor counts ensures marketing campaigns stay relevant and well-timed.",
+  "Implementation time": "8 to 10 weeks, needing social platform scraping for location-based mentions, data correlation with internal store sensors, and a campaign analysis dashboard.",
+  "Problems this solves": "1) Disconnected online vs. offline performance insights. 2) Poor event planning due to unknown store visitation patterns. 3) Inability to measure how public hype correlates with actual visits.",
+  "Why it was better to outsource this solution": "A web scraping partner navigates social media’s advanced location queries, consistently capturing public mentions of the store and competitor check-ins that can be tricky to track manually.",
+  "Input Schema": "A JSON object listing brand-related hashtags, store geotags, competitor references, and the time frames to scrape. Example: { 'hashtags': ['#ShopXYZ'], 'geotags': ['StoreLocation1'], 'competitors': ['StoreABC'], 'time_frames': ['weekend'] }",
+  "Output Schema": "A JSON object correlating mention spikes with footfall changes, competitor insights, and recommended marketing actions. Example: { 'location': 'StoreLocation1', 'mention_spike': 'Saturday 5pm', 'footfall_delta': 0.12, 'marketing_suggestions': [...] }",
+  "Matching algorithm used to integrate the data": "Social posts tagged with a location or brand hashtag are matched to store coordinates. Footfall sensor logs are cross-referenced by time to detect correlation between online buzz and offline visits.",
+  "Story": "<p>For retailers, aligning online buzz with in-store traffic can be challenging. Disconnected digital and physical performance insights, inability to measure how public hype translates to visits, and poor event planning due to unknown visitation patterns all hinder growth. One regional clothing chain faced this exact dilemma—until they partnered with <strong>Iceberg Data's web scraping experts</strong> for a solution.</p>\n\n<p>Iceberg Data implemented a sophisticated system to monitor the clothing chain's social media mentions, competitors' online activity, and real-world foot traffic. <strong>Over 8-10 weeks, Iceberg Data's team set up advanced location-based queries</strong> to consistently capture public posts tagging the retailer's stores and competitor check-ins—data that would be prohibitively complex to track manually.</p>\n\n<p>The technical solution involved:<ul>\n<li>A JSON input schema specifying brand hashtags, store geotags, competitor references, and key time frames to analyze</li>\n<li>Matching algorithms to correlate geotagged social posts with store visit logs, detecting online-to-offline patterns</li>\n<li>A JSON output schema delivering insights like mention spikes, footfall changes, competitor events, and recommended marketing actions</li>\n</ul></p>\n\n<p>This approach revealed critical insights. Iceberg Data discovered that <strong>whenever local influencers posted from the store, foot traffic would jump within hours</strong>. Competitor check-ins also notably overshadowed the chain's stores on key weekends. Armed with this intelligence from Iceberg Data, the retailer orchestrated micro-promotions to amplify organic social buzz, like flash sales and influencer partnerships.</p>\n\n<p>By synchronizing online and offline efforts more effectively, <strong>the clothing chain boosted weekend foot traffic and average purchase size within months</strong>. Iceberg Data's web scraping expertise enabled the retailer to harness public social data as a key indicator of real-world momentum, empowering quick strategic action to entice and retain shoppers.</p>\n\n<p>The impact was significant—aligning digital marketing with store visits <strong>drove a 10-15% increase in overall sales</strong>. With Iceberg Data's help surfacing timely, measurable insights, the retailer turned social media from a black box into a growth engine, proving the tangible ROI of social investments.</p>",
+  "publicationDate": "2024-12-05",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "hashtags": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^#[A-Za-z0-9_]+"
+        },
+        "description": "Array of brand-related hashtags to scrape",
+        "examples": [
+          "#ShopXYZ",
+          "#XYZSale",
+          "#XYZNewArrivals"
+        ]
+      },
+      "geotags": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Array of store location geotags to scrape",
+        "examples": [
+          "XYZ Store NYC",
+          "XYZ Store LA",
+          "XYZ Store Chicago"
+        ]
+      },
+      "competitors": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Array of competitor store names to scrape for mentions",
+        "examples": [
+          "StoreABC",
+          "StoreDEF",
+          "StoreGHI"
+        ]
+      },
+      "time_frames": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "weekend",
+            "weekday",
+            "morning",
+            "afternoon",
+            "evening"
+          ]
+        },
+        "description": "Array of time frame keywords to scrape within",
+        "examples": [
+          "weekend",
+          "morning"
+        ]
+      }
+    },
+    "required": [
+      "hashtags",
+      "geotags",
+      "competitors",
+      "time_frames"
+    ],
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "location": {
+        "type": "string",
+        "description": "The identifier or name of the store location.",
+        "example": "StoreLocation1"
+      },
+      "mention_spike": {
+        "type": "string",
+        "description": "The day and time when a significant increase in online mentions occurred.",
+        "example": "Saturday 5pm",
+        "pattern": "^[A-Za-z]+ \\d{1,2}(am|pm)$"
+      },
+      "footfall_delta": {
+        "type": "number",
+        "description": "The change in footfall (customer visits) represented as a decimal. Positive values indicate an increase, while negative values indicate a decrease.",
+        "example": 0.12,
+        "minimum": -1,
+        "maximum": 1
+      },
+      "competitor_insights": {
+        "type": "array",
+        "description": "An array of objects containing information about competitors' activities or performance.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "competitor_name": {
+              "type": "string",
+              "description": "The name of the competitor.",
+              "example": "CompetitorA"
+            },
+            "activity": {
+              "type": "string",
+              "description": "The specific activity or event related to the competitor.",
+              "example": "Launched a new product"
+            },
+            "impact_score": {
+              "type": "integer",
+              "description": "A score indicating the potential impact of the competitor's activity on the business, ranging from 1 (low impact) to 5 (high impact).",
+              "example": 3,
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          "required": [
+            "competitor_name",
+            "activity",
+            "impact_score"
+          ]
+        }
+      },
+      "marketing_suggestions": {
+        "type": "array",
+        "description": "An array of suggested marketing actions based on the mention spike, footfall change, and competitor insights.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The recommended marketing action to take.",
+              "example": "Run a targeted social media campaign"
+            },
+            "priority": {
+              "type": "string",
+              "description": "The priority level of the suggested action, indicating its importance or urgency.",
+              "example": "high",
+              "enum": [
+                "low",
+                "medium",
+                "high"
+              ]
+            }
+          },
+          "required": [
+            "action",
+            "priority"
+          ]
+        }
+      }
+    },
+    "required": [
+      "location",
+      "mention_spike",
+      "footfall_delta",
+      "marketing_suggestions"
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /booking-confirmation
+
+# Sitemap
+Sitemap: https://icebergdata.co/sitemap.xml
+
+# Optimize crawling rate
+Crawl-delay: 1

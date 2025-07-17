@@ -1,0 +1,110 @@
+{
+  "Title": "Personalized Recommendation Engine via Public Review Scraping",
+  "Subtitle": "Extracting User Sentiments to Refine E-Commerce Product Recommendations",
+  "Business Impact": "Tailored product suggestions can increase average order value by 10-15%. Scraping public reviews for competitor products reveals key attributes that matter most to customers.",
+  "Sector": "Ecommerce",
+  "What data was collected": "Competitor product reviews on public marketplaces, rating summaries, social media opinions, and popular feature keywords relevant to each category.",
+  "Why this matters": "Understanding common praises or complaints for similar items helps e-commerce sites highlight the right product attributes, improving relevance and upsell rates.",
+  "Implementation time": "8 to 12 weeks, covering the deployment of review scrapers, text analysis for feature extraction, and integration with the site’s recommendation engine.",
+  "Problems this solves": "1) Generic recommendations that ignore emerging trends or sentiments. 2) Inability to tailor product suggestions for customers seeking specific features. 3) Overreliance on internal reviews or incomplete data sets.",
+  "Why it was better to outsource this solution": "A specialized scraping partner can parse large volumes of competitor reviews from public marketplaces at scale, ensuring the personalization engine always reflects real-world user preferences.",
+  "Input Schema": "A JSON object listing competitor marketplace URLs, product category pages, and sentiment-related keywords. Example: { 'marketplace_links': ['https://shopA.com/electronics'], 'categories': ['headphones'], 'sentiment_keywords': ['sound quality', 'battery life'] }",
+  "Output Schema": "A JSON object summarizing top customer priorities, potential product improvements, and recommended cross-sells. Example: { 'top_features': ['noise cancelling', 'battery'], 'common_issues': ['uncomfortable fit'], 'cross_sell_opportunities': ['headphone cases'] }",
+  "Matching algorithm used to integrate the data": "A topic modeling approach clusters review text into feature mentions. The personalization engine maps these features to the site’s product listings for dynamic recommendations.",
+  "Story": "<p>In the fiercely competitive world of e-commerce, personalized shopping experiences have become a critical differentiator. A rising online electronics retailer recognized the need to enhance its product recommendation engine to better serve customers and drive business growth. However, the company faced a significant challenge: while it possessed basic information about its own products, it lacked deeper insights into customer preferences and sentiments, particularly those who shopped on competitor platforms.</p>\n\n<p>To overcome this hurdle, the retailer partnered with Iceberg Data, a specialized web scraping agency. Iceberg Data's expertise in extracting publicly available reviews from major e-commerce platforms provided the retailer with a wealth of valuable data on competitor products. The scrapers collected key details, including star ratings, free-form text reviews, and specific feedback on headphones, tablets, and accessories.</p>\n\n<p>Iceberg Data's advanced text analysis uncovered critical insights into customer priorities. For headphone buyers, <strong>battery life emerged as the top concern</strong>, followed closely by design comfort. The scraping process involved ingesting a JSON object listing competitor marketplace URLs, product category pages, and sentiment-related keywords. Iceberg Data's algorithms then processed this data to generate a JSON output summarizing top customer priorities, potential product improvements, and recommended cross-sells.</p>\n\n<p>Armed with this newfound understanding, the retailer took decisive action to optimize its recommendation engine. The upgraded system now prominently featured battery specifications and earcup ergonomics when returning customers browsed new headphones. Additionally, the retailer introduced strategically selected upsell options at checkout, such as protective cases and travel chargers, to enhance the customer experience and drive higher average cart values.</p>\n\n<p>The results were impressive. Post-launch metrics revealed a <strong>10-15% increase in average order value</strong>, validating the effectiveness of the data-driven approach. By outsourcing the labor-intensive scraping process to Iceberg Data, the retailer's internal data science team could concentrate on refining algorithms and crafting compelling brand messaging.</p>\n\n<p>In conclusion, by leveraging Iceberg Data's expertise in competitor review scraping, the online electronics retailer gained a real-time, comprehensive view of consumer trends. This valuable information fueled more personalized product recommendations, leading to increased customer satisfaction and measurable business growth. <strong>The successful initiative demonstrates the power of Iceberg Data's strategic approach and cutting-edge web scraping technology in driving e-commerce success.</strong></p>",
+  "publicationDate": "2024-07-14",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "marketplace_links": {
+        "type": "array",
+        "description": "An array of URLs linking to competitor marketplace product pages",
+        "items": {
+          "type": "string",
+          "format": "uri",
+          "example": "https://www.amazon.com/electronics"
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      },
+      "categories": {
+        "type": "array",
+        "description": "An array of product category names or keywords",
+        "items": {
+          "type": "string",
+          "example": "headphones"
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      },
+      "sentiment_keywords": {
+        "type": "array",
+        "description": "An array of keywords related to customer sentiment about the products",
+        "items": {
+          "type": "string",
+          "example": "sound quality"
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      }
+    },
+    "required": [
+      "marketplace_links",
+      "categories",
+      "sentiment_keywords"
+    ],
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "top_features": {
+        "type": "array",
+        "description": "A list of the most important product features to customers",
+        "items": {
+          "type": "string"
+        },
+        "minItems": 1,
+        "uniqueItems": true,
+        "example": [
+          "noise cancelling",
+          "battery",
+          "sound quality"
+        ]
+      },
+      "common_issues": {
+        "type": "array",
+        "description": "Frequently reported problems or complaints about the product",
+        "items": {
+          "type": "string"
+        },
+        "minItems": 0,
+        "uniqueItems": true,
+        "example": [
+          "uncomfortable fit",
+          "bluetooth connection drops"
+        ]
+      },
+      "cross_sell_opportunities": {
+        "type": "array",
+        "description": "Suggested complementary products to promote alongside this item",
+        "items": {
+          "type": "string"
+        },
+        "minItems": 0,
+        "uniqueItems": true,
+        "example": [
+          "headphone cases",
+          "extra earbud tips",
+          "charging cables"
+        ]
+      }
+    },
+    "required": [
+      "top_features"
+    ],
+    "additionalProperties": false
+  }
+}

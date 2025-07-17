@@ -1,0 +1,127 @@
+{
+  "Title": "Targeted Lead Generation from Public Government Tenders",
+  "Subtitle": "Scraping RFP and RFQ Portals for Lucrative B2B Opportunities",
+  "Business Impact": "Systematically monitoring public tender notices can boost contract win rates by 15-25%, ensuring businesses never miss an RFP relevant to their expertise.",
+  "Sector": "Lead Generation",
+  "What data was collected": "RFP, RFQ postings, deadlines, project scopes, bidder requirements from federal, state, or municipal e-procurement portals, and competitor references when available.",
+  "Why this matters": "Government contracts are often well-funded and stable. Prompt awareness of new bids allows for more thorough proposals and a higher success rate in competitive fields.",
+  "Implementation time": "6 to 8 weeks, encompassing portal scraping development, classification filters for industry-specific tenders, and automated notifications of newly posted RFPs.",
+  "Problems this solves": "1) Missing deadlines by manually checking multiple portals. 2) Disorganized shortlisting of tenders that don’t align with core offerings. 3) Slow reaction to new RFPs, resulting in rushed or subpar bids.",
+  "Why it was better to outsource this solution": "An outsourced web scraping firm already has stable crawlers for various government e-procurement sites, ensuring data is up to date and reliably fetched despite site quirks.",
+  "Input Schema": "A JSON object specifying relevant NAICS codes, location preferences, and the update frequency for scraping. Example: { 'naics_codes': ['541512'], 'preferred_regions': ['California', 'Nevada'], 'scrape_interval': 'daily' }",
+  "Output Schema": "A JSON array of newly found tenders with ID, scope, deadline, and contact person. Example: [ { 'tender_id': 'RFP2025-001', 'deadline': '2025-06-01', 'scope': 'IT Services', 'contact_email': '...' }, ... ]",
+  "Matching algorithm used to integrate the data": "A category-based classification to match tender scopes with user-defined NAICS codes or keywords. Tenders are then sorted by location and deadlines for quick scanning.",
+  "Story": "<p>For engineering consultancies, winning government contracts can be a key driver of stable revenue and long-term growth. However, manually monitoring a multitude of e-procurement portals for relevant RFPs is time-consuming and error-prone. <strong>Missing deadlines by mere days due to overlooked postings is a costly pitfall.</strong></p>\n\n<p>One environmental services firm faced this exact challenge: despite the lucrative nature of local government projects, they struggled to keep pace with the scattered landscape of tender notices. Rushing to assemble bids at the last minute was harming their win rate.</p>\n\n<p>Seeking a more efficient approach, they partnered with <strong>Iceberg Data's web scraping experts</strong>. After mapping the firm's core competencies to specific NAICS codes like 541620 (Environmental Consulting Services), Iceberg Data configured scrapers to pull new and updated RFPs on a daily basis across all relevant portals.</p>\n\n<p>The scraping solution included:</p>\n<ul>\n<li>Automated matching of RFP scopes to the firm's target keywords like \"waste management\" and \"environmental impact assessments\"</li>\n<li>Real-time email alerts to the bid manager whenever a relevant opportunity appeared</li>\n<li>Consistent data flow maintained despite challenges like portal downtime or layout changes</li>\n</ul>\n\n<p>The impact was immediate: <strong>in the first quarter alone, the consultancy identified and pursued 10 RFPs they otherwise would have missed.</strong> Earliernotification meant more time to craft winning proposals.</p>\n\n<p>The results speak for themselves:</p>\n<ul>\n<li>Two major contract wins in the first quarter from the newly discovered RFPs</li>\n<li>Improved win rate against larger competitors due to more thorough and timely bids</li>\n<li><strong>15-25% projected increase in win rate on government contracts</strong></li>\n</ul>\n\n<p>By outsourcing the complex scraping process to Iceberg Data, the consultancy gained a powerful edge in the public sector. <strong>Staying ahead of RFP deadlines has become their secret weapon for securing stable revenue streams and profitable long-term engagements.</strong> Iceberg Data's targeted lead generation solution delivered tangible ROI within months, paving the way for sustainable growth in the government contracting space.</p>",
+  "publicationDate": "2024-09-20",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "naics_codes": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^\\d{6}$"
+        },
+        "description": "An array of 6-digit NAICS codes relevant to the scraping task",
+        "examples": [
+          [
+            "541512",
+            "519130"
+          ]
+        ]
+      },
+      "preferred_regions": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "An array of preferred geographic regions for targeting the scraping",
+        "examples": [
+          [
+            "California",
+            "Nevada",
+            "New York"
+          ]
+        ]
+      },
+      "scrape_interval": {
+        "type": "string",
+        "enum": [
+          "hourly",
+          "daily",
+          "weekly",
+          "monthly"
+        ],
+        "description": "The desired frequency for running the scraping task",
+        "examples": [
+          "daily"
+        ]
+      }
+    },
+    "required": [
+      "naics_codes",
+      "scrape_interval"
+    ],
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "tender_id": {
+          "type": "string",
+          "description": "The unique identifier of the tender, typically in the format of 'RFPyyyy-xxx'",
+          "pattern": "^RFP\\d{4}-\\d{3}$",
+          "example": "RFP2025-001"
+        },
+        "deadline": {
+          "type": "string",
+          "description": "The deadline for submitting proposals, in the format 'yyyy-mm-dd'",
+          "format": "date",
+          "example": "2025-06-01"
+        },
+        "scope": {
+          "type": "string",
+          "description": "A brief description of the scope of the tender",
+          "example": "IT Services"
+        },
+        "contact_person": {
+          "type": "object",
+          "description": "The contact person for the tender",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "The name of the contact person",
+              "example": "John Doe"
+            },
+            "email": {
+              "type": "string",
+              "description": "The email address of the contact person",
+              "format": "email",
+              "example": "john.doe@example.com"
+            },
+            "phone": {
+              "type": "string",
+              "description": "The phone number of the contact person",
+              "pattern": "^\\+?\\d{1,3}[-\\s]?\\(?\\d{1,4}\\)?[-\\s]?\\d{1,4}[-\\s]?\\d{1,9}$",
+              "example": "+1-555-123-4567"
+            }
+          },
+          "required": [
+            "name",
+            "email"
+          ]
+        }
+      },
+      "required": [
+        "tender_id",
+        "deadline",
+        "scope",
+        "contact_person"
+      ]
+    }
+  }
+}

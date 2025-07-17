@@ -1,0 +1,169 @@
+{
+  "Title": "Housekeeping Performance via Public Review Scraping",
+  "Subtitle": "Collecting Comments on Cleanliness to Streamline Hotel Room Turnover",
+  "Business Impact": "Analyzing guest complaints and praise about cleanliness—posted on public review sites—helps hotels optimize housekeeping schedules, reduce negative feedback, and save up to 15% in operational costs.",
+  "Sector": "Hotels",
+  "What data was collected": "Public guest reviews regarding room cleanliness, housekeeping promptness, average star ratings, and competitor housekeeping metrics gleaned from aggregator review summaries.",
+  "Why this matters": "Clean rooms are fundamental to guest satisfaction. Observing patterns in competitor housekeeping complaints and star ratings can guide improvements, lowering negative feedback and increasing repeat bookings.",
+  "Implementation time": "8 to 12 weeks, including scraping multiple review platforms, sentiment analysis, and generating housekeeping recommendations.",
+  "Problems this solves": "1) Delayed identification of housekeeping failures. 2) Overlooking competitor best practices in cleanliness. 3) Strained labor costs due to inefficient cleaning assignments.",
+  "Why it was better to outsource this solution": "A specialized web scraping company maintains stable crawlers for major travel review sites, ensuring hotels receive continuous, policy-compliant updates on cleanliness-related feedback.",
+  "Input Schema": "A JSON object specifying review platforms, competitor property IDs, and relevant cleanliness keywords. Example: { 'review_sources': ['TripAdvisor', 'Booking.com'], 'competitor_hotels': [123, 456], 'keywords': ['dirty', 'cleanliness', 'housekeeping'] }",
+  "Output Schema": "A JSON object detailing common cleanliness complaints, competitor rating comparisons, and schedule optimization suggestions. Example: { 'hotel_id': 202, 'common_feedback': ['room not ready', 'stained sheets'], 'rating_comparison': {...}, 'recommended_shifts': [...] }",
+  "Matching algorithm used to integrate the data": "Text analysis identifies cleanliness-related terms and star rating contexts. Competitor reviews are matched by property ID, enabling direct rating comparisons of housekeeping performance.",
+  "Story": "<p>A large hotel chain faced a perplexing challenge: despite consistent housekeeping schedules, guest feedback on cleanliness was erratic. Determined to uncover the reason behind this discrepancy and enhance the guest experience, the hotel turned to Iceberg Data for an innovative solution leveraging <strong>web scraping</strong>.</p>\n\n<p>The hotel's key problems included:</p>\n<ol>\n<li>Delayed identification of housekeeping failures</li>\n<li>Overlooking competitor best practices in cleanliness</li>\n<li>Strained labor costs due to inefficient cleaning assignments</li>\n</ol>\n\n<p>Iceberg Data's web scraping experts implemented a sophisticated system to gather pertinent housekeeping feedback from online review sites. The scraper targeted specific cleanliness-related keywords within a set radius of each hotel property ID, as defined in a JSON input schema. To gain a competitive edge, the solution also collected ratings from rival hotels to benchmark housekeeping performance.</p>\n\n<p>Iceberg Data's advanced text analysis identified cleanliness terms and star rating contexts, while competitor reviews were matched by property ID for direct performance comparisons. The output, delivered as a JSON object, detailed common cleanliness complaints, competitor rating comparisons, and optimized scheduling suggestions.</p>\n\n<p>Within weeks, the aggregated data revealed a crucial insight: <strong>guests arriving early frequently complained about unclean rooms</strong>, indicating a mismatch between check-out times and housekeeping shifts. Competitor reviews, in contrast, praised their rapid turnover and flexible cleaning schedules.</p>\n\n<p>Armed with these findings, the hotel chain took decisive action:</p>\n<ul>\n<li>Adjusted staff shifts to ensure more rooms were ready for early arrivals</li>\n<li>Standardized checklists for housekeeping teams that addressed the most frequently cited cleaning issues</li>\n</ul>\n\n<p>By partnering with Iceberg Data, the hotel benefited from automatically and ethically pulled data from public sources, allowing them to <strong>focus on actionable insights rather than the complexities of web scraping</strong>. The results were impressive:</p>\n<ul>\n<li>Improved housekeeping schedules led to a <strong>significant reduction in negative cleanliness reviews</strong></li>\n<li>The hotel's online reputation was elevated, ultimately <strong>boosting bookings</strong></li>\n<li>Optimized labor allocation resulted in <strong>up to 15% savings in operational costs</strong></li>\n</ul>\n\n<p>In conclusion, by leveraging Iceberg Data's expertise in web scraping to gather valuable feedback from online reviews, the hotel chain successfully identified and addressed critical housekeeping issues. This data-driven approach not only streamlined their room turnover process but also <strong>significantly enhanced guest satisfaction, online reputation, and overall business performance</strong>, demonstrating the tangible ROI of Iceberg Data's innovative solutions.</p>",
+  "publicationDate": "2023-10-21",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "review_sources": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "TripAdvisor",
+            "Booking.com",
+            "Expedia",
+            "Google",
+            "Yelp"
+          ],
+          "description": "The name of the review platform."
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      },
+      "competitor_hotels": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "The unique identifier of a competitor hotel property."
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      },
+      "keywords": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Keywords related to cleanliness to search for in reviews."
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      }
+    },
+    "required": [
+      "review_sources",
+      "competitor_hotels",
+      "keywords"
+    ],
+    "additionalProperties": false,
+    "examples": [
+      {
+        "review_sources": [
+          "TripAdvisor",
+          "Booking.com",
+          "Google"
+        ],
+        "competitor_hotels": [
+          123,
+          456,
+          789
+        ],
+        "keywords": [
+          "dirty",
+          "cleanliness",
+          "housekeeping",
+          "filthy",
+          "spotless"
+        ]
+      }
+    ]
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "hotel_id": {
+        "type": "integer",
+        "description": "Unique identifier for the hotel",
+        "example": 202
+      },
+      "common_feedback": {
+        "type": "array",
+        "description": "List of common cleanliness complaints from guests",
+        "items": {
+          "type": "string"
+        },
+        "example": [
+          "room not ready",
+          "stained sheets",
+          "dirty bathroom",
+          "dusty surfaces"
+        ]
+      },
+      "rating_comparison": {
+        "type": "object",
+        "description": "Comparison of cleanliness ratings with competitors",
+        "properties": {
+          "hotel_name": {
+            "type": "string",
+            "description": "Name of the hotel being compared",
+            "example": "Acme Hotel"
+          },
+          "cleanliness_rating": {
+            "type": "number",
+            "description": "Average cleanliness rating (scale of 1-5)",
+            "minimum": 1,
+            "maximum": 5,
+            "example": 4.2
+          }
+        },
+        "required": [
+          "hotel_name",
+          "cleanliness_rating"
+        ]
+      },
+      "recommended_shifts": {
+        "type": "array",
+        "description": "Suggested housekeeping shifts for optimized cleaning",
+        "items": {
+          "type": "object",
+          "properties": {
+            "shift_start": {
+              "type": "string",
+              "description": "Start time of the recommended shift (24-hour format)",
+              "pattern": "^([01]?[0-9]|2[0-3]):[0-5][0-9]$",
+              "example": "08:00"
+            },
+            "shift_end": {
+              "type": "string",
+              "description": "End time of the recommended shift (24-hour format)",
+              "pattern": "^([01]?[0-9]|2[0-3]):[0-5][0-9]$",
+              "example": "16:00"
+            },
+            "num_housekeepers": {
+              "type": "integer",
+              "description": "Recommended number of housekeepers for the shift",
+              "minimum": 1,
+              "example": 6
+            }
+          },
+          "required": [
+            "shift_start",
+            "shift_end",
+            "num_housekeepers"
+          ]
+        }
+      }
+    },
+    "required": [
+      "hotel_id",
+      "common_feedback",
+      "rating_comparison",
+      "recommended_shifts"
+    ]
+  }
+}

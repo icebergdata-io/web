@@ -1,0 +1,222 @@
+{
+  "Title": "Customer Segmentation via Public Rental Activity",
+  "Subtitle": "Scraping Shared Bookings and Trip Data to Identify High-Value Corporate Clients",
+  "Business Impact": "Spotting recurring corporate travel patterns from public aggregator sites can drive targeted B2B deals, potentially boosting corporate revenue by 25%.",
+  "Sector": "Car Rental",
+  "What data was collected": "Aggregated location-based rental activity, corporate discount codes publicly advertised, frequent-traveler feedback from business travel forums, and competitor corporate deals listed online.",
+  "Why this matters": "B2B travelers often yield higher margins than casual renters. Seeing how corporate demand fluctuates across different platforms uncovers which companies may need premium fleet contracts.",
+  "Implementation time": "6 to 8 weeks, involving aggregator site scraping, analysis of business travel forums, and correlation with competitor corporate package listings.",
+  "Problems this solves": "1) Lack of data on which firms rent cars frequently. 2) Fragmented insights into competitor corporate programs. 3) Missed opportunities for premium upsells or VIP partnerships.",
+  "Why it was better to outsource this solution": "External web scraping specialists know how to navigate aggregator sites and forum platforms without violating usage rules, ensuring a steady flow of legitimate, publicly available data.",
+  "Input Schema": "A JSON object indicating aggregator platforms, desired discount code patterns, and business travel forums to monitor. Example: { 'aggregator_urls': ['...'], 'corporate_discount_keywords': ['corp code', 'business rate'], 'forums': ['LinkedIn Groups', 'FlyerTalk'] }",
+  "Output Schema": "A JSON object categorizing corporate accounts by potential volume, listing competitor discounts found, and recommended outreach strategies. Example: { 'corporate_leads': [...], 'identified_discounts': [...], 'targeting_recommendations': [{...}] }",
+  "Matching algorithm used to integrate the data": "A pattern-matching engine identifies repeated usage of specific corporate codes, location-based frequency, and competitor offers. Data is sorted by total booking estimates.",
+  "Story": "<p>In the fiercely competitive car rental industry, identifying and securing high-value corporate clients is critical for boosting margins and building long-term partnerships. However, many rental agencies struggle to gain visibility into which companies are actively booking through aggregator sites or taking advantage of competitor offers. Without this intelligence, lucrative B2B opportunities often slip through the cracks, leaving significant revenue potential untapped.</p>\n\n<p>Iceberg Data recently partnered with a forward-thinking car rental agency to tackle this challenge head-on. The agency recognized that by monitoring aggregator platforms, business travel forums, and competitor listings for corporate discount codes and booking patterns, they could uncover hidden leads and craft targeted offers. However, extracting and correlating this data manually would be prohibitively time-consuming and prone to errors.</p>\n\n<p>Iceberg Data's web scraping experts stepped in with a powerful solution. <strong>Over the course of 6-8 weeks, the team developed custom scrapers to systematically collect data from designated aggregator URLs, monitor business travel forums for discount code mentions, and analyze competitor corporate offerings.</strong> The solution ingested a JSON object specifying target sites, discount code patterns, and forum sources, ensuring a focused and compliant data collection process.</p>\n\n<p>Iceberg Data's proprietary pattern-matching engine then went to work, identifying repeated usage of specific corporate codes, location-based booking frequency, and stand-out competitor deals. The resulting JSON output delivered a treasure trove of actionable insights, including:\n<ul>\n<li>Categorized leads sorted by estimated booking volume</li>\n<li>Granular breakdowns of competitor discounts and promotions</li>\n<li>Personalized outreach recommendations tailored to each high-potential account</li>\n</ul>\n</p>\n\n<p><strong>Armed with this intelligence, the agency was able to craft hyper-targeted B2B offers that positioned them as the provider of choice for frequent corporate travelers. For instance, the scraped data revealed a logistics firm regularly booking rentals using a 20% discount code on a rival platform—a clear indicator of high volume. By proactively reaching out with a tailored bundle including premium fleet options and expedited pickup, the agency rapidly converted this lead into a loyal, lucrative account.</strong></p>\n\n<p>The impact of Iceberg Data's web scraping solution was felt across the agency's bottom line. <strong>By enabling them to identify and pursue the right corporate leads with precision, the initiative helped grow B2B revenue by an estimated 25%.</strong> Just as crucially, the agency was able to accomplish this without diverting internal resources or violating aggregator guidelines, thanks to Iceberg Data's external expertise and rigorous compliance standards.</p>\n\n<p>In an industry where even slight edges can translate into outsized gains, Iceberg Data's web scraping prowess has delivered a substantial competitive advantage. The car rental agency now has a scalable pipeline for turning raw web data into high-margin corporate deals—and a partner to help them navigate the road ahead.</p>",
+  "publicationDate": "2023-09-29",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "aggregator_urls": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "format": "uri"
+        },
+        "description": "An array of URLs for aggregator platforms to monitor for discount codes",
+        "examples": [
+          [
+            "https://www.retailmenot.com/",
+            "https://www.groupon.com/",
+            "https://slickdeals.net/"
+          ]
+        ]
+      },
+      "corporate_discount_keywords": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "An array of keywords or phrases commonly used for corporate/business discount codes",
+        "examples": [
+          [
+            "corp code",
+            "business rate",
+            "corporate discount"
+          ]
+        ]
+      },
+      "forums": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "An array of online forums focused on business travel where users may share discount codes",
+        "examples": [
+          [
+            "LinkedIn Groups",
+            "FlyerTalk",
+            "Business Travel Forum",
+            "Corporate Travel Community"
+          ]
+        ]
+      }
+    },
+    "required": [
+      "aggregator_urls",
+      "corporate_discount_keywords",
+      "forums"
+    ],
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "corporate_leads": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "account_name": {
+              "type": "string",
+              "description": "The name of the corporate account"
+            },
+            "potential_volume": {
+              "type": "string",
+              "enum": [
+                "high",
+                "medium",
+                "low"
+              ],
+              "description": "The estimated potential sales volume for the account"
+            },
+            "industry": {
+              "type": "string",
+              "description": "The industry sector of the corporate account"
+            },
+            "contact_info": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "The name of the primary contact at the account"
+                },
+                "title": {
+                  "type": "string",
+                  "description": "The job title of the primary contact"
+                },
+                "email": {
+                  "type": "string",
+                  "format": "email",
+                  "description": "The email address of the primary contact"
+                },
+                "phone": {
+                  "type": "string",
+                  "description": "The phone number of the primary contact"
+                }
+              },
+              "required": [
+                "name",
+                "email"
+              ],
+              "description": "Contact information for the primary contact at the account"
+            }
+          },
+          "required": [
+            "account_name",
+            "potential_volume",
+            "industry",
+            "contact_info"
+          ]
+        },
+        "description": "An array of corporate accounts categorized by potential sales volume"
+      },
+      "identified_discounts": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "competitor_name": {
+              "type": "string",
+              "description": "The name of the competitor offering the discount"
+            },
+            "discount_amount": {
+              "type": "number",
+              "description": "The percentage amount of the competitor's discount"
+            },
+            "discount_type": {
+              "type": "string",
+              "enum": [
+                "percentage",
+                "dollar_value"
+              ],
+              "description": "Indicates if the discount is a percentage or fixed dollar amount"
+            },
+            "end_date": {
+              "type": "string",
+              "format": "date",
+              "description": "The expiration date of the competitor's discount offer"
+            }
+          },
+          "required": [
+            "competitor_name",
+            "discount_amount",
+            "discount_type"
+          ],
+          "description": "Details on a competitor discount that was identified"
+        },
+        "description": "An array of discounts offered by competitors that were found"
+      },
+      "targeting_recommendations": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "account_name": {
+              "type": "string",
+              "description": "The corporate account the recommendation applies to"
+            },
+            "recommendation_type": {
+              "type": "string",
+              "enum": [
+                "email_campaign",
+                "sales_call",
+                "direct_mail",
+                "webinar_invite",
+                "custom_offer"
+              ],
+              "description": "The type of outreach tactic being recommended"
+            },
+            "message_summary": {
+              "type": "string",
+              "description": "A brief description of the messaging to use in the outreach"
+            },
+            "offer_details": {
+              "type": "string",
+              "description": "Specifics of any special offer or promotion to include"
+            },
+            "target_date": {
+              "type": "string",
+              "format": "date",
+              "description": "The recommended date to initiate this outreach"
+            }
+          },
+          "required": [
+            "account_name",
+            "recommendation_type",
+            "message_summary",
+            "target_date"
+          ],
+          "description": "A recommended outreach action to take with a specific account"
+        },
+        "description": "An array of recommended targeting actions based on the lead analysis"
+      }
+    },
+    "required": [
+      "corporate_leads",
+      "identified_discounts",
+      "targeting_recommendations"
+    ]
+  }
+}

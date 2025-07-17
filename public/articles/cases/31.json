@@ -1,0 +1,144 @@
+{
+  "Title": "Marketing Communications Analysis by Scraping Public Ad Campaigns",
+  "Subtitle": "Observing Competitor Ads in Real Time to Optimize Your Messaging",
+  "Business Impact": "Refining ad content based on real-time competitor moves and consumer responses can increase ROI by 20%. Public ad scraping reveals when and how rivals pivot strategies.",
+  "Sector": "Market Analytics",
+  "What data was collected": "Competitor social media ads, ad copy from search engine results, banner creatives on public websites, and user engagement metrics (likes, shares) visible on social platforms.",
+  "Why this matters": "Marketers often waste budget if they ignore competitor messaging shifts. Quick detection of new campaigns helps refine brand positioning and craft timely counter-ads.",
+  "Implementation time": "8 to 12 weeks, focusing on social media ad library scraping, search ad monitoring, and consumer sentiment analysis on publicly displayed engagement stats.",
+  "Problems this solves": "1) Blindly running ads without awareness of competitor's angle. 2) Slow adaptation to new discount-driven or influencer-led campaigns. 3) Missing signals that user sentiment is skewing in competitor’s favor.",
+  "Why it was better to outsource this solution": "Web scraping specialists can access and compile publicly visible ad data from multiple platforms efficiently, staying compliant with each site’s terms and frequent UI changes.",
+  "Input Schema": "A JSON object indicating competitor brand handles, ad library URLs, and engagement metrics to track. Example: { 'competitor_handles': ['BrandAOfficial'], 'ad_library_links': ['fb.com/ads/library/BrandA'], 'metrics': ['likes', 'shares'] }",
+  "Output Schema": "A JSON object summarizing each competitor’s ad volume, top themes, engagement rates, and recommended counter-strategies. Example: { 'competitor': 'BrandA', 'ad_count': 10, 'dominant_theme': 'Holiday Sale', 'engagement': {...}, 'recommendations': [...] }",
+  "Matching algorithm used to integrate the data": "Brand references and campaign hashtags are identified in publicly displayed ads. Engagement stats (likes, shares) are aggregated and cross-linked to ad copy for performance analysis.",
+  "Story": "<p>In the hypercompetitive world of cosmetics marketing, even well-crafted ad campaigns can get lost in the noise, especially for smaller brands with limited budgets. One mid-sized firm found itself consistently outbid and outperformed by deeper-pocketed rivals on social media. Hoping to stretch its ad dollars further, the company turned to <strong>Iceberg Data's web scraping experts</strong> for an innovative solution: monitoring competitors' public ad strategies in real time.</p>\n\n<p>Iceberg Data's team deployed sophisticated web scrapers to track rival brands' public Facebook Ad Library pages, capturing every new promotional post. The scrapers also pulled in engagement metrics like comments and shares to gauge which campaigns resonated with audiences. This wealth of competitive intelligence flowed seamlessly to the cosmetics firm in <strong>daily data feeds</strong>, formatted for immediate analysis and action.</p>\n\n<p>The company's marketers quickly spotted a major trend: Competitor X had pivoted hard to a 'clean beauty' positioning, blitzing Instagram with influencer campaigns touting organic ingredients. Seeing an opportunity to differentiate, the firm tweaked its own ads to emphasize natural formulations and a new organic certification. Iceberg Data's insights also revealed a tactical opportunity to <strong>capture users' attention at a lower cost</strong> by scheduling social posts during competitors' weekend downtime.</p>\n\n<p>Iceberg Data's solution ingested a steady stream of competitor data, including:\n<ul>\n<li>Brand mentions and campaign hashtags in public social media ads</li>\n<li>Ad copy scraped from search engine results</li>\n<li>Visual ad creatives from banner ads on public sites</li>\n<li>Engagement stats like likes and shares on social platforms</li>\n</ul>\nThe scrapers fed this raw material into Iceberg Data's battle-tested analysis engine, which cross-linked ad creative to performance data, revealing which competitor messages hit the mark.</p>\n\n<p>With this <strong>real-time intel advantage</strong>, the cosmetics challenger achieved:\n<ul>\n<li>A higher click-through rate on its revised 'natural beauty' ads</li>\n<li>Improved brand perception, as measured by social sentiment</li>\n<li>More efficient ad spend, focused on high-engagement time slots</li>\n</ul>\nBy outsourcing the complex, time-consuming process of gathering and analyzing public ad data to Iceberg Data, the firm's marketers gained the agility to finetune campaigns on the fly. The bottom-line result: <strong>a 20% boost in advertising ROI</strong>, achieved by optimizing ad creative and timing based on competitors' moves. Iceberg Data's 'always-on' monitoring delivered a major strategic edge, without adding headcount or taxing the company's internal analytics resources.</p>",
+  "publicationDate": "2024-10-28",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "competitor_handles": {
+        "type": "array",
+        "description": "Array of competitor brand handles to track",
+        "items": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_]{1,15}$"
+        },
+        "examples": [
+          [
+            "BrandAOfficial",
+            "BrandBGlobal",
+            "BrandC_USA"
+          ]
+        ]
+      },
+      "ad_library_links": {
+        "type": "array",
+        "description": "Array of URLs to competitor ad libraries",
+        "items": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^(https?://)?([\\w\\-])+\\.com/ads/library/[\\w\\-/%?=]+"
+        },
+        "examples": [
+          [
+            "fb.com/ads/library/BrandA",
+            "twitter.com/ads/library/BrandB?ref=business"
+          ]
+        ]
+      },
+      "metrics": {
+        "type": "array",
+        "description": "Engagement metrics to track for competitor content",
+        "items": {
+          "type": "string",
+          "enum": [
+            "likes",
+            "shares",
+            "comments",
+            "views",
+            "clicks"
+          ]
+        },
+        "default": [
+          "likes",
+          "shares"
+        ],
+        "uniqueItems": true,
+        "minItems": 1
+      }
+    },
+    "required": [
+      "competitor_handles",
+      "metrics"
+    ],
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "competitor": {
+        "type": "string",
+        "description": "The name of the competitor brand.",
+        "example": "BrandA"
+      },
+      "ad_count": {
+        "type": "integer",
+        "description": "The total number of ads run by the competitor.",
+        "example": 10,
+        "minimum": 0
+      },
+      "dominant_theme": {
+        "type": "string",
+        "description": "The most frequent or prominent theme in the competitor's ads.",
+        "example": "Holiday Sale"
+      },
+      "engagement": {
+        "type": "object",
+        "description": "Metrics summarizing user engagement with the competitor's ads.",
+        "properties": {
+          "impressions": {
+            "type": "integer",
+            "description": "Total ad impressions.",
+            "example": 500000,
+            "minimum": 0
+          },
+          "clicks": {
+            "type": "integer",
+            "description": "Total ad clicks.",
+            "example": 12500,
+            "minimum": 0
+          },
+          "ctr": {
+            "type": "number",
+            "description": "Average click-through rate (CTR) across all ads.",
+            "example": 0.025,
+            "minimum": 0,
+            "maximum": 1
+          }
+        },
+        "required": [
+          "impressions",
+          "clicks",
+          "ctr"
+        ]
+      },
+      "recommendations": {
+        "type": "array",
+        "description": "Suggested strategies to counter the competitor's advertising.",
+        "items": {
+          "type": "string",
+          "example": "Emphasize product quality over discounts."
+        }
+      }
+    },
+    "required": [
+      "competitor",
+      "ad_count",
+      "dominant_theme",
+      "engagement",
+      "recommendations"
+    ]
+  }
+}

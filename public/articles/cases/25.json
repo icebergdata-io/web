@@ -1,0 +1,178 @@
+{
+  "Title": "Digital Shelf Optimization via Public Marketplace Scraping",
+  "Subtitle": "Tracking Keyword Rankings and Competitor Products to Boost Visibility",
+  "Business Impact": "Appearing in top search positions on major marketplaces can increase sales by up to 25%. Scraping public product listings and search result pages reveals how to improve ranking factors.",
+  "Sector": "Ecommerce",
+  "What data was collected": "Marketplace search results pages, competitor product titles, listing images, bullet points, user question threads, and rating counts—publicly visible on sites like Amazon or Walmart.",
+  "Why this matters": "Even small changes in ranking position can drastically affect an item’s visibility. Detailed competitor listing data guides optimal keyword usage, product imagery, and promotional strategies.",
+  "Implementation time": "6 to 8 weeks, entailing marketplace scraping scripts, a ranking analysis engine, and recommended listing adjustments based on publicly gleaned best practices.",
+  "Problems this solves": "1) Uncertainty about how different keywords affect rank. 2) Blind spots regarding competitor listing tactics. 3) Difficulty assessing how rating counts or images influence search placement.",
+  "Why it was better to outsource this solution": "Professional scraping services specialize in capturing daily or weekly search result snapshots without losing data or violating marketplace guidelines, preserving consistent insights.",
+  "Input Schema": "A JSON object specifying marketplace, target keywords, and competitor SKUs. Example: { 'marketplace': 'Amazon', 'keywords': ['wireless earbuds'], 'competitor_skus': ['B07XYZ', 'B08ABC'] }",
+  "Output Schema": "A JSON object highlighting each product’s rank, listing attributes, competitor comparisons, and next-step recommendations. Example: { 'sku': 'B07XYZ', 'rank_position': 5, 'attributes': {...}, 'recommendations': [{...}] }",
+  "Matching algorithm used to integrate the data": "Keyword-based pattern recognition for product titles and bullet points. The engine correlates these with ranking changes, along with rating counts to measure listing effectiveness.",
+  "Story": "<p>In the hyper-competitive world of e-commerce, even small changes in a product's search ranking can drastically impact its visibility and sales. One consumer electronics brand found itself struggling to gain traction on major online marketplaces, with its flagship headphones barely appearing on the first page of relevant searches. The brand's listings were being outranked by lesser-known competitors with thousands of reviews, leading to missed sales opportunities and a diminished brand presence.</p>\n\n<p>To tackle this challenge, the brand partnered with Iceberg Data's web scraping experts. The team developed a sophisticated scraping solution that systematically scanned public search result pages on the target marketplace for relevant headphone keywords. The scrapers analyzed competitor listings in granular detail, examining elements such as:</p>\n\n<ul>\n<li>Product titles and descriptions</li>\n<li>Bullet-point content and formatting</li>\n<li>Number and quality of product images</li>\n<li>Star ratings and review volumes</li>\n</ul>\n\n<p>By aggregating and analyzing this competitive intelligence, Iceberg Data's solution identified clear patterns among top-performing listings. Products that consistently ranked in the top 10 search results tended to have:</p>\n\n<ul>\n<li>Titles featuring key phrases like \"noise-canceling\" or \"wireless Bluetooth 5.0\"</li>\n<li>At least five high-quality product images</li>\n<li>Average ratings of 4.5 stars or higher</li>\n<li><strong>Hundreds or thousands of user reviews</strong></li>\n</ul>\n\n<p>Armed with these insights, the brand optimized its own listings to align with proven best practices. The company rewrote titles and descriptions to emphasize essential keywords, upgraded its product photography, and launched a campaign to encourage satisfied customers to leave reviews. Iceberg Data's scraping tool allowed the brand to monitor the impact of these changes in near-real-time, with <strong>daily updates on search rankings and competitor moves.</strong></p>\n\n<p>The results were dramatic. Within weeks of implementing Iceberg Data's recommendations, the brand's flagship headphone listing climbed into the top 10 search results for its target keywords. This improved visibility led to a <strong>marked increase in product page traffic and sales conversions</strong>. Outsourcing the data collection and analysis to Iceberg Data's experts enabled the brand's e-commerce team to focus on strategy and execution, confident that they had up-to-date, reliable competitive intelligence.</p>\n\n<p>By revealing the factors that correlate with higher search rankings, Iceberg Data's web scraping solution empowered the brand to enhance its digital shelf presence and keep pace with its rivals. The company continues to rely on the scraping tool to drive its e-commerce strategy, monitoring competitor activities, and optimizing its own listings for maximum visibility and revenue. <strong>With Iceberg Data's support, the brand has seen e-commerce sales increase by up to 25% for products that appear in the top search positions.</strong></p>",
+  "publicationDate": "2024-08-06",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "marketplace": {
+        "description": "The name of the online marketplace",
+        "type": "string",
+        "enum": [
+          "Amazon",
+          "eBay",
+          "Walmart",
+          "Target",
+          "Etsy"
+        ],
+        "example": "Amazon"
+      },
+      "keywords": {
+        "description": "An array of target keywords to search for",
+        "type": "array",
+        "minItems": 1,
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "example": [
+          "wireless earbuds",
+          "bluetooth headphones"
+        ]
+      },
+      "competitor_skus": {
+        "description": "An array of competitor product SKUs",
+        "type": "array",
+        "minItems": 0,
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "pattern": "^[A-Z0-9]{6,10}$"
+        },
+        "example": [
+          "B07XYZ123",
+          "B08ABC987"
+        ]
+      }
+    },
+    "required": [
+      "marketplace",
+      "keywords"
+    ],
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "sku": {
+        "type": "string",
+        "description": "The unique stock keeping unit (SKU) identifier for the product.",
+        "example": "B07XYZ123"
+      },
+      "rank_position": {
+        "type": "integer",
+        "description": "The product's current rank position in the relevant category.",
+        "minimum": 1,
+        "example": 5
+      },
+      "attributes": {
+        "type": "object",
+        "description": "Key attributes of the product listing.",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "The title of the product listing.",
+            "example": "Wireless Bluetooth Headphones with Noise Cancellation"
+          },
+          "price": {
+            "type": "number",
+            "description": "The current price of the product.",
+            "minimum": 0,
+            "example": 79.99
+          },
+          "rating": {
+            "type": "number",
+            "description": "The average customer rating of the product (out of 5 stars).",
+            "minimum": 0,
+            "maximum": 5,
+            "example": 4.3
+          },
+          "num_reviews": {
+            "type": "integer",
+            "description": "The total number of customer reviews for the product.",
+            "minimum": 0,
+            "example": 532
+          },
+          "in_stock": {
+            "type": "boolean",
+            "description": "Indicates whether the product is currently in stock.",
+            "example": true
+          }
+        },
+        "required": [
+          "title",
+          "price"
+        ]
+      },
+      "competitor_comparison": {
+        "type": "object",
+        "description": "Comparison of key metrics against the top competitor for this product.",
+        "properties": {
+          "competitor_sku": {
+            "type": "string",
+            "description": "The SKU of the top competing product.",
+            "example": "A08ABC987"
+          },
+          "price_difference": {
+            "type": "number",
+            "description": "The difference in price compared to the competitor (positive means this product is more expensive).",
+            "example": -5
+          },
+          "rating_difference": {
+            "type": "number",
+            "description": "The difference in average rating compared to the competitor (positive means this product is rated higher).",
+            "example": 0.2
+          },
+          "review_count_difference": {
+            "type": "integer",
+            "description": "The difference in number of reviews compared to the competitor (positive means this product has more reviews).",
+            "example": -25
+          }
+        }
+      },
+      "recommendations": {
+        "type": "array",
+        "description": "List of recommended actions to improve the product's performance.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "description": "The type or category of the recommendation.",
+              "example": "Pricing"
+            },
+            "description": {
+              "type": "string",
+              "description": "A detailed description of the recommended action to take.",
+              "example": "Consider lowering the price by 5-10% to be more competitive with top rival products."
+            }
+          },
+          "required": [
+            "type",
+            "description"
+          ]
+        }
+      }
+    },
+    "required": [
+      "sku",
+      "rank_position",
+      "attributes"
+    ]
+  }
+}
