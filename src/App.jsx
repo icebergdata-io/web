@@ -11,6 +11,7 @@ import ServicesPage from './pages/services';
 import WebScrapingPage from './pages/services/web-scraping';
 import DataIntegrationPage from './pages/services/data-integration';
 import CustomSolutionsPage from './pages/services/custom-solutions';
+import CarRentalLanding from './pages/CarRentalLanding';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="case-study/:sector/:slug" element={<CaseStudy />} />
             <Route path="press" element={<PressCoverage />} />
             <Route path="booking-confirmation" element={<BookingConfirmation />} />
+            <Route path="car-rental" element={<CarRentalLanding />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
