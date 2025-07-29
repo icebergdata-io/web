@@ -1,10 +1,7 @@
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import CalendlyPopup from '../components/CalendlyPopup';
-import { useState } from 'react';
 
 const CarRentalLanding = () => {
-  const [showCalendly, setShowCalendly] = useState(false);
 
   useEffect(() => {
     // Smooth scrolling for CTA buttons
@@ -82,13 +79,15 @@ const CarRentalLanding = () => {
               <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-95 leading-relaxed">
                 Empower your business with precise, real-time market intelligence through specialized web scraping services. Optimize pricing and boost profitability in the competitive car rental market.
               </p>
-              <button 
-                onClick={() => setShowCalendly(true)}
-                className="group relative px-8 py-4 bg-gradient-to-r from-accent-cyan to-primary-500 text-white font-semibold text-lg rounded-full transition-all duration-300 hover:scale-105 hover:shadow-2xl transform hover:-translate-y-1 overflow-hidden"
+              <a 
+                href="https://calendly.com/icedata/data-consultation"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative inline-block px-8 py-4 bg-gradient-to-r from-accent-cyan to-primary-500 text-white font-semibold text-lg rounded-full transition-all duration-300 hover:scale-105 hover:shadow-2xl transform hover:-translate-y-1 overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-primary-500 to-accent-purple opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <span className="relative">Schedule Your Call Today</span>
-              </button>
+              </a>
             </div>
           </div>
         </section>
@@ -270,21 +269,20 @@ const CarRentalLanding = () => {
             <p className="text-xl mb-12 text-white/80 max-w-3xl mx-auto">
               Join the industry leaders who trust Iceberg Data for their competitive intelligence needs.
             </p>
-            <button 
-              onClick={() => setShowCalendly(true)}
-              className="group relative px-8 py-4 bg-gradient-to-r from-accent-cyan to-primary-500 text-white font-semibold text-lg rounded-full transition-all duration-300 hover:scale-105 hover:shadow-2xl transform hover:-translate-y-1 overflow-hidden"
+            <a 
+              href="https://calendly.com/icedata/data-consultation"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative inline-block px-8 py-4 bg-gradient-to-r from-accent-cyan to-primary-500 text-white font-semibold text-lg rounded-full transition-all duration-300 hover:scale-105 hover:shadow-2xl transform hover:-translate-y-1 overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-primary-500 to-accent-purple opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <span className="relative">Get Started Today</span>
-            </button>
+            </a>
           </div>
         </section>
       </div>
 
-      {/* Calendly Popup */}
-      {showCalendly && (
-        <CalendlyPopup onClose={() => setShowCalendly(false)} />
-      )}
+
 
 
     </>
