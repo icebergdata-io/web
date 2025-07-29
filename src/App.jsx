@@ -11,7 +11,7 @@ import ServicesPage from './pages/services';
 import WebScrapingPage from './pages/services/web-scraping';
 import DataIntegrationPage from './pages/services/data-integration';
 import CustomSolutionsPage from './pages/services/custom-solutions';
-import CarRentalLanding from './pages/CarRentalLanding';
+import CarRentalLanding from './pages/industry_landings/CarRentalLanding';
 
 function App() {
   return (
