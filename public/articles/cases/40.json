@@ -1,0 +1,90 @@
+{
+  "Title": "Competitive Pricing Intelligence for Dynamic Retail Pricing",
+  "Subtitle": "Boosting Sales with Real-Time Competitor Price Monitoring",
+  "Business Impact": "Increased sales by 15-25% and reduced launch failures by up to 40% due to data-backed pricing decisions driven by real-time competitive analysis.",
+  "Sector": "Retail",
+  "What data was collected": "We collected competitor pricing data, product availability, promotional offers, and customer reviews from various e-commerce platforms and competitor websites.",
+  "Why this matters": "Real-time pricing intelligence enables retailers to make informed decisions about pricing strategies, optimize product positioning, and respond quickly to market changes.",
+  "Implementation time": "6-8 weeks. Time was spent collecting competitor data, setting up automated alerts, and integrating pricing data into the client's pricing system. This allowed automated price updates and responses.",
+  "Problems this solves": "1. Difficulty monitoring competitor prices across multiple platforms. 2. Inaccurate pricing due to lack of real-time data. 3. Inability to respond quickly to competitor price changes. 4. Missed opportunities to optimize pricing and maximize revenue.",
+  "Why it was better to outsource this solution": "Outsourcing allows retailers to focus on core business operations while leveraging Iceberg Data's expertise in data collection, processing, and analysis. Our specialized infrastructure and technology ensure reliable data acquisition and efficient pricing updates.",
+  "Input Schema": "{ \"product_categories\": [\"electronics\", \"clothing\"], \"competitors\": [\"CompetitorA\", \"CompetitorB\"], \"target_platforms\": [\"Amazon\", \"Target\"] }",
+  "Output Schema": "{ \"product_name\": \"Smartphone\", \"competitor_name\": \"CompetitorA\", \"competitor_price\": \"$999\", \"our_price\": \"$1049\", \"price_difference\": \"$50\", \"recommended_price\": \"$995\", \"date\": \"2024-08-01\" }",
+  "Matching algorithm used to integrate the data": "We used a combination of product matching algorithms using names, SKUs, and unique identifiers along with techniques like image recognition and natural language processing to accurately match products across different platforms and sources. This ensured consistent and reliable pricing data across all tracked items.",
+  "Story": "<p>A national electronics retailer struggled to keep up with dynamic pricing changes in a highly competitive market. Manual price tracking was time-consuming and inaccurate. They partnered with <strong>Iceberg Data</strong> to implement automated competitor price monitoring.</p><p>In 6-8 weeks, we collected pricing data from competitor websites and major e-commerce platforms, providing real-time insights into market dynamics. The retailer used this data to adjust their pricing dynamically, ensuring competitive pricing and optimized profit margins.</p><p>The impact was significant: a <strong>15-25% increase in sales</strong> and a <strong>reduction in product launch failures of up to 40%</strong>. The retailer gained a crucial competitive advantage by integrating pricing intelligence into its core operations.</p>",
+  "publicationDate": "2025-02-15",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "product_categories": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Product categories to track"
+      },
+      "competitors": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "List of competitor names or website URLs"
+      },
+      "target_platforms": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "E-commerce platforms to monitor (e.g., Amazon, eBay)"
+      }
+    },
+    "required": [
+      "product_categories",
+      "competitors",
+      "target_platforms"
+    ]
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "product_name": {
+        "type": "string",
+        "description": "Name of the product"
+      },
+      "competitor_name": {
+        "type": "string",
+        "description": "Name of the competitor"
+      },
+      "competitor_price": {
+        "type": "string",
+        "description": "Competitor's price for the product"
+      },
+      "our_price": {
+        "type": "string",
+        "description": "Retailer's current price for the product"
+      },
+      "price_difference": {
+        "type": "string",
+        "description": "Difference between competitor's and retailer's price"
+      },
+      "recommended_price": {
+        "type": "string",
+        "description": "Recommended price based on competitor analysis"
+      },
+      "date": {
+        "type": "string",
+        "format": "date",
+        "description": "Date of the price data"
+      }
+    },
+    "required": [
+      "product_name",
+      "competitor_name",
+      "competitor_price",
+      "our_price",
+      "date"
+    ]
+  }
+}
