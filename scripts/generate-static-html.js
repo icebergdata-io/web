@@ -1,6 +1,8 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { slugify } from '../src/utils/slugify.js';
+import { readdirSync } from 'fs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -134,12 +136,186 @@ function generateStaticHTML() {
       console.log(`✅ Generated: ${filename}`);
     });
     
+    // Generate static HTML for case studies
+    console.log('\n📚 Generating case study pages...');
+    generateCaseStudyPages(distDir, cssPath, jsPath);
+    
     console.log('\n🎉 Static HTML generation completed!');
     console.log('📁 Files generated in dist/ directory');
     console.log('🔍 Search engines can now easily find your pages!');
     
   } catch (error) {
     console.error('❌ Static HTML generation failed:', error);
+  }
+}
+
+function generateCaseStudyPages(distDir, cssPath, jsPath) {
+  try {
+    const casesDir = resolve(__dirname, '../public/articles/cases');
+    
+    if (!existsSync(casesDir)) {
+      console.log('❌ Cases directory not found.');
+      return;
+    }
+    
+    // Create case-study directory
+    const caseStudyDir = resolve(distDir, 'case-study');
+    if (!existsSync(caseStudyDir)) {
+      mkdirSync(caseStudyDir, { recursive: true });
+    }
+    
+    // Read all case study files
+    const files = readdirSync(casesDir)
+      .filter(file => file.endsWith('.json'))
+      .sort((a, b) => {
+        const numA = parseInt(a.match(/\d+/)[0]);
+        const numB = parseInt(b.match(/\d+/)[0]);
+        return numA - numB;
+      });
+    
+    files.forEach(file => {
+      try {
+        const content = readFileSync(resolve(casesDir, file), 'utf8');
+        const caseData = JSON.parse(content);
+        const sectorSlug = slugify(caseData.Sector);
+        const titleSlug = slugify(`${caseData.Title}-${caseData.Subtitle}`);
+        
+        // Create sector directory
+        const sectorDir = resolve(caseStudyDir, sectorSlug);
+        if (!existsSync(sectorDir)) {
+          mkdirSync(sectorDir, { recursive: true });
+        }
+        
+        // Create case study HTML file
+        const caseStudyHTML = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${caseData.Title} - Iceberg Data Case Study</title>
+    <meta name="description" content="${caseData["Business Impact"]}">
+    <meta name="keywords" content="${caseData.Sector}, data analytics, case study, business intelligence, ${caseData.Title.toLowerCase()}">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Iceberg Data">
+    <link rel="canonical" href="https://www.icebergdata.co/case-study/${sectorSlug}/${titleSlug}">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="${caseData.Title} - Iceberg Data Case Study">
+    <meta property="og:description" content="${caseData["Business Impact"]}">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.icebergdata.co/case-study/${sectorSlug}/${titleSlug}">
+    <meta property="og:image" content="https://www.icebergdata.co/logos/logo-large.png">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="${caseData.Title} - Iceberg Data Case Study">
+    <meta name="twitter:description" content="${caseData["Business Impact"]}">
+    <meta name="twitter:image" content="https://www.icebergdata.co/logos/logo-large.png">
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="${cssPath}" as="style">
+    <link rel="preload" href="${jsPath}" as="script">
+    
+    <!-- Load CSS -->
+    <link rel="stylesheet" href="${cssPath}">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      ${JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": caseData.Title,
+        "description": caseData.Subtitle,
+        "articleBody": caseData.Story,
+        "author": {
+          "@type": "Organization",
+          "name": "Iceberg Data"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Iceberg Data",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.icebergdata.co/logos/logo-large.png"
+          }
+        },
+        "datePublished": caseData.publicationDate,
+        "industry": caseData.Sector,
+        "keywords": [caseData.Sector, "data analytics", "case study", "business intelligence"]
+      })}
+    </script>
+</head>
+<body>
+    <div id="root">
+        <!-- SEO-friendly content visible to search engines -->
+        <header style="padding: 2rem; text-align: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+            <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">${caseData.Title}</h1>
+            <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto;">${caseData.Subtitle}</p>
+            <div style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.9;">
+                <span style="background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 20px; margin-right: 1rem;">${caseData.Sector}</span>
+                <span>Published: ${new Date(caseData.publicationDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            </div>
+        </header>
+        
+        <main style="padding: 2rem; max-width: 1200px; margin: 0 auto;">
+            <section style="margin-bottom: 2rem;">
+                <h2 style="color: #333; margin-bottom: 1rem;">Business Impact</h2>
+                <p style="line-height: 1.6; color: #666; font-size: 1.1rem; background: #f8f9fa; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #007bff;">${caseData["Business Impact"]}</p>
+            </section>
+            
+            <section style="margin-bottom: 2rem;">
+                <h2 style="color: #333; margin-bottom: 1rem;">Case Study Overview</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                        <h3 style="color: #333; margin-bottom: 0.5rem;">What Data Was Collected</h3>
+                        <p style="color: #666; line-height: 1.6;">${caseData["What data was collected"]}</p>
+                    </div>
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                        <h3 style="color: #333; margin-bottom: 0.5rem;">Why This Matters</h3>
+                        <p style="color: #666; line-height: 1.6;">${caseData["Why this matters"]}</p>
+                    </div>
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                        <h3 style="color: #333; margin-bottom: 0.5rem;">Implementation Time</h3>
+                        <p style="color: #666; line-height: 1.6;">${caseData["Implementation time"]}</p>
+                    </div>
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                        <h3 style="color: #333; margin-bottom: 0.5rem;">Problems This Solves</h3>
+                        <p style="color: #666; line-height: 1.6;">${caseData["Problems this solves"]}</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section style="background: #f8f9fa; padding: 2rem; border-radius: 8px;">
+                <h3 style="color: #333; margin-bottom: 1rem;">Ready to Get Started?</h3>
+                <p style="margin-bottom: 1rem;">Contact us to learn how we can help your business with data collection and web scraping solutions.</p>
+                <a href="https://calendly.com/d/csxd-vq2-j8k/data-collection-consultation-with-david-and-gabriel" 
+                   style="display: inline-block; background: #007bff; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px;">
+                    Schedule a Consultation
+                </a>
+            </section>
+        </main>
+        
+        <footer style="background: #333; color: white; padding: 2rem; text-align: center; margin-top: 2rem;">
+            <p>&copy; 2024 Iceberg Data. All rights reserved.</p>
+        </footer>
+    </div>
+    
+    <!-- Load the React app -->
+    <script type="module" src="${jsPath}"></script>
+</body>
+</html>`;
+        
+        const filepath = resolve(sectorDir, `${titleSlug}.html`);
+        writeFileSync(filepath, caseStudyHTML);
+        console.log(`✅ Generated case study: ${sectorSlug}/${titleSlug}.html`);
+        
+      } catch (error) {
+        console.error(`❌ Error generating case study ${file}:`, error);
+      }
+    });
+    
+  } catch (error) {
+    console.error('❌ Error generating case study pages:', error);
   }
 }
 
