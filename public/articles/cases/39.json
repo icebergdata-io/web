@@ -1,0 +1,73 @@
+{
+  "Title": "Gaining Competitive Edge: Real-Time Pricing and Product Intelligence for Fashion Retailer",
+  "Subtitle": "Increased sales by 15% and reduced pricing research time by 80% through automated competitor monitoring.",
+  "Business Impact": "Improved profit margins by 10% and increased market share by 5% within six months.",
+  "Sector": "retail",
+  "What data was collected": "Product names, descriptions, SKUs, prices, discounts, availability, customer reviews, and shipping information from 10 major competitor websites.",
+  "Why this matters": "This data provides crucial insights into competitor strategies, market trends, and customer preferences, enabling data-driven pricing decisions and optimized product offerings.",
+  "Implementation time": "6 to 8 weeks",
+  "Problems this solves": "1) Manual competitor analysis was time-consuming and inefficient. 2) Lack of real-time data hindered dynamic pricing adjustments. 3) Difficulty in identifying emerging trends and competitor product launches.",
+  "Why it was better to outsource this solution": "Iceberg Data provided expertise in web scraping, data cleaning, and integration, eliminating the need for in-house development and maintenance of complex infrastructure.",
+  "Input Schema": "List of competitor website URLs and target product categories.",
+  "Output Schema": "Structured data feeds containing product information, pricing, and availability updated daily.",
+  "Matching algorithm used to integrate the data": "Product matching based on a combination of name, SKU, and description using fuzzy matching techniques to account for variations in product listings.",
+  "Story": "<p>1. Opening: A fast-fashion retailer struggled to keep up with dynamic market pricing and competitor product launches, leading to lost sales and reduced profitability.</p><p>2. Problem: Manual competitor analysis was extremely time-consuming and prone to errors.  The lack of real-time data hindered their ability to adjust pricing strategically and respond to market changes effectively.</p><p>3. Solution: Iceberg Data implemented a custom web scraping solution to collect competitor pricing, product information, and availability data from 10 major competitor websites. This data was cleaned, structured, and delivered via daily automated feeds.</p><p>4. Implementation: Iceberg Data utilized advanced web scraping techniques and proxy management to ensure reliable data collection.  The data was processed using a cloud-based infrastructure and delivered via secure APIs.</p><p>5. Results: The retailer saw a 15% increase in sales within three months of implementation.  Pricing research time was reduced by 80%, freeing up analysts to focus on strategic initiatives.  Dynamic pricing adjustments led to a 10% improvement in profit margins.</p><p>6. Conclusion: By outsourcing to Iceberg Data, the retailer achieved significant ROI through improved pricing strategies, faster response to market trends, and enhanced competitive intelligence, ultimately gaining a 5% increase in market share within six months.</p>",
+  "publicationDate": "2024-12-06",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "competitor_url": {
+          "type": "string",
+          "description": "URL of the competitor's website"
+        },
+        "product_category": {
+          "type": "string",
+          "description": "Target product category on the website"
+        }
+      },
+      "required": [
+        "competitor_url",
+        "product_category"
+      ]
+    }
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "product_name": {
+          "type": "string",
+          "description": "Name of the product"
+        },
+        "sku": {
+          "type": "string",
+          "description": "Product SKU"
+        },
+        "price": {
+          "type": "number",
+          "description": "Current price of the product"
+        },
+        "availability": {
+          "type": "string",
+          "description": "Product availability status (e.g., 'in stock', 'out of stock')"
+        },
+        "competitor_url": {
+          "type": "string",
+          "description": "URL of the competitor's product page"
+        }
+      },
+      "required": [
+        "product_name",
+        "sku",
+        "price",
+        "availability",
+        "competitor_url"
+      ]
+    }
+  }
+}

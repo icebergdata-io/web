@@ -15,6 +15,7 @@
     "preview": "vite preview",
     "generate-seo": "node scripts/generate-seo-files.js",
     "generate-sitemap": "node scripts/generate-sitemap.js",
+    "generate-case-studies": "node scripts/generate-new-case-studies.js",
     "dev:add-dates": "node scripts/add-publication-dates.js",
     "dev:generate-schemas": "node scripts/generate-exact-schemas.js",
     "dev:format-stories": "node scripts/format-stories.js",
