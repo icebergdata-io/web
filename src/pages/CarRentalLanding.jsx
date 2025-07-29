@@ -80,7 +80,7 @@ const CarRentalLanding = () => {
                 Empower your business with precise, real-time market intelligence through specialized web scraping services. Optimize pricing and boost profitability in the competitive car rental market.
               </p>
               <a 
-                href="https://calendly.com/icedata/data-consultation"
+                href="https://calendly.com/d/csxd-vq2-j8k/data-collection-consultation-with-david-and-gabriel"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative inline-block px-8 py-4 bg-gradient-to-r from-accent-cyan to-primary-500 text-white font-semibold text-lg rounded-full transition-all duration-300 hover:scale-105 hover:shadow-2xl transform hover:-translate-y-1 overflow-hidden"
@@ -270,7 +270,7 @@ const CarRentalLanding = () => {
               Join the industry leaders who trust Iceberg Data for their competitive intelligence needs.
             </p>
             <a 
-              href="https://calendly.com/icedata/data-consultation"
+              href="https://calendly.com/d/csxd-vq2-j8k/data-collection-consultation-with-david-and-gabriel"
               target="_blank"
               rel="noopener noreferrer"
               className="group relative inline-block px-8 py-4 bg-gradient-to-r from-accent-cyan to-primary-500 text-white font-semibold text-lg rounded-full transition-all duration-300 hover:scale-105 hover:shadow-2xl transform hover:-translate-y-1 overflow-hidden"
