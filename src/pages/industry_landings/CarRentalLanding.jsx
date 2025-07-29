@@ -48,20 +48,101 @@ const CarRentalLanding = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Structured data for SEO
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Car Rental Pricing Intelligence & Market Analysis",
+    "description": "Professional web scraping services for car rental businesses. Get real-time competitor pricing, availability insights, and market analysis to optimize your rental pricing strategy and boost profitability.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Iceberg Data",
+      "url": "https://www.icebergdata.co",
+      "logo": "https://www.icebergdata.co/logos/logo-large.png",
+      "description": "Enterprise web scraping and data collection solutions provider"
+    },
+    "serviceType": "Car Rental Market Intelligence & Web Scraping",
+    "areaServed": "Worldwide",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Car Rental Intelligence Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Real-Time Competitor Pricing",
+            "description": "Continuous monitoring of Hertz, Avis, Enterprise, Kayak, and Expedia pricing"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Availability & Inventory Insights",
+            "description": "Competitor fleet size and rental availability tracking"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Dynamic Market Analysis",
+            "description": "Seasonal trends and competitor pricing strategy analysis"
+          }
+        }
+      ]
+    },
+    "offers": {
+      "@type": "Offer",
+      "availability": "https://schema.org/InStock",
+      "price": "Custom",
+      "priceCurrency": "USD"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "100+",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  };
+
   return (
     <>
       <Helmet>
-        <title>Car Rental Pricing Intelligence | Competitive Edge | Iceberg Data</title>
-        <meta name="description" content="Empower your car rental business with precise, real-time market intelligence through specialized web scraping services. Optimize pricing and boost profitability." />
-        <meta name="keywords" content="car rental pricing, competitor analysis, market intelligence, web scraping, rental pricing optimization" />
-        <meta property="og:title" content="Car Rental Pricing Intelligence | Competitive Edge | Iceberg Data" />
-        <meta property="og:description" content="Empower your car rental business with precise, real-time market intelligence through specialized web scraping services." />
-        <meta property="og:image" content="/logos/logo-large.png" />
+        <title>Car Rental Pricing Intelligence | Real-Time Market Analysis | Iceberg Data</title>
+        <meta name="description" content="Get real-time car rental pricing intelligence from Hertz, Avis, Enterprise & more. Boost profitability with competitor analysis, availability insights & market trends. 99% accuracy guaranteed." />
+        <meta name="keywords" content="car rental pricing intelligence, competitor pricing analysis, rental market data, Hertz pricing, Avis pricing, Enterprise pricing, Kayak rental data, Expedia rental pricing, car rental market analysis, pricing optimization, fleet availability tracking, rental industry insights" />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Iceberg Data" />
+        <meta name="language" content="English" />
+        <meta name="revisit-after" content="7 days" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Car Rental Pricing Intelligence | Real-Time Market Analysis | Iceberg Data" />
+        <meta property="og:description" content="Get real-time car rental pricing intelligence from Hertz, Avis, Enterprise & more. Boost profitability with competitor analysis & market trends." />
+        <meta property="og:image" content="https://www.icebergdata.co/logos/logo-large.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="1200" />
         <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.icebergdata.co/car-rental" />
+        <meta property="og:site_name" content="Iceberg Data" />
+        
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Car Rental Pricing Intelligence | Competitive Edge" />
-        <meta name="twitter:description" content="Empower your car rental business with precise, real-time market intelligence." />
-        <meta name="twitter:image" content="/logos/logo-large.png" />
+        <meta name="twitter:title" content="Car Rental Pricing Intelligence | Real-Time Market Analysis" />
+        <meta name="twitter:description" content="Get real-time car rental pricing intelligence from Hertz, Avis, Enterprise & more. Boost profitability with competitor analysis." />
+        <meta name="twitter:image" content="https://www.icebergdata.co/logos/logo-large.png" />
+        <meta name="twitter:site" content="@icebergdata" />
+        
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://www.icebergdata.co/car-rental" />
+        
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
       </Helmet>
 
       <div className="min-h-screen">
@@ -77,7 +158,7 @@ const CarRentalLanding = () => {
                 </span>
               </h1>
               <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-95 leading-relaxed">
-                Empower your business with precise, real-time market intelligence through specialized web scraping services. Optimize pricing and boost profitability in the competitive car rental market.
+                Empower your business with precise, real-time market intelligence through specialized <a href="/services/web-scraping" className="underline hover:text-primary-200 transition-colors">web scraping services</a>. Optimize pricing and boost profitability in the competitive car rental market with data-driven insights from leading platforms.
               </p>
               <a 
                 href="https://calendly.com/d/csxd-vq2-j8k/data-collection-consultation-with-david-and-gabriel"
@@ -255,6 +336,34 @@ const CarRentalLanding = () => {
               <div className="fade-in bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20">
                 <h3 className="text-xl font-semibold mb-4 text-white">Proven Results</h3>
                 <p className="text-white/90 leading-relaxed">Proven track record of increasing client revenue by 15-30%.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section for SEO */}
+        <section className="py-20 bg-gradient-to-br from-white to-primary-50">
+          <div className="container mx-auto px-4">
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-center mb-16 text-dark-900">
+              Frequently Asked Questions
+              <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-accent-purple mx-auto mt-4 rounded-full"></div>
+            </h2>
+            <div className="max-w-4xl mx-auto space-y-8">
+              <div className="fade-in bg-white rounded-2xl p-8 shadow-elevation-2 border border-primary-100">
+                <h3 className="text-xl font-semibold mb-4 text-dark-900">How accurate is the car rental pricing data?</h3>
+                <p className="text-dark-600 leading-relaxed">Our car rental pricing intelligence achieves 99% accuracy through advanced web scraping technology and continuous monitoring. We track real-time updates from major platforms including Hertz, Avis, Enterprise, Kayak, and Expedia to ensure you have the most current market data.</p>
+              </div>
+              <div className="fade-in bg-white rounded-2xl p-8 shadow-elevation-2 border border-primary-100">
+                <h3 className="text-xl font-semibold mb-4 text-dark-900">What car rental platforms do you monitor?</h3>
+                <p className="text-dark-600 leading-relaxed">We monitor all major car rental platforms including Hertz, Avis, Enterprise, Budget, National, Alamo, Thrifty, Dollar, as well as aggregators like Kayak, Expedia, Priceline, and Rentalcars.com. This comprehensive coverage ensures you have complete market visibility.</p>
+              </div>
+              <div className="fade-in bg-white rounded-2xl p-8 shadow-elevation-2 border border-primary-100">
+                <h3 className="text-xl font-semibold mb-4 text-dark-900">How often is the pricing data updated?</h3>
+                <p className="text-dark-600 leading-relaxed">Our car rental pricing data is updated in real-time, 24/7. We continuously monitor competitor pricing changes, availability updates, and market fluctuations to provide you with the most current intelligence for optimal pricing decisions.</p>
+              </div>
+              <div className="fade-in bg-white rounded-2xl p-8 shadow-elevation-2 border border-primary-100">
+                <h3 className="text-xl font-semibold mb-4 text-dark-900">Can I integrate this data with my existing systems?</h3>
+                <p className="text-dark-600 leading-relaxed">Yes! Our car rental pricing intelligence integrates seamlessly with your existing analytics, CRM, and pricing systems. We provide data in multiple formats including JSON, CSV, and API endpoints to ensure compatibility with your current infrastructure.</p>
               </div>
             </div>
           </div>
