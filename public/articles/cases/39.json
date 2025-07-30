@@ -1,0 +1,45 @@
+{
+  "Title": "Maximizing Margins in Industrial Spares: A Dynamic Pricing Model Driven by Competitor Inventory and Commodity Data",
+  "Subtitle": "How a component manufacturer used real-time web data to escape static pricing and increase profitability by 18%.",
+  "Business Impact": "By leveraging real-time competitor stock data and commodity price feeds, the client achieved an average margin uplift of 18% and a 22% increase in sales for high-demand, low-competition parts.",
+  "Sector": "Manufacturing",
+  "What data was collected": "Publicly available data from competitor B2B e-commerce portals (including SKU, list price, and stock availability indicators) and real-time price feeds from public commodity exchanges for key raw materials like steel, aluminum, and copper.",
+  "Why this matters": "In the B2B industrial components market, pricing is highly sensitive to raw material costs and supply chain disruptions. The ability to react to competitor stock-outs or shifts in commodity prices within hours, rather than months, creates a significant competitive advantage and protects profit margins.",
+  "Implementation time": "10 to 12 weeks for full integration, which included scraper development for five key competitor portals, commodity data API integration, and the creation of a final pricing recommendation API for the client's ERP system.",
+  "Problems this solves": "1) Margin erosion from volatile raw material costs under a static pricing model. 2) Lost sales opportunities when competitors are out of stock on critical parts. 3) Being perceived as uncompetitive when material costs fall and competitors adjust pricing faster.",
+  "Why it was better to outsource this solution": "Competitor B2B portals often feature complex login systems, dynamic JavaScript-rendered content, and sophisticated anti-bot measures like CAPTCHAs. A specialized web scraping firm possesses the robust infrastructure, proxy management systems, and technical expertise to navigate these challenges reliably and deliver clean, structured data at scale.",
+  "Example_Input_JSON": {
+    "client_id": "mfg-comp-456",
+    "job_type": "dynamic_pricing_analysis",
+    "targets": [
+      {
+        "part_number": "BRG-7891-C",
+        "competitor_urls": [
+          "https://competitor-a.com/parts/BRG-7891-C",
+          "https://competitor-b.biz/product/BRG-7891-C"
+        ],
+        "commodity_ticker": "LME_STEEL_HRC"
+      }
+    ]
+  },
+  "Example_Output_JSON": {
+    "part_number": "BRG-7891-C",
+    "report_generated_at": "2025-05-20T09:00:00Z",
+    "base_manufacturing_cost": 45.5,
+    "commodity_price_index": 1.12,
+    "competitor_analysis": {
+      "average_price": 75.99,
+      "lowest_price": 72.49,
+      "highest_price": 79.5,
+      "stock_status": "LOW_STOCK"
+    },
+    "pricing_recommendation": {
+      "suggested_price": 78.5,
+      "rationale": "Competitor stock is low and commodity prices are elevated. Opportunity for premium pricing.",
+      "confidence_score": 0.95
+    }
+  },
+  "Matching algorithm used to integrate the data": "SKUs (Part Numbers) served as the primary key for data fusion. Our system deployed a normalization algorithm to handle minor variations in part number formatting (e.g., 'BRG-7891-C' vs. 'BRG7891C') across different competitor websites. This allowed us to accurately aggregate price and stock data for identical components. This competitor data was then combined with the corresponding commodity price index, scraped from public market data feeds, to power a weighted pricing model that balanced market competitiveness with internal cost structures.",
+  "Story": "<p>Our client, a leading manufacturer of specialized industrial bearings, was facing a classic, yet painful, dilemma. Their pricing strategy was archaic, based on a quarterly review of manufacturing costs and a static markup. In today's volatile market, this was a recipe for disaster. When the price of high-grade steel—their primary raw material—surged, their profit margins for the entire quarter would be squeezed thin before they could react. Conversely, when steel prices dropped, their products would appear overpriced next to more agile competitors, leading to lost sales and a perception of being out of touch with the market.</p><p>The Head of Commercial Strategy approached us with a clear mandate: 'We need to move from reacting quarterly to responding daily. We know our competitors are out of stock on certain parts, and we know material costs fluctuate, but we're blind to these opportunities in real-time.' This was a perfect challenge for Iceberg Data. We proposed a solution to build a dynamic pricing engine fueled by two critical, publicly available data streams: <strong>competitor B2B portals and public commodity market feeds.</strong></p><p>Our first task was to build a fleet of sophisticated web scrapers. The client identified their five main competitors, each with a B2B e-commerce portal where customers could check prices and inventory. These sites were not simple; they required navigating logins, handling dynamically loaded content, and bypassing anti-scraping technologies. Our team configured a robust system using a rotating proxy network and browser automation to reliably extract the list price and stock status (e.g., 'In Stock', 'Low Stock', 'Out of Stock') for thousands of SKUs every single day. We paid special attention to normalizing part numbers, ensuring that a part like <strong>'BRG-7891-C'</strong> was correctly matched across all target sites, even with slight formatting differences.</p><p>Simultaneously, we integrated data feeds from commodity exchanges like the London Metal Exchange (LME). We created a <strong>`commodity_price_index`</strong> that tracked the daily price fluctuations of key materials, such as High-Rolled Coil Steel (`LME_STEEL_HRC`). This index provided a direct, quantifiable measure of the cost pressure on any given day.</p><p>The magic happened when we brought these two datasets together. We developed a recommendation API that our client could plug directly into their ERP system. For each part number, the API would deliver a concise JSON object. For example, for part 'BRG-7891-C', the output would show the current `commodity_price_index` (e.g., 1.12, indicating a 12% rise over baseline), a summary of `competitor_analysis` (average price, and most importantly, `stock_status`), and a final `pricing_recommendation` with a clear rationale. One morning, the system flagged that two major competitors had a 'LOW_STOCK' status for a critical bearing. Our model immediately recommended a 5% price increase, which the client implemented. They captured nearly all the market demand for that part for the next 48 hours at a higher margin, an opportunity they would have completely missed under their old system.</p><p>The results were transformative. Within six months of implementation, the client had neutralized the impact of raw material volatility. More importantly, they turned market disruptions into profit centers. The system empowered their sales team to have data-driven conversations with customers, justifying premium prices with evidence of market shortages. The overall business impact was staggering: <strong>an 18% average uplift in profit margins across their flagship product lines and a 22% surge in sales volume</strong> for parts where our system identified a competitive advantage. They were no longer just a manufacturer; they were a market-intelligent pricing powerhouse.",
+  "publicationDate": "2025-08-29"
+}

@@ -28,6 +28,10 @@ function regenerateIndex() {
 
     const caseStudies = [];
 
+    // Get current date for filtering future-dated case studies
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Set to start of day for accurate comparison
+    
     // Process each case study file
     for (const file of files) {
       try {
@@ -38,6 +42,17 @@ function regenerateIndex() {
         if (!caseData.Sector || !caseData.Title || !caseData.Subtitle) {
           console.warn(`⚠️ Skipping ${file} - missing required fields`);
           continue;
+        }
+        
+        // Skip future-dated case studies (scheduled publishing)
+        if (caseData.publicationDate) {
+          const publicationDate = new Date(caseData.publicationDate);
+          publicationDate.setHours(0, 0, 0, 0);
+          
+          if (publicationDate > today) {
+            console.log(`📅 Skipping future-dated case study ${file} - scheduled for ${caseData.publicationDate}`);
+            continue;
+          }
         }
         
         const match = file.match(/\d+/);
