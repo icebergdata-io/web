@@ -415,6 +415,7 @@ const CaseStudies = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // Load case studies only once on component mount
   useEffect(() => {
     const loadCases = async () => {
       try {
@@ -461,11 +462,6 @@ const CaseStudies = () => {
         });
 
         setAllCases(sortedCases);
-        const initialCount = isMobile ? 3 : 6;
-        
-        // Randomly select initial cases
-        const shuffledCases = [...sortedCases].sort(() => Math.random() - 0.5);
-        setCases(shuffledCases.slice(0, initialCount));
       } catch (error) {
         console.error('Error loading case studies:', error);
       } finally {
@@ -474,7 +470,17 @@ const CaseStudies = () => {
     };
 
     loadCases();
-  }, [isMobile]);
+  }, []); // Only run once on mount
+
+  // Update displayed cases when screen size changes or when allCases is loaded
+  useEffect(() => {
+    if (allCases.length > 0) {
+      const initialCount = isMobile ? 3 : 6;
+      // Randomly select initial cases
+      const shuffledCases = [...allCases].sort(() => Math.random() - 0.5);
+      setCases(shuffledCases.slice(0, initialCount));
+    }
+  }, [isMobile, allCases]);
 
   return (
     <section className="py-24 relative overflow-hidden">
