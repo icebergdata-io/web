@@ -208,7 +208,7 @@ const CaseStudy = () => {
           </div>
 
           <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
-            <h2 className="text-2xl font-bold mb-4">The Full Story</h2>
+            <h2 className="text-2xl font-bold mb-4">Implementation & Results</h2>
             <div 
               className="text-dark-700 story-content"
               dangerouslySetInnerHTML={{ __html: caseData.Story }}

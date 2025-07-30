@@ -36,8 +36,11 @@ async function generateCaseStudyIndex() {
     const files = fs.readdirSync(casesDir)
       .filter(file => file.endsWith('.json'))
       .sort((a, b) => {
-        const numA = parseInt(a.match(/\d+/)[0]);
-        const numB = parseInt(b.match(/\d+/)[0]);
+        const matchA = a.match(/\d+/);
+        const matchB = b.match(/\d+/);
+        if (!matchA || !matchB) return 0;
+        const numA = parseInt(matchA[0]);
+        const numB = parseInt(matchB[0]);
         return numA - numB;
       });
 
@@ -47,9 +50,17 @@ async function generateCaseStudyIndex() {
     for (const file of files) {
       const content = fs.readFileSync(path.join(casesDir, file), 'utf8');
       const caseData = JSON.parse(content);
+      
+      // Skip files that don't have required fields
+      if (!caseData.Sector || !caseData.Title || !caseData.Subtitle) {
+        console.warn(`⚠️ Skipping ${file} - missing required fields`);
+        continue;
+      }
+      
       const sectorSlug = slugify(caseData.Sector);
       const titleSlug = slugify(`${caseData.Title}-${caseData.Subtitle}`);
-      const id = parseInt(file.match(/\d+/)[0]);
+      const match = file.match(/\d+/);
+      const id = match ? parseInt(match[0]) : 0;
       
       caseStudies.push({
         id,

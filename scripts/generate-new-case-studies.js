@@ -129,7 +129,7 @@ function generateCaseStudyPrompt(sector, sub_theme, startDate, endDate, isRetry 
     * **DEEP INTEGRATION:** The "Story" must be logically reflected in the "Example_Input_JSON" and "Example_Output_JSON". The data mentioned in the story MUST correspond to properties in the JSON objects.
     * **METRICS-DRIVEN:** The "Business Impact" and "Story" must feature specific, quantifiable metrics.
     * **FIRST-PERSON STORY:** Write the "Story" in the FIRST PERSON ("our team," "we").
-    * **STORY LENGTH & FORMAT:** The "Story" must be AT LEAST 800 words and formatted with HTML <p> and <strong> tags.
+    * **STORY LENGTH & FORMAT:** The "Story" must be AT LEAST 500 words and formatted with HTML <p> and <strong> tags.
     * **NO CUSTOMER NAMES:** Use generic terms like "a regional retailer," "the client," etc.
     * **COMPLETE & ACCURATE:** Fill out every single field. Use "2025-03-15" as a placeholder for publicationDate.
     ${retryInstruction}
@@ -251,8 +251,8 @@ function validateCaseStudy(caseStudy, startDate, endDate) {
     
     if (caseStudy.Story) {
         const wordCount = caseStudy.Story.replace(/<[^>]*>/g, '').split(/\s+/).filter(Boolean).length;
-        if (wordCount < 800) {
-            errors.push(`Story must be at least 800 words long, but found only ${wordCount} words.`);
+        if (wordCount < 500) {
+            errors.push(`Story must be at least 500 words long, but found only ${wordCount} words.`);
         }
     }
 

@@ -1,0 +1,70 @@
+{
+  "Title": "From Dead Ends to Deal Zones: Boosting Basket Size by 18% with In-Store Pathing Analysis",
+  "Subtitle": "Utilizing web-scraped public floor plans and Wi-Fi signal data to map and optimize customer journeys within large-format stores.",
+  "Business Impact": "Achieved an 18% increase in average basket size and a 22% reduction in shopper abandonment in high-value zones by reconfiguring layouts based on aggregated foot traffic heatmaps.",
+  "Sector": "Retail",
+  "What data was collected": "Publicly available architectural floor plans from municipal permit websites, anonymized public Wi-Fi access point signal strength data to infer device density, and scraped product location data from the client's own public-facing website and mobile app.",
+  "Why this matters": "In large stores, inefficient layouts create 'cold zones' and frustrating dead ends, leading to lost sales opportunities. Understanding the natural flow of customers allows retailers to strategically place high-margin items, promotions, and complementary products along the most-trafficked paths.",
+  "Implementation time": "12 to 14 weeks. This included scraping architectural plans, setting up passive Wi-Fi data collection models, correlating device density with store zones, and developing a pathing visualization dashboard.",
+  "Problems this solves": "1) Inability to quantify customer flow and dwell time in specific aisles. 2) Poor placement of promotional displays and high-margin products. 3) High rates of shopper abandonment in complex store sections like 'plumbing' or 'electrical'.",
+  "Why it was better to outsource this solution": "Scraping municipal permit databases for architectural plans requires navigating complex, non-standardized government websites. Furthermore, building the algorithms to triangulate device location from anonymized Wi-Fi signals and map it onto these plans is a specialized data science task beyond the scope of most retail IT departments.",
+  "Example_Input_JSON": {
+    "client_id": "diy-retail-789",
+    "job_type": "store_layout_pathing_analysis",
+    "store_ids": [
+      "store-ny-01",
+      "store-ca-05",
+      "store-tx-02"
+    ],
+    "data_sources": [
+      "public_floor_plans",
+      "wifi_density_data",
+      "public_product_locations"
+    ]
+  },
+  "Example_Output_JSON": {
+    "report_id": "slpa-report-456",
+    "store_id": "store-ny-01",
+    "analysis_period": "2024-10-01_to_2024-12-31",
+    "key_findings": {
+      "most_trafficked_path": [
+        "Entrance",
+        "Seasonal",
+        "Power Tools",
+        "Paint",
+        "Checkout"
+      ],
+      "highest_dwell_time_zone": {
+        "zone_id": "Paint_Mixing_Station",
+        "avg_dwell_minutes": 7.8,
+        "traffic_count": 12045
+      },
+      "identified_cold_zones": [
+        {
+          "zone_id": "Aisle_14B_Fasteners",
+          "reason": "Poor visibility from main corridor",
+          "traffic_index": 15
+        },
+        {
+          "zone_id": "Lighting_Fixtures_Rear",
+          "reason": "Dead-end aisle layout",
+          "traffic_index": 21
+        }
+      ],
+      "optimization_recommendations": [
+        {
+          "zone_id": "Aisle_14B_Fasteners",
+          "action": "Relocate 'Project Starter Kits' end-cap display to entrance of aisle to draw traffic."
+        },
+        {
+          "zone_id": "Lighting_Fixtures_Rear",
+          "action": "Create a cross-aisle to connect with the 'Home Decor' section."
+        }
+      ]
+    },
+    "heatmap_data_url": "https://api.icebergdata.com/reports/slpa-456/heatmap.png"
+  },
+  "Matching algorithm used to integrate the data": "We developed a proprietary algorithm, 'GeoStitch'. It first scrapes and digitizes architectural floor plans from public municipal records using OCR and vectorization. Then, it maps the store's known Wi-Fi access point locations onto this digital plan. By analyzing the signal strength (RSSI) of anonymized public Wi-Fi probe requests from multiple access points, the algorithm triangulates device density into coordinates on the floor plan, creating a real-time heatmap of foot traffic without collecting any personal data.",
+  "Story": "<p>A leading national DIY and home improvement retailer approached us with a problem as big as their warehouse-sized stores: customer confusion. Their stores, often exceeding 100,000 square feet, were mazes of towering shelves. While they knew their overall sales figures, they had zero visibility into how customers actually navigated the space. They relied on anecdotal evidence from store managers, which suggested that customers frequently got lost looking for related items—like screws for a drywall project—and would often abandon their search, and sometimes their entire cart, in frustration.</p><p>Their core challenge was a lack of data. They couldn't answer fundamental questions: Which paths do most customers take after entering? Where do they linger the longest? Which aisles are virtual ghost towns? Without this insight, placing high-margin products or promotional displays was pure guesswork. They needed a map, not of the store, but of the customer's journey within it.</p><p>This is where our team at Iceberg Data came in. We proposed a multi-layered data collection strategy that was non-invasive and privacy-compliant. <strong>First, our web crawlers systematically scraped municipal and county permit websites to acquire the architectural floor plans for their key store locations.</strong> These public documents provided the foundational canvas for our analysis. Next, using the store's public Wi-Fi infrastructure, we collected anonymized signal strength data from shoppers' devices. It's crucial to note we did not collect any personal information; we simply used the physics of radio signals to infer device density. The more devices in an area, the more shoppers were present.</p><p>Our 'GeoStitch' algorithm then performed the magic. It overlaid the Wi-Fi density data onto the digitized floor plans, creating a vivid, dynamic heatmap of shopper movement. We could see the flow of traffic in real-time, identifying highways and bottlenecks. The initial results were eye-opening. We confirmed that the main artery from the <strong>Entrance to the Seasonal section, then Power Tools, and finally the Paint department</strong> was the most heavily trafficked path. Unsurprisingly, the <strong>'Paint_Mixing_Station'</strong> registered the highest average dwell time at nearly 8 minutes, as customers waited for their custom orders.</p><p><strong>But the real value was in uncovering the 'cold zones'.</strong> Our analysis immediately flagged areas like <strong>'Aisle_14B_Fasteners'</strong> as having extremely low traffic. Though fasteners are essential for countless projects, the aisle was tucked away with poor visibility from the main corridors. Another problem area was the rear of the 'Lighting Fixtures' department, which was a dead end, discouraging exploration. Customers who went in had only one way out, making it feel like a trap.</p><p>Armed with this data, we provided concrete, actionable recommendations. For 'Aisle_14B_Fasteners', we suggested moving a popular 'Project Starter Kits' end-cap to the aisle's entrance, using it as a lure. For the 'Lighting Fixtures' dead end, we recommended creating a new cross-aisle connecting it to the popular 'Home Decor' section, creating a natural circular path. The client implemented these changes in a dozen pilot stores. The results over the next quarter were staggering. By transforming dead ends into discovery zones and guiding customers to complementary products, they achieved an <strong>18% increase in average basket size</strong> and saw a <strong>22% drop in abandoned carts</strong>, a metric they tracked internally. Our data didn't just create a map; it provided a blueprint for a more intuitive, profitable, and customer-friendly shopping experience.</p>",
+  "publicationDate": "2025-02-05"
+}

@@ -1,122 +1,221 @@
 {
-  "total": 13,
+  "total": 24,
   "caseStudies": [
     {
-      "id": 6,
+      "id": 14,
+      "sector": "food-delivery",
+      "slug": "decoding-delivery-disasters-how-granular-sentiment-analysis-on-food-condition-reduced-customer-complaints-by-40-leveraging-public-review-data-to-pinpoint-and-resolve-recurring-food-quality-issues-like-temperature-and-texture-upon-arrival",
+      "title": "Decoding Delivery Disasters: How Granular Sentiment Analysis on Food Condition Reduced Customer Complaints by 40%",
+      "subtitle": "Leveraging public review data to pinpoint and resolve recurring food quality issues like temperature and texture upon arrival.",
+      "sectorName": "Food Delivery",
+      "publicationDate": "2025-07-29"
+    },
+    {
+      "id": 13,
+      "sector": "food-delivery",
+      "slug": "neutralizing-competitor-surge-pricing-how-real-time-fee-monitoring-secured-a-15-market-share-uplift-leveraging-granular-geolocation-scraping-to-decode-and-counteract-competitor-dynamic-delivery-fees",
+      "title": "Neutralizing Competitor Surge Pricing: How Real-Time Fee Monitoring Secured a 15% Market Share Uplift",
+      "subtitle": "Leveraging Granular Geolocation Scraping to Decode and Counteract Competitor Dynamic Delivery Fees",
+      "sectorName": "Food Delivery",
+      "publicationDate": "2025-07-24"
+    },
+    {
+      "id": 17,
       "sector": "car-rental",
-      "slug": "dynamic-pricing-intelligence-for-car-rentals-using-competitor-and-demand-signal-aggregation-maximizing-fleet-utilization-and-revenue-by-scraping-real-time-competitor-rates-and-local-demand-indicators",
-      "title": "Dynamic Pricing Intelligence for Car Rentals Using Competitor and Demand Signal Aggregation",
-      "subtitle": "Maximizing Fleet Utilization and Revenue by Scraping Real-Time Competitor Rates and Local Demand Indicators",
+      "slug": "slashing-vehicle-downtime-how-real-time-service-and-parts-data-cut-turnaround-by-35-optimizing-fleet-readiness-by-scraping-local-service-availability-and-auto-parts-inventory",
+      "title": "Slashing Vehicle Downtime: How Real-Time Service & Parts Data Cut Turnaround by 35%",
+      "subtitle": "Optimizing Fleet Readiness by Scraping Local Service Availability and Auto Parts Inventory",
       "sectorName": "Car Rental",
       "publicationDate": "2025-07-18"
     },
     {
+      "id": 7,
+      "sector": "e-commerce",
+      "slug": "cutting-last-mile-delivery-failures-by-15-with-hyper-local-carrier-intelligence-how-real-time-scraping-of-courier-tracking-and-public-sentiment-data-optimized-a-retailers-logistics-network",
+      "title": "Cutting Last-Mile Delivery Failures by 15% with Hyper-Local Carrier Intelligence",
+      "subtitle": "How Real-Time Scraping of Courier Tracking and Public Sentiment Data Optimized a Retailer's Logistics Network",
+      "sectorName": "E-commerce",
+      "publicationDate": "2025-07-14"
+    },
+    {
       "id": 5,
-      "sector": "car-rental",
-      "slug": "dynamic-pricing-intelligence-for-car-rental-fleet-optimization-how-real-time-competitor-price-scraping-unlocks-revenue-growth-and-optimizes-vehicle-distribution",
-      "title": "Dynamic Pricing Intelligence for Car Rental Fleet Optimization",
-      "subtitle": "How Real-Time Competitor Price Scraping Unlocks Revenue Growth and Optimizes Vehicle Distribution",
-      "sectorName": "Car Rental",
-      "publicationDate": "2025-06-03"
-    },
-    {
-      "id": 12,
       "sector": "retail",
-      "slug": "dynamic-pricing-and-inventory-optimization-via-real-time-competitor-intelligence-how-a-major-electronics-retailer-increased-margins-by-8-12-using-automated-competitor-stock-and-price-monitoring",
-      "title": "Dynamic Pricing & Inventory Optimization via Real-Time Competitor Intelligence",
-      "subtitle": "How a Major Electronics Retailer Increased Margins by 8-12% Using Automated Competitor Stock and Price Monitoring",
+      "slug": "cutting-return-freight-costs-by-35-by-intercepting-pre-shipment-condition-data-transforming-reverse-logistics-with-real-time-data-from-third-party-carrier-portals",
+      "title": "Cutting Return Freight Costs by 35% by Intercepting Pre-Shipment Condition Data",
+      "subtitle": "Transforming Reverse Logistics with Real-Time Data from Third-Party Carrier Portals",
       "sectorName": "Retail",
-      "publicationDate": "2025-05-26"
+      "publicationDate": "2025-07-09"
     },
     {
-      "id": 4,
+      "id": 2,
+      "sector": "retail",
+      "slug": "from-greenwashing-to-genuine-how-sentiment-analysis-defused-a-pr-crisis-for-a-new-sustainable-fashion-line-validating-corporate-responsibility-initiatives-by-tracking-real-time-public-perception-and-neutralizing-negative-pr-narratives-before-they-escalate",
+      "title": "From 'Greenwashing' to Genuine: How Sentiment Analysis Defused a PR Crisis for a New Sustainable Fashion Line",
+      "subtitle": "Validating corporate responsibility initiatives by tracking real-time public perception and neutralizing negative PR narratives before they escalate.",
+      "sectorName": "Retail",
+      "publicationDate": "2025-07-01"
+    },
+    {
+      "id": 16,
       "sector": "car-rental",
-      "slug": "dynamic-pricing-intelligence-for-car-rentals-leveraging-competitor-rates-flight-data-and-local-events-to-maximize-fleet-revenue",
-      "title": "Dynamic Pricing Intelligence for Car Rentals",
-      "subtitle": "Leveraging Competitor Rates, Flight Data, and Local Events to Maximize Fleet Revenue",
+      "slug": "from-frustration-to-five-stars-pinpointing-negative-sentiment-drivers-in-the-car-rental-customer-journey-using-natural-language-processing-to-decode-customer-reviews-and-eliminate-brand-damaging-friction-points",
+      "title": "From Frustration to Five Stars: Pinpointing Negative Sentiment Drivers in the Car Rental Customer Journey",
+      "subtitle": "Using Natural Language Processing to Decode Customer Reviews and Eliminate Brand-Damaging Friction Points",
       "sectorName": "Car Rental",
-      "publicationDate": "2025-05-12"
+      "publicationDate": "2025-06-28"
+    },
+    {
+      "id": 21,
+      "sector": "hotels",
+      "slug": "decoding-guest-ambivalence-transforming-neutral-reviews-into-brand-loyalty-with-sentiment-nuance-analysis-how-a-boutique-hotel-chain-pinpointed-systemic-service-gaps-by-analyzing-understated-guest-feedback-from-thousands-of-online-reviews",
+      "title": "Decoding Guest Ambivalence: Transforming Neutral Reviews into Brand Loyalty with Sentiment Nuance Analysis",
+      "subtitle": "How a Boutique Hotel Chain Pinpointed Systemic Service Gaps by Analyzing Understated Guest Feedback from Thousands of Online Reviews",
+      "sectorName": "Hotels",
+      "publicationDate": "2025-06-16"
+    },
+    {
+      "id": 19,
+      "sector": "car-rental",
+      "slug": "solving-the-one-way-rental-puzzle-balancing-fleet-logistics-with-competitor-inventory-intelligence-using-real-time-competitor-fleet-data-to-dynamically-price-one-way-rentals-turning-a-logistical-challenge-into-a-profit-center",
+      "title": "Solving the One-Way Rental Puzzle: Balancing Fleet Logistics with Competitor Inventory Intelligence",
+      "subtitle": "Using real-time competitor fleet data to dynamically price one-way rentals, turning a logistical challenge into a profit center.",
+      "sectorName": "Car Rental",
+      "publicationDate": "2025-06-05"
+    },
+    {
+      "id": 24,
+      "sector": "hotels",
+      "slug": "slashing-perishable-inventory-waste-by-40-through-hyper-local-event-and-weather-scraping-how-a-boutique-hotel-chain-used-web-scraped-event-calendars-and-weather-forecasts-to-dynamically-adjust-on-site-f-and-b-and-amenity-stock-minimizing-waste-and-improving-guest-satisfaction",
+      "title": "Slashing Perishable Inventory Waste by 40% Through Hyper-Local Event & Weather Scraping",
+      "subtitle": "How a boutique hotel chain used web-scraped event calendars and weather forecasts to dynamically adjust on-site F&B and amenity stock, minimizing waste and improving guest satisfaction.",
+      "sectorName": "Hotels",
+      "publicationDate": "2025-06-02"
     },
     {
       "id": 9,
-      "sector": "hotels",
-      "slug": "real-time-market-intelligence-for-predictive-hotel-occupancy-and-dynamic-pricing-leveraging-competitor-rates-flight-data-and-event-calendars-to-maximize-revenue-per-available-room-revpar",
-      "title": "Real-Time Market Intelligence for Predictive Hotel Occupancy & Dynamic Pricing",
-      "subtitle": "Leveraging Competitor Rates, Flight Data, and Event Calendars to Maximize Revenue Per Available Room (RevPAR)",
-      "sectorName": "Hotels",
-      "publicationDate": "2025-05-10"
+      "sector": "e-commerce",
+      "slug": "decoding-product-launch-narratives-how-feature-level-sentiment-analysis-safeguarded-a-flagship-devices-market-entry-tracking-real-time-user-feedback-across-niche-tech-forums-and-social-media-to-proactively-manage-brand-perception-and-guide-post-launch-strategy",
+      "title": "Decoding Product Launch Narratives: How Feature-Level Sentiment Analysis Safeguarded a Flagship Device's Market Entry",
+      "subtitle": "Tracking Real-Time User Feedback Across Niche Tech Forums and Social Media to Proactively Manage Brand Perception and Guide Post-Launch Strategy",
+      "sectorName": "E-commerce",
+      "publicationDate": "2025-05-20"
+    },
+    {
+      "id": 10,
+      "sector": "e-commerce",
+      "slug": "decoding-landed-costs-how-total-price-scraping-reduced-cart-abandonment-by-18-moving-beyond-item-price-to-uncover-hidden-shipping-fee-advantages-in-e-commerce",
+      "title": "Decoding Landed Costs: How Total Price Scraping Reduced Cart Abandonment by 18%",
+      "subtitle": "Moving Beyond Item Price to Uncover Hidden Shipping Fee Advantages in E-commerce",
+      "sectorName": "E-commerce",
+      "publicationDate": "2025-05-09"
     },
     {
       "id": 8,
       "sector": "e-commerce",
-      "slug": "dynamic-pricing-and-assortment-intelligence-for-e-commerce-dominance-leveraging-real-time-competitor-data-to-boost-margins-and-market-share-in-consumer-electronics",
-      "title": "Dynamic Pricing & Assortment Intelligence for E-commerce Dominance",
-      "subtitle": "Leveraging Real-Time Competitor Data to Boost Margins and Market Share in Consumer Electronics",
+      "slug": "automating-eu-reach-compliance-how-ingredient-level-scraping-prevented-98-of-potential-cross-border-shipping-violations-using-real-time-regulatory-data-monitoring-to-safely-launch-a-health-and-beauty-catalog-in-the-european-market",
+      "title": "Automating EU REACH Compliance: How Ingredient-Level Scraping Prevented 98% of Potential Cross-Border Shipping Violations",
+      "subtitle": "Using Real-Time Regulatory Data Monitoring to Safely Launch a Health & Beauty Catalog in the European Market",
       "sectorName": "E-commerce",
-      "publicationDate": "2025-04-25"
+      "publicationDate": "2025-05-08"
     },
     {
-      "id": 3,
-      "sector": "car-rental",
-      "slug": "real-time-competitor-price-monitoring-for-dynamic-fleet-management-boosting-revenue-and-fleet-utilization-with-automated-competitor-data",
-      "title": "Real-Time Competitor Price Monitoring for Dynamic Fleet Management",
-      "subtitle": "Boosting Revenue and Fleet Utilization with Automated Competitor Data",
-      "sectorName": "Car Rental",
-      "publicationDate": "2025-04-08"
-    },
-    {
-      "id": 10,
+      "id": 22,
       "sector": "hotels",
-      "slug": "dynamic-occupancy-forecasting-with-real-time-competitor-and-event-monitoring-leveraging-web-scraped-ota-airline-and-event-data-to-maximize-revenue-per-available-room-revpar",
-      "title": "Dynamic Occupancy Forecasting with Real-Time Competitor & Event Monitoring",
-      "subtitle": "Leveraging Web-Scraped OTA, Airline, and Event Data to Maximize Revenue Per Available Room (RevPAR)",
+      "slug": "unmasking-hidden-fees-how-ancillary-charge-scraping-increased-direct-bookings-by-22-a-competitive-pricing-strategy-focused-on-total-stay-cost-not-just-nightly-rates",
+      "title": "Unmasking Hidden Fees: How Ancillary Charge Scraping Increased Direct Bookings by 22%",
+      "subtitle": "A Competitive Pricing Strategy Focused on Total Stay Cost, Not Just Nightly Rates",
       "sectorName": "Hotels",
-      "publicationDate": "2025-03-31"
+      "publicationDate": "2025-05-07"
     },
     {
-      "id": 2,
-      "sector": "car-rental",
-      "slug": "real-time-competitive-pricing-and-fleet-optimization-for-car-rentals-leveraging-web-scraped-competitor-data-to-maximize-revenue-and-vehicle-utilization",
-      "title": "Real-Time Competitive Pricing & Fleet Optimization for Car Rentals",
-      "subtitle": "Leveraging Web-Scraped Competitor Data to Maximize Revenue and Vehicle Utilization",
-      "sectorName": "Car Rental",
-      "publicationDate": "2025-03-22"
-    },
-    {
-      "id": 13,
-      "sector": "retail",
-      "slug": "real-time-competitor-price-and-stock-monitoring-for-dynamic-pricing-how-a-major-electronics-retailer-automated-competitive-intelligence-to-boost-margins-and-sales",
-      "title": "Real-Time Competitor Price & Stock Monitoring for Dynamic Pricing",
-      "subtitle": "How a Major Electronics Retailer Automated Competitive Intelligence to Boost Margins and Sales",
-      "sectorName": "Retail",
-      "publicationDate": "2025-03-21"
+      "id": 23,
+      "sector": "hotels",
+      "slug": "from-vanity-metrics-to-verified-bookings-pinpointing-high-roi-influencers-with-audience-intent-analysis-how-a-boutique-hotel-chain-increased-influencer-driven-bookings-by-40-through-comment-and-audience-analysis",
+      "title": "From Vanity Metrics to Verified Bookings: Pinpointing High-ROI Influencers with Audience Intent Analysis",
+      "subtitle": "How a Boutique Hotel Chain Increased Influencer-Driven Bookings by 40% Through Comment and Audience Analysis",
+      "sectorName": "Hotels",
+      "publicationDate": "2025-05-07"
     },
     {
       "id": 11,
-      "sector": "retail",
-      "slug": "dynamic-pricing-and-competitive-intelligence-for-e-commerce-dominance-leveraging-real-time-competitor-data-to-optimize-pricing-and-maximize-profit-margins-in-the-electronics-market",
-      "title": "Dynamic Pricing & Competitive Intelligence for E-commerce Dominance",
-      "subtitle": "Leveraging Real-Time Competitor Data to Optimize Pricing and Maximize Profit Margins in the Electronics Market",
-      "sectorName": "Retail",
-      "publicationDate": "2025-03-15"
+      "sector": "e-commerce",
+      "slug": "capturing-long-tail-surges-how-forum-scraping-boosted-hobbyist-sales-by-35-using-natural-language-processing-on-enthusiast-community-data-to-predict-demand-for-niche-products-before-they-trend-transforming-inventory-management",
+      "title": "Capturing Long-Tail Surges: How Forum Scraping Boosted Hobbyist Sales by 35%",
+      "subtitle": "Using Natural Language Processing on enthusiast community data to predict demand for niche products before they trend, transforming inventory management.",
+      "sectorName": "E-commerce",
+      "publicationDate": "2025-04-26"
     },
     {
-      "id": 7,
-      "sector": "e-commerce",
-      "slug": "dynamic-product-launch-strategy-via-competitor-and-market-intelligence-using-real-time-data-scraping-to-de-risk-new-product-introductions-for-e-commerce-brands",
-      "title": "Dynamic Product Launch Strategy via Competitor & Market Intelligence",
-      "subtitle": "Using Real-Time Data Scraping to De-risk New Product Introductions for E-commerce Brands",
-      "sectorName": "E-commerce",
-      "publicationDate": "2025-03-05"
+      "id": 12,
+      "sector": "food-delivery",
+      "slug": "mapping-the-hangry-index-a-geospatial-sentiment-analysis-to-optimize-delivery-zones-and-driver-training-using-location-tagged-review-data-to-link-negative-sentiment-hotspots-with-operational-deficiencies-and-improve-customer-satisfaction",
+      "title": "Mapping the 'Hangry' Index: A Geospatial Sentiment Analysis to Optimize Delivery Zones and Driver Training",
+      "subtitle": "Using location-tagged review data to link negative sentiment hotspots with operational deficiencies and improve customer satisfaction.",
+      "sectorName": "Food Delivery",
+      "publicationDate": "2025-04-13"
+    },
+    {
+      "id": 6,
+      "sector": "retail",
+      "slug": "from-complaints-to-competitive-edge-pinpointing-missing-features-in-outdoor-gear-via-review-analysis-leveraging-large-scale-customer-review-data-to-inform-r-and-d-and-capture-a-new-market-sub-segment-in-the-competitive-backpack-market",
+      "title": "From Complaints to Competitive Edge: Pinpointing Missing Features in Outdoor Gear via Review Analysis",
+      "subtitle": "Leveraging large-scale customer review data to inform R&D and capture a new market sub-segment in the competitive backpack market.",
+      "sectorName": "Retail",
+      "publicationDate": "2025-04-06"
     },
     {
       "id": 1,
       "sector": "car-rental",
-      "slug": "dynamic-fleet-and-pricing-optimization-for-car-rentals-leveraging-real-time-competitor-intelligence-to-maximize-revenue-and-vehicle-utilization",
-      "title": "Dynamic Fleet & Pricing Optimization for Car Rentals",
-      "subtitle": "Leveraging Real-Time Competitor Intelligence to Maximize Revenue and Vehicle Utilization",
+      "slug": "beyond-vanity-metrics-matching-niche-travel-influencers-to-specific-vehicle-classes-for-a-40-roi-uplift-using-advanced-social-media-scraping-and-audience-analysis-to-connect-adventure-family-and-luxury-travel-influencers-with-the-perfect-vehicle-driving-qualified-leads",
+      "title": "Beyond Vanity Metrics: Matching Niche Travel Influencers to Specific Vehicle Classes for a 40% ROI Uplift",
+      "subtitle": "Using advanced social media scraping and audience analysis to connect adventure, family, and luxury travel influencers with the perfect vehicle, driving qualified leads.",
       "sectorName": "Car Rental",
-      "publicationDate": "2025-02-15"
+      "publicationDate": "2025-03-19"
+    },
+    {
+      "id": 4,
+      "sector": "retail",
+      "slug": "winning-the-buy-box-how-real-time-marketplace-monitoring-increased-sales-by-35-a-deep-dive-into-competitive-pricing-intelligence-for-multi-seller-e-commerce-platforms",
+      "title": "Winning the Buy Box: How Real-Time Marketplace Monitoring Increased Sales by 35%",
+      "subtitle": "A deep dive into competitive pricing intelligence for multi-seller e-commerce platforms",
+      "sectorName": "Retail",
+      "publicationDate": "2025-03-05"
+    },
+    {
+      "id": 15,
+      "sector": "car-rental",
+      "slug": "ensuring-fair-pricing-integrity-proactive-monitoring-of-anti-gouging-regulations-during-state-emergencies-how-a-national-car-rental-chain-used-real-time-data-to-avoid-fines-and-uphold-brand-trust-during-crises",
+      "title": "Ensuring Fair Pricing Integrity: Proactive Monitoring of Anti-Gouging Regulations During State Emergencies",
+      "subtitle": "How a National Car Rental Chain Used Real-Time Data to Avoid Fines and Uphold Brand Trust During Crises",
+      "sectorName": "Car Rental",
+      "publicationDate": "2025-02-24"
+    },
+    {
+      "id": 20,
+      "sector": "hotels",
+      "slug": "cutting-food-spoilage-by-30-with-predictive-f-and-b-supply-chain-intelligence-how-a-luxury-hotel-chain-used-real-time-supplier-and-event-data-to-optimize-perishable-goods-inventory",
+      "title": "Cutting Food Spoilage by 30% with Predictive F&B Supply Chain Intelligence",
+      "subtitle": "How a Luxury Hotel Chain Used Real-Time Supplier and Event Data to Optimize Perishable Goods Inventory",
+      "sectorName": "Hotels",
+      "publicationDate": "2025-02-18"
+    },
+    {
+      "id": 18,
+      "sector": "car-rental",
+      "slug": "pinpointing-high-roi-ev-fleet-deployment-by-mapping-charging-infrastructure-and-local-demand-signals-how-a-national-car-rental-firm-used-geospatial-and-sentiment-data-to-guide-a-multi-million-dollar-electric-vehicle-expansion-strategy",
+      "title": "Pinpointing High-ROI EV Fleet Deployment by Mapping Charging Infrastructure & Local Demand Signals",
+      "subtitle": "How a National Car Rental Firm Used Geospatial and Sentiment Data to Guide a Multi-Million Dollar Electric Vehicle Expansion Strategy",
+      "sectorName": "Car Rental",
+      "publicationDate": "2025-02-17"
+    },
+    {
+      "id": 3,
+      "sector": "retail",
+      "slug": "from-dead-ends-to-deal-zones-boosting-basket-size-by-18-with-in-store-pathing-analysis-utilizing-web-scraped-public-floor-plans-and-wi-fi-signal-data-to-map-and-optimize-customer-journeys-within-large-format-stores",
+      "title": "From Dead Ends to Deal Zones: Boosting Basket Size by 18% with In-Store Pathing Analysis",
+      "subtitle": "Utilizing web-scraped public floor plans and Wi-Fi signal data to map and optimize customer journeys within large-format stores.",
+      "sectorName": "Retail",
+      "publicationDate": "2025-02-05"
     }
   ]
 }

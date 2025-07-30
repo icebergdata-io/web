@@ -1,0 +1,58 @@
+{
+  "Title": "Decoding Landed Costs: How Total Price Scraping Reduced Cart Abandonment by 18%",
+  "Subtitle": "Moving Beyond Item Price to Uncover Hidden Shipping Fee Advantages in E-commerce",
+  "Business Impact": "By analyzing the complete checkout price (item + shipping + tax) across competitor sites, our client adjusted their shipping rules, leading to an 18% reduction in cart abandonment and a 7% increase in conversion rate for targeted regions.",
+  "Sector": "E-commerce",
+  "What data was collected": "Product display prices, promotional discounts, cart-level shipping costs for different geographic zones (by inputting various zip codes), estimated sales tax, and final 'landed cost' at the last step before payment for over 50 SKUs across 5 major competitor websites.",
+  "Why this matters": "Customers make purchasing decisions based on the total cost, not just the advertised price. Hidden shipping fees are a primary driver of cart abandonment. Understanding a competitor's full pricing structure allows for truly competitive offers.",
+  "Implementation time": "6 to 9 weeks, including the development of robust scrapers capable of navigating complex, multi-step checkout funnels, handling CAPTCHAs, and managing location-based proxies.",
+  "Problems this solves": "1) High cart abandonment rates due to unexpected shipping costs. 2) Inability to see a competitor's true final price without tedious manual checks. 3) Ineffective 'free shipping' promotions that don't account for regional competitor advantages.",
+  "Why it was better to outsource this solution": "Scraping checkout funnels is highly complex. It requires advanced techniques to manage user sessions, handle the sophisticated anti-bot measures common on payment pages, and utilize a geographically diverse proxy network to simulate buyers from different regions. An expert partner handles this complexity reliably and at scale.",
+  "Example_Input_JSON": {
+    "client_id": "hg-retail-458",
+    "job_type": "landed_cost_analysis",
+    "skus_to_track": [
+      "B08H5F3G4C",
+      "K6T2P8L",
+      "XN-3001-A"
+    ],
+    "competitor_domains": [
+      "competitorA.com",
+      "competitorB.com",
+      "competitorC.com"
+    ],
+    "target_zip_codes": [
+      "90210",
+      "10001",
+      "60601",
+      "77002"
+    ]
+  },
+  "Example_Output_JSON": {
+    "report_id": "lc-report-20250315-A",
+    "sku": "B08H5F3G4C",
+    "competitor": "competitorA.com",
+    "analysis_timestamp": "2025-03-15T14:30:00Z",
+    "pricing_by_zip": [
+      {
+        "zip_code": "90210",
+        "item_price": 79.99,
+        "shipping_cost": 0,
+        "tax": 7.6,
+        "landed_cost": 87.59,
+        "shipping_policy": "Free Shipping Over $50"
+      },
+      {
+        "zip_code": "10001",
+        "item_price": 79.99,
+        "shipping_cost": 5.99,
+        "tax": 7.1,
+        "landed_cost": 93.08,
+        "shipping_policy": "Flat Rate East Coast"
+      }
+    ]
+  },
+  "Matching algorithm used to integrate the data": "Product matching was performed using a combination of SKU, UPC, and Manufacturer Part Numbers (MPNs) scraped from product pages. For each matched product, our scraping agents initiated a new session, added the item to the cart, and systematically cycled through a list of target zip codes on the checkout page to capture the corresponding shipping and tax data for each location.",
+  "Story": "<p>Our client, a rapidly growing e-commerce retailer in the home goods space, came to us with a frustrating problem. Their analytics showed healthy traffic and high engagement on product pages, but their overall conversion rate was stagnating. Worse, their cart abandonment rate was nearly 30% higher than the industry average. They had already invested heavily in ensuring their product prices were competitive, often matching or beating their main rivals. Yet, customers were leaving at the final hurdle, and they couldn't figure out why.</p><p>The client's team was spending hours each week manually adding items to carts on competitor websites to spot-check pricing, but this process was slow, superficial, and didn't reveal the whole picture. Our team at Iceberg Data proposed a different hypothesis: the pricing war wasn't being fought on the product page, but in the final lines of the checkout summary. We suspected the deciding factor was the <strong>total landed cost</strong>—the final price a customer pays, including item price, shipping, and taxes.</p><p>To test this, we deployed a sophisticated data collection strategy that went far beyond simple price scraping. We developed intelligent agents designed to mimic the complete customer journey. For each of the client's top 50 SKUs, our system would visit five key competitor sites, add the item to the cart, and proceed all the way to the final checkout step. The critical part of our process was simulating location. We fed the scrapers a list of <strong>target_zip_codes</strong> representing major population centers across the United States. This allowed us to capture how shipping costs changed dynamically based on the customer's location.</p><p>The results were immediate and illuminating. The data we delivered, structured much like our <strong>Example_Output_JSON</strong>, painted a crystal-clear picture of the competitive landscape. We discovered that while our client had a simple 'Free Shipping over $50' policy, their competitors employed far more nuanced strategies. For example, a major East Coast rival offered a $5.99 flat-rate shipping for all orders under the free shipping threshold. For a customer in New York buying a $45 kitchen gadget, our client's final price was over $55 with shipping, while the competitor's was just over $50. The competitor was winning that sale every time.</p><p>Another key insight came from the West Coast. A different competitor had negotiated aggressive rates with a regional courier, allowing them to offer free two-day shipping on almost all items, regardless of price, to customers in California, Oregon, and Washington. Our client, shipping from a central warehouse in the Midwest, couldn't compete with that offer. Their 'free' shipping was slower, and for smaller items, their paid shipping was prohibitively expensive compared to the competition.</p><p>Armed with this granular, location-specific intelligence, our client was able to dismantle their one-size-fits-all shipping policy. They didn't just blindly lower prices; they got strategic. They implemented their own dynamic shipping rules engine, introducing a competitive flat-rate option for the East Coast and partnering with a new third-party logistics (3PL) provider to offer more affordable options for the West Coast. </p><p>The impact was staggering. Within three months of implementing the new shipping strategy, their overall <strong>cart abandonment rate fell by 18%</strong>. In the specific regions we had identified as weak spots, their conversion rate climbed by 7%. The project delivered a clear return on investment in less than a single business quarter. This case proved that in the world of e-commerce, true competitive pricing intelligence requires looking past the price tag and understanding the customer's complete journey to the final, landed cost.</p>",
+  "publicationDate": "2025-05-09"
+}
