@@ -33,43 +33,44 @@ async function generateCaseStudyIndex() {
   console.log('📚 Generating case study index...');
   
   try {
-    const files = fs.readdirSync(casesDir)
-      .filter(file => file.endsWith('.json'))
-      .sort((a, b) => {
-        const matchA = a.match(/\d+/);
-        const matchB = b.match(/\d+/);
-        if (!matchA || !matchB) return 0;
-        const numA = parseInt(matchA[0]);
-        const numB = parseInt(matchB[0]);
-        return numA - numB;
-      });
-
+    // Read the existing index.json to get the list of valid case studies
+    const indexPath = path.join(casesDir, 'index.json');
+    if (!fs.existsSync(indexPath)) {
+      console.log('❌ Case study index not found. Please run the case study generation first.');
+      return [];
+    }
+    
+    const indexContent = fs.readFileSync(indexPath, 'utf8');
+    const indexData = JSON.parse(indexContent);
+    
     const caseStudies = [];
 
-    // Process each case study
-    for (const file of files) {
-      const content = fs.readFileSync(path.join(casesDir, file), 'utf8');
+    // Process only the case studies listed in index.json
+    for (const caseStudy of indexData.caseStudies) {
+      const jsonFile = path.join(casesDir, `${caseStudy.id}.json`);
+      
+      if (!fs.existsSync(jsonFile)) {
+        console.warn(`⚠️ JSON file not found for case study ${caseStudy.id}`);
+        continue;
+      }
+      
+      const content = fs.readFileSync(jsonFile, 'utf8');
       const caseData = JSON.parse(content);
       
       // Skip files that don't have required fields
       if (!caseData.Sector || !caseData.Title || !caseData.Subtitle) {
-        console.warn(`⚠️ Skipping ${file} - missing required fields`);
+        console.warn(`⚠️ Skipping case study ${caseStudy.id} - missing required fields`);
         continue;
       }
       
-      const sectorSlug = slugify(caseData.Sector);
-      const titleSlug = slugify(`${caseData.Title}-${caseData.Subtitle}`);
-      const match = file.match(/\d+/);
-      const id = match ? parseInt(match[0]) : 0;
-      
       caseStudies.push({
-        id,
-        sector: sectorSlug,
-        slug: titleSlug,
-        title: caseData.Title,
-        subtitle: caseData.Subtitle,
-        sectorName: caseData.Sector,
-        publicationDate: caseData.publicationDate
+        id: caseStudy.id,
+        sector: caseStudy.sector,
+        slug: caseStudy.slug,
+        title: caseStudy.title,
+        subtitle: caseStudy.subtitle,
+        sectorName: caseStudy.sectorName,
+        publicationDate: caseStudy.publicationDate
       });
     }
 
@@ -82,8 +83,8 @@ async function generateCaseStudyIndex() {
     });
 
     // Write index file
-    const indexPath = path.join(casesDir, 'index.json');
-    fs.writeFileSync(indexPath, JSON.stringify({
+    const indexFilePath = path.join(casesDir, 'index.json');
+    fs.writeFileSync(indexFilePath, JSON.stringify({
       total: caseStudies.length,
       caseStudies
     }, null, 2));
