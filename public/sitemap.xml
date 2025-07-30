@@ -38,86 +38,9 @@
   </url>
   <url>
     <loc>https://www.icebergdata.co/case-studies</loc>
-    <lastmod>2025-07-18</lastmod>
+    <lastmod>2025-07-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-    <url>
-    <loc>https://www.icebergdata.co/case-study/car-rental/dynamic-pricing-intelligence-for-car-rentals-using-competitor-and-demand-signal-aggregation-maximizing-fleet-utilization-and-revenue-by-scraping-real-time-competitor-rates-and-local-demand-indicators</loc>
-    <lastmod>2025-07-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/car-rental/dynamic-pricing-intelligence-for-car-rental-fleet-optimization-how-real-time-competitor-price-scraping-unlocks-revenue-growth-and-optimizes-vehicle-distribution</loc>
-    <lastmod>2025-06-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/retail/dynamic-pricing-and-inventory-optimization-via-real-time-competitor-intelligence-how-a-major-electronics-retailer-increased-margins-by-8-12-using-automated-competitor-stock-and-price-monitoring</loc>
-    <lastmod>2025-05-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/car-rental/dynamic-pricing-intelligence-for-car-rentals-leveraging-competitor-rates-flight-data-and-local-events-to-maximize-fleet-revenue</loc>
-    <lastmod>2025-05-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/hotels/real-time-market-intelligence-for-predictive-hotel-occupancy-and-dynamic-pricing-leveraging-competitor-rates-flight-data-and-event-calendars-to-maximize-revenue-per-available-room-revpar</loc>
-    <lastmod>2025-05-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/e-commerce/dynamic-pricing-and-assortment-intelligence-for-e-commerce-dominance-leveraging-real-time-competitor-data-to-boost-margins-and-market-share-in-consumer-electronics</loc>
-    <lastmod>2025-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/car-rental/real-time-competitor-price-monitoring-for-dynamic-fleet-management-boosting-revenue-and-fleet-utilization-with-automated-competitor-data</loc>
-    <lastmod>2025-04-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/hotels/dynamic-occupancy-forecasting-with-real-time-competitor-and-event-monitoring-leveraging-web-scraped-ota-airline-and-event-data-to-maximize-revenue-per-available-room-revpar</loc>
-    <lastmod>2025-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/car-rental/real-time-competitive-pricing-and-fleet-optimization-for-car-rentals-leveraging-web-scraped-competitor-data-to-maximize-revenue-and-vehicle-utilization</loc>
-    <lastmod>2025-03-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/retail/real-time-competitor-price-and-stock-monitoring-for-dynamic-pricing-how-a-major-electronics-retailer-automated-competitive-intelligence-to-boost-margins-and-sales</loc>
-    <lastmod>2025-03-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/retail/dynamic-pricing-and-competitive-intelligence-for-e-commerce-dominance-leveraging-real-time-competitor-data-to-optimize-pricing-and-maximize-profit-margins-in-the-electronics-market</loc>
-    <lastmod>2025-03-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/e-commerce/dynamic-product-launch-strategy-via-competitor-and-market-intelligence-using-real-time-data-scraping-to-de-risk-new-product-introductions-for-e-commerce-brands</loc>
-    <lastmod>2025-03-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/car-rental/dynamic-fleet-and-pricing-optimization-for-car-rentals-leveraging-real-time-competitor-intelligence-to-maximize-revenue-and-vehicle-utilization</loc>
-    <lastmod>2025-02-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+  
 </urlset>

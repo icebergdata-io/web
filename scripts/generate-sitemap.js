@@ -124,7 +124,7 @@ async function generateSitemap() {
   </url>`).join('\n')}
   <url>
     <loc>${BASE_URL}/case-studies</loc>
-    <lastmod>${sortedCaseStudies[0]?.publicationDate || today}</lastmod>
+    <lastmod>${sortedCaseStudies.length > 0 ? sortedCaseStudies[0].publicationDate : today}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>

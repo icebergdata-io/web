@@ -12,14 +12,14 @@ dotenv.config();
 
 // Standardized API key lookup
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-// Default model - can be overridden via --model parameter. Corrected to a valid model name.
-const DEFAULT_MODEL = 'gemini-2.5-pro';
+// Default model - can be overridden via --model parameter.
+const DEFAULT_MODEL = 'gemini-1.5-pro-latest'; 
 
 // --- Script Settings ---
 const DELAY_BETWEEN_CALLS_MS = 1000; // 1 second
 const MAX_API_RETRIES = 3; // Retries for network/API errors
 const MAX_VALIDATION_RETRIES = 2; // Retries if the generated JSON is invalid
-const CONCURRENT_REQUESTS = 3; // Number of concurrent requests (conservative for gemini-2.5-pro)
+const CONCURRENT_REQUESTS = 5; // Number of concurrent requests (increased for faster generation)
 
 // ================================================================= //
 //                      COMMAND-LINE ARGUMENTS                       //
@@ -29,7 +29,7 @@ function getCliArgs() {
     const args = process.argv.slice(2);
     const sector = args.find(arg => arg.startsWith('--sector='))?.split('=')[1] || 'Retail';
     const count = parseInt(args.find(arg => arg.startsWith('--count='))?.split('=')[1], 10) || 1;
-    const startFrom = parseInt(args.find(arg => arg.startsWith('--start-from='))?.split('=')[1], 10) || 39;
+    const startFrom = parseInt(args.find(arg => arg.startsWith('--start-from='))?.split('=')[1], 10) || 1;
     const startDate = args.find(arg => arg.startsWith('--start-date='))?.split('=')[1] || '2025-02-01';
     const endDate = args.find(arg => arg.startsWith('--end-date='))?.split('=')[1] || '2025-07-31';
     const model = args.find(arg => arg.startsWith('--model='))?.split('=')[1] || DEFAULT_MODEL;
@@ -61,7 +61,6 @@ function generateRandomDate(startDate, endDate) {
     const randomTime = start.getTime() + Math.random() * (end.getTime() - start.getTime());
     const randomDate = new Date(randomTime);
     
-    // Format as YYYY-MM-DD
     const year = randomDate.getFullYear();
     const month = String(randomDate.getMonth() + 1).padStart(2, '0');
     const day = String(randomDate.getDate()).padStart(2, '0');
@@ -85,49 +84,60 @@ function checkApiKey() {
 //                      AI PROMPT ENGINEERING                        //
 // ================================================================= //
 
+
+
 /**
  * Generates the detailed prompt for the Gemini API.
- * This prompt includes a high-quality example to guide the AI's output (one-shot prompting).
+ * This version encourages topic diversity by providing brainstorming ideas and a specific theme.
  * @param {string} sector - The business sector for the case study.
+ * @param {string} sub_theme - A specific business problem or theme to focus on.
  * @param {string} startDate - The start date for the publication date range.
  * @param {string} endDate - The end date for the publication date range.
  * @param {boolean} isRetry - If true, adds a note to the prompt to be more strict.
  * @returns {string} The complete prompt text.
  */
-function generateCaseStudyPrompt(sector, startDate, endDate, isRetry = false) {
+function generateCaseStudyPrompt(sector, sub_theme, startDate, endDate, isRetry = false) {
     const retryInstruction = isRetry ?
         `
-    IMPORTANT: This is a retry due to a validation or formatting error.
-    Pay strict attention to the required JSON structure and field requirements.
-    Ensure the Story, Input JSON, and Output JSON are all logically connected.
-    CRITICAL: The "Story" field MUST use HTML formatting with <p> tags for paragraphs and <strong> tags for emphasis.
-    CRITICAL: Do NOT mention specific customer names in the "Story" - use generic terms like "the client," "the retailer," etc.
-    CRITICAL: The publicationDate field will be automatically generated - use "2025-03-15" as placeholder.
-    DO NOT output anything other than the single, complete, valid JSON object.` :
+    IMPORTANT: This is a retry due to a validation or formatting error. Pay strict attention to the required JSON structure and field requirements. Ensure the Story, Input JSON, and Output JSON are all logically connected. DO NOT output anything other than the single, complete, valid JSON object.` :
         '';
 
     return `
     You are an expert content creator for "Iceberg Data," a web scraping and data intelligence company.
-    Your task is to generate a single, complete, high-quality case study in JSON format for the "${sector}" sector.
+    Your task is to generate a single, complete, and unique case study in JSON format for the "${sector}" sector.
 
-    CRITICAL INSTRUCTIONS:
-    1.  **JSON ONLY:** Your entire output must be a single, raw, valid JSON object. Do not wrap it in markdown \`\`\`json blocks or include any other text.
-    2.  **DEEP INTEGRATION:** The "Story" must be directly and logically reflected in the "Example_Input_JSON" and "Example_Output_JSON". The data mentioned in the story (e.g., "competitor check-ins", "ad creatives") MUST correspond to properties in the JSON objects.
-    3.  **JSON EXAMPLES, NOT SCHEMAS:** The "Example_Input_JSON" and "Example_Output_JSON" fields are NOT schema definitions. They must be complete, concrete JSON objects filled with realistic example data, representing exactly what a user would POST as input or GET as output.
-    4.  **METRICS-DRIVEN:** The "Business Impact" and "Story" must feature specific, quantifiable metrics (e.g., "15-25% revenue boost," "reduced launch failures by up to 40%").
-    5.  **FIRST-PERSON STORY:** The "Story" must be written in FIRST PERSON perspective using "our team", "we", "us" instead of "Iceberg Data". Example: "They engaged with our team" not "They engaged Iceberg Data".
-    6.  **STORY LENGTH:** The "Story" must be AT LEAST 800 words long. This is a comprehensive case study that should include detailed context, methodology, challenges, solutions, and results.
-    7.  **HTML FORMATTING:** The "Story" MUST be formatted with HTML tags. Use <p> tags for paragraphs and <strong> tags for emphasis. Example: "<p>This is a paragraph.</p><p>This is another paragraph with <strong>bold text</strong>.</p>"
-    8.  **NO CUSTOMER NAMES:** Do NOT mention specific customer names, company names, or client names in the "Story" or descriptions. Use generic terms like "a regional car rental company," "the retailer," "the client," etc. You CAN mention competitor names (Hertz, Avis, etc.) in JSON examples.
-    9.  **COMPLETE & ACCURATE:** Fill out every single field in the provided JSON structure. Do not omit any. The publicationDate field will be automatically generated - you can use "2025-03-15" as a placeholder.
+    --- TASK DIRECTIVES ---
+    1.  **FOCUS THEME:** For this generation, you MUST focus on the specific theme of: **"${sub_theme}"**. All aspects of the case study—the title, problem, story, and JSON examples—must revolve around this theme.
+    2.  **BE CREATIVE & UNIQUE:** Do NOT simply copy the patterns from the example below. Your primary goal is to generate a case study that is conceptually different from previous ones. Explore niche problems within the "${sector}" sector related to the theme.
+    3.  **DIVERSE TITLES:** Create a compelling, specific title. Avoid generic titles. Here are some formats to inspire you, but do not copy them directly:
+        -   [Action Verb] [Metric] by [Methodology]: "Boosting Accessory Sales by 25% through Predictive Trend Analysis"
+        -   [Goal-Oriented]: "Dynamic Pricing Strategy for Perishable Goods Using Competitor Stock Monitoring"
+        -   [Problem/Solution]: "Solving Supply Chain Bottlenecks with Real-Time Logistics Data"
+        -   [Insight-Driven]: "Uncovering New Market Segments by Analyzing Customer Review Data"
 
+    --- BRAINSTORMING: POTENTIAL USE CASES FOR THE "${sector.toUpperCase()}" SECTOR ---
+    To ensure diversity, consider problems across the entire value chain, not just marketing:
+    -   **Competitive Intelligence:** Monitoring competitor pricing, promotions, product launches, or new store openings.
+    -   **Operational Efficiency:** Optimizing supply chains by tracking shipping and logistics data; monitoring inventory levels from public supplier portals.
+    -   **Market Analysis:** Identifying expansion opportunities by analyzing regional demand indicators or demographic data.
+    -   **Product Development:** Scraping customer reviews and social media to find feature requests or complaints to inform R&D.
+    -   **Risk & Compliance:** Ensuring pricing consistency across all channels or monitoring for brand infringement online.
+    -   **Customer Sentiment:** Analyzing public reviews and forum discussions to gauge brand perception and product satisfaction.
+
+    --- CRITICAL JSON & CONTENT REQUIREMENTS ---
+    * **JSON ONLY:** Your entire output must be a single, raw, valid JSON object. Do not wrap it in markdown \`\`\`json blocks.
+    * **DEEP INTEGRATION:** The "Story" must be logically reflected in the "Example_Input_JSON" and "Example_Output_JSON". The data mentioned in the story MUST correspond to properties in the JSON objects.
+    * **METRICS-DRIVEN:** The "Business Impact" and "Story" must feature specific, quantifiable metrics.
+    * **FIRST-PERSON STORY:** Write the "Story" in the FIRST PERSON ("our team," "we").
+    * **STORY LENGTH & FORMAT:** The "Story" must be AT LEAST 800 words and formatted with HTML <p> and <strong> tags.
+    * **NO CUSTOMER NAMES:** Use generic terms like "a regional retailer," "the client," etc.
+    * **COMPLETE & ACCURATE:** Fill out every single field. Use "2025-03-15" as a placeholder for publicationDate.
     ${retryInstruction}
 
-    Below is a PERFECT example of the required output structure and quality. Use this as your guide:
-    
-    **IMPORTANT:** Notice how the "Story" field uses HTML formatting with <p> tags for paragraphs and <strong> tags for emphasis. Your story MUST follow this exact HTML formatting pattern.
+    --- STRUCTURAL EXAMPLE (FOR FORMATTING ONLY) ---
+    The following example shows the required JSON structure, field names, and data types.
+    **DO NOT COPY THE TOPIC OR CONTENT.** Your task is to invent a NEW use case based on the **"${sub_theme}"** theme.
 
-    --- EXAMPLE START ---
     {
       "Title": "Omnichannel Footfall Analysis by Tracking Public Mentions & Store Check-ins",
       "Subtitle": "Aligning Digital Marketing With Real-World Store Visits",
@@ -138,72 +148,15 @@ function generateCaseStudyPrompt(sector, startDate, endDate, isRetry = false) {
       "Implementation time": "8 to 10 weeks, needing social platform scraping for location-based mentions, data correlation with internal store sensors, and a campaign analysis dashboard.",
       "Problems this solves": "1) Disconnected online vs. offline performance insights. 2) Poor event planning due to unknown store visitation patterns. 3) Inability to measure how public hype correlates with actual visits.",
       "Why it was better to outsource this solution": "A web scraping partner navigates social media’s advanced location queries, consistently capturing public mentions of the store and competitor check-ins that can be tricky to track manually.",
-      "Example_Input_JSON": {
-        "client_id": "client-abc-123",
-        "job_type": "footfall_analysis",
-        "target_locations": [
-          {
-            "store_id": "XYZ-001",
-            "address": "123 Main St, Springfield, IL",
-            "geotag_id": "XYZ_Springfield_Main"
-          },
-          {
-            "store_id": "XYZ-002",
-            "address": "456 Oak Ave, Springfield, IL",
-            "geotag_id": "XYZ_Springfield_Oak"
-          }
-        ],
-        "competitor_ids": ["StoreABC", "BrandDEF"],
-        "social_platforms": ["instagram", "facebook", "twitter"],
-        "keywords_to_track": ["#ShopXYZ", "#XYZSale", "new collection"],
-        "date_range": {
-          "start": "2025-05-01",
-          "end": "2025-05-31"
-        },
-        "report_frequency": "daily"
-      },
-      "Example_Output_JSON": {
-        "report_id": "report-xyz-987",
-        "generated_at": "2025-06-01T10:00:00Z",
-        "analysis_period": {
-          "start": "2025-05-01",
-          "end": "2025-05-31"
-        },
-        "location_summary": [
-          {
-            "store_id": "XYZ-001",
-            "total_mentions": 1250,
-            "peak_mention_time": "2025-05-18T15:30:00Z",
-            "correlated_footfall_increase": 0.18,
-            "top_influencers": [
-              { "username": "@styleguru", "followers": 55000, "impact_score": 0.85 },
-              { "username": "@springfieldshopper", "followers": 12000, "impact_score": 0.72 }
-            ],
-            "sentiment": { "positive": 0.85, "neutral": 0.10, "negative": 0.05 },
-            "marketing_recommendation": "Amplify influencer content on Saturday afternoons. Consider a flash sale on 'new collection' items."
-          },
-          {
-            "store_id": "XYZ-002",
-            "total_mentions": 850,
-            "peak_mention_time": "2025-05-25T19:00:00Z",
-            "correlated_footfall_increase": 0.11,
-            "top_influencers": [],
-            "sentiment": { "positive": 0.75, "neutral": 0.20, "negative": 0.05 },
-            "marketing_recommendation": "Boost local ad spend for this location during evening hours."
-          }
-        ],
-        "competitor_benchmark": {
-          "StoreABC": { "mentions": 980, "sentiment": 0.70 },
-          "BrandDEF": { "mentions": 1100, "sentiment": 0.65 }
-        }
-      },
-      "Matching algorithm used to integrate the data": "Social posts tagged with a location or brand hashtag are matched to store coordinates using geospatial analysis. Footfall sensor logs, identified by timestamp and store ID, are then cross-referenced by time to detect statistically significant correlations between online buzz and offline visits within a predefined time window (e.g., 2-4 hours).",
-      "Story": "<p>For retailers, aligning online buzz with in-store traffic can be challenging. One regional clothing chain faced this exact dilemma—until they partnered with <strong>our web scraping experts</strong> for a solution.</p><p>The retailer, operating 45 stores across the Midwest, was struggling to understand the correlation between their social media presence and actual store visits. Their marketing team was spending significant resources on influencer partnerships and social media campaigns, but they couldn't measure the direct impact on foot traffic or sales. This lack of visibility was costing them both money and market opportunities.</p><p>Our team began by conducting a comprehensive analysis of their current social media landscape. We identified that while the retailer had a strong online presence, they were missing crucial data points that could connect digital engagement to physical store performance. The challenge was to create a system that could track public mentions, check-ins, and social media activity in real-time and correlate this data with their internal foot traffic sensors.</p><p>Over 8-10 weeks, our team set up advanced location-based queries to consistently capture public posts tagging the retailer's stores and competitor check-ins. We deployed sophisticated web scraping tools that monitored multiple social media platforms simultaneously, including Facebook, Instagram, Twitter, and TikTok. Our system was designed to capture not just direct mentions, but also location-based posts, hashtag usage, and even competitor activity in the same geographic areas.</p><p>The technical implementation involved creating custom APIs that could handle the high volume of social media data while maintaining accuracy and avoiding rate limiting. We developed a sophisticated filtering system that could distinguish between relevant mentions and spam, ensuring that only quality data was included in the analysis. Additionally, we integrated with the retailer's existing foot traffic sensors to create a unified data stream.</p><p>This approach revealed that whenever local influencers posted from the store, foot traffic would jump within hours. We discovered specific patterns that the retailer had never noticed before. For instance, posts featuring certain product categories during specific time windows consistently drove higher foot traffic. We also identified that competitor mentions in the same geographic area often preceded increased traffic to the retailer's stores, suggesting that social media was creating general shopping interest in the area.</p><p>Armed with this intelligence from our team, the retailer orchestrated micro-promotions to amplify organic social buzz, like flash sales and influencer partnerships. They began timing their promotions to coincide with peak social media activity periods we had identified. The marketing team started working more closely with local influencers, providing them with real-time data about which products and messaging were driving the most engagement.</p><p>The retailer also implemented a dynamic pricing strategy based on our social media insights. When we detected increased social media activity around certain products, they would adjust pricing and inventory accordingly. This real-time responsiveness gave them a significant competitive advantage in their market.</p><p>By synchronizing online and offline efforts more effectively, the clothing chain boosted weekend foot traffic and average purchase size within months. The impact was significant—aligning digital marketing with store visits <strong>drove a 10-15% increase in overall sales</strong>. The retailer reported that their marketing ROI improved by 40% within the first quarter of implementation, and they were able to reduce their customer acquisition costs by 25%.</p><p>Perhaps most importantly, the retailer gained a competitive advantage that was difficult for others to replicate. While competitors were still relying on traditional marketing metrics, this retailer now had real-time insights into how social media was driving physical store performance. This allowed them to make faster, more informed decisions about their marketing spend and store operations.</p><p>The success of this project led to an expanded partnership, with our team now providing ongoing monitoring and analysis services. The retailer has since expanded this approach to all 45 of their locations, creating a comprehensive social media intelligence system that continues to drive measurable business results.</p>",
+      "Example_Input_JSON": { "client_id": "client-abc-123", "job_type": "footfall_analysis" },
+      "Example_Output_JSON": { "report_id": "report-xyz-987", "generated_at": "2025-06-01T10:00:00Z" },
+      "Matching algorithm used to integrate the data": "Social posts tagged with a location or brand hashtag are matched to store coordinates using geospatial analysis...",
+      "Story": "<p>For retailers, aligning online buzz with in-store traffic can be challenging...</p>",
       "publicationDate": "2025-03-15"
     }
-    --- EXAMPLE END ---
+    --- END OF EXAMPLE ---
 
-    Now, generate a new, unique case study for the "${sector}" sector following all instructions.
+    Now, generate a new, unique case study for the "${sector}" sector, focusing on the theme of "${sub_theme}", following all instructions.
     `;
 }
 
@@ -229,7 +182,7 @@ async function callGeminiAPI(prompt, model) {
                 body: JSON.stringify({
                     contents: [{ parts: [{ text: prompt }] }],
                     generationConfig: {
-                        temperature: 0.75,
+                        temperature: 0.85,
                         topK: 40,
                         topP: 0.95,
                         maxOutputTokens: 8192,
@@ -262,7 +215,7 @@ async function callGeminiAPI(prompt, model) {
             if (attempt === MAX_API_RETRIES) {
                 throw error; // Rethrow after final attempt
             }
-            const backoffTime = Math.pow(2, attempt) * 1000; // Increased backoff
+            const backoffTime = Math.pow(2, attempt) * 1000;
             console.log(`\t⏳ Retrying in ${backoffTime / 1000} seconds...`);
             await sleep(backoffTime);
         }
@@ -286,14 +239,12 @@ function validateCaseStudy(caseStudy, startDate, endDate) {
         'Example_Input_JSON', 'Example_Output_JSON'
     ];
 
-    // Check for missing top-level fields
     for (const field of requiredFields) {
         if (!caseStudy[field]) {
             errors.push(`Missing required top-level field: "${field}"`);
         }
     }
 
-    // Check content of specific fields
     if (caseStudy.Story && (!caseStudy.Story.includes('<p>') || !caseStudy.Story.includes('<strong>'))) {
         errors.push('Story must contain HTML <p> and <strong> tags.');
     }
@@ -305,8 +256,6 @@ function validateCaseStudy(caseStudy, startDate, endDate) {
         }
     }
 
-    // Note: publicationDate will be automatically generated and injected by the code
-    // We only validate it if it exists and is not the placeholder
     if (caseStudy.publicationDate && caseStudy.publicationDate !== "2025-03-15") {
         if (!/^\d{4}-\d{2}-\d{2}$/.test(caseStudy.publicationDate)) {
             errors.push(`publicationDate must be a string in YYYY-MM-DD format, but got "${caseStudy.publicationDate}".`);
@@ -320,7 +269,6 @@ function validateCaseStudy(caseStudy, startDate, endDate) {
         }
     }
 
-    // Validate JSON example objects
     if (caseStudy.Example_Input_JSON && (typeof caseStudy.Example_Input_JSON !== 'object' || Array.isArray(caseStudy.Example_Input_JSON) || caseStudy.Example_Input_JSON === null)) {
         errors.push('Example_Input_JSON must be a valid JSON object.');
     }
@@ -388,6 +336,19 @@ function saveCaseStudy(caseStudy, caseNumber) {
 //                      MAIN EXECUTION LOGIC                         //
 // ================================================================= //
 
+const USE_CASE_THEMES = [
+    "Competitive Pricing Intelligence",
+    "Supply Chain & Logistics Optimization",
+    "Market Expansion Analysis",
+    "Product Feature Gap Analysis from Customer Reviews",
+    "Dynamic Pricing and Promotion Strategy",
+    "Customer Sentiment and Brand Perception Tracking",
+    "Regulatory Compliance Monitoring",
+    "Identifying Influencer Marketing Opportunities",
+    "Optimizing Store Layouts with Foot Traffic Data",
+    "Predictive Inventory Management"
+];
+
 /**
  * Generates a single case study, handling retries for validation.
  * @param {string} sector - The business sector.
@@ -398,16 +359,17 @@ function saveCaseStudy(caseStudy, caseNumber) {
  * @returns {Promise<object|null>} The generated case study object or null on failure.
  */
 async function generateSingleCaseStudy(sector, caseNumber, startDate, endDate, model) {
-    console.log(`\n📝 Generating case study #${caseNumber} for the "${sector}" sector...`);
+    const sub_theme = USE_CASE_THEMES[Math.floor(Math.random() * USE_CASE_THEMES.length)];
+    
+    console.log(`\n📝 Generating case study #${caseNumber} for "${sector}" with theme: "${sub_theme}"...`);
 
     for (let attempt = 1; attempt <= MAX_VALIDATION_RETRIES + 1; attempt++) {
         try {
             const isRetry = attempt > 1;
-            const prompt = generateCaseStudyPrompt(sector, startDate, endDate, isRetry);
+            const prompt = generateCaseStudyPrompt(sector, sub_theme, startDate, endDate, isRetry);
             const rawResponse = await callGeminiAPI(prompt, model);
             const caseStudy = validateAndParseJSON(rawResponse);
 
-            // Generate and inject a random publication date
             const randomPublicationDate = generateRandomDate(startDate, endDate);
             caseStudy.publicationDate = randomPublicationDate;
             console.log(`\t📅 Generated random publication date: ${randomPublicationDate}`);
