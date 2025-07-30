@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/case-study/:sector/:slug",
+      "destination": "/case-study/:sector/:slug.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
@@ -47,7 +51,7 @@
     }
   },
   "framework": "vite",
-  "buildCommand": "npm run build",
+  "buildCommand": "npm run build:seo",
   "devCommand": "npm run dev",
   "installCommand": "npm install"
 } 
