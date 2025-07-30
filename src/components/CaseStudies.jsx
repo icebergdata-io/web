@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { motion, AnimatePresence } from 'framer-motion';
 import { JsonView } from 'react-json-view-lite';
@@ -33,7 +33,7 @@ const CaseModal = ({ caseStudy, onClose, allCases, setSelectedCase }) => {
       .filter(c => c.Sector === caseStudy.Sector && c.Title !== caseStudy.Title)
       .slice(0, 3);
     setRelatedCases(related);
-  }, [caseStudy]);
+  }, [caseStudy, allCases]);
 
   const handleShare = async () => {
     const url = window.location.href;
@@ -405,6 +405,7 @@ const CaseStudies = () => {
   const [allCases, setAllCases] = useState([]);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [loadingCases, setLoadingCases] = useState(true);
+  const hasLoadedRef = useRef(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -417,31 +418,65 @@ const CaseStudies = () => {
 
   // Load case studies only once on component mount
   useEffect(() => {
+    let isCancelled = false;
+    
+    // Check if we already have data loaded to prevent duplicate calls
+    if (allCases.length > 0) {
+      console.log('🚫 Skipping API call - data already loaded');
+      return;
+    }
+    
+    // Prevent duplicate API calls in React Strict Mode
+    if (hasLoadedRef.current) {
+      console.log('🚫 Skipping duplicate API call (ref check)');
+      return;
+    }
+    
+    console.log('🔄 CaseStudies useEffect triggered - loading data');
+    hasLoadedRef.current = true;
+    
     const loadCases = async () => {
       try {
+        if (isCancelled) return;
         setLoadingCases(true);
+        
+        // Check if we already have cached data to avoid redundant calls
+        const cachedAllCases = sessionStorage.getItem('all-case-studies');
+        if (cachedAllCases && !isCancelled) {
+          console.log('📋 Using cached case studies data');
+          const parsedCases = JSON.parse(cachedAllCases);
+          setAllCases(parsedCases);
+          setLoadingCases(false);
+          return;
+        }
+        
+        if (isCancelled) return;
+        console.log('🔍 Loading case studies from API...');
         
         // Dynamically determine the number of case studies by trying to fetch them
         let totalCases = 0;
-        const maxAttempts = 100; // Reasonable upper limit
+        const maxAttempts = 40; // realistic upper limit
         
-        for (let i = 1; i <= maxAttempts; i++) {
+        for (let i = 1; i <= maxAttempts && !isCancelled; i++) {
           try {
             const response = await fetch(`/articles/cases/${i}.json`);
-            if (response.ok) {
+            if (response.ok && response.headers.get('content-type')?.includes('application/json')) {
               totalCases = i;
             } else {
-              break; // Stop when we find a missing file
+              break; // Stop when file missing or not JSON
             }
           } catch (error) {
             break; // Stop on any error
           }
         }
         
+        if (isCancelled) return;
         console.log(`📊 Found ${totalCases} case studies`);
         
         const loadedCases = await Promise.all(
           Array.from({ length: totalCases }, async (_, i) => {
+            if (isCancelled) return null;
+            
             const cacheKey = `case-study-${i + 1}`;
             const cached = sessionStorage.getItem(cacheKey);
             
@@ -450,26 +485,45 @@ const CaseStudies = () => {
             }
             
             const response = await fetch(`/articles/cases/${i + 1}.json`);
+            if (!response.ok || !response.headers.get('content-type')?.includes('application/json')) {
+              return null; // skip invalid
+            }
             const data = await response.json();
             sessionStorage.setItem(cacheKey, JSON.stringify(data));
             return data;
           })
         );
 
-        const sortedCases = loadedCases.sort((a, b) => {
+        if (isCancelled) return;
+        
+        const validCases = loadedCases.filter(Boolean);
+        const sortedCases = validCases.sort((a, b) => {
           if (!a.publicationDate || !b.publicationDate) return 0;
           return new Date(b.publicationDate) - new Date(a.publicationDate);
         });
 
         setAllCases(sortedCases);
+        // Cache the complete dataset
+        sessionStorage.setItem('all-case-studies', JSON.stringify(sortedCases));
+        console.log('✅ Case studies loaded and cached successfully');
       } catch (error) {
-        console.error('Error loading case studies:', error);
+        if (!isCancelled) {
+          console.error('Error loading case studies:', error);
+        }
       } finally {
-        setLoadingCases(false);
+        if (!isCancelled) {
+          setLoadingCases(false);
+        }
       }
     };
 
     loadCases();
+    
+    // Cleanup function to cancel ongoing operations
+    return () => {
+      isCancelled = true;
+      hasLoadedRef.current = false;
+    };
   }, []); // Only run once on mount
 
   // Update displayed cases when screen size changes or when allCases is loaded
