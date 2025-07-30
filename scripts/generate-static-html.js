@@ -138,32 +138,44 @@ function generateCaseStudyPages(distDir, cssPath, jsPath) {
       return;
     }
     
+    // Read the index.json to get the correct slugs
+    const indexPath = resolve(casesDir, 'index.json');
+    if (!existsSync(indexPath)) {
+      console.log('❌ Case study index not found.');
+      return;
+    }
+    
+    const indexContent = readFileSync(indexPath, 'utf8');
+    const indexData = JSON.parse(indexContent);
+    
     // Create case-study directory
     const caseStudyDir = resolve(distDir, 'case-study');
     if (!existsSync(caseStudyDir)) {
       mkdirSync(caseStudyDir, { recursive: true });
     }
     
-    // Read all case study files
-    const files = readdirSync(casesDir)
-      .filter(file => file.endsWith('.json') && file !== 'index.json')
-      .sort((a, b) => {
-        const matchA = a.match(/\d+/);
-        const matchB = b.match(/\d+/);
-        if (!matchA || !matchB) return 0;
-        const numA = parseInt(matchA[0]);
-        const numB = parseInt(matchB[0]);
-        return numA - numB;
-      });
-    
-    files.forEach(file => {
+    // Generate static HTML for each case study using the correct slugs from index.json
+    indexData.caseStudies.forEach(caseStudy => {
       try {
-        const content = readFileSync(resolve(casesDir, file), 'utf8');
+        // Find the corresponding JSON file
+        const jsonFile = resolve(casesDir, `${caseStudy.id}.json`);
+        if (!existsSync(jsonFile)) {
+          console.log(`⚠️ JSON file not found for case study ${caseStudy.id}`);
+          return;
+        }
+        
+        const content = readFileSync(jsonFile, 'utf8');
         const caseData = JSON.parse(content);
-        const sectorSlug = slugify(caseData.Sector);
-        // Create a shorter filename to avoid ENAMETOOLONG errors
-        const shortTitle = caseData.Title.substring(0, 100); // Limit to 100 chars
-        const titleSlug = slugify(`${shortTitle}-${caseData.Subtitle.substring(0, 50)}`);
+        
+        // Use the exact slug from index.json to match the React app URLs
+        const sectorSlug = caseStudy.sector;
+        const titleSlug = caseStudy.slug;
+        
+        // Create a shorter filename to avoid ENAMETOOLONG errors while keeping the URL working
+        const maxFilenameLength = 200; // Reasonable limit for filesystem
+        const filenameSlug = titleSlug.length > maxFilenameLength 
+          ? titleSlug.substring(0, maxFilenameLength) 
+          : titleSlug;
         
         // Create sector directory
         const sectorDir = resolve(caseStudyDir, sectorSlug);
@@ -245,12 +257,12 @@ function generateCaseStudyPages(distDir, cssPath, jsPath) {
 </body>
 </html>`;
         
-        const filepath = resolve(sectorDir, `${titleSlug}.html`);
+        const filepath = resolve(sectorDir, `${filenameSlug}.html`);
         writeFileSync(filepath, caseStudyHTML);
-        console.log(`✅ Generated case study: ${sectorSlug}/${titleSlug}.html`);
+        console.log(`✅ Generated case study: ${sectorSlug}/${filenameSlug}.html`);
         
       } catch (error) {
-        console.error(`❌ Error generating case study ${file}:`, error);
+        console.error(`❌ Error generating case study ${caseStudy.id}:`, error);
       }
     });
     
