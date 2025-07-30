@@ -146,10 +146,13 @@ function generateCaseStudyPages(distDir, cssPath, jsPath) {
     
     // Read all case study files
     const files = readdirSync(casesDir)
-      .filter(file => file.endsWith('.json'))
+      .filter(file => file.endsWith('.json') && file !== 'index.json')
       .sort((a, b) => {
-        const numA = parseInt(a.match(/\d+/)[0]);
-        const numB = parseInt(b.match(/\d+/)[0]);
+        const matchA = a.match(/\d+/);
+        const matchB = b.match(/\d+/);
+        if (!matchA || !matchB) return 0;
+        const numA = parseInt(matchA[0]);
+        const numB = parseInt(matchB[0]);
         return numA - numB;
       });
     
@@ -158,7 +161,9 @@ function generateCaseStudyPages(distDir, cssPath, jsPath) {
         const content = readFileSync(resolve(casesDir, file), 'utf8');
         const caseData = JSON.parse(content);
         const sectorSlug = slugify(caseData.Sector);
-        const titleSlug = slugify(`${caseData.Title}-${caseData.Subtitle}`);
+        // Create a shorter filename to avoid ENAMETOOLONG errors
+        const shortTitle = caseData.Title.substring(0, 100); // Limit to 100 chars
+        const titleSlug = slugify(`${shortTitle}-${caseData.Subtitle.substring(0, 50)}`);
         
         // Create sector directory
         const sectorDir = resolve(caseStudyDir, sectorSlug);
