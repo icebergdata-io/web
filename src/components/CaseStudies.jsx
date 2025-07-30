@@ -453,25 +453,10 @@ const CaseStudies = () => {
         if (isCancelled) return;
         console.log('🔍 Loading case studies from API...');
         
-        // Dynamically determine the number of case studies by trying to fetch them
-        let totalCases = 0;
-        const maxAttempts = 40; // realistic upper limit
-        
-        for (let i = 1; i <= maxAttempts && !isCancelled; i++) {
-          try {
-            const response = await fetch(`/articles/cases/${i}.json`);
-            if (response.ok && response.headers.get('content-type')?.includes('application/json')) {
-              totalCases = i;
-            } else {
-              break; // Stop when file missing or not JSON
-            }
-          } catch (error) {
-            break; // Stop on any error
-          }
-        }
-        
+        // Load only the first six case studies (IDs 1-6) – avoids extra network requests
+        const totalCases = 6;
         if (isCancelled) return;
-        console.log(`📊 Found ${totalCases} case studies`);
+        console.log(`📊 Loading the first ${totalCases} case studies`);
         
         const loadedCases = await Promise.all(
           Array.from({ length: totalCases }, async (_, i) => {
