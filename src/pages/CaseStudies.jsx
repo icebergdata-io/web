@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { slugify } from '../utils/slugify';
-import { getAllCaseStudies } from '../utils/caseStudyUtils';
+// Removed getAllCaseStudies import - now using index-only approach
 
 const formatDate = (dateString) => {
   return new Date(dateString).toLocaleDateString('en-US', {
@@ -16,15 +16,28 @@ const CaseStudies = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchAllCaseStudies = async () => {
+    const fetchCaseStudiesIndex = async () => {
       try {
-        const studies = await getAllCaseStudies();
+        console.log('🔍 Loading case studies index only...');
         
-        // Add slug and sectorSlug to each study
-        const studiesWithSlugs = studies.map(study => ({
-          ...study,
-          slug: slugify(`${study.Title}-${study.Subtitle}`),
-          sectorSlug: slugify(study.Sector)
+        // Load only the index.json file
+        const response = await fetch('/articles/cases/index.json');
+        if (!response.ok) {
+          throw new Error(`Failed to load index: ${response.status}`);
+        }
+        
+        const indexData = await response.json();
+        console.log(`📊 Loaded index with ${indexData.total} case studies`);
+        
+        // Map index fields to expected format and add slugs
+        const studiesWithSlugs = indexData.caseStudies.map(study => ({
+          id: study.id,
+          Title: study.title,
+          Subtitle: study.subtitle,
+          Sector: study.sectorName,
+          publicationDate: study.publicationDate,
+          slug: study.slug,
+          sectorSlug: study.sector
         }));
         
         // Log each case study for debugging
@@ -35,15 +48,7 @@ const CaseStudies = () => {
           console.log(`   Generated URL: /case-study/${study.sectorSlug}/${study.slug}`);
         });
         
-        // Sort case studies by publication date (newest first) and then by sector
-        studiesWithSlugs.sort((a, b) => {
-          const dateComparison = new Date(b.publicationDate) - new Date(a.publicationDate);
-          if (dateComparison === 0) {
-            return a.Sector.localeCompare(b.Sector);
-          }
-          return dateComparison;
-        });
-        
+        // Case studies are already sorted by date in the index (newest first)
         setCaseStudies(studiesWithSlugs);
       } catch (error) {
         console.error('❌ Error fetching case studies:', error);
@@ -52,7 +57,7 @@ const CaseStudies = () => {
       }
     };
 
-    fetchAllCaseStudies();
+    fetchCaseStudiesIndex();
   }, []);
 
   // Group case studies by year and month

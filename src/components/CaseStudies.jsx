@@ -13,7 +13,7 @@ const formatDate = (dateString) => {
   });
 };
 
-const CaseModal = ({ caseStudy, onClose, allCases, setSelectedCase }) => {
+const CaseModal = ({ caseStudy, onClose, allCases, setSelectedCase, loadFullCaseStudy }) => {
   const [showDetails, setShowDetails] = useState(false);
   const [relatedCases, setRelatedCases] = useState([]);
 
@@ -329,8 +329,14 @@ const CaseModal = ({ caseStudy, onClose, allCases, setSelectedCase }) => {
                   key={relatedCase.Title}
                   whileHover={{ scale: 1.02 }}
                   className="bg-white rounded-xl p-6 shadow-md cursor-pointer"
-                  onClick={() => {
-                    setSelectedCase(relatedCase);
+                  onClick={async () => {
+                    try {
+                      const fullCaseData = await loadFullCaseStudy(relatedCase.id);
+                      setSelectedCase(fullCaseData);
+                    } catch (error) {
+                      console.error('Failed to load related case study:', error);
+                      setSelectedCase(relatedCase);
+                    }
                     setTimeout(() => {
                       const businessImpactSection = document.querySelector('.business-impact-section');
                       if (businessImpactSection) {
@@ -378,7 +384,8 @@ CaseModal.propTypes = {
   }).isRequired,
   onClose: PropTypes.func.isRequired,
   allCases: PropTypes.array.isRequired,
-  setSelectedCase: PropTypes.func.isRequired
+  setSelectedCase: PropTypes.func.isRequired,
+  loadFullCaseStudy: PropTypes.func.isRequired
 };
 
 // Add skeleton loading component
@@ -416,7 +423,7 @@ const CaseStudies = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Load case studies only once on component mount
+  // Load case studies index only once on component mount
   useEffect(() => {
     let isCancelled = false;
     
@@ -432,65 +439,59 @@ const CaseStudies = () => {
       return;
     }
     
-    console.log('🔄 CaseStudies useEffect triggered - loading data');
+    console.log('🔄 CaseStudies useEffect triggered - loading index');
     hasLoadedRef.current = true;
     
-    const loadCases = async () => {
+    const loadCasesIndex = async () => {
       try {
         if (isCancelled) return;
         setLoadingCases(true);
         
-        // Check if we already have cached data to avoid redundant calls
-        const cachedAllCases = sessionStorage.getItem('all-case-studies');
-        if (cachedAllCases && !isCancelled) {
-          console.log('📋 Using cached case studies data');
-          const parsedCases = JSON.parse(cachedAllCases);
-          setAllCases(parsedCases);
+        // Check if we already have cached index data
+        const cachedIndex = sessionStorage.getItem('case-studies-index');
+        if (cachedIndex && !isCancelled) {
+          console.log('📋 Using cached case studies index');
+          const parsedIndex = JSON.parse(cachedIndex);
+          // Map index fields to component expected fields
+          const mappedCases = parsedIndex.caseStudies.map(caseData => ({
+            ...caseData,
+            Title: caseData.title,
+            Subtitle: caseData.subtitle,
+            Sector: caseData.sectorName,
+            publicationDate: caseData.publicationDate
+          }));
+          setAllCases(mappedCases);
           setLoadingCases(false);
           return;
         }
         
         if (isCancelled) return;
-        console.log('🔍 Loading case studies from API...');
+        console.log('🔍 Loading case studies index from API...');
         
-        // Load only the first six case studies (IDs 1-6) – avoids extra network requests
-        const totalCases = 6;
-        if (isCancelled) return;
-        console.log(`📊 Loading the first ${totalCases} case studies`);
+        // Load only the index.json file
+        const response = await fetch('/articles/cases/index.json');
+        if (!response.ok) {
+          throw new Error(`Failed to load index: ${response.status}`);
+        }
         
-        const loadedCases = await Promise.all(
-          Array.from({ length: totalCases }, async (_, i) => {
-            if (isCancelled) return null;
-            
-            const cacheKey = `case-study-${i + 1}`;
-            const cached = sessionStorage.getItem(cacheKey);
-            
-            if (cached) {
-              return JSON.parse(cached);
-            }
-            
-            const response = await fetch(`/articles/cases/${i + 1}.json`);
-            if (!response.ok || !response.headers.get('content-type')?.includes('application/json')) {
-              return null; // skip invalid
-            }
-            const data = await response.json();
-            sessionStorage.setItem(cacheKey, JSON.stringify(data));
-            return data;
-          })
-        );
-
+        const indexData = await response.json();
         if (isCancelled) return;
         
-        const validCases = loadedCases.filter(Boolean);
-        const sortedCases = validCases.sort((a, b) => {
-          if (!a.publicationDate || !b.publicationDate) return 0;
-          return new Date(b.publicationDate) - new Date(a.publicationDate);
-        });
+        console.log(`📊 Loaded index with ${indexData.total} case studies`);
+        
+        // Map index fields to component expected fields
+        const mappedCases = indexData.caseStudies.map(caseData => ({
+          ...caseData,
+          Title: caseData.title,
+          Subtitle: caseData.subtitle,
+          Sector: caseData.sectorName,
+          publicationDate: caseData.publicationDate
+        }));
 
-        setAllCases(sortedCases);
-        // Cache the complete dataset
-        sessionStorage.setItem('all-case-studies', JSON.stringify(sortedCases));
-        console.log('✅ Case studies loaded and cached successfully');
+        setAllCases(mappedCases);
+        // Cache the index data
+        sessionStorage.setItem('case-studies-index', JSON.stringify(indexData));
+        console.log('✅ Case studies index loaded and cached successfully');
       } catch (error) {
         if (!isCancelled) {
           console.error('Error loading case studies:', error);
@@ -502,14 +503,45 @@ const CaseStudies = () => {
       }
     };
 
-    loadCases();
+    loadCasesIndex();
     
     // Cleanup function to cancel ongoing operations
     return () => {
       isCancelled = true;
-      hasLoadedRef.current = false;
     };
-  }, []); // Only run once on mount
+  }, [allCases.length]);
+
+  // Function to load individual case study data on demand
+  const loadFullCaseStudy = async (caseId) => {
+    try {
+      // Check if we already have the full data cached
+      const cacheKey = `case-study-${caseId}`;
+      const cached = sessionStorage.getItem(cacheKey);
+      
+      if (cached) {
+        console.log(`📋 Using cached data for case study ${caseId}`);
+        return JSON.parse(cached);
+      }
+      
+      console.log(`🔍 Loading full data for case study ${caseId}...`);
+      const response = await fetch(`/articles/cases/${caseId}.json`);
+      
+      if (!response.ok) {
+        throw new Error(`Failed to load case study ${caseId}: ${response.status}`);
+      }
+      
+      const caseData = await response.json();
+      
+      // Cache the full case study data
+      sessionStorage.setItem(cacheKey, JSON.stringify(caseData));
+      console.log(`✅ Loaded and cached case study ${caseId}`);
+      
+      return caseData;
+    } catch (error) {
+      console.error(`Error loading case study ${caseId}:`, error);
+      throw error;
+    }
+  };
 
   // Update displayed cases when screen size changes or when allCases is loaded
   useEffect(() => {
@@ -578,7 +610,16 @@ const CaseStudies = () => {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.1 }}
                       className="group cursor-pointer"
-                      onClick={() => setSelectedCase(caseStudy)}
+                      onClick={async () => {
+                        try {
+                          const fullCaseData = await loadFullCaseStudy(caseStudy.id);
+                          setSelectedCase(fullCaseData);
+                        } catch (error) {
+                          console.error('Failed to load case study:', error);
+                          // Fallback to showing the case with available data
+                          setSelectedCase(caseStudy);
+                        }
+                      }}
                     >
                       <div className="bg-white rounded-2xl shadow-elevation-2 p-8 h-full transition-all duration-300 hover:shadow-elevation-3 hover:-translate-y-1">
                         <div className="flex flex-col h-full">
@@ -639,6 +680,7 @@ const CaseStudies = () => {
             onClose={() => setSelectedCase(null)}
             allCases={allCases}
             setSelectedCase={setSelectedCase}
+            loadFullCaseStudy={loadFullCaseStudy}
           />
         )}
       </AnimatePresence>
