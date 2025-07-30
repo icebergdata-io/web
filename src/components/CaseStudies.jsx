@@ -154,12 +154,23 @@ const CaseModal = ({ caseStudy, onClose, allCases, setSelectedCase }) => {
                 <h4 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6">Technical Details</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8">
                   <div>
-                    <h5 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-primary-300">Input Schema</h5>
+                    <h5 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-primary-300">Example Input JSON</h5>
                     <div className="bg-dark-900 rounded-lg p-3 sm:p-4 font-mono text-xs sm:text-sm overflow-x-auto">
-                      {caseStudy["Exact_Input_Schema"] ? (
+                      {caseStudy["Example_Input_JSON"] ? (
                         <div className="schema-viewer">
                           <JsonView 
-                            data={caseStudy["Exact_Input_Schema"]} 
+                            data={caseStudy["Example_Input_JSON"]} 
+                            shouldExpandNode={(level) => level < 2}
+                          />
+                        </div>
+                      ) : caseStudy["Exact_Input_Schema"] ? (
+                        <div className="schema-viewer">
+                          <JsonView 
+                            data={(() => {
+                              const schema = { ...caseStudy["Exact_Input_Schema"] };
+                              delete schema.required;
+                              return schema;
+                            })()}
                             shouldExpandNode={(level) => level < 2}
                           />
                         </div>
@@ -169,12 +180,23 @@ const CaseModal = ({ caseStudy, onClose, allCases, setSelectedCase }) => {
                     </div>
                   </div>
                   <div>
-                    <h5 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-primary-300">Output Schema</h5>
+                    <h5 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-primary-300">Example Output JSON</h5>
                     <div className="bg-dark-900 rounded-lg p-3 sm:p-4 font-mono text-xs sm:text-sm overflow-x-auto">
-                      {caseStudy["Exact_Output_Schema"] ? (
+                      {caseStudy["Example_Output_JSON"] ? (
                         <div className="schema-viewer">
                           <JsonView 
-                            data={caseStudy["Exact_Output_Schema"]} 
+                            data={caseStudy["Example_Output_JSON"]} 
+                            shouldExpandNode={(level) => level < 2}
+                          />
+                        </div>
+                      ) : caseStudy["Exact_Output_Schema"] ? (
+                        <div className="schema-viewer">
+                          <JsonView 
+                            data={(() => {
+                              const schema = { ...caseStudy["Exact_Output_Schema"] };
+                              delete schema.required;
+                              return schema;
+                            })()}
                             shouldExpandNode={(level) => level < 2}
                           />
                         </div>
@@ -341,10 +363,12 @@ CaseModal.propTypes = {
     Sector: PropTypes.string.isRequired,
     "Implementation time": PropTypes.string.isRequired,
     "What data was collected": PropTypes.string.isRequired,
-    "Input Schema": PropTypes.string.isRequired,
-    "Output Schema": PropTypes.string.isRequired,
+    "Input Schema": PropTypes.string,
+    "Output Schema": PropTypes.string,
     "Exact_Input_Schema": PropTypes.object,
     "Exact_Output_Schema": PropTypes.object,
+    "Example_Input_JSON": PropTypes.object,
+    "Example_Output_JSON": PropTypes.object,
     Story: PropTypes.string.isRequired,
     "Problems this solves": PropTypes.string.isRequired,
     "Why it was better to outsource this solution": PropTypes.string.isRequired,
@@ -395,7 +419,26 @@ const CaseStudies = () => {
     const loadCases = async () => {
       try {
         setLoadingCases(true);
-        const totalCases = 38;
+        
+        // Dynamically determine the number of case studies by trying to fetch them
+        let totalCases = 0;
+        const maxAttempts = 100; // Reasonable upper limit
+        
+        for (let i = 1; i <= maxAttempts; i++) {
+          try {
+            const response = await fetch(`/articles/cases/${i}.json`);
+            if (response.ok) {
+              totalCases = i;
+            } else {
+              break; // Stop when we find a missing file
+            }
+          } catch (error) {
+            break; // Stop on any error
+          }
+        }
+        
+        console.log(`📊 Found ${totalCases} case studies`);
+        
         const loadedCases = await Promise.all(
           Array.from({ length: totalCases }, async (_, i) => {
             const cacheKey = `case-study-${i + 1}`;

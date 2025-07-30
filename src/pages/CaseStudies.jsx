@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { slugify } from '../utils/slugify';
+import { getAllCaseStudies } from '../utils/caseStudyUtils';
 
 const formatDate = (dateString) => {
   return new Date(dateString).toLocaleDateString('en-US', {
@@ -17,38 +18,33 @@ const CaseStudies = () => {
   useEffect(() => {
     const fetchAllCaseStudies = async () => {
       try {
-        const studies = [];
-        for (let i = 1; i <= 38; i++) {
-          try {
-            const response = await fetch(`/articles/cases/${i}.json`);
-            const data = await response.json();
-            const slug = slugify(`${data.Title}-${data.Subtitle}`);
-            const sectorSlug = slugify(data.Sector);
-            
-            console.log(`📄 Case study ${i}:`);
-            console.log(`   Title: ${data.Title}`);
-            console.log(`   Sector: ${data.Sector}`);
-            console.log(`   Generated URL: /case-study/${sectorSlug}/${slug}`);
-            
-            studies.push({ 
-              id: i, 
-              slug,
-              sectorSlug,
-              ...data 
-            });
-          } catch (error) {
-            console.error(`❌ Error fetching case study ${i}:`, error);
-          }
-        }
+        const studies = await getAllCaseStudies();
+        
+        // Add slug and sectorSlug to each study
+        const studiesWithSlugs = studies.map(study => ({
+          ...study,
+          slug: slugify(`${study.Title}-${study.Subtitle}`),
+          sectorSlug: slugify(study.Sector)
+        }));
+        
+        // Log each case study for debugging
+        studiesWithSlugs.forEach(study => {
+          console.log(`📄 Case study ${study.id}:`);
+          console.log(`   Title: ${study.Title}`);
+          console.log(`   Sector: ${study.Sector}`);
+          console.log(`   Generated URL: /case-study/${study.sectorSlug}/${study.slug}`);
+        });
+        
         // Sort case studies by publication date (newest first) and then by sector
-        studies.sort((a, b) => {
+        studiesWithSlugs.sort((a, b) => {
           const dateComparison = new Date(b.publicationDate) - new Date(a.publicationDate);
           if (dateComparison === 0) {
             return a.Sector.localeCompare(b.Sector);
           }
           return dateComparison;
         });
-        setCaseStudies(studies);
+        
+        setCaseStudies(studiesWithSlugs);
       } catch (error) {
         console.error('❌ Error fetching case studies:', error);
       } finally {

@@ -1,0 +1,127 @@
+{
+  "Title": "Price Comparison Engine for Competitive E-Commerce Strategy",
+  "Subtitle": "Scraping Competitor Prices to Adjust Promotions and Maintain Market Share",
+  "Business Impact": "This solution helps e-commerce companies stay competitive by automatically matching or beating rivals’ prices, resulting in reduced cart abandonment and an estimated 15% increase in conversion rates.",
+  "Sector": "Ecommerce",
+  "What data was collected": "Competitor product prices, stock levels, promotional discounts, and bundle offers, gathered from major online marketplaces and specialized retailers’ websites.",
+  "Why this matters": "Price remains a primary factor for many online shoppers. Having real-time knowledge of competitor pricing allows for agile changes in marketing and sales strategies, thereby preserving or increasing market share.",
+  "Implementation time": "3 to 5 weeks, focusing on building the web scraping pipeline, integrating with the existing product database, and validating pricing data accuracy.",
+  "Problems this solves": "1) Inability to promptly react to competitor price changes. 2) High bounce rates due to unfavorable price comparisons. 3) Labor-intensive manual price tracking across multiple platforms.",
+  "Why it was better to outsource this solution": "Outsourcing ensured swift integration of robust scraping and data handling solutions. The vendor’s expertise in data normalization and real-time feed management shortened deployment and minimized errors that come with custom in-house builds.",
+  "Input Schema": "A JSON object with product identifiers, competitor website URLs, and the frequency of price checks. Example: { 'products': ['SKU1234', 'SKU5678'], 'competitor_urls': ['https://competitorA.com', 'https://competitorB.com'], 'update_frequency': 'hourly' }",
+  "Output Schema": "A JSON object returning updated competitor prices, recommended price adjustments, and confidence scores. Example: { 'SKU1234': { 'competitor_price': 24.99, 'recommended_price': 23.99, 'confidence': 0.9 }, 'SKU5678': {...} }",
+  "Matching algorithm used to integrate the data": "HTML parsers for product pages, combined with a fuzzy matching algorithm to correlate product descriptions and SKUs between different e-commerce sites, supported by a rules-based price optimization engine.",
+  "Story": "<p>In the fiercely competitive world of e-commerce, even well-established retailers can find themselves struggling to keep pace with rivals' pricing strategies. For one mid-market electronics retailer, this challenge was all too real. Despite a strong product lineup, the company noticed a worrying trend: potential customers were abandoning their shopping carts at an alarming rate, often after comparing prices with other online stores.</p>\n\n<p>Determined to stay competitive, the retailer turned to Iceberg Data for a solution. Iceberg Data's web scraping experts quickly set to work, developing a sophisticated price comparison engine tailored to the client's needs. The system employed advanced web crawlers to scan competitor websites for real-time price updates on a carefully curated list of key products. By extracting this valuable data and mapping it to the retailer's own SKUs, Iceberg Data ensured an accurate, like-for-like comparison.</p>\n\n<p>The technical implementation was as elegant as it was effective. The input schema allowed the retailer to specify target products, competitor URLs, and the desired frequency of price checks, all via a simple JSON object. On the output side, the system returned a similarly streamlined JSON response, complete with competitor prices, recommended price adjustments, and confidence scores for each SKU.</p>\n\n<p>Under the hood, Iceberg Data's solution leveraged powerful HTML parsers and intelligent fuzzy matching algorithms to correlate product data across multiple e-commerce platforms. This ensured maximum accuracy and reliability, even in the face of varying product descriptions and specifications.</p>\n\n<p>The impact was swift and significant. Within just one month of deploying Iceberg Data's price comparison engine, the retailer saw a dramatic <strong>15% increase in conversion rates</strong>. Cart abandonment rates plummeted, and customer feedback took a noticeable upturn, with shoppers praising the store's commitment to offering competitive, affordable prices.</p>\n\n<p>By partnering with Iceberg Data, the retailer was able to achieve these transformative results in a matter of weeks, rather than the months or years it might have taken to develop a similar solution in-house. The entire process, from initial concept to tangible ROI, took a mere five weeks – a testament to the power and efficiency of Iceberg Data's web scraping expertise.</p>",
+  "publicationDate": "2023-04-25",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "products": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^SKU\\d+$"
+        },
+        "minItems": 1,
+        "uniqueItems": true,
+        "description": "An array of product identifiers (SKUs) to monitor"
+      },
+      "competitor_urls": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "format": "uri"
+        },
+        "minItems": 1,
+        "uniqueItems": true,
+        "description": "An array of competitor website URLs to check prices on"
+      },
+      "update_frequency": {
+        "type": "string",
+        "enum": [
+          "hourly",
+          "daily",
+          "weekly"
+        ],
+        "description": "How often to check prices on the competitor websites"
+      }
+    },
+    "required": [
+      "products",
+      "competitor_urls",
+      "update_frequency"
+    ],
+    "additionalProperties": false,
+    "examples": [
+      {
+        "products": [
+          "SKU1234",
+          "SKU5678",
+          "SKU9876"
+        ],
+        "competitor_urls": [
+          "https://competitorA.com",
+          "https://competitorB.com",
+          "https://competitorC.com"
+        ],
+        "update_frequency": "daily"
+      }
+    ]
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Competitor Pricing Analysis",
+    "description": "A JSON object returning updated competitor prices, recommended price adjustments, and confidence scores.",
+    "type": "object",
+    "additionalProperties": {
+      "type": "object",
+      "description": "Data for each individual SKU",
+      "properties": {
+        "competitor_price": {
+          "type": "number",
+          "description": "The current competitor price for the SKU",
+          "minimum": 0,
+          "example": 24.99
+        },
+        "recommended_price": {
+          "type": "number",
+          "description": "The recommended price for the SKU based on competitor analysis",
+          "minimum": 0,
+          "example": 23.99
+        },
+        "confidence": {
+          "type": "number",
+          "description": "The confidence score for the recommended price, from 0 to 1",
+          "minimum": 0,
+          "maximum": 1,
+          "example": 0.9
+        }
+      },
+      "required": [
+        "competitor_price",
+        "recommended_price",
+        "confidence"
+      ]
+    },
+    "examples": [
+      {
+        "SKU1234": {
+          "competitor_price": 24.99,
+          "recommended_price": 23.99,
+          "confidence": 0.9
+        },
+        "SKU5678": {
+          "competitor_price": 17.5,
+          "recommended_price": 16.99,
+          "confidence": 0.85
+        },
+        "SKU9012": {
+          "competitor_price": 7.99,
+          "recommended_price": 8.49,
+          "confidence": 0.75
+        }
+      }
+    ]
+  }
+}

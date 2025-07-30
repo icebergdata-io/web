@@ -4,6 +4,7 @@ import { JsonView } from 'react-json-view-lite';
 import 'react-json-view-lite/dist/index.css';
 import SEO from '../components/SEO';
 import { slugify } from '../utils/slugify';
+import { findCaseStudyBySlug } from '../utils/caseStudyUtils';
 
 const formatDate = (dateString) => {
   return new Date(dateString).toLocaleDateString('en-US', {
@@ -20,31 +21,16 @@ const CaseStudy = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchCaseStudies = async () => {
+    const fetchCaseStudy = async () => {
       try {
         console.log(`🔍 Looking for case study with sector: ${sector}, slug: ${slug}`);
-        let found = false;
         
-        // Fetch all case studies to find the matching slug and sector
-        for (let i = 1; i <= 38; i++) {
-          const response = await fetch(`/articles/cases/${i}.json`);
-          const data = await response.json();
-          const currentSlug = slugify(`${data.Title}-${data.Subtitle}`);
-          const currentSector = slugify(data.Sector);
-          
-          console.log(`📄 Checking case study ${i}:`);
-          console.log(`   Expected: sector=${sector}, slug=${slug}`);
-          console.log(`   Current: sector=${currentSector}, slug=${currentSlug}`);
-          
-          if (currentSlug === slug && currentSector === sector) {
-            console.log(`✅ Found matching case study: ${i}`);
-            setCaseData({ id: i, ...data });
-            found = true;
-            break;
-          }
-        }
+        const caseData = await findCaseStudyBySlug(sector, slug);
         
-        if (!found) {
+        if (caseData) {
+          console.log(`✅ Found matching case study: ${caseData.id}`);
+          setCaseData(caseData);
+        } else {
           console.log('❌ No matching case study found');
         }
       } catch (error) {
@@ -54,7 +40,7 @@ const CaseStudy = () => {
       }
     };
 
-    fetchCaseStudies();
+    fetchCaseStudy();
   }, [slug, sector]);
 
   useEffect(() => {
@@ -134,8 +120,24 @@ const CaseStudy = () => {
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
-            <h2 className="text-2xl font-bold mb-4">Business Impact</h2>
+          <div className="bg-white rounded-2xl shadow-lg p-8 mb-8 relative business-impact-section">
+            <div className="absolute top-6 right-6">
+              <button 
+                onClick={() => {
+                  document.querySelector('.technical-details-section')?.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                  });
+                }}
+                className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors text-sm font-medium flex items-center gap-2"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+                Technical Details
+              </button>
+            </div>
+            <h2 className="text-2xl font-bold mb-4 pr-32">Business Impact</h2>
             <p className="text-dark-700 mb-6">{caseData["Business Impact"]}</p>
 
             <div className="grid md:grid-cols-2 gap-6 mb-8">
@@ -161,21 +163,75 @@ const CaseStudy = () => {
 
             <div className="mb-8">
               <h3 className="font-bold mb-2">Problems Solved</h3>
-              <p className="text-dark-700 whitespace-pre-line">{caseData["Problems this solves"]}</p>
+              <div className="text-dark-700">
+                {caseData["Problems this solves"].split(/(?=\d+\))/).map((item, index) => {
+                  if (item.trim()) {
+                    return (
+                      <div key={index} className="flex items-start mb-2">
+                        <span className="font-semibold text-primary-600 mr-2 min-w-[2rem]">
+                          {item.match(/^\d+/)?.[0]}.
+                        </span>
+                        <span>{item.replace(/^\d+\)\s*/, '')}</span>
+                      </div>
+                    );
+                  }
+                  return null;
+                })}
+              </div>
             </div>
           </div>
 
-          <div className="bg-primary-50 rounded-2xl p-8 mb-8">
-            <h2 className="text-2xl font-bold mb-6">Technical Details</h2>
+          <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
+            <h2 className="text-2xl font-bold mb-4">The Full Story</h2>
+            <div 
+              className="text-dark-700 story-content"
+              dangerouslySetInnerHTML={{ __html: caseData.Story }}
+            />
+          </div>
+
+          <div className="bg-primary-50 rounded-2xl p-8 relative technical-details-section">
+            <div className="absolute top-6 right-6">
+              <button 
+                onClick={() => {
+                  document.querySelector('.business-impact-section')?.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                  });
+                }}
+                className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors text-sm font-medium flex items-center gap-2"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                </svg>
+                Business Impact
+              </button>
+            </div>
+            <h2 className="text-2xl font-bold mb-6 pr-32">Technical Details</h2>
             
             <div className="space-y-8">
               <div>
-                <h3 className="font-bold mb-2">Input Schema</h3>
+                <h3 className="font-bold mb-2">Matching Algorithm</h3>
+                <p className="text-dark-700">{caseData["Matching algorithm used to integrate the data"]}</p>
+              </div>
+              
+              <div>
+                <h3 className="font-bold mb-2">Example Input JSON</h3>
                 <div className="bg-white p-4 rounded-xl overflow-x-auto">
-                  {caseData["Exact_Input_Schema"] ? (
+                  {caseData["Example_Input_JSON"] ? (
                     <div className="schema-viewer">
                       <JsonView 
-                        data={caseData["Exact_Input_Schema"]} 
+                        data={caseData["Example_Input_JSON"]}
+                        shouldExpandNode={(level) => level < 2}
+                      />
+                    </div>
+                  ) : caseData["Exact_Input_Schema"] ? (
+                    <div className="schema-viewer">
+                      <JsonView 
+                        data={(() => {
+                          const schema = { ...caseData["Exact_Input_Schema"] };
+                          delete schema.required;
+                          return schema;
+                        })()}
                         shouldExpandNode={(level) => level < 2}
                       />
                     </div>
@@ -183,15 +239,43 @@ const CaseStudy = () => {
                     <pre className="text-sm">{caseData["Input Schema"]}</pre>
                   )}
                 </div>
+                <button 
+                  onClick={() => {
+                    const dataStr = JSON.stringify(caseData["Example_Input_JSON"] || caseData["Exact_Input_Schema"] || caseData["Input Schema"], null, 2);
+                    const dataBlob = new Blob([dataStr], {type: 'application/json'});
+                    const url = URL.createObjectURL(dataBlob);
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = `${caseData.Title.replace(/[^a-zA-Z0-9]/g, '_')}_example_input.json`;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    URL.revokeObjectURL(url);
+                  }}
+                  className="mt-3 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors text-sm font-medium"
+                >
+                  📥 Download Example Input JSON
+                </button>
               </div>
               
               <div>
-                <h3 className="font-bold mb-2">Output Schema</h3>
+                <h3 className="font-bold mb-2">Example Output JSON</h3>
                 <div className="bg-white p-4 rounded-xl overflow-x-auto">
-                  {caseData["Exact_Output_Schema"] ? (
+                  {caseData["Example_Output_JSON"] ? (
                     <div className="schema-viewer">
                       <JsonView 
-                        data={caseData["Exact_Output_Schema"]} 
+                        data={caseData["Example_Output_JSON"]}
+                        shouldExpandNode={(level) => level < 2}
+                      />
+                    </div>
+                  ) : caseData["Exact_Output_Schema"] ? (
+                    <div className="schema-viewer">
+                      <JsonView 
+                        data={(() => {
+                          const schema = { ...caseData["Exact_Output_Schema"] };
+                          delete schema.required;
+                          return schema;
+                        })()}
                         shouldExpandNode={(level) => level < 2}
                       />
                     </div>
@@ -199,21 +283,25 @@ const CaseStudy = () => {
                     <pre className="text-sm">{caseData["Output Schema"]}</pre>
                   )}
                 </div>
-              </div>
-              
-              <div>
-                <h3 className="font-bold mb-2">Matching Algorithm</h3>
-                <p className="text-dark-700">{caseData["Matching algorithm used to integrate the data"]}</p>
+                <button 
+                  onClick={() => {
+                    const dataStr = JSON.stringify(caseData["Example_Output_JSON"] || caseData["Exact_Output_Schema"] || caseData["Output Schema"], null, 2);
+                    const dataBlob = new Blob([dataStr], {type: 'application/json'});
+                    const url = URL.createObjectURL(dataBlob);
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = `${caseData.Title.replace(/[^a-zA-Z0-9]/g, '_')}_example_output.json`;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    URL.revokeObjectURL(url);
+                  }}
+                  className="mt-3 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors text-sm font-medium"
+                >
+                  📥 Download Example Output JSON
+                </button>
               </div>
             </div>
-          </div>
-
-          <div className="bg-white rounded-2xl shadow-lg p-8">
-            <h2 className="text-2xl font-bold mb-4">The Full Story</h2>
-            <div 
-              className="text-dark-700 story-content"
-              dangerouslySetInnerHTML={{ __html: caseData.Story }}
-            />
           </div>
         </div>
       </div>

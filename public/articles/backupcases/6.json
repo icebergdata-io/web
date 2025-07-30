@@ -1,0 +1,145 @@
+{
+  "Title": "Review Aggregation for Real-Time Customer Experience Insights",
+  "Subtitle": "Collecting and Analyzing Reviews from Platforms Like TripAdvisor",
+  "Business Impact": "By unifying guest feedback from multiple platforms, hotels can pinpoint key areas for operational improvements. This can result in elevated guest satisfaction, higher review scores, and an average 10% increase in repeat bookings.",
+  "Sector": "Hotels",
+  "What data was collected": "Guest reviews, star ratings, textual comments, and frequency of specific keywords from TripAdvisor and similar review portals, plus metadata like review date and traveler type (family, solo, business).",
+  "Why this matters": "Aggregated feedback across different platforms provides a holistic view of guest sentiment, enabling hotels to craft targeted responses and maintain a positive reputation online.",
+  "Implementation time": "8 to 10 weeks, given the complexity of handling multiple review sources, normalizing data, and integrating with sentiment analysis tools.",
+  "Problems this solves": "1) Fragmented feedback management across various websites. 2) Inability to quickly address consistent complaints or negative trends. 3) Lack of an effective system to monitor real-time brand reputation.",
+  "Why it was better to outsource this solution": "The outsourced team offered ready-to-use review scraping and sentiment analysis modules. This significantly reduced development overhead and ensured that emerging features from these review platforms were quickly integrated without extra effort from the hotel’s IT staff.",
+  "Input Schema": "A JSON object with the review source, date range, and any filtering criteria. Example: { 'source': 'TripAdvisor', 'date_range': '2025-01-01 to 2025-01-31', 'filters': { 'rating': [4,5] } }",
+  "Output Schema": "A JSON object summarizing aggregated reviews, average rating, dominant sentiment categories, and key improvement areas. Example: { 'average_rating': 4.2, 'sentiment': 'positive', 'common_themes': ['friendly staff', 'clean rooms'], 'action_items': {...} }",
+  "Matching algorithm used to integrate the data": "A multi-source ingestion process that uses unique hotel IDs and consistent naming conventions, followed by sentiment analysis with a neural network model to classify reviews into positive, neutral, or negative categories.",
+  "Story": "<p>A luxury hotel group faced the common hospitality industry challenge of managing and responding to online reviews promptly. While their properties generally received favorable feedback, staying on top of emerging criticisms proved difficult. The group recognized the importance of monitoring reviews to improve brand perception and guest loyalty.</p>\n\n<p>The hotel group struggled with several specific issues:</p>\n<ul>\n<li>Fragmented feedback management across various websites</li>\n<li>Inability to quickly address consistent complaints or negative trends</li>\n<li>Lack of an effective system to monitor real-time brand reputation</li>\n</ul>\n\n<p>To address these challenges, the hotel group partnered with Iceberg Data to develop a centralized review aggregation system. Iceberg Data's web scraping experts built a platform that automatically pulls reviews from various sources, including TripAdvisor, Google Reviews, and other travel forums. The system collects reviews nightly, parsing key details such as star rating, date of stay, and traveler demographics.</p>\n\n<p>Iceberg Data's solution standardizes the collected data and processes it through a sentiment analysis model. This model tags each review with relevant themes, such as service quality, cleanliness, and amenities. By categorizing the reviews, the hotel group can quickly identify areas requiring attention.</p>\n\n<p>The system's input schema allows for specifying the review source, date range, and any filtering criteria in a JSON format. For example: <code>{ 'source': 'TripAdvisor', 'date_range': '2025-01-01 to 2025-01-31', 'filters': { 'rating': [4,5] } }</code>. The output is also a JSON object summarizing aggregated reviews, average rating, dominant sentiment categories, and key improvement areas.</p>\n\n<p>Iceberg Data's matching algorithm uses a multi-source ingestion process with unique hotel IDs and consistent naming conventions. This is followed by sentiment analysis using a neural network model to classify reviews into positive, neutral, or negative categories.</p>\n\n<p>The implemented solution provides managers with a live dashboard displaying <strong>trending issues and overall sentiment scores for each property</strong>. This real-time information empowers them to prioritize operational improvements effectively. For instance, within the initial weeks of using the platform, repeated complaints about slow Wi-Fi in one of their business-centric hotels were highlighted. The management team promptly upgraded the internet infrastructure, resulting in a <strong>surge in guest satisfaction within months</strong>, as reflected in the subsequent uptick in positive feedback.</p>\n\n<p>Moreover, the system flagged rare but influential negative comments about inconsistent housekeeping in another location. By taking prompt corrective measures, the hotel brand successfully <strong>preempted potential long-term reputational harm</strong>.</p>\n\n<p>By leveraging Iceberg Data's expertise, the hotel group integrated ongoing feedback into their daily operations without straining internal resources. The solution has become an essential tool for management, enabling them to act quickly on real-time insights. This proactive approach reinforces a culture of continuous improvement and excellence in guest service throughout the organization.</p>\n\n<p>The centralized review aggregation system has had a significant impact on the hotel group's business. By leveraging real-time customer experience insights, the group has <strong>enhanced guest satisfaction, improved operational efficiency, and protected their brand reputation</strong>. On average, the hotel group has seen a <strong>10% increase in repeat bookings</strong> since implementing Iceberg Data's solution, demonstrating the value of investing in data-driven solutions to stay competitive in the ever-evolving hospitality industry.</p>",
+  "publicationDate": "2023-04-08",
+  "Exact_Input_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "source": {
+        "type": "string",
+        "description": "The source platform of the reviews",
+        "examples": [
+          "TripAdvisor",
+          "Yelp",
+          "Google Reviews"
+        ]
+      },
+      "date_range": {
+        "type": "string",
+        "description": "The date range for the reviews, in 'YYYY-MM-DD to YYYY-MM-DD' format",
+        "pattern": "^\\d{4}-\\d{2}-\\d{2} to \\d{4}-\\d{2}-\\d{2}$",
+        "examples": [
+          "2025-01-01 to 2025-01-31",
+          "2024-12-01 to 2024-12-31"
+        ]
+      },
+      "filters": {
+        "type": "object",
+        "description": "Optional filters to apply to the reviews",
+        "properties": {
+          "rating": {
+            "type": "array",
+            "description": "An array of integer ratings to include (e.g., [4, 5] for 4 and 5-star reviews)",
+            "items": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 5
+            },
+            "examples": [
+              [
+                4,
+                5
+              ],
+              [
+                3,
+                4,
+                5
+              ]
+            ]
+          }
+        }
+      }
+    },
+    "required": [
+      "source",
+      "date_range"
+    ],
+    "additionalProperties": false
+  },
+  "Exact_Output_Schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "average_rating": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5,
+        "description": "The average rating across all reviews, on a scale of 0 to 5."
+      },
+      "sentiment": {
+        "type": "string",
+        "enum": [
+          "positive",
+          "neutral",
+          "negative",
+          "mixed"
+        ],
+        "description": "The dominant sentiment category derived from the reviews."
+      },
+      "common_themes": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "A list of the most frequently mentioned positive themes or aspects from the reviews.",
+        "examples": [
+          [
+            "friendly staff",
+            "clean rooms",
+            "great location"
+          ]
+        ]
+      },
+      "action_items": {
+        "type": "object",
+        "description": "Key areas for improvement based on negative feedback, with specific action items.",
+        "properties": {
+          "category": {
+            "type": "string",
+            "description": "The main category or aspect that needs improvement.",
+            "examples": [
+              "Bathroom cleanliness",
+              "Check-in process",
+              "Room noise"
+            ]
+          },
+          "tasks": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Specific action items to address the improvement area.",
+            "examples": [
+              [
+                "Retrain housekeeping staff on bathroom cleaning procedures",
+                "Implement a bathroom cleanliness checklist for each room"
+              ]
+            ]
+          }
+        },
+        "required": [
+          "category",
+          "tasks"
+        ]
+      }
+    },
+    "required": [
+      "average_rating",
+      "sentiment",
+      "common_themes",
+      "action_items"
+    ]
+  }
+}
