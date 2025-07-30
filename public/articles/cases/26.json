@@ -1,0 +1,44 @@
+{
+  "Title": "Automating ACAA & EU Compliance: How Web Scraping Ensures Accurate Accessibility Information for a Global Airline",
+  "Subtitle": "Mitigating Regulatory Risk and Improving Passenger Experience by Monitoring Disability Service Disclosures",
+  "Business Impact": "Achieved a 99.8% consistency rate for accessibility information across all digital touchpoints, reducing related customer complaints by 70% and avoiding potential regulatory fines estimated at over $1.5 million annually.",
+  "Sector": "Airlines",
+  "What data was collected": "Full HTML content from specific accessibility-related URLs on the client's and competitors' websites across 15+ country domains. This included policy text for service animals, wheelchair assistance request forms, medical equipment guidelines, and contact numbers for special assistance desks.",
+  "Why this matters": "Inaccurate or hard-to-find accessibility information not only creates a poor experience for vulnerable passengers but also exposes airlines to significant legal and financial penalties under regulations like the Air Carrier Access Act (ACAA). Automated monitoring ensures continuous compliance.",
+  "Implementation time": "12 weeks. This involved identifying all relevant page templates, setting up geo-targeted crawlers to capture country-specific content, and developing a change-detection and alerting dashboard.",
+  "Problems this solves": "1) Manual, error-prone auditing of hundreds of web pages. 2) Inconsistent information across different language/regional versions of the website. 3) Risk of non-compliance with complex, evolving accessibility regulations (e.g., ACAA, EU 1107/2006). 4) Delays in updating critical information for passengers with disabilities.",
+  "Why it was better to outsource this solution": "An expert scraping partner can manage the complexity of navigating geo-fenced websites, handling different languages, and parsing varied HTML structures. Iceberg Data's infrastructure provided the scale and reliability needed for continuous, enterprise-wide auditing that is infeasible for an internal team.",
+  "Example_Input_JSON": {
+    "client_id": "airline-global-456",
+    "job_type": "compliance_audit",
+    "compliance_standard": "ACAA_EU1107",
+    "target_urls": [
+      "https://example-airline.com/us/en/special-assistance/disability-access",
+      "https://example-airline.com/uk/en/special-assistance/disability-access",
+      "https://example-airline.com/de/de/besondere-betreuung/barrierefreiheit"
+    ]
+  },
+  "Example_Output_JSON": {
+    "report_id": "audit-rpt-a8b3c1d9",
+    "timestamp": "2025-02-20T14:30:00Z",
+    "compliance_standard": "ACAA_EU1107",
+    "summary": {
+      "urls_scanned": 3,
+      "compliant_pages": 2,
+      "discrepancies_found": 1
+    },
+    "discrepancies": [
+      {
+        "url": "https://example-airline.com/de/de/besondere-betreuung/barrierefreiheit",
+        "issue_type": "Outdated Policy Text",
+        "severity": "High",
+        "details": "The 'Service Animal' policy section text does not match the latest approved version from Q4 2024. The mention of 'emotional support animals' is outdated for EU routes.",
+        "golden_record_id": "policy_service_animal_v3.2",
+        "scraped_text_snippet": "...Tiere zur emotionalen Unterstützung sind unter bestimmten Bedingungen willkommen..."
+      }
+    ]
+  },
+  "Matching algorithm used to integrate the data": "A 'golden record' of approved policy text for each accessibility topic (e.g., 'Service Animal Policy') was established. The scraped text from each URL was then compared against this golden record using a Natural Language Processing (NLP) model with fuzzy string matching (e.g., Levenshtein distance) to detect deviations, outdated phrases, or missing sections. A checksum hash was used for binary content like downloadable PDF forms to detect any changes.",
+  "Story": "<p>When a major international airline approached us, they weren't struggling with pricing or route optimization. Their challenge was far more nuanced and carried immense legal weight: ensuring regulatory compliance for their disability and accessibility information. For a global carrier, this is a minefield. Regulations like the <strong>Air Carrier Access Act (ACAA)</strong> in the United States and <strong>EU Regulation 1107/2006</strong> mandate not just the provision of services, but also the clarity, accuracy, and accessibility of the information about them on their websites. A single outdated sentence on one of their 20+ regional websites could lead to a passenger having a terrible travel experience, a social media crisis, and hefty regulatory fines.</p><p>Their existing process was a compliance nightmare. Twice a year, their legal and digital content teams would embark on a massive, manual audit. This involved dozens of employees painstakingly clicking through every country-specific version of their website, comparing policy text on pages for <strong>wheelchair assistance, service animal rules, and medical device carriage</strong> against a master spreadsheet. It was slow, prone to human error, and by the time the audit was complete, a policy might have already changed again. They were constantly playing defense, reacting to customer complaints rather than proactively ensuring compliance. They estimated that this manual effort consumed over 800 person-hours per year, with no guarantee of 100% accuracy.</p><p>Our team at Iceberg Data saw this as a perfect application for targeted, intelligent web scraping. The goal was not just to extract data, but to create a living, breathing compliance monitoring system. We began by collaborating with their legal team to create a 'golden record'—a centralized, approved version of every single accessibility policy. This became our source of truth.</p><p>Next, we configured a fleet of geo-targeted crawlers. This was crucial, as the airline's website displayed different content and even different policy nuances based on the user's location. Our crawlers could visit the site as if they were users in New York, London, or Berlin, capturing the exact information presented to passengers in those regions. We focused on the 'Special Assistance' sections, scraping policy text, downloadable forms, and even the contact details for their special services desks. </p><p>The core of our solution was the matching algorithm. For every page we scraped, we used an NLP-driven comparison model. It didn't just look for an exact match; it could understand context and use fuzzy logic to flag meaningful deviations from the 'golden record'. For instance, it could identify if the US site correctly reflected new Department of Transportation rules about service animals while the Canadian site still contained outdated language. This is precisely the kind of discrepancy we see in our <strong>Example_Output_JSON</strong>, where the German-language site ('de/de') contained an outdated policy on 'emotional support animals', a high-severity issue for EU compliance.</p><p>The results transformed their operations. We delivered a real-time dashboard that showed a simple green, yellow, or red status for every accessibility page across all their domains. A 'red' status triggered an immediate alert to the relevant content and legal teams, complete with a link to the page and a highlight of the non-compliant text. The compliance audit process went from a biannual, 800-hour ordeal to a continuous, automated process. Within six months of implementation, the airline had achieved a <strong>99.8% consistency rate</strong> for its accessibility information. More importantly, customer complaints related to misinformation about special assistance dropped by a staggering <strong>70%</strong>. The client's legal counsel informed us that our system gave them the confidence to avert what they estimated could have been over <strong>$1.5 million</strong> in potential annual fines for non-compliance. This wasn't about finding a competitive edge; it was about upholding a critical responsibility to passengers and protecting the airline from significant risk, all through the precise and relentless power of data.</p>",
+  "publicationDate": "2025-02-16"
+}
