@@ -1,5 +1,5 @@
 {
-  "total": 24,
+  "total": 26,
   "caseStudies": [
     {
       "id": 14,
@@ -90,6 +90,15 @@
       "subtitle": "How a boutique hotel chain used web-scraped event calendars and weather forecasts to dynamically adjust on-site F&B and amenity stock, minimizing waste and improving guest satisfaction.",
       "sectorName": "Hotels",
       "publicationDate": "2025-06-02"
+    },
+    {
+      "id": 25,
+      "sector": "airlines",
+      "slug": "pinpointing-high-impact-app-features-through-aggregated-customer-review-intelligence-transforming-an-airlines-mobile-app-roadmap-by-scraping-and-analyzing-user-feedback-from-app-stores-and-social-media",
+      "title": "Pinpointing High-Impact App Features Through Aggregated Customer Review Intelligence",
+      "subtitle": "Transforming an Airline's Mobile App Roadmap by Scraping and Analyzing User Feedback from App Stores and Social Media",
+      "sectorName": "Airlines",
+      "publicationDate": "2025-05-26"
     },
     {
       "id": 9,
@@ -207,6 +216,15 @@
       "subtitle": "How a National Car Rental Firm Used Geospatial and Sentiment Data to Guide a Multi-Million Dollar Electric Vehicle Expansion Strategy",
       "sectorName": "Car Rental",
       "publicationDate": "2025-02-17"
+    },
+    {
+      "id": 26,
+      "sector": "airlines",
+      "slug": "automating-acaa-and-eu-compliance-how-web-scraping-ensures-accurate-accessibility-information-for-a-global-airline-mitigating-regulatory-risk-and-improving-passenger-experience-by-monitoring-disability-service-disclosures",
+      "title": "Automating ACAA & EU Compliance: How Web Scraping Ensures Accurate Accessibility Information for a Global Airline",
+      "subtitle": "Mitigating Regulatory Risk and Improving Passenger Experience by Monitoring Disability Service Disclosures",
+      "sectorName": "Airlines",
+      "publicationDate": "2025-02-16"
     },
     {
       "id": 3,
