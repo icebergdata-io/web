@@ -92,7 +92,59 @@ const ServicesDropdown = ({ onClose }) => (
   </div>
 );
 
+const CaseStudiesDropdown = ({ onClose }) => (
+  <div className="absolute left-1/2 z-10 mt-1 w-screen max-w-sm -translate-x-1/2 transform px-2">
+    <div className="overflow-hidden rounded-xl bg-white shadow-lg ring-1 ring-slate-900/5">
+      <div className="relative grid gap-3 bg-white p-4">
+        <button
+          onClick={() => {
+            onClose();
+            const element = document.getElementById('case-studies');
+            if (element) {
+              element.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
+          className="flex items-start rounded-lg p-3 hover:bg-slate-50 text-left"
+        >
+          <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-green-500 to-green-600 text-white shadow-lg ring-1 ring-green-500/10">
+            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+          </div>
+          <div className="ml-4">
+            <p className="text-base font-medium text-slate-900">Featured Case Studies</p>
+            <p className="mt-1 text-sm text-slate-500">View our featured success stories</p>
+          </div>
+        </button>
+
+        <Link
+          to="/case-studies"
+          onClick={() => {
+            onClose();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          className="flex items-start rounded-lg p-3 hover:bg-slate-50"
+        >
+          <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-orange-500 to-orange-600 text-white shadow-lg ring-1 ring-orange-500/10">
+            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+            </svg>
+          </div>
+          <div className="ml-4">
+            <p className="text-base font-medium text-slate-900">All Case Studies</p>
+            <p className="mt-1 text-sm text-slate-500">Browse our complete collection</p>
+          </div>
+        </Link>
+      </div>
+    </div>
+  </div>
+);
+
 ServicesDropdown.propTypes = {
+  onClose: PropTypes.func.isRequired,
+};
+
+CaseStudiesDropdown.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
@@ -114,6 +166,7 @@ const Navbar = ({ scrolled }) => {
   const [showCalendly, setShowCalendly] = useState(false);
   const [touchStart, setTouchStart] = useState(null);
   const [showServicesDropdown, setShowServicesDropdown] = useState(false);
+  const [showCaseStudiesDropdown, setShowCaseStudiesDropdown] = useState(false);
   const [dropdownTimeout, setDropdownTimeout] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
@@ -158,19 +211,37 @@ const Navbar = ({ scrolled }) => {
 
   useEffect(() => {
     setShowServicesDropdown(false);
+    setShowCaseStudiesDropdown(false);
   }, [location.pathname]);
 
-  const handleDropdownEnter = () => {
+  const handleServicesDropdownEnter = () => {
     if (dropdownTimeout) {
       clearTimeout(dropdownTimeout);
       setDropdownTimeout(null);
     }
     setShowServicesDropdown(true);
+    setShowCaseStudiesDropdown(false);
   };
 
-  const handleDropdownLeave = () => {
+  const handleServicesDropdownLeave = () => {
     const timeout = setTimeout(() => {
       setShowServicesDropdown(false);
+    }, 150); // 150ms delay before closing
+    setDropdownTimeout(timeout);
+  };
+
+  const handleCaseStudiesDropdownEnter = () => {
+    if (dropdownTimeout) {
+      clearTimeout(dropdownTimeout);
+      setDropdownTimeout(null);
+    }
+    setShowCaseStudiesDropdown(true);
+    setShowServicesDropdown(false);
+  };
+
+  const handleCaseStudiesDropdownLeave = () => {
+    const timeout = setTimeout(() => {
+      setShowCaseStudiesDropdown(false);
     }, 150); // 150ms delay before closing
     setDropdownTimeout(timeout);
   };
@@ -229,8 +300,8 @@ const Navbar = ({ scrolled }) => {
               <NavLink active={activeSection === 'solutions'} onClick={(e) => handleNavClick('solutions', e)}>Solutions</NavLink>
               <div 
                 className="relative"
-                onMouseEnter={handleDropdownEnter}
-                onMouseLeave={handleDropdownLeave}
+                onMouseEnter={handleServicesDropdownEnter}
+                onMouseLeave={handleServicesDropdownLeave}
               >
                 <button
                   onClick={(e) => handleNavClick('services', e)}
@@ -246,7 +317,25 @@ const Navbar = ({ scrolled }) => {
                   />
                 )}
               </div>
-              <NavLink active={activeSection === 'case-studies'} onClick={(e) => handleNavClick('case-studies', e)}>Case Studies</NavLink>
+              <div 
+                className="relative"
+                onMouseEnter={handleCaseStudiesDropdownEnter}
+                onMouseLeave={handleCaseStudiesDropdownLeave}
+              >
+                <button
+                  onClick={(e) => handleNavClick('case-studies', e)}
+                  className={`px-3 py-2 rounded-xl text-dark-800 hover:text-primary-600 transition-colors ${
+                    location.pathname.includes('/case-studies') || activeSection === 'case-studies' ? 'bg-primary-50 text-primary-600 font-medium' : ''
+                  }`}
+                >
+                  Case Studies
+                </button>
+                {showCaseStudiesDropdown && (
+                  <CaseStudiesDropdown 
+                    onClose={() => setShowCaseStudiesDropdown(false)} 
+                  />
+                )}
+              </div>
               <NavLink active={activeSection === 'faq'} onClick={(e) => handleNavClick('faq', e)}>FAQ</NavLink>
               <div className="ml-4">
                 <button 
@@ -345,7 +434,33 @@ const Navbar = ({ scrolled }) => {
                   Custom Solutions
                 </Link>
               </div>
-              <MobileNavLink active={activeSection === 'case-studies'} onClick={(e) => handleNavClick('case-studies', e)}>Case Studies</MobileNavLink>
+              <div className="space-y-2">
+                <MobileNavLink active={activeSection === 'case-studies'} onClick={(e) => handleNavClick('case-studies', e)}>Case Studies</MobileNavLink>
+                <div className="pl-4 space-y-2 mt-2">
+                  <button
+                    onClick={() => {
+                      setIsOpen(false);
+                      const element = document.getElementById('case-studies');
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                    className="block w-full text-left px-4 py-3 rounded-lg text-dark-800 hover:text-primary-600 transition-colors"
+                  >
+                    Featured Case Studies
+                  </button>
+                  <Link
+                    to="/case-studies"
+                    className="block px-4 py-3 rounded-lg text-dark-800 hover:text-primary-600 transition-colors"
+                    onClick={() => {
+                      setIsOpen(false);
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                  >
+                    All Case Studies
+                  </Link>
+                </div>
+              </div>
               <MobileNavLink active={activeSection === 'faq'} onClick={(e) => handleNavClick('faq', e)}>FAQ</MobileNavLink>
               <div className="pt-4 px-2">
                 <button
