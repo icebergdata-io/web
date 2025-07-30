@@ -61,6 +61,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.icebergdata.co/case-study/airlines/from-frequent-flyers-to-brand-advocates-a-data-driven-influencer-discovery-strategy-how-web-scraping-uncovered-high-affinity-travel-influencers-to-boost-bookings-on-new-long-haul-routes</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.icebergdata.co/case-study/e-commerce/cutting-last-mile-delivery-failures-by-15-with-hyper-local-carrier-intelligence-how-real-time-scraping-of-courier-tracking-and-public-sentiment-data-optimized-a-retailers-logistics-network</loc>
     <lastmod>2025-07-14</lastmod>
     <changefreq>monthly</changefreq>
@@ -91,7 +97,19 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.icebergdata.co/case-study/bus-operators/from-tiktok-to-terminal-uncovering-hyper-local-influencers-to-drive-off-peak-ridership-by-22-leveraging-geo-tagged-social-media-data-to-pinpoint-authentic-voices-for-regional-bus-routes</loc>
+    <lastmod>2025-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.icebergdata.co/case-study/car-rental/solving-the-one-way-rental-puzzle-balancing-fleet-logistics-with-competitor-inventory-intelligence-using-real-time-competitor-fleet-data-to-dynamically-price-one-way-rentals-turning-a-logistical-challenge-into-a-profit-center</loc>
+    <lastmod>2025-06-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/airlines/rescuing-underbooked-flights-a-22-revenue-lift-through-event-driven-promotional-pricing-leveraging-web-scraped-local-event-data-and-competitor-fare-monitoring-to-convert-distressed-inventory-into-profitable-bookings</loc>
     <lastmod>2025-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -169,8 +187,20 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.icebergdata.co/case-study/bus-operators/event-driven-fare-optimization-boosting-off-peak-revenue-by-22-through-predictive-demand-analysis-leveraging-public-event-data-to-proactively-adjust-bus-fares-and-maximize-yield-on-high-demand-routes</loc>
+    <lastmod>2025-02-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.icebergdata.co/case-study/car-rental/ensuring-fair-pricing-integrity-proactive-monitoring-of-anti-gouging-regulations-during-state-emergencies-how-a-national-car-rental-chain-used-real-time-data-to-avoid-fines-and-uphold-brand-trust-during-crises</loc>
     <lastmod>2025-02-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/bus-operators/boosting-rider-satisfaction-by-30-through-onboard-amenity-gap-analysis-using-customer-review-data-to-guide-high-impact-amenity-investments-for-inter-city-bus-fleets</loc>
+    <lastmod>2025-02-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -195,6 +225,216 @@
   <url>
     <loc>https://www.icebergdata.co/case-study/retail/from-dead-ends-to-deal-zones-boosting-basket-size-by-18-with-in-store-pathing-analysis-utilizing-web-scraped-public-floor-plans-and-wi-fi-signal-data-to-map-and-optimize-customer-journeys-within-large-format-stores</loc>
     <lastmod>2025-02-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/car-rental/the-path-to-purchase-how-analyzing-customer-dwell-time-at-airport-rental-locations-increased-premium-upgrades-by-18-leveraging-public-event-schedules-and-in-location-sensors-to-guide-customers-toward-high-margin-ancillary-products</loc>
+    <lastmod>2024-12-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/car-rental/decoding-traveler-intent-how-sentiment-analysis-on-niche-forums-uncovered-a-40-gap-in-business-vs-leisure-customer-satisfaction-leveraging-granular-sentiment-data-from-travel-forums-and-review-sites-to-tailor-fleet-and-service-offerings-for-distinct-customer-segments</loc>
+    <lastmod>2024-12-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/ecommerce/dynamic-carrier-selection-slashing-delivery-exceptions-by-30-with-real-time-logistics-monitoring-leveraging-public-carrier-tracking-data-and-customer-delivery-feedback-to-dynamically-route-shipments-and-improve-customer-satisfaction</loc>
+    <lastmod>2024-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/car-rental/decoding-dwelling-time-how-geospatial-data-reshaped-an-airport-rental-counter-layout-to-boost-upsells-by-18-leveraging-foot-traffic-and-customer-pathing-data-to-optimize-high-margin-product-placement-and-reduce-queue-abandonment-at-major-airport-hubs</loc>
+    <lastmod>2024-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/hotels/cutting-food-waste-by-22-how-real-time-scraping-of-local-supplier-inventories-transformed-hotel-f-and-b-operations-integrating-fragmented-artisanal-supplier-data-to-stabilize-farm-to-table-supply-chains</loc>
+    <lastmod>2024-10-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/airlines/reducing-gate-congestion-by-30-through-predictive-passenger-flow-analysis-leveraging-real-time-flight-data-and-terminal-maps-to-optimize-airport-gate-layouts-and-passenger-experience</loc>
+    <lastmod>2024-10-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/retail/pinpointing-critical-design-flaws-how-customer-review-analysis-drove-a-40-improvement-in-a-premium-backpack-lines-star-rating-leveraging-web-scraped-review-data-to-translate-common-user-complaints-into-actionable-product-development-insights-for-the-outdoor-gear-market</loc>
+    <lastmod>2024-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/ecommerce/preserving-brand-integrity-how-real-time-sentiment-tracking-uncovered-and-mitigated-sustainability-pr-risks-leveraging-web-scraping-to-monitor-discussions-on-sustainability-forums-social-media-and-eco-blogs-to-safeguard-brand-perception</loc>
+    <lastmod>2024-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/retail/from-greenwashing-to-green-lighting-quantifying-the-roi-of-sustainable-messaging-in-fashion-retail-using-sentiment-analysis-of-forum-and-review-data-to-validate-a-brands-ethical-repositioning</loc>
+    <lastmod>2024-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/airlines/slashing-aircraft-on-ground-aog-costs-by-automating-secondary-market-parts-discovery-leveraging-web-scraping-to-systematically-scan-niche-supplier-inventories-and-aviation-marketplaces-for-critical-mro-components</loc>
+    <lastmod>2024-06-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/airlines/unlocking-niche-routes-identifying-high-impact-travel-influencers-through-audience-affinity-analysis-leveraging-web-scraped-social-data-to-match-influencer-audiences-with-underserved-travel-destinations</loc>
+    <lastmod>2024-06-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/airlines/unlocking-event-driven-demand-boosting-ancillary-revenue-by-22-with-targeted-bundle-pricing-how-a-leisure-airline-leveraged-real-time-event-and-competitor-data-to-create-dynamic-travel-packages-that-capture-high-value-niche-travel-markets</loc>
+    <lastmod>2024-06-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/retail/maximizing-cart-value-a-dynamic-pricing-model-for-accessory-cross-sells-using-competitor-basket-analysis-to-boost-average-order-value-by-18-in-consumer-electronics</loc>
+    <lastmod>2024-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/retail/from-dead-zones-to-hotspots-increasing-basket-size-by-18-with-in-store-journey-mapping-leveraging-anonymized-wi-fi-connection-data-to-visualize-customer-flow-and-strategically-reposition-high-margin-products</loc>
+    <lastmod>2024-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/ecommerce/curbing-overstock-waste-by-30-through-predictive-analysis-of-seasonal-product-returns-using-public-review-and-social-media-data-to-forecast-return-rates-and-optimize-inventory</loc>
+    <lastmod>2024-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/car-rental/pinpointing-high-value-expansion-markets-by-triangulating-aviation-economic-and-event-data-how-a-premium-car-rental-company-discovered-untapped-high-margin-markets-by-analyzing-leading-indicators-of-business-and-luxury-travel-demand</loc>
+    <lastmod>2024-02-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/retail/unlocking-hidden-revenue-dynamic-bundle-pricing-based-on-real-time-competitor-stockouts-leveraging-competitor-inventory-gaps-to-maximize-average-order-value-for-an-electronics-retailer</loc>
+    <lastmod>2023-12-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/airlines/closing-the-in-flight-experience-gap-how-customer-review-analysis-drove-a-15-nps-uplift-for-a-long-haul-carrier-using-nlp-to-pinpoint-high-value-feature-requests-and-re-prioritize-cabin-upgrade-investments</loc>
+    <lastmod>2023-12-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/ecommerce/boosting-conversion-rates-by-45-by-identifying-micro-influencers-with-high-audience-affinity-moving-beyond-follower-counts-to-find-authentic-brand-advocates-in-sustainable-ecommerce</loc>
+    <lastmod>2023-11-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/ecommerce/from-noise-to-signal-pinpointing-micro-influencers-with-organic-brand-advocacy-scoring-how-a-dtc-coffee-brand-grew-its-community-by-identifying-authentic-voices-in-niche-markets</loc>
+    <lastmod>2023-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/retail/maximizing-cross-sell-revenue-by-18-through-store-in-store-foot-traffic-correlation-using-in-store-ble-beacon-and-public-wifi-analytics-to-map-customer-journeys-between-partnered-brand-experience-zones</loc>
+    <lastmod>2023-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/car-rental/maximizing-ancillary-revenue-by-18-through-deep-funnel-competitor-pricing-analysis-revealing-competitor-strategies-on-high-margin-add-ons-like-insurance-gps-and-child-seats</loc>
+    <lastmod>2023-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/hotels/slashing-f-and-b-waste-by-30-using-event-driven-demand-forecasting-how-a-luxury-hotel-chain-leveraged-public-data-to-align-kitchen-inventory-with-real-world-guest-demand-preventing-spoilage-and-stockouts</loc>
+    <lastmod>2023-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/airlines/boosting-ancillary-revenue-by-18-with-real-time-event-driven-upgrade-pricing-how-a-major-airline-leveraged-real-time-event-hotel-and-competitor-data-to-dynamically-price-last-minute-seat-upgrades-and-maximize-cabin-yield</loc>
+    <lastmod>2023-06-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/car-rental/navigating-urban-lezs-ensuring-fleet-compliance-and-eliminating-fines-through-automated-regulatory-scraping-how-a-major-car-rental-agency-automated-the-monitoring-of-low-emission-zone-regulations-across-50-european-cities-to-ensure-100-booking-compliance</loc>
+    <lastmod>2023-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/hotels/dynamic-lobby-monetization-boosting-ancillary-revenue-by-18-with-predictive-foot-traffic-analysis-transforming-hotel-common-areas-from-static-spaces-to-revenue-generating-hubs-by-scraping-public-event-data</loc>
+    <lastmod>2023-06-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/hotels/decoding-digital-empathy-how-sentiment-analysis-of-management-responses-boosted-guest-loyalty-by-22-analyzing-public-review-responses-to-measure-and-improve-service-recovery-effectiveness-across-a-global-hotel-portfolio</loc>
+    <lastmod>2023-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/ecommerce/closing-the-innovation-loop-how-a-smart-home-brand-pinpointed-a-key-feature-gap-using-competitor-review-analysis-leveraging-nlp-on-scraped-customer-reviews-to-drive-a-30-reduction-in-negative-feedback-and-guide-r-and-d</loc>
+    <lastmod>2023-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/airlines/uncovering-destination-expert-influencers-to-drive-a-15-booking-lift-on-niche-routes-using-audience-affinity-and-content-analysis-to-match-micro-influencers-with-specific-airline-routes</loc>
+    <lastmod>2023-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/hotels/unlocking-boutique-hotel-growth-in-untapped-cities-via-bleisure-demand-signal-analysis-leveraging-public-data-to-forecast-hotel-demand-in-non-traditional-corporate-travel-destinations-and-identify-high-potential-secondary-markets</loc>
+    <lastmod>2023-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/hotels/pinpointing-prime-wellness-hotel-locations-by-mapping-local-health-and-amenity-ecosystems-how-a-boutique-hotel-group-used-web-scraped-data-to-find-untapped-markets-for-health-conscious-travelers</loc>
+    <lastmod>2023-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/car-rental/decoding-competitor-surcharges-how-granular-fee-scraping-uncovered-an-18-pricing-advantage-leveraging-web-data-to-model-the-total-cost-of-rental-not-just-the-advertised-daily-rate-for-a-strategic-market-repositioning</loc>
+    <lastmod>2023-02-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/hotels/reversing-a-15-booking-decline-by-decoding-guest-sentiment-whispers-how-a-luxury-hotel-chain-used-aspect-based-sentiment-analysis-of-online-reviews-to-pinpoint-and-rectify-critical-service-gaps</loc>
+    <lastmod>2023-02-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/ecommerce/escaping-price-wars-a-dynamic-pricing-model-based-on-competitor-stock-and-fulfillment-data-how-a-consumer-electronics-retailer-increased-profit-margins-by-18-using-real-time-competitor-availability-intelligence</loc>
+    <lastmod>2023-02-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/retail/mapping-profitability-how-scraping-competitor-store-layouts-eliminated-dead-zones-and-increased-high-margin-sales-by-18-utilizing-publicly-available-store-maps-and-promotional-data-to-reverse-engineer-competitor-foot-traffic-strategies-and-optimize-product-placement</loc>
+    <lastmod>2023-01-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

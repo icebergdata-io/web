@@ -107,8 +107,15 @@ async function generateCaseStudyIndex() {
 async function generateSitemap() {
   console.log('🔄 Generating sitemap...');
   
-  // Generate case study index first
-  const caseStudies = await generateCaseStudyIndex();
+  // Load the pre-generated case study index (already filters out future-dated studies)
+  let caseStudies = [];
+  try {
+    const indexData = JSON.parse(fs.readFileSync(path.join(casesDir, 'index.json'), 'utf8'));
+    caseStudies = indexData.caseStudies || [];
+  } catch (err) {
+    console.warn('⚠️ Could not read index.json, falling back to scanning files.');
+    caseStudies = await generateCaseStudyIndex();
+  }
   
   // Sort case studies by publication date (newest first)
   const sortedCaseStudies = caseStudies.sort((a, b) => {
