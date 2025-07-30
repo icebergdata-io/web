@@ -209,36 +209,68 @@ const Footer = () => {
               <h3 className="text-base sm:text-lg font-display font-bold mb-3 sm:mb-4 text-white/90">Legal</h3>
               <ul className="space-y-2 sm:space-y-3">
                 <li>
-                  <button 
-                    onClick={() => setActiveModal('terms')} 
-                    className="text-light-400 hover:text-white transition-colors"
-                  >
-                    Terms & Conditions
-                  </button>
+                  <div className="flex flex-col space-y-1">
+                    <button 
+                      onClick={() => setActiveModal('terms')} 
+                      className="text-light-400 hover:text-white transition-colors text-left"
+                    >
+                      Terms & Conditions
+                    </button>
+                    <Link 
+                      to="/terms" 
+                      className="text-xs text-light-500 hover:text-light-300 transition-colors"
+                    >
+                      (View Full Page)
+                    </Link>
+                  </div>
                 </li>
                 <li>
-                  <button 
-                    onClick={() => setActiveModal('privacy')} 
-                    className="text-light-400 hover:text-white transition-colors"
-                  >
-                    Privacy Policy
-                  </button>
+                  <div className="flex flex-col space-y-1">
+                    <button 
+                      onClick={() => setActiveModal('privacy')} 
+                      className="text-light-400 hover:text-white transition-colors text-left"
+                    >
+                      Privacy Policy
+                    </button>
+                    <Link 
+                      to="/privacy" 
+                      className="text-xs text-light-500 hover:text-light-300 transition-colors"
+                    >
+                      (View Full Page)
+                    </Link>
+                  </div>
                 </li>
                 <li>
-                  <button 
-                    onClick={() => setActiveModal('cookies')} 
-                    className="text-light-400 hover:text-white transition-colors"
-                  >
-                    Cookie Policy
-                  </button>
+                  <div className="flex flex-col space-y-1">
+                    <button 
+                      onClick={() => setActiveModal('cookies')} 
+                      className="text-light-400 hover:text-white transition-colors text-left"
+                    >
+                      Cookie Policy
+                    </button>
+                    <Link 
+                      to="/cookies" 
+                      className="text-xs text-light-500 hover:text-light-300 transition-colors"
+                    >
+                      (View Full Page)
+                    </Link>
+                  </div>
                 </li>
                 <li>
-                  <button 
-                    onClick={() => setActiveModal('refund')} 
-                    className="text-light-400 hover:text-white transition-colors"
-                  >
-                    Refund Policy
-                  </button>
+                  <div className="flex flex-col space-y-1">
+                    <button 
+                      onClick={() => setActiveModal('refund')} 
+                      className="text-light-400 hover:text-white transition-colors text-left"
+                    >
+                      Refund Policy
+                    </button>
+                    <Link 
+                      to="/refund" 
+                      className="text-xs text-light-500 hover:text-light-300 transition-colors"
+                    >
+                      (View Full Page)
+                    </Link>
+                  </div>
                 </li>
               </ul>
             </div>

@@ -12,6 +12,10 @@ import WebScrapingPage from './pages/services/web-scraping';
 import DataIntegrationPage from './pages/services/data-integration';
 import CustomSolutionsPage from './pages/services/custom-solutions';
 import CarRentalLanding from './pages/industry_landings/CarRentalLanding';
+import TermsPage from './pages/TermsPage';
+import PrivacyPage from './pages/PrivacyPage';
+import CookiesPage from './pages/CookiesPage';
+import RefundPage from './pages/RefundPage';
 
 function App() {
   return (
@@ -30,6 +34,10 @@ function App() {
             <Route path="press" element={<PressCoverage />} />
             <Route path="booking-confirmation" element={<BookingConfirmation />} />
             <Route path="car-rental" element={<CarRentalLanding />} />
+            <Route path="terms" element={<TermsPage />} />
+            <Route path="privacy" element={<PrivacyPage />} />
+            <Route path="cookies" element={<CookiesPage />} />
+            <Route path="refund" element={<RefundPage />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
