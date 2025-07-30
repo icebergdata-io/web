@@ -121,56 +121,7 @@ const processSteps = [
   }
 ];
 
-const useCases = [
-  {
-    title: 'E-commerce',
-    description: 'Monitor competitor prices, track product availability, and gather market intelligence to stay competitive in the fast-paced e-commerce landscape.',
-    caseStudies: [
-      {
-        title: 'Digital Shelf Optimization',
-        description: 'How we helped boost marketplace visibility by tracking keyword rankings and competitor products, leading to a 25% increase in sales.',
-        link: '/case-study/ecommerce/digital-shelf-optimization-via-public-marketplace-scraping-tracking-keyword-rankings-and-competitor-products-to-boost-visibility'
-      },
-      {
-        title: 'Personalized Recommendation Engine',
-        description: 'Extracting user sentiments to refine e-commerce product recommendations through public review scraping.',
-        link: '/case-study/ecommerce/personalized-recommendation-engine-via-public-review-scraping-extracting-user-sentiments-to-refine-e-commerce-product-recommendations'
-      }
-    ]
-  },
-  {
-    title: 'Market Analytics',
-    description: 'Analyze market trends, competitor strategies, and consumer behavior to make data-driven business decisions.',
-    caseStudies: [
-      {
-        title: 'Price Sensitivity Analysis',
-        description: 'Refining price points by monitoring discount trends through public competitor offer scraping.',
-        link: '/case-study/market-analytics/price-sensitivity-analysis-using-public-competitor-offer-scraping-refining-price-points-by-monitoring-discount-trends'
-      },
-      {
-        title: 'Marketing Communications Analysis',
-        description: 'Observing competitor ads in real-time to optimize messaging through public ad campaign scraping.',
-        link: '/case-study/market-analytics/marketing-communications-analysis-by-scraping-public-ad-campaigns-observing-competitor-ads-in-real-time-to-optimize-your-messaging'
-      }
-    ]
-  },
-  {
-    title: 'Lead Generation',
-    description: 'Identify and capture high-quality leads through automated data collection and analysis.',
-    caseStudies: [
-      {
-        title: 'Cross-Sector Lead Generation',
-        description: 'Mining company profiles from public business directories to identify potential joint ventures.',
-        link: '/case-study/lead-generation/cross-sector-lead-generation-from-public-business-directories-mining-company-profiles-to-identify-potential-joint-ventures'
-      },
-      {
-        title: 'High-Level B2B Lead Extraction',
-        description: 'Scraping conference schedules to connect with industry thought leaders from public speaker agendas.',
-        link: '/case-study/lead-generation/high-level-b2b-lead-extraction-from-public-speaker-agendas-scraping-conference-schedules-to-connect-with-industry-thought-leaders'
-      }
-    ]
-  }
-];
+
 
 const WebScrapingPage = () => {
   const [showCalendly, setShowCalendly] = useState(false);
@@ -344,56 +295,83 @@ const WebScrapingPage = () => {
         </div>
       </div>
 
-      {/* Use Cases Section */}
-      <div id="use-cases" className="container mx-auto px-4 py-16 sm:py-24">
+      {/* Case Studies Showcase Section */}
+      <div id="case-studies-showcase" className="container mx-auto px-4 py-16 sm:py-24">
         <div className="max-w-3xl mx-auto text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-display font-bold text-slate-900 mb-4">
-            Industry Use Cases
+            Real-World Success Stories
           </h2>
           <p className="text-lg text-slate-600">
-            See how different industries leverage our web scraping solutions
+            Discover how our web scraping solutions have transformed businesses across industries
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {useCases.map((useCase, index) => (
-            <div
-              key={index}
-              className="bg-gradient-to-b from-slate-50 to-white rounded-xl p-8 shadow-lg ring-1 ring-slate-200/50"
-            >
-              <h3 className="text-xl font-display font-semibold text-slate-900 mb-3">
-                {useCase.title}
-              </h3>
-              <p className="text-slate-600 text-sm leading-relaxed mb-6">
-                {useCase.description}
-              </p>
-              
-              {/* Case Studies */}
-              <div className="space-y-4">
-                <h4 className="text-sm font-semibold text-slate-900">Case Studies</h4>
-                {useCase.caseStudies.map((study, studyIndex) => (
-                  <Link
-                    key={studyIndex}
-                    to={study.link}
-                    className="block p-4 bg-slate-50 rounded-lg hover:bg-slate-100 transition-colors duration-200"
-                  >
-                    <h5 className="text-sm font-medium text-slate-900 mb-1">
-                      {study.title}
-                    </h5>
-                    <p className="text-xs text-slate-600">
-                      {study.description}
-                    </p>
-                    <div className="mt-2 flex items-center text-blue-600 text-xs font-medium">
-                      Read Case Study
-                      <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </div>
-                  </Link>
-                ))}
-              </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <div className="bg-gradient-to-b from-blue-50 to-white rounded-xl p-8 shadow-lg ring-1 ring-blue-200/50">
+            <div className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100 text-blue-600 mb-4">
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+              </svg>
             </div>
-          ))}
+            <h3 className="text-xl font-display font-semibold text-slate-900 mb-3">
+              E-commerce & Retail
+            </h3>
+            <p className="text-slate-600 text-sm leading-relaxed mb-4">
+              From competitor price monitoring to inventory optimization, see how we help e-commerce businesses stay ahead.
+            </p>
+            <div className="text-xs text-slate-500">
+              Featured: Digital Shelf Optimization, Price Intelligence
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-b from-green-50 to-white rounded-xl p-8 shadow-lg ring-1 ring-green-200/50">
+            <div className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-green-100 text-green-600 mb-4">
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              </svg>
+            </div>
+            <h3 className="text-xl font-display font-semibold text-slate-900 mb-3">
+              Market Intelligence
+            </h3>
+            <p className="text-slate-600 text-sm leading-relaxed mb-4">
+              Uncover market trends, competitor strategies, and consumer insights through comprehensive data collection.
+            </p>
+            <div className="text-xs text-slate-500">
+              Featured: Sentiment Analysis, Competitor Monitoring
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-b from-purple-50 to-white rounded-xl p-8 shadow-lg ring-1 ring-purple-200/50">
+            <div className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-purple-100 text-purple-600 mb-4">
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+            </div>
+            <h3 className="text-xl font-display font-semibold text-slate-900 mb-3">
+              Lead Generation
+            </h3>
+            <p className="text-slate-600 text-sm leading-relaxed mb-4">
+              Identify and capture high-quality leads through automated data collection and intelligent analysis.
+            </p>
+            <div className="text-xs text-slate-500">
+              Featured: B2B Lead Extraction, Conference Intelligence
+            </div>
+          </div>
+        </div>
+
+        <div className="text-center">
+          <Link
+            to="/case-studies"
+            className="inline-flex items-center px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium transition-all duration-300 hover:shadow-lg hover:scale-105 group"
+          >
+            Explore All Case Studies
+            <svg className="ml-2 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </Link>
+          <p className="text-sm text-slate-500 mt-4">
+            Discover 60+ real-world examples of how our web scraping solutions drive business growth
+          </p>
         </div>
       </div>
 
