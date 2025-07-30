@@ -1,5 +1,5 @@
 {
-  "total": 26,
+  "total": 31,
   "caseStudies": [
     {
       "id": 14,
@@ -27,6 +27,15 @@
       "subtitle": "Optimizing Fleet Readiness by Scraping Local Service Availability and Auto Parts Inventory",
       "sectorName": "Car Rental",
       "publicationDate": "2025-07-18"
+    },
+    {
+      "id": 28,
+      "sector": "airlines",
+      "slug": "from-frequent-flyers-to-brand-advocates-a-data-driven-influencer-discovery-strategy-how-web-scraping-uncovered-high-affinity-travel-influencers-to-boost-bookings-on-new-long-haul-routes",
+      "title": "From Frequent Flyers to Brand Advocates: A Data-Driven Influencer Discovery Strategy",
+      "subtitle": "How Web Scraping Uncovered High-Affinity Travel Influencers to Boost Bookings on New Long-Haul Routes",
+      "sectorName": "Airlines",
+      "publicationDate": "2025-07-17"
     },
     {
       "id": 7,
@@ -74,12 +83,30 @@
       "publicationDate": "2025-06-16"
     },
     {
+      "id": 31,
+      "sector": "bus-operators",
+      "slug": "from-tiktok-to-terminal-uncovering-hyper-local-influencers-to-drive-off-peak-ridership-by-22-leveraging-geo-tagged-social-media-data-to-pinpoint-authentic-voices-for-regional-bus-routes",
+      "title": "From TikTok to Terminal: Uncovering Hyper-Local Influencers to Drive Off-Peak Ridership by 22%",
+      "subtitle": "Leveraging Geo-Tagged Social Media Data to Pinpoint Authentic Voices for Regional Bus Routes",
+      "sectorName": "Bus Operators",
+      "publicationDate": "2025-06-11"
+    },
+    {
       "id": 19,
       "sector": "car-rental",
       "slug": "solving-the-one-way-rental-puzzle-balancing-fleet-logistics-with-competitor-inventory-intelligence-using-real-time-competitor-fleet-data-to-dynamically-price-one-way-rentals-turning-a-logistical-challenge-into-a-profit-center",
       "title": "Solving the One-Way Rental Puzzle: Balancing Fleet Logistics with Competitor Inventory Intelligence",
       "subtitle": "Using real-time competitor fleet data to dynamically price one-way rentals, turning a logistical challenge into a profit center.",
       "sectorName": "Car Rental",
+      "publicationDate": "2025-06-05"
+    },
+    {
+      "id": 27,
+      "sector": "airlines",
+      "slug": "rescuing-underbooked-flights-a-22-revenue-lift-through-event-driven-promotional-pricing-leveraging-web-scraped-local-event-data-and-competitor-fare-monitoring-to-convert-distressed-inventory-into-profitable-bookings",
+      "title": "Rescuing Underbooked Flights: A 22% Revenue Lift Through Event-Driven Promotional Pricing",
+      "subtitle": "Leveraging Web-Scraped Local Event Data and Competitor Fare Monitoring to Convert Distressed Inventory into Profitable Bookings",
+      "sectorName": "Airlines",
       "publicationDate": "2025-06-05"
     },
     {
@@ -191,6 +218,15 @@
       "publicationDate": "2025-03-05"
     },
     {
+      "id": 29,
+      "sector": "bus-operators",
+      "slug": "event-driven-fare-optimization-boosting-off-peak-revenue-by-22-through-predictive-demand-analysis-leveraging-public-event-data-to-proactively-adjust-bus-fares-and-maximize-yield-on-high-demand-routes",
+      "title": "Event-Driven Fare Optimization: Boosting Off-Peak Revenue by 22% Through Predictive Demand Analysis",
+      "subtitle": "Leveraging Public Event Data to Proactively Adjust Bus Fares and Maximize Yield on High-Demand Routes",
+      "sectorName": "Bus Operators",
+      "publicationDate": "2025-02-28"
+    },
+    {
       "id": 15,
       "sector": "car-rental",
       "slug": "ensuring-fair-pricing-integrity-proactive-monitoring-of-anti-gouging-regulations-during-state-emergencies-how-a-national-car-rental-chain-used-real-time-data-to-avoid-fines-and-uphold-brand-trust-during-crises",
@@ -198,6 +234,15 @@
       "subtitle": "How a National Car Rental Chain Used Real-Time Data to Avoid Fines and Uphold Brand Trust During Crises",
       "sectorName": "Car Rental",
       "publicationDate": "2025-02-24"
+    },
+    {
+      "id": 30,
+      "sector": "bus-operators",
+      "slug": "boosting-rider-satisfaction-by-30-through-onboard-amenity-gap-analysis-using-customer-review-data-to-guide-high-impact-amenity-investments-for-inter-city-bus-fleets",
+      "title": "Boosting Rider Satisfaction by 30% Through Onboard Amenity Gap Analysis",
+      "subtitle": "Using Customer Review Data to Guide High-Impact Amenity Investments for Inter-City Bus Fleets",
+      "sectorName": "Bus Operators",
+      "publicationDate": "2025-02-20"
     },
     {
       "id": 20,

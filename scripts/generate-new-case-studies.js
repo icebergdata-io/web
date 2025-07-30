@@ -2,6 +2,10 @@ import fs from 'fs';
 import path from 'path';
 import fetch from 'node-fetch';
 import dotenv from 'dotenv';
+import { exec } from 'child_process';
+import { promisify } from 'util';
+
+const execAsync = promisify(exec);
 
 // ================================================================= //
 //                      CONFIGURATION & SETUP                        //
@@ -13,7 +17,7 @@ dotenv.config();
 // Standardized API key lookup
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 // Default model - can be overridden via --model parameter.
-const DEFAULT_MODEL = 'gemini-1.5-pro-latest'; 
+const DEFAULT_MODEL = 'gemini-2.5-pro'; 
 
 // --- Script Settings ---
 const DELAY_BETWEEN_CALLS_MS = 1000; // 1 second
@@ -474,6 +478,16 @@ async function main() {
     if (generatedFiles.length > 0) {
         console.log(`✅ ${generatedFiles.length} case studies generated successfully:`);
         generatedFiles.forEach(file => console.log(`   - ${file}`));
+        
+        // Automatically regenerate the index after successful generation
+        console.log('\n🔄 Regenerating case studies index...');
+        try {
+            await execAsync('node scripts/regenerate-index.js', { cwd: process.cwd() });
+            console.log('✅ Case studies index updated successfully!');
+        } catch (error) {
+            console.error('❌ Failed to regenerate index:', error.message);
+            // Don't exit on index failure, just warn
+        }
     }
     
     if (failedCases.length > 0) {

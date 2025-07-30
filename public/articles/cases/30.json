@@ -1,0 +1,71 @@
+{
+  "Title": "Boosting Rider Satisfaction by 30% Through Onboard Amenity Gap Analysis",
+  "Subtitle": "Using Customer Review Data to Guide High-Impact Amenity Investments for Inter-City Bus Fleets",
+  "Business Impact": "By analyzing over 50,000 customer reviews, the client identified key amenity gaps, leading to a targeted investment strategy that increased rider satisfaction scores by 30% and drove a 15% uplift in bookings for newly-equipped premium routes.",
+  "Sector": "Bus Operators",
+  "What data was collected": "Publicly available customer reviews from Google Maps, TripAdvisor, Trustpilot, and Yelp for the client and its top three competitors. We also scraped competitor websites to catalog their advertised onboard amenities and service tiers.",
+  "Why this matters": "Capital expenditure on fleet upgrades is immense. Investing in the wrong amenities (e.g., entertainment systems when customers want power outlets) wastes millions and fails to improve customer loyalty. Data-driven amenity selection ensures investments directly address customer needs, justifying premium pricing and building a competitive edge.",
+  "Implementation time": "6 to 8 weeks, including scraping setup for multiple review platforms, development of a custom NLP model for sentiment analysis, and creation of a feature-gap analysis dashboard.",
+  "Problems this solves": "1) Misallocated capital on unpopular fleet upgrades. 2) Inability to understand the 'why' behind negative satisfaction scores. 3) Losing market share to competitors who offer more desirable onboard features. 4) Lack of data to justify premium service tiers.",
+  "Why it was better to outsource this solution": "Scraping thousands of reviews from diverse platforms with varying structures and anti-bot measures requires specialized infrastructure. Furthermore, developing a sophisticated Natural Language Processing (NLP) model to perform aspect-based sentiment analysis—pinpointing sentiment for specific features like 'Wi-Fi' within a single review—is a complex data science task beyond the core competency of a transport operator.",
+  "Example_Input_JSON": {
+    "client_id": "regional-bus-corp-456",
+    "job_type": "amenity_gap_analysis",
+    "competitor_domains": [
+      "expresscoach.com",
+      "citylinkbus.net",
+      "roadrunner-travel.org"
+    ],
+    "review_platforms": [
+      "google_maps",
+      "tripadvisor",
+      "trustpilot"
+    ]
+  },
+  "Example_Output_JSON": {
+    "report_id": "report-aga-789",
+    "generated_at": "2025-05-20T14:30:00Z",
+    "analysis_period": "24 months",
+    "total_reviews_analyzed": 52849,
+    "feature_analysis": [
+      {
+        "feature": "WiFi",
+        "mention_volume": 18450,
+        "positive_sentiment_score": 0.21,
+        "negative_sentiment_score": 0.79,
+        "opportunity_score": 9.5
+      },
+      {
+        "feature": "Power Outlets",
+        "mention_volume": 15233,
+        "positive_sentiment_score": 0.15,
+        "negative_sentiment_score": 0.85,
+        "opportunity_score": 9.2
+      },
+      {
+        "feature": "Seat Comfort",
+        "mention_volume": 12100,
+        "positive_sentiment_score": 0.45,
+        "negative_sentiment_score": 0.55,
+        "opportunity_score": 6.8
+      },
+      {
+        "feature": "Onboard Entertainment",
+        "mention_volume": 1560,
+        "positive_sentiment_score": 0.65,
+        "negative_sentiment_score": 0.35,
+        "opportunity_score": 2.1
+      },
+      {
+        "feature": "Restroom Cleanliness",
+        "mention_volume": 9870,
+        "positive_sentiment_score": 0.33,
+        "negative_sentiment_score": 0.67,
+        "opportunity_score": 7.5
+      }
+    ]
+  },
+  "Matching algorithm used to integrate the data": "A custom Natural Language Processing (NLP) model was trained for aspect-based sentiment analysis. The algorithm first identifies mentions of pre-defined amenity keywords (e.g., 'wifi', 'internet', 'outlet', 'charger', 'seat', 'legroom', 'restroom') and their synonyms within review text. It then analyzes the surrounding sentence structure and sentiment-bearing words to assign a precise positive, negative, or neutral score to each specific feature mention. This allows for aggregating sentiment at the feature level across thousands of reviews, providing a granular view of customer priorities.",
+  "Story": "<p>Our client, a prominent inter-city bus operator, was at a critical crossroads. They were facing intensifying competition from both legacy carriers and new, tech-forward startups. Despite a recent, multi-million dollar investment in upgrading their fleet with seat-back entertainment systems, their customer satisfaction scores were stagnating, and online reviews were still peppered with complaints. The executive team was perplexed; they were spending heavily on what they <strong>thought</strong> were premium features, but it wasn't moving the needle. Their capital allocation strategy felt like a shot in the dark.</p><p>The core problem was a fundamental disconnect between their investment decisions and actual customer desires. What was more important to the modern traveler: watching a pre-loaded movie, or being able to work on their laptop and keep their phone charged for the entire journey? Lacking concrete data, they couldn't answer this question with any certainty. This is where our team at Iceberg Data came in.</p><p>We proposed a comprehensive <strong>Product Feature Gap Analysis</strong> project, moving beyond simple star ratings to dissect the unstructured text of customer reviews. Our objective was to quantify what riders were truly talking about. We configured our web scraping platform to systematically collect over 50,000 public reviews for the client and their three main competitors from a range of sources, including Google Maps, TripAdvisor, and specialized travel forums. This historical and ongoing data feed would form the bedrock of our analysis.</p><p>Simply counting keywords wasn't enough. A review saying 'the Wi-Fi was terrible' and another saying 'the Wi-Fi was excellent' would both count as a 'Wi-Fi' mention, which is useless for decision-making. Therefore, we deployed a custom-trained Natural Language Processing (NLP) model to perform aspect-based sentiment analysis. This model was specifically tuned to the language of travel reviews. It could identify mentions of key amenities—<strong>'WiFi'</strong>, <strong>'Power Outlets'</strong>, <strong>'Seat Comfort'</strong>, <strong>'Restroom Cleanliness'</strong>, and even the new <strong>'Onboard Entertainment'</strong>—and then accurately assign a positive or negative sentiment score to each specific mention.</p><p>The results, compiled into a dashboard, were a revelation for the client. The data provided the 'Aha!' moment they had been missing. The expensive <strong>Onboard Entertainment</strong> system they had invested in had an extremely low mention volume (only 1,560 mentions out of 50,000+ reviews). While the sentiment for it was generally positive, it simply wasn't a feature customers cared enough about to discuss. In stark contrast, <strong>'WiFi'</strong> and <strong>'Power Outlets'</strong> were among the most frequently mentioned topics, but their sentiment was overwhelmingly negative. Phrases like 'unusable Wi-Fi', 'couldn't connect', 'no outlet at my seat', and 'had to ask someone to share a charger' dominated the negative feedback.</p><p>The data clearly showed a massive feature gap. Customers didn't want to be passively entertained; they wanted to stay connected and productive. They valued utility over novelty. The output JSON from our system, with its calculated 'opportunity_score', starkly highlighted that improving WiFi and power access offered the highest potential return on satisfaction.</p><p>Armed with this undeniable evidence, the client's leadership team made a decisive pivot. They immediately halted further rollouts of the entertainment system and reallocated that entire budget. Their new, data-driven priority was a fleet-wide upgrade to a high-speed, multi-carrier Wi-Fi system and the installation of dual USB/AC power outlets at every single seat. They turned this into a core marketing message, advertising their coaches as 'fully connected mobile offices'.</p><p>The impact was swift and significant. Within six months of completing the upgrades on their primary routes, their average rider satisfaction scores had climbed by <strong>30%</strong>. Negative reviews mentioning amenities plummeted by over 75%. Most importantly, they saw a <strong>15% increase in bookings</strong> on the newly equipped routes, with a notable rise in business travelers and students who previously opted for the train. By using data to listen to what their customers were implicitly screaming, they transformed a misguided expense into a powerful competitive advantage and a direct driver of revenue.</p>",
+  "publicationDate": "2025-02-20"
+}
