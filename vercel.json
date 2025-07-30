@@ -1,6 +1,18 @@
 {
   "rewrites": [
     {
+      "source": "/car-rental",
+      "destination": "/car-rental.html"
+    },
+    {
+      "source": "/press",
+      "destination": "/press.html"
+    },
+    {
+      "source": "/services",
+      "destination": "/services.html"
+    },
+    {
       "source": "/case-studies",
       "destination": "/case-studies.html"
     },
