@@ -100,31 +100,11 @@ function generateStaticHTML() {
 </head>
 <body>
     <div id="root">
-        <!-- SEO-friendly content visible to search engines -->
-        <header style="padding: 2rem; text-align: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
-            <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">${getPageTitle(route)}</h1>
-            <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto;">${getPageDescription(route)}</p>
-        </header>
-        
-        <main style="padding: 2rem; max-width: 1200px; margin: 0 auto;">
-            <section style="margin-bottom: 2rem;">
-                <h2 style="color: #333; margin-bottom: 1rem;">${getPageHeading(route)}</h2>
-                <p style="line-height: 1.6; color: #666;">${getPageContent(route)}</p>
-            </section>
-            
-            <section style="background: #f8f9fa; padding: 2rem; border-radius: 8px;">
-                <h3 style="color: #333; margin-bottom: 1rem;">Ready to Get Started?</h3>
-                <p style="margin-bottom: 1rem;">Contact us to learn how we can help your business with data collection and web scraping solutions.</p>
-                <a href="https://calendly.com/d/csxd-vq2-j8k/data-collection-consultation-with-david-and-gabriel" 
-                   style="display: inline-block; background: #007bff; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px;">
-                    Schedule a Consultation
-                </a>
-            </section>
-        </main>
-        
-        <footer style="background: #333; color: white; padding: 2rem; text-align: center; margin-top: 2rem;">
-            <p>&copy; 2024 Iceberg Data. All rights reserved.</p>
-        </footer>
+        <!-- Minimal content for SEO - React will hydrate immediately -->
+        <div style="display: none;">
+            <h1>${getPageTitle(route)}</h1>
+            <p>${getPageDescription(route)}</p>
+        </div>
     </div>
     
     <!-- Load the React app -->
@@ -247,57 +227,12 @@ function generateCaseStudyPages(distDir, cssPath, jsPath) {
 </head>
 <body>
     <div id="root">
-        <!-- SEO-friendly content visible to search engines -->
-        <header style="padding: 2rem; text-align: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
-            <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">${caseData.Title}</h1>
-            <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto;">${caseData.Subtitle}</p>
-            <div style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.9;">
-                <span style="background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 20px; margin-right: 1rem;">${caseData.Sector}</span>
-                <span>Published: ${new Date(caseData.publicationDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-            </div>
-        </header>
-        
-        <main style="padding: 2rem; max-width: 1200px; margin: 0 auto;">
-            <section style="margin-bottom: 2rem;">
-                <h2 style="color: #333; margin-bottom: 1rem;">Business Impact</h2>
-                <p style="line-height: 1.6; color: #666; font-size: 1.1rem; background: #f8f9fa; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #007bff;">${caseData["Business Impact"]}</p>
-            </section>
-            
-            <section style="margin-bottom: 2rem;">
-                <h2 style="color: #333; margin-bottom: 1rem;">Case Study Overview</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
-                        <h3 style="color: #333; margin-bottom: 0.5rem;">What Data Was Collected</h3>
-                        <p style="color: #666; line-height: 1.6;">${caseData["What data was collected"]}</p>
-                    </div>
-                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
-                        <h3 style="color: #333; margin-bottom: 0.5rem;">Why This Matters</h3>
-                        <p style="color: #666; line-height: 1.6;">${caseData["Why this matters"]}</p>
-                    </div>
-                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
-                        <h3 style="color: #333; margin-bottom: 0.5rem;">Implementation Time</h3>
-                        <p style="color: #666; line-height: 1.6;">${caseData["Implementation time"]}</p>
-                    </div>
-                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
-                        <h3 style="color: #333; margin-bottom: 0.5rem;">Problems This Solves</h3>
-                        <p style="color: #666; line-height: 1.6;">${caseData["Problems this solves"]}</p>
-                    </div>
-                </div>
-            </section>
-            
-            <section style="background: #f8f9fa; padding: 2rem; border-radius: 8px;">
-                <h3 style="color: #333; margin-bottom: 1rem;">Ready to Get Started?</h3>
-                <p style="margin-bottom: 1rem;">Contact us to learn how we can help your business with data collection and web scraping solutions.</p>
-                <a href="https://calendly.com/d/csxd-vq2-j8k/data-collection-consultation-with-david-and-gabriel" 
-                   style="display: inline-block; background: #007bff; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px;">
-                    Schedule a Consultation
-                </a>
-            </section>
-        </main>
-        
-        <footer style="background: #333; color: white; padding: 2rem; text-align: center; margin-top: 2rem;">
-            <p>&copy; 2024 Iceberg Data. All rights reserved.</p>
-        </footer>
+        <!-- Minimal content for SEO - React will hydrate immediately -->
+        <div style="display: none;">
+            <h1>${caseData.Title}</h1>
+            <p>${caseData.Subtitle}</p>
+            <p>${caseData["Business Impact"]}</p>
+        </div>
     </div>
     
     <!-- Load the React app -->
