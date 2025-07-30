@@ -2,283 +2,121 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.icebergdata.co/</loc>
-    <lastmod>2025-07-29</lastmod>
+    <lastmod>2025-07-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/press</loc>
-    <lastmod>2025-07-29</lastmod>
+    <lastmod>2025-07-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
     <url>
     <loc>https://www.icebergdata.co/services</loc>
-    <lastmod>2025-07-29</lastmod>
+    <lastmod>2025-07-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/services/web-scraping</loc>
-    <lastmod>2025-07-29</lastmod>
+    <lastmod>2025-07-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/services/data-integration</loc>
-    <lastmod>2025-07-29</lastmod>
+    <lastmod>2025-07-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/services/custom-solutions</loc>
-    <lastmod>2025-07-29</lastmod>
+    <lastmod>2025-07-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/case-studies</loc>
-    <lastmod>2025-02-15</lastmod>
+    <lastmod>2025-07-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
     <url>
-    <loc>https://www.icebergdata.co/case-study/retail/competitive-pricing-intelligence-for-dynamic-retail-pricing-boosting-sales-with-real-time-competitor-price-monitoring</loc>
+    <loc>https://www.icebergdata.co/case-study/car-rental/dynamic-pricing-intelligence-for-car-rentals-using-competitor-and-demand-signal-aggregation-maximizing-fleet-utilization-and-revenue-by-scraping-real-time-competitor-rates-and-local-demand-indicators</loc>
+    <lastmod>2025-07-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/car-rental/dynamic-pricing-intelligence-for-car-rental-fleet-optimization-how-real-time-competitor-price-scraping-unlocks-revenue-growth-and-optimizes-vehicle-distribution</loc>
+    <lastmod>2025-06-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/retail/dynamic-pricing-and-inventory-optimization-via-real-time-competitor-intelligence-how-a-major-electronics-retailer-increased-margins-by-8-12-using-automated-competitor-stock-and-price-monitoring</loc>
+    <lastmod>2025-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/car-rental/dynamic-pricing-intelligence-for-car-rentals-leveraging-competitor-rates-flight-data-and-local-events-to-maximize-fleet-revenue</loc>
+    <lastmod>2025-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/hotels/real-time-market-intelligence-for-predictive-hotel-occupancy-and-dynamic-pricing-leveraging-competitor-rates-flight-data-and-event-calendars-to-maximize-revenue-per-available-room-revpar</loc>
+    <lastmod>2025-05-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/e-commerce/dynamic-pricing-and-assortment-intelligence-for-e-commerce-dominance-leveraging-real-time-competitor-data-to-boost-margins-and-market-share-in-consumer-electronics</loc>
+    <lastmod>2025-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/car-rental/real-time-competitor-price-monitoring-for-dynamic-fleet-management-boosting-revenue-and-fleet-utilization-with-automated-competitor-data</loc>
+    <lastmod>2025-04-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/hotels/dynamic-occupancy-forecasting-with-real-time-competitor-and-event-monitoring-leveraging-web-scraped-ota-airline-and-event-data-to-maximize-revenue-per-available-room-revpar</loc>
+    <lastmod>2025-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/car-rental/real-time-competitive-pricing-and-fleet-optimization-for-car-rentals-leveraging-web-scraped-competitor-data-to-maximize-revenue-and-vehicle-utilization</loc>
+    <lastmod>2025-03-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/retail/real-time-competitor-price-and-stock-monitoring-for-dynamic-pricing-how-a-major-electronics-retailer-automated-competitive-intelligence-to-boost-margins-and-sales</loc>
+    <lastmod>2025-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/retail/dynamic-pricing-and-competitive-intelligence-for-e-commerce-dominance-leveraging-real-time-competitor-data-to-optimize-pricing-and-maximize-profit-margins-in-the-electronics-market</loc>
+    <lastmod>2025-03-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/e-commerce/dynamic-product-launch-strategy-via-competitor-and-market-intelligence-using-real-time-data-scraping-to-de-risk-new-product-introductions-for-e-commerce-brands</loc>
+    <lastmod>2025-03-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/car-rental/dynamic-fleet-and-pricing-optimization-for-car-rentals-leveraging-real-time-competitor-intelligence-to-maximize-revenue-and-vehicle-utilization</loc>
     <lastmod>2025-02-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/retail/retail-event-partnerships-via-public-community-calendar-scraping-increasing-store-traffic-by-aligning-with-local-gatherings</loc>
-    <lastmod>2025-01-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/retail/physical-store-layout-optimization-from-public-foot-traffic-data-scraping-community-published-traffic-patterns-to-improve-aisle-placement</loc>
-    <lastmod>2025-01-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/retail/enhancing-loyalty-programs-with-public-competitor-benchmarking-analyzing-reward-structures-displayed-on-rival-retail-sites</loc>
-    <lastmod>2024-12-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/retail/gaining-competitive-edge-real-time-pricing-and-product-intelligence-for-fashion-retailer-increased-sales-by-15-and-reduced-pricing-research-time-by-80-through-automated-competitor-monitoring</loc>
-    <lastmod>2024-12-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/retail/omnichannel-footfall-analysis-by-tracking-public-mentions-and-store-check-ins-aligning-digital-marketing-with-real-world-store-visits</loc>
-    <lastmod>2024-12-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/retail/optimizing-product-pricing-through-dynamic-competitor-price-tracking-leveraging-real-time-price-data-from-rival-retailers-to-enhance-pricing-strategies</loc>
-    <lastmod>2024-11-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/market-analytics/barrier-assessment-through-public-regulatory-sources-evaluating-compliance-hurdles-before-market-entry</loc>
-    <lastmod>2024-11-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/market-analytics/white-space-detection-by-tracking-public-brand-presence-uncovering-underserved-markets-through-competitor-location-listings</loc>
-    <lastmod>2024-11-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/market-analytics/marketing-communications-analysis-by-scraping-public-ad-campaigns-observing-competitor-ads-in-real-time-to-optimize-your-messaging</loc>
-    <lastmod>2024-10-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/market-analytics/price-sensitivity-analysis-using-public-competitor-offer-scraping-refining-price-points-by-monitoring-discount-trends</loc>
-    <lastmod>2024-10-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/lead-generation/cross-sector-lead-generation-from-public-business-directories-mining-company-profiles-to-identify-potential-joint-ventures</loc>
-    <lastmod>2024-10-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/lead-generation/high-level-b2b-lead-extraction-from-public-speaker-agendas-scraping-conference-schedules-to-connect-with-industry-thought-leaders</loc>
-    <lastmod>2024-10-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/lead-generation/targeted-lead-generation-from-public-government-tenders-scraping-rfp-and-rfq-portals-for-lucrative-b2b-opportunities</loc>
-    <lastmod>2024-09-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/lead-generation/b2b-lead-mining-from-public-webinar-and-workshop-listings-extracting-attendee-information-to-target-niche-leads</loc>
-    <lastmod>2024-08-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/ecommerce/digital-shelf-optimization-via-public-marketplace-scraping-tracking-keyword-rankings-and-competitor-products-to-boost-visibility</loc>
-    <lastmod>2024-08-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/ecommerce/reducing-returns-by-scraping-public-complaints-tracking-why-customers-return-items-through-forums-and-review-posts</loc>
-    <lastmod>2024-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/ecommerce/personalized-recommendation-engine-via-public-review-scraping-extracting-user-sentiments-to-refine-e-commerce-product-recommendations</loc>
-    <lastmod>2024-07-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/ecommerce/cross-border-price-optimization-through-public-duty-and-tax-data-scraping-customs-websites-for-up-to-date-fees-ensuring-competitive-global-pricing</loc>
-    <lastmod>2024-06-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/hotels/ota-commission-optimization-through-public-price-and-fee-scraping-comparing-ota-fee-structures-to-fine-tune-hotel-channel-mix</loc>
-    <lastmod>2024-06-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/hotels/chatbot-conversation-analysis-via-public-forum-feedback-mining-traveler-discussions-to-refine-in-hotel-chatbot-responses</loc>
-    <lastmod>2024-05-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/hotels/chatbot-conversation-analysis-via-public-forum-feedback-mining-traveler-discussions-to-refine-in-hotel-chatbot-responses</loc>
-    <lastmod>2024-03-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/hotels/ratings-aggregation-from-public-ota-listings-centralizing-guest-feedback-to-enhance-hotel-offerings</loc>
-    <lastmod>2023-12-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/hotels/housekeeping-performance-via-public-review-scraping-collecting-comments-on-cleanliness-to-streamline-hotel-room-turnover</loc>
-    <lastmod>2023-10-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/car-rental/customer-segmentation-via-public-rental-activity-scraping-shared-bookings-and-trip-data-to-identify-high-value-corporate-clients</loc>
-    <lastmod>2023-09-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/car-rental/payment-flow-reconciliation-with-competitor-rate-scraping-linking-publicly-posted-rental-rates-to-ensure-billing-accuracy</loc>
-    <lastmod>2023-09-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/car-rental/mobile-app-feedback-insights-via-public-scraping-gathering-user-reviews-and-ratings-for-feature-optimization</loc>
-    <lastmod>2023-08-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/car-rental/competitive-fleet-rotation-using-public-rental-listings-scraping-competitor-webpages-to-optimize-vehicle-distribution</loc>
-    <lastmod>2023-07-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/lead-generation/social-media-insights-for-b2b-leads-extracting-data-from-platforms-like-linkedin-to-identify-high-potential-prospects</loc>
-    <lastmod>2023-06-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/lead-generation/industry-specific-lead-harvesting-targeted-lead-generation-for-niche-markets</loc>
-    <lastmod>2023-06-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/lead-generation/automated-contact-information-extraction-scraping-websites-and-directories-for-lead-generation</loc>
-    <lastmod>2023-06-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/ecommerce/customer-sentiment-analysis-for-product-optimization-gathering-and-analyzing-consumer-reviews-to-inform-product-development</loc>
-    <lastmod>2023-05-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/ecommerce/product-availability-monitoring-for-trend-analysis-tracking-competitors-stock-levels-to-identify-scarce-or-popular-items</loc>
-    <lastmod>2023-05-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/ecommerce/price-comparison-engine-for-competitive-e-commerce-strategy-scraping-competitor-prices-to-adjust-promotions-and-maintain-market-share</loc>
-    <lastmod>2023-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/hotels/review-aggregation-for-real-time-customer-experience-insights-collecting-and-analyzing-reviews-from-platforms-like-tripadvisor</loc>
-    <lastmod>2023-04-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/hotels/competitor-analysis-for-enhanced-amenities-and-service-packages-monitoring-amenities-packages-and-policies-to-differentiate-offerings</loc>
-    <lastmod>2023-04-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/hotels/real-time-rate-comparison-for-yield-optimization-monitoring-room-rates-across-multiple-booking-platforms</loc>
-    <lastmod>2023-02-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/car-rental/user-review-mining-and-sentiment-analysis-leveraging-customer-feedback-for-service-enhancement</loc>
-    <lastmod>2023-02-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/car-rental/dynamic-price-monitoring-for-competitive-advantage-real-time-competitor-pricing-analysis-for-car-rental-platforms</loc>
-    <lastmod>2023-01-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.icebergdata.co/case-study/car-rental/fleet-inventory-scraping-for-demand-forecasting-monitoring-vehicle-availability-to-optimize-fleet-management</loc>
-    <lastmod>2023-01-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
