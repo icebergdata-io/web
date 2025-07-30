@@ -3,28 +3,30 @@
  */
 
 /**
- * Gets the total number of case study files by checking the cases directory
+ * Gets the case study index data
+ * @returns {Promise<Object>} The case study index
+ */
+async function getCaseStudyIndex() {
+  try {
+    const response = await fetch('/articles/cases/index.json');
+    if (response.ok) {
+      return await response.json();
+    }
+    throw new Error('Failed to load case study index');
+  } catch (error) {
+    console.error('Error loading case study index:', error);
+    return { total: 0, caseStudies: [] };
+  }
+}
+
+/**
+ * Gets the total number of case study files
  * @returns {Promise<number>} The number of case study files
  */
 export async function getCaseStudyCount() {
   try {
-    // Start from 1 and keep checking until we find a missing file
-    let count = 0;
-    for (let i = 1; i <= 1000; i++) { // Reasonable upper limit
-      try {
-        const response = await fetch(`/articles/cases/${i}.json`);
-        if (response.ok) {
-          count = i;
-        } else {
-          // Found the first missing file, stop counting
-          break;
-        }
-      } catch (error) {
-        // Found the first missing file, stop counting
-        break;
-      }
-    }
-    return count;
+    const index = await getCaseStudyIndex();
+    return index.total;
   } catch (error) {
     console.error('Error getting case study count:', error);
     return 0;
@@ -32,21 +34,20 @@ export async function getCaseStudyCount() {
 }
 
 /**
- * Gets all case study data up to the specified count
- * @param {number} maxCount - Maximum number of case studies to fetch
+ * Gets all case study data
  * @returns {Promise<Array>} Array of case study objects
  */
-export async function getAllCaseStudies(maxCount = null) {
+export async function getAllCaseStudies() {
   try {
-    const count = maxCount || await getCaseStudyCount();
+    const index = await getCaseStudyIndex();
     const studies = [];
     
-    for (let i = 1; i <= count; i++) {
+    for (const caseStudy of index.caseStudies) {
       try {
-        const response = await fetch(`/articles/cases/${i}.json`);
+        const response = await fetch(`/articles/cases/${caseStudy.id}.json`);
         if (response.ok) {
           const data = await response.json();
-          studies.push({ id: i, ...data });
+          studies.push({ id: caseStudy.id, ...data });
         }
       } catch (error) {
         // Skip case studies that can't be loaded
@@ -69,24 +70,20 @@ export async function getAllCaseStudies(maxCount = null) {
  */
 export async function findCaseStudyBySlug(sector, slug) {
   try {
-    const count = await getCaseStudyCount();
+    const index = await getCaseStudyIndex();
     
-    for (let i = 1; i <= count; i++) {
-      try {
-        const response = await fetch(`/articles/cases/${i}.json`);
-        if (response.ok) {
-          const data = await response.json();
-          const { slugify } = await import('./slugify.js');
-          const currentSlug = slugify(`${data.Title}-${data.Subtitle}`);
-          const currentSector = slugify(data.Sector);
-          
-          if (currentSlug === slug && currentSector === sector) {
-            return { id: i, ...data };
+    for (const caseStudy of index.caseStudies) {
+      if (caseStudy.sector === sector && caseStudy.slug === slug) {
+        try {
+          const response = await fetch(`/articles/cases/${caseStudy.id}.json`);
+          if (response.ok) {
+            const data = await response.json();
+            return { id: caseStudy.id, ...data };
           }
+        } catch (error) {
+          // Skip case studies that can't be loaded
+          continue;
         }
-      } catch (error) {
-        // Skip case studies that can't be loaded
-        continue;
       }
     }
     

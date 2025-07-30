@@ -29,40 +29,74 @@ const servicePages = [
   }
 ];
 
+async function generateCaseStudyIndex() {
+  console.log('📚 Generating case study index...');
+  
+  try {
+    const files = fs.readdirSync(casesDir)
+      .filter(file => file.endsWith('.json'))
+      .sort((a, b) => {
+        const numA = parseInt(a.match(/\d+/)[0]);
+        const numB = parseInt(b.match(/\d+/)[0]);
+        return numA - numB;
+      });
+
+    const caseStudies = [];
+
+    // Process each case study
+    for (const file of files) {
+      const content = fs.readFileSync(path.join(casesDir, file), 'utf8');
+      const caseData = JSON.parse(content);
+      const sectorSlug = slugify(caseData.Sector);
+      const titleSlug = slugify(`${caseData.Title}-${caseData.Subtitle}`);
+      const id = parseInt(file.match(/\d+/)[0]);
+      
+      caseStudies.push({
+        id,
+        sector: sectorSlug,
+        slug: titleSlug,
+        title: caseData.Title,
+        subtitle: caseData.Subtitle,
+        sectorName: caseData.Sector,
+        publicationDate: caseData.publicationDate
+      });
+    }
+
+    // Sort by publication date (newest first)
+    caseStudies.sort((a, b) => {
+      if (!a.publicationDate && !b.publicationDate) return 0;
+      if (!a.publicationDate) return 1;
+      if (!b.publicationDate) return -1;
+      return new Date(b.publicationDate) - new Date(a.publicationDate);
+    });
+
+    // Write index file
+    const indexPath = path.join(casesDir, 'index.json');
+    fs.writeFileSync(indexPath, JSON.stringify({
+      total: caseStudies.length,
+      caseStudies
+    }, null, 2));
+
+    console.log(`✅ Generated case study index with ${caseStudies.length} case studies`);
+    return caseStudies;
+  } catch (error) {
+    console.error('❌ Error generating case study index:', error);
+    return [];
+  }
+}
+
 async function generateSitemap() {
   console.log('🔄 Generating sitemap...');
   
-  // Get all case study files
-  const caseStudies = [];
-  const files = fs.readdirSync(casesDir)
-    .filter(file => file.endsWith('.json'))
-    .sort((a, b) => {
-      const numA = parseInt(a.match(/\d+/)[0]);
-      const numB = parseInt(b.match(/\d+/)[0]);
-      return numA - numB;
-    });
-
-  // Process each case study
-  for (const file of files) {
-    const content = fs.readFileSync(path.join(casesDir, file), 'utf8');
-    const caseData = JSON.parse(content);
-    const sectorSlug = slugify(caseData.Sector);
-    const titleSlug = slugify(`${caseData.Title}-${caseData.Subtitle}`);
-    
-    // Use the publication date from the case study
-    caseStudies.push({
-      sector: sectorSlug,
-      slug: titleSlug,
-      lastmod: caseData.publicationDate
-    });
-  }
-
+  // Generate case study index first
+  const caseStudies = await generateCaseStudyIndex();
+  
   // Sort case studies by publication date (newest first)
-  caseStudies.sort((a, b) => {
-    if (!a.lastmod && !b.lastmod) return 0;
-    if (!a.lastmod) return 1;
-    if (!b.lastmod) return -1;
-    return new Date(b.lastmod) - new Date(a.lastmod);
+  const sortedCaseStudies = caseStudies.sort((a, b) => {
+    if (!a.publicationDate && !b.publicationDate) return 0;
+    if (!a.publicationDate) return 1;
+    if (!b.publicationDate) return -1;
+    return new Date(b.publicationDate) - new Date(a.publicationDate);
   });
 
   const today = new Date().toISOString().split('T')[0];
@@ -90,13 +124,13 @@ async function generateSitemap() {
   </url>`).join('\n')}
   <url>
     <loc>${BASE_URL}/case-studies</loc>
-    <lastmod>${caseStudies[0]?.lastmod || today}</lastmod>
+    <lastmod>${sortedCaseStudies[0]?.publicationDate || today}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-  ${caseStudies.map(study => `  <url>
+  ${sortedCaseStudies.map(study => `  <url>
     <loc>${BASE_URL}/case-study/${study.sector}/${study.slug}</loc>
-    <lastmod>${study.lastmod || today}</lastmod>
+    <lastmod>${study.publicationDate || today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>`).join('\n')}

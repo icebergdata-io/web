@@ -26,7 +26,7 @@ const CaseStudy = () => {
         console.log(`🔍 Looking for case study with sector: ${sector}, slug: ${slug}`);
         
         const caseData = await findCaseStudyBySlug(sector, slug);
-        
+          
         if (caseData) {
           console.log(`✅ Found matching case study: ${caseData.id}`);
           setCaseData(caseData);

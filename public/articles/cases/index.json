@@ -1,0 +1,122 @@
+{
+  "total": 13,
+  "caseStudies": [
+    {
+      "id": 6,
+      "sector": "car-rental",
+      "slug": "dynamic-pricing-intelligence-for-car-rentals-using-competitor-and-demand-signal-aggregation-maximizing-fleet-utilization-and-revenue-by-scraping-real-time-competitor-rates-and-local-demand-indicators",
+      "title": "Dynamic Pricing Intelligence for Car Rentals Using Competitor and Demand Signal Aggregation",
+      "subtitle": "Maximizing Fleet Utilization and Revenue by Scraping Real-Time Competitor Rates and Local Demand Indicators",
+      "sectorName": "Car Rental",
+      "publicationDate": "2025-07-18"
+    },
+    {
+      "id": 5,
+      "sector": "car-rental",
+      "slug": "dynamic-pricing-intelligence-for-car-rental-fleet-optimization-how-real-time-competitor-price-scraping-unlocks-revenue-growth-and-optimizes-vehicle-distribution",
+      "title": "Dynamic Pricing Intelligence for Car Rental Fleet Optimization",
+      "subtitle": "How Real-Time Competitor Price Scraping Unlocks Revenue Growth and Optimizes Vehicle Distribution",
+      "sectorName": "Car Rental",
+      "publicationDate": "2025-06-03"
+    },
+    {
+      "id": 12,
+      "sector": "retail",
+      "slug": "dynamic-pricing-and-inventory-optimization-via-real-time-competitor-intelligence-how-a-major-electronics-retailer-increased-margins-by-8-12-using-automated-competitor-stock-and-price-monitoring",
+      "title": "Dynamic Pricing & Inventory Optimization via Real-Time Competitor Intelligence",
+      "subtitle": "How a Major Electronics Retailer Increased Margins by 8-12% Using Automated Competitor Stock and Price Monitoring",
+      "sectorName": "Retail",
+      "publicationDate": "2025-05-26"
+    },
+    {
+      "id": 4,
+      "sector": "car-rental",
+      "slug": "dynamic-pricing-intelligence-for-car-rentals-leveraging-competitor-rates-flight-data-and-local-events-to-maximize-fleet-revenue",
+      "title": "Dynamic Pricing Intelligence for Car Rentals",
+      "subtitle": "Leveraging Competitor Rates, Flight Data, and Local Events to Maximize Fleet Revenue",
+      "sectorName": "Car Rental",
+      "publicationDate": "2025-05-12"
+    },
+    {
+      "id": 9,
+      "sector": "hotels",
+      "slug": "real-time-market-intelligence-for-predictive-hotel-occupancy-and-dynamic-pricing-leveraging-competitor-rates-flight-data-and-event-calendars-to-maximize-revenue-per-available-room-revpar",
+      "title": "Real-Time Market Intelligence for Predictive Hotel Occupancy & Dynamic Pricing",
+      "subtitle": "Leveraging Competitor Rates, Flight Data, and Event Calendars to Maximize Revenue Per Available Room (RevPAR)",
+      "sectorName": "Hotels",
+      "publicationDate": "2025-05-10"
+    },
+    {
+      "id": 8,
+      "sector": "e-commerce",
+      "slug": "dynamic-pricing-and-assortment-intelligence-for-e-commerce-dominance-leveraging-real-time-competitor-data-to-boost-margins-and-market-share-in-consumer-electronics",
+      "title": "Dynamic Pricing & Assortment Intelligence for E-commerce Dominance",
+      "subtitle": "Leveraging Real-Time Competitor Data to Boost Margins and Market Share in Consumer Electronics",
+      "sectorName": "E-commerce",
+      "publicationDate": "2025-04-25"
+    },
+    {
+      "id": 3,
+      "sector": "car-rental",
+      "slug": "real-time-competitor-price-monitoring-for-dynamic-fleet-management-boosting-revenue-and-fleet-utilization-with-automated-competitor-data",
+      "title": "Real-Time Competitor Price Monitoring for Dynamic Fleet Management",
+      "subtitle": "Boosting Revenue and Fleet Utilization with Automated Competitor Data",
+      "sectorName": "Car Rental",
+      "publicationDate": "2025-04-08"
+    },
+    {
+      "id": 10,
+      "sector": "hotels",
+      "slug": "dynamic-occupancy-forecasting-with-real-time-competitor-and-event-monitoring-leveraging-web-scraped-ota-airline-and-event-data-to-maximize-revenue-per-available-room-revpar",
+      "title": "Dynamic Occupancy Forecasting with Real-Time Competitor & Event Monitoring",
+      "subtitle": "Leveraging Web-Scraped OTA, Airline, and Event Data to Maximize Revenue Per Available Room (RevPAR)",
+      "sectorName": "Hotels",
+      "publicationDate": "2025-03-31"
+    },
+    {
+      "id": 2,
+      "sector": "car-rental",
+      "slug": "real-time-competitive-pricing-and-fleet-optimization-for-car-rentals-leveraging-web-scraped-competitor-data-to-maximize-revenue-and-vehicle-utilization",
+      "title": "Real-Time Competitive Pricing & Fleet Optimization for Car Rentals",
+      "subtitle": "Leveraging Web-Scraped Competitor Data to Maximize Revenue and Vehicle Utilization",
+      "sectorName": "Car Rental",
+      "publicationDate": "2025-03-22"
+    },
+    {
+      "id": 13,
+      "sector": "retail",
+      "slug": "real-time-competitor-price-and-stock-monitoring-for-dynamic-pricing-how-a-major-electronics-retailer-automated-competitive-intelligence-to-boost-margins-and-sales",
+      "title": "Real-Time Competitor Price & Stock Monitoring for Dynamic Pricing",
+      "subtitle": "How a Major Electronics Retailer Automated Competitive Intelligence to Boost Margins and Sales",
+      "sectorName": "Retail",
+      "publicationDate": "2025-03-21"
+    },
+    {
+      "id": 11,
+      "sector": "retail",
+      "slug": "dynamic-pricing-and-competitive-intelligence-for-e-commerce-dominance-leveraging-real-time-competitor-data-to-optimize-pricing-and-maximize-profit-margins-in-the-electronics-market",
+      "title": "Dynamic Pricing & Competitive Intelligence for E-commerce Dominance",
+      "subtitle": "Leveraging Real-Time Competitor Data to Optimize Pricing and Maximize Profit Margins in the Electronics Market",
+      "sectorName": "Retail",
+      "publicationDate": "2025-03-15"
+    },
+    {
+      "id": 7,
+      "sector": "e-commerce",
+      "slug": "dynamic-product-launch-strategy-via-competitor-and-market-intelligence-using-real-time-data-scraping-to-de-risk-new-product-introductions-for-e-commerce-brands",
+      "title": "Dynamic Product Launch Strategy via Competitor & Market Intelligence",
+      "subtitle": "Using Real-Time Data Scraping to De-risk New Product Introductions for E-commerce Brands",
+      "sectorName": "E-commerce",
+      "publicationDate": "2025-03-05"
+    },
+    {
+      "id": 1,
+      "sector": "car-rental",
+      "slug": "dynamic-fleet-and-pricing-optimization-for-car-rentals-leveraging-real-time-competitor-intelligence-to-maximize-revenue-and-vehicle-utilization",
+      "title": "Dynamic Fleet & Pricing Optimization for Car Rentals",
+      "subtitle": "Leveraging Real-Time Competitor Intelligence to Maximize Revenue and Vehicle Utilization",
+      "sectorName": "Car Rental",
+      "publicationDate": "2025-02-15"
+    }
+  ]
+}
