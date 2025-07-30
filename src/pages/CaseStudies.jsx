@@ -97,7 +97,7 @@ const CaseStudies = () => {
                 {studies.map((study) => (
                   <Link
                     key={study.id}
-                    to={`/case-study/${study.sectorSlug}/${study.slug}`}
+                    to={`/case-study/${study.sectorSlug}/${study.slug}#header`}
                     className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
                   >
                     <div className="flex flex-col h-full">

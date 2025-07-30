@@ -51,6 +51,32 @@ const CaseStudy = () => {
     }
   }, [loading, caseData, navigate]);
 
+  useEffect(() => {
+    // Handle scroll to header when navigating from case studies list
+    if (caseData && window.location.hash === '#header') {
+      const headerElement = document.getElementById('case-study-header');
+      if (headerElement) {
+        // Small delay to ensure the page is fully rendered
+        setTimeout(() => {
+          const navbarHeight = window.innerWidth >= 768 ? 96 : 80; // Account for navbar height
+          const elementTop = headerElement.offsetTop - navbarHeight;
+          
+          window.scrollTo({
+            top: elementTop,
+            behavior: 'smooth'
+          });
+          
+          // Clear the hash after scrolling to prevent issues with browser back button
+          setTimeout(() => {
+            if (window.location.hash === '#header') {
+              window.history.replaceState(null, null, window.location.pathname);
+            }
+          }, 1000);
+        }, 100);
+      }
+    }
+  }, [caseData]);
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -107,7 +133,7 @@ const CaseStudy = () => {
       
       <div className="min-h-screen pt-24 pb-12 bg-gradient-to-b from-white to-light-50">
         <div className="max-w-4xl mx-auto px-4">
-          <div className="mb-12">
+          <div id="case-study-header" className="mb-12">
             <div className="text-sm text-primary-600 mb-2">{caseData.Sector}</div>
             <h1 className="text-4xl md:text-5xl font-display font-bold text-dark-900 mb-4">
               {caseData.Title}
