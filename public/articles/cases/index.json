@@ -1,5 +1,5 @@
 {
-  "total": 66,
+  "total": 78,
   "caseStudies": [
     {
       "id": 14,
@@ -9,6 +9,15 @@
       "subtitle": "Leveraging public review data to pinpoint and resolve recurring food quality issues like temperature and texture upon arrival.",
       "sectorName": "Food Delivery",
       "publicationDate": "2025-07-29"
+    },
+    {
+      "id": 94,
+      "sector": "consumer-electronics",
+      "slug": "decoding-competitor-total-cost-of-ownership-to-capture-price-sensitive-consumers-leveraging-web-scraping-to-automate-the-analysis-of-shipping-fees-mandatory-add-ons-and-bundled-product-pricing",
+      "title": "Decoding Competitor Total Cost of Ownership to Capture Price-Sensitive Consumers",
+      "subtitle": "Leveraging Web Scraping to Automate the Analysis of Shipping Fees, Mandatory Add-ons, and Bundled Product Pricing",
+      "sectorName": "Consumer Electronics",
+      "publicationDate": "2025-07-28"
     },
     {
       "id": 13,
@@ -54,6 +63,15 @@
       "subtitle": "Transforming Reverse Logistics with Real-Time Data from Third-Party Carrier Portals",
       "sectorName": "Retail",
       "publicationDate": "2025-07-09"
+    },
+    {
+      "id": 78,
+      "sector": "lead-generation",
+      "slug": "generating-high-value-b2b-leads-by-predicting-component-end-of-life-from-oem-manuals-how-a-specialty-components-supplier-used-web-scraping-to-identify-businesses-facing-critical-parts-obsolescence-turning-a-supply-chain-risk-into-a-proactive-sales-opportunity",
+      "title": "Generating High-Value B2B Leads by Predicting Component End-of-Life from OEM Manuals",
+      "subtitle": "How a specialty components supplier used web scraping to identify businesses facing critical parts obsolescence, turning a supply chain risk into a proactive sales opportunity.",
+      "sectorName": "Lead Generation",
+      "publicationDate": "2025-07-05"
     },
     {
       "id": 2,
@@ -179,6 +197,15 @@
       "title": "Capturing Long-Tail Surges: How Forum Scraping Boosted Hobbyist Sales by 35%",
       "subtitle": "Using Natural Language Processing on enthusiast community data to predict demand for niche products before they trend, transforming inventory management.",
       "sectorName": "E-commerce",
+      "publicationDate": "2025-04-26"
+    },
+    {
+      "id": 85,
+      "sector": "lead-generation",
+      "slug": "from-forum-lurkers-to-lead-magnets-identifying-high-conversion-influencers-through-community-authority-scraping-how-a-high-end-camera-gear-brand-moved-beyond-vanity-metrics-to-find-authentic-advocates-boosting-campaign-roi-by-75",
+      "title": "From Forum Lurkers to Lead Magnets: Identifying High-Conversion Influencers Through Community Authority Scraping",
+      "subtitle": "How a high-end camera gear brand moved beyond vanity metrics to find authentic advocates, boosting campaign ROI by 75%.",
+      "sectorName": "Lead Generation",
       "publicationDate": "2025-04-26"
     },
     {
@@ -308,6 +335,15 @@
       "publicationDate": "2024-11-13"
     },
     {
+      "id": 95,
+      "sector": "consumer-electronics",
+      "slug": "closing-the-innovation-gap-how-nlp-on-customer-reviews-drove-a-40-product-rating-increase-leveraging-large-scale-review-analysis-to-transform-a-stagnant-product-into-a-market-leader",
+      "title": "Closing the Innovation Gap: How NLP on Customer Reviews Drove a 40% Product Rating Increase",
+      "subtitle": "Leveraging Large-Scale Review Analysis to Transform a Stagnant Product into a Market Leader",
+      "sectorName": "Consumer Electronics",
+      "publicationDate": "2024-11-02"
+    },
+    {
       "id": 70,
       "sector": "car-rental",
       "slug": "decoding-dwelling-time-how-geospatial-data-reshaped-an-airport-rental-counter-layout-to-boost-upsells-by-18-leveraging-foot-traffic-and-customer-pathing-data-to-optimize-high-margin-product-placement-and-reduce-queue-abandonment-at-major-airport-hubs",
@@ -360,6 +396,15 @@
       "subtitle": "Using Sentiment Analysis of Forum and Review Data to Validate a Brand's Ethical Repositioning",
       "sectorName": "Retail",
       "publicationDate": "2024-07-27"
+    },
+    {
+      "id": 80,
+      "sector": "lead-generation",
+      "slug": "from-frustration-to-conversion-generating-high-intent-b2b-leads-by-monitoring-competitor-pain-points-leveraging-sentiment-analysis-of-public-forums-and-review-sites-to-identify-qualified-leads-ready-to-switch-solutions",
+      "title": "From Frustration to Conversion: Generating High-Intent B2B Leads by Monitoring Competitor Pain Points",
+      "subtitle": "Leveraging sentiment analysis of public forums and review sites to identify qualified leads ready to switch solutions",
+      "sectorName": "Lead Generation",
+      "publicationDate": "2024-07-23"
     },
     {
       "id": 69,
@@ -425,6 +470,24 @@
       "publicationDate": "2024-02-29"
     },
     {
+      "id": 82,
+      "sector": "lead-generation",
+      "slug": "transforming-lead-quality-how-sentiment-analysis-uncovered-high-intent-b2b-prospects-enriching-crm-data-with-public-forum-and-review-insights-to-prioritize-and-convert-leads",
+      "title": "Transforming Lead Quality: How Sentiment Analysis Uncovered High-Intent B2B Prospects",
+      "subtitle": "Enriching CRM data with public forum and review insights to prioritize and convert leads.",
+      "sectorName": "Lead Generation",
+      "publicationDate": "2024-02-23"
+    },
+    {
+      "id": 90,
+      "sector": "market-intelligence",
+      "slug": "achieving-market-integrity-by-automating-competitor-health-claim-compliance-audits-using-web-scraping-and-nlp-to-monitor-and-flag-non-compliant-marketing-language-in-the-nutraceuticals-industry",
+      "title": "Achieving Market Integrity by Automating Competitor Health Claim Compliance Audits",
+      "subtitle": "Using Web Scraping and NLP to Monitor and Flag Non-Compliant Marketing Language in the Nutraceuticals Industry",
+      "sectorName": "Market Intelligence",
+      "publicationDate": "2024-02-05"
+    },
+    {
       "id": 53,
       "sector": "retail",
       "slug": "unlocking-hidden-revenue-dynamic-bundle-pricing-based-on-real-time-competitor-stockouts-leveraging-competitor-inventory-gaps-to-maximize-average-order-value-for-an-electronics-retailer",
@@ -452,6 +515,15 @@
       "publicationDate": "2023-11-30"
     },
     {
+      "id": 86,
+      "sector": "lead-generation",
+      "slug": "proactive-lead-generation-identifying-distressed-shippers-by-monitoring-global-port-and-carrier-data-how-a-3pl-provider-increased-qualified-leads-by-40-using-targeted-web-scraping-of-supply-chain-disruptions",
+      "title": "Proactive Lead Generation: Identifying Distressed Shippers by Monitoring Global Port & Carrier Data",
+      "subtitle": "How a 3PL Provider Increased Qualified Leads by 40% Using Targeted Web Scraping of Supply Chain Disruptions",
+      "sectorName": "Lead Generation",
+      "publicationDate": "2023-10-12"
+    },
+    {
       "id": 46,
       "sector": "ecommerce",
       "slug": "from-noise-to-signal-pinpointing-micro-influencers-with-organic-brand-advocacy-scoring-how-a-dtc-coffee-brand-grew-its-community-by-identifying-authentic-voices-in-niche-markets",
@@ -459,6 +531,15 @@
       "subtitle": "How a DTC Coffee Brand Grew Its Community by Identifying Authentic Voices in Niche Markets",
       "sectorName": "Ecommerce",
       "publicationDate": "2023-09-19"
+    },
+    {
+      "id": 88,
+      "sector": "home-services-and-repair",
+      "slug": "pinpointing-service-deserts-expanding-a-premium-appliance-repair-business-into-untapped-markets-using-geospatial-data-and-competitor-analysis-to-identify-high-demand-low-supply-regions-for-specialized-services",
+      "title": "Pinpointing Service Deserts: Expanding a Premium Appliance Repair Business into Untapped Markets",
+      "subtitle": "Using Geospatial Data and Competitor Analysis to Identify High-Demand, Low-Supply Regions for Specialized Services",
+      "sectorName": "Home Services & Repair",
+      "publicationDate": "2023-09-09"
     },
     {
       "id": 49,
@@ -488,6 +569,15 @@
       "publicationDate": "2023-08-27"
     },
     {
+      "id": 84,
+      "sector": "lead-generation",
+      "slug": "mitigating-tcpa-risk-proactive-lead-funnel-sanitization-by-monitoring-do-not-call-and-litigator-databases-how-a-financial-services-lead-aggregator-used-automated-data-scraping-to-prevent-costly-compliance-violations-and-safely-scale-operations",
+      "title": "Mitigating TCPA Risk: Proactive Lead Funnel Sanitization by Monitoring 'Do Not Call' & Litigator Databases",
+      "subtitle": "How a financial services lead aggregator used automated data scraping to prevent costly compliance violations and safely scale operations.",
+      "sectorName": "Lead Generation",
+      "publicationDate": "2023-07-14"
+    },
+    {
       "id": 66,
       "sector": "airlines",
       "slug": "boosting-ancillary-revenue-by-18-with-real-time-event-driven-upgrade-pricing-how-a-major-airline-leveraged-real-time-event-hotel-and-competitor-data-to-dynamically-price-last-minute-seat-upgrades-and-maximize-cabin-yield",
@@ -504,6 +594,15 @@
       "subtitle": "How a major car rental agency automated the monitoring of Low-Emission Zone regulations across 50+ European cities to ensure 100% booking compliance.",
       "sectorName": "Car Rental",
       "publicationDate": "2023-06-21"
+    },
+    {
+      "id": 79,
+      "sector": "lead-generation",
+      "slug": "solving-lead-cannibalization-dynamic-pricing-based-on-competitor-service-area-saturation-using-web-scraped-service-maps-and-local-ads-to-inform-a-fair-value-lead-pricing-engine",
+      "title": "Solving Lead Cannibalization: Dynamic Pricing Based on Competitor Service Area Saturation",
+      "subtitle": "Using Web-Scraped Service Maps and Local Ads to Inform a Fair-Value Lead Pricing Engine",
+      "sectorName": "Lead Generation",
+      "publicationDate": "2023-06-17"
     },
     {
       "id": 57,
@@ -558,6 +657,15 @@
       "subtitle": "How a Boutique Hotel Group Used Web-Scraped Data to Find Untapped Markets for Health-Conscious Travelers",
       "sectorName": "Hotels",
       "publicationDate": "2023-05-02"
+    },
+    {
+      "id": 87,
+      "sector": "market-intelligence",
+      "slug": "pinpointing-profitable-land-parcels-for-eco-home-development-using-geospatial-and-regulatory-data-scraping-how-a-modular-construction-firm-leveraged-web-data-to-de-risk-a-50m-expansion-plan-by-automating-site-selection-intelligence",
+      "title": "Pinpointing Profitable Land Parcels for Eco-Home Development Using Geospatial & Regulatory Data Scraping",
+      "subtitle": "How a modular construction firm leveraged web data to de-risk a $50M expansion plan by automating site selection intelligence.",
+      "sectorName": "Market Intelligence",
+      "publicationDate": "2023-04-14"
     },
     {
       "id": 72,

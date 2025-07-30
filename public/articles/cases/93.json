@@ -1,0 +1,45 @@
+{
+  "Title": "Mapping the Journey Chasm: How Pathing Analysis Increased Accessory Sales by 22%",
+  "Subtitle": "Using Scraped Store Schematics and Anonymized Foot Traffic Data to Redesign High-Friction Customer Pathways in Electronics Retail",
+  "Business Impact": "Identified a critical 'journey chasm' between high-value products and their accessories, leading to a pilot store redesign that boosted accessory sales by 22% and increased average transaction value by 5%.",
+  "Sector": "Retail (Electronics)",
+  "What data was collected": "Publicly available store layout schematics (PDFs and PNGs) from the client's corporate website, and third-party aggregated, anonymized Wi-Fi signal data to model foot traffic paths and calculate zone-specific dwell times.",
+  "Why this matters": "Standard heatmaps show where customers congregate, but pathing analysis reveals how they move between zones. This uncovers hidden friction points, such as inconvenient layouts that discourage purchases of complementary, high-margin items.",
+  "Implementation time": "12 to 14 weeks. This included scraping and digitizing 50+ store schematics, integrating the pathing data via APIs, and developing a journey visualization dashboard.",
+  "Problems this solves": "1) Declining sales in high-margin categories like accessories, despite strong core product sales. 2) Inability to understand the 'why' behind customer movement patterns. 3) Ineffective store layouts that create a physical disconnect between logically related products.",
+  "Why it was better to outsource this solution": "Scraping and interpreting visual data like store maps requires specialized Optical Character Recognition (OCR) and image analysis pipelines. Correlating this with massive, anonymized geospatial signal datasets from third-party providers is a complex data engineering task that falls outside the scope of typical in-house BI teams.",
+  "Example_Input_JSON": {
+    "client_id": "nat-elec-456",
+    "job_type": "customer_journey_analysis",
+    "stores": [
+      {
+        "store_id": "us-ca-90210",
+        "layout_url": "https://example-client.com/stores/90210/layout.pdf"
+      },
+      {
+        "store_id": "us-ny-10001",
+        "layout_url": "https://example-client.com/stores/10001/layout.png"
+      }
+    ]
+  },
+  "Example_Output_JSON": {
+    "report_id": "cj-report-elec-001",
+    "store_id": "us-ca-90210",
+    "analysis_period": "2024-Q4",
+    "key_findings": [
+      {
+        "finding_type": "JOURNEY_CHASM",
+        "from_zone": "Mobile Phones Display",
+        "to_zone": "Dedicated Accessories Aisle",
+        "direct_transition_rate": 0.04,
+        "from_zone_avg_dwell_seconds": 245,
+        "to_zone_avg_dwell_seconds": 35,
+        "insight": "Over 95% of customers visiting the Mobile Phones display do not proceed to the Accessories Aisle, indicating a significant journey disconnect.",
+        "recommendation": "Co-locate mobile accessories (cases, screen protectors) directly adjacent to the Mobile Phones display to create a unified 'Mobile Ecosystem' zone."
+      }
+    ]
+  },
+  "Matching algorithm used to integrate the data": "A proprietary algorithm combined Optical Character Recognition (OCR) and image segmentation to parse store layout files (PDFs/PNGs) into digital polygons representing key zones ('Mobile Phones', 'Laptops', 'Checkout'). These polygons were then georeferenced. Anonymized foot traffic path data from a third-party aggregator was mapped onto these zones, and a sequence analysis model was used to calculate transition probabilities and average dwell times for each defined area.",
+  "Story": "<p>Our client, a leading national electronics retailer, approached us with a frustrating paradox. Sales of their flagship products—smartphones, laptops, and gaming consoles—were robust. Yet, sales of high-margin accessories like premium cases, chargers, and headphones were declining by nearly 15% year-over-year. The prevailing theory internally was that customers were simply buying these smaller items online from competitors after purchasing the main device in-store. They believed it was an unavoidable cost of doing business in the modern age. We proposed a different hypothesis: the problem wasn't just external competition, but internal friction created by the very layout of their stores.</p><p>We theorized that while their stores generated high foot traffic, the customer journey was broken. Customers were forced to navigate from the exciting, high-tech product displays to a generic, often overlooked 'Accessory Aisle' located in a completely different part of the store. This created a 'journey chasm'—a point of friction where the motivation to make a secondary purchase dissipated. To prove this, our team at Iceberg Data initiated a comprehensive customer pathing analysis.</p><p><strong>Our first step was to build a digital twin of their physical stores.</strong> We deployed our web scraping engine to systematically collect the store layout schematics—mostly PDFs and image files—from the client's own public website for their top 50 performing locations. Our data processing pipeline then used a combination of Optical Character Recognition (OCR) and image analysis to identify and digitize the key sales zones within each map. We created precise polygonal boundaries for areas like 'Mobile Phones Display,' 'Laptop Tables,' 'Gaming Zone,' 'Dedicated Accessories Aisle,' and 'Checkout Counters.' This gave us the foundational map upon which we could overlay movement data.</p><p>Next, we integrated anonymized, aggregated foot traffic data sourced from a trusted third-party data provider. It’s crucial to note this data contains no personally identifiable information; it models collective movement flows by analyzing Wi-Fi signals, allowing us to see pathways and dwell times. By layering this pathing data on top of our digitized store maps, the story became crystal clear. The data revealed that <strong>a staggering 78% of customers who visited the 'Mobile Phones Display' proceeded directly to 'Checkout,'</strong> completely bypassing the 'Dedicated Accessories Aisle.' The direct transition rate from the phone display to the accessory aisle was less than 4%. The average dwell time in the phone zone was over four minutes, while the dwell time in the accessory aisle was a mere 35 seconds, indicating customers were either quickly passing through or making a beeline for a single, pre-determined item.</p><p>We had found the chasm. The client wasn't just losing sales to online retailers; they were actively, if unintentionally, discouraging them in their own stores. Armed with this powerful visual and statistical evidence, we recommended a radical shift in their merchandising strategy: dissolve the centralized accessory aisle and create 'Product Ecosystems.' We proposed creating small 'Accessory Outposts' directly adjacent to their parent products. Phone cases, screen protectors, and wireless chargers would now live right next to the smartphone displays. Premium laptop bags and wireless mice would be merchandised with the laptops.</p><p>The client agreed to a pilot program in ten stores. The results were immediate and dramatic. Within one quarter, the pilot stores saw an average <strong>increase in accessory sales of 22%</strong> and a <strong>5% lift in the average transaction value per customer.</strong> The average dwell time in the newly combined 'Mobile Ecosystem' zones tripled, showing that customers were now naturally browsing and discovering complementary products. This project demonstrated that sometimes the most significant insights aren't in broad market trends, but in the subtle, physical journeys customers take every day.</p>",
+  "publicationDate": "2025-08-07"
+}

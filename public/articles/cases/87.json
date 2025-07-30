@@ -1,0 +1,86 @@
+{
+  "Title": "Pinpointing Profitable Land Parcels for Eco-Home Development Using Geospatial & Regulatory Data Scraping",
+  "Subtitle": "How a modular construction firm leveraged web data to de-risk a $50M expansion plan by automating site selection intelligence.",
+  "Business Impact": "Identified 15 high-potential expansion zones, reducing site selection research time by 80% and increasing potential ROI by an estimated 22% through optimized land acquisition.",
+  "Sector": "Market Intelligence",
+  "What data was collected": "County/municipal zoning ordinance websites for land use classifications, publicly available real estate listings for land-only parcels, local government GIS portals for property lines and utility access, demographic data from census portals, and local news archives for community sentiment analysis.",
+  "Why this matters": "Selecting the wrong plot of land can kill a development project due to zoning restrictions, community opposition, or poor market fit. Proactive data scraping front-loads this critical diligence, preventing costly mistakes and uncovering undervalued opportunities.",
+  "Implementation time": "12 to 14 weeks. This involved building custom scrapers for dozens of disparate municipal websites, integrating geospatial data, and developing a proprietary suitability scoring algorithm.",
+  "Problems this solves": "1) Extremely time-consuming manual research across hundreds of non-standardized county websites. 2) High risk of acquiring land with hidden zoning or utility restrictions. 3) Inability to systematically compare opportunities across different regions based on a consistent set of criteria. 4) Overlooking 'hidden gem' locations not actively marketed through traditional channels.",
+  "Why it was better to outsource this solution": "Municipal and county websites are notoriously non-standardized. An expert web scraping firm like Iceberg Data has the experience to build and maintain robust scrapers that can handle varied HTML structures, PDF documents (for zoning codes), and interactive GIS maps—a task that would require a significant, specialized in-house engineering team.",
+  "Example_Input_JSON": {
+    "client_id": "eco-build-corp-456",
+    "job_type": "land_suitability_analysis",
+    "target_regions": [
+      "Travis County, TX",
+      "Wake County, NC",
+      "Larimer County, CO"
+    ],
+    "parameters": {
+      "min_acreage": 20,
+      "max_price_per_acre": 50000,
+      "required_zoning": [
+        "R-1",
+        "RS-2",
+        "A-1"
+      ],
+      "utility_requirements": [
+        "public_water",
+        "public_sewer"
+      ]
+    }
+  },
+  "Example_Output_JSON": {
+    "report_id": "report-land-dev-112",
+    "generated_at": "2025-05-20T14:30:00Z",
+    "analysis_summary": {
+      "total_parcels_scanned": 12580,
+      "parcels_matching_criteria": 45,
+      "top_regions_identified": [
+        "Wake County, NC",
+        "Larimer County, CO"
+      ]
+    },
+    "potential_parcels": [
+      {
+        "parcel_id": "NC-WAKE-8734-01",
+        "address": "123 Oak Ridge Rd, Apex, NC",
+        "coordinates": {
+          "lat": 35.7327,
+          "lon": -78.8503
+        },
+        "acreage": 25.5,
+        "price_per_acre": 45000,
+        "zoning_code": "R-1",
+        "utilities": {
+          "water": "public",
+          "sewer": "public",
+          "electricity": "available"
+        },
+        "community_sentiment_score": 0.85,
+        "suitability_score": 92.5
+      },
+      {
+        "parcel_id": "CO-LARI-1129-05",
+        "address": "456 Mountain View Dr, Fort Collins, CO",
+        "coordinates": {
+          "lat": 40.5853,
+          "lon": -105.0844
+        },
+        "acreage": 32,
+        "price_per_acre": 48500,
+        "zoning_code": "A-1",
+        "utilities": {
+          "water": "well_required",
+          "sewer": "septic_required",
+          "electricity": "available"
+        },
+        "community_sentiment_score": 0.78,
+        "suitability_score": 88.1
+      }
+    ]
+  },
+  "Matching algorithm used to integrate the data": "We used a multi-layered approach. First, Optical Character Recognition (OCR) was applied to PDF zoning maps and ordinance documents to extract textual rules. Geospatial data from GIS portals was overlaid with real estate parcel data using parcel ID numbers as the primary key. Natural Language Processing (NLP) models then analyzed local news articles and forum posts, using location names and development-related keywords to generate a 'community_sentiment_score' for each potential area, which was then appended to the corresponding parcel data.",
+  "Story": "<p>Our client was a pioneer in the sustainable, pre-fabricated housing market. They had a brilliant product and a strong brand, but their growth was hitting a wall. Their expansion strategy depended on finding and acquiring large, undeveloped land parcels in regions with the right mix of affluence, environmental consciousness, and, most importantly, favorable zoning regulations. Their biggest bottleneck was the process of identifying these parcels. It was a manual, agonizingly slow, and incredibly high-stakes endeavor.</p><p>Their small team of four analysts would spend months on a single region. They were forced to navigate a labyrinth of clunky, outdated county websites, download hundreds of complex zoning ordinances often buried in PDF documents, and manually cross-reference potential sites with separate real estate listings and GIS databases. <strong>Every county was a unique beast, with its own data structure and terminology.</strong> They were making decisions with incomplete information, and they knew they were missing out on better opportunities. They came to us at Iceberg Data seeking a way to turn this chaotic flood of public information into a clear, actionable intelligence stream.</p><p>We proposed a custom data intelligence platform focused on what they called 'land suitability.' Our first task was building a battery of sophisticated web scrapers. These weren't simple scrapers; they had to be resilient enough to handle everything from interactive GIS maps that load data dynamically to 200-page PDF zoning codes that required Optical Character Recognition (OCR) to become machine-readable. We targeted three key data sources: municipal government websites for zoning and permits, public-facing real estate portals for land listings and pricing, and local news and community forums for public sentiment.</p><p>The real magic happened when we started integrating these disparate datasets. <strong>We created a proprietary 'suitability_score' for every single land parcel that matched the client's basic criteria.</strong> This algorithm took multiple weighted factors into account: `price_per_acre`, `acreage`, confirmed `zoning_code` compliance, and verified access to `utility_requirements` like public water and sewer. Critically, we also incorporated a `community_sentiment_score`, which we generated by using Natural Language Processing to analyze local news coverage and online discussions about development in the area. A high score indicated a community was open to growth, while a low score flagged potential for costly public opposition.</p><p>The 'aha' moment came during our first review session with the client's executive team. We pulled up a dashboard showing a map of their target states. Instead of taking weeks to evaluate a county, they could now apply filters and see the results in seconds. They could ask questions like, 'Show me all parcels over 20 acres in North Carolina, zoned for residential use, with a suitability score above 90.' The system instantly highlighted a cluster of parcels in Wake County, a region they had previously overlooked due to its perceived complexity. Our data showed that recent zoning changes and overwhelmingly positive community sentiment made it a goldmine.</p><p>The business impact was immediate and profound. <strong>The client reduced their site selection research time from three months per region to under a week.</strong> Within the first quarter of using our platform, they successfully entered negotiations for two prime parcels our system had flagged with scores of 92.5 and 89.0. Their internal analysis projected that the superior site characteristics and favorable acquisition costs—identified through our comprehensive data—would increase their return on investment for these projects by over 20% compared to their historical average. They were no longer just expanding; they were expanding with unprecedented speed and confidence, backed by data-driven market intelligence.",
+  "publicationDate": "2023-04-14"
+}
