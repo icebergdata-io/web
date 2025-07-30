@@ -1,14 +1,18 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { exec } from 'child_process';
+import { promisify } from 'util';
 import { slugify } from '../src/utils/slugify.js';
+
+const execAsync = promisify(exec);
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const casesDir = path.join(__dirname, '../public/articles/cases');
 
-function regenerateIndex() {
+async function regenerateIndex() {
   console.log('🔄 Regenerating case study index from scratch...');
   
   try {
@@ -101,10 +105,23 @@ function regenerateIndex() {
     const ids = caseStudies.map(cs => cs.id).sort((a, b) => a - b);
     console.log(`📋 Case study IDs: ${ids.join(', ')}`);
     
+    // Automatically generate sitemap after successful index regeneration
+    console.log('\n🔄 Generating sitemap...');
+    try {
+      await execAsync('node scripts/generate-sitemap.js', { cwd: process.cwd() });
+      console.log('✅ Sitemap generated successfully!');
+    } catch (error) {
+      console.error('❌ Failed to generate sitemap:', error.message);
+      // Don't exit on sitemap failure, just warn
+    }
+    
   } catch (error) {
     console.error('❌ Error regenerating index:', error);
     process.exit(1);
   }
 }
 
-regenerateIndex(); 
+regenerateIndex().catch(error => {
+  console.error('❌ A critical error occurred:', error);
+  process.exit(1);
+}); 

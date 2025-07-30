@@ -488,6 +488,16 @@ async function main() {
             console.error('❌ Failed to regenerate index:', error.message);
             // Don't exit on index failure, just warn
         }
+        
+        // Automatically generate sitemap after successful index regeneration
+        console.log('\n🔄 Generating sitemap...');
+        try {
+            await execAsync('node scripts/generate-sitemap.js', { cwd: process.cwd() });
+            console.log('✅ Sitemap generated successfully!');
+        } catch (error) {
+            console.error('❌ Failed to generate sitemap:', error.message);
+            // Don't exit on sitemap failure, just warn
+        }
     }
     
     if (failedCases.length > 0) {
