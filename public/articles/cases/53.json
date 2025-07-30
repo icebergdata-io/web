@@ -1,0 +1,57 @@
+{
+  "Title": "Unlocking Hidden Revenue: Dynamic Bundle Pricing Based on Real-Time Competitor Stockouts",
+  "Subtitle": "Leveraging Competitor Inventory Gaps to Maximize Average Order Value for an Electronics Retailer",
+  "Business Impact": "Our client achieved a 12% increase in Average Order Value (AOV) and a 7% lift in overall revenue for targeted product categories by implementing a dynamic bundling strategy triggered by competitor stock data.",
+  "Sector": "Retail",
+  "What data was collected": "Real-time product page data from key competitors, including product price, stock status (e.g., 'in-stock', 'out-of-stock', 'low stock'), product identifiers like SKUs and MPNs, and any active promotional text.",
+  "Why this matters": "A competitor's stockout is a prime opportunity. By identifying these inventory gaps in real-time, a retailer can strategically promote their own in-stock alternatives and high-margin accessories as bundles, capturing otherwise lost revenue and increasing the value of each transaction.",
+  "Implementation time": "6 to 9 weeks, which included developing robust scrapers for target e-commerce sites, creating a product matching logic, and integrating the data feed with the client's pricing engine API.",
+  "Problems this solves": "1) Missed revenue opportunities from competitor inventory issues. 2) Static, unresponsive product bundling strategies. 3) Inability to capitalize on short-term, high-intent customer demand shifts.",
+  "Why it was better to outsource this solution": "Modern e-commerce sites deploy sophisticated anti-scraping technologies. An expert web scraping partner ensures reliable, continuous data collection, handles the complexity of parsing varied HTML structures to normalize stock and price data, and manages proxy infrastructure to avoid being blocked.",
+  "Example_Input_JSON": {
+    "client_id": "electronics-retail-456",
+    "job_type": "competitor_stock_monitoring",
+    "targets": [
+      {
+        "competitor_id": "comp-A",
+        "product_url": "https://competitor-alpha.com/products/nextgen-gaming-console"
+      },
+      {
+        "competitor_id": "comp-bravo",
+        "product_url": "https://competitor-bravo.net/shop/nextgen-gaming-console"
+      }
+    ],
+    "client_product_map": {
+      "nextgen-gaming-console": "SKU-CLIENT-CONSOLE-Y"
+    }
+  },
+  "Example_Output_JSON": {
+    "report_id": "rep-bundle-strat-001",
+    "timestamp": "2025-02-10T14:30:00Z",
+    "scraped_data": [
+      {
+        "product_url": "https://competitor-alpha.com/products/nextgen-gaming-console",
+        "stock_status": "OUT_OF_STOCK",
+        "price": 499.99,
+        "currency": "USD"
+      },
+      {
+        "product_url": "https://competitor-bravo.net/shop/nextgen-gaming-console",
+        "stock_status": "OUT_OF_STOCK",
+        "price": 499.99,
+        "currency": "USD"
+      }
+    ],
+    "recommendation": {
+      "action": "CREATE_DYNAMIC_BUNDLE",
+      "primary_product_sku": "SKU-CLIENT-CONSOLE-Y",
+      "attach_product_sku": "SKU-CLIENT-HEADSET-PRO",
+      "recommended_bundle_price": 549.99,
+      "discount_percentage": "8.3%",
+      "justification": "Primary competitors for the 'NextGen Gaming Console' are out of stock. This creates a high-intent market. Opportunity to bundle our in-stock console with a high-margin headset to increase AOV."
+    }
+  },
+  "Matching algorithm used to integrate the data": "We utilized a multi-layered approach. Initially, client-provided SKUs and Manufacturer Part Numbers (MPNs) were used for direct matching. For products without clear identifiers, our system employed a Natural Language Processing (NLP) model to perform fuzzy matching on product titles and descriptions, enriched with image similarity hashing to ensure high-accuracy pairings between the client's catalog and competitor listings.",
+  "Story": "<p>Our team at Iceberg Data was approached by a major electronics retailer facing a familiar challenge in the hyper-competitive online market: stagnating Average Order Value (AOV) and a promotion strategy that felt perpetually reactive. Their team would manually check competitor websites for major price drops, but this process was slow, inefficient, and missed a crucial, time-sensitive opportunity: competitor stockouts. They knew that when a popular product like a new gaming console or high-end graphics card sold out elsewhere, they saw a temporary traffic spike, but they struggled to capitalize on it effectively. Their promotions were pre-planned quarterly and couldn't adapt to these sudden market shifts.</p><p>We proposed a paradigm shift. Instead of just reacting to competitor prices, we would empower them to proactively leverage competitor <strong>inventory weaknesses</strong>. The vision was to build a system that would monitor the product pages of their key competitors in real-time. Our core task was to extract two critical data points with near-perfect reliability: <strong>price</strong> and, most importantly, <strong>stock_status</strong>. This data would feed directly into their promotion engine, triggering dynamic product bundles designed to capture customers who were ready to buy but couldn't find their desired item in stock elsewhere.</p><p>The first phase involved a deep collaboration with the client's merchandising team. We identified a list of 'Keystone Products'—high-demand, traffic-driving items—and their main online competitors. Our engineers then developed a bespoke fleet of web scrapers, each tailored to the unique structure of a target competitor's website. These weren't simple scrapers; they were designed to intelligently navigate JavaScript-heavy pages, bypass sophisticated bot detection, and correctly interpret a dozen different ways of saying 'Out of Stock'—from explicit text to disabled 'Add to Cart' buttons. As shown in our <strong>Example_Input_JSON</strong>, the client could specify exactly which competitor URLs to monitor for a given product category.</p><p>The real magic happened when the data started flowing. Our system would continuously poll the target URLs. When it detected that, for instance, the 'NextGen Gaming Console' was out of stock at two major competitors, it wouldn't just send an alert. As seen in the <strong>Example_Output_JSON</strong>, it would trigger a specific 'recommendation'. Our algorithm, cross-referencing the client's own inventory, would identify their in-stock equivalent product ('SKU-CLIENT-CONSOLE-Y') and automatically suggest pairing it with a high-margin, complementary accessory, like the 'SKU-CLIENT-HEADSET-PRO'.</p><p>The recommendation included a dynamically calculated bundle price, offering a slight discount that was still significantly more profitable than selling the console alone. This 'justification' text armed their pricing team with a clear, data-backed reason for the new promotion. Within minutes of a competitor selling out, our client's website could feature a new, compelling 'Gaming Starter Bundle', perfectly positioned to capture frustrated buyers. This transformed their promotional strategy from a static calendar to a living, breathing system that responded to market conditions by the minute.</p><p>The results were outstanding. After a three-month pilot program, the client reported a <strong>12% increase in Average Order Value</strong> for categories where dynamic bundling was active. More impressively, they saw a <strong>7% overall revenue lift</strong> in those same categories, proving they weren't just increasing transaction size but also capturing incremental sales they would have otherwise missed. The client's team was no longer playing catch-up; they were setting the pace, turning their competitors' operational challenges into their own strategic victories, all powered by a consistent and intelligent stream of data from Iceberg Data.</p>",
+  "publicationDate": "2023-12-28"
+}

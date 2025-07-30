@@ -1,0 +1,52 @@
+{
+  "Title": "From Dead Zones to Hotspots: Increasing Basket Size by 18% with In-Store Journey Mapping",
+  "Subtitle": "Leveraging anonymized Wi-Fi connection data to visualize customer flow and strategically reposition high-margin products.",
+  "Business Impact": "Identified and eliminated low-traffic 'dead zones,' leading to a 12% increase in customer engagement with promotional displays and an overall 18% rise in average basket size post-redesign.",
+  "Sector": "Retail",
+  "What data was collected": "Scraping anonymized device connection logs from the web-based management consoles of in-store Wi-Fi access points. This data included device MAC hash, connection timestamps, signal strength (RSSI), and the specific access point ID. We also scraped publicly available store floor plans from municipal permit databases for initial layout mapping.",
+  "Why this matters": "Traditional store layout decisions are often based on intuition or infrequent, costly manual observation studies. Real-time foot traffic analysis provides continuous, objective data on how customers actually navigate a store, revealing unseen bottlenecks, underutilized areas, and prime locations for high-margin items.",
+  "Implementation time": "12 to 14 weeks. This included initial data extraction setup, building a data pipeline to process Wi-Fi logs, developing a geospatial mapping algorithm to translate signal strength to store zones, and creating a visualization dashboard.",
+  "Problems this solves": "1) Over-reliance on anecdotal evidence for high-stakes layout decisions. 2) Inability to measure the direct ROI of changes in product placement or display locations. 3) Poor utilization of premium floor space, leading to missed sales opportunities in 'cold' zones.",
+  "Why it was better to outsource this solution": "Developing a custom solution to scrape and interpret Wi-Fi access point data is complex. It requires expertise in network data protocols, geospatial triangulation algorithms to map device locations from signal strength, and building scalable data processing pipelines. An expert partner like Iceberg Data provides the pre-built infrastructure and specialized knowledge to deliver accurate in-store journey maps quickly and reliably, avoiding a lengthy and expensive internal R&D process.",
+  "Example_Input_JSON": {
+    "client_id": "large-format-retailer-789",
+    "job_type": "in_store_path_analysis",
+    "store_ids": [
+      "store-ny-01",
+      "store-ca-04"
+    ],
+    "time_period": "2024-Q4"
+  },
+  "Example_Output_JSON": {
+    "report_id": "path-analysis-rep-456",
+    "store_id": "store-ny-01",
+    "heatmap_data_url": "s3://iceberg-data/reports/path-analysis-rep-456/heatmap.json",
+    "cold_zones": [
+      {
+        "zone_id": "aisle_7b_headphones",
+        "avg_dwell_time_sec": 12,
+        "unique_visitors_hourly": 15
+      },
+      {
+        "zone_id": "rear_corner_home_theater",
+        "avg_dwell_time_sec": 8,
+        "unique_visitors_hourly": 9
+      }
+    ],
+    "hot_zones": [
+      {
+        "zone_id": "checkout_queue_approach",
+        "avg_dwell_time_sec": 110,
+        "unique_visitors_hourly": 250
+      },
+      {
+        "zone_id": "main_thoroughfare_gaming",
+        "avg_dwell_time_sec": 95,
+        "unique_visitors_hourly": 310
+      }
+    ]
+  },
+  "Matching algorithm used to integrate the data": "We used a trilateration algorithm on the Received Signal Strength Indicator (RSSI) data from multiple Wi-Fi access points. Each device's location was estimated based on its signal strength relative to at least three known access point locations on the store's floor plan. These location points were then aggregated into time-sequenced pathways and visualized as a heatmap, revealing high-traffic 'hot zones' and low-traffic 'cold zones'.",
+  "Story": "<p>Our client, a major home goods and electronics retailer, faced a persistent puzzle. Certain high-margin product categories, like premium headphones and smart home devices, were consistently underperforming. Their merchandising team had placed these items in what they believed were prime locations based on conventional retail wisdom—large, well-lit end-caps and dedicated sections. Yet, sales remained flat. They came to us with a fundamental question: <strong>do we truly understand how customers move through our stores?</strong></p><p>Our team at Iceberg Data saw this not as a merchandising problem, but as a data problem. The client's assumptions were based on gut feelings, not empirical evidence. We proposed a solution to map the invisible pathways of their shoppers using an untapped resource they already owned: their in-store public Wi-Fi network. Our project began by scraping publicly available architectural filings and municipal permit databases to acquire precise floor plans for their two pilot stores. This formed the canvas for our analysis.</p><p>The next, most critical step, was data acquisition. With the client's full permission and access, our engineers developed custom scrapers to interface with the web-based management consoles of their commercial Wi-Fi access points. We extracted millions of anonymized connection events over a four-week period. This data was rich, containing a hashed device ID (protecting privacy), connection timestamps, signal strength (RSSI), and the ID of the access point it was connected to. <strong>This raw data held the secret to shopper movement.</strong></p><p>The real magic happened in the processing. Our data scientists applied a trilateration algorithm to the RSSI data. By measuring a single device's signal strength from three or more different access points simultaneously, we could calculate its approximate coordinates on the store floor plan. By stringing these timestamped coordinates together, we could reconstruct the entire journey of thousands of anonymous shoppers. Aggregating these journeys allowed us to generate a vivid, data-driven heatmap of each store, as referenced in our <strong>`Example_Output_JSON`</strong>.</p><p>The results were a revelation for the client. The heatmaps immediately falsified their long-held beliefs. A key finding was that the premium headphone display, located at the back of an aisle, was one of the store's most significant <strong>`cold_zones`</strong>. The data showed a clear pattern: customers would walk down the main thoroughfare, get drawn into the brightly lit video game section, and then turn back, completely bypassing the adjacent aisle where the headphones were located. Our report identified this `aisle_7b_headphones` zone as having an average dwell time of just 12 seconds.</p><p>Conversely, we discovered an unexpected <strong>`hot_zone`</strong>. The wide, transitional space leading towards the checkout queues, an area the client had used for little more than holding shopping carts, showed incredibly high traffic and long dwell times (`avg_dwell_time_sec` of 110). Shoppers milled around here, waiting for family or simply composing themselves before the final purchase. It was a captive audience they were completely ignoring.</p><p>Armed with our `heatmap_data`, the client executed a bold, data-driven store redesign. <strong>They moved the entire premium headphone category from the 'cold' aisle to a new, sleek kiosk built in the 'hot' pre-checkout zone.</strong> The former dead zone was repurposed for low-consideration clearance items. The impact was staggering. In the two pilot stores, sales of premium headphones shot up by over 40% within the first two months. More importantly, by placing high-margin, impulse-friendly products directly in the path of a captive audience, the store's overall average basket size increased by 18%. Our analysis didn't just tweak a display; it fundamentally reshaped their understanding of in-store customer behavior, turning underutilized floor space into a significant revenue driver.",
+  "publicationDate": "2024-05-03"
+}

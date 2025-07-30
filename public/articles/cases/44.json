@@ -1,0 +1,61 @@
+{
+  "Title": "Escaping Price Wars: A Dynamic Pricing Model Based on Competitor Stock & Fulfillment Data",
+  "Subtitle": "How a consumer electronics retailer increased profit margins by 18% using real-time competitor availability intelligence.",
+  "Business Impact": "By automatically adjusting prices based on competitor stock status and shipping times, the client improved gross margins by 18% and increased conversion rates on high-demand items by 22% without sacrificing revenue.",
+  "Sector": "Ecommerce",
+  "What data was collected": "Real-time competitor product data including list price, final sale price, active promotions, stock availability status (e.g., 'In Stock', 'Out of Stock', 'Backordered'), and estimated shipping/delivery timelines for a curated list of SKUs.",
+  "Why this matters": "In competitive ecommerce, price is only one factor. Fulfillment speed and availability are critical differentiators. Knowing when a competitor can't deliver allows a retailer to command a premium price, turning a competitor's weakness into a direct profit opportunity.",
+  "Implementation time": "6 to 8 weeks, which included identifying key competitor product page structures, building robust scrapers to handle dynamic content (like JavaScript-rendered stock levels), and setting up API delivery for the client's pricing engine.",
+  "Problems this solves": "1) Participating in unnecessary price wars against competitors who are out-of-stock. 2) Missing opportunities to increase margins when possessing a clear fulfillment advantage. 3) Manual, time-consuming, and error-prone competitor monitoring.",
+  "Why it was better to outsource this solution": "Competitor websites use sophisticated anti-scraping measures and dynamic JavaScript to display stock and delivery information. An expert partner like Iceberg Data manages proxy rotation, CAPTCHA solving, and parser maintenance, ensuring a consistent and reliable data feed that would be resource-intensive to build and maintain in-house.",
+  "Example_Input_JSON": {
+    "client_id": "CE-retailer-456",
+    "job_type": "competitor_fulfillment_intelligence",
+    "skus": [
+      {
+        "sku": "HWK-750-PRO",
+        "competitor_urls": [
+          "http://major-electronics.com/product/hawk-750",
+          "http://tech-superstore.com/product/pro-keyboard-750"
+        ]
+      },
+      {
+        "sku": "CAM-ULTRA-4K",
+        "competitor_urls": [
+          "http://major-electronics.com/product/ultra-webcam",
+          "http://tech-superstore.com/product/cam-4k-plus"
+        ]
+      }
+    ]
+  },
+  "Example_Output_JSON": {
+    "report_id": "fulfillment-intel-20250315-001",
+    "timestamp": "2025-03-15T14:30:00Z",
+    "sku_analysis": {
+      "sku": "HWK-750-PRO",
+      "our_price": 249.99,
+      "competitors": [
+        {
+          "name": "Major Electronics",
+          "url": "http://major-electronics.com/product/hawk-750",
+          "price": 239.99,
+          "stock_status": "Out of Stock",
+          "delivery_estimate_days": null,
+          "active_promotion": "Email signup for 10% off"
+        },
+        {
+          "name": "Tech Superstore",
+          "url": "http://tech-superstore.com/product/pro-keyboard-750",
+          "price": 249.99,
+          "stock_status": "In Stock",
+          "delivery_estimate_days": 14,
+          "active_promotion": "Free standard shipping"
+        }
+      ],
+      "pricing_recommendation": "Maintain or increase price. Competitor A is out of stock. Competitor B has a 2-week delivery delay. Your 2-day delivery is a significant advantage."
+    }
+  },
+  "Matching algorithm used to integrate the data": "Product data is matched using a combination of SKU, UPC, and MPN (Manufacturer Part Number) extracted from competitor product pages. Fuzzy string matching on product titles and descriptions is used as a fallback to ensure high-confidence matches even when explicit identifiers are missing. The extracted data is then correlated with the client's internal product catalog via their primary SKU.",
+  "Story": "<p>Our client, a mid-sized e-commerce retailer specializing in high-performance computer peripherals, came to us with a classic, painful problem. They were trapped in a perpetual price war. Their pricing strategy was entirely reactive, driven by a small team manually checking the websites of two massive national competitors multiple times a day. If a competitor dropped the price on a popular gaming keyboard by $10, our client felt compelled to match it immediately, eroding their already thin margins. They were winning on price but losing on profit.</p><p>During our initial consultation, we uncovered a crucial detail. The client's unique selling proposition wasn't just price; it was <strong>fulfillment speed</strong>. Operating from strategically located regional warehouses, they could often deliver a product in 2-3 days, while their larger competitors, despite their scale, sometimes quoted shipping times of a week or more, especially for non-prime items.</p><p>This insight became the cornerstone of our project. We proposed a shift from simple price monitoring to a more sophisticated <strong>fulfillment intelligence strategy</strong>. The goal was to stop asking, \"What is our competitor's price?\" and start asking, \"Can our competitor actually fulfill an order at that price, and how quickly?\"</p><p>Our team at Iceberg Data was tasked with building a web scraping solution that captured not just the price, but two other critical data points from competitor product pages: the <strong>stock status</strong> ('In Stock', 'Low Stock', 'Out of Stock', 'Backordered') and the <strong>estimated delivery timeframe</strong>. This was far from trivial. Stock and delivery information is often loaded dynamically with JavaScript, hidden behind user interactions (like entering a zip code), and heavily protected by anti-bot measures.</p><p>We developed a series of robust scrapers that could mimic human behavior, manage sessions and cookies, and intelligently parse the HTML to find the exact data needed. The scrapers ran at regular intervals on a list of over 500 high-priority SKUs provided by the client. The output, delivered via a real-time API, was structured much like our `Example_Output_JSON`. For each of our client's products, we provided a clean report detailing each competitor's current price, their stock level, and their delivery promise.</p><p>The results were transformative. Our client integrated this data feed directly into their dynamic pricing engine, creating a new set of rules:</p><ul><li><strong>Rule 1: Competitor Out-of-Stock.</strong> If a key competitor was `Out of Stock` on a product, our client's system would automatically raise their price by a modest 5-10%, capitalizing on their guaranteed availability.</li><li><strong>Rule 2: The Fulfillment Gap.</strong> If a competitor was in stock but had a `delivery_estimate_days` of 7 days or more, while our client could deliver in 2 days, they would hold their price firm or even increase it slightly. They no longer needed to match a low price when they offered superior service.</li><li><strong>Rule 3: Strategic Promotion Matching.</strong> If a competitor offered a promotion, our client could now make an informed decision. If the competitor also had long shipping times, they might ignore the promotion, knowing customers would pay a little more for speed.</li></ul><p>Within the first three months, the impact was undeniable. The client was no longer blindly following price drops. They were surgically adjusting prices based on a complete view of the competitive landscape. As noted in our `Business Impact`, they achieved an <strong>18% increase in gross margins</strong> on the monitored SKUs. Even more impressively, their conversion rate on these items rose by <strong>22%</strong> because customers were confident in the availability and fast shipping, which our client began to emphasize more heavily in their marketing. This project proved that in e-commerce, the most valuable data isn't always about the price tag; it's about the promise to deliver.</p>",
+  "publicationDate": "2023-02-05"
+}

@@ -1,0 +1,70 @@
+{
+  "Title": "Closing the In-Flight Experience Gap: How Customer Review Analysis Drove a 15% NPS Uplift for a Long-Haul Carrier",
+  "Subtitle": "Using NLP to pinpoint high-value feature requests and re-prioritize cabin upgrade investments.",
+  "Business Impact": "Redirected a multi-million dollar cabin refresh budget towards features customers actually requested, resulting in a 15% increase in Net Promoter Score (NPS), a 22% uplift in targeted ancillary revenue, and a 40% capital expenditure saving.",
+  "Sector": "Airlines",
+  "What data was collected": "Scraped customer reviews from Skytrax, TripAdvisor, and Google Reviews; social media comments from the client's and competitors' official pages; and discussion threads from specialized aviation forums like FlyerTalk for the client and three key competitors on transatlantic routes.",
+  "Why this matters": "Airlines often invest millions in cabin upgrades based on broad assumptions. Analyzing unstructured review data reveals specific, high-impact feature gaps (like power outlets vs. meal quality) that traditional surveys miss, ensuring capital is spent on changes that directly improve customer satisfaction and drive ancillary revenue.",
+  "Implementation time": "10-12 weeks, which included building custom scrapers for multiple platforms, developing a bespoke NLP model for feature and sentiment extraction, and deploying a BI dashboard for ongoing analysis.",
+  "Problems this solves": "1) Misallocation of capital investment in cabin upgrades. 2) Inability to benchmark specific in-flight features against direct competitors. 3) A lack of data-driven prioritization for product development roadmaps. 4) Over-reliance on generic survey data that misses nuanced customer needs.",
+  "Why it was better to outsource this solution": "Building and maintaining scrapers for diverse, dynamic websites and forums is resource-intensive. An expert partner provides the infrastructure for large-scale data collection and, more importantly, the advanced NLP and machine learning expertise to extract meaningful, structured insights from messy, unstructured text data like customer reviews.",
+  "Example_Input_JSON": {
+    "client_id": "airline-client-456",
+    "job_type": "feature_gap_analysis",
+    "parameters": {
+      "target_airlines": [
+        "ClientAir",
+        "CompetitorA",
+        "CompetitorB"
+      ],
+      "data_sources": [
+        "skytrax",
+        "tripadvisor",
+        "flyertalk"
+      ],
+      "time_period": "24_months",
+      "features_to_track": [
+        "wifi",
+        "power_outlet",
+        "seat_comfort",
+        "meal",
+        "ife",
+        "cabin_crew"
+      ]
+    }
+  },
+  "Example_Output_JSON": {
+    "report_id": "fga-report-789",
+    "analysis_date": "2024-11-20T14:30:00Z",
+    "key_findings": [
+      {
+        "feature": "power_outlet",
+        "sentiment_score_client": -0.78,
+        "sentiment_score_competitors_avg": 0.45,
+        "mention_volume_client": 1250,
+        "gap_opportunity": "High",
+        "recommendation": "Prioritize fleet-wide installation of USB-A/C power ports."
+      },
+      {
+        "feature": "meal_quality",
+        "sentiment_score_client": -0.45,
+        "sentiment_score_competitors_avg": -0.35,
+        "mention_volume_client": 890,
+        "gap_opportunity": "Low",
+        "recommendation": "Maintain current standard; major overhaul not justified by sentiment gap."
+      },
+      {
+        "feature": "family_snack_box",
+        "sentiment_score_client": null,
+        "sentiment_score_competitors_avg": 0.82,
+        "mention_volume_competitors": 215,
+        "implicit_request_volume_client": 50,
+        "gap_opportunity": "Medium",
+        "recommendation": "Introduce a pre-orderable ancillary product for family travelers."
+      }
+    ]
+  },
+  "Matching algorithm used to integrate the data": "We used a custom-trained Named Entity Recognition (NER) model to identify mentions of over 50 distinct airline features (e.g., 'USB port', 'in-flight entertainment', 'legroom'). A BERT-based sentiment analysis model, fine-tuned on aviation-specific language, was then applied to each identified feature mention. The data was aggregated by airline and feature, allowing for direct comparison of sentiment scores and mention volumes to quantify performance gaps.",
+  "Story": "<p>When a major long-haul airline approached us, they were at a critical juncture. They were planning a fleet-wide cabin refresh, a capital-intensive project with a budget in the tens of millions. Their internal market research, based on traditional passenger surveys, was pointing them in a familiar direction: 'better food' and 'more comfortable seats'. They were on the verge of signing a lucrative, but very expensive, new catering contract and had already solicited bids for seats with an extra inch of width. Yet, the executive team had a nagging feeling that they were missing something. Their Net Promoter Score (NPS) had been stagnant for years, and they were struggling to differentiate themselves from the fierce competition on their most profitable transatlantic routes.</p><p>Our team at Iceberg Data proposed a different approach. We argued that surveys often capture what customers <strong>think</strong> they should want, not what viscerally impacts their experience. The real, unfiltered truth, we believed, was buried in the thousands of public reviews and forum posts written by their passengers every month. Our plan was to perform a comprehensive <strong>Product Feature Gap Analysis</strong> by scraping and analyzing two years' worth of unstructured data from sites like Skytrax and TripAdvisor, as well as hyper-niche forums like FlyerTalk. Crucially, we wouldn't just analyze their reviews; we would simultaneously analyze those of their three main competitors on the same routes.</p><p>The first phase involved deploying a fleet of our custom web scrapers to gather the raw data—over 150,000 individual reviews and comments. The real magic, however, happened next. Our data science team developed a bespoke Natural Language Processing (NLP) pipeline. First, a Named Entity Recognition (NER) model scanned every review to identify and tag specific in-flight features, from 'Wi-Fi reliability' and 'USB port' to 'seat pitch' and 'meal choice'. Then, a fine-tuned sentiment analysis model assigned a precise positive, neutral, or negative score to each tagged feature. This gave us a granular, feature-level understanding of the customer experience that survey data could never provide.</p><p>The results, presented in an interactive dashboard, were a revelation for the client. The 'aha!' moment was stark. While 'meal quality' was indeed a frequent complaint, its average sentiment score was only marginally lower than competitors'. The real venom in customer comments was reserved for two other areas: the complete lack of <strong>in-seat power outlets</strong> and the abysmal performance of the paid Wi-Fi. The data showed that negative mentions of 'no power' or 'dead laptop' were <strong>three times more prevalent</strong> than complaints about the food, and carried a significantly stronger negative sentiment. Passengers, especially business travelers on 9-hour flights, were more frustrated by their inability to work or stay connected than by a mediocre chicken or pasta dish.</p><p>Furthermore, by analyzing competitor reviews, we uncovered a missed opportunity. A rival airline was consistently praised for its pre-orderable 'family snack box'. Our analysis of the client's own reviews found dozens of implicit requests, with parents complaining about the lack of kid-friendly options. This was a clear, data-validated gap in their ancillary product offering. Armed with this intelligence, the airline's strategy shifted dramatically. They put the multi-million-dollar catering overhaul on hold. Instead, they fast-tracked a project to install modern USB-A and USB-C power ports at every seat across their long-haul fleet—a project that cost <strong>40% less</strong> than the proposed catering upgrade. They used our data on Wi-Fi complaints to renegotiate a better service-level agreement with their provider and introduced a new, more reliable premium package. Finally, their product team quickly developed and launched a 'Family Fun Pack' as a new ancillary item.</p><p>The impact was swift and measurable. Within nine months of the first power-equipped planes re-entering service, the airline's overall NPS saw a <strong>15-point increase</strong>. The new premium Wi-Fi and the 'Family Fun Pack' drove a <strong>22% increase in ancillary revenue per passenger</strong>. By listening to the authentic voice of the customer hidden within public data, our client didn't just refresh their cabins; they refreshed their entire approach to product development, saving millions and finally achieving the customer loyalty they had been chasing for years.</p>",
+  "publicationDate": "2023-12-11"
+}

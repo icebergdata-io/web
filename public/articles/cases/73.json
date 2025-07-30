@@ -1,0 +1,55 @@
+{
+  "Title": "The Path to Purchase: How Analyzing Customer Dwell Time at Airport Rental Locations Increased Premium Upgrades by 18%",
+  "Subtitle": "Leveraging public event schedules and in-location sensors to guide customers toward high-margin ancillary products.",
+  "Business Impact": "Analysis of customer dwell zones and movement paths led to a strategic repositioning of GPS navigation units and child safety seats, resulting in an 18% increase in ancillary product sales and a 12% reduction in average customer queue time.",
+  "Sector": "Car Rental",
+  "What data was collected": "Publicly available airport arrival/departure schedules from flight tracking APIs, local convention center event calendars, and city-wide sporting event schedules. This was correlated with anonymized data from in-location Wi-Fi pings and pressure-sensitive mats at the rental facility to map customer flow and dwell times.",
+  "Why this matters": "In high-traffic airport locations, customer flow is not random. It's heavily influenced by external events like flight arrivals or conference end-times. Understanding these surges and the subsequent in-store behavior allows rental companies to optimize everything from staffing levels to the physical placement of upsell opportunities, turning chaotic queues into profitable customer journeys.",
+  "Implementation time": "10 to 12 weeks. This included scraping multiple public event sources, deploying and calibrating in-location sensors, and building a data model to correlate external events with internal foot traffic patterns.",
+  "Problems this solves": "1) Lost revenue from poorly placed ancillary products (e.g., GPS, child seats). 2) Customer frustration and negative reviews from long, disorganized queues during peak times. 3) Inefficient staff allocation, leading to overstaffing during lulls and understaffing during surges.",
+  "Why it was better to outsource this solution": "Aggregating and normalizing data from dozens of disparate public sources (airport APIs, event websites, city calendars) is a complex, ongoing task. An expert web scraping partner provides a clean, unified data stream of external 'demand drivers,' which is essential for accurately interpreting the internal foot traffic data.",
+  "Example_Input_JSON": {
+    "client_id": "rental-co-456",
+    "job_type": "location_flow_analysis",
+    "location_id": "airport-LHR-01",
+    "external_data_sources": [
+      "flightstats_api",
+      "local_events_calendar"
+    ]
+  },
+  "Example_Output_JSON": {
+    "report_id": "flow-analysis-LHR-01-q4-2024",
+    "location_id": "airport-LHR-01",
+    "analysis_period": "2024-10-01_to_2024-12-31",
+    "peak_traffic_events": [
+      {
+        "event_type": "flight_arrival_cluster",
+        "event_time": "2024-11-15T14:30:00Z",
+        "customer_surge_count": 85,
+        "avg_queue_time_minutes": 14.5
+      },
+      {
+        "event_type": "convention_end",
+        "event_time": "2024-11-18T17:00:00Z",
+        "customer_surge_count": 60,
+        "avg_queue_time_minutes": 11.2
+      }
+    ],
+    "layout_hotspots": [
+      {
+        "zone_id": "zone-A-upsell-kiosk",
+        "avg_dwell_time_seconds": 95,
+        "interaction_rate": "0.45"
+      },
+      {
+        "zone_id": "zone-B-child-seats",
+        "avg_dwell_time_seconds": 25,
+        "interaction_rate": "0.12"
+      }
+    ],
+    "recommendation": "Relocate child seats to Zone A to capitalize on higher dwell time. Test promotions for GPS units in Zone B."
+  },
+  "Matching algorithm used to integrate the data": "Time-series correlation was used to align external event data (flight arrivals, conference schedules) with internal sensor data. A proprietary algorithm identified statistically significant spikes in foot traffic (measured by Wi-Fi pings and mat sensors) that occurred within a 30-90 minute window following a major external event, thereby attributing customer surges to specific drivers.",
+  "Story": "<p>Our client, a leading car rental company, faced a persistent paradox at their flagship airport location. It was one of their busiest branches in the country, yet it consistently underperformed on ancillary sales—the high-margin add-ons like GPS units, satellite radio, and child safety seats. Customer feedback frequently cited long, confusing wait times, and the staff felt like they were in a constant state of reaction, unable to proactively engage customers. The physical layout of their lobby was designed for a steady flow of traffic, but the reality of airport arrivals is anything but steady. They knew they were busy, but they couldn't see the patterns within the chaos. They were leaving a significant amount of money on the table.</p><p>Our team at Iceberg Data proposed a project to map the invisible 'path to purchase' within their physical space. We knew that to understand the 'what' of customer behavior, we first had to understand the 'why'. The solution was a two-pronged data intelligence strategy. <strong>First, we targeted the external drivers of foot traffic.</strong> Our web scraping platform was configured to continuously monitor and aggregate data from a variety of public sources: real-time flight arrival APIs for the airport, the published schedules for the three largest convention centers in the city, and the calendar for the main downtown sports and concert arena. This gave us a powerful predictive model of when to expect surges of different types of travelers—business professionals from a tech conference, families arriving on international flights, or concert-goers needing a vehicle for the weekend.</p><p><strong>The second prong was to measure the internal response to these external events.</strong> In partnership with the client, we analyzed anonymized data streams from their existing in-location technology. This included Wi-Fi access point logs, which allowed us to map the general flow and density of people in the lobby, and data from pressure-sensitive mats placed at key decision points: the queue entrance, the main service counter, the premium vehicle desk, and near the existing ancillary product displays. We weren't tracking individuals; we were tracking the anonymous ebb and flow of the crowd.</p><p>The 'aha!' moment came when we overlaid these two datasets. Using a time-series correlation algorithm, we could directly link external events to specific in-store behaviors. For instance, we discovered that a cluster of delayed international flights consistently produced a massive customer surge 45 minutes after landing. These travelers were tired and stressed; their foot traffic data showed they made a beeline directly for the main counter, completely bypassing the ancillary product displays. Their only goal was to get their keys and leave. In stark contrast, attendees leaving a nearby business conference would trickle in more gradually. Their foot traffic data showed a much higher <strong>average dwell time</strong>—up to 95 seconds—in the open area before the queue, as they checked emails and organized their luggage. This was our client's captive, high-value audience, and they were completely ignoring them.</p><p>The data told a clear story: the client's store layout was fundamentally misaligned with customer behavior. The highest dwell times were in the pre-queue waiting area, yet all the profitable upsell products were located near the exit, a 'cold zone' that customers rushed through. Armed with this insight, we provided a concrete recommendation: <strong>a complete layout overhaul driven by data.</strong> We advised them to create a dedicated 'Upgrade Zone' in the main waiting area, featuring interactive tablets showcasing GPS navigation and in-car Wi-Fi. The child safety seats, which were previously hidden in a poorly-trafficked corner, were moved to a highly visible display right next to the main queue entrance, making them easy for waiting families to see and consider.</p><p>The results were transformative. Within the first quarter of implementing the new layout, the client saw an <strong>18% increase in ancillary product sales</strong>. Furthermore, by using our scraped flight data to predict surges, the location manager could optimize staffing schedules, which helped reduce the <strong>average customer queue time by 12%</strong> during peak hours. Our work didn't just provide a report; it provided a blueprint for turning a chaotic waiting area into a finely tuned conversion funnel, proving that understanding the customer journey before they even reach the counter is the key to unlocking hidden revenue.</p>",
+  "publicationDate": "2024-12-25"
+}

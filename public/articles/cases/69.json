@@ -1,0 +1,63 @@
+{
+  "Title": "Slashing Aircraft-on-Ground (AOG) Costs by Automating Secondary Market Parts Discovery",
+  "Subtitle": "Leveraging Web Scraping to Systematically Scan Niche Supplier Inventories and Aviation Marketplaces for Critical MRO Components.",
+  "Business Impact": "By automating the search for hard-to-find MRO parts, our airline client reduced AOG-related sourcing time by over 90% and cut emergency part acquisition costs by an average of 35%, preventing millions in lost revenue.",
+  "Sector": "Airlines",
+  "What data was collected": "Real-time inventory data from hundreds of FAA/EASA-certified parts suppliers, secondary market aviation marketplaces (e.g., ILS, PartsBase), broker listings, and online auction sites. Key data points included part number, condition code, certification (e.g., 8130-3, EASA Form 1), quantity available, location, and listed price.",
+  "Why this matters": "An Aircraft-on-Ground (AOG) situation costs an airline hundreds of thousands of dollars per day in lost revenue and passenger disruption. Manual sourcing for rare parts is a slow, frantic process. Automating this search provides a comprehensive, near-instant view of global availability, dramatically reducing downtime.",
+  "Implementation time": "10 to 12 weeks. This involved building custom scrapers for diverse supplier portals and marketplaces, creating a unified database schema for disparate data formats, and integrating the data feed into the client's MRO procurement software via API.",
+  "Problems this solves": "1) Lengthy aircraft downtime due to 'no-quote' or hard-to-find parts. 2) Overpaying for critical components due to desperation and lack of market visibility. 3) Manual, resource-intensive searches by procurement teams across dozens of siloed websites. 4) Risk of using uncertified parts from untraceable sources.",
+  "Why it was better to outsource this solution": "A specialized web scraping partner like Iceberg Data possesses the expertise to handle complex login-protected portals, bypass sophisticated anti-bot measures on aviation marketplaces, and normalize inconsistent data (e.g., varying part number formats, condition codes) from hundreds of different sources into a single, clean data stream.",
+  "Example_Input_JSON": {
+    "job_id": "AOG-SEARCH-737NG-45B123",
+    "part_number": "BAC1520-1075",
+    "required_condition_codes": [
+      "NE",
+      "OH",
+      "SV"
+    ],
+    "min_quantity": 1,
+    "require_faa_8130_3_cert": true,
+    "priority": "AOG"
+  },
+  "Example_Output_JSON": {
+    "request_id": "AOG-SEARCH-737NG-45B123",
+    "search_timestamp": "2025-05-20T14:30:00Z",
+    "part_number_found": "BAC1520-1075",
+    "results": [
+      {
+        "supplier_name": "AeroParts Global",
+        "source_url": "aeropartsglobal.com/inventory",
+        "quantity_available": 3,
+        "condition_code": "NE",
+        "has_faa_8130_3_cert": true,
+        "location": "MIA",
+        "price_usd": 12500,
+        "contact": "sales@apg.aero"
+      },
+      {
+        "supplier_name": "Sky-Spares LLC",
+        "source_url": "marketplace.aero/skyspares",
+        "quantity_available": 1,
+        "condition_code": "OH",
+        "has_faa_8130_3_cert": true,
+        "location": "LHR",
+        "price_usd": 10800,
+        "contact": "aog@skyspares.com"
+      },
+      {
+        "supplier_name": "Vintage Aviation Supply",
+        "source_url": "vintageavsupply.net/parts",
+        "quantity_available": 1,
+        "condition_code": "SV",
+        "has_faa_8130_3_cert": false,
+        "location": "TUL",
+        "price_usd": 7200,
+        "contact": "parts@vas.com"
+      }
+    ]
+  },
+  "Matching algorithm used to integrate the data": "A combination of fuzzy string matching and rule-based normalization was used to standardize part numbers (e.g., 'BAC 1520-1075' vs. 'BAC15201075'). We developed a proprietary parser to interpret diverse aviation condition codes (e.g., 'New', 'NE', 'New Surplus' all mapped to a standard 'NE' code) and certification documents mentioned in text descriptions. The final data is aggregated under a canonical part number for easy querying.",
+  "Story": "<p>When a major international airline approached us, they weren't struggling with marketing or pricing—their Achilles' heel was hidden deep within their maintenance operations. They faced a multi-million dollar problem known throughout the industry as 'AOG' or Aircraft-on-Ground. An AOG event is precisely what it sounds like: a plane is stuck, unable to fly, because a critical component has failed and a replacement is not on hand. For our client, each AOG incident represented not just a mechanical failure, but a catastrophic financial hemorrhage, costing upwards of $150,000 per day in lost revenue, passenger re-bookings, and crew rescheduling.</p><p>The root cause was the excruciatingly slow and inefficient process of sourcing hard-to-find Maintenance, Repair, and Overhaul (MRO) parts. <strong>Their Head of Procurement described a typical AOG scenario as 'organized panic.'</strong> An alert for a specific part, say a hydraulic actuator with part number <strong>'BAC1520-1075'</strong>, would trigger a manual scramble. A team of highly paid specialists would spend the next 24 to 72 hours logging into dozens of different supplier websites, sending out mass emails to brokers, and making frantic phone calls. The data they needed was scattered across a fragmented digital landscape of secondary market vendors and aviation marketplaces, each with its own interface, data format, and inventory status. They were flying blind, often forced to accept the first available part at a massively inflated 'AOG price' just to get their aircraft flying again.</p><p>Our team at Iceberg Data saw this not as a logistics problem, but a data problem. The information existed, but it was unstructured and inaccessible. We proposed a radical solution: a unified, real-time data platform that would automate the entire discovery process. The project began by identifying and profiling over 300 niche parts suppliers, certified brokers, and online marketplaces globally. Our engineers then built a fleet of sophisticated web scrapers designed to navigate these diverse sources. This was no simple task; we had to overcome login portals, dynamic JavaScript-driven pages, and advanced anti-scraping technologies.</p><p><strong>The core of our solution was data normalization.</strong> The aviation world is rife with inconsistent terminology. A part might be listed in 'New' condition on one site, 'NE' on another, and 'New Surplus' on a third. Our matching algorithm standardized these 'condition codes' (like 'NE', 'OH' for Overhauled, 'SV' for Serviceable) and part numbers into a single, clean schema. We also built parsers to detect the presence of critical certification documents, such as an 'FAA 8130-3' form, which is non-negotiable for many parts.</p><p>The transformation was immediate and profound. Now, when the client's MRO system flags a need for part 'BAC1520-1075' in an AOG situation, it sends an API call to our platform—the exact query shown in the <strong>Example_Input_JSON</strong>. Instead of a multi-day manual search, our system scans the entire global market in under a minute. The result, delivered as a clean JSON object like the <strong>Example_Output_JSON</strong>, gives their procurement team an instant, comprehensive view. They can see a 'New' condition part in Miami, an 'Overhauled' one in London, and a 'Serviceable' one in Tulsa. They can compare prices, check certifications, and factor in shipping logistics to make the most cost-effective and timely decision. The power shifted from the seller to the buyer.</p><p>The business impact was staggering. <strong>The airline reported a 90% reduction in sourcing time for AOG-level parts.</strong> What once took days now took minutes. More importantly, by introducing price transparency and competition, they reduced their emergency acquisition costs by an average of 35%. In the first year of deployment, the client projected savings of over $20 million, not just from cheaper parts, but from the massive reduction in costly AOG downtime. We had turned a chaotic, manual process into a streamlined, data-driven strategic advantage, ensuring their planes—and their revenue—stayed in the air.",
+  "publicationDate": "2024-06-30"
+}

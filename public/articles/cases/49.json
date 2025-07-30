@@ -1,0 +1,51 @@
+{
+  "Title": "Maximizing Cross-Sell Revenue by 18% Through Store-in-Store Foot Traffic Correlation",
+  "Subtitle": "Using in-store BLE beacon and public WiFi analytics to map customer journeys between partnered brand experience zones.",
+  "Business Impact": "Identified optimal adjacencies for 'store-in-store' concepts, leading to a 22% increase in customer dwell time in high-margin zones and an 18% lift in cross-category purchases.",
+  "Sector": "Retail",
+  "What data was collected": "Anonymized in-store WiFi connection logs, BLE (Bluetooth Low Energy) beacon data from different 'store-in-store' zones, internal sales data (SKUs, transaction time), and public store layout plans from architectural filings to build a baseline digital twin.",
+  "Why this matters": "Modern large-format stores are becoming ecosystems of different brands and experiences. Understanding how customers move *between* these zones is critical for lease negotiations with partners, optimizing product placement, and maximizing revenue from the entire floor space, not just individual departments.",
+  "Implementation time": "12 to 14 weeks. This included deploying additional BLE beacons, setting up data ingestion pipelines for WiFi logs, and building a geospatial correlation model to map device movement to the store's digital twin.",
+  "Problems this solves": "1) Inability to measure the ROI of expensive 'store-in-store' installations. 2) 'Cannibalization' where one zone draws traffic away from another high-margin area. 3) Missed cross-selling opportunities between complementary brand zones (e.g., smart home and home networking).",
+  "Why it was better to outsource this solution": "Outsourcing to Iceberg Data provided expertise in handling high-velocity, noisy sensor data. Our team specialized in data cleansing for anonymized device signals and had pre-built algorithms for pathing analysis, avoiding a lengthy and expensive in-house R&D effort for the client.",
+  "Example_Input_JSON": {
+    "client_id": "large-format-retail-789",
+    "job_type": "store_in_store_pathing_analysis",
+    "store_id": "SFO-004",
+    "time_period": {
+      "start": "2024-10-01",
+      "end": "2024-12-31"
+    },
+    "zones_of_interest": [
+      "SmartHome_Zone_A",
+      "GamingPC_Zone_B",
+      "HiFi_Audio_Zone_C"
+    ]
+  },
+  "Example_Output_JSON": {
+    "report_id": "path-analysis-sfo004-q4-2024",
+    "store_id": "SFO-004",
+    "analysis_period": "2024-10-01_to_2024-12-31",
+    "key_findings": [
+      {
+        "path": "SmartHome_Zone_A -> HiFi_Audio_Zone_C",
+        "transition_count": 8452,
+        "avg_dwell_time_start_zone_mins": 7.5,
+        "avg_dwell_time_end_zone_mins": 12.2,
+        "cross_sell_conversion_rate": "11.2%",
+        "recommendation": "Strengthen path by co-merchandising smart speakers next to high-end audio."
+      },
+      {
+        "path": "GamingPC_Zone_B -> SmartHome_Zone_A",
+        "transition_count": 1205,
+        "avg_dwell_time_start_zone_mins": 21,
+        "avg_dwell_time_end_zone_mins": 3.1,
+        "cross_sell_conversion_rate": "1.5%",
+        "recommendation": "Weak path. Consider relocating zones or creating a 'smart lighting for gaming' display to bridge the gap."
+      }
+    ]
+  },
+  "Matching algorithm used to integrate the data": "Anonymized device MAC addresses from WiFi logs and BLE beacon pings were used as unique identifiers for customer paths. We employed a time-series-based geospatial algorithm to map these device pings to a 2D digital twin of the store layout. A Hidden Markov Model (HMM) then calculated the probability of transitioning between predefined zones (e.g., 'Smart Home,' 'Gaming') to identify the most and least common customer journeys.",
+  "Story": "<p>Our client, a major consumer electronics retailer, was at a crossroads. They had invested heavily in the 'store-in-store' model, carving out prime floor space for immersive brand experiences: a sleek <strong>Smart Home Zone</strong>, a high-octane <strong>Gaming PC Zone</strong>, and a sophisticated <strong>HiFi Audio Zone</strong>. On paper, it was a brilliant strategy to attract enthusiasts and command higher margins. In reality, the financial return was a black box. The executive team knew the individual zones were popular, but they had a nagging question: were these zones working together to lift the entire store's performance, or were they just isolated islands?</p><p>The core problem was a lack of visibility into customer behavior *between* these expensive installations. Were customers who explored smart thermostats also checking out high-end speakers? Were PC gamers completely ignoring the rest of the store? Traditional sales data couldn't answer this. A transaction at the checkout counter doesn't tell you the journey a customer took to get there. This is where our team at Iceberg Data came in. We proposed a project to move beyond simple footfall counts and instead map the intricate 'desire paths' of customers moving through these key zones.</p><p>Our first step was to instrument the environment. Working with the client, we augmented their existing public WiFi infrastructure with a grid of low-cost BLE (Bluetooth Low Energy) beacons, with a higher density in and around the three zones of interest. This created a fine-grained tracking network. We then began collecting two streams of anonymized data: WiFi connection logs (which devices are in-store and for how long) and BLE beacon pings (which devices are near a specific point-of-interest). <strong>Crucially, all data was anonymized at the source to protect customer privacy</strong>, using device MAC addresses as transient, unique identifiers for the duration of a single store visit.</p><p>The real magic happened in our data processing pipeline. We ingested millions of these data points and used a geospatial algorithm to map them onto a digital twin of the store layout we built from public architectural plans. Using a Hidden Markov Model, we didn't just see dots on a map; we started seeing pathways. We could calculate the probability of a device that spent 10 minutes in the Gaming PC Zone next appearing in the Smart Home Zone. By correlating these paths with transaction data from the same time window, we could finally connect movement to money.</p><p>The results were eye-opening and immediately actionable. Our analysis, delivered in a clear dashboard, revealed two critical stories. First, we discovered a <strong>surprisingly strong and profitable connection between the Smart Home Zone and the HiFi Audio Zone</strong>. We logged over 8,400 distinct customer journeys between them in one quarter. Customers who started in the Smart Home section and then moved to audio had a significantly higher average dwell time (12.2 minutes) and a cross-sell conversion rate of 11.2%. They were connecting the dots themselves, imagining how a smart assistant could control a premium sound system. The client was leaving money on the table by not actively encouraging this path.</p><p>Second, we identified a major disconnect. The <strong>path from the high-traffic Gaming PC Zone to the Smart Home Zone was extremely weak</strong>, with a transition count of only 1,200 and a dismal 1.5% cross-sell rate. Gamers were a captive audience, spending an average of 21 minutes in their zone, but they were not exploring other tech. They came for one thing and left. The zones were physically located on opposite ends of the store, creating a natural barrier.</p><p>Armed with this intelligence, the retailer made two strategic changes. First, they created a 'bridge' display between the Smart Home and HiFi Audio zones featuring voice-controlled multi-room sound systems, physically strengthening the path we identified. Second, they took a small part of the Smart Home Zone's budget and created a 'smart lighting for gaming' satellite display right next to the Gaming PC area. Within six months, the results were astounding. Overall dwell time in the high-margin HiFi zone increased by 22%. Most impressively, <strong>total cross-category sales between the three zones jumped by 18%</strong>, turning their isolated islands into a truly interconnected, high-performing ecosystem.</p>",
+  "publicationDate": "2023-08-29"
+}

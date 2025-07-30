@@ -1,0 +1,75 @@
+{
+  "Title": "Maximizing Ancillary Revenue by 18% Through Deep Funnel Competitor Pricing Analysis",
+  "Subtitle": "Revealing Competitor Strategies on High-Margin Add-Ons like Insurance, GPS, and Child Seats.",
+  "Business Impact": "By scraping the full booking funnel of key competitors, our client identified underpriced ancillary services, adjusted their own add-on rates, and increased average revenue per rental by 18% without altering base vehicle prices.",
+  "Sector": "Car Rental",
+  "What data was collected": "Real-time pricing data for ancillary products (e.g., Collision Damage Waiver, Supplemental Liability Insurance, GPS units, child safety seats, pre-paid fuel options) extracted from the multi-step booking funnels of major national and regional car rental competitors across 50+ airport and city locations.",
+  "Why this matters": "Ancillary services represent a significant, high-margin revenue stream. Competitors often use low base car prices to attract customers, then recapture profit through opaque add-on pricing. Understanding these hidden strategies is critical for setting competitive and profitable rates.",
+  "Implementation time": "12 to 14 weeks. This included developing robust scrapers to navigate complex, multi-page booking flows, handling CAPTCHAs, managing location-specific proxies, and structuring the unbundled pricing data into a unified dashboard.",
+  "Problems this solves": "1) Inability to see competitor ancillary pricing without tedious manual searches. 2) Underpricing of high-demand add-ons, leaving profit on the table. 3) Lack of data to inform dynamic bundling and promotional strategies for ancillary products.",
+  "Why it was better to outsource this solution": "Car rental booking websites use sophisticated anti-scraping measures, session-based pricing, and geo-fencing. A specialized data partner like Iceberg Data has the infrastructure (e.g., residential proxy networks, CAPTCHA solving services) and expertise to reliably bypass these hurdles and extract clean, structured data from deep within the booking process, a task unfeasible for an in-house team.",
+  "Example_Input_JSON": {
+    "client_id": "car-rental-corp-456",
+    "job_type": "ancillary_pricing_scrape",
+    "locations": [
+      "SFO",
+      "LAX",
+      "JFK",
+      "MCO"
+    ],
+    "competitors": [
+      "hertz.com",
+      "avis.com",
+      "enterprise.com",
+      "sixt.com"
+    ],
+    "rental_parameters": {
+      "pickup_date": "2025-07-10",
+      "dropoff_date": "2025-07-15",
+      "car_class": "Midsize SUV"
+    },
+    "ancillaries_to_track": [
+      "gps",
+      "child_seat_infant",
+      "collision_waiver",
+      "prepaid_fuel"
+    ]
+  },
+  "Example_Output_JSON": {
+    "report_id": "ancillary-report-sfo-20250710",
+    "scraped_at": "2025-03-15T14:30:00Z",
+    "location": "SFO",
+    "rental_parameters": {
+      "pickup_date": "2025-07-10",
+      "dropoff_date": "2025-07-15",
+      "car_class": "Midsize SUV"
+    },
+    "competitor_data": [
+      {
+        "competitor": "hertz.com",
+        "base_price_per_day": 55,
+        "total_base_price": 275,
+        "ancillary_prices": {
+          "gps_per_day": 14.99,
+          "child_seat_infant_per_day": 13.99,
+          "collision_waiver_per_day": 31.99,
+          "prepaid_fuel_option": 75.5
+        }
+      },
+      {
+        "competitor": "avis.com",
+        "base_price_per_day": 52.5,
+        "total_base_price": 262.5,
+        "ancillary_prices": {
+          "gps_per_day": 15.95,
+          "child_seat_infant_per_day": 14.5,
+          "collision_waiver_per_day": 29,
+          "prepaid_fuel_option": null
+        }
+      }
+    ]
+  },
+  "Matching algorithm used to integrate the data": "Data is normalized using a proprietary product-mapping algorithm. Scraped ancillary item descriptions (e.g., 'Loss Damage Waiver,' 'LDW,' 'Collision Coverage') are standardized to a canonical name (e.g., 'collision_waiver') using natural language processing (NLP) and rule-based mapping. This ensures accurate, like-for-like comparisons across all competitors, regardless of their naming conventions.",
+  "Story": "<p>Our client, a prominent national car rental company, faced a classic industry conundrum. They were successfully competing on the headline daily rental price, often matching or beating the giants in the field. Yet, their profit margins were shrinking. Their executive team had a strong suspicion the bleeding was happening in the 'add-ons'—the high-margin ancillary products like insurance waivers, GPS units, and child seats. The problem was, this part of the market was a complete <strong>black box</strong>. Competitor websites only revealed these prices deep within the booking funnel, making systematic analysis a nightmare of manual, time-consuming, and ultimately unreliable data entry.</p><p>The Director of Revenue Management told us, 'We felt like we were flying blind. We set our base prices based on what we see on aggregator sites, but for everything else, we were just guessing. Is our Collision Damage Waiver priced correctly for the San Francisco (SFO) market versus the Orlando (MCO) market? Are we leaving money on the table with our GPS rentals? We had no data, just gut feelings.' This lack of visibility meant they couldn't devise a cohesive strategy. They were reacting, not leading, and it was costing them.</p><p>This is where our team at Iceberg Data stepped in. We proposed a solution that went beyond simple homepage scraping. We architected a deep-funnel data extraction engine designed to mimic the entire customer booking journey on each competitor's website. Our system could navigate from the initial search, select a vehicle class like a 'Midsize SUV,' and proceed through multiple pages to the final checkout step where all the <strong>ancillary prices were finally revealed</strong>. To do this at scale across dozens of locations like LAX and JFK, we deployed a sophisticated proxy network that allowed us to query sites as if we were a local customer in each specific city, bypassing geo-restrictions and ensuring location-accurate pricing.</p><p>After the initial 12-week implementation, we delivered the first comprehensive dataset to the client's dashboard. The results were staggering and immediate. Their 'gut feelings' were right, but they had underestimated the scale of the discrepancy. The data showed, in clear, undeniable charts, that their <strong>Collision Waiver was underpriced by an average of $5 per day</strong> compared to the market leaders in business-heavy locations. Furthermore, their child seat rental fees were nearly 25% lower than the competition's average at major family-destination airports.</p><p>But the most powerful insight was in competitor strategy. We uncovered that one major rival was offering a deeply discounted 'Traveler's Pack'—bundling the top-tier insurance waiver with a GPS unit—a promotion our client had no visibility into. This bundle was incredibly effective at increasing the total transaction value for the competitor. Our output data, which unbundled every single cost element, from `base_price_per_day` to `gps_per_day`, made these strategies transparent for the first time.</p><p>Armed with this intelligence, the client's revenue team took decisive action. They confidently rolled out a new pricing structure for their ancillary offerings. They implemented a tiered increase on their `collision_waiver` based on location demand, and they adjusted their `child_seat_infant` pricing to be competitive yet profitable. Inspired by the data, they launched their own 'Family Safety Bundle.' The impact was transformative. Within six months, they reported an <strong>18% increase in average ancillary revenue per rental transaction</strong>. This boost flowed directly to their bottom line, increasing overall company profit margins by 7% without ever having to engage in a price war on the base vehicle rental rate. They were no longer just competing; they were competing smarter.</p>",
+  "publicationDate": "2023-08-28"
+}
