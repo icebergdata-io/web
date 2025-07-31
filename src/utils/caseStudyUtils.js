@@ -92,4 +92,47 @@ export async function findCaseStudyBySlug(sector, slug) {
     console.error('Error finding case study:', error);
     return null;
   }
+}
+
+/**
+ * Gets related case studies from the same sector
+ * @param {string} sector - The sector slug
+ * @param {number} currentId - The current case study ID to exclude
+ * @param {number} limit - Maximum number of related case studies to return (default: 3)
+ * @returns {Promise<Array>} Array of related case study objects
+ */
+export async function getRelatedCaseStudies(sector, currentId, limit = 3) {
+  try {
+    const index = await getCaseStudyIndex();
+    
+    // Filter case studies by sector and exclude current case study
+    const relatedStudies = index.caseStudies
+      .filter(study => study.sector === sector && study.id !== currentId)
+      .slice(0, limit);
+    
+    // Load full data for each related case study
+    const studiesWithData = [];
+    for (const study of relatedStudies) {
+      try {
+        const response = await fetch(`/articles/cases/${study.id}.json`);
+        if (response.ok) {
+          const data = await response.json();
+          studiesWithData.push({
+            id: study.id,
+            slug: study.slug,
+            sectorSlug: study.sector,
+            ...data
+          });
+        }
+      } catch (error) {
+        // Skip case studies that can't be loaded
+        continue;
+      }
+    }
+    
+    return studiesWithData;
+  } catch (error) {
+    console.error('Error fetching related case studies:', error);
+    return [];
+  }
 } 

@@ -4,7 +4,8 @@ import { JsonView } from 'react-json-view-lite';
 import 'react-json-view-lite/dist/index.css';
 import SEO from '../components/SEO';
 import { slugify } from '../utils/slugify';
-import { findCaseStudyBySlug } from '../utils/caseStudyUtils';
+import { findCaseStudyBySlug, getRelatedCaseStudies } from '../utils/caseStudyUtils';
+import RecommendedCaseStudies from '../components/RecommendedCaseStudies';
 
 const formatDate = (dateString) => {
   return new Date(dateString).toLocaleDateString('en-US', {
@@ -18,6 +19,7 @@ const CaseStudy = () => {
   const { sector, slug } = useParams();
   const navigate = useNavigate();
   const [caseData, setCaseData] = useState(null);
+  const [relatedStudies, setRelatedStudies] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -30,6 +32,10 @@ const CaseStudy = () => {
         if (caseData) {
           console.log(`✅ Found matching case study: ${caseData.id}`);
           setCaseData(caseData);
+          
+          // Fetch related case studies from the same sector
+          const related = await getRelatedCaseStudies(sector, caseData.id, 3);
+          setRelatedStudies(related);
         } else {
           console.log('❌ No matching case study found');
         }
@@ -329,6 +335,12 @@ const CaseStudy = () => {
               </div>
             </div>
           </div>
+          
+          {/* Recommended Case Studies */}
+          <RecommendedCaseStudies 
+            relatedStudies={relatedStudies}
+            currentSector={caseData.Sector}
+          />
         </div>
       </div>
     </>
