@@ -2,7 +2,7 @@
   "Title": "From Noise to Signal: Pinpointing Micro-Influencers with Organic Brand Advocacy Scoring",
   "Subtitle": "How a DTC Coffee Brand Grew Its Community by Identifying Authentic Voices in Niche Markets",
   "Business Impact": "Achieved a 250% increase in influencer marketing ROI and cut Customer Acquisition Cost (CAC) by 40% by shifting focus from mega-influencers to high-engagement micro-advocates.",
-  "Sector": "Ecommerce",
+  "Sector": "E-commerce",
   "What data was collected": "Publicly available user-generated content from Instagram, TikTok, YouTube, and niche forums (e.g., Reddit's r/coffee, Home-Barista.com). Data points included post content, hashtags, user profile metrics (follower count, engagement rate), and post sentiment for both the client's and competitors' brands.",
   "Why this matters": "Standard influencer marketing often targets high-follower accounts with low engagement and authenticity. Identifying individuals who organically praise a product reveals true brand advocates, leading to more trustworthy endorsements, higher conversion rates, and a stronger community.",
   "Implementation time": "6 to 8 weeks for initial platform setup, including scraper development for target platforms, sentiment analysis model training, and dashboard creation for advocate scoring.",

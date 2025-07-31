@@ -2,7 +2,7 @@
   "Title": "Closing the Innovation Loop: How a Smart Home Brand Pinpointed a Key Feature Gap Using Competitor Review Analysis",
   "Subtitle": "Leveraging NLP on Scraped Customer Reviews to Drive a 30% Reduction in Negative Feedback and Guide R&D",
   "Business Impact": "Identified a critical feature gap ('Package Detection') that led to a product roadmap update. Post-launch, the new feature contributed to a 15% sales uplift for the flagship model and a 30% decrease in negative reviews related to 'false motion alerts'.",
-  "Sector": "Ecommerce",
+  "Sector": "E-commerce",
   "What data was collected": "Over 50,000 customer reviews (ratings, text, date, verified purchase status) for the client's smart camera and three key competitors from major ecommerce sites like Amazon, Best Buy, and Target. Data points included product SKU, review title, review body, star rating, and helpfulness votes.",
   "Why this matters": "Aggregate customer feedback is a goldmine for product development. By systematically analyzing unstructured review text across the entire market, brands can move beyond gut feelings and make data-driven R&D decisions that directly address customer pain points and competitive weaknesses.",
   "Implementation time": "6 to 8 weeks. This included initial scraping setup for four products across five retail domains, NLP model training for feature/sentiment extraction, and building a final gap analysis dashboard.",

@@ -2,7 +2,7 @@
   "Title": "Dynamic Carrier Selection: Slashing Delivery Exceptions by 30% with Real-Time Logistics Monitoring",
   "Subtitle": "Leveraging public carrier tracking data and customer delivery feedback to dynamically route shipments and improve customer satisfaction.",
   "Business Impact": "Reduced 'Where Is My Order?' (WISMO) customer service inquiries by 40%, decreased delivery exception rates (delays, damages, lost packages) by 30%, and improved on-time delivery scores by 15%.",
-  "Sector": "Ecommerce",
+  "Sector": "E-commerce",
   "What data was collected": "Publicly accessible carrier performance reports, aggregated delivery status updates from carrier tracking portals (e.g., 'delayed due to weather,' 'out for delivery'), delivery exception codes by zip code, and public customer complaints on social media and forums mentioning specific carriers and locations.",
   "Why this matters": "Choosing the right shipping carrier isn't just about cost; it's about reliability. Inconsistent delivery performance erodes customer trust and inflates support costs. Proactively identifying and avoiding underperforming carriers in specific regions is a major competitive advantage.",
   "Implementation time": "10 to 12 weeks, including initial scraping of historical performance data, setting up real-time monitoring of carrier status pages, and integrating the performance scoring model into the client's order management system (OMS).",

@@ -2,7 +2,7 @@
   "Title": "Boosting Conversion Rates by 45% by Identifying Micro-Influencers with High Audience Affinity",
   "Subtitle": "Moving Beyond Follower Counts to Find Authentic Brand Advocates in Sustainable Ecommerce",
   "Business Impact": "Achieved a 45% increase in conversion rates from influencer campaigns and reduced customer acquisition cost (CAC) by 30% by reallocating budget from macro-influencers to a curated set of high-affinity micro-influencers.",
-  "Sector": "Ecommerce",
+  "Sector": "E-commerce",
   "What data was collected": "Publicly available data from TikTok, YouTube, and Reddit, including user profiles, post content, video transcripts, comment text, follower counts, and engagement metrics (likes, shares, comments). We also scraped public profiles of engaged followers to build an audience interest graph.",
   "Why this matters": "Follower count is a vanity metric. True influence lies in audience trust and engagement. By analyzing the quality of interactions and the actual interests of an influencer's audience, brands can find partners who drive genuine conversions, not just empty clicks.",
   "Implementation time": "6 to 8 weeks. This included building custom scrapers for TikTok and Reddit, developing a natural language processing (NLP) model for sentiment and keyword analysis, and creating a dashboard to score and rank potential influencers.",

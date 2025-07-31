@@ -2,7 +2,7 @@
   "Title": "Escaping Price Wars: A Dynamic Pricing Model Based on Competitor Stock & Fulfillment Data",
   "Subtitle": "How a consumer electronics retailer increased profit margins by 18% using real-time competitor availability intelligence.",
   "Business Impact": "By automatically adjusting prices based on competitor stock status and shipping times, the client improved gross margins by 18% and increased conversion rates on high-demand items by 22% without sacrificing revenue.",
-  "Sector": "Ecommerce",
+  "Sector": "E-commerce",
   "What data was collected": "Real-time competitor product data including list price, final sale price, active promotions, stock availability status (e.g., 'In Stock', 'Out of Stock', 'Backordered'), and estimated shipping/delivery timelines for a curated list of SKUs.",
   "Why this matters": "In competitive ecommerce, price is only one factor. Fulfillment speed and availability are critical differentiators. Knowing when a competitor can't deliver allows a retailer to command a premium price, turning a competitor's weakness into a direct profit opportunity.",
   "Implementation time": "6 to 8 weeks, which included identifying key competitor product page structures, building robust scrapers to handle dynamic content (like JavaScript-rendered stock levels), and setting up API delivery for the client's pricing engine.",

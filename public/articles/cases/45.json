@@ -2,7 +2,7 @@
   "Title": "Curbing Overstock Waste by 30% Through Predictive Analysis of Seasonal Product Returns",
   "Subtitle": "Using Public Review and Social Media Data to Forecast Return Rates and Optimize Inventory",
   "Business Impact": "Identified high-risk SKUs pre-season, leading to a 30% reduction in post-holiday overstock, a 15% improvement in cash flow, and a 22% decrease in return processing costs.",
-  "Sector": "Ecommerce",
+  "Sector": "E-commerce",
   "What data was collected": "Public customer reviews from major retail sites, social media comments on product posts (Instagram, Facebook), competitor stock levels for analogous products, and forum discussions related to fashion fit and quality. This was merged with the client's internal sales and historical returns data.",
   "Why this matters": "High return rates, especially after peak seasons, create a massive inventory problem. Products returned in January are often out of season, leading to deep discounts, waste, and tied-up capital. Predicting returns *before* placing large purchase orders is critical for profitability.",
   "Implementation time": "10 to 12 weeks. This involved building custom scrapers for diverse review platforms, developing an NLP model to classify return-related comments (e.g., 'runs small,' 'color is off'), and integrating the predictive model with the client's inventory management system.",

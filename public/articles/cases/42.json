@@ -2,7 +2,7 @@
   "Title": "Preserving Brand Integrity: How Real-Time Sentiment Tracking Uncovered and Mitigated Sustainability PR Risks",
   "Subtitle": "Leveraging web scraping to monitor discussions on sustainability forums, social media, and eco-blogs to safeguard brand perception.",
   "Business Impact": "Prevented a potential 40% drop in brand trust score and a 15% dip in quarterly sales by identifying and addressing a burgeoning negative narrative about 'greenwashing' within 72 hours.",
-  "Sector": "Ecommerce",
+  "Sector": "E-commerce",
   "What data was collected": "Public posts and comments from targeted subreddits (e.g., r/sustainability, r/ZeroWaste), ethical consumer forums, eco-focused influencer posts on Instagram and TikTok, and reviews on product pages mentioning keywords like 'eco-friendly', 'sustainable', 'recycled', 'greenwashing'.",
   "Why this matters": "For brands built on an ethical or sustainable platform, perception is reality. A single, viral accusation of 'greenwashing' can permanently damage consumer trust and loyalty, making proactive monitoring essential for risk management.",
   "Implementation time": "4 to 6 weeks for initial setup, including keyword/source identification, scraper development, and sentiment analysis model tuning. Ongoing monitoring and alerting is real-time.",
