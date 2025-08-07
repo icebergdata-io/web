@@ -31,11 +31,17 @@ const Refund = () => {
                 conditions will be explicitly stated within your service agreement with Iceberg Data.
               </p>
               <p className="text-dark-700">
-                2.2. In the absence of specific refund provisions in the service contract, the terms outlined in Section 3 
+                2.2. <strong>B2B Contract Precedence:</strong> In the case of a B2B contract between Iceberg Data and the customer, 
+                if any condition in the contract is more favorable to the customer than the terms outlined in this Policy, 
+                then the more favorable contract condition will apply and take precedence over this Policy.
+              </p>
+              <p className="text-dark-700">
+                2.3. In the absence of specific refund provisions in the service contract, the terms outlined in Section 3 
                 (Default Policy) shall apply.
               </p>
               <p className="text-dark-700">
-                2.3. Contract terms regarding refunds supersede any general terms outlined in this Policy.
+                2.4. Contract terms regarding refunds supersede any general terms outlined in this Policy, except where 
+                the contract provides more favorable terms to the customer.
               </p>
             </div>
           </section>
@@ -133,7 +139,8 @@ const Refund = () => {
               </div>
               <p className="text-dark-700">
                 All refund requests will be evaluated based on the terms outlined in this Policy and any applicable 
-                contract terms.
+                contract terms. B2B customers with formal contracts will have their contract terms reviewed for any 
+                more favorable conditions that may apply.
               </p>
             </div>
           </section>
@@ -146,11 +153,15 @@ const Refund = () => {
                 Terms of Service and other applicable policies.
               </p>
               <p className="text-dark-700">
-                7.2. We reserve the right to modify this Policy at any time without prior notice. The current version 
+                7.2. <strong>Contract Precedence:</strong> For B2B customers with formal service contracts, the terms of your 
+                contract will take precedence over this Policy where they provide more favorable conditions to you.
+              </p>
+              <p className="text-dark-700">
+                7.3. We reserve the right to modify this Policy at any time without prior notice. The current version 
                 will always be available on our website.
               </p>
               <p className="text-dark-700">
-                7.3. Any disputes regarding refunds shall be resolved in accordance with the dispute resolution 
+                7.4. Any disputes regarding refunds shall be resolved in accordance with the dispute resolution 
                 provisions in your service contract or our Terms of Service.
               </p>
             </div>
