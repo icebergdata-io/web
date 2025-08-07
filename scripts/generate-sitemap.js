@@ -154,6 +154,12 @@ async function generateSitemap() {
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+  <url>
+    <loc>${BASE_URL}/refund-policy</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
   ${sortedCaseStudies.map(study => `  <url>
     <loc>${BASE_URL}/case-study/${study.sector}/${study.slug}</loc>
     <lastmod>${study.publicationDate || today}</lastmod>

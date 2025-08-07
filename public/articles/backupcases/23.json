@@ -2,7 +2,7 @@
   "Title": "Personalized Recommendation Engine via Public Review Scraping",
   "Subtitle": "Extracting User Sentiments to Refine E-Commerce Product Recommendations",
   "Business Impact": "Tailored product suggestions can increase average order value by 10-15%. Scraping public reviews for competitor products reveals key attributes that matter most to customers.",
-  "Sector": "Ecommerce",
+  "Sector": "E-commerce",
   "What data was collected": "Competitor product reviews on public marketplaces, rating summaries, social media opinions, and popular feature keywords relevant to each category.",
   "Why this matters": "Understanding common praises or complaints for similar items helps e-commerce sites highlight the right product attributes, improving relevance and upsell rates.",
   "Implementation time": "8 to 12 weeks, covering the deployment of review scrapers, text analysis for feature extraction, and integration with the site’s recommendation engine.",

@@ -2,47 +2,101 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.icebergdata.co/</loc>
-    <lastmod>2025-07-31</lastmod>
+    <lastmod>2025-08-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/press</loc>
-    <lastmod>2025-07-31</lastmod>
+    <lastmod>2025-08-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
     <url>
     <loc>https://www.icebergdata.co/services</loc>
-    <lastmod>2025-07-31</lastmod>
+    <lastmod>2025-08-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/services/web-scraping</loc>
-    <lastmod>2025-07-31</lastmod>
+    <lastmod>2025-08-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/services/data-integration</loc>
-    <lastmod>2025-07-31</lastmod>
+    <lastmod>2025-08-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/services/custom-solutions</loc>
-    <lastmod>2025-07-31</lastmod>
+    <lastmod>2025-08-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/case-studies</loc>
-    <lastmod>2025-07-29</lastmod>
+    <lastmod>2025-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+  <url>
+    <loc>https://www.icebergdata.co/refund-policy</loc>
+    <lastmod>2025-08-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
     <url>
+    <loc>https://www.icebergdata.co/case-study/home-services/identifying-service-deserts-a-data-driven-strategy-for-home-services-market-expansion-using-competitor-service-area-and-customer-review-data-to-guide-strategic-growth</loc>
+    <lastmod>2025-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/market-intelligence/closing-the-perceptual-gap-how-a-legacy-brand-aligned-its-voice-with-customer-sentiment-using-semantic-analysis-of-web-data-to-bridge-the-divide-between-intended-and-perceived-brand-identity</loc>
+    <lastmod>2025-08-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/retail-electronics/mapping-the-journey-chasm-how-pathing-analysis-increased-accessory-sales-by-22-using-scraped-store-schematics-and-anonymized-foot-traffic-data-to-redesign-high-friction-customer-pathways-in-electronics-retail</loc>
+    <lastmod>2025-08-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/consumer-electronics/boosting-promotion-roi-by-18-through-real-time-competitor-coupon-and-discount-analysis-how-a-consumer-electronics-retailer-used-web-scraping-to-automate-competitive-promotion-intelligence-and-optimize-offerings</loc>
+    <lastmod>2025-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/healthcare/eliminating-surgical-delays-by-40-with-real-time-implant-and-instrument-tracking-integrating-manufacturer-logistics-and-regulatory-data-for-just-in-time-operating-room-readiness</loc>
+    <lastmod>2025-08-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/healthcare/closing-the-patient-experience-gap-how-telehealth-review-analysis-drove-a-20-reduction-in-user-churn-leveraging-public-patient-feedback-to-build-a-data-driven-product-roadmap</loc>
+    <lastmod>2025-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/lead-generation/decoding-competitor-pricing-how-deep-web-scraping-reduced-cpql-by-35-for-a-saas-provider-transforming-lead-generation-by-exposing-hidden-fees-and-creating-data-driven-value-propositions</loc>
+    <lastmod>2025-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/healthcare/cracking-competitor-dme-bundle-pricing-to-boost-average-order-value-by-20-using-web-scraped-data-to-decode-complex-product-bundles-and-optimize-pricing-strategy-for-home-medical-supplies</loc>
+    <lastmod>2025-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.icebergdata.co/case-study/food-delivery/decoding-delivery-disasters-how-granular-sentiment-analysis-on-food-condition-reduced-customer-complaints-by-40-leveraging-public-review-data-to-pinpoint-and-resolve-recurring-food-quality-issues-like-temperature-and-texture-upon-arrival</loc>
     <lastmod>2025-07-29</lastmod>
     <changefreq>monthly</changefreq>

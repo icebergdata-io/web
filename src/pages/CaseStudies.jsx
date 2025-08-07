@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { slugify } from '../utils/slugify';
@@ -13,6 +13,7 @@ const formatDate = (dateString) => {
 
 const CaseStudies = () => {
   const [caseStudies, setCaseStudies] = useState([]);
+  const [selectedSector, setSelectedSector] = useState('All');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -61,7 +62,15 @@ const CaseStudies = () => {
   }, []);
 
   // Group case studies by year and month
-  const groupedStudies = caseStudies.reduce((acc, study) => {
+  // Memoize list of unique sectors for dropdown
+  const sectors = useMemo(() => {
+    return Array.from(new Set(caseStudies.map(cs => cs.Sector))).sort();
+  }, [caseStudies]);
+
+  // Filter by selected sector before grouping
+  const filteredStudies = selectedSector === 'All' ? caseStudies : caseStudies.filter(cs => cs.Sector === selectedSector);
+
+  const groupedStudies = filteredStudies.reduce((acc, study) => {
     const date = new Date(study.publicationDate);
     const yearMonth = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
     
@@ -87,6 +96,19 @@ const CaseStudies = () => {
       <div className="min-h-screen pt-24 pb-12 bg-gradient-to-b from-white to-light-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
+            {/* Floating filter dropdown */}
+            <div className="fixed top-24 left-1/2 -translate-x-1/2 w-11/12 sm:w-auto sm:top-28 sm:left-[calc(50%-640px+1rem)] sm:translate-x-0 z-50">
+              <select
+                value={selectedSector}
+                onChange={(e) => setSelectedSector(e.target.value)}
+                className="bg-blue-600 text-white border border-blue-700 rounded-xl shadow-lg px-4 py-2 text-sm w-full sm:w-auto focus:outline-none focus:ring-2 focus:ring-blue-400 hover:bg-blue-700 transition-colors"
+              >
+                <option value="All">All Sectors</option>
+                {sectors.map((sector) => (
+                  <option key={sector} value={sector}>{sector}</option>
+                ))}
+              </select>
+            </div>
             <h1 className="text-4xl md:text-5xl font-display font-bold text-dark-900 mb-6">
               Case Studies
             </h1>

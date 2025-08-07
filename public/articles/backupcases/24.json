@@ -2,7 +2,7 @@
   "Title": "Reducing Returns by Scraping Public Complaints",
   "Subtitle": "Tracking Why Customers Return Items through Forums and Review Posts",
   "Business Impact": "By understanding common return triggers—stated publicly on consumer forums or marketplace reviews—e-commerce stores can reduce return rates by up to 20%.",
-  "Sector": "Ecommerce",
+  "Sector": "E-commerce",
   "What data was collected": "Public forum discussions on product quality, shipping damage complaints, competitor return policies posted online, and negative review highlights from aggregator sites.",
   "Why this matters": "Returns eat into margins and can erode brand trust. Analyzing publicly shared grievances offers a broader, unbiased picture of real user frustrations—beyond only your own returns data.",
   "Implementation time": "8 to 10 weeks, encompassing the creation of forum scrapers, classification of complaint reasons, and final integration into continuous improvement workflows.",

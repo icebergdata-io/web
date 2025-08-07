@@ -2,7 +2,7 @@
   "Title": "Cross-Border Price Optimization through Public Duty & Tax Data",
   "Subtitle": "Scraping Customs Websites for Up-to-Date Fees, Ensuring Competitive Global Pricing",
   "Business Impact": "Tracking published duty rates and national import fees improves international sales by 15-20%, as customers see accurate, transparent total costs.",
-  "Sector": "Ecommerce",
+  "Sector": "E-commerce",
   "What data was collected": "Public customs tariff information, official tax rates from government sites, competitor shipping rates, and user-reported issues in cross-border shopping forums.",
   "Why this matters": "International buyers often abandon carts when final costs (duties, VAT) aren’t clear upfront. Scraping official public data ensures accurate landing costs and fosters trust.",
   "Implementation time": "6 to 10 weeks, focusing on building scrapers for government tariff databases, aggregator sites, and competitor shipping info, plus currency conversion integration.",

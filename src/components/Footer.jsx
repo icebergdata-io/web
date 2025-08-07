@@ -265,7 +265,7 @@ const Footer = () => {
                       Refund Policy
                     </button>
                     <Link 
-                      to="/refund" 
+                      to="/refund-policy" 
                       className="text-xs text-light-500 hover:text-light-300 transition-colors"
                     >
                       (View Full Page)

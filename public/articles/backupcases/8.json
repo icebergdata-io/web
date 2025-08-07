@@ -2,7 +2,7 @@
   "Title": "Product Availability Monitoring for Trend Analysis",
   "Subtitle": "Tracking Competitors’ Stock Levels to Identify Scarce or Popular Items",
   "Business Impact": "Real-time visibility into competitive inventory helps e-commerce sellers capitalize on scarcity and quickly restock high-demand products, potentially increasing sales by up to 12%.",
-  "Sector": "Ecommerce",
+  "Sector": "E-commerce",
   "What data was collected": "Stock status (in stock, low stock, out of stock), product categories, historical restock frequency, and promotional sales data from competitor websites and marketplaces.",
   "Why this matters": "E-commerce success hinges on offering the right products at the right time. Monitoring competitor availability helps businesses anticipate demand spikes and avoid missed revenue opportunities due to stockouts.",
   "Implementation time": "4 to 6 weeks, involving data pipeline creation, integration with the merchant’s inventory and forecasting tools, and testing for reliability and scale.",

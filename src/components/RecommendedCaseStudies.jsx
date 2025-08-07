@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const RecommendedCaseStudies = ({ relatedStudies, currentSector }) => {
+  console.log('🔔 RecommendedCaseStudies render', { count: relatedStudies?.length, currentSector });
   if (!relatedStudies || relatedStudies.length === 0) {
     return null;
   }

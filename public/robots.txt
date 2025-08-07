@@ -1,9 +1,16 @@
 User-agent: *
 Allow: /
 Disallow: /booking-confirmation
+Disallow: /api/
 
 # Sitemap
 Sitemap: https://www.icebergdata.co/sitemap.xml
 
 # Optimize crawling rate
 Crawl-delay: 1
+
+# Additional directives for better crawling
+Allow: /case-studies
+Allow: /services
+Allow: /press
+Allow: /case-study/

@@ -1,6 +1,78 @@
 {
-  "total": 78,
+  "total": 86,
   "caseStudies": [
+    {
+      "id": 91,
+      "sector": "home-services",
+      "slug": "identifying-service-deserts-a-data-driven-strategy-for-home-services-market-expansion-using-competitor-service-area-and-customer-review-data-to-guide-strategic-growth",
+      "title": "Identifying 'Service Deserts': A Data-Driven Strategy for Home Services Market Expansion",
+      "subtitle": "Using Competitor Service Area and Customer Review Data to Guide Strategic Growth",
+      "sectorName": "Home Services",
+      "publicationDate": "2025-08-08"
+    },
+    {
+      "id": 92,
+      "sector": "market-intelligence",
+      "slug": "closing-the-perceptual-gap-how-a-legacy-brand-aligned-its-voice-with-customer-sentiment-using-semantic-analysis-of-web-data-to-bridge-the-divide-between-intended-and-perceived-brand-identity",
+      "title": "Closing the Perceptual Gap: How a Legacy Brand Aligned Its Voice with Customer Sentiment",
+      "subtitle": "Using Semantic Analysis of Web Data to Bridge the Divide Between Intended and Perceived Brand Identity",
+      "sectorName": "Market Intelligence",
+      "publicationDate": "2025-08-07"
+    },
+    {
+      "id": 93,
+      "sector": "retail-electronics",
+      "slug": "mapping-the-journey-chasm-how-pathing-analysis-increased-accessory-sales-by-22-using-scraped-store-schematics-and-anonymized-foot-traffic-data-to-redesign-high-friction-customer-pathways-in-electronics-retail",
+      "title": "Mapping the Journey Chasm: How Pathing Analysis Increased Accessory Sales by 22%",
+      "subtitle": "Using Scraped Store Schematics and Anonymized Foot Traffic Data to Redesign High-Friction Customer Pathways in Electronics Retail",
+      "sectorName": "Retail (Electronics)",
+      "publicationDate": "2025-08-07"
+    },
+    {
+      "id": 96,
+      "sector": "consumer-electronics",
+      "slug": "boosting-promotion-roi-by-18-through-real-time-competitor-coupon-and-discount-analysis-how-a-consumer-electronics-retailer-used-web-scraping-to-automate-competitive-promotion-intelligence-and-optimize-offerings",
+      "title": "Boosting Promotion ROI by 18% Through Real-Time Competitor Coupon & Discount Analysis",
+      "subtitle": "How a Consumer Electronics Retailer Used Web Scraping to Automate Competitive Promotion Intelligence and Optimize Offerings.",
+      "sectorName": "Consumer Electronics",
+      "publicationDate": "2025-08-06"
+    },
+    {
+      "id": 35,
+      "sector": "healthcare",
+      "slug": "eliminating-surgical-delays-by-40-with-real-time-implant-and-instrument-tracking-integrating-manufacturer-logistics-and-regulatory-data-for-just-in-time-operating-room-readiness",
+      "title": "Eliminating Surgical Delays by 40% with Real-Time Implant & Instrument Tracking",
+      "subtitle": "Integrating Manufacturer, Logistics, and Regulatory Data for Just-in-Time Operating Room Readiness",
+      "sectorName": "Healthcare",
+      "publicationDate": "2025-08-04"
+    },
+    {
+      "id": 36,
+      "sector": "healthcare",
+      "slug": "closing-the-patient-experience-gap-how-telehealth-review-analysis-drove-a-20-reduction-in-user-churn-leveraging-public-patient-feedback-to-build-a-data-driven-product-roadmap",
+      "title": "Closing the Patient Experience Gap: How Telehealth Review Analysis Drove a 20% Reduction in User Churn",
+      "subtitle": "Leveraging Public Patient Feedback to Build a Data-Driven Product Roadmap",
+      "sectorName": "Healthcare",
+      "publicationDate": "2025-08-03"
+    },
+    {
+      "id": 77,
+      "sector": "lead-generation",
+      "slug": "decoding-competitor-pricing-how-deep-web-scraping-reduced-cpql-by-35-for-a-saas-provider-transforming-lead-generation-by-exposing-hidden-fees-and-creating-data-driven-value-propositions",
+      "title": "Decoding Competitor Pricing: How Deep Web Scraping Reduced CPQL by 35% for a SaaS Provider",
+      "subtitle": "Transforming lead generation by exposing hidden fees and creating data-driven value propositions.",
+      "sectorName": "Lead Generation",
+      "publicationDate": "2025-08-03"
+    },
+    {
+      "id": 33,
+      "sector": "healthcare",
+      "slug": "cracking-competitor-dme-bundle-pricing-to-boost-average-order-value-by-20-using-web-scraped-data-to-decode-complex-product-bundles-and-optimize-pricing-strategy-for-home-medical-supplies",
+      "title": "Cracking Competitor DME Bundle Pricing to Boost Average Order Value by 20%",
+      "subtitle": "Using Web-Scraped Data to Decode Complex Product Bundles and Optimize Pricing Strategy for Home Medical Supplies",
+      "sectorName": "Healthcare",
+      "publicationDate": "2025-08-02"
+    },
     {
       "id": 14,
       "sector": "food-delivery",

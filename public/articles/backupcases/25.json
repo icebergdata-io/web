@@ -2,7 +2,7 @@
   "Title": "Digital Shelf Optimization via Public Marketplace Scraping",
   "Subtitle": "Tracking Keyword Rankings and Competitor Products to Boost Visibility",
   "Business Impact": "Appearing in top search positions on major marketplaces can increase sales by up to 25%. Scraping public product listings and search result pages reveals how to improve ranking factors.",
-  "Sector": "Ecommerce",
+  "Sector": "E-commerce",
   "What data was collected": "Marketplace search results pages, competitor product titles, listing images, bullet points, user question threads, and rating counts—publicly visible on sites like Amazon or Walmart.",
   "Why this matters": "Even small changes in ranking position can drastically affect an item’s visibility. Detailed competitor listing data guides optimal keyword usage, product imagery, and promotional strategies.",
   "Implementation time": "6 to 8 weeks, entailing marketplace scraping scripts, a ranking analysis engine, and recommended listing adjustments based on publicly gleaned best practices.",

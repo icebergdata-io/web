@@ -2,7 +2,7 @@
   "Title": "Customer Sentiment Analysis for Product Optimization",
   "Subtitle": "Gathering and Analyzing Consumer Reviews to Inform Product Development",
   "Business Impact": "Understanding the sentiments of real customers regarding product features leads to improved product design and marketing, potentially boosting sales and reducing returns by 10%.",
-  "Sector": "Ecommerce",
+  "Sector": "E-commerce",
   "What data was collected": "User reviews from multiple e-commerce platforms, star ratings, textual feedback, and product question-and-answer threads, focusing on feature mentions and quality concerns.",
   "Why this matters": "Customer feedback is a goldmine for product refinement. Sentiment analysis highlights areas needing improvement, enabling more targeted R&D and marketing strategies.",
   "Implementation time": "6 to 8 weeks, including the deployment of NLP tools, data pipeline configuration, and integration with existing product management systems.",

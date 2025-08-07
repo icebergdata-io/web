@@ -16,7 +16,8 @@ const routes = [
   '/services/data-integration',
   '/services/custom-solutions',
   '/case-studies',
-  '/press'
+  '/press',
+  '/refund-policy'
 ];
 
 function generateStaticHTML() {
@@ -280,7 +281,8 @@ function getPageTitle(route) {
     '/services/data-integration': 'Data Integration Services | ETL Solutions | Iceberg Data',
     '/services/custom-solutions': 'Custom Data Solutions | Enterprise Web Scraping | Iceberg Data',
     '/case-studies': 'Case Studies | Web Scraping Success Stories | Iceberg Data',
-    '/press': 'Press Coverage | Iceberg Data in the News'
+    '/press': 'Press Coverage | Iceberg Data in the News',
+    '/refund-policy': 'Refund Policy | Iceberg Data'
   };
   return titles[route] || 'Iceberg Data - Enterprise Web Scraping Services';
 }
@@ -294,7 +296,8 @@ function getPageDescription(route) {
     '/services/data-integration': 'Enterprise data integration and ETL services. Seamlessly connect and transform your data sources for better insights.',
     '/services/custom-solutions': 'Custom data collection solutions tailored to your specific business needs. Enterprise-grade web scraping and data processing.',
     '/case-studies': 'Real-world case studies and success stories from our web scraping projects. See how we help businesses collect and analyze data.',
-    '/press': 'Latest press coverage and media mentions of Iceberg Data. Read about our web scraping innovations and industry impact.'
+    '/press': 'Latest press coverage and media mentions of Iceberg Data. Read about our web scraping innovations and industry impact.',
+    '/refund-policy': 'Our commitment to transparency and customer satisfaction. Learn about our refund policy and how we ensure your peace of mind.'
   };
   return descriptions[route] || 'Enterprise web scraping and data collection solutions provider.';
 }
@@ -308,7 +311,8 @@ function getPageKeywords(route) {
     '/services/data-integration': 'data integration services, ETL solutions, enterprise data integration, data transformation, data pipeline',
     '/services/custom-solutions': 'custom data solutions, enterprise web scraping, custom data collection, tailored data services',
     '/case-studies': 'case studies, web scraping success stories, data collection examples, enterprise data projects',
-    '/press': 'press coverage, media mentions, Iceberg Data news, web scraping industry news'
+    '/press': 'press coverage, media mentions, Iceberg Data news, web scraping industry news',
+    '/refund-policy': 'refund policy, money back guarantee, data accuracy, customer satisfaction, transparency'
   };
   return keywords[route] || 'web scraping, data collection, enterprise solutions';
 }
@@ -322,7 +326,8 @@ function getPageHeading(route) {
     '/services/data-integration': 'Data Integration & ETL Services',
     '/services/custom-solutions': 'Custom Data Collection Solutions',
     '/case-studies': 'Success Stories & Case Studies',
-    '/press': 'Press Coverage & Media Mentions'
+    '/press': 'Press Coverage & Media Mentions',
+    '/refund-policy': 'Refund Policy'
   };
   return headings[route] || 'Enterprise Data Solutions';
 }
@@ -336,7 +341,8 @@ function getPageContent(route) {
     '/services/data-integration': 'Transform and connect your data sources with our enterprise data integration services. We provide ETL solutions that seamlessly integrate with your existing analytics and CRM systems.',
     '/services/custom-solutions': 'Get tailored data collection solutions designed specifically for your business needs. Our custom web scraping and data processing services scale with your enterprise requirements.',
     '/case-studies': 'Explore real-world examples of how our web scraping solutions have helped businesses collect and analyze data effectively. See the measurable impact of our data collection services.',
-    '/press': 'Stay updated with the latest news and media coverage about Iceberg Data. Read about our innovations in web scraping technology and our impact on the data collection industry.'
+    '/press': 'Stay updated with the latest news and media coverage about Iceberg Data. Read about our innovations in web scraping technology and our impact on the data collection industry.',
+    '/refund-policy': 'At Iceberg Data, we are committed to delivering high-quality services and ensuring customer satisfaction. If you are not fully satisfied with our services, we offer a 30-day money-back guarantee. This policy applies to all our web scraping, data integration, and custom solutions.'
   };
   return content[route] || 'Professional data collection and web scraping solutions for enterprise businesses.';
 }

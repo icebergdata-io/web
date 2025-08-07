@@ -30,11 +30,13 @@ const CaseStudy = () => {
         const caseData = await findCaseStudyBySlug(sector, slug);
           
         if (caseData) {
-          console.log(`✅ Found matching case study: ${caseData.id}`);
+          console.log('✅ Found matching case study:', { id: caseData.id, title: caseData.Title, sector: caseData.Sector });
           setCaseData(caseData);
           
           // Fetch related case studies from the same sector
+          console.log(`🔍 Fetching related case studies for sector: ${sector} excluding ID: ${caseData.id}`);
           const related = await getRelatedCaseStudies(sector, caseData.id, 3);
+          console.log('📊 Related studies fetched:', related.map(s => ({ id: s.id, title: s.Title })));
           setRelatedStudies(related);
         } else {
           console.log('❌ No matching case study found');
@@ -126,14 +128,38 @@ const CaseStudy = () => {
       <SEO 
         title={`${caseData.Title} - Iceberg Data Case Study`}
         description={caseData["Business Impact"]}
-        keywords={`${caseData.Sector}, data analytics, case study, business intelligence, ${caseData.Title.toLowerCase()}`}
+        keywords={`${caseData.Sector}, data analytics, case study, business intelligence, ${caseData.Title.toLowerCase()}, web scraping, data extraction`}
         type="article"
+        image={`https://www.icebergdata.co/logos/logo-large.png`}
       />
       
       <script type="application/ld+json">
         {JSON.stringify({
-          ...schemaData,
-          datePublished: caseData.publicationDate,
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": caseData.Title,
+          "description": caseData.Subtitle,
+          "articleBody": caseData.Story,
+          "author": {
+            "@type": "Organization",
+            "name": "Iceberg Data"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Iceberg Data",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://www.icebergdata.co/logos/logo-large.png"
+            }
+          },
+          "datePublished": caseData.publicationDate,
+          "dateModified": caseData.publicationDate,
+          "industry": caseData.Sector,
+          "keywords": [caseData.Sector, "data analytics", "case study", "business intelligence", "web scraping"],
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": `https://www.icebergdata.co/case-study/${caseData.Sector?.toLowerCase().replace(/\s+/g, '-')}/${caseData.slug}`
+          }
         })}
       </script>
       
