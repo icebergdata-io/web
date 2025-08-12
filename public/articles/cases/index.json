@@ -1,6 +1,33 @@
 {
-  "total": 86,
+  "total": 89,
   "caseStudies": [
+    {
+      "id": 32,
+      "sector": "healthcare",
+      "slug": "solving-last-mile-spoilage-of-biologics-with-predictive-route-risk-analysis-integrating-real-time-weather-traffic-and-courier-performance-data-to-safeguard-high-value-pharmaceutical-shipments",
+      "title": "Solving Last-Mile Spoilage of Biologics with Predictive Route-Risk Analysis",
+      "subtitle": "Integrating Real-Time Weather, Traffic, and Courier Performance Data to Safeguard High-Value Pharmaceutical Shipments",
+      "sectorName": "Healthcare",
+      "publicationDate": "2025-08-10"
+    },
+    {
+      "id": 34,
+      "sector": "healthcare",
+      "slug": "pinpointing-rural-expansion-opportunities-by-mapping-healthcare-access-deserts-leveraging-geospatial-and-public-health-data-to-guide-medical-device-distribution",
+      "title": "Pinpointing Rural Expansion Opportunities by Mapping 'Healthcare Access Deserts'",
+      "subtitle": "Leveraging Geospatial and Public Health Data to Guide Medical Device Distribution",
+      "sectorName": "Healthcare",
+      "publicationDate": "2025-08-10"
+    },
+    {
+      "id": 83,
+      "sector": "lead-generation",
+      "slug": "beyond-follower-counts-pinpointing-high-engagement-influencers-to-triple-lead-conversion-using-deep-engagement-metrics-and-sentiment-analysis-to-generate-qualified-influencer-leads-for-a-high-growth-saas-platform",
+      "title": "Beyond Follower Counts: Pinpointing High-Engagement Influencers to Triple Lead Conversion",
+      "subtitle": "Using Deep Engagement Metrics and Sentiment Analysis to Generate Qualified Influencer Leads for a High-Growth SaaS Platform",
+      "sectorName": "Lead Generation",
+      "publicationDate": "2025-08-09"
+    },
     {
       "id": 91,
       "sector": "home-services",
