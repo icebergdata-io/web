@@ -57,13 +57,13 @@
   ],
   "functions": {
     "api/contact/index.js": {
-      "runtime": "@vercel/node@2.8.2",
+      "runtime": "@vercel/node@3.0.0",
       "maxDuration": 10
     }
   },
   "build": {
     "env": {
-      "NODE_VERSION": "18.x"
+      "NODE_VERSION": "22.x"
     }
   },
   "framework": "vite",
