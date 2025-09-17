@@ -2,55 +2,64 @@ name: Scheduled Case Studies Index Update
 
 on:
   schedule:
-    # Run daily at 9:00 AM UTC (4:00 AM EST / 5:00 AM EDT)
     - cron: '0 9 * * *'
-  workflow_dispatch: # Allow manual triggering for testing
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   update-index:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          
+          persist-credentials: true
+          fetch-depth: 0
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
           cache: 'npm'
-          
+
       - name: Install dependencies
         run: npm ci
-        
+
       - name: Regenerate case studies index
         run: |
           echo "🔄 Regenerating case studies index..."
           node scripts/regenerate-index.js
-          
-      - name: Check for changes
+
+      - name: Check for changes (index file only)
         id: verify-changed-files
+        shell: bash
         run: |
-          if [ -n "$(git status --porcelain)" ]; then
-            echo "changed=true" >> $GITHUB_OUTPUT
-            echo "📝 Changes detected in index file"
+          set -euo pipefail
+          FILE="public/articles/cases/index.json"
+          # Make diff notice a newly created file without staging it
+          git add -N "$FILE" || true
+          if git diff --quiet --exit-code -- "$FILE"; then
+            echo 'changed=false' >> "$GITHUB_OUTPUT"
+            echo '✅ No changes to index file'
           else
-            echo "changed=false" >> $GITHUB_OUTPUT
-            echo "✅ No changes to index file"
+            echo 'changed=true' >> "$GITHUB_OUTPUT"
+            echo '📝 Changes detected in index file'
           fi
-          
+
       - name: Commit and push changes
         if: steps.verify-changed-files.outputs.changed == 'true'
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
           git add public/articles/cases/index.json
           git commit -m "🤖 Auto-update case studies index - reveal scheduled content"
           git push
           echo "✅ Index updated and pushed to repository"
-          
+
       - name: No changes message
         if: steps.verify-changed-files.outputs.changed == 'false'
         run: |
