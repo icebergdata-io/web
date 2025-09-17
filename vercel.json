@@ -56,8 +56,8 @@
     }
   ],
   "functions": {
+    "runtime": "nodejs22.x",
     "api/contact/index.js": {
-      "runtime": "@vercel/node@3.0.0",
       "maxDuration": 10
     }
   },
