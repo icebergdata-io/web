@@ -1,6 +1,69 @@
 {
-  "total": 89,
+  "total": 96,
   "caseStudies": [
+    {
+      "id": 39,
+      "sector": "manufacturing",
+      "slug": "maximizing-margins-in-industrial-spares-a-dynamic-pricing-model-driven-by-competitor-inventory-and-commodity-data-how-a-component-manufacturer-used-real-time-web-data-to-escape-static-pricing-and-increase-profitability-by-18",
+      "title": "Maximizing Margins in Industrial Spares: A Dynamic Pricing Model Driven by Competitor Inventory and Commodity Data",
+      "subtitle": "How a component manufacturer used real-time web data to escape static pricing and increase profitability by 18%.",
+      "sectorName": "Manufacturing",
+      "publicationDate": "2025-08-29"
+    },
+    {
+      "id": 40,
+      "sector": "manufacturing",
+      "slug": "automating-chemical-compliance-how-proactive-sds-monitoring-averted-500k-in-potential-fines-leveraging-web-scraping-to-track-global-supplier-and-regulatory-updates-for-safety-data-sheets-in-real-time",
+      "title": "Automating Chemical Compliance: How Proactive SDS Monitoring Averted $500k in Potential Fines",
+      "subtitle": "Leveraging web scraping to track global supplier and regulatory updates for Safety Data Sheets in real-time.",
+      "sectorName": "Manufacturing",
+      "publicationDate": "2025-08-29"
+    },
+    {
+      "id": 38,
+      "sector": "manufacturing",
+      "slug": "unlocking-channel-velocity-a-dynamic-promotion-strategy-for-industrial-valve-manufacturing-leveraging-distributor-stock-and-competitor-price-scraping-to-drive-targeted-b2b-sales",
+      "title": "Unlocking Channel Velocity: A Dynamic Promotion Strategy for Industrial Valve Manufacturing",
+      "subtitle": "Leveraging Distributor Stock and Competitor Price Scraping to Drive Targeted B2B Sales",
+      "sectorName": "Manufacturing",
+      "publicationDate": "2025-08-23"
+    },
+    {
+      "id": 89,
+      "sector": "market-intelligence",
+      "slug": "pinpointing-prime-markets-for-ev-infrastructure-expansion-using-geospatial-and-sentiment-data-how-a-niche-service-provider-identified-underserved-high-growth-regions-by-analyzing-real-estate-competitor-and-community-data",
+      "title": "Pinpointing Prime Markets for EV Infrastructure Expansion Using Geospatial & Sentiment Data",
+      "subtitle": "How a Niche Service Provider Identified Underserved High-Growth Regions by Analyzing Real Estate, Competitor, and Community Data",
+      "sectorName": "Market Intelligence",
+      "publicationDate": "2025-08-23"
+    },
+    {
+      "id": 37,
+      "sector": "manufacturing",
+      "slug": "automating-chemical-compliance-proactive-sds-monitoring-to-eliminate-supply-chain-risks-how-a-specialty-chemicals-manufacturer-used-real-time-web-scraping-to-track-upstream-supplier-sds-updates-and-prevent-costly-production-halts",
+      "title": "Automating Chemical Compliance: Proactive SDS Monitoring to Eliminate Supply Chain Risks",
+      "subtitle": "How a specialty chemicals manufacturer used real-time web scraping to track upstream supplier SDS updates and prevent costly production halts.",
+      "sectorName": "Manufacturing",
+      "publicationDate": "2025-08-21"
+    },
+    {
+      "id": 41,
+      "sector": "manufacturing",
+      "slug": "unlocking-hidden-margins-how-competitor-aftermarket-parts-pricing-intelligence-drove-a-15-profit-increase-automating-price-and-availability-checks-across-hundreds-of-competitor-distributor-portals-to-optimize-spare-parts-strategy",
+      "title": "Unlocking Hidden Margins: How Competitor Aftermarket Parts Pricing Intelligence Drove a 15% Profit Increase",
+      "subtitle": "Automating Price and Availability Checks Across Hundreds of Competitor Distributor Portals to Optimize Spare Parts Strategy",
+      "sectorName": "Manufacturing",
+      "publicationDate": "2025-08-19"
+    },
+    {
+      "id": 81,
+      "sector": "lead-generation",
+      "slug": "boosting-lead-monetization-by-40-with-a-real-time-demand-sensing-pricing-engine-dynamically-pricing-home-service-leads-by-scraping-weather-market-and-competitor-data",
+      "title": "Boosting Lead Monetization by 40% with a Real-Time Demand-Sensing Pricing Engine",
+      "subtitle": "Dynamically Pricing Home Service Leads by Scraping Weather, Market, and Competitor Data",
+      "sectorName": "Lead Generation",
+      "publicationDate": "2025-08-16"
+    },
     {
       "id": 32,
       "sector": "healthcare",
