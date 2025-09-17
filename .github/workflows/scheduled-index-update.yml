@@ -31,7 +31,7 @@ jobs:
 
       - name: Regenerate case studies index
         run: |
-          echo "🔄 Regenerating case studies index..."
+          echo " Regenerating case studies index..."
           node scripts/regenerate-index.js
 
       - name: Check for changes
@@ -39,7 +39,7 @@ jobs:
         run: |
           if [ -n "$(git status --porcelain)" ]; then
             echo "changed=true" >> $GITHUB_OUTPUT
-            echo "📝 Changes detected in index file"
+            echo "Changes detected in index file"
           else
             echo "changed=false" >> $GITHUB_OUTPUT
             echo "
