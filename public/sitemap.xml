@@ -2,53 +2,95 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.icebergdata.co/</loc>
-    <lastmod>2025-08-12</lastmod>
+    <lastmod>2025-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/press</loc>
-    <lastmod>2025-08-12</lastmod>
+    <lastmod>2025-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
     <url>
     <loc>https://www.icebergdata.co/services</loc>
-    <lastmod>2025-08-12</lastmod>
+    <lastmod>2025-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/services/web-scraping</loc>
-    <lastmod>2025-08-12</lastmod>
+    <lastmod>2025-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/services/data-integration</loc>
-    <lastmod>2025-08-12</lastmod>
+    <lastmod>2025-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/services/custom-solutions</loc>
-    <lastmod>2025-08-12</lastmod>
+    <lastmod>2025-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/case-studies</loc>
-    <lastmod>2025-08-10</lastmod>
+    <lastmod>2025-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/refund-policy</loc>
-    <lastmod>2025-08-12</lastmod>
+    <lastmod>2025-09-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
     <url>
+    <loc>https://www.icebergdata.co/case-study/manufacturing/maximizing-margins-in-industrial-spares-a-dynamic-pricing-model-driven-by-competitor-inventory-and-commodity-data-how-a-component-manufacturer-used-real-time-web-data-to-escape-static-pricing-and-increase-profitability-by-18</loc>
+    <lastmod>2025-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/manufacturing/automating-chemical-compliance-how-proactive-sds-monitoring-averted-500k-in-potential-fines-leveraging-web-scraping-to-track-global-supplier-and-regulatory-updates-for-safety-data-sheets-in-real-time</loc>
+    <lastmod>2025-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/manufacturing/unlocking-channel-velocity-a-dynamic-promotion-strategy-for-industrial-valve-manufacturing-leveraging-distributor-stock-and-competitor-price-scraping-to-drive-targeted-b2b-sales</loc>
+    <lastmod>2025-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/market-intelligence/pinpointing-prime-markets-for-ev-infrastructure-expansion-using-geospatial-and-sentiment-data-how-a-niche-service-provider-identified-underserved-high-growth-regions-by-analyzing-real-estate-competitor-and-community-data</loc>
+    <lastmod>2025-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/manufacturing/automating-chemical-compliance-proactive-sds-monitoring-to-eliminate-supply-chain-risks-how-a-specialty-chemicals-manufacturer-used-real-time-web-scraping-to-track-upstream-supplier-sds-updates-and-prevent-costly-production-halts</loc>
+    <lastmod>2025-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/manufacturing/unlocking-hidden-margins-how-competitor-aftermarket-parts-pricing-intelligence-drove-a-15-profit-increase-automating-price-and-availability-checks-across-hundreds-of-competitor-distributor-portals-to-optimize-spare-parts-strategy</loc>
+    <lastmod>2025-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/lead-generation/boosting-lead-monetization-by-40-with-a-real-time-demand-sensing-pricing-engine-dynamically-pricing-home-service-leads-by-scraping-weather-market-and-competitor-data</loc>
+    <lastmod>2025-08-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.icebergdata.co/case-study/healthcare/solving-last-mile-spoilage-of-biologics-with-predictive-route-risk-analysis-integrating-real-time-weather-traffic-and-courier-performance-data-to-safeguard-high-value-pharmaceutical-shipments</loc>
     <lastmod>2025-08-10</lastmod>
     <changefreq>monthly</changefreq>
