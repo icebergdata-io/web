@@ -31,15 +31,36 @@ jobs:
 
       - name: Regenerate case studies index
         run: |
-          echo " Regenerating case studies index..."
+          echo "🔄 Regenerating case studies index..."
           node scripts/regenerate-index.js
 
-      - name: Check for changes
+      - name: Check for changes (index file only)
         id: verify-changed-files
+        shell: bash
         run: |
-          if [ -n "$(git status --porcelain)" ]; then
-            echo "changed=true" >> $GITHUB_OUTPUT
-            echo "Changes detected in index file"
+          set -euo pipefail
+          FILE="public/articles/cases/index.json"
+          # Make diff notice a newly created file without staging it
+          git add -N "$FILE" || true
+          if git diff --quiet --exit-code -- "$FILE"; then
+            echo 'changed=false' >> "$GITHUB_OUTPUT"
+            echo '✅ No changes to index file'
           else
-            echo "changed=false" >> $GITHUB_OUTPUT
-            echo "
+            echo 'changed=true' >> "$GITHUB_OUTPUT"
+            echo '📝 Changes detected in index file'
+          fi
+
+      - name: Commit and push changes
+        if: steps.verify-changed-files.outputs.changed == 'true'
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add public/articles/cases/index.json
+          git commit -m "🤖 Auto-update case studies index - reveal scheduled content"
+          git push
+          echo "✅ Index updated and pushed to repository"
+
+      - name: No changes message
+        if: steps.verify-changed-files.outputs.changed == 'false'
+        run: |
+          echo "ℹ️ No new case studies to reveal today"
