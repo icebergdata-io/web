@@ -57,6 +57,7 @@
   ],
   "functions": {
     "api/contact/index.js": {
+      "runtime": "@vercel/node",
       "maxDuration": 10
     }
   },
