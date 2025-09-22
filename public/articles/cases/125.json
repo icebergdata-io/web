@@ -1,0 +1,79 @@
+{
+  "Title": "Pinpointing Ingredient-Level Sentiment to Reduce Menu Item Churn by 30%",
+  "Subtitle": "Using Granular Review Scraping to Isolate Customer Preferences and Prevent Negative Virality for Virtual Kitchens",
+  "Business Impact": "Identified and resolved three 'viral risk' ingredients, preventing potential PR crises and improving overall platform star ratings by an average of 0.4 points within six months.",
+  "Sector": "Food Delivery",
+  "What data was collected": "Customer reviews from major food delivery platforms, posts and comments from niche food blogger websites and forums, geo-tagged social media posts mentioning the client's virtual brands, and menu item ingredient lists provided by the client.",
+  "Why this matters": "For virtual or 'ghost' kitchens, brand reputation is purely digital and incredibly fragile. A single bad ingredient can create a wave of negative reviews that can kill a brand overnight. Traditional star ratings don't explain the 'why' behind a negative trend, making it impossible to fix the root cause.",
+  "Implementation time": "10 to 12 weeks, which included setting up scrapers for multiple platforms, developing a custom NLP model for entity and sentiment recognition, and deploying a real-time analytics dashboard.",
+  "Problems this solves": "1) Vague feedback from generic 1-5 star ratings. 2) Slow reaction time to emerging negative trends around specific dishes. 3) Inability to differentiate between a bad kitchen experience and a disliked menu item. 4) High cost of developing and marketing menu items that ultimately fail due to poor reception.",
+  "Why it was better to outsource this solution": "An expert web scraping partner has the pre-built infrastructure to navigate complex anti-bot measures on food delivery apps and social media. They provide crucial expertise in building sophisticated NLP models for entity recognition (e.g., 'soggy fries,' 'undercooked chicken') and aspect-based sentiment analysis, ensuring data is captured at scale and with high fidelity.",
+  "Example_Input_JSON": {
+    "client_id": "ghost-kitchen-syndicate-456",
+    "job_type": "menu_item_sentiment_analysis",
+    "target_brands": [
+      "Burger Bliss",
+      "Noodle Nexus",
+      "The Wing Spot"
+    ],
+    "data_sources": [
+      "platform_reviews",
+      "food_blogs",
+      "social_media_mentions"
+    ],
+    "timeframe": "last_30_days"
+  },
+  "Example_Output_JSON": {
+    "report_id": "sentiment-report-q1-2025",
+    "brand": "Burger Bliss",
+    "menu_item": "The Volcano Burger",
+    "overall_sentiment_score": -0.65,
+    "review_volume": 1250,
+    "trending_topics": [
+      {
+        "topic": "buns",
+        "sentiment": "negative",
+        "keywords": [
+          "soggy",
+          "fell apart",
+          "disintegrated"
+        ],
+        "mention_count": 480
+      },
+      {
+        "topic": "patty",
+        "sentiment": "positive",
+        "keywords": [
+          "juicy",
+          "perfectly cooked",
+          "flavorful"
+        ],
+        "mention_count": 950
+      },
+      {
+        "topic": "spicy_sauce",
+        "sentiment": "mixed",
+        "keywords": [
+          "too hot",
+          "not spicy enough",
+          "amazing kick"
+        ],
+        "mention_count": 720
+      },
+      {
+        "topic": "delivery_time",
+        "sentiment": "negative",
+        "keywords": [
+          "late",
+          "cold",
+          "took forever"
+        ],
+        "mention_count": 150
+      }
+    ],
+    "recommendation": "Investigate alternative bun supplier or packaging to address moisture issues, which is the primary driver of negative sentiment for this otherwise popular item."
+  },
+  "Matching algorithm used to integrate the data": "We employed a custom Natural Language Processing (NLP) pipeline. First, Named Entity Recognition (NER) models were trained to identify specific menu items (e.g., 'Volcano Burger') and ingredients (e.g., 'buns', 'patty', 'spicy sauce') within unstructured review text. This was correlated with the client's internal menu database. Then, an aspect-based sentiment analysis (ABSA) model assigned a sentiment score (positive, negative, neutral) to each identified ingredient/aspect, allowing us to distinguish between a complaint about a 'soggy bun' versus a compliment for a 'juicy patty' within the same review.",
+  "Story": "<p>Our client, a rapidly expanding operator of virtual kitchens, faced a frustrating paradox. They had several digital-native food brands that were gaining traction, but their customer ratings were wildly inconsistent. One of their flagship items, the 'Volcano Burger' from their 'Burger Bliss' brand, would receive a glowing 5-star review followed immediately by a scathing 1-star review. This volatility made it impossible to diagnose problems. <strong>Was the recipe flawed? Was one of their partner kitchens underperforming? Or was it just an issue with delivery?</strong> Their existing analytics, which only showed top-line average star ratings, offered no real answers.</p><p>This lack of granular insight led to a costly 'whack-a-mole' approach to problem-solving. The culinary team would reformulate a sauce, only to see ratings remain unchanged. They'd retrain a kitchen's staff, but the negative reviews for a specific item would persist. The ambiguity was not just frustrating; it was a direct threat to their business model. One of their newer brands, 'The Wing Spot,' was on the verge of being delisted from a major delivery platform due to a steadily declining overall score, and they had no idea what the root cause was.</p><p>That’s when our team at Iceberg Data stepped in. We proposed moving beyond simple star ratings and conducting a deep, aspect-based sentiment analysis. Our strategy was to scrape and analyze not just the reviews on the primary delivery apps, but also the more descriptive and candid feedback found on local food blogs, forums, and geo-tagged social media posts. The core of our solution was a sophisticated Natural Language Processing (NLP) model designed to understand the nuances of food-related feedback. We weren't just going to tell them if a review was positive or negative; we were going to tell them <strong>precisely which component of the meal was causing that sentiment.</strong></p><p>The implementation began with deploying our custom web scrapers across a dozen different platforms, pulling in thousands of public reviews and mentions daily. Simultaneously, the client provided us with their complete menu and ingredient database for each virtual brand. Our data science team then trained our NER (Named Entity Recognition) model to specifically identify menu items and food components—'buns', 'patty', 'spicy sauce', 'fries', etc.—within unstructured text. The model could parse a sentence like, <em>'The Volcano Burger patty was juicy and amazing, but the bun was a soggy mess that fell apart instantly,'</em> and correctly assign a strong positive sentiment to the 'patty' and a strong negative sentiment to the 'bun,' all linked to the 'Volcano Burger' product.</p><p>The interactive dashboard we delivered to the client was their 'Aha!' moment. For 'Burger Bliss,' the data was undeniable. While the 'patty' received overwhelmingly positive mentions (over 90% positive sentiment), nearly 65% of all negative comments across the entire brand were specifically about the 'buns' being 'soggy,' 'disintegrated,' or 'wet.' <strong>The problem wasn't their signature burger; it was the bread and the packaging failing to handle the transit.</strong> For 'The Wing Spot,' we uncovered a different issue. A new 'ghost pepper' sauce, which they thought would be a hit, was polarizing their customer base. While a small group loved it, it was generating a massive volume of reviews with keywords like 'painful,' 'inedible,' and 'way too hot,' single-handedly dragging down the brand's average rating.</p><p>Armed with this hyper-specific intelligence, the client took swift, targeted action. They sourced a sturdier brioche bun for 'Burger Bliss' and invested in new vented packaging containers. Within a month, negative mentions of 'soggy buns' plummeted by 95%. For 'The Wing Spot,' they didn't have to scrap the sauce. Instead, they cleverly rebranded the item as the 'Reaper Challenge Wings,' added a prominent heat warning, and introduced a new, crowd-pleasing 'Smoky BBQ' option. This move successfully segmented their audience, satisfying both thrill-seekers and mainstream customers. The results were transformational: they reduced the churn of underperforming menu items by 30%, saved two of their virtual brands from being delisted, and achieved an average rating increase of 0.4 stars across their entire portfolio in just six months.</p>",
+  "publicationDate": "2025-09-19"
+}

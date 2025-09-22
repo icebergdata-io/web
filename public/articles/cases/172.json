@@ -1,0 +1,78 @@
+{
+  "Title": "Closing the Wellness Gap: How a Hotel Chain Lifted Guest Satisfaction by 15% Using Review Sentiment Analysis",
+  "Subtitle": "Leveraging Web-Scraped Guest Feedback to Prioritize High-Impact Amenity Investments",
+  "Business Impact": "By analyzing over 50,000 guest reviews, the client identified key missing wellness amenities, leading to a 15% increase in guest satisfaction scores and a 7% lift in repeat bookings within the first year of implementing the recommended changes.",
+  "Sector": "Hotels",
+  "What data was collected": "Publicly available guest reviews from major online travel agencies (OTAs) and review sites like TripAdvisor, Google Reviews, and Booking.com. We collected review text, overall star rating, date of stay, and reviewer-provided tags (e.g., 'business traveler', 'family trip') for the client and five of their direct competitors in the wellness hospitality space.",
+  "Why this matters": "The premium hospitality market is fiercely competitive. Guests making decisions based on lifestyle and wellness expect specific features. Investing capital in the wrong amenities is a costly mistake. Analyzing direct guest feedback at scale provides an unambiguous roadmap to what drives satisfaction and justifies premium room rates.",
+  "Implementation time": "10 to 12 weeks. This encompassed the initial large-scale data scrape, the development and training of a custom NLP model for amenity extraction, and the creation of a dashboard for visualizing the feature gap analysis.",
+  "Problems this solves": "1) Misallocated capital expenditure on low-impact or undesired hotel features. 2) Inability to compete effectively against niche 'wellness-focused' brands. 3) Difficulty in proving the ROI of specific amenities. 4) Generic marketing that fails to highlight features that truly matter to target guests.",
+  "Why it was better to outsource this solution": "Scraping tens of thousands of reviews across multiple platforms requires a sophisticated infrastructure capable of handling dynamic JavaScript-heavy sites, CAPTCHAs, and IP rate limiting. Furthermore, Iceberg Data’s pre-existing NLP expertise allowed for the rapid development of a sentiment model tailored to hospitality jargon, distinguishing between concepts like 'good water pressure' (positive) and 'low water pressure' (negative) far more accurately than a generic model.",
+  "Example_Input_JSON": {
+    "job_id": "CS-H-4581",
+    "client_name": "BoutiqueWellnessHotels",
+    "job_type": "review_feature_gap_analysis",
+    "target_urls": [
+      "tripadvisor.com/Hotel_Review-g60763-d93519",
+      "google.com/maps/place/Hotel_A",
+      "booking.com/hotel/us/property-b.html"
+    ],
+    "competitor_urls": [
+      "tripadvisor.com/Hotel_Review-g60763-d218823",
+      "tripadvisor.com/Hotel_Review-g60763-d112028"
+    ],
+    "keywords_to_track": [
+      "yoga",
+      "peloton",
+      "air purifier",
+      "vegan",
+      "organic",
+      "spa",
+      "blackout curtains",
+      "sustainability",
+      "quiet"
+    ]
+  },
+  "Example_Output_JSON": {
+    "report_id": "FGAR-BW-9902",
+    "analysis_date": "2024-11-20",
+    "client_property_id": "BWH-NYC-01",
+    "feature_gap_analysis": [
+      {
+        "feature": "in-room air purifier",
+        "client_positive_mentions": 12,
+        "competitor_positive_mentions": 289,
+        "client_negative_mentions": 45,
+        "sentiment_correlation_with_5_star": 0.82,
+        "recommendation": "High Priority Investment"
+      },
+      {
+        "feature": "blackout curtains",
+        "client_positive_mentions": 150,
+        "competitor_positive_mentions": 410,
+        "client_negative_mentions": 88,
+        "sentiment_correlation_with_5_star": 0.75,
+        "recommendation": "High Priority Investment"
+      },
+      {
+        "feature": "on-site full spa",
+        "client_positive_mentions": 5,
+        "competitor_positive_mentions": 120,
+        "client_negative_mentions": 15,
+        "sentiment_correlation_with_5_star": 0.45,
+        "recommendation": "Low Priority / Partner Locally"
+      },
+      {
+        "feature": "vegan breakfast options",
+        "client_positive_mentions": 35,
+        "competitor_positive_mentions": 215,
+        "client_negative_mentions": 61,
+        "sentiment_correlation_with_5_star": 0.68,
+        "recommendation": "Medium Priority / Low-Cost Implementation"
+      }
+    ]
+  },
+  "Matching algorithm used to integrate the data": "We employed a Natural Language Processing (NLP) pipeline that first used Named Entity Recognition (NER) to identify specific amenities, brands (e.g., 'Peloton'), and wellness concepts ('quiet room', 'natural light') within the raw review text. This was followed by a custom-trained sentiment analysis model that assigned a positive, negative, or neutral score to each mention, contextualized for hospitality. The algorithm then aggregated these mentions across thousands of reviews, correlating their frequency and sentiment with the overall review star rating to calculate an 'Impact Score' for each feature, effectively quantifying its contribution to guest satisfaction.",
+  "Story": "<p>Our client, a chain of upscale boutique hotels, faced a frustrating paradox. They were investing heavily in what they <em>thought</em> the modern wellness-conscious traveler wanted—things like partnerships with luxury gyms and stocking organic snacks in the minibar. Yet, their guest satisfaction scores were stagnant, and they were consistently losing bookings to a handful of competitors who had branded themselves as 'urban wellness retreats.' Their capital expenditure felt like a shot in the dark, and they had no data to guide their next big investment.</p><p>They approached us with a clear question: <strong>What specific, tangible features actually move the needle on guest satisfaction for this premium demographic?</strong> Internal surveys were yielding predictable answers, but they needed to understand the unsolicited, honest feedback hidden within thousands of public online reviews—not just for their hotels, but for the competitors who were winning.</p><p>Our team at Iceberg Data devised a comprehensive product feature gap analysis. The first step was to build a robust web scraping engine to collect over 50,000 recent reviews from major travel portals. We targeted the client's entire portfolio and their five most successful competitors across ten key metropolitan markets. The raw data was a mountain of unstructured text, filled with nuance, slang, and context-specific praise or complaints.</p><p>This is where our custom NLP pipeline became the core of the solution. We didn't just count keywords. Our model was trained to understand intent. For instance, it could differentiate between a guest mentioning the 'lack of a quiet room' (a strong negative signal) versus a guest praising a 'wonderfully quiet room' (a strong positive signal). We tracked mentions of over 100 different amenities and concepts, from 'in-room yoga mats' and 'Peloton bikes' to more abstract ideas like 'natural light' and 'sustainable practices'.</p><p>The results from our analysis dashboard were eye-opening for the client. <strong>Their biggest surprise was the disconnect between perceived value and actual guest priorities.</strong> They had been considering a multi-million dollar investment in building out small on-site spas in several properties. Our data showed that while competitors' spas were mentioned positively, the correlation with 5-star reviews was relatively weak (a 0.45 correlation score). Guests saw it as a 'nice-to-have,' not a deal-breaker.</p><p>In stark contrast, two far less expensive features showed an incredibly strong correlation with top-tier reviews. The first was <strong>'in-room air purifiers.'</strong> For competitors who offered them, these devices were mentioned constantly in glowing reviews, especially from travelers concerned with health and city pollution. It had a massive 0.82 correlation with 5-star ratings. The second was high-quality <strong>'blackout curtains.'</strong> Mentions of poor sleep due to light leakage was one of the most common complaints in the client's reviews, while competitors were frequently praised for providing a pitch-black sleeping environment, a critical component of wellness and recovery for busy travelers.</p><p>Armed with this data, the client completely re-prioritized their budget. The expensive spa project was put on hold. Instead, they launched a phased rollout of high-end air purifiers and premium blackout curtains across their properties. They also used the data to make smaller, high-impact changes, like expanding their 'vegan breakfast options'—another feature our analysis identified as a key differentiator. The results were almost immediate. Within six months, properties that received the upgrades saw their average satisfaction scores jump. After a year, the chain reported a <strong>15% overall increase in guest satisfaction and, crucially, a 7% increase in repeat bookings.</strong> They had stopped guessing what their guests wanted and started listening to what they were already telling them.",
+  "publicationDate": "2025-11-16"
+}

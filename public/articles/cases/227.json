@@ -1,0 +1,58 @@
+{
+  "Title": "Slashing Aircraft on Ground (AOG) Time by 35% with Real-Time Global Parts Sourcing",
+  "Subtitle": "Aggregating Public Supplier Inventory Data to Proactively Resolve Maintenance Logistics",
+  "Business Impact": "Reduced costly Aircraft on Ground (AOG) incidents by 35% and cut expedited freight costs by 60% by creating a unified, real-time view of the global spare parts market.",
+  "Sector": "Airlines",
+  "What data was collected": "Real-time stock levels, part numbers, condition codes (e.g., 'NE' for New, 'OH' for Overhauled), pricing, and location data from over 300 public-facing websites of certified aerospace parts suppliers, MRO providers, and surplus distributors.",
+  "Why this matters": "An aircraft is only profitable when it's flying. AOG situations cost airlines millions daily. Instant visibility into the global parts supply chain transforms maintenance from a reactive scramble into a proactive, data-driven operation, directly impacting operational uptime and profitability.",
+  "Implementation time": "12 to 14 weeks, including identifying and mapping target supplier sites, developing robust scrapers for varied portal structures, and integrating the data feed into the client's MRO software via API.",
+  "Problems this solves": "1) Lengthy and expensive Aircraft on Ground (AOG) events. 2) Inefficient manual procurement processes (phone calls, emails). 3) Lack of price transparency leading to overpayment for critical parts. 4) Inability to optimize logistics by finding the geographically closest available part.",
+  "Why it was better to outsource this solution": "Building and maintaining scrapers for hundreds of disparate, constantly changing supplier websites requires specialized expertise in anti-blocking techniques, data normalization, and infrastructure management. An external partner ensures a consistent, reliable, and aggregated data stream without diverting the airline's internal IT resources from core operations.",
+  "Example_Input_JSON": {
+    "client_id": "airline-eur-789",
+    "job_type": "aog_part_locator",
+    "part_number": "BAC-1598-SK",
+    "aircraft_location": "JFK",
+    "required_condition": [
+      "NE",
+      "OH"
+    ]
+  },
+  "Example_Output_JSON": {
+    "query_id": "query-aog-jfk-456",
+    "part_number": "BAC-1598-SK",
+    "search_timestamp": "2025-07-20T14:30:00Z",
+    "optimal_results": [
+      {
+        "supplier": "AeroParts NJ",
+        "location": "EWR",
+        "distance_km": 35,
+        "stock_quantity": 1,
+        "condition": "OH",
+        "price_usd": 18500,
+        "estimated_delivery_hours": 3
+      },
+      {
+        "supplier": "Global Aviation Supply",
+        "location": "ATL",
+        "distance_km": 1220,
+        "stock_quantity": 3,
+        "condition": "NE",
+        "price_usd": 22000,
+        "estimated_delivery_hours": 8
+      },
+      {
+        "supplier": "Frankfurt MRO Gmbh",
+        "location": "FRA",
+        "distance_km": 6180,
+        "stock_quantity": 1,
+        "condition": "OH",
+        "price_usd": 17900,
+        "estimated_delivery_hours": 14
+      }
+    ]
+  },
+  "Matching algorithm used to integrate the data": "A proprietary entity resolution algorithm normalizes heterogeneous supplier data. Part numbers are standardized against OEM databases, location strings are converted to unified airport codes (IATA/ICAO) using geospatial lookups, and condition codes (e.g., 'New', 'N', 'New-Stock') are mapped to a master 'NE' classification.",
+  "Story": "<p>Our client, a major European airline, was battling a chronic and incredibly expensive problem: Aircraft on Ground (AOG) events. For an airline, a grounded plane is more than an inconvenience; it's a catastrophic loss of revenue, a logistical nightmare of rebooking passengers, and a significant blow to brand reputation. Their maintenance, repair, and overhaul (MRO) supply chain was stuck in the past. When a critical component failed, their procurement team would begin a frantic, manual process of calling known suppliers, emailing for quotes, and scouring individual websites—a race against a clock that was ticking away tens of thousands of dollars per hour.</p><p>The core issue was a complete lack of visibility. They had no consolidated, real-time view of where a specific spare part might be available globally. A needed actuator might be sitting on a shelf just 50 miles away with a small distributor they didn't have a relationship with, but they would end up sourcing it from a major hub 3,000 miles away, incurring massive expedited shipping costs and days of delay.</p><p>Our team at Iceberg Data was brought in to overhaul this process. We proposed a shift from a reactive, manual search to a proactive, data-driven sourcing strategy. <strong>The solution was to build a real-time, global aircraft parts availability dashboard, powered by web scraping.</strong> We identified over 300 public-facing online inventories of certified parts suppliers, MRO facilities, and even aircraft teardown specialists. Our task was to continuously extract critical data points: part numbers, stock quantity, physical location, price, and condition code (New, Overhauled, Serviceable, etc.).</p><p>The real challenge was in normalization. One supplier might list a location as 'Frankfurt, DE', another as 'FRA Airport', and a third with just a zip code. We developed a matching algorithm using geospatial lookups to standardize all locations to their nearest IATA airport code. We did the same for part conditions, creating a master classification system. This ensured that when our client's team searched for a part, they were comparing apples to apples.</p><p>The turning point came three months after deployment. A flagship wide-body jet was grounded at JFK with a failed avionics module, part number 'BAC-1598-SK'. In the old days, this would have triggered a 24-to-48-hour scramble. Instead, the MRO controller logged into their new system and ran a query, just like the one in our 'Example_Input_JSON'. <strong>Within seconds, the dashboard returned a prioritized list of options, as seen in the 'Example_Output_JSON'.</strong> It identified an overhauled unit with a supplier in New Jersey, just 35km away, available for immediate courier delivery. It also showed a more expensive new unit in Atlanta and a cheaper one in Frankfurt. The choice was clear. They procured the New Jersey part, had it delivered and installed, and the aircraft was back in service in under seven hours.</p><p>The results across their network were staggering. Within the first year, <strong>our client reduced their average AOG time by 35%</strong>. The ability to source parts from the nearest possible location led to a <strong>60% reduction in expedited freight costs</strong>. Furthermore, by having transparent, real-time pricing from multiple vendors at their fingertips, their procurement team was able to achieve a <strong>15% average cost savings on critical parts</strong>. We didn't just provide data; we provided operational velocity, transforming a critical cost center into a competitive advantage.</p>",
+  "publicationDate": "2026-01-23"
+}

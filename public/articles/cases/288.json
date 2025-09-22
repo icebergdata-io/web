@@ -1,0 +1,61 @@
+{
+  "Title": "Pinpointing High-ROI Influencers by Scraping Audience Affinity Data",
+  "Subtitle": "Moving Beyond Follower Counts to Drive Conversions for Niche Airline Routes",
+  "Business Impact": "Increased campaign engagement by 300% and boosted load factor on new strategic routes by 15% by identifying micro-influencers whose audiences perfectly matched the target passenger profile, leading to a 40% reduction in customer acquisition cost.",
+  "Sector": "Airlines",
+  "What data was collected": "Public social media profiles (Instagram, TikTok, YouTube), travel blogs, and forums. Specifically, we collected influencer engagement metrics (likes, comments), follower growth rates, and scraped a public sample of their followers' profiles to analyze bios, declared interests, and location tags.",
+  "Why this matters": "Generic influencer marketing is inefficient. Matching an influencer's *audience demographic and interests* to a specific route's target passenger ensures marketing spend generates genuine interest and higher conversion rates, not just empty impressions.",
+  "Implementation time": "6 to 8 weeks, including initial scraping of a wide pool of influencers, audience data sampling, and building a scoring model to rank influencer-audience alignment.",
+  "Problems this solves": "1) Wasted marketing budget on mega-influencers with misaligned audiences. 2) Low ROI and poor conversion rates for new, niche route promotions. 3) Difficulty in discovering authentic, trusted voices within specific travel sub-cultures (e.g., culinary travel, eco-tourism).",
+  "Why it was better to outsource this solution": "Performing large-scale, continuous scraping of influencer follower data and analyzing thousands of public profiles to build audience personas requires sophisticated infrastructure and expertise in navigating social media data structures, which is beyond the scope of a typical marketing department.",
+  "Example_Input_JSON": {
+    "client_id": "airline-delta-456",
+    "job_type": "influencer_discovery",
+    "target_route": {
+      "origin": "JFK",
+      "destination": "OPO"
+    },
+    "target_audience_keywords": [
+      "foodie",
+      "wine travel",
+      "Portugal",
+      "culinary",
+      "historical architecture"
+    ]
+  },
+  "Example_Output_JSON": {
+    "report_id": "report-influencer-opo-112",
+    "generated_at": "2025-07-15T14:30:00Z",
+    "recommended_influencers": [
+      {
+        "username": "PortoEatsAndSips",
+        "platform": "Instagram",
+        "followers": 45000,
+        "engagement_rate": "5.8%",
+        "audience_affinity_score": 92.5,
+        "top_audience_interests": [
+          "port wine",
+          "bacalhau",
+          "douro valley",
+          "azulejos"
+        ]
+      },
+      {
+        "username": "TravelWithSofia",
+        "platform": "YouTube",
+        "followers": 75000,
+        "engagement_rate": "4.2%",
+        "audience_affinity_score": 88.1,
+        "top_audience_interests": [
+          "budget travel europe",
+          "hostels",
+          "walking tours",
+          "portugal"
+        ]
+      }
+    ]
+  },
+  "Matching algorithm used to integrate the data": "We use Natural Language Processing (NLP) to analyze text from the bios of an influencer's public followers. By extracting keywords and entities related to interests, travel styles, and locations, we build a composite 'Audience Persona.' This persona is then compared against the client's target audience keywords using a cosine similarity model to generate an 'Audience Affinity Score,' quantifying the match between the influencer's followers and the desired passenger profile.",
+  "Story": "<p>Our client, a major international airline, faced a classic marketing paradox. They were launching several exciting new direct routes to culturally rich but less-mainstream destinations—think Porto, Portugal, not Paris. To build excitement, they followed the standard playbook: partner with mega-influencers, personalities with millions of followers who could showcase the glamour of travel. The problem? The campaigns fell flat. Engagement was shallow, and more importantly, ticket sales for these new routes barely moved. They were paying for massive reach but failing to achieve resonance.</p><p>When they approached us at Iceberg Data, their question was simple: 'How do we find influencers who can actually sell tickets for these specific routes?' Our team hypothesized that the issue wasn't the influencers themselves, but a fundamental misalignment between their broad, generic audiences and the specific type of traveler interested in exploring Portugal's culinary scene or historical architecture. We proposed a radical shift in strategy: <strong>stop looking at the influencer and start analyzing their audience.</strong></p><p>Our solution was to build a data pipeline focused on calculating an 'Audience Affinity Score.' First, we scraped a wide net of travel content creators, from prominent bloggers to emerging TikTok stars, who had ever mentioned Portugal or related keywords. We gathered standard metrics like follower counts and engagement rates. But this was just the baseline. The real work began with the next step: for each promising influencer, we scraped the public profiles of thousands of their most engaged followers—the people who actively comment and like their posts.</p><p>Using Natural Language Processing (NLP), we parsed the bios of this audience sample, extracting keywords, interests, and location tags. We weren't just looking for the word 'travel'; we were looking for specifics like 'port wine enthusiast,' 'loves historic cities,' 'foodie explorer,' or 'seeks authentic experiences.' This allowed us to build a detailed 'Audience Persona' for each influencer. The final step was to compare this data-driven persona against the airline's target customer profile for the Porto route, which included keywords like 'culinary,' 'wine travel,' and 'architecture.' Our algorithm then generated a quantifiable Audience Affinity Score from 0 to 100.</p><p><strong>The results were illuminating.</strong> A mega-influencer with 2 million followers might have an Audience Affinity Score of just 15 for the Porto route, as their audience was primarily interested in luxury resorts in Dubai and the Maldives. In contrast, we discovered a food blogger with only 45,000 followers, 'PortoEatsAndSips,' who had an incredible Audience Affinity Score of 92.5. Her followers were overwhelmingly interested in exactly the experiences the new route offered. She was a perfect match, previously invisible to the airline's marketing team because they were filtering by follower count alone.</p><p>Armed with this data, the airline completely overhauled its strategy. They reallocated their budget from one or two mega-influencers to a portfolio of 20 highly-aligned micro-influencers. The impact was immediate and dramatic. The sponsored content created by these niche creators felt authentic and resonated deeply with their followers. The airline saw a <strong>300% increase in engagement rates</strong> (comments, shares) on sponsored posts compared to their previous campaigns. More critically, this engagement translated directly into sales. In the first quarter after launching the new campaign, the load factor on the new Porto route <strong>increased by 15 percentage points</strong>, and the airline reported a <strong>40% reduction in their marketing cost-per-acquisition</strong> for that route. They had successfully turned data into passengers, proving that in modern marketing, the quality of the audience is far more valuable than its size.",
+  "publicationDate": "2026-03-12"
+}

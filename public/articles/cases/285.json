@@ -1,0 +1,61 @@
+{
+  "Title": "Ensuring Transparent Pricing: Aligning a National Car Rental Fleet with State-Level Fee Disclosure Laws",
+  "Subtitle": "Leveraging Web Scraping to Proactively Identify and Correct Non-Compliant Surcharges Across Hundreds of Digital Touchpoints",
+  "Business Impact": "Reduced potential regulatory fines by an estimated $1.2M annually and decreased compliance-related customer complaints by 40% through real-time pricing audits.",
+  "Sector": "Car Rental",
+  "What data was collected": "Base rental prices, all itemized fees (e.g., airport concession recovery, vehicle license fees, tourism surcharges), final displayed 'total price', and the placement of fee disclosures within the user booking funnel. Data was gathered from the client's regional websites, mobile app APIs, and major third-party aggregator sites like Kayak and Expedia.",
+  "Why this matters": "In the car rental industry, regulations regarding 'drip pricing' and fee transparency are increasingly strict across different states. Non-compliance can lead to hefty fines, class-action lawsuits, and significant brand damage. Proactive monitoring is crucial for mitigating these multifaceted risks.",
+  "Implementation time": "10 to 12 weeks for initial setup, which included developing custom scrapers for over 50 state-specific regulatory variations, integrating with aggregator platforms, and building a real-time alerting dashboard.",
+  "Problems this solves": "1) Inconsistent fee presentation across different booking platforms. 2) Slow, manual auditing processes that miss real-time pricing errors. 3) High risk of substantial regulatory penalties and legal action due to non-transparent 'drip pricing' practices.",
+  "Why it was better to outsource this solution": "Outsourcing was critical due to the sheer scale and dynamic nature of the task. A specialist like Iceberg Data maintains sophisticated, proxy-managed scrapers capable of simulating user journeys from hundreds of different geographic locations to check localized pricing and legal disclaimers, a capability that is prohibitively expensive to build and maintain in-house.",
+  "Example_Input_JSON": {
+    "client_id": "global-rental-corp-456",
+    "job_type": "compliance_audit_job",
+    "parameters": {
+      "regions": [
+        "CA",
+        "NY",
+        "FL",
+        "TX"
+      ],
+      "platforms": [
+        "client_website",
+        "mobile_app_api",
+        "aggregator_kayak",
+        "aggregator_expedia"
+      ],
+      "vehicle_class": "Mid-size SUV",
+      "rental_period": {
+        "start_date": "2025-07-10",
+        "end_date": "2025-07-15"
+      }
+    }
+  },
+  "Example_Output_JSON": {
+    "report_id": "comp-report-f4a1-b8c3",
+    "generated_at": "2025-06-15T14:30:00Z",
+    "audit_summary": {
+      "region": "NY",
+      "platform": "aggregator_kayak",
+      "compliance_status": "FLAGGED",
+      "issue_description": "Violation of New York's 'Truth in Travel' Act. The 'Consolidated Facility Charge' ($8.50/day) was not included in the initial advertised price, only revealed at the final checkout step.",
+      "details": {
+        "advertised_base_price": "$65.00/day",
+        "fees_disclosed_upfront": [
+          "State Surcharge",
+          "Sales Tax"
+        ],
+        "fees_disclosed_late": [
+          "Consolidated Facility Charge"
+        ],
+        "final_total_price": "$81.25/day",
+        "required_disclosure_point": "Initial search results page",
+        "actual_disclosure_point": "Final payment confirmation page",
+        "screenshot_url": "s3://iceberg-data/proof/ny-kayak-flag-1a.png"
+      }
+    }
+  },
+  "Matching algorithm used to integrate the data": "A rule-based validation engine was developed. Scraped pricing components (base rate, taxes, surcharges) from each platform and geo-location were parsed and cross-referenced against a dynamic database of state and municipal regulations. The algorithm checks for two key conditions: 1) The presence of all mandatory fees, and 2) The correct placement of fee disclosures at specific stages of the booking funnel (e.g., 'total price on first view').",
+  "Story": "<p>Our client, a leading national car rental company, faced a daunting and increasingly costly challenge: navigating the patchwork of state-level consumer protection laws governing price advertising. Each state has its own rules about how and when fees must be disclosed. A pricing display that is perfectly legal in Texas might trigger a significant fine in New York. Their legal and compliance teams were overwhelmed, relying on sporadic, manual audits that were always a step behind their dynamic pricing engine and the complex logic of third-party travel aggregators.</p><p>The problem came to a head after a near-miss with a state attorney general over what's known as 'drip pricing'—where mandatory fees are only revealed late in the booking process. They realized their manual spot-checks were insufficient. They couldn't simulate bookings from every state, for every vehicle class, across every platform their cars were sold on. <strong>This lack of visibility created a massive, unquantified financial and reputational risk.</strong> They needed a systematic, automated way to monitor their own digital storefronts and their listings on sites like Expedia and Kayak for compliance, in real time.</p><p>That’s when our team at Iceberg Data was brought in. We proposed a comprehensive regulatory compliance monitoring solution. Our first step was to build a 'regulatory library,' codifying the specific fee disclosure rules for all 50 states. This became the ground truth for our system. Then, we engineered a fleet of sophisticated web scrapers designed to act like real customers. These scrapers could simulate user journeys from IP addresses located within specific states, allowing us to see the exact pricing and fee information a customer in Albany, NY or Miami, FL would see.</p><p>We configured the system to run daily audits, targeting a representative sample of vehicle classes and rental periods across their primary website, mobile app, and key aggregator partners. The scrapers meticulously collected every piece of pricing data: the advertised base rate, each itemized surcharge from 'Airport Concession Recovery Fees' to 'Tourism Taxes,' and the final, all-inclusive price. <strong>Crucially, our scrapers also recorded *at what stage* in the booking funnel each fee was disclosed.</strong></p><p>The results were immediate and eye-opening. Within the first week, our system flagged a critical issue. On a major aggregator site, for rentals originating from JFK airport in New York, a mandatory 'Consolidated Facility Charge' was not being included in the upfront advertised price. This was a direct violation of New York's 'Truth in Travel' Act. Our system generated an alert, complete with screenshots and structured data, detailing how the $8.50/day fee only appeared on the final payment screen. The client's internal team had no visibility into this, as the aggregator's platform logic was inadvertently causing the non-compliant display. Armed with our data, they were able to contact the aggregator and rectify the issue within 48 hours, preventing a potential regulatory action.</p><p>Over the next six months, our automated monitoring platform became an indispensable tool for their compliance department. It transformed their process from reactive damage control to proactive risk management. <strong>By catching these discrepancies early, we helped them reduce their potential exposure to regulatory fines by an estimated $1.2 million annually.</strong> Furthermore, the increased pricing transparency led to a noticeable improvement in customer trust, reflected in a <strong>40% reduction in compliance-related customer service complaints.</strong> This project demonstrated that web data isn't just for competitive intelligence; it's a powerful tool for safeguarding a business against complex and ever-changing regulatory landscapes.</p>",
+  "publicationDate": "2026-03-04"
+}

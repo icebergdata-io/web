@@ -1,0 +1,74 @@
+{
+  "Title": "Grounding AOG Delays: Slashing Maintenance Downtime by 35% with Real-Time Parts Sourcing",
+  "Subtitle": "Automating the global search for certified Maintenance, Repair, and Overhaul (MRO) components to accelerate aircraft return-to-service.",
+  "Business Impact": "By creating a real-time, unified view of the fragmented MRO parts market, our client reduced Aircraft on Ground (AOG) event durations by an average of 35%, saving an estimated $1.5 million per incident in lost revenue and operational costs.",
+  "Sector": "Airlines",
+  "What data was collected": "Publicly available data from hundreds of aerospace part supplier websites (part numbers, stock levels, condition codes, warehouse locations), logistics carrier portals (shipping cutoff times, transit estimates), and aviation authority databases for part certification verification.",
+  "Why this matters": "An Aircraft on Ground (AOG) event is one of the most expensive, time-critical problems an airline can face. The speed at which a certified replacement part can be sourced and delivered directly determines the financial impact, which can run into millions per day.",
+  "Implementation time": "12 to 16 weeks, including building custom scrapers for over 200 priority supplier portals, integrating with logistics APIs, and creating a unified parts availability dashboard.",
+  "Problems this solves": "1) Extremely slow, manual process of searching dozens of siloed supplier websites during a high-pressure AOG event. 2) Inability to quickly compare logistics options for the fastest delivery. 3) Risk of ordering a part without the correct, up-to-date airworthiness certification.",
+  "Why it was better to outsource this solution": "The MRO supplier landscape is vast and technically diverse, with websites ranging from modern APIs to legacy HTML portals. An expert web scraping partner can build and maintain the robust infrastructure required to reliably extract this data at scale, handling anti-bot measures and constant site structure changes.",
+  "Example_Input_JSON": {
+    "client_id": "client-airline-772",
+    "job_type": "aog_part_locator",
+    "part_number": "HG2030AC04",
+    "alternate_part_numbers": [
+      "HG2030AB02",
+      "HG2030AD01"
+    ],
+    "aircraft_model": "787-9",
+    "grounded_location_icao": "KJFK"
+  },
+  "Example_Output_JSON": {
+    "report_id": "aog-kjfk-hg2030ac04-1678886400",
+    "generated_at": "2025-03-15T12:01:00Z",
+    "sourcing_options": [
+      {
+        "supplier_id": "AeroPartsIntl",
+        "part_number": "HG2030AC04",
+        "condition": "New",
+        "certification": "FAA 8130-3 / EASA Form 1",
+        "stock_quantity": 2,
+        "warehouse_location": "MIA",
+        "distance_miles": 1090,
+        "shipping_options": [
+          {
+            "carrier": "FedEx",
+            "service": "AOG_First_Overnight",
+            "cutoff_time_local": "19:00",
+            "estimated_delivery_utc": "2025-03-16T10:00:00Z",
+            "cost_usd": 4500
+          },
+          {
+            "carrier": "Charter_Jet",
+            "service": "NFO_Handcarry",
+            "cutoff_time_local": "N/A",
+            "estimated_delivery_utc": "2025-03-16T03:30:00Z",
+            "cost_usd": 22000
+          }
+        ]
+      },
+      {
+        "supplier_id": "GlobalSparesLLC",
+        "part_number": "HG2030AB02",
+        "condition": "Overhauled",
+        "certification": "FAA 8130-3",
+        "stock_quantity": 1,
+        "warehouse_location": "DFW",
+        "distance_miles": 1391,
+        "shipping_options": [
+          {
+            "carrier": "UPS",
+            "service": "AOG_Critical",
+            "cutoff_time_local": "20:30",
+            "estimated_delivery_utc": "2025-03-16T11:30:00Z",
+            "cost_usd": 3800
+          }
+        ]
+      }
+    ]
+  },
+  "Matching algorithm used to integrate the data": "We use a combination of Natural Language Processing (NLP) to parse unstructured part descriptions and a fuzzy matching algorithm on part numbers to identify direct and acceptable alternates. Geospatial analysis is then used to calculate distances from the grounded aircraft's ICAO code to supplier warehouse locations, which are then cross-referenced with real-time shipping lane availability from logistics carrier data.",
+  "Story": "<p>For our client, a major international airline, the three most dreaded letters are A-O-G: Aircraft on Ground. When an aircraft is grounded for an unscheduled maintenance issue, a complex and frantic race against time begins. Every minute the plane sits on the tarmac, it's not generating revenue, connections are missed, and operational costs skyrocket. The airline estimated that a single AOG event for one of their wide-body jets could cost upwards of $2 million for a 48-hour delay. The bottleneck, surprisingly often, wasn't the skill of their maintenance crews, but the archaic process of finding one specific, certified part.</p><p>Our team was brought in after a particularly painful incident involving a Boeing 787 grounded in New York (KJFK) due to a faulty Yaw Damper Module. The airline's maintenance control center (MCC) spent nearly <strong>eight hours</strong> manually scouring the internet. Their team of specialists had a list of 50+ approved MRO suppliers, and they had to visit each website, one by one, searching for the part number. Some sites were slow, others required complex logins, and inventory data was often out of date. After hours of dead ends, they finally found the part in a warehouse in California. The subsequent cross-country shipping added another full day to the downtime.</p><p><strong>The core problem was data fragmentation.</strong> The critical information—part availability, certification status, physical location, and logistics options—was scattered across hundreds of disconnected, non-standardized sources. Our challenge was to create a single source of truth, a 'Google for certified aircraft parts'.</p><p>Our solution was to deploy a fleet of highly specialized web scrapers. We targeted over 250 global MRO supplier portals, building custom logic to navigate their unique structures and extract key data points: part numbers, quantities, condition (New, Overhauled, Serviceable), warehouse city codes, and crucially, links to their airworthiness certification documents (like an FAA 8130-3 form). We then layered on another set of scrapers aimed at major logistics carriers, pulling data on their 'next flight out' (NFO) and critical AOG shipping services, including cutoff times and transit durations between key airport hubs.</p><p>The result was a unified database, updated every 15 minutes, that could be queried instantly. Instead of a frantic manual search, the MCC could now input the part number and the aircraft's location. Our system would return a ranked list of all available parts worldwide, sorted by the fastest possible delivery time to the aircraft's location. This wasn't just a list of suppliers; it was a list of actionable solutions, complete with integrated shipping options.</p><p><strong>The true test came six months after deployment.</strong> The exact same aircraft type was grounded again, this time in London, for a similar component failure. The MCC team queried our system. Within <strong>90 seconds</strong>, the system returned three viable options. The top result was not from one of their primary, well-known suppliers. It was a smaller, certified parts distributor with a warehouse just outside Amsterdam—a location the team admitted they would have never thought to check manually. Our system had already cross-referenced the part with a next-flight-out cargo option. A courier was dispatched, the part was on a plane within three hours, and the aircraft was back in service in just 14 hours, instead of the 48+ hours it might have taken previously. That single event saved the client an estimated $1.8 million, more than justifying the entire project's cost and proving the immense power of turning fragmented web data into a strategic logistical asset.</p>",
+  "publicationDate": "2026-02-05"
+}

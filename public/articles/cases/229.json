@@ -1,0 +1,40 @@
+{
+  "Title": "Slashing Aircraft Downtime by 40% with Real-Time MRO Parts Sourcing",
+  "Subtitle": "Aggregating Global Spare Parts Inventories to Optimize Aviation Logistics and Minimize AOG Events",
+  "Business Impact": "Reduced Aircraft on Ground (AOG) resolution time by 40%, decreased urgent parts acquisition costs by 15% through real-time market price visibility, and increased overall fleet availability by 5%.",
+  "Sector": "Airlines",
+  "What data was collected": "Real-time aircraft spare part numbers (P/N), condition codes (e.g., 'New', 'Overhauled', 'Serviceable'), airworthiness certification data (e.g., FAA Form 8130), supplier stock levels, pricing from multiple online MRO marketplaces, and logistics carrier transit times.",
+  "Why this matters": "Every minute an aircraft is grounded (AOG) costs an airline thousands of dollars in lost revenue and passenger disruption. Rapidly locating and procuring the nearest certified spare part is paramount to operational viability and profitability.",
+  "Implementation time": "12 to 14 weeks, involving the setup of resilient scrapers for multiple MRO marketplaces, building a centralized parts database, and integrating with the client's maintenance and operations control (MOC) system via API.",
+  "Problems this solves": "1) Lengthy and manual processes for locating critical spare parts during AOG events. 2) Lack of price transparency, leading to overpayment for urgent components. 3) Inability to track parts shipments in real-time from non-standard suppliers.",
+  "Why it was better to outsource this solution": "Specialized web scraping partners possess the expertise to handle the complex, login-protected structures of diverse MRO marketplaces and logistics portals, ensuring consistent and accurate data extraction without violating terms of service or getting blocked.",
+  "Example_Input_JSON": {
+    "client_id": "aero-fly-789",
+    "job_type": "aog_parts_locator",
+    "part_number": "BAC1520-1161",
+    "required_condition": "Serviceable",
+    "destination_airport_code": "JFK"
+  },
+  "Example_Output_JSON": {
+    "query_id": "query-aog-part-456",
+    "part_number": "BAC1520-1161",
+    "best_option": {
+      "supplier_name": "Global Aero Components",
+      "stock_location_code": "LAX",
+      "price_usd": 8500,
+      "condition": "Serviceable",
+      "certification": "FAA 8130-3",
+      "quantity_available": 3,
+      "fastest_shipping_option": {
+        "carrier": "FedEx",
+        "service_level": "AOG Priority",
+        "estimated_delivery_time_utc": "2025-07-16T14:30:00Z",
+        "shipping_cost_usd": 1200
+      }
+    },
+    "alternative_options_count": 7
+  },
+  "Matching algorithm used to integrate the data": "Data is normalized using a Part Number Master Catalog. We use fuzzy string matching and manufacturer code cross-referencing to reconcile variations in part descriptions across different supplier portals. Geospatial analysis is then used to calculate logistics routes and transit times from the supplier's location to the grounded aircraft's airport code.",
+  "Story": "<p>In the airline industry, the most dreaded acronym is 'AOG'—Aircraft on Ground. It signifies a multi-million-dollar problem unfolding in real-time. Our client, a major international carrier, was bleeding cash from AOG events. Their supply chain for Maintenance, Repair, and Overhaul (MRO) parts was a relic of a bygone era, and it was costing them dearly. We were brought in after a particularly disastrous incident involving a flagship aircraft grounded on a remote island tarmac due to a failed hydraulic manifold.</p><p>The story their Head of Logistics told us was a familiar one. The maintenance crew identified the required part number, but their primary supplier in North America had no stock. The Maintenance Operations Control (MOC) team then began a frantic, manual 'phone and email' scramble. They spent the next eight hours contacting a limited list of secondary suppliers across different time zones. By the time they located a certified part, 12 critical hours had passed. The flight was canceled, hundreds of passengers had to be rebooked on competitor flights, and the direct and indirect costs spiraled past half a million dollars for that single event. They had zero visibility into the global parts market; they were flying blind.</p><p>Our team at Iceberg Data saw this not as a logistics failure, but a data failure. The information they needed existed, but it was fragmented across dozens of proprietary MRO marketplaces, partner airline inventory systems, and third-party logistics provider websites—all locked behind logins and complex interfaces. Our proposal was ambitious: to build a single source of truth for global MRO parts availability. <strong>We deployed a fleet of sophisticated, resilient web scrapers to continuously extract data from these disparate sources.</strong> We captured everything: part numbers, quantities, precise locations, condition codes like 'New' or 'Serviceable', and, crucially, scanned copies of airworthiness certificates like the FAA 8130-3 form to ensure compliance.</p><p>We built a centralized database and provided the client with a simple API endpoint that integrated directly into their MOC software. The transformation was immediate and profound. A few months later, a near-identical AOG scenario occurred. A flight was grounded in Johannesburg with a faulty avionics component. <strong>Instead of a frantic scramble, the MOC technician simply entered the part number into their system.</strong> Our API was triggered, and our system queried its live, aggregated database of global inventory.</p><p>In less than 30 seconds, the system returned three viable options. The best one wasn't from their usual suppliers in Europe or the US. It was a 'Serviceable' unit, significantly cheaper than a new one, sitting in the inventory of a regional MRO provider in Dubai. Our system had not only found the part but had also scraped real-time shipping data, identifying an AOG-priority courier that could get the component on the next flight to Johannesburg. The entire discovery and procurement decision process took under five minutes.</p><p>The results, scaled across their entire fleet, were staggering. Their average AOG resolution time plummeted by 40%. By having full market visibility, they were able to select more cost-effective parts, reducing urgent acquisition costs by 15%. Most importantly, their fleet availability increased by 5%, allowing them to operate more routes with higher reliability. We didn't just sell them data; we gave them operational certainty. We transformed their MRO supply chain from a reactive, costly bottleneck into a proactive, data-driven strategic advantage that saved them millions and protected their brand reputation.</p>",
+  "publicationDate": "2026-01-29"
+}

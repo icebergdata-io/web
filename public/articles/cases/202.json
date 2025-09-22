@@ -1,0 +1,45 @@
+{
+  "Title": "Automating Resort Fee Disclosure Audits to Ensure Compliance and Avoid Costly Fines",
+  "Subtitle": "How a major hotel group used web scraping to monitor pricing transparency across hundreds of booking platforms and mitigate regulatory risk.",
+  "Business Impact": "Reduced the risk of regulatory fines by 95% and eliminated over 400 hours of manual auditing per month by automating the monitoring of mandatory fee disclosures across a portfolio of 200+ properties.",
+  "Sector": "Hotels",
+  "What data was collected": "Advertised room rates, mandatory resort fees, destination fees, taxes, and the total 'all-in' price displayed at each stage of the booking funnel (search results, room selection, checkout) from over 50 Online Travel Agency (OTA) websites, metasearch engines, and direct booking channels.",
+  "Why this matters": "Increasing scrutiny from consumer protection agencies and new 'junk fee' legislation requires hotels to display all mandatory charges upfront. Failure to do so can result in hefty fines, class-action lawsuits, and significant damage to brand reputation.",
+  "Implementation time": "6 to 8 weeks, which included developing robust scrapers for diverse OTA checkout flows, creating a centralized compliance dashboard with alerting capabilities, and establishing a historical data archive for legal evidence.",
+  "Problems this solves": "1) Inconsistent and non-compliant fee disclosures across third-party booking sites. 2) Inability to manually audit hundreds of properties on dozens of platforms in real-time. 3) Lack of visibility into how independently-managed franchise properties are representing mandatory fees online.",
+  "Why it was better to outsource this solution": "OTAs employ complex, JavaScript-heavy websites with sophisticated anti-scraping measures. An expert partner navigates proxy rotation, CAPTCHA solving, and frequent site structure changes, ensuring consistent and reliable data collection that is unfeasible for a non-specialized in-house team to maintain.",
+  "Example_Input_JSON": {
+    "client_id": "hotel-group-789",
+    "job_type": "fee_compliance_audit",
+    "properties": [
+      "property-id-001",
+      "property-id-002"
+    ],
+    "target_platforms": [
+      "booking.com",
+      "expedia.com",
+      "direct_website"
+    ],
+    "check_in_date": "2025-08-15",
+    "stay_duration_nights": 2,
+    "compliance_rules": {
+      "fee_disclosure_stage": "initial_search_results"
+    }
+  },
+  "Example_Output_JSON": {
+    "audit_id": "audit-fee-abc-456",
+    "timestamp": "2025-06-15T14:30:00Z",
+    "property_id": "property-id-001",
+    "platform": "expedia.com",
+    "base_rate_displayed": 250,
+    "resort_fee_displayed": 35,
+    "taxes_displayed": 42.5,
+    "total_price_displayed": 327.5,
+    "is_fee_disclosed_early": true,
+    "compliance_status": "COMPLIANT",
+    "screenshot_url": "https://storage.icebergdata.com/screenshots/audit-fee-abc-456.png"
+  },
+  "Matching algorithm used to integrate the data": "Data points from each OTA and direct booking site are normalized using a proprietary entity resolution algorithm. Hotel properties are matched against a master list using unique identifiers such as address and property name variations. Fee components (e.g., 'Resort Fee', 'Destination Fee', 'Amenity Charge') are standardized into a single 'Mandatory Fee' category for consistent reporting and analysis.",
+  "Story": "<p>Our client, a leading hotel management group with over 200 properties across North America, faced a growing and costly challenge: regulatory compliance. New legislation targeting so-called 'junk fees' was gaining momentum, with consumer protection agencies threatening multi-million dollar fines for hotels that failed to disclose mandatory charges like 'resort fees' or 'destination fees' upfront. The problem was that their online presence was massively fragmented. Their properties were listed on dozens of Online Travel Agencies (OTAs), each with its own interface and booking flow. Ensuring every single listing was compliant was becoming a nightmare.</p><p><strong>Their previous method was unsustainable.</strong> They had a small compliance team that would manually spot-check listings. This involved visiting a handful of OTAs, searching for their properties, and clicking through the booking process to see when the resort fee appeared. This process was painfully slow, covered less than 5% of their total online listings in any given month, and was prone to human error. They had no way to create a defensible record of their compliance efforts and were essentially flying blind. A near-miss with a state attorney general's office, prompted by a handful of consumer complaints, was the wake-up call they needed. They realized they needed a systematic, automated, and scalable solution.</p><p>That’s when our team at Iceberg Data was brought in. We proposed a comprehensive web scraping and monitoring solution designed specifically for this regulatory challenge. Our objective was clear: to audit 100% of their properties on all major online platforms, every single day, and provide a clear, actionable report on their compliance status. We built a fleet of intelligent scrapers capable of navigating the complex, dynamic environments of sites like Expedia, Booking.com, and others. These weren't simple scrapers; they had to simulate the entire user journey, from searching for a location and date, to identifying the hotel in the search results, and analyzing the price breakdown presented at that initial stage.</p><p><strong>The core of the solution was capturing not just the data, but the context.</strong> Our system parsed the price displayed on the search results page and determined if the mandatory resort fee was included or clearly itemized. It captured the base rate, the fee itself, and any taxes shown. Crucially, we also captured a timestamped screenshot of the page as irrefutable evidence of what was being displayed to the public at that moment. This data was then fed into a centralized dashboard we developed for the client.</p><p>The impact was immediate and profound. The dashboard provided a bird's-eye view of their entire portfolio. A simple color-coded system—green for compliant, red for non-compliant—allowed their team to instantly identify problem areas. They could filter by property, by OTA, or by region. A non-compliant listing for a franchised property in Las Vegas on Expedia? The system automatically generated an alert, complete with the scraped data and screenshot, which was sent directly to the property manager and the regional director. They no longer had to hunt for problems; the problems were delivered to their inbox.</p><p>Within the first three months, the client reduced their rate of non-compliant listings from an estimated 15% to less than 1%. The manual auditing process, which consumed over 400 hours per month, was completely eliminated, freeing up their compliance team to focus on strategic initiatives rather than tedious manual checks. Most importantly, they built a robust, automated system of record that demonstrated a proactive approach to compliance. They could now confidently face any regulatory inquiry with a full, verifiable history of their pricing transparency efforts. This wasn't just about avoiding fines; it was about building consumer trust and turning a complex regulatory burden into a streamlined, data-driven operation.</p>",
+  "publicationDate": "2025-12-02"
+}

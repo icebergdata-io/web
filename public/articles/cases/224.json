@@ -1,0 +1,58 @@
+{
+  "Title": "Eliminating Price Display Violations by Automating Multi-Jurisdictional Advertising Audits",
+  "Subtitle": "Ensuring Car Rental Pricing Transparency Across All Digital Channels to Mitigate Regulatory Fines",
+  "Business Impact": "Proactively identified and rectified over 5,000 instances of non-compliant price advertising, reducing regulatory fines by 95% and saving an estimated 4,000 man-hours annually on manual audits.",
+  "Sector": "Car Rental",
+  "What data was collected": "Publicly advertised car rental prices from the client's own websites (corporate and franchisee), major Online Travel Aggregator (OTA) sites, and official fee schedules from airport authority and municipal government portals.",
+  "Why this matters": "In the car rental industry, 'drip pricing' (showing a low base price and adding mandatory fees later) is heavily regulated. Non-compliance leads to hefty fines, class-action lawsuits, and erodes customer trust. Automated monitoring is the only way to ensure compliance at scale across dozens of jurisdictions and platforms.",
+  "Implementation time": "10 to 12 weeks for full deployment, including initial scraping of 200+ regulatory sources, building platform-specific crawlers, and configuring the price comparison logic engine.",
+  "Problems this solves": "1) Inconsistent and non-compliant pricing displays across different sales channels. 2) Risk of significant financial penalties from consumer protection agencies. 3) Damage to brand reputation from perceived 'hidden fees'. 4) Inability to manually audit thousands of location/vehicle combinations in real-time.",
+  "Why it was better to outsource this solution": "An expert data partner like Iceberg Data manages the immense complexity of scraping hundreds of distinct websites, bypassing sophisticated anti-bot measures, and maintaining a constantly updated database of regional fee structures. This allows the client to receive actionable compliance alerts without building an in-house data engineering team.",
+  "Example_Input_JSON": {
+    "client_id": "global-car-rental-778",
+    "job_type": "price_advertising_audit",
+    "target_locations": [
+      "SFO",
+      "LHR",
+      "CDG",
+      "LAX"
+    ],
+    "target_platforms": [
+      "client_website",
+      "expedia.com",
+      "booking.com",
+      "kayak.com"
+    ],
+    "vehicle_class": "Compact"
+  },
+  "Example_Output_JSON": {
+    "report_id": "compliance-audit-20250315-a4b8",
+    "generated_at": "2025-03-15T08:00:00Z",
+    "summary": {
+      "total_urls_scanned": 1258,
+      "discrepancies_found": 14,
+      "compliance_rate": "98.89%"
+    },
+    "discrepancy_details": [
+      {
+        "location": "SFO",
+        "platform": "expedia.com",
+        "url": "https://www.expedia.com/car-rental/...",
+        "initial_price": 45.5,
+        "final_price_breakdown": {
+          "base_rate": 45.5,
+          "airport_concession_fee": 11.1,
+          "tourism_surcharge": 2.5,
+          "taxes": 4.8
+        },
+        "final_calculated_price": 63.9,
+        "fee_discrepancy": true,
+        "compliance_flag": "VIOLATION_CVC_13500",
+        "notes": "Initial price did not include mandatory Airport Concession Fee, violating California state advertising law."
+      }
+    ]
+  },
+  "Matching algorithm used to integrate the data": "A multi-stage process was used. First, location-based crawlers scraped official airport and municipal websites to create a 'Ground Truth' database of mandatory fees, indexed by IATA code and effective date. Concurrently, our crawlers simulated user searches on target platforms, capturing the initial search result price and the final pre-payment price breakdown. A proprietary parsing algorithm then itemized the scraped fees and matched them against our 'Ground Truth' database, flagging any discrepancies in type or amount.",
+  "Story": "<p>Our client, a top-tier international car rental company, was facing a daunting challenge that was quietly costing them millions. With operations spanning over 80 countries, they were entangled in a complex web of local and national regulations governing price advertising. The primary issue was 'drip pricing'—the practice of advertising a low initial price and only revealing mandatory taxes and fees at the final stage of booking. While common, this is illegal in many jurisdictions, and regulators were cracking down.</p><p>The company had already been hit with a six-figure fine from a European consumer protection agency and was facing a class-action lawsuit in California. Their internal teams tried to conduct manual spot-checks, but it was an impossible task. They had thousands of vehicle classes listed across hundreds of locations, not just on their own website but on dozens of Online Travel Agencies (OTAs) and aggregator platforms. A single airport changing its 'Concession Recovery Fee' could instantly render thousands of their listings non-compliant overnight. They were fighting a losing battle, reacting to fines rather than preventing them.</p><p><strong>This is where our team at Iceberg Data came in.</strong> We proposed a comprehensive, automated Regulatory Compliance Monitoring solution. Our strategy was to create a single source of truth for pricing and then continuously audit all their digital sales channels against it.</p><p>First, we deployed a specialized set of crawlers to systematically scrape the public-facing websites of airport authorities, city governments, and state tax agencies for every single one of their operational locations. This data—covering everything from tourism surcharges to vehicle licensing fees—formed our 'Ground Truth' compliance database. This was a monumental task, as it involved parsing complex fee schedules from hundreds of different websites and PDFs.</p><p>Next, we built a fleet of sophisticated web scrapers that could emulate human user behavior. These bots would navigate to the client's own websites and partner OTAs, inputting search criteria for different locations and dates. The critical part of our process was capturing two key data points: the <strong>initial price displayed</strong> on the search results page and the <strong>fully itemized price breakdown</strong> on the final confirmation screen before payment. Our system would then parse this itemized breakdown and compare it, line by line, to our 'Ground Truth' database for that specific location.</p><p>The results were immediate and eye-opening. Within the first week, we uncovered a systemic issue on a major OTA partner's platform. An API update had caused the platform to stop including a mandatory 'Customer Facility Charge' for all major Texas airports in the initial displayed price. This single error affected thousands of daily listings, exposing our client to significant regulatory risk without their knowledge. Our alert allowed them to rectify the issue with their partner before any regulator noticed. As shown in our <strong>Example_Output_JSON</strong>, our system flags each specific issue with a `compliance_flag` and `notes`, pinpointing the exact location, platform, and rule being violated.</p><p><strong>The business impact was transformative.</strong> Over the first year, our continuous monitoring system identified and helped the client resolve over 5,000 distinct instances of non-compliant price advertising. Their legal team reported a <strong>95% reduction in fines</strong> related to pricing transparency. The automated system also eliminated the need for a team of four full-time employees to conduct manual audits, saving an estimated <strong>4,000 man-hours annually</strong>. More importantly, by ensuring transparent pricing, customer complaints about 'hidden fees' dropped, leading to a measurable 12% improvement in their customer satisfaction scores for online bookings. Our solution turned regulatory compliance from a costly, reactive liability into a managed, proactive asset that strengthened their brand reputation.</p>",
+  "publicationDate": "2026-01-01"
+}

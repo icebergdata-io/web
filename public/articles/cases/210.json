@@ -1,0 +1,49 @@
+{
+  "Title": "Optimizing Just-in-Time Inventory for Perishable Adhesives with Real-Time Weather & Logistics Data",
+  "Subtitle": "Leveraging external data feeds to prevent costly adhesive material spoilage in aerospace component assembly.",
+  "Business Impact": "By predicting the optimal ordering window for temperature-sensitive adhesives based on real-time weather forecasts and shipping lane congestion data, the client reduced material spoilage by 35% and avoided production line halts, saving an estimated $1.2M annually.",
+  "Sector": "Manufacturing",
+  "What data was collected": "Real-time and 10-day forecast weather data (temperature, humidity, barometric pressure) for key shipping routes and the client's manufacturing facility. Public logistics carrier data on port congestion, vessel ETAs, and trucking lane delays. Supplier portal data for adhesive batch shelf-life and manufacturing dates.",
+  "Why this matters": "Specialty adhesives used in aerospace manufacturing have a short, temperature-sensitive shelf-life. Ordering too early risks spoilage before use, while ordering too late halts production. Traditional inventory models fail to account for unpredictable transit conditions, creating significant waste and risk.",
+  "Implementation time": "10 to 12 weeks, which included configuring scrapers for multiple weather APIs, global logistics portals, and supplier-specific inventory systems, plus developing the predictive model to correlate these variables with adhesive degradation rates.",
+  "Problems this solves": "1) High material spoilage costs due to adhesive expiration. 2) Unscheduled production downtime from stockouts of critical components. 3) Inaccurate inventory planning based on static, historical lead times. 4) Inability to adapt procurement to dynamic environmental and logistical disruptions.",
+  "Why it was better to outsource this solution": "An external data partner provided the expertise to aggregate disparate, unstructured data from dozens of global weather services and logistics carriers. Managing the complex APIs, varying data formats, and the sheer volume of real-time updates would have required a dedicated internal data engineering team, diverting resources from core manufacturing operations.",
+  "Example_Input_JSON": {
+    "client_id": "aero-mfg-771",
+    "job_type": "adhesive_lead_time_prediction",
+    "monitored_components": [
+      "AD-455-EPOXY",
+      "AD-901-SEALANT"
+    ],
+    "shipping_routes": [
+      "DE-HAM to US-CHS",
+      "JP-NGO to US-LAX"
+    ]
+  },
+  "Example_Output_JSON": {
+    "report_id": "pred-inv-report-5h7k",
+    "generated_at": "2024-10-22T08:30:00Z",
+    "component_id": "AD-455-EPOXY",
+    "route": "DE-HAM to US-CHS",
+    "current_lead_time_days": 18,
+    "predicted_optimal_order_date": "2024-10-29",
+    "risk_factors": [
+      {
+        "type": "weather_anomaly",
+        "location": "North Atlantic",
+        "details": "High humidity forecast above 85% for 48 hours, potential to accelerate curing.",
+        "severity": "MEDIUM"
+      },
+      {
+        "type": "logistics_delay",
+        "location": "Port of Charleston (US-CHS)",
+        "details": "Vessel congestion reported, average wait time increased by 36 hours.",
+        "severity": "HIGH"
+      }
+    ],
+    "confidence_score": 0.92
+  },
+  "Matching algorithm used to integrate the data": "Geospatial and temporal correlation algorithms were used. Shipping vessel GPS coordinates from logistics APIs were time-stamped and matched against weather grid data for the corresponding location and time. This data was then fed into a machine learning regression model, trained on historical spoilage incidents, to predict the remaining shelf-life of adhesive batches upon arrival.",
+  "Story": "<p>Our client, a leading manufacturer of critical components for the aerospace industry, faced a silent but incredibly costly challenge. Their assembly process relies on a suite of high-performance, two-part epoxies and sealants, materials that are notoriously sensitive to temperature and humidity. These adhesives have a very short shelf-life, which begins ticking the moment they are manufactured, not when they arrive. Their procurement team was caught in a constant dilemma: order too early, and the multi-thousand-dollar canisters of adhesive might expire in the warehouse before use; order too late, and a stockout could halt a multi-million-dollar production line. Their existing ERP system relied on static, historical lead times—a 'best guess' that failed to account for the volatile reality of global supply chains.</p><p>The breaking point came during a summer heatwave. A critical shipment of their primary epoxy, <strong>AD-455-EPOXY</strong>, was delayed by two days at a congested port. Compounded by unusually high humidity during transit, the entire batch was compromised. It failed quality control upon arrival, resulting in a <strong>$250,000 material loss</strong> and a 72-hour line stoppage that had cascading effects on their delivery commitments. The client realized their inventory management was blind to the external factors that mattered most. They needed a way to predict, not just react to, their supply chain's conditions.</p><p>That's when our team at Iceberg Data was brought in. We proposed a radical shift: instead of relying on past averages, we would build a predictive model fueled by real-time, publicly available data. The client's team knew what data they needed—weather forecasts along shipping routes, port congestion reports, vessel tracking—but had no way to systematically collect, clean, and integrate this chaotic, unstructured information from dozens of disparate sources around the world.</p><p>Our first task was to build a robust data collection engine. We configured a fleet of web scrapers to target a specific set of sources. We pulled 10-day forecasts from multiple national weather services, targeting temperature and humidity data for every coordinate along their primary shipping lanes from Germany and Japan. We then targeted public APIs and websites of major logistics carriers and port authorities to extract real-time vessel locations, container status updates, and, crucially, data on port congestion and average wait times. Finally, we integrated with their suppliers' portals to fetch the exact manufacturing date and batch-specific shelf-life for every order placed.</p><p>The magic happened when we fused these datasets. Using geospatial and temporal matching, we could pinpoint a specific shipping container on a vessel in the middle of the Atlantic and overlay the precise weather conditions it was experiencing, and was forecasted to experience. We built a machine learning model, trained on the client's own historical data of successful and failed (spoiled) shipments. This model learned the complex relationships between transit time, temperature spikes, prolonged humidity, and the degradation rate of their specific adhesives.</p><p>The output was a simple, actionable dashboard for their procurement team. Instead of a static '21-day lead time,' the system provided a dynamic 'Predicted Optimal Order Date' for each component. It also generated risk alerts, like the ones in our example output, flagging when a shipment was encountering adverse weather or logistical delays that could impact its viability. For the first time, the procurement team could see a <strong>92% confidence score</strong> on the projected arrival and quality of their materials.</p><p>The results were transformative. Within six months of implementation, the client had reduced their perishable material spoilage by a staggering <strong>35%</strong>. Production line stoppages due to adhesive stockouts were completely eliminated. The system not only saved them from direct material loss but also gave them the confidence to reduce safety stock, freeing up working capital. The total quantifiable impact was an estimated <strong>$1.2 million in savings</strong> in the first year alone. They moved from a reactive, high-risk inventory model to a predictive, data-driven strategy that turned a major operational vulnerability into a competitive advantage.</p>",
+  "publicationDate": "2025-12-05"
+}

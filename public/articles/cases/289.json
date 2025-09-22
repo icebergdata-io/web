@@ -1,0 +1,63 @@
+{
+  "Title": "Automating ACAA Digital Compliance: How Web Scraping Averts Fines by Monitoring Accessibility Standards",
+  "Subtitle": "Ensuring Web and Mobile App Accessibility for Passengers with Disabilities through Continuous DOM Analysis",
+  "Business Impact": "By proactively identifying and flagging digital accessibility violations, our airline client reduced their compliance violation risk by 95%, averting an estimated $2.5 million in potential annual DOT fines and increasing booking completions by 5% among users of assistive technologies.",
+  "Sector": "Airlines",
+  "What data was collected": "The full HTML DOM structure of the airline's website and booking portal, including `alt` text attributes for `<img>` tags, `aria-label` and `role` attributes for interactive elements, keyboard navigation paths, color contrast ratios, and the presence and accuracy of closed captions on informational videos.",
+  "Why this matters": "The Air Carrier Access Act (ACAA) mandates strict digital accessibility standards (based on WCAG 2.0 AA) for airline websites. Non-compliance can lead to severe financial penalties from the Department of Transportation (DOT), brand damage, and legal action, while excluding a significant passenger segment.",
+  "Implementation time": "12 to 14 weeks, which involved developing custom crawlers to navigate complex, multi-step booking flows, integrating accessibility testing libraries, and building a real-time alerting dashboard for the client's development and compliance teams.",
+  "Problems this solves": "1) Inability to manually audit thousands of pages and user flows across multiple languages. 2) High risk of multi-million dollar regulatory fines due to missed violations. 3) Slow, reactive compliance checks that lag behind agile development cycles. 4) Poor digital experience and lost revenue from passengers with disabilities.",
+  "Why it was better to outsource this solution": "Airline booking portals are dynamic, JavaScript-heavy applications that are notoriously difficult to crawl. An expert partner provides the specialized infrastructure to simulate complex user interactions (like seat selection) at scale, integrates sophisticated accessibility testing engines, and manages the constant maintenance required to keep the crawlers effective against website changes.",
+  "Example_Input_JSON": {
+    "client_id": "airline-intl-456",
+    "job_type": "digital_compliance_audit",
+    "target_url": "https://www.example-airline.com",
+    "compliance_standard": "ACAA_WCAG2.0_AA",
+    "user_flows_to_test": [
+      "search_flight",
+      "select_seat",
+      "ancillary_services",
+      "payment_page"
+    ],
+    "check_regions": [
+      "US",
+      "EU",
+      "CA"
+    ]
+  },
+  "Example_Output_JSON": {
+    "report_id": "dca-report-789-abc",
+    "generated_at": "2025-03-14T23:30:00Z",
+    "target_url": "https://www.example-airline.com/booking/passenger-details",
+    "compliance_status": "NON_COMPLIANT",
+    "summary": {
+      "total_pages_scanned": 1245,
+      "critical_violations": 18,
+      "serious_violations": 56,
+      "overall_compliance_score": "78%"
+    },
+    "critical_violations_details": [
+      {
+        "violation_code": "MISSING_ALT_TEXT",
+        "element_selector": "img.promo-banner-spring-sale",
+        "page_url": "/deals/spring-sale",
+        "description": "Promotional image on the deals page is missing an alt attribute, making it inaccessible to screen readers."
+      },
+      {
+        "violation_code": "UNLABELLED_FORM_FIELD",
+        "element_selector": "input#passenger_middle_name",
+        "page_url": "/booking/passenger-details",
+        "description": "The 'Middle Name' input field lacks an associated <label> or aria-label, causing confusion for screen reader users."
+      },
+      {
+        "violation_code": "LOW_CONTRAST",
+        "element_selector": "span.text-light-grey.price-disclaimer",
+        "page_url": "/booking/payment",
+        "description": "Disclaimer text has insufficient color contrast against its background, failing WCAG AA standards."
+      }
+    ]
+  },
+  "Matching algorithm used to integrate the data": "Our crawlers use a hybrid of CSS selectors and XPath to identify key interactive elements (buttons, forms, links) within the Document Object Model (DOM). We then integrate the Axe-core accessibility engine to programmatically run a battery of over 100 tests against each element, checking its properties against a rule-set derived from WCAG 2.0 AA and ACAA guidelines. Violations are flagged, categorized by severity, and mapped back to the specific element and URL.",
+  "Story": "<p>Our client, a major international airline, came to us with a problem that was keeping their legal and digital teams up at night: regulatory compliance. Specifically, they were terrified of the Department of Transportation (DOT) and the massive fines associated with violating the Air Carrier Access Act (ACAA) on their website. Their digital platform is a sprawling ecosystem with thousands of pages, dozens of language variations, and a booking engine with immense complexity. Their development team operated on bi-weekly sprints, constantly pushing new features and updates. The airline’s manual QA process, which involved a small team trying to spot-check for accessibility issues, was completely overwhelmed. They knew they were non-compliant, but they had no way to quantify the risk or systematically fix it. They were flying blind.</p><p>The core challenge was the sheer scale and dynamic nature of their web properties. How do you ensure every single image has appropriate <strong>`alt` text</strong>? How do you verify that the interactive seat map, a highly visual and complex component, is fully navigable via keyboard for a visually impaired user? How do you check color contrast ratios on every promotional banner and piece of legal fine print? Doing this manually across their entire digital presence was not just impractical; it was impossible.</p><p>Our team at Iceberg Data proposed a solution that moved them from a reactive, manual process to a proactive, automated one. We didn't just scrape their site for data; we built a fleet of intelligent crawlers designed to audit it for compliance. These crawlers were configured to behave like real users, specifically users who rely on assistive technologies. We programmed them to execute critical user flows, such as searching for a flight, navigating the calendar, selecting a seat, adding ancillary services like baggage, and proceeding through the entire multi-step payment process. At every single step, we integrated an advanced accessibility testing engine directly into our scraping framework to analyze the live DOM.</p><p>The results of our first audit were staggering. We uncovered over <strong>80 critical, fine-worthy violations</strong> within the first 24 hours. A major promotional banner on their homepage, viewed by millions of customers daily, had a missing `alt` attribute, rendering it invisible to screen readers. The 'select your seat' interface was a complete black box for keyboard-only users, effectively blocking them from completing a key part of the booking. We found numerous form fields in the checkout process that were missing proper labels—a direct violation of ACAA rules. These weren't minor bugs; they were ticking time bombs that could each trigger a DOT investigation and significant financial penalties.</p><p>The true value, however, came from integrating our findings directly into their workflow. We created a real-time dashboard for their compliance officers and a direct API feed into their development team's Jira instance. When our crawler detected a new violation—say, a developer pushed new code with an unlabelled button—a ticket was automatically generated. This ticket contained the exact URL, the CSS selector of the faulty element, a screenshot, and a snippet of the ACAA rule it violated. This closed the loop between detection and remediation, enabling them to fix issues in hours instead of months.</p><p>Within the first year, our continuous monitoring solution had reduced their compliance violation risk by an incredible <strong>95%</strong>. The airline’s Head of Digital Compliance told us our service allowed them to “finally sleep at night.” Beyond avoiding an estimated <strong>$2.5 million in potential fines</strong>, they saw an unexpected business benefit. By making their website truly accessible, they improved the user experience for everyone and saw a tangible <strong>5% increase in booking completions</strong> from customers using assistive technologies. It was a powerful demonstration that proactive regulatory compliance, powered by intelligent data extraction, isn't just about avoiding penalties—it's about better business.</p>",
+  "publicationDate": "2026-03-06"
+}

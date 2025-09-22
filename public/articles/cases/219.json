@@ -1,0 +1,52 @@
+{
+  "Title": "From Single Sales to Smart Baskets: How Web-Scraped Affinity Data Revolutionized Our Promotion Strategy",
+  "Subtitle": "Using 'Frequently Bought Together' Data to Automate Profitable and Dynamic Product Bundles",
+  "Business Impact": "Increased Average Order Value (AOV) by 18% and boosted sales of high-margin accessories by 35% within six months by creating data-driven, dynamic product bundles.",
+  "Sector": "E-commerce",
+  "What data was collected": "Product URLs, 'Frequently Bought Together' and 'Customers Also Bought' product associations, individual product prices, bundle prices, competitor stock levels, and customer ratings for associated products from major online marketplaces.",
+  "Why this matters": "Static, generic promotions are inefficient in a competitive market. Understanding real-time product affinities allows for the creation of highly relevant, high-conversion bundle offers that increase AOV, move more inventory, and improve the overall customer experience.",
+  "Implementation time": "10 to 12 weeks, including the initial large-scale scraping of the entire product catalog, setting up recurring daily data feeds, and integrating the structured data output into the client's dynamic pricing and promotion engine via API.",
+  "Problems this solves": "1) Stagnant Average Order Value (AOV). 2) Low sales velocity for high-margin, complementary accessories. 3) Generic, low-ROI promotional campaigns that erode margins. 4) Inability to discover and leverage organic product purchasing correlations at scale.",
+  "Why it was better to outsource this solution": "Major e-commerce marketplaces employ sophisticated anti-scraping technologies to protect their proprietary product association data. A specialized partner has the robust infrastructure, rotating proxy networks, and advanced parsing technology required to reliably extract this complex, nested data across millions of product pages daily without being blocked.",
+  "Example_Input_JSON": {
+    "client_id": "CE-retailer-458",
+    "job_type": "product_affinity_analysis",
+    "target_sku": "SKU-NV-GPU-4070",
+    "marketplace_urls": [
+      "https://major-marketplace.com/product/nv-gpu-4070",
+      "https://another-retailer.com/p/nv-gpu-4070-super"
+    ]
+  },
+  "Example_Output_JSON": {
+    "report_id": "affinity-rpt-a9b3c1",
+    "source_sku": "SKU-NV-GPU-4070",
+    "source_price_usd": 649.99,
+    "generated_at": "2025-05-20T14:30:00Z",
+    "suggested_bundles": [
+      {
+        "bundle_sku": "SKU-PSU-850W-GOLD",
+        "affinity_score": 0.88,
+        "product_name": "850W Gold Rated Power Supply",
+        "current_price_usd": 129.99,
+        "purchase_frequency_rank": 1
+      },
+      {
+        "bundle_sku": "SKU-CBL-DP-14-PREMIUM",
+        "affinity_score": 0.76,
+        "product_name": "Premium DisplayPort 1.4 Cable (2m)",
+        "current_price_usd": 19.99,
+        "purchase_frequency_rank": 2
+      },
+      {
+        "bundle_sku": "SKU-RAM-DDR5-32GB-6000",
+        "affinity_score": 0.65,
+        "product_name": "32GB DDR5 6000MHz RAM Kit",
+        "current_price_usd": 109.99,
+        "purchase_frequency_rank": 3
+      }
+    ]
+  },
+  "Matching algorithm used to integrate the data": "Product SKUs and UPCs from the client's catalog were matched against scraped product identifiers (ASINs, MPNs). A graph database was then used to map the 'frequently bought together' relationships, creating a weighted 'affinity_score' for each potential bundle based on purchase frequency and co-occurrence across multiple platforms.",
+  "Story": "<p>Our client, a rapidly growing e-commerce retailer in the consumer electronics space, faced a frustrating paradox. They were brilliant at selling their 'hero' products—the latest graphics cards, processors, and monitors. Their marketing was sharp, their pricing was competitive, and they drove significant traffic. Yet, their <strong>Average Order Value (AOV) had been flat for three consecutive quarters.</strong> Customers would come, buy the one big-ticket item they needed, and leave. Our promotions, like '10% off all gaming mice,' felt like shouting into the void; they were generic, uninspired, and barely moved the needle on profitability.</p><p>The breakthrough came not from an internal analytics dashboard, but from simply browsing competitor sites. Our product team noticed that on major marketplaces, our own hero products were constantly being recommended alongside other items in the 'Frequently Bought Together' section. A customer buying our graphics card was being shown a specific power supply and a popular brand of high-speed RAM. This was a goldmine of organic, customer-driven intelligence that we were completely blind to. We had the 'what' (stagnant AOV) but the marketplaces had the 'why' (natural product affinities). The challenge was clear: how could we capture this data systematically, at scale, and use it to power our own promotion strategy?</p><p>That's when we engaged Iceberg Data. Attempting to scrape this information ourselves was a non-starter. These platforms are fortresses, designed to prevent the very thing we needed to do. We needed a specialist who could navigate the complex JavaScript, session handling, and IP blocking to reliably extract the product relationships for our entire 10,000-SKU catalog. The process we designed was simple in concept but complex in execution. We would provide Iceberg Data with a list of our product SKUs and their corresponding marketplace URLs. In return, they would deliver a structured JSON feed, just like the example, detailing the most frequently co-purchased items, their current prices, and a calculated <strong>`affinity_score`</strong> to rank the strength of the association.</p><p>Armed with this data, our development team built a new 'Smart Bundler' module for our e-commerce platform. The logic was transformative. When a customer added a primary product to their cart, like the `SKU-NV-GPU-4070`, our system would make a real-time call to the database populated by Iceberg's data. Instead of a generic pop-up, the customer would now see a highly contextual offer: 'Wait! Customers who bought this GPU also bought this <strong>850W Gold Rated Power Supply</strong>. Add it now for a 15% bundle discount!' We could dynamically adjust the discount based on our own margins and the competitor's pricing for the bundled item, which Iceberg also provided.</p><p>The results were staggering and immediate. Within the first quarter of launching the Smart Bundler, our <strong>AOV jumped by 12%, eventually settling at an 18% increase</strong> after six months of refinement. More importantly, sales of our high-margin accessories—cables, power supplies, and cooling fans—skyrocketed by 35%. These were items that previously gathered dust in the warehouse. We weren't just selling more; we were selling smarter. We moved from a reactive, price-slashing promotional model to a proactive, value-adding one. By scraping public data on customer behavior, we finally understood not just what our customers were buying from us, but what they were building with it. It allowed us to stop selling individual parts and start helping them complete their projects, a shift that fundamentally changed our business.",
+  "publicationDate": "2026-01-27"
+}

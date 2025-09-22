@@ -1,0 +1,103 @@
+{
+  "Title": "Maximizing Order Volume by 18% Through Granular Fee & Promotion Intelligence",
+  "Subtitle": "Deconstructing Competitor Total Order Costs to Win at Checkout",
+  "Business Impact": "By analyzing the complete, dynamic cost structure of competitors—including hidden fees and targeted promotions—our client launched a dynamic pricing model that increased order conversion rate by 12% and overall order volume by 18% in key urban markets within six months.",
+  "Sector": "Food Delivery",
+  "What data was collected": "Real-time data from competitor food delivery platforms, including menu item prices, delivery fees, service fees, small order surcharges, applicable promotions, and estimated delivery times for various geolocations and times of day.",
+  "Why this matters": "Customers make purchasing decisions based on the final checkout price, not just menu prices. Understanding the complete cost structure—including dynamic fees and promotions—is critical for staying competitive and preventing cart abandonment.",
+  "Implementation time": "10 to 12 weeks, which included building custom scrapers for three major platforms, setting up geo-spoofing for location-specific data, and developing a dashboard to visualize the dynamic pricing data.",
+  "Problems this solves": "1) Inability to track competitors' dynamic fee structures. 2) Losing customers at the final checkout stage due to unexpected costs. 3) Ineffective, one-size-fits-all promotion strategies. 4) Lack of insight into competitors' pricing tactics during peak vs. off-peak hours.",
+  "Why it was better to outsource this solution": "Competitor platforms use sophisticated anti-scraping measures, CAPTCHAs, and geo-fencing. An expert partner like Iceberg Data has the infrastructure (proxy networks, headless browsers) and expertise to bypass these defenses and consistently collect accurate, location-specific data at scale.",
+  "Example_Input_JSON": {
+    "client_id": "regional-delivery-co-456",
+    "job_type": "total_cost_analysis",
+    "parameters": {
+      "competitor_platforms": [
+        "DoorDash",
+        "UberEats",
+        "Grubhub"
+      ],
+      "target_geolocations": [
+        {
+          "city": "Chicago",
+          "zip_code": "60611",
+          "type": "downtown"
+        },
+        {
+          "city": "Chicago",
+          "zip_code": "60647",
+          "type": "residential"
+        },
+        {
+          "city": "Austin",
+          "zip_code": "78701",
+          "type": "downtown"
+        }
+      ],
+      "time_windows": [
+        "12:00-14:00",
+        "18:00-20:00",
+        "22:00-23:00"
+      ],
+      "basket_items": [
+        {
+          "restaurant_id": "gpid-ChIJ-w1qropSwokR0J7yTMbS5fE",
+          "item_id": "pizza-pepperoni-large"
+        },
+        {
+          "restaurant_id": "gpid-ChIJ-w1qropSwokR0J7yTMbS5fE",
+          "item_id": "coke-2l"
+        }
+      ]
+    }
+  },
+  "Example_Output_JSON": {
+    "report_id": "tca-report-4a5b6c",
+    "generated_at": "2025-05-20T18:35:10Z",
+    "analysis_results": [
+      {
+        "platform_name": "UberEats",
+        "restaurant_id": "gpid-ChIJ-w1qropSwokR0J7yTMbS5fE",
+        "geolocation": {
+          "city": "Chicago",
+          "zip_code": "60611"
+        },
+        "timestamp": "2025-05-20T18:30:00Z",
+        "cost_breakdown": {
+          "item_subtotal": 28.99,
+          "delivery_fee": 1.99,
+          "service_fee": 4.35,
+          "small_order_fee": 0,
+          "taxes": 3.15,
+          "applied_promotion_name": "Peak Hour Free Delivery",
+          "applied_promotion_value": -1.99,
+          "final_total": 36.49
+        },
+        "estimated_delivery_time_minutes": 35
+      },
+      {
+        "platform_name": "DoorDash",
+        "restaurant_id": "gpid-ChIJ-w1qropSwokR0J7yTMbS5fE",
+        "geolocation": {
+          "city": "Chicago",
+          "zip_code": "60611"
+        },
+        "timestamp": "2025-05-20T18:31:00Z",
+        "cost_breakdown": {
+          "item_subtotal": 28.99,
+          "delivery_fee": 3.49,
+          "service_fee": 3.9,
+          "small_order_fee": 0,
+          "taxes": 3.1,
+          "applied_promotion_name": null,
+          "applied_promotion_value": 0,
+          "final_total": 39.48
+        },
+        "estimated_delivery_time_minutes": 28
+      }
+    ]
+  },
+  "Matching algorithm used to integrate the data": "Data was normalized using universal restaurant identifiers (e.g., Google Places ID) and standardized menu item names via fuzzy string matching. A time-series analysis was applied to correlate fee changes with specific times of day, days of the week, and competitor marketing campaigns.",
+  "Story": "<p>Our client, a promising regional food delivery service, was facing a classic growth-stage dilemma. On paper, their strategy was sound. They had onboarded hundreds of popular local restaurants, and their internal analysis showed their menu prices were consistently on par with, or even slightly lower than, the national giants. Yet, they were bleeding customers. Their analytics showed a high rate of cart abandonment, and market share in key urban areas was stagnating. They knew they were losing, but they couldn't pinpoint exactly where the battle was being fought.</p><p><strong>The problem was invisible to them: the war wasn't being won on menu prices, but in the complex, dynamic world of fees and promotions.</strong> They suspected competitors were using sophisticated algorithms to adjust delivery fees, service fees, and targeted discounts based on time of day, user location, and order value. A customer might see a low menu price, but by the time they reached checkout, the 'Total Order Cost' was unexpectedly high, or conversely, a competitor would swoop in with a last-minute 'Free Delivery' offer that made their own platform look expensive. Our client was flying blind, armed with a one-size-fits-all fee structure in a dynamic pricing battlefield.</p><p>That’s when our team at Iceberg Data was brought in. We proposed a deep-dive competitive intelligence project focused not just on prices, but on the entire checkout journey. Our mission was to deconstruct the 'Total Order Cost' from the customer's perspective. We built a sophisticated web scraping infrastructure designed to mimic real user behavior on the top three competitor platforms. Using a vast network of residential proxies, we could simulate orders from thousands of different geolocations—from dense downtown cores to sprawling suburbs.</p><p><strong>Our scrapers didn't just look at menus. They performed the entire order sequence:</strong> selecting a restaurant, adding a standardized basket of popular items (like a large pizza and a soda), and proceeding all the way to the final checkout screen. This allowed us to capture every single component of the final price: the `item_subtotal`, the `delivery_fee`, the often-opaque `service_fee`, any `small_order_fee`, and, crucially, any `applied_promotion_value`. We ran these checks systematically during different `time_windows`—the lunch rush, the dinner peak, and the late-night lull—to understand how pricing strategies shifted throughout the day.</p><p>The insights were immediate and powerful. The data, visualized on a dashboard we created, told a clear story. One major competitor was heavily subsidizing delivery fees in downtown areas between 6 PM and 8 PM but recouping the cost with higher service fees on orders over $50. Another was using hyper-targeted promotions, offering free delivery to users in specific zip codes where our client had a strong presence, effectively poaching their loyal customers. We discovered that 'small order fees' were a significant profit driver for competitors on orders under $15, an area our client had completely ignored.</p><p>Armed with this granular intelligence, our client's strategy team moved from defense to offense. They replaced their static fee model with a dynamic engine powered by our data feed. They could now strategically match competitor delivery fee promotions in real-time in specific neighborhoods. They introduced their own intelligent service fee structure that balanced competitiveness with profitability. Most effectively, they launched a 'Price Promise' campaign, using the data to guarantee a lower total basket cost on the top 100 most ordered items in the city. The results were transformative. Within six months, their cart abandonment rate dropped significantly, leading to a <strong>12% increase in order conversion and an 18% surge in overall order volume</strong> in their primary markets. They were no longer just competing on menu price; they were winning the war at checkout.</p>",
+  "publicationDate": "2025-12-05"
+}

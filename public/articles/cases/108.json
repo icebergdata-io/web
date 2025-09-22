@@ -1,0 +1,100 @@
+{
+  "Title": "From Frustration to Five Stars: Pinpointing Service Gaps with Journey-Specific Sentiment Analysis",
+  "Subtitle": "Transforming broad customer complaints into actionable insights by tracking emotional sentiment at each stage of air travel.",
+  "Business Impact": "Identified and resolved the top three friction points in the customer journey, leading to a 25% reduction in negative online reviews and a 15-point increase in Net Promoter Score (NPS) within six months.",
+  "Sector": "Airlines",
+  "What data was collected": "Publicly available customer reviews from Skytrax, TripAdvisor, and Google Reviews; social media posts (Tweets, Facebook comments) mentioning the airline and specific keywords like 'check-in', 'boarding', 'cabin crew', 'baggage'; and posts from dedicated travel forums such as FlyerTalk and Reddit's r/travel.",
+  "Why this matters": "Generic sentiment scores don't reveal *why* customers are unhappy. By segmenting feedback by travel stage (e.g., booking, security, in-flight), airlines can allocate resources precisely to fix the most impactful problems, turning detractors into promoters.",
+  "Implementation time": "10 to 12 weeks. This included developing custom parsers for multiple review sites, building a natural language processing (NLP) model to classify sentiment and journey stage, and creating a real-time dashboard for the client's operations team.",
+  "Problems this solves": "1) Inability to distinguish between booking-related frustration and in-flight service issues. 2) Wasted resources on solving low-impact problems. 3) Difficulty in measuring the ROI of service improvements on brand perception.",
+  "Why it was better to outsource this solution": "Outsourcing provided access to specialized NLP and machine learning expertise capable of building a custom model that could differentiate between nuanced emotional states (e.g., 'annoyance' vs. 'anger') and accurately map them to specific journey touchpoints, a capability far beyond off-the-shelf sentiment analysis tools.",
+  "Example_Input_JSON": {
+    "client_id": "airline-eur-456",
+    "job_type": "journey_sentiment_analysis",
+    "target_airline_handle": "@EuroAirways",
+    "data_sources": [
+      "skytrax",
+      "twitter",
+      "flyertalk_forum"
+    ],
+    "journey_stage_keywords": {
+      "booking": [
+        "website",
+        "app",
+        "ticket price",
+        "seat selection"
+      ],
+      "check_in": [
+        "kiosk",
+        "desk",
+        "bag drop",
+        "queue"
+      ],
+      "boarding": [
+        "gate",
+        "priority",
+        "group number",
+        "jet bridge"
+      ],
+      "in_flight": [
+        "cabin crew",
+        "seat comfort",
+        "IFE",
+        "food",
+        "wifi"
+      ],
+      "baggage_claim": [
+        "carousel",
+        "lost luggage",
+        "damaged bag"
+      ]
+    }
+  },
+  "Example_Output_JSON": {
+    "report_id": "sentiment-report-q1-2025",
+    "airline": "EuroAirways",
+    "analysis_period": "2025-01-01_to_2025-03-31",
+    "total_mentions_analyzed": 85432,
+    "sentiment_by_journey_stage": [
+      {
+        "stage": "check_in",
+        "overall_sentiment": "Negative",
+        "sentiment_score": -0.78,
+        "dominant_emotion": "Frustration",
+        "key_topics": [
+          "long queues",
+          "broken kiosks",
+          "staff attitude"
+        ],
+        "mention_count": 21358
+      },
+      {
+        "stage": "in_flight",
+        "overall_sentiment": "Positive",
+        "sentiment_score": 0.85,
+        "dominant_emotion": "Delight",
+        "key_topics": [
+          "friendly cabin crew",
+          "clean cabin",
+          "good entertainment"
+        ],
+        "mention_count": 45120
+      },
+      {
+        "stage": "baggage_claim",
+        "overall_sentiment": "Very Negative",
+        "sentiment_score": -0.91,
+        "dominant_emotion": "Anxiety",
+        "key_topics": [
+          "delayed baggage",
+          "lost luggage",
+          "no updates"
+        ],
+        "mention_count": 12450
+      }
+    ]
+  },
+  "Matching algorithm used to integrate the data": "A custom Natural Language Processing (NLP) model was developed using a BERT-based architecture. The model first identified mentions of the client's brand across scraped text data. It then performed two-tier classification: 1) A keyword and context-based classifier assigned each mention to a specific customer journey stage (e.g., 'booking', 'in-flight'). 2) A fine-tuned sentiment and emotion classifier analyzed the text to assign scores for polarity (positive/negative) and dominant emotional tones (e.g., 'Frustration', 'Delight', 'Anxiety').",
+  "Story": "<p>Our client, a major European airline, was facing a frustrating paradox. They were investing millions in new aircraft and glossy marketing campaigns, yet their Net Promoter Score (NPS) remained stubbornly low, and social media was a constant stream of complaints. Their existing sentiment analysis tools were giving them vague, unhelpful feedback like 'customers are unhappy with service.' This lack of specificity meant they were flying blind, unable to diagnose the root cause of customer dissatisfaction.</p><p>The airline's internal team couldn't untangle the web of complaints. Was the problem a clunky booking website? Uncomfortable seats? Lost baggage? They had recently spent a fortune upgrading their in-flight entertainment (IFE) system based on a hunch, only to see customer satisfaction metrics barely budge. They were burning through their budget treating symptoms without understanding the disease.</p><p>This is where our team at Iceberg Data stepped in. We proposed a radical departure from generic sentiment analysis. Our goal was to create a high-resolution map of their customers' emotional journey. We configured our platform to continuously scrape and aggregate hundreds of thousands of public reviews, comments, and posts from critical sources like Skytrax, Twitter, and niche forums like FlyerTalk.</p><p>The true innovation, however, was our custom-built Natural Language Processing (NLP) model. We moved beyond simple 'positive/negative' labels. Our model performed a two-stage analysis on every piece of text. First, it used contextual keywords to classify which part of the journey the comment referred to: <strong>'booking', 'check_in', 'boarding', 'in_flight', or 'baggage_claim'</strong>. Second, a more sophisticated layer analyzed the language to detect the dominant underlying emotion: <strong>Frustration, Anxiety, Disappointment, Delight, or Relief</strong>.</p><p>The results, visualized on a real-time dashboard, provided an immediate 'aha!' moment for the client. The data clearly showed that their expensive IFE upgrade was targeting an area that was already a strength. Their <strong>'in_flight'</strong> experience was consistently rated highly, with a positive sentiment score of <strong>+0.85</strong>, driven by mentions of 'friendly cabin crew' that evoked a feeling of <strong>'Delight'</strong>. The real problems were at the beginning and end of the journey. The <strong>'check_in'</strong> process was a major source of customer <strong>'Frustration'</strong>, registering a dismal score of <strong>-0.78</strong>, with thousands of comments about 'long queues' and 'broken kiosks.' Even more damaging was the <strong>'baggage_claim'</strong> experience, which scored a catastrophic <strong>-0.91</strong> and was overwhelmingly associated with <strong>'Anxiety'</strong> due to 'lost luggage' and a total lack of communication on delays.</p><p>Armed with these precise, actionable insights, the airline's operations team could finally stop guessing. They immediately reallocated budget from further in-flight enhancements to where it was truly needed. They hired and trained more ground staff to manage peak check-in times and replaced their unreliable kiosks. For baggage handling, they invested in an RFID tracking system and launched a proactive SMS alert service to keep passengers informed about their luggage status. We continued to monitor sentiment across these touchpoints to measure the impact of their changes.</p><p>Within six months, the transformation was undeniable. Negative mentions related to 'long queues' at check-in plummeted by 60%. The sentiment score for 'baggage_claim' improved dramatically. Overall, the airline achieved a <strong>25% reduction in negative online reviews</strong>, and their company-wide NPS score jumped by a crucial <strong>15 points</strong>. By shifting from broad sentiment tracking to a granular, emotion-based journey analysis, they were able to fix the issues that truly mattered, turning their biggest detractors into advocates and proving that data is the most direct route to customer satisfaction.</p>",
+  "publicationDate": "2025-09-16"
+}

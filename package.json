@@ -23,7 +23,8 @@
     "dev:list-cases": "node scripts/list-case-studies.js",
     "dev:improve-stories": "node scripts/improve-stories.js",
     "dev:check-stories": "node scripts/check-processed-stories.js",
-    "dev:improve-story": "node scripts/improve-single-story.js"
+    "dev:improve-story": "node scripts/improve-single-story.js",
+    "generate-monthly": "node scripts/generate-monthly-content.js"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.13",

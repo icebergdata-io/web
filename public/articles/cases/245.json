@@ -1,0 +1,74 @@
+{
+  "Title": "Pinpointing Hyper-Local Influencers to Triple Virtual Kitchen Launch Success",
+  "Subtitle": "Leveraging Geospatial Social Media Scraping to Drive Targeted Orders for Delivery-Only Brands",
+  "Business Impact": "Achieved a 40% increase in first-time orders for new virtual kitchens and a 250% higher ROI on influencer marketing spend compared to previous city-wide campaigns.",
+  "Sector": "Food Delivery",
+  "What data was collected": "Public Instagram and TikTok profiles of users posting food-related content, including user bios, follower counts, engagement rates (likes/comments per post), post captions, and crucially, the GPS coordinates from geotagged posts and location-related keywords in bios and hashtags (e.g., #williamsburgfood, 'East Village Eats').",
+  "Why this matters": "For delivery-only brands, marketing is hyper-local. A recommendation is only valuable if the viewer can actually order the food. Targeting influencers within a 3-mile delivery radius ensures every marketing dollar is spent on reaching potential customers, dramatically increasing conversion.",
+  "Implementation time": "6 to 8 weeks for initial platform setup, data scraping across two major social platforms, and building the geospatial matching engine.",
+  "Problems this solves": "1) Wasted ad spend on geographically irrelevant audiences. 2) Low conversion rates from generic influencer campaigns. 3) Difficulty in discovering authentic, local advocates for new virtual brands.",
+  "Why it was better to outsource this solution": "Manually finding and vetting influencers by location is impossible at scale. Iceberg Data's platform automates the discovery and geospatial filtering of thousands of profiles, handling complex scraping challenges like dynamic content loading and location data extraction that internal teams aren't equipped for.",
+  "Example_Input_JSON": {
+    "client_id": "fdp-client-456",
+    "job_type": "hyperlocal_influencer_discovery",
+    "target_kitchen": {
+      "kitchen_id": "vk-brooklyn-01",
+      "brand_name": "Ghostly Pizza Co.",
+      "delivery_radius_geoJSON": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.96,
+              40.71
+            ],
+            [
+              -73.94,
+              40.71
+            ],
+            [
+              -73.94,
+              40.69
+            ],
+            [
+              -73.96,
+              40.69
+            ],
+            [
+              -73.96,
+              40.71
+            ]
+          ]
+        ]
+      }
+    }
+  },
+  "Example_Output_JSON": {
+    "report_id": "report-hli-789",
+    "kitchen_id": "vk-brooklyn-01",
+    "generated_at": "2025-07-15T14:30:00Z",
+    "potential_influencers": [
+      {
+        "username": "brooklynbites",
+        "platform": "Instagram",
+        "follower_count": 12500,
+        "avg_engagement_rate": 0.085,
+        "locality_confidence": 0.95,
+        "profile_url": "https://instagram.com/brooklynbites",
+        "notes": "Multiple geotagged posts within the delivery polygon. Bio mentions 'Williamsburg'."
+      },
+      {
+        "username": "nycfooddude",
+        "platform": "TikTok",
+        "follower_count": 45000,
+        "avg_engagement_rate": 0.12,
+        "locality_confidence": 0.78,
+        "profile_url": "https://tiktok.com/@nycfooddude",
+        "notes": "Frequent posts in Brooklyn, with 3 recent posts inside the target zone. Higher reach but less focused."
+      }
+    ]
+  },
+  "Matching algorithm used to integrate the data": "We employed a multi-layered geospatial matching algorithm. First, we parsed influencer bios and recent post captions for explicit neighborhood or borough names using Natural Language Processing (NLP). Second, we extracted latitude and longitude data from all publicly geotagged posts. This location data was then processed using a Point in Polygon (PIP) algorithm to determine if an influencer's activity hotspots fell within the client's specified `delivery_radius_geoJSON`. A `locality_confidence` score was calculated based on the density and recency of geotagged posts within the target zone.",
+  "Story": "<p>Our client, a major food delivery platform, was making a huge bet on the future: virtual kitchens. These delivery-only brands, operating out of 'dark kitchens,' offered incredible culinary variety without the overhead of a physical restaurant. They had fantastic concepts, like 'Ghostly Pizza Co.', but they faced a critical marketing hurdle. With no storefront, no foot traffic, and no neighborhood presence, how could they build trust and attract local customers? Their initial strategy was to use big-name, city-wide food influencers, but the results were dismal. A rave review from an influencer based in Manhattan meant nothing to a potential customer in Williamsburg, Brooklyn, who was outside the delivery zone. The marketing spend was high, and the return on investment was painfully low.</p><p>That's when they came to us at Iceberg Data. We proposed a radical shift in their strategy. <strong>We argued that for a virtual kitchen, an influencer's relevance isn't defined by their follower count, but by their physical proximity.</strong> The most powerful endorsement would come from a trusted local voice—a micro-influencer who genuinely lived, worked, and ate within that specific kitchen's delivery radius. The challenge was finding these individuals at scale.</p><p>Our team immediately got to work. We configured our web scraping infrastructure to target Instagram and TikTok, the primary platforms for food content. We didn't just search for generic hashtags like #foodie or #delivery. We built a system to hunt for hyper-local signals. Our scrapers collected data on user bios mentioning specific neighborhoods ('Williamsburg resident'), captions with local slang, and most importantly, the GPS coordinates embedded in geotagged posts. This gave us a massive, constantly updating database of tens of thousands of potential food influencers, each with a rich history of their location-based activity.</p><p>The true innovation, however, was in how we connected this data to our client's operational needs. We developed an API where their marketing team could submit a request, like the one in our <strong>Example_Input_JSON</strong>. They would define the `kitchen_id` and, crucially, provide the precise delivery zone as a `delivery_radius_geoJSON` polygon. Our system would then execute a geospatial query against our influencer database. Using a Point in Polygon (PIP) algorithm, we could instantly identify every influencer who had recently posted from within that exact geographic shape.</p><p>We didn't stop there. We created a <strong>`locality_confidence` score</strong>. An influencer with one geotagged post in the area might get a low score, but someone like 'brooklynbites' from our <strong>Example_Output_JSON</strong>, who had dozens of recent posts within the 'Ghostly Pizza Co.' delivery zone and mentioned the neighborhood in their bio, received a 0.95 confidence score. This allowed the client to prioritize their outreach to the most authentic and geographically relevant partners.</p><p>The results were transformative. The client shifted their budget from a handful of expensive, city-wide influencers to hundreds of these hyper-local micro-influencers. The campaigns felt authentic because the influencers were genuinely excited to promote a new delivery option in their own backyard. The impact on the business was immediate and quantifiable. <strong>New virtual kitchen launches saw a 40% increase in first-time orders within the first month.</strong> The cost per acquisition plummeted, leading to a staggering <strong>250% higher ROI on their influencer marketing budget.</strong> Our data solution became the central pillar of their virtual brand launch playbook, turning a high-risk expansion strategy into a predictable, scalable success story.</p>",
+  "publicationDate": "2026-01-08"
+}

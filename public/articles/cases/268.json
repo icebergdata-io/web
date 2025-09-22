@@ -1,0 +1,67 @@
+{
+  "Title": "Boosting OTC Drug Revenue by 18% Through Real-Time Competitor Price Monitoring",
+  "Subtitle": "A Dynamic Pricing Strategy for a Regional Pharmacy Chain to Compete with E-Commerce Giants",
+  "Business Impact": "By tracking competitor pricing and stock levels for key OTC products in near real-time, the pharmacy chain optimized its promotional strategy, leading to an 18% revenue lift in the category and a 25% faster response time to market changes.",
+  "Sector": "Healthcare",
+  "What data was collected": "Real-time pricing, sale prices, promotional text (e.g., 'BOGO', '% off'), and in-stock availability for a basket of 100 key Over-the-Counter (OTC) products from major online retailers, supermarket pharmacies, and direct competitor websites.",
+  "Why this matters": "In the competitive OTC market, consumers are highly price-sensitive. Reacting slowly to a competitor's flash sale can lead to significant lost revenue and erode customer loyalty. Real-time data allows pharmacies to maintain competitive pricing and protect their market share.",
+  "Implementation time": "6 to 8 weeks, including defining the product basket, setting up scrapers for 5 key competitor domains, establishing data delivery via API, and integrating with the client's pricing engine.",
+  "Problems this solves": "1) Inability to react to competitor flash sales and online price changes. 2) Loss of sales due to non-competitive pricing on key value items (KVIs). 3) Inefficient promotional spending based on outdated weekly circulars.",
+  "Why it was better to outsource this solution": "Competitor websites use sophisticated anti-scraping technologies and frequently change their page layouts. An expert web scraping firm like Iceberg Data guarantees consistent, reliable, and structured data delivery, overcoming these technical hurdles and allowing the client's team to focus on strategy, not data acquisition.",
+  "Example_Input_JSON": {
+    "client_id": "pharma-chain-789",
+    "job_type": "otc_competitor_price_watch",
+    "product_upcs": [
+      "0300450458107",
+      "312547232128",
+      "070501099201"
+    ],
+    "competitor_domains": [
+      "competitor_a.com",
+      "big_box_store.com",
+      "online_giant.com"
+    ]
+  },
+  "Example_Output_JSON": {
+    "report_id": "report-otc-price-456",
+    "generated_at": "2025-07-15T14:30:00Z",
+    "competitor_data": [
+      {
+        "upc": "0300450458107",
+        "product_name": "AllergyRelief 24-Hour Tablets, 90 Count",
+        "source_domain": "competitor_a.com",
+        "price": "22.49",
+        "sale_price": "19.99",
+        "currency": "USD",
+        "promotion_text": "20% Off This Week",
+        "is_in_stock": true,
+        "scraped_at": "2025-07-15T14:28:10Z"
+      },
+      {
+        "upc": "0300450458107",
+        "product_name": "AllergyRelief 90ct",
+        "source_domain": "big_box_store.com",
+        "price": "21.99",
+        "sale_price": null,
+        "currency": "USD",
+        "promotion_text": null,
+        "is_in_stock": true,
+        "scraped_at": "2025-07-15T14:29:05Z"
+      },
+      {
+        "upc": "312547232128",
+        "product_name": "Vitamin C Gummies, 1000mg, 120 Count",
+        "source_domain": "online_giant.com",
+        "price": "15.99",
+        "sale_price": "15.99",
+        "currency": "USD",
+        "promotion_text": "Subscribe & Save 15%",
+        "is_in_stock": true,
+        "scraped_at": "2025-07-15T14:29:30Z"
+      }
+    ]
+  },
+  "Matching algorithm used to integrate the data": "Product data is primarily matched using universal product codes (UPCs). For products without a UPC, we employ a fuzzy matching algorithm that combines product title, brand name, and package size/count to achieve a confidence score above 98% for accurate competitor-to-client product mapping.",
+  "Story": "<p>Our client, a respected regional pharmacy chain, found itself fighting a losing battle. For decades, they had been a community staple, but the digital age had changed the rules of engagement. They were being consistently outmaneuvered in the Over-the-Counter (OTC) product space by agile e-commerce giants and national supermarket chains. Their core problem was speed. Their pricing and promotional strategies were built around a traditional weekly circular, a relic from a bygone era. While they planned their sales weeks in advance, online competitors were launching flash sales on a Tuesday morning, capturing market share before our client even knew what was happening.</p><p>The client’s category managers were flying blind. They knew they were losing sales on high-velocity items like allergy medications and vitamin supplements, but they couldn't prove it with timely data. They relied on manual spot-checks of competitor websites, a process that was both time-consuming and hopelessly incomplete. They had no systematic way to track not just price, but also crucial context like <strong>promotion_text</strong> (e.g., 'Buy One Get One Free') or, critically, the <strong>is_in_stock</strong> status of a competitor's product. This meant they couldn't strategically price-match or capitalize on a competitor's supply chain issues.</p><p>That's where our team at Iceberg Data came in. During our initial consultation, we proposed a paradigm shift: move from a reactive, manual process to a proactive, data-driven one. We designed a high-frequency web scraping solution focused on a curated basket of their 100 most critical OTC products. The plan was to monitor five key <strong>competitor_domains</strong>, collecting pricing and availability data multiple times per day. The data would be structured and delivered via an API directly into their new pricing intelligence engine, allowing for near real-time decision-making.</p><p>The initial setup involved close collaboration. The client provided us with the list of <strong>product_upcs</strong>, and our engineers went to work building robust scrapers for each target site. It wasn't simple; these major retail sites employ sophisticated anti-bot measures. This is precisely why outsourcing was essential—our team has deep expertise in navigating these defenses, ensuring a consistent and reliable data flow that their internal IT team wasn't equipped to handle. We normalized the data, ensuring that a bottle of 'AllergyRelief 90ct' was matched correctly across all platforms, regardless of minor variations in the product name.</p><p>The turning point came about two weeks after launch. On a Monday morning, our system detected that a major online retailer had launched a surprise 25% off promotion on a best-selling children's cold medicine, just as local pollen counts were spiking. Our data feed flagged this change within minutes. The client’s system automatically ingested this information, and two things happened. First, the price on their own e-commerce site was instantly adjusted to be competitive. Second, an alert was pushed to their store managers' dashboards with a directive to update the electronic shelf labels for that specific product. By lunchtime, they had not only defended their market share but had seen a 30% uplift in sales for that item compared to the previous Monday.</p><p>This was just the beginning. They started using the <strong>is_in_stock</strong> data to play offense. When we reported that a competitor was out of stock on a popular brand of vitamin C gummies, the client's marketing team immediately launched a targeted social media ad campaign in the relevant zip codes, highlighting their own availability. This surgical approach, powered by our data, allowed them to capture demand that would have otherwise been lost. Over six months, the results were staggering. The client achieved an <strong>18% revenue increase</strong> across the monitored OTC category. Their team's response time to competitor price changes dropped from days to under two hours. They transformed from a price-follower into a strategic, data-informed competitor, finally leveling the playing field against their digital-native rivals.</p>",
+  "publicationDate": "2026-02-24"
+}

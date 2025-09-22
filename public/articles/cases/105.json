@@ -1,0 +1,54 @@
+{
+  "Title": "Solving Fleet Maintenance Bottlenecks with Real-Time Parts Supplier Data",
+  "Subtitle": "Integrating OEM and Aftermarket Parts Availability to Reduce Vehicle Downtime by 22%",
+  "Business Impact": "Reduced average vehicle downtime for routine maintenance by 22% and cut emergency parts shipping costs by 40% by proactively sourcing from the nearest available supplier.",
+  "Sector": "Car Rental",
+  "What data was collected": "Real-time inventory levels, pricing, and shipping times from hundreds of national and regional automotive parts supplier websites, including OEM (Original Equipment Manufacturer) portals and major aftermarket distributors. We also scraped vehicle service bulletins and recall notices.",
+  "Why this matters": "A rental car generates zero revenue when it's sitting in a maintenance bay waiting for a part. Proactive, data-driven parts sourcing turns a reactive, costly process into a streamlined, predictable operational advantage, directly boosting fleet utilization and profitability.",
+  "Implementation time": "12 to 14 weeks. This involved creating custom scrapers for diverse supplier e-commerce platforms, building a unified parts database, and integrating the data feed into the client's existing fleet management system via API.",
+  "Problems this solves": "1) Extended vehicle downtime due to part backorders. 2) Overpaying for expedited shipping on last-minute part orders. 3) Inefficient manual process of service managers calling multiple suppliers to check stock. 4) Inability to forecast parts demand for specific vehicle models across different regions.",
+  "Why it was better to outsource this solution": "Automotive parts suppliers use varied and complex website structures, often with login-protected portals. A specialized web scraping partner has the expertise to build and maintain robust scrapers that can handle these complexities, manage proxy rotations to avoid blocks, and normalize data from dozens of disparate sources into a single, clean feed.",
+  "Example_Input_JSON": {
+    "client_id": "national-rental-corp-456",
+    "job_type": "parts_availability_query",
+    "vehicle_model": "Ford Explorer",
+    "vehicle_year": 2022,
+    "part_number": "DG1Z-1125-A",
+    "part_description": "Front Wheel Hub Assembly",
+    "required_at_zip_code": "89109"
+  },
+  "Example_Output_JSON": {
+    "query_id": "query-a9b8c7d6",
+    "part_number": "DG1Z-1125-A",
+    "generated_at": "2025-06-01T11:30:00Z",
+    "available_suppliers": [
+      {
+        "supplier_name": "Vegas Auto Supply",
+        "supplier_type": "Aftermarket",
+        "in_stock_quantity": 8,
+        "unit_price": 112.5,
+        "distance_miles": 5.2,
+        "estimated_delivery_hours": 2
+      },
+      {
+        "supplier_name": "OEM Parts Direct - West",
+        "supplier_type": "OEM",
+        "in_stock_quantity": 3,
+        "unit_price": 145,
+        "distance_miles": 250,
+        "estimated_delivery_hours": 24
+      },
+      {
+        "supplier_name": "National Parts Warehouse",
+        "supplier_type": "Aftermarket",
+        "in_stock_quantity": 50,
+        "unit_price": 105.75,
+        "distance_miles": 1800,
+        "estimated_delivery_hours": 72
+      }
+    ]
+  },
+  "Matching algorithm used to integrate the data": "We used a combination of SKU/part number matching and Natural Language Processing (NLP) on part descriptions to normalize data from various supplier catalogs. A custom algorithm then cross-referenced OEM part numbers with their equivalent aftermarket alternatives to broaden sourcing options. Supplier locations were geocoded to calculate real-time distance and estimated delivery times to the client's service centers.",
+  "Story": "<p>Our client, a leading national car rental company, faced a silent profit killer. It wasn't competition or fluctuating travel demand; it was vehicle downtime. Every hour a car spent in a service bay was an hour of lost revenue. Their core problem wasn't a lack of skilled mechanics, but a deeply inefficient and fragmented parts supply chain that created crippling bottlenecks across their hundreds of maintenance locations.</p><p>The existing process was a relic of a pre-digital era. When a popular SUV, like a Ford Explorer, arrived at their Las Vegas airport location needing a new <strong>front wheel hub assembly (Part No. DG1Z-1125-A)</strong>, the service manager's ordeal began. They would manually check the websites or call a handful of known local suppliers. If 'Vegas Auto Supply' was out of stock, they'd move to the next on the list. If no local suppliers had the part, the problem escalated. They would have to contact a regional distribution center, often paying exorbitant fees for overnight freight to get the part from a warehouse hundreds of miles away. This manual, sequential process could take hours, and the resulting delivery delay could keep a high-demand vehicle off the road for two to three days. It was a system plagued by guesswork, wasted time, and excessive costs.</p><p>Our team at Iceberg Data approached this not as a mechanical problem, but as a data problem. We hypothesized that all the information needed to make an optimal sourcing decision—part availability, pricing, location, and shipping times—was publicly available online, just scattered across more than a hundred different OEM and aftermarket supplier websites. The challenge was to <strong>aggregate, normalize, and deliver this data in real-time</strong> at the exact moment it was needed.</p><p>We deployed a sophisticated web scraping infrastructure targeting a curated list of 150+ automotive parts suppliers, from massive national distributors to smaller, regional players. Our scrapers were designed to navigate complex e-commerce portals, handle login sessions, and extract key data points: SKU/part numbers, real-time stock counts, unit pricing, and warehouse addresses. The true power, however, came from our data processing pipeline. We used a proprietary matching algorithm to recognize that an OEM part number like 'DG1Z-1125-A' had several functionally identical aftermarket equivalents, instantly expanding the sourcing options for every single repair.</p><p>The solution was delivered to the client via a simple, powerful API integrated directly into their existing fleet management software. This completely transformed their workflow. Now, when a mechanic diagnosed the faulty wheel hub, the system automatically sent a request to our API—the exact kind of query shown in our 'Example_Input_JSON'. Within seconds, the service manager's screen displayed a unified dashboard. As shown in the 'Example_Output_JSON', they could instantly see that 'Vegas Auto Supply' had eight units in stock just 5.2 miles away for same-day service. They could also see that while a national warehouse offered a slightly lower unit price, the 72-hour delivery time made it a non-starter for a high-utilization vehicle.</p><p><strong>The results were transformative and immediate.</strong> By always being able to identify the nearest source with available stock, the client <strong>reduced average vehicle downtime for common repairs by 22%</strong> across their entire network. Cars were back on the rental line in hours, not days. This data-driven approach also allowed for smarter logistics, drastically <strong>slashing their expenditure on emergency, last-minute expedited shipping by 40%</strong>. They stopped paying premiums for their own lack of visibility. Furthermore, by analyzing the aggregated data over time, they began to see patterns in parts failures for specific models in certain climates, allowing them to shift from a purely reactive repair model to a predictive one, pre-stocking high-failure parts at key locations. This project proved that optimizing the maintenance supply chain wasn't just an operational improvement; it was a powerful strategy for maximizing the revenue-generating capacity of their most critical assets.</p>",
+  "publicationDate": "2025-09-11"
+}

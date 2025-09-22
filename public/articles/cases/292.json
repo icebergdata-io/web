@@ -1,0 +1,72 @@
+{
+  "Title": "From Forecast to Fork: Optimizing Hotel F&B Supply Chains with Real-Time Event & Weather Data",
+  "Subtitle": "How a luxury hotel chain leveraged public web data to slash food waste and boost F&B profitability.",
+  "Business Impact": "By integrating scraped local event calendars, weather forecasts, and flight data, the hotel chain reduced perishable food spoilage by 22%, cut emergency procurement costs by 40%, and increased F&B profit margins by 5%.",
+  "Sector": "Hotels",
+  "What data was collected": "Public data from city event portals, convention center schedules, hyper-local weather forecast APIs, airline arrival/departure feeds from airport websites, and real-time stock availability from B2B food supplier portals.",
+  "Why this matters": "Hotel F&B demand is highly volatile and influenced by external factors. Relying solely on historical booking data leads to costly over/under-stocking. Real-time external data provides the forward-looking insights needed for just-in-time inventory management, directly impacting the bottom line.",
+  "Implementation time": "10 to 12 weeks, including initial data source identification, scraper development for multiple disparate sources, building the data integration pipeline, and creating a demand forecasting dashboard.",
+  "Problems this solves": "1) High rates of perishable food spoilage and waste. 2) Inaccurate demand forecasting for hotel restaurants and banquets. 3) Lost revenue from stock-outs of popular menu items. 4) High costs associated with last-minute, emergency supplier orders.",
+  "Why it was better to outsource this solution": "Aggregating and normalizing data from dozens of unstructured public sources (like event sites, airport schedules, and various supplier portals) requires specialized, resilient scraping infrastructure. An expert partner handles the complexity of maintaining these scrapers against website changes, ensuring a continuous, reliable data feed for the demand model.",
+  "Example_Input_JSON": {
+    "client_id": "hotel-chain-lux-456",
+    "job_type": "demand_signal_aggregation",
+    "location": {
+      "city": "Metropolis",
+      "airport_code": "MTA",
+      "coordinates": "40.7128,-74.0060"
+    },
+    "data_sources": [
+      "local_events",
+      "weather_forecast",
+      "flight_arrivals",
+      "supplier_inventory_seafood",
+      "supplier_inventory_produce"
+    ],
+    "forecast_days": 7
+  },
+  "Example_Output_JSON": {
+    "report_id": "demand-rpt-met-20250315",
+    "generated_at": "2025-03-15T08:00:00Z",
+    "location": "Metropolis",
+    "forecast_period_start": "2025-03-16",
+    "forecast_period_end": "2025-03-22",
+    "aggregated_signals": {
+      "major_events": [
+        {
+          "event_name": "Global Tech Summit 2025",
+          "venue": "Metropolis Convention Center",
+          "start_date": "2025-03-18",
+          "end_date": "2025-03-20",
+          "expected_attendees": 15000,
+          "demand_impact_score": 0.85
+        }
+      ],
+      "daily_weather": [
+        {
+          "date": "2025-03-16",
+          "temp_celsius_avg": 22,
+          "condition": "Sunny",
+          "demand_modifier_cold_dishes": 1.2,
+          "demand_modifier_hot_dishes": 0.9
+        }
+      ],
+      "flight_arrivals": {
+        "total_incoming_passengers_next_24h": 25400,
+        "peak_arrival_window": "15:00-18:00"
+      },
+      "supplier_alerts": [
+        {
+          "supplier": "OceanFresh Seafoods",
+          "item_sku": "SALMON-ATL-F",
+          "status": "Low Stock",
+          "price_per_kg": 35.5,
+          "price_trend": "up"
+        }
+      ]
+    }
+  },
+  "Matching algorithm used to integrate the data": "Geospatial analysis correlated event venues with the client's hotel locations to weigh demand impact. Time-series analysis was used to align flight arrival peaks with likely check-in times. A proprietary scoring algorithm combined weather data, event magnitude, and passenger volumes into a single daily 'Demand Impact Score' which was then used to adjust baseline procurement forecasts.",
+  "Story": "<p>When a prestigious hotel chain approached us, they weren't struggling with empty rooms; they were battling a hidden cost center that was eroding their F&B profitability: food spoilage. Their executive chefs were masters of cuisine, but their procurement team was flying blind, relying on reservation data from last year to predict what they'd need next week. This model was fundamentally broken. It couldn't predict the surge in demand for light salads during an unexpected heatwave or the run on steak dinners when a major corporate convention came to town. The result was a painful cycle of waste—fridges full of expensive, expired seafood and produce—or frantic, high-cost emergency orders that infuriated suppliers and wrecked budgets.</p><p>Our team at Iceberg Data saw this not as a procurement problem, but a data problem. The signals needed to accurately forecast demand weren't inside the hotel's databases; they were scattered across the public web. <strong>Our challenge was to capture these external signals and transform them into actionable supply chain intelligence.</strong> We proposed a comprehensive data aggregation strategy focused on forward-looking indicators. The client was skeptical at first, unsure how scraping a city's event calendar could possibly tell them how much salmon to order.</p><p>We began by deploying a suite of targeted web scrapers. The first set targeted the city's official event portal and the schedule for the main convention center. We didn't just extract event names; we captured expected attendee numbers, event types, and venue locations. This allowed us to build a 'demand_impact_score' for events like the 'Global Tech Summit 2025,' signaling a massive influx of high-spending corporate guests. Simultaneously, another scraper monitored the international airport's public arrivals feed, giving the hotel a 24-hour view of passenger influx and identifying peak arrival windows, which correlated directly with dinner service demand.</p><p>The next layer was environmental data. We integrated with a hyper-local weather API to pull 7-day forecasts. This was crucial. A forecast showing a jump to 22°C and sun would automatically trigger a higher 'demand_modifier_cold_dishes' in our output, telling the chefs to prep more salads and chilled soups. Finally, we tackled the supply side. Our scrapers monitored the client's key B2B supplier portals. This wasn't for pricing alone; it was for availability. An alert like 'SALMON-ATL-F' moving to 'Low Stock' status gave the procurement team a critical heads-up to secure their order early or pivot their menu, avoiding last-minute stock-outs and disappointed guests.</p><p><strong>The integration of this disparate data was where the magic happened.</strong> All this information—events, flights, weather, supplier stock—flowed into a single, structured JSON feed delivered to the client daily. Their analytics team used this feed to power a new predictive demand model. The results were transformative. Within the first quarter, perishable food spoilage dropped by over 20%. The frantic calls for emergency deliveries nearly vanished, cutting associated costs by 40%. Most importantly, the hotel's F&B division saw a 5% lift in profit margins. They were no longer just reacting to reservations; they were proactively aligning their entire supply chain with the dynamic pulse of the city.</p>",
+  "publicationDate": "2026-03-20"
+}

@@ -1,0 +1,59 @@
+{
+  "Title": "Slicing Ingredient Costs: How Real-Time Supplier Data Reduced Food Waste by 20% for a Ghost Kitchen Network",
+  "Subtitle": "Automating Procurement and Dynamic Menu Pricing by Aggregating B2B Supplier Inventories",
+  "Business Impact": "Our client achieved a 12% reduction in raw material costs and a 20% decrease in food spoilage by leveraging real-time data from local food wholesalers, leading to a 5-point improvement in gross margin consistency.",
+  "Sector": "Food Delivery",
+  "What data was collected": "Publicly available data from over 50 regional B2B food supplier websites, including wholesale ingredient prices, stock availability statuses (e.g., 'In Stock', 'Low Stock'), delivery lead times, minimum order quantities, and daily specials. We also monitored agricultural commodity price indexes for predictive insights.",
+  "Why this matters": "For ghost kitchens operating on thin margins, ingredient cost volatility is a primary threat to profitability. Access to a unified, real-time view of the entire local supply market allows for strategic procurement, waste reduction, and agile menu pricing that manual processes cannot match.",
+  "Implementation time": "10 to 12 weeks, which included building custom scrapers for diverse supplier portals, developing a data normalization engine, and integrating the data feed into the client's procurement API.",
+  "Problems this solves": "1) Inability to compare supplier prices efficiently, leading to overspending. 2) Surprise ingredient stockouts that force last-minute, costly menu changes. 3) High levels of food waste from over-ordering to buffer against supply uncertainty. 4) Static menu pricing that fails to adapt to daily cost fluctuations.",
+  "Why it was better to outsource this solution": "B2B supplier websites lack standardized formats and are often protected by sophisticated anti-scraping measures. An external data partner like Iceberg Data has the specialized infrastructure and expertise to reliably extract and structure this complex, fragmented data, handling proxy management, scraper maintenance, and data validation at scale.",
+  "Example_Input_JSON": {
+    "client_id": "ghost-kitchen-innovators-456",
+    "job_type": "ingredient_sourcing_query",
+    "region_zip_code": "33139",
+    "ingredients": [
+      "avocado_hass_grade_a",
+      "chicken_breast_skinless_boneless",
+      "brioche_bun_4inch",
+      "roma_tomato"
+    ]
+  },
+  "Example_Output_JSON": {
+    "report_id": "ing-query-report-88b-23c",
+    "generated_at": "2025-07-15T06:00:00Z",
+    "region_zip_code": "33139",
+    "sourcing_options": [
+      {
+        "ingredient_sku": "avocado_hass_grade_a",
+        "product_name": "Hass Avocados (Case of 48)",
+        "supplier_id": "FreshDirectB2B",
+        "price_per_unit": "2.15",
+        "stock_status": "IN_STOCK",
+        "estimated_delivery_days": 1,
+        "last_scraped": "2025-07-15T05:45:10Z"
+      },
+      {
+        "ingredient_sku": "avocado_hass_grade_a",
+        "product_name": "Avocado, Hass, Grade A",
+        "supplier_id": "RegionalProduceCo",
+        "price_per_unit": "2.05",
+        "stock_status": "LOW_STOCK",
+        "estimated_delivery_days": 2,
+        "last_scraped": "2025-07-15T05:51:30Z"
+      },
+      {
+        "ingredient_sku": "chicken_breast_skinless_boneless",
+        "product_name": "Chicken Breast - Boneless/Skinless (40lb case)",
+        "supplier_id": "ProMeatsInc",
+        "price_per_unit": "3.88",
+        "stock_status": "IN_STOCK",
+        "estimated_delivery_days": 1,
+        "last_scraped": "2025-07-15T05:55:02Z"
+      }
+    ]
+  },
+  "Matching algorithm used to integrate the data": "A multi-stage normalization process was used. First, we applied Natural Language Processing (NLP) models to standardize product descriptions from varied supplier websites (e.g., 'Avo Hass' and 'Hass Avocadoes' are both mapped to 'avocado_hass_grade_a'). This was supplemented with a rules-based engine that matched on unit weights and quantities (e.g., 'case of 48', '40lb box') to ensure price comparability.",
+  "Story": "<p>Our client, a fast-growing ghost kitchen operator, was facing a classic 'death by a thousand cuts.' They managed a dozen virtual brands from a single kitchen, each with a unique menu. Their biggest challenge wasn't marketing or delivery; it was the chaotic, unpredictable world of fresh ingredient procurement. Their head chef described their daily routine as 'playing the stock market with vegetables.' They were manually checking ten different supplier websites every morning, frantically comparing prices for everything from avocados to brioche buns. This process was not only time-consuming but also deeply flawed.</p><p>The core problem was information asymmetry. A supplier might have a great price on chicken, but be out of stock on the specific tomatoes they needed, forcing a split order and doubling delivery fees. Another supplier might offer a bulk discount, but the short shelf life of the product meant half of it would spoil before it could be used, completely negating the savings. <strong>This volatility was directly impacting their bottom line, leading to inconsistent margins and an alarming 25% food spoilage rate for certain key ingredients.</strong> They needed a single source of truth for their local supply chain, and they needed it in real-time.</p><p>That's where our team at Iceberg Data came in. We proposed a comprehensive data solution: we would build and maintain a fleet of web scrapers targeted at all their key B2B food wholesalers in the region. Our goal was to create a live, aggregated feed of every ingredient they needed, covering price, stock status, and delivery lead times. The initial phase involved a deep dive into the digital landscape of food suppliers. We discovered a huge variance in website technology—from modern APIs to archaic, table-based HTML sites that hadn't been updated in a decade. This is precisely the kind of challenge that makes outsourcing data acquisition a necessity.</p><p>Our engineering team developed custom scrapers for each target, implementing sophisticated proxy rotation and user-agent masking to ensure reliable, uninterrupted data collection. <strong>The real magic, however, happened in our data normalization engine.</strong> An 'avocado' on one site was 'Hass Avocado, Grade A' on another. We used NLP algorithms to parse these descriptions and map them to a single, standardized SKU, like 'avocado_hass_grade_a'. This allowed for true apples-to-apples (or in this case, avocados-to-avocados) comparisons.</p><p>Within 12 weeks, we delivered a live API endpoint. The client's procurement software could now send a request, like the one in our 'Example_Input_JSON', and get back a structured list of all available options. Instead of spending hours manually checking sites, their system could now automatically identify that 'RegionalProduceCo' had a better unit price on avocados but 'FreshDirectB2B' had them in high stock with next-day delivery. This allowed them to make data-driven purchasing decisions in seconds.</p><p>The impact was immediate and profound. Their system could now automatically flag ingredients with spiking costs, suggesting temporary price increases on affected menu items to protect margins. For example, when a frost in a growing region caused tomato prices to surge, their 'Margherita Pizza' price was dynamically adjusted upwards by 4%, preventing a loss. More importantly, by having a clear view of availability and lead times, they could shift from 'just-in-case' to 'just-in-time' ordering. <strong>This strategic shift, powered by our data, led to a 20% reduction in food waste and a 12% drop in overall ingredient costs.</strong> They were no longer guessing; they were operating with a complete, real-time map of their supply chain, turning a major operational headache into a significant competitive advantage.",
+  "publicationDate": "2026-02-20"
+}

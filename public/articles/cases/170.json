@@ -1,0 +1,69 @@
+{
+  "Title": "Reducing Perishable Food Spoilage by 30% with Real-Time Supplier Inventory Scraping",
+  "Subtitle": "Leveraging public supplier data to dynamically adjust hotel kitchen procurement and minimize waste for a luxury hotel group.",
+  "Business Impact": "Achieved a 30% reduction in food spoilage, an 18% decrease in overall food procurement costs, and improved kitchen operational efficiency by automating supplier price and stock checks.",
+  "Sector": "Hotels",
+  "What data was collected": "Public and login-protected inventory levels from regional food supplier B2B portals, daily price fluctuations for perishable items (seafood, produce, dairy), estimated delivery windows from logistics trackers, and regional weather forecasts impacting produce availability.",
+  "Why this matters": "Hotel kitchens, especially in the luxury segment, operate on thin margins where food waste directly erodes profitability. Real-time visibility into the supply chain allows a shift from a costly 'just-in-case' inventory model to an efficient 'just-in-time' strategy for high-cost, perishable goods.",
+  "Implementation time": "6 to 8 weeks, which included supplier portal analysis, building a resilient network of scrapers, developing a data normalization engine, and API integration with the client's procurement software.",
+  "Problems this solves": "1) Over-ordering of perishable ingredients leading to high spoilage rates. 2) Inability to capitalize on sudden supplier price drops or react to stockouts. 3) Manual, time-consuming process of checking dozens of supplier websites. 4) Lack of data to optimize daily menus based on real-time ingredient costs and availability.",
+  "Why it was better to outsource this solution": "Food suppliers utilize a fragmented landscape of non-standardized B2B portals, each with unique structures, anti-scraping measures, and data formats. An expert web scraping partner can build and maintain the complex infrastructure required to reliably aggregate this disparate data into a single, clean API feed, a task that is prohibitively resource-intensive for an internal hotel IT department.",
+  "Example_Input_JSON": {
+    "client_id": "hotel-group-lux-451",
+    "job_type": "perishable_inventory_monitoring",
+    "region": "pacific_northwest",
+    "monitored_categories": [
+      "produce",
+      "dairy",
+      "seafood",
+      "meats"
+    ],
+    "supplier_urls": [
+      "https://b2b.regionalsupplies.com/inventory",
+      "https://wholesale.freshfarms.net/stock",
+      "https://portal.oceanicseafood.com/daily_catch"
+    ]
+  },
+  "Example_Output_JSON": {
+    "report_id": "report-inv-pdx-882",
+    "generated_at": "2025-07-21T04:00:00Z",
+    "supplier_data": [
+      {
+        "supplier_name": "Regional Supplies Co.",
+        "product_sku": "PROD-AVOCADO-HASS-CS",
+        "product_name": "Hass Avocados (Case of 48)",
+        "current_stock_level": 85,
+        "unit_price": "75.50",
+        "price_currency": "USD",
+        "estimated_delivery_eta": "2025-07-21T11:00:00Z",
+        "quality_rating": "A-Grade",
+        "alert": "LOW_STOCK"
+      },
+      {
+        "supplier_name": "Fresh Farms Direct",
+        "product_sku": "DAIRY-MILK-GAL-ORG",
+        "product_name": "Organic Whole Milk (Gallon)",
+        "current_stock_level": 350,
+        "unit_price": "4.25",
+        "price_currency": "USD",
+        "estimated_delivery_eta": "2025-07-21T09:30:00Z",
+        "quality_rating": "Premium",
+        "alert": null
+      },
+      {
+        "supplier_name": "Oceanic Seafood",
+        "product_sku": "SEAFD-SALMON-ATL-LB",
+        "product_name": "Atlantic Salmon (Fresh, per lb)",
+        "current_stock_level": 120,
+        "unit_price": "14.80",
+        "price_currency": "USD",
+        "estimated_delivery_eta": "2025-07-21T13:00:00Z",
+        "quality_rating": "Sushi-Grade",
+        "alert": "PRICE_DECREASE"
+      }
+    ]
+  },
+  "Matching algorithm used to integrate the data": "Supplier Product SKUs and descriptions were normalized using a combination of Natural Language Processing (NLP) models and fuzzy string matching. This created a master product catalog, allowing the system to compare price and availability of identical items (e.g., 'Hass Avocados, Case') across multiple vendors with varied descriptions. Delivery ETAs were correlated with public real-time traffic data APIs to adjust for potential delays and provide a more accurate delivery forecast.",
+  "Story": "<p>Our client, a prestigious boutique hotel group renowned for its farm-to-table dining experiences, faced a persistent and costly operational challenge. While their front-of-house was the picture of luxury and seamless service, their back-of-house was battling a significant drain on profitability: food spoilage. Their executive chefs, committed to using only the freshest ingredients, were caught in a difficult bind. They lacked real-time visibility into their network of artisanal and regional suppliers' inventory levels.</p><p>The procurement process was archaic, relying on weekly PDF catalogs, phone calls, and manual checks of a dozen different B2B websites. This information was often outdated by the time an order was placed. Consequently, chefs were forced to over-order expensive, perishable items like <strong>fresh Atlantic Salmon, organic produce, and imported cheeses</strong>. The alternative—running out of a key ingredient for a signature dish—was unacceptable. This 'just-in-case' purchasing strategy resulted in an alarming rate of waste that directly impacted their bottom line.</p><p>That's when they engaged our team at Iceberg Data. During the discovery phase, we mapped their entire supply chain and identified a critical opportunity: nearly 80% of their key suppliers operated online B2B portals with real-time stock information, but they were all disconnected data silos. The solution was clear: a sophisticated, high-frequency web scraping operation to unify this fragmented data landscape.</p><p>We developed a suite of custom scrapers, each tailored to navigate the unique architecture and security protocols of the individual supplier portals. These bots ran multiple times a day, extracting crucial data points: <strong>product name, SKU, current stock level, unit price, and special promotions</strong>. The raw data, full of inconsistencies like 'Hass Avocado (48ct)' from one vendor and 'Avo, Hass, Case' from another, was piped into our proprietary normalization engine. Using NLP and fuzzy matching algorithms, we created a master product catalog, allowing for true apples-to-apples comparisons across suppliers.</p><p>The final, aggregated data was delivered via a single, clean API that integrated seamlessly into the client's existing kitchen management software. For the first time, their chefs had a live, unified dashboard of their entire supply ecosystem. The impact was transformative. A chef could see that their primary seafood vendor was running low on the <strong>'Atlantic Salmon'</strong> needed for the dinner service. Instantly, the dashboard would highlight that a secondary supplier had ample stock, and our system even flagged a <strong>'PRICE_DECREASE'</strong> alert, as shown in our sample output JSON. The decision to switch suppliers for that day's order was made in seconds, not hours.</p><p>The results after just one quarter were staggering. The hotel group reported a <strong>30% reduction in perishable food spoilage</strong> across their properties. This wasn't just a cost-saving measure; it was an operational revolution. Procurement teams saved dozens of hours each week, reallocating their time to strategic sourcing rather than manual data entry. Chefs felt empowered, using the live data to create dynamic daily specials based on ingredient availability and cost, enhancing the 'farm-to-table' promise. Ultimately, the project led to a direct <strong>18% reduction in total food procurement costs</strong> and fundamentally shifted their supply chain from a reactive liability to a proactive, data-driven strategic advantage.</p>",
+  "publicationDate": "2025-11-16"
+}

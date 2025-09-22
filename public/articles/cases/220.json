@@ -1,0 +1,54 @@
+{
+  "Title": "Mastering Perceived Value: How We Analyzed Competitor Strike-Through Pricing for a 22% Margin Uplift",
+  "Subtitle": "Leveraging Web Scraping to Uncover the True Impact of Competitors' Promotional Pricing and Optimize Perceived Value",
+  "Business Impact": "By analyzing the frequency, depth, and historical accuracy of competitor strike-through prices, our client optimized their own promotional calendar, leading to a 22% increase in gross margin and a 15% uplift in conversion rates for key product categories.",
+  "Sector": "E-commerce",
+  "What data was collected": "Historical and real-time product data from 15 key competitor websites, specifically capturing the 'list price' (strike-through price), the 'sale price', product SKU, product category, promotion duration, and any associated promotional banners or codes.",
+  "Why this matters": "Simple price matching is a race to the bottom. Understanding *how* competitors frame their discounts (e.g., inflated 'list prices') allows a business to create more compelling offers that protect margins, build trust, and avoid constant price wars. It’s about winning on perceived value, not just the lowest price tag.",
+  "Implementation time": "6 to 8 weeks. This involved configuring crawlers to capture not just the visible prices but also to archive daily snapshots of pricing data to build a historical database of promotional tactics for each competitor.",
+  "Problems this solves": "1) Inability to differentiate between genuine sales and artificial discounts. 2) Margin erosion from reactive price matching against inflated competitor 'list prices'. 3) Lack of data to inform a profitable and trustworthy promotional strategy.",
+  "Why it was better to outsource this solution": "Competitors often use dynamic rendering (JavaScript) to display prices and promotions, which requires sophisticated crawlers that can execute JS. An expert partner like Iceberg Data manages these technical complexities, handles proxy rotation to avoid blocks, and provides clean, structured historical data, which is impossible to gather manually at scale.",
+  "Example_Input_JSON": {
+    "client_id": "ecomm-client-456",
+    "job_type": "promotional_pricing_analysis",
+    "target_competitors": [
+      "electronicsgiant.com",
+      "techemporium.net",
+      "gadgetuniverse.io"
+    ],
+    "product_skus": [
+      "SKU-8821-LP",
+      "SKU-9503-CM",
+      "SKU-7749-HD"
+    ],
+    "data_fields": [
+      "list_price",
+      "sale_price",
+      "price_history_90d",
+      "promotion_text"
+    ]
+  },
+  "Example_Output_JSON": {
+    "report_id": "promo-analysis-report-1122",
+    "generated_at": "2024-11-26T14:30:00Z",
+    "sku": "SKU-8821-LP",
+    "product_name": "AeroBook Pro 15-inch Laptop",
+    "analysis_summary": [
+      {
+        "competitor": "electronicsgiant.com",
+        "strategy": "Aggressive. Frequent use of high strike-through prices with an average discount depth of 45%.",
+        "historical_validity": "Poor. The 'list_price' of $1499.99 is 30% higher than the 90-day average selling price of $1150. This is an artificially inflated reference price.",
+        "recommendation": "Do not match this discount. Hold current price. The competitor's perceived value is based on a misleading anchor price, creating an opportunity to compete on trust rather than a phantom sale."
+      },
+      {
+        "competitor": "techemporium.net",
+        "strategy": "Conservative. Uses strike-through pricing only during major holiday seasons.",
+        "historical_validity": "Excellent. The current 'list_price' of $1299.99 aligns with the product's non-sale price for 75 of the last 90 days.",
+        "recommendation": "Consider a strategic price match. This competitor's discount is genuine and likely to influence informed buyers. A match would maintain price parity without sacrificing credibility."
+      }
+    ]
+  },
+  "Matching algorithm used to integrate the data": "Product matching was performed using a hybrid approach. Initially, Universal Product Codes (UPCs) and Manufacturer Part Numbers (MPNs) were used for exact matches. For products without these identifiers, a fuzzy matching algorithm combining product title, brand, and key specifications (e.g., '16GB RAM', '256GB SSD') was employed with a similarity score threshold of 95% to ensure accuracy.",
+  "Story": "<p>Our client, a rapidly growing e-commerce retailer in the consumer electronics space, came to us with a problem that was slowly bleeding them dry: margin compression. They were locked in a seemingly endless price war with a handful of larger, more aggressive competitors. Their automated repricing software was doing its job—matching the lowest price on the market—but it was a blunt instrument. Every time a competitor launched a 'massive sale', their system would react, slashing prices and sacrificing profitability to win the sale. They felt trapped in a race to the bottom and suspected that not all competitor 'discounts' were what they seemed.</p><p><strong>The core issue wasn't just about price; it was about the psychology of pricing.</strong> Competitors weren't just listing a sale price; they were framing it with a high 'strike-through' price (e.g., 'Was $999, Now $749!'). The client's software only saw the $749, not the context provided by the $999. Was that original price legitimate? Or was it an inflated number designed to make the discount look bigger than it really was? Without historical data, it was impossible to know. Manually tracking this across thousands of SKUs and dozens of competitors was unthinkable.</p><p>This is where our team at Iceberg Data stepped in. We proposed a shift in perspective: instead of just tracking the current price, we would build a 'promotional history' for every key product sold by their main competitors. Our objective was to scrape not only the current sale price but also the strike-through 'list price', every single day. This would create a time-series database revealing the truth behind their competitors' promotional strategies.</p><p>We configured a fleet of crawlers to visit the product pages of 15 competitor sites daily. These crawlers were built to handle sophisticated anti-scraping measures and JavaScript-rendered content, ensuring we captured the exact price a real customer would see. The data points we collected for each SKU were the timestamp, sale price, list price, and any promotional text on the page. Within six weeks, we had a rich dataset ready for analysis.</p><p>The results were illuminating. <strong>We discovered two distinct strategies among their competitors.</strong> One major competitor, 'Electronics Giant', was a master of illusion. For their top-selling laptop, they consistently advertised a strike-through price of $1,499.99. However, our historical data proved that the laptop had never sold for more than $1,200 in the preceding six months. Their '30% off' sale was based on a completely fabricated anchor price. They were competing on a false perception of value.</p><p>In contrast, another competitor, 'Tech Emporium', used strike-through pricing honestly. Their 'was' prices accurately reflected the product's typical non-sale price. Their discounts were smaller but genuine. Armed with this intelligence, our client could finally stop treating all competitors the same.</p><p>We helped them transform their pricing strategy from reactive to predictive. They reconfigured their repricing software with a new set of rules powered by our data feed. If a competitor's strike-through price was more than 10% above its 90-day historical average (a metric we calculated and provided), the system would flag it as an 'inflated discount' and would not initiate a price match. Instead, for these products, the client held their price and programmatically added a 'Fair Price Guarantee' badge to their product page, building customer trust.</p><p>The impact was immediate and profound. By refusing to chase phantom discounts, they stopped the bleeding. <strong>Within three months, their gross margin on key electronics categories increased by a staggering 22%.</strong> Even better, their conversion rate on these items saw a 15% uplift. Customers, tired of confusing and potentially deceptive sales, responded positively to their transparent pricing. They had successfully exited the price war and started competing on a more durable metric: trust.</p>",
+  "publicationDate": "2026-01-13"
+}

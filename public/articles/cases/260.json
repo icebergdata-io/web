@@ -1,0 +1,43 @@
+{
+  "Title": "De-Risking Hospitality: Ensuring ADA Compliance Across Digital Channels with Automated Data Audits",
+  "Subtitle": "How a Global Hotel Chain Mitigated Legal Exposure by Verifying Accessibility Feature Listings on Third-Party Travel Sites",
+  "Business Impact": "Reduced compliance violation fines and legal settlement costs by over 60% and improved booking confidence by ensuring accurate accessibility information across 1,200+ digital listings.",
+  "Sector": "Hotels",
+  "What data was collected": "Room descriptions, listed amenities, accessibility feature checklists (e.g., roll-in shower, bed height, visual alarms), room photo alt-text, and booking path HTML from the hotel's direct websites and over 20 Online Travel Agency (OTA) platforms for hundreds of properties.",
+  "Why this matters": "Inaccurate or inconsistent accessibility information is a major legal liability under regulations like the ADA. It damages brand trust and creates significant barriers for travelers with disabilities, leading to lost revenue and costly litigation.",
+  "Implementation time": "10-12 weeks for initial setup, including building a 'golden record' of property features, scraper development for 5 major OTAs, and dashboard configuration. Ongoing monitoring is fully automated.",
+  "Problems this solves": "1) High risk of expensive ADA-related lawsuits. 2) Inconsistent brand messaging across sales channels. 3) Poor customer experience for travelers with disabilities. 4) Inability to manually audit thousands of dynamic web listings.",
+  "Why it was better to outsource this solution": "Outsourcing to a data partner provides expertise in navigating complex, JavaScript-heavy OTA websites and managing anti-scraping measures. Iceberg Data maintains the scrapers, ensuring uninterrupted data flow even when OTAs change their site layouts.",
+  "Example_Input_JSON": {
+    "client_id": "hotel-chain-789",
+    "job_type": "accessibility_compliance_audit",
+    "property_ids": [
+      "PROP-NYC-101",
+      "PROP-LAX-205"
+    ]
+  },
+  "Example_Output_JSON": {
+    "report_id": "AC-AUDIT-20250315-A",
+    "generated_at": "2025-03-15T09:00:00Z",
+    "discrepancies_found": 37,
+    "summary": [
+      {
+        "property_id": "PROP-NYC-101",
+        "ota": "Booking.com",
+        "url": "https://www.booking.com/hotel/us/prop-nyc-101.html",
+        "issue": "Missing 'roll-in shower' feature in amenities list for Accessible King Room.",
+        "severity": "High"
+      },
+      {
+        "property_id": "PROP-LAX-205",
+        "ota": "Expedia.com",
+        "url": "https://www.expedia.com/Los-Angeles-Hotels-PROP-LAX-205.h12345.Hotel-Information",
+        "issue": "Contradictory information: Description mentions 'accessible tub' but amenities checkbox states 'roll-in shower'.",
+        "severity": "High"
+      }
+    ]
+  },
+  "Matching algorithm used to integrate the data": "A 'golden record' database, supplied by the client, contains the verified accessibility features for each room type. Our NLP model parses scraped text from OTA listings, normalizes terminology (e.g., 'wheelchair-friendly' vs. 'accessible'), and performs a differential analysis against the golden record to flag missing, extra, or contradictory features.",
+  "Story": "<p>Our engagement with a leading international hotel group began not with their marketing team, but with their legal department. They were facing a growing wave of demand letters and lawsuits related to the Americans with Disabilities Act (ADA). The core of the issue was dangerously simple: the information about their accessible rooms—features like roll-in showers, grab bar locations, and bed heights—was wildly inconsistent across the digital ecosystem. A guest might book a room on an Online Travel Agency (OTA) expecting a specific feature, only to find reality didn't match the listing. This created not only a terrible guest experience but also a significant, and growing, legal liability.</p><p>The client's compliance team was fighting a losing battle. They had hundreds of properties, each listed on dozens of OTAs like Expedia, Booking.com, and regional players. Each OTA has its own content management system and descriptive format. Manually checking every single listing was an impossible task. <strong>A single property could have over 50 different digital listings, and a minor website update by an OTA could erase or alter critical compliance information overnight.</strong> They were trapped in a reactive cycle, only discovering errors after a complaint was filed.</p><p>Our team at Iceberg Data proposed a shift from a reactive to a proactive compliance strategy powered by web data. The vision was to create a single source of truth—what we called a 'golden record'—and then continuously audit the entire digital landscape against it. The first step was collaborative. We worked closely with their legal and operations teams to build this 'golden record,' a meticulously detailed database specifying the exact accessibility features present in every designated accessible room across their entire portfolio. This was the benchmark for accuracy.</p><p>Next, we deployed a fleet of sophisticated web scrapers tailored to each major OTA and their own brand websites. These weren't simple scrapers; they were built to navigate complex booking funnels, handle JavaScript-heavy pages, and intelligently identify the sections of a page dedicated to room features and accessibility. <strong>We trained our crawlers to extract not just bulleted lists of amenities but also parse descriptive text, check for specific keywords, and even analyze photo captions and alt-text for relevant information.</strong></p><p>The results from the first comprehensive audit were staggering. We processed over 15,000 individual room listings and found a discrepancy rate of nearly 25%. We found 'High' severity issues where critical features like 'roll-in showers' were completely omitted from listings. We found contradictory information where a room's title would mention accessibility, but the detailed description failed to list any specific features. In one alarming case, an OTA's template had incorrectly auto-populated a standard room's photos onto an accessible room's listing, creating a clear case of misrepresentation.</p><p>We delivered this data not as a static spreadsheet, but through a live compliance dashboard. The client's legal team could now log in and see a prioritized list of non-compliant listings, complete with a direct link to the offending page and a clear description of the error (e.g., 'Missing feature: Visual Fire Alarm,' 'Contradictory Term: Listing says Accessible Tub, Golden Record says Roll-in Shower'). This transformed their workflow. Instead of waiting for lawsuits, their team could now proactively contact their OTA account managers with specific, documented evidence and request immediate corrections. <strong>Within the first six months of implementation, the client reported a 40% reduction in new accessibility-related legal inquiries and successfully had over 3,000 listing errors corrected.</strong> The project's impact went beyond mitigating risk; it tangibly improved the booking experience for travelers with disabilities, leading to a 15% increase in positive reviews mentioning the clarity and reliability of accessibility information. It was a powerful demonstration of how targeted data scraping can be a formidable tool for regulatory compliance and brand protection.</p>",
+  "publicationDate": "2026-02-17"
+}

@@ -1,0 +1,64 @@
+{
+  "Title": "Unmasking True Competitor Pricing: How Total Landed Cost Analysis Increased Conversion by 18%",
+  "Subtitle": "Moving Beyond Item-Level Price Scraping to Analyze Competitor Shipping Thresholds and Cart-Level Discounts",
+  "Business Impact": "By identifying and neutralizing a competitor's strategic shipping cost advantage, the client lowered their cart abandonment rate by 22% and increased overall conversion by 18% within three months.",
+  "Sector": "E-commerce",
+  "What data was collected": "Product-level prices via SKU, competitor shipping policy pages, promotional banners related to shipping, and dynamically calculated shipping fees from simulated shopping carts at various value thresholds.",
+  "Why this matters": "The 'sticker price' is often misleading. The Total Landed Cost (product price + tax + shipping) is what a customer actually pays. Ignoring competitors' shipping strategies creates a critical blind spot that directly impacts conversion rates at the final checkout stage.",
+  "Implementation time": "6 to 8 weeks for the initial build, including the development of a resilient cart simulation engine and a dashboard to compare landed costs across multiple basket scenarios.",
+  "Problems this solves": "1) High cart abandonment rates despite competitive item prices. 2) Inability to understand the true price competitiveness at checkout. 3) Lost sales from customers being surprised by high shipping fees relative to competitors.",
+  "Why it was better to outsource this solution": "Simulating shopping carts and reaching the checkout page to scrape shipping costs is complex. It requires sophisticated proxy management to avoid being blocked, handling dynamic JavaScript-based fee calculations, and building a system that can adapt to frequent changes in competitors' checkout flows.",
+  "Example_Input_JSON": {
+    "client_id": "CE-4591",
+    "job_type": "landed_cost_analysis",
+    "target_skus": [
+      "NV-GFX-4070-TI",
+      "CPU-INT-13900K",
+      "RAM-DDR5-32GB-C32"
+    ],
+    "competitor_domains": [
+      "techiesdelight.com",
+      "pcpartdepot.net"
+    ],
+    "basket_value_scenarios": [
+      45,
+      49.99,
+      50.01,
+      99
+    ]
+  },
+  "Example_Output_JSON": {
+    "report_id": "LCR-2025-03-15-001",
+    "sku": "NV-GFX-4070-TI",
+    "analysis_timestamp": "2025-03-15T09:30:00Z",
+    "competitor_results": [
+      {
+        "domain": "techiesdelight.com",
+        "item_price": 799.99,
+        "shipping_policy_summary": "Free shipping on orders over $50",
+        "scenarios": [
+          {
+            "simulated_basket_value": 799.99,
+            "shipping_cost": 0,
+            "total_landed_cost": 799.99
+          }
+        ]
+      },
+      {
+        "domain": "client.com (baseline)",
+        "item_price": 794.99,
+        "shipping_policy_summary": "Free shipping on orders over $100",
+        "scenarios": [
+          {
+            "simulated_basket_value": 794.99,
+            "shipping_cost": 12.95,
+            "total_landed_cost": 807.94
+          }
+        ]
+      }
+    ]
+  },
+  "Matching algorithm used to integrate the data": "A multi-stage process was used. First, UPC and manufacturer part numbers were used to match products for item-level price comparison. Then, a rule-based engine initiated a headless browser to simulate adding product combinations to the cart. This engine navigated to the checkout page to trigger and scrape the dynamically calculated shipping costs for predefined basket value tiers.",
+  "Story": "<p>When a prominent online retailer of specialty consumer electronics approached us, they were facing a frustrating paradox. Their internal analytics showed that their product page pricing was consistently 5-7% lower than their primary competitors on high-velocity items. Yet, their conversion rates were lagging, and their cart abandonment rate had crept up by an alarming 30% over the last two quarters. <strong>They were winning the price war on paper but losing it at the checkout.</strong></p><p>Our team at Iceberg Data was brought in to solve this mystery. The client's initial request was for a standard competitive price monitoring setup, but we suspected the problem was deeper than the visible sticker price. The story their data was telling—high traffic, high 'add to cart' rates, but low final sales—pointed towards a friction point late in the customer journey. Our hypothesis was that the battle wasn't being won on the product page, but on the shipping calculation page.</p><p>Traditional web scraping for e-commerce stops at the product listing. We proposed a more sophisticated approach: <strong>Total Landed Cost Intelligence</strong>. Our goal was to replicate the entire customer purchasing path, from adding an item to the cart all the way to the final confirmation screen where shipping costs are revealed. This required a custom-built data collection engine capable of simulating user behavior, managing sessions, and parsing dynamically loaded content on checkout pages—a task notoriously difficult due to bot detection and complex site architecture.</p><p>We configured our system to monitor ten of their key competitors. For a basket of their top 100 SKUs, our engine would perform several actions. First, it scraped the item price. Then, it simulated adding the item to a cart. But the crucial step was what came next: we built logic to test different cart value scenarios. For instance, we would test a cart with a single, low-cost item (e.g., $35), a cart that was just under a common shipping threshold (e.g., $49), and a cart just over it (e.g., $51). For each scenario, we proceeded through the checkout process to capture the exact shipping fee presented to the customer.</p><p>The results from the first week of data collection were staggering and immediately pinpointed the problem. We created a dashboard that visualized not the 'item price' but the 'total landed cost'. It revealed that while our client was indeed cheaper on a $25 cable, their flat $9.95 shipping fee for orders under $100 made the final purchase more expensive than their main competitor, who offered free shipping on orders over $50. A customer buying a $60 graphics card from the competitor paid exactly $60. That same customer buying from our client for a seemingly cheaper price of $58 would be hit with a surprise $9.95 shipping fee at the last step, bringing their total to $67.95. <strong>This 'shipping trap' was the source of their cart abandonment.</strong></p><p>Armed with this data, our client implemented a strategic overhaul of their shipping policy. They introduced a new, highly competitive free shipping threshold at $55 and offered a more reasonable $4.95 flat rate for smaller orders. The impact was immediate and profound. Within the first month, their cart abandonment rate dropped by 22%. Over the next quarter, their overall site conversion rate increased by 18%, and, interestingly, their Average Order Value (AOV) grew by 12% as customers began adding small, profitable accessories to their carts to meet the new, more attainable shipping threshold. By looking beyond the obvious data points, we provided the intelligence they needed to compete where it truly mattered: the customer's final bill.</p>",
+  "publicationDate": "2026-01-12"
+}
