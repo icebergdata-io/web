@@ -1,6 +1,24 @@
 {
-  "total": 122,
+  "total": 124,
   "caseStudies": [
+    {
+      "id": 117,
+      "sector": "lead-generation",
+      "slug": "identifying-competitor-pricing-gaps-to-fuel-a-40-increase-in-saas-sqls-using-web-scraped-competitor-data-to-uncover-prime-prospects-for-a-dynamic-pricing-engine",
+      "title": "Identifying Competitor Pricing Gaps to Fuel a 40% Increase in SaaS SQLs",
+      "subtitle": "Using Web-Scraped Competitor Data to Uncover Prime Prospects for a Dynamic Pricing Engine",
+      "sectorName": "Lead Generation",
+      "publicationDate": "2025-09-22"
+    },
+    {
+      "id": 123,
+      "sector": "dtc-and-retail",
+      "slug": "de-risking-retail-expansion-identifying-whitespace-opportunities-by-scraping-local-competitor-density-and-consumer-demand-signals-how-a-gourmet-dtc-brand-used-hyperlocal-data-to-pinpoint-unsaturated-markets-for-its-first-physical-stores-minimizing-risk-and-maximizing-launch-roi",
+      "title": "De-Risking Retail Expansion: Identifying 'Whitespace' Opportunities by Scraping Local Competitor Density & Consumer Demand Signals",
+      "subtitle": "How a gourmet DTC brand used hyperlocal data to pinpoint unsaturated markets for its first physical stores, minimizing risk and maximizing launch ROI.",
+      "sectorName": "DTC & Retail",
+      "publicationDate": "2025-09-22"
+    },
     {
       "id": 97,
       "sector": "e-commerce",
