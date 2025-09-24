@@ -4,7 +4,7 @@
     {
       "id": 122,
       "sector": "grocery-retail",
-      "slug": "slashing-perishable-goods-spoilage-by-22-by-correlating-weather-forecasts-and-public-event-data-a-data-driven-approach-to-forecasting-real-time-demand-for-fresh-produce-and-prepared-meals-for-a-regional-grocery-chain",
+      "slug": "grocery-retail-slashing-perishable-goods-spoilage-correlating-weather",
       "title": "Slashing Perishable Goods Spoilage by 22% by Correlating Weather Forecasts and Public Event Data",
       "subtitle": "A data-driven approach to forecasting real-time demand for fresh produce and prepared meals for a regional grocery chain.",
       "sectorName": "Grocery Retail",
@@ -13,7 +13,7 @@
     {
       "id": 117,
       "sector": "lead-generation",
-      "slug": "identifying-competitor-pricing-gaps-to-fuel-a-40-increase-in-saas-sqls-using-web-scraped-competitor-data-to-uncover-prime-prospects-for-a-dynamic-pricing-engine",
+      "slug": "lead-generation-identifying-competitor-pricing-gaps-fuel-increase-saas-sqls",
       "title": "Identifying Competitor Pricing Gaps to Fuel a 40% Increase in SaaS SQLs",
       "subtitle": "Using Web-Scraped Competitor Data to Uncover Prime Prospects for a Dynamic Pricing Engine",
       "sectorName": "Lead Generation",
@@ -22,7 +22,7 @@
     {
       "id": 123,
       "sector": "dtc-and-retail",
-      "slug": "de-risking-retail-expansion-identifying-whitespace-opportunities-by-scraping-local-competitor-density-and-consumer-demand-signals-how-a-gourmet-dtc-brand-used-hyperlocal-data-to-pinpoint-unsaturated-markets-for-its-first-physical-stores-minimizing-risk-and-maximizing-launch-roi",
+      "slug": "dtc-&-retail-de-risking-retail-expansion-identifying-whitespace-opportunities",
       "title": "De-Risking Retail Expansion: Identifying 'Whitespace' Opportunities by Scraping Local Competitor Density & Consumer Demand Signals",
       "subtitle": "How a gourmet DTC brand used hyperlocal data to pinpoint unsaturated markets for its first physical stores, minimizing risk and maximizing launch ROI.",
       "sectorName": "DTC & Retail",
@@ -31,7 +31,7 @@
     {
       "id": 97,
       "sector": "e-commerce",
-      "slug": "pinpointing-micro-markets-for-european-expansion-by-analyzing-niche-community-and-forum-data-how-a-dtc-home-goods-brand-used-hyper-localized-sentiment-analysis-to-guide-its-dach-region-launch-strategy",
+      "slug": "e-commerce-pinpointing-micro-markets-european-expansion-analyzing-niche",
       "title": "Pinpointing Micro-Markets for European Expansion by Analyzing Niche Community & Forum Data",
       "subtitle": "How a DTC Home Goods Brand Used Hyper-Localized Sentiment Analysis to Guide its DACH Region Launch Strategy",
       "sectorName": "E-commerce",
@@ -40,7 +40,7 @@
     {
       "id": 106,
       "sector": "car-rental",
-      "slug": "slashing-vehicle-downtime-by-18-with-predictive-maintenance-parts-sourcing-optimizing-a-national-maintenance-supply-chain-by-aggregating-real-time-parts-availability-and-failure-rate-data",
+      "slug": "car-rental-slashing-vehicle-downtime-predictive-maintenance-parts",
       "title": "Slashing Vehicle Downtime by 18% with Predictive Maintenance Parts Sourcing",
       "subtitle": "Optimizing a National Maintenance Supply Chain by Aggregating Real-Time Parts Availability and Failure Rate Data",
       "sectorName": "Car Rental",
@@ -49,7 +49,7 @@
     {
       "id": 116,
       "sector": "lead-generation",
-      "slug": "refining-the-sales-funnel-using-competitor-sentiment-tracking-to-triple-lead-quality-score-transforming-public-forum-discussions-and-social-media-chatter-into-high-intent-b2b-leads",
+      "slug": "lead-generation-refining-sales-funnel-competitor-sentiment-tracking",
       "title": "Refining the Sales Funnel: Using Competitor Sentiment Tracking to Triple Lead Quality Score",
       "subtitle": "Transforming Public Forum Discussions and Social Media Chatter into High-Intent B2B Leads",
       "sectorName": "Lead Generation",
@@ -58,7 +58,7 @@
     {
       "id": 125,
       "sector": "food-delivery",
-      "slug": "pinpointing-ingredient-level-sentiment-to-reduce-menu-item-churn-by-30-using-granular-review-scraping-to-isolate-customer-preferences-and-prevent-negative-virality-for-virtual-kitchens",
+      "slug": "food-delivery-pinpointing-ingredient-level-sentiment-reduce-menu-item",
       "title": "Pinpointing Ingredient-Level Sentiment to Reduce Menu Item Churn by 30%",
       "subtitle": "Using Granular Review Scraping to Isolate Customer Preferences and Prevent Negative Virality for Virtual Kitchens",
       "sectorName": "Food Delivery",
@@ -67,7 +67,7 @@
     {
       "id": 124,
       "sector": "consumer-electronics",
-      "slug": "anticipating-component-demand-spikes-by-scraping-end-of-life-announcements-and-forum-failure-reports-how-a-certified-refurbisher-increased-parts-availability-by-40-using-proactive-data-collection",
+      "slug": "consumer-electronics-anticipating-component-demand-spikes-scraping-end-of-life",
       "title": "Anticipating Component Demand Spikes by Scraping End-of-Life Announcements and Forum Failure Reports",
       "subtitle": "How a Certified Refurbisher Increased Parts Availability by 40% using Proactive Data Collection",
       "sectorName": "Consumer Electronics",
@@ -76,7 +76,7 @@
     {
       "id": 108,
       "sector": "airlines",
-      "slug": "from-frustration-to-five-stars-pinpointing-service-gaps-with-journey-specific-sentiment-analysis-transforming-broad-customer-complaints-into-actionable-insights-by-tracking-emotional-sentiment-at-each-stage-of-air-travel",
+      "slug": "airlines-frustration-five-stars-pinpointing-service-gaps",
       "title": "From Frustration to Five Stars: Pinpointing Service Gaps with Journey-Specific Sentiment Analysis",
       "subtitle": "Transforming broad customer complaints into actionable insights by tracking emotional sentiment at each stage of air travel.",
       "sectorName": "Airlines",
@@ -85,7 +85,7 @@
     {
       "id": 99,
       "sector": "e-commerce",
-      "slug": "pinpointing-european-market-entry-by-analyzing-niche-community-engagement-and-local-marketplace-gaps-using-web-scraped-forum-and-search-data-to-de-risk-international-e-commerce-expansion",
+      "slug": "e-commerce-pinpointing-european-market-entry-analyzing-niche",
       "title": "Pinpointing European Market Entry by Analyzing Niche Community Engagement and Local Marketplace Gaps",
       "subtitle": "Using Web-Scraped Forum and Search Data to De-Risk International E-commerce Expansion",
       "sectorName": "E-commerce",
@@ -94,7 +94,7 @@
     {
       "id": 110,
       "sector": "hotels",
-      "slug": "from-complaint-to-competitive-edge-uncovering-high-value-amenity-gaps-with-guest-review-analysis-leveraging-web-scraped-guest-feedback-to-prioritize-capital-expenditures-and-boost-guest-satisfaction-scores-in-the-hospitality-sector",
+      "slug": "hotels-complaint-competitive-edge-uncovering-high-value-amenity",
       "title": "From Complaint to Competitive Edge: Uncovering High-Value Amenity Gaps with Guest Review Analysis",
       "subtitle": "Leveraging Web-Scraped Guest Feedback to Prioritize Capital Expenditures and Boost Guest Satisfaction Scores in the Hospitality Sector",
       "sectorName": "Hotels",
@@ -103,7 +103,7 @@
     {
       "id": 118,
       "sector": "healthcare",
-      "slug": "calibrating-clinic-launch-pricing-by-15-through-geo-specific-competitor-procedure-analysis-positioning-a-new-cosmetic-dermatology-practice-for-market-entry-with-hyper-local-pricing-intelligence",
+      "slug": "healthcare-calibrating-clinic-launch-pricing-through-geo-specific",
       "title": "Calibrating Clinic Launch Pricing by 15% through Geo-Specific Competitor Procedure Analysis",
       "subtitle": "Positioning a New Cosmetic Dermatology Practice for Market Entry with Hyper-Local Pricing Intelligence",
       "sectorName": "Healthcare",
@@ -112,7 +112,7 @@
     {
       "id": 119,
       "sector": "healthcare",
-      "slug": "quantifying-patient-trust-how-a-medical-device-firm-pinpointed-product-flaws-by-analyzing-forum-and-social-media-sentiment-from-anecdotal-chatter-to-actionable-insights-a-deep-dive-into-real-world-user-experience-for-a-new-cgm-device",
+      "slug": "healthcare-quantifying-patient-trust-medical-device-firm",
       "title": "Quantifying Patient Trust: How a Medical Device Firm Pinpointed Product Flaws by Analyzing Forum and Social Media Sentiment",
       "subtitle": "From Anecdotal Chatter to Actionable Insights: A Deep Dive into Real-World User Experience for a New CGM Device",
       "sectorName": "Healthcare",
@@ -121,7 +121,7 @@
     {
       "id": 121,
       "sector": "manufacturing",
-      "slug": "recalibrating-aftermarket-dominance-how-sku-level-price-monitoring-increased-spare-part-margins-by-18-using-web-scraped-data-to-counter-third-party-resellers-and-implement-a-dynamic-pricing-strategy-for-industrial-components",
+      "slug": "manufacturing-recalibrating-aftermarket-dominance-sku-level-price-monitoring",
       "title": "Recalibrating Aftermarket Dominance: How SKU-Level Price Monitoring Increased Spare Part Margins by 18%",
       "subtitle": "Using Web-Scraped Data to Counter Third-Party Resellers and Implement a Dynamic Pricing Strategy for Industrial Components",
       "sectorName": "Manufacturing",
@@ -130,7 +130,7 @@
     {
       "id": 105,
       "sector": "car-rental",
-      "slug": "solving-fleet-maintenance-bottlenecks-with-real-time-parts-supplier-data-integrating-oem-and-aftermarket-parts-availability-to-reduce-vehicle-downtime-by-22",
+      "slug": "car-rental-solving-fleet-maintenance-bottlenecks-real-time-parts",
       "title": "Solving Fleet Maintenance Bottlenecks with Real-Time Parts Supplier Data",
       "subtitle": "Integrating OEM and Aftermarket Parts Availability to Reduce Vehicle Downtime by 22%",
       "sectorName": "Car Rental",
@@ -139,7 +139,7 @@
     {
       "id": 126,
       "sector": "home-services",
-      "slug": "ensuring-100-compliance-by-automating-multi-state-license-and-insurance-verification-how-a-national-home-services-provider-mitigated-regulatory-risk-and-saved-4000-manual-hours-annually",
+      "slug": "home-services-ensuring-100-compliance-automating-multi-state-license",
       "title": "Ensuring 100% Compliance by Automating Multi-State License & Insurance Verification",
       "subtitle": "How a National Home Services Provider Mitigated Regulatory Risk and Saved 4,000+ Manual Hours Annually",
       "sectorName": "Home Services",
@@ -148,7 +148,7 @@
     {
       "id": 111,
       "sector": "hotels",
-      "slug": "redesigning-hotel-lobbies-for-peak-flow-correlating-event-schedules-with-guest-sentiment-data-how-a-luxury-hotel-chain-eliminated-congestion-bottlenecks-by-analyzing-publicly-scraped-conference-agendas-and-guest-reviews",
+      "slug": "hotels-redesigning-hotel-lobbies-peak-flow-correlating",
       "title": "Redesigning Hotel Lobbies for Peak Flow: Correlating Event Schedules with Guest Sentiment Data",
       "subtitle": "How a Luxury Hotel Chain Eliminated Congestion Bottlenecks by Analyzing Publicly Scraped Conference Agendas and Guest Reviews",
       "sectorName": "Hotels",
@@ -157,7 +157,7 @@
     {
       "id": 98,
       "sector": "e-commerce",
-      "slug": "escaping-the-price-race-to-the-bottom-maximizing-margins-by-analyzing-competitor-total-offer-value-using-web-data-to-craft-smarter-promotions-beyond-simple-price-matching-in-the-home-appliance-market",
+      "slug": "e-commerce-escaping-price-race-to-the-bottom-maximizing-margins-analyzing",
       "title": "Escaping the Price Race-to-the-Bottom: Maximizing Margins by Analyzing Competitor Total Offer Value",
       "subtitle": "Using Web Data to Craft Smarter Promotions Beyond Simple Price Matching in the Home Appliance Market",
       "sectorName": "E-commerce",
@@ -166,7 +166,7 @@
     {
       "id": 107,
       "sector": "airlines",
-      "slug": "decoding-competitor-ancillary-revenue-models-to-increase-profit-margins-by-8-using-granular-web-data-to-unbundle-and-re-price-high-value-add-on-services",
+      "slug": "airlines-decoding-competitor-ancillary-revenue-models-increase",
       "title": "Decoding Competitor Ancillary Revenue Models to Increase Profit Margins by 8%",
       "subtitle": "Using Granular Web Data to Unbundle and Re-price High-Value Add-on Services",
       "sectorName": "Airlines",
@@ -175,7 +175,7 @@
     {
       "id": 101,
       "sector": "e-commerce",
-      "slug": "slashing-late-delivery-rates-by-22-using-real-time-logistics-network-monitoring-proactively-managing-customer-expectations-by-aggregating-public-carrier-weather-and-traffic-data",
+      "slug": "e-commerce-slashing-late-delivery-rates-real-time-logistics",
       "title": "Slashing Late Delivery Rates by 22% Using Real-Time Logistics Network Monitoring",
       "subtitle": "Proactively Managing Customer Expectations by Aggregating Public Carrier, Weather, and Traffic Data",
       "sectorName": "E-commerce",
@@ -184,7 +184,7 @@
     {
       "id": 120,
       "sector": "manufacturing",
-      "slug": "ensuring-global-market-access-by-automating-chemical-substance-regulation-tracking-proactively-mitigating-compliance-risks-and-preventing-product-recalls-with-real-time-data-from-global-regulatory-bodies",
+      "slug": "manufacturing-ensuring-global-market-access-automating-chemical",
       "title": "Ensuring Global Market Access by Automating Chemical Substance Regulation Tracking",
       "subtitle": "Proactively Mitigating Compliance Risks and Preventing Product Recalls with Real-Time Data from Global Regulatory Bodies",
       "sectorName": "Manufacturing",
@@ -193,7 +193,7 @@
     {
       "id": 112,
       "sector": "hotels",
-      "slug": "boosting-on-site-amenity-revenue-by-20-through-predictive-guest-flow-analysis-using-scraped-public-geo-tagged-data-and-guest-reviews-to-remodel-hotel-common-areas-for-higher-engagement-and-sales",
+      "slug": "hotels-boosting-on-site-amenity-revenue-through-predictive",
       "title": "Boosting On-Site Amenity Revenue by 20% Through Predictive Guest Flow Analysis",
       "subtitle": "Using scraped public geo-tagged data and guest reviews to remodel hotel common areas for higher engagement and sales.",
       "sectorName": "Hotels",
@@ -202,7 +202,7 @@
     {
       "id": 115,
       "sector": "retail",
-      "slug": "eliminating-demurrage-fees-by-forecasting-port-congestion-with-public-terminal-data-a-proactive-logistics-strategy-for-a-major-home-goods-importer",
+      "slug": "retail-eliminating-demurrage-fees-forecasting-port-congestion",
       "title": "Eliminating Demurrage Fees by Forecasting Port Congestion with Public Terminal Data",
       "subtitle": "A Proactive Logistics Strategy for a Major Home Goods Importer",
       "sectorName": "Retail",
@@ -211,7 +211,7 @@
     {
       "id": 103,
       "sector": "car-rental",
-      "slug": "driving-niche-bookings-by-40-through-micro-influencer-travel-itinerary-analysis-leveraging-social-media-data-to-find-authentic-travel-influencers-whose-audiences-align-with-specialty-vehicle-rentals",
+      "slug": "car-rental-driving-niche-bookings-through-micro-influencer-travel",
       "title": "Driving Niche Bookings by 40% Through Micro-Influencer Travel Itinerary Analysis",
       "subtitle": "Leveraging social media data to find authentic travel influencers whose audiences align with specialty vehicle rentals.",
       "sectorName": "Car Rental",
@@ -220,7 +220,7 @@
     {
       "id": 114,
       "sector": "retail",
-      "slug": "maximizing-aov-by-18-through-ai-driven-product-bundle-intelligence-how-a-consumer-electronics-retailer-used-web-data-to-create-high-converting-promotional-bundles",
+      "slug": "retail-maximizing-aov-through-ai-driven-product-bundle-intelligence",
       "title": "Maximizing AOV by 18% Through AI-Driven Product Bundle Intelligence",
       "subtitle": "How a Consumer Electronics Retailer Used Web Data to Create High-Converting Promotional Bundles",
       "sectorName": "Retail",
@@ -229,7 +229,7 @@
     {
       "id": 102,
       "sector": "e-commerce",
-      "slug": "pinpointing-a-2m-product-opportunity-by-analyzing-competitor-review-feature-gaps-how-scraping-and-analyzing-50000-customer-reviews-informed-a-winning-r-and-d-roadmap-for-a-home-fitness-brand",
+      "slug": "e-commerce-pinpointing-product-opportunity-analyzing-competitor-review",
       "title": "Pinpointing a $2M Product Opportunity by Analyzing Competitor Review Feature Gaps",
       "subtitle": "How Scraping and Analyzing 50,000+ Customer Reviews Informed a Winning R&D Roadmap for a Home Fitness Brand",
       "sectorName": "E-commerce",
@@ -238,7 +238,7 @@
     {
       "id": 109,
       "sector": "airlines",
-      "slug": "maximizing-ancillary-revenue-by-deconstructing-competitor-fee-matrix-data-using-granular-web-data-to-uncover-hidden-pricing-strategies-in-baggage-and-seat-selection-fees",
+      "slug": "airlines-maximizing-ancillary-revenue-deconstructing-competitor-fee",
       "title": "Maximizing Ancillary Revenue by Deconstructing Competitor 'Fee Matrix' Data",
       "subtitle": "Using Granular Web Data to Uncover Hidden Pricing Strategies in Baggage and Seat Selection Fees",
       "sectorName": "Airlines",
@@ -247,7 +247,7 @@
     {
       "id": 113,
       "sector": "retail",
-      "slug": "decoding-greenwashing-accusations-by-analyzing-niche-forum-and-blog-sentiment-how-a-fashion-retailer-pinpointed-product-specific-feedback-to-restore-brand-trust-in-its-sustainable-collection",
+      "slug": "retail-decoding-greenwashing-accusations-analyzing-niche-forum",
       "title": "Decoding 'Greenwashing' Accusations by Analyzing Niche Forum & Blog Sentiment",
       "subtitle": "How a Fashion Retailer Pinpointed Product-Specific Feedback to Restore Brand Trust in its Sustainable Collection",
       "sectorName": "Retail",
@@ -256,7 +256,7 @@
     {
       "id": 100,
       "sector": "e-commerce",
-      "slug": "neutralizing-competitor-discounts-by-40-with-real-time-coupon-code-scraping-shifting-from-reactive-price-wars-to-proactive-margin-protecting-counter-promotions",
+      "slug": "e-commerce-neutralizing-competitor-discounts-real-time-coupon-code",
       "title": "Neutralizing Competitor Discounts by 40% with Real-Time Coupon Code Scraping",
       "subtitle": "Shifting from Reactive Price Wars to Proactive, Margin-Protecting Counter-Promotions",
       "sectorName": "E-commerce",
@@ -265,7 +265,7 @@
     {
       "id": 39,
       "sector": "manufacturing",
-      "slug": "maximizing-margins-in-industrial-spares-a-dynamic-pricing-model-driven-by-competitor-inventory-and-commodity-data-how-a-component-manufacturer-used-real-time-web-data-to-escape-static-pricing-and-increase-profitability-by-18",
+      "slug": "manufacturing-maximizing-margins-industrial-spares-dynamic-pricing",
       "title": "Maximizing Margins in Industrial Spares: A Dynamic Pricing Model Driven by Competitor Inventory and Commodity Data",
       "subtitle": "How a component manufacturer used real-time web data to escape static pricing and increase profitability by 18%.",
       "sectorName": "Manufacturing",
@@ -274,7 +274,7 @@
     {
       "id": 40,
       "sector": "manufacturing",
-      "slug": "automating-chemical-compliance-how-proactive-sds-monitoring-averted-500k-in-potential-fines-leveraging-web-scraping-to-track-global-supplier-and-regulatory-updates-for-safety-data-sheets-in-real-time",
+      "slug": "manufacturing-automating-chemical-compliance-proactive-sds-monitoring",
       "title": "Automating Chemical Compliance: How Proactive SDS Monitoring Averted $500k in Potential Fines",
       "subtitle": "Leveraging web scraping to track global supplier and regulatory updates for Safety Data Sheets in real-time.",
       "sectorName": "Manufacturing",
@@ -283,7 +283,7 @@
     {
       "id": 38,
       "sector": "manufacturing",
-      "slug": "unlocking-channel-velocity-a-dynamic-promotion-strategy-for-industrial-valve-manufacturing-leveraging-distributor-stock-and-competitor-price-scraping-to-drive-targeted-b2b-sales",
+      "slug": "manufacturing-unlocking-channel-velocity-dynamic-promotion-strategy",
       "title": "Unlocking Channel Velocity: A Dynamic Promotion Strategy for Industrial Valve Manufacturing",
       "subtitle": "Leveraging Distributor Stock and Competitor Price Scraping to Drive Targeted B2B Sales",
       "sectorName": "Manufacturing",
@@ -292,7 +292,7 @@
     {
       "id": 89,
       "sector": "market-intelligence",
-      "slug": "pinpointing-prime-markets-for-ev-infrastructure-expansion-using-geospatial-and-sentiment-data-how-a-niche-service-provider-identified-underserved-high-growth-regions-by-analyzing-real-estate-competitor-and-community-data",
+      "slug": "market-intelligence-pinpointing-prime-markets-infrastructure-expansion-geospatial",
       "title": "Pinpointing Prime Markets for EV Infrastructure Expansion Using Geospatial & Sentiment Data",
       "subtitle": "How a Niche Service Provider Identified Underserved High-Growth Regions by Analyzing Real Estate, Competitor, and Community Data",
       "sectorName": "Market Intelligence",
@@ -301,7 +301,7 @@
     {
       "id": 37,
       "sector": "manufacturing",
-      "slug": "automating-chemical-compliance-proactive-sds-monitoring-to-eliminate-supply-chain-risks-how-a-specialty-chemicals-manufacturer-used-real-time-web-scraping-to-track-upstream-supplier-sds-updates-and-prevent-costly-production-halts",
+      "slug": "manufacturing-automating-chemical-compliance-proactive-sds-monitoring",
       "title": "Automating Chemical Compliance: Proactive SDS Monitoring to Eliminate Supply Chain Risks",
       "subtitle": "How a specialty chemicals manufacturer used real-time web scraping to track upstream supplier SDS updates and prevent costly production halts.",
       "sectorName": "Manufacturing",
@@ -310,7 +310,7 @@
     {
       "id": 41,
       "sector": "manufacturing",
-      "slug": "unlocking-hidden-margins-how-competitor-aftermarket-parts-pricing-intelligence-drove-a-15-profit-increase-automating-price-and-availability-checks-across-hundreds-of-competitor-distributor-portals-to-optimize-spare-parts-strategy",
+      "slug": "manufacturing-unlocking-hidden-margins-competitor-aftermarket-parts",
       "title": "Unlocking Hidden Margins: How Competitor Aftermarket Parts Pricing Intelligence Drove a 15% Profit Increase",
       "subtitle": "Automating Price and Availability Checks Across Hundreds of Competitor Distributor Portals to Optimize Spare Parts Strategy",
       "sectorName": "Manufacturing",
@@ -319,7 +319,7 @@
     {
       "id": 81,
       "sector": "lead-generation",
-      "slug": "boosting-lead-monetization-by-40-with-a-real-time-demand-sensing-pricing-engine-dynamically-pricing-home-service-leads-by-scraping-weather-market-and-competitor-data",
+      "slug": "lead-generation-boosting-lead-monetization-real-time-demand-sensing-pricing",
       "title": "Boosting Lead Monetization by 40% with a Real-Time Demand-Sensing Pricing Engine",
       "subtitle": "Dynamically Pricing Home Service Leads by Scraping Weather, Market, and Competitor Data",
       "sectorName": "Lead Generation",
@@ -328,7 +328,7 @@
     {
       "id": 32,
       "sector": "healthcare",
-      "slug": "solving-last-mile-spoilage-of-biologics-with-predictive-route-risk-analysis-integrating-real-time-weather-traffic-and-courier-performance-data-to-safeguard-high-value-pharmaceutical-shipments",
+      "slug": "healthcare-solving-last-mile-spoilage-biologics-predictive-route-risk",
       "title": "Solving Last-Mile Spoilage of Biologics with Predictive Route-Risk Analysis",
       "subtitle": "Integrating Real-Time Weather, Traffic, and Courier Performance Data to Safeguard High-Value Pharmaceutical Shipments",
       "sectorName": "Healthcare",
@@ -337,7 +337,7 @@
     {
       "id": 34,
       "sector": "healthcare",
-      "slug": "pinpointing-rural-expansion-opportunities-by-mapping-healthcare-access-deserts-leveraging-geospatial-and-public-health-data-to-guide-medical-device-distribution",
+      "slug": "healthcare-pinpointing-rural-expansion-opportunities-mapping-healthcare",
       "title": "Pinpointing Rural Expansion Opportunities by Mapping 'Healthcare Access Deserts'",
       "subtitle": "Leveraging Geospatial and Public Health Data to Guide Medical Device Distribution",
       "sectorName": "Healthcare",
@@ -346,7 +346,7 @@
     {
       "id": 83,
       "sector": "lead-generation",
-      "slug": "beyond-follower-counts-pinpointing-high-engagement-influencers-to-triple-lead-conversion-using-deep-engagement-metrics-and-sentiment-analysis-to-generate-qualified-influencer-leads-for-a-high-growth-saas-platform",
+      "slug": "lead-generation-beyond-follower-counts-pinpointing-high-engagement-influencers",
       "title": "Beyond Follower Counts: Pinpointing High-Engagement Influencers to Triple Lead Conversion",
       "subtitle": "Using Deep Engagement Metrics and Sentiment Analysis to Generate Qualified Influencer Leads for a High-Growth SaaS Platform",
       "sectorName": "Lead Generation",
@@ -355,7 +355,7 @@
     {
       "id": 91,
       "sector": "home-services",
-      "slug": "identifying-service-deserts-a-data-driven-strategy-for-home-services-market-expansion-using-competitor-service-area-and-customer-review-data-to-guide-strategic-growth",
+      "slug": "home-services-identifying-service-deserts-data-driven-strategy-home",
       "title": "Identifying 'Service Deserts': A Data-Driven Strategy for Home Services Market Expansion",
       "subtitle": "Using Competitor Service Area and Customer Review Data to Guide Strategic Growth",
       "sectorName": "Home Services",
@@ -364,7 +364,7 @@
     {
       "id": 92,
       "sector": "market-intelligence",
-      "slug": "closing-the-perceptual-gap-how-a-legacy-brand-aligned-its-voice-with-customer-sentiment-using-semantic-analysis-of-web-data-to-bridge-the-divide-between-intended-and-perceived-brand-identity",
+      "slug": "market-intelligence-closing-perceptual-gap-legacy-brand-aligned-its-voice",
       "title": "Closing the Perceptual Gap: How a Legacy Brand Aligned Its Voice with Customer Sentiment",
       "subtitle": "Using Semantic Analysis of Web Data to Bridge the Divide Between Intended and Perceived Brand Identity",
       "sectorName": "Market Intelligence",
@@ -373,7 +373,7 @@
     {
       "id": 93,
       "sector": "retail-electronics",
-      "slug": "mapping-the-journey-chasm-how-pathing-analysis-increased-accessory-sales-by-22-using-scraped-store-schematics-and-anonymized-foot-traffic-data-to-redesign-high-friction-customer-pathways-in-electronics-retail",
+      "slug": "retail-(electronics)-mapping-journey-chasm-pathing-analysis-increased",
       "title": "Mapping the Journey Chasm: How Pathing Analysis Increased Accessory Sales by 22%",
       "subtitle": "Using Scraped Store Schematics and Anonymized Foot Traffic Data to Redesign High-Friction Customer Pathways in Electronics Retail",
       "sectorName": "Retail (Electronics)",
@@ -382,7 +382,7 @@
     {
       "id": 96,
       "sector": "consumer-electronics",
-      "slug": "boosting-promotion-roi-by-18-through-real-time-competitor-coupon-and-discount-analysis-how-a-consumer-electronics-retailer-used-web-scraping-to-automate-competitive-promotion-intelligence-and-optimize-offerings",
+      "slug": "consumer-electronics-boosting-promotion-roi-through-real-time-competitor",
       "title": "Boosting Promotion ROI by 18% Through Real-Time Competitor Coupon & Discount Analysis",
       "subtitle": "How a Consumer Electronics Retailer Used Web Scraping to Automate Competitive Promotion Intelligence and Optimize Offerings.",
       "sectorName": "Consumer Electronics",
@@ -391,7 +391,7 @@
     {
       "id": 35,
       "sector": "healthcare",
-      "slug": "eliminating-surgical-delays-by-40-with-real-time-implant-and-instrument-tracking-integrating-manufacturer-logistics-and-regulatory-data-for-just-in-time-operating-room-readiness",
+      "slug": "healthcare-eliminating-surgical-delays-real-time-implant-instrument",
       "title": "Eliminating Surgical Delays by 40% with Real-Time Implant & Instrument Tracking",
       "subtitle": "Integrating Manufacturer, Logistics, and Regulatory Data for Just-in-Time Operating Room Readiness",
       "sectorName": "Healthcare",
@@ -400,7 +400,7 @@
     {
       "id": 36,
       "sector": "healthcare",
-      "slug": "closing-the-patient-experience-gap-how-telehealth-review-analysis-drove-a-20-reduction-in-user-churn-leveraging-public-patient-feedback-to-build-a-data-driven-product-roadmap",
+      "slug": "healthcare-closing-patient-experience-gap-telehealth-review",
       "title": "Closing the Patient Experience Gap: How Telehealth Review Analysis Drove a 20% Reduction in User Churn",
       "subtitle": "Leveraging Public Patient Feedback to Build a Data-Driven Product Roadmap",
       "sectorName": "Healthcare",
@@ -409,7 +409,7 @@
     {
       "id": 77,
       "sector": "lead-generation",
-      "slug": "decoding-competitor-pricing-how-deep-web-scraping-reduced-cpql-by-35-for-a-saas-provider-transforming-lead-generation-by-exposing-hidden-fees-and-creating-data-driven-value-propositions",
+      "slug": "lead-generation-decoding-competitor-pricing-deep-web-scraping-reduced-cpql",
       "title": "Decoding Competitor Pricing: How Deep Web Scraping Reduced CPQL by 35% for a SaaS Provider",
       "subtitle": "Transforming lead generation by exposing hidden fees and creating data-driven value propositions.",
       "sectorName": "Lead Generation",
@@ -418,7 +418,7 @@
     {
       "id": 33,
       "sector": "healthcare",
-      "slug": "cracking-competitor-dme-bundle-pricing-to-boost-average-order-value-by-20-using-web-scraped-data-to-decode-complex-product-bundles-and-optimize-pricing-strategy-for-home-medical-supplies",
+      "slug": "healthcare-cracking-competitor-dme-bundle-pricing-boost-average-order",
       "title": "Cracking Competitor DME Bundle Pricing to Boost Average Order Value by 20%",
       "subtitle": "Using Web-Scraped Data to Decode Complex Product Bundles and Optimize Pricing Strategy for Home Medical Supplies",
       "sectorName": "Healthcare",
@@ -427,7 +427,7 @@
     {
       "id": 14,
       "sector": "food-delivery",
-      "slug": "decoding-delivery-disasters-how-granular-sentiment-analysis-on-food-condition-reduced-customer-complaints-by-40-leveraging-public-review-data-to-pinpoint-and-resolve-recurring-food-quality-issues-like-temperature-and-texture-upon-arrival",
+      "slug": "food-delivery-decoding-delivery-disasters-granular-sentiment-analysis",
       "title": "Decoding Delivery Disasters: How Granular Sentiment Analysis on Food Condition Reduced Customer Complaints by 40%",
       "subtitle": "Leveraging public review data to pinpoint and resolve recurring food quality issues like temperature and texture upon arrival.",
       "sectorName": "Food Delivery",
@@ -436,7 +436,7 @@
     {
       "id": 94,
       "sector": "consumer-electronics",
-      "slug": "decoding-competitor-total-cost-of-ownership-to-capture-price-sensitive-consumers-leveraging-web-scraping-to-automate-the-analysis-of-shipping-fees-mandatory-add-ons-and-bundled-product-pricing",
+      "slug": "consumer-electronics-decoding-competitor-total-cost-ownership-capture",
       "title": "Decoding Competitor Total Cost of Ownership to Capture Price-Sensitive Consumers",
       "subtitle": "Leveraging Web Scraping to Automate the Analysis of Shipping Fees, Mandatory Add-ons, and Bundled Product Pricing",
       "sectorName": "Consumer Electronics",
@@ -445,7 +445,7 @@
     {
       "id": 13,
       "sector": "food-delivery",
-      "slug": "neutralizing-competitor-surge-pricing-how-real-time-fee-monitoring-secured-a-15-market-share-uplift-leveraging-granular-geolocation-scraping-to-decode-and-counteract-competitor-dynamic-delivery-fees",
+      "slug": "food-delivery-neutralizing-competitor-surge-pricing-real-time-fee",
       "title": "Neutralizing Competitor Surge Pricing: How Real-Time Fee Monitoring Secured a 15% Market Share Uplift",
       "subtitle": "Leveraging Granular Geolocation Scraping to Decode and Counteract Competitor Dynamic Delivery Fees",
       "sectorName": "Food Delivery",
@@ -454,7 +454,7 @@
     {
       "id": 17,
       "sector": "car-rental",
-      "slug": "slashing-vehicle-downtime-how-real-time-service-and-parts-data-cut-turnaround-by-35-optimizing-fleet-readiness-by-scraping-local-service-availability-and-auto-parts-inventory",
+      "slug": "car-rental-slashing-vehicle-downtime-real-time-service-parts-data-cut",
       "title": "Slashing Vehicle Downtime: How Real-Time Service & Parts Data Cut Turnaround by 35%",
       "subtitle": "Optimizing Fleet Readiness by Scraping Local Service Availability and Auto Parts Inventory",
       "sectorName": "Car Rental",
@@ -463,7 +463,7 @@
     {
       "id": 28,
       "sector": "airlines",
-      "slug": "from-frequent-flyers-to-brand-advocates-a-data-driven-influencer-discovery-strategy-how-web-scraping-uncovered-high-affinity-travel-influencers-to-boost-bookings-on-new-long-haul-routes",
+      "slug": "airlines-frequent-flyers-brand-advocates-data-driven-influencer",
       "title": "From Frequent Flyers to Brand Advocates: A Data-Driven Influencer Discovery Strategy",
       "subtitle": "How Web Scraping Uncovered High-Affinity Travel Influencers to Boost Bookings on New Long-Haul Routes",
       "sectorName": "Airlines",
@@ -472,7 +472,7 @@
     {
       "id": 7,
       "sector": "e-commerce",
-      "slug": "cutting-last-mile-delivery-failures-by-15-with-hyper-local-carrier-intelligence-how-real-time-scraping-of-courier-tracking-and-public-sentiment-data-optimized-a-retailers-logistics-network",
+      "slug": "e-commerce-cutting-last-mile-delivery-failures-hyper-local-carrier",
       "title": "Cutting Last-Mile Delivery Failures by 15% with Hyper-Local Carrier Intelligence",
       "subtitle": "How Real-Time Scraping of Courier Tracking and Public Sentiment Data Optimized a Retailer's Logistics Network",
       "sectorName": "E-commerce",
@@ -481,7 +481,7 @@
     {
       "id": 5,
       "sector": "retail",
-      "slug": "cutting-return-freight-costs-by-35-by-intercepting-pre-shipment-condition-data-transforming-reverse-logistics-with-real-time-data-from-third-party-carrier-portals",
+      "slug": "retail-cutting-return-freight-costs-intercepting-pre-shipment",
       "title": "Cutting Return Freight Costs by 35% by Intercepting Pre-Shipment Condition Data",
       "subtitle": "Transforming Reverse Logistics with Real-Time Data from Third-Party Carrier Portals",
       "sectorName": "Retail",
@@ -490,7 +490,7 @@
     {
       "id": 78,
       "sector": "lead-generation",
-      "slug": "generating-high-value-b2b-leads-by-predicting-component-end-of-life-from-oem-manuals-how-a-specialty-components-supplier-used-web-scraping-to-identify-businesses-facing-critical-parts-obsolescence-turning-a-supply-chain-risk-into-a-proactive-sales-opportunity",
+      "slug": "lead-generation-generating-high-value-b2b-leads-predicting-component",
       "title": "Generating High-Value B2B Leads by Predicting Component End-of-Life from OEM Manuals",
       "subtitle": "How a specialty components supplier used web scraping to identify businesses facing critical parts obsolescence, turning a supply chain risk into a proactive sales opportunity.",
       "sectorName": "Lead Generation",
@@ -499,7 +499,7 @@
     {
       "id": 2,
       "sector": "retail",
-      "slug": "from-greenwashing-to-genuine-how-sentiment-analysis-defused-a-pr-crisis-for-a-new-sustainable-fashion-line-validating-corporate-responsibility-initiatives-by-tracking-real-time-public-perception-and-neutralizing-negative-pr-narratives-before-they-escalate",
+      "slug": "retail-greenwashing-genuine-sentiment-analysis-defused-crisis",
       "title": "From 'Greenwashing' to Genuine: How Sentiment Analysis Defused a PR Crisis for a New Sustainable Fashion Line",
       "subtitle": "Validating corporate responsibility initiatives by tracking real-time public perception and neutralizing negative PR narratives before they escalate.",
       "sectorName": "Retail",
@@ -508,7 +508,7 @@
     {
       "id": 16,
       "sector": "car-rental",
-      "slug": "from-frustration-to-five-stars-pinpointing-negative-sentiment-drivers-in-the-car-rental-customer-journey-using-natural-language-processing-to-decode-customer-reviews-and-eliminate-brand-damaging-friction-points",
+      "slug": "car-rental-frustration-five-stars-pinpointing-negative-sentiment",
       "title": "From Frustration to Five Stars: Pinpointing Negative Sentiment Drivers in the Car Rental Customer Journey",
       "subtitle": "Using Natural Language Processing to Decode Customer Reviews and Eliminate Brand-Damaging Friction Points",
       "sectorName": "Car Rental",
@@ -517,7 +517,7 @@
     {
       "id": 21,
       "sector": "hotels",
-      "slug": "decoding-guest-ambivalence-transforming-neutral-reviews-into-brand-loyalty-with-sentiment-nuance-analysis-how-a-boutique-hotel-chain-pinpointed-systemic-service-gaps-by-analyzing-understated-guest-feedback-from-thousands-of-online-reviews",
+      "slug": "hotels-decoding-guest-ambivalence-transforming-neutral-reviews",
       "title": "Decoding Guest Ambivalence: Transforming Neutral Reviews into Brand Loyalty with Sentiment Nuance Analysis",
       "subtitle": "How a Boutique Hotel Chain Pinpointed Systemic Service Gaps by Analyzing Understated Guest Feedback from Thousands of Online Reviews",
       "sectorName": "Hotels",
@@ -526,7 +526,7 @@
     {
       "id": 31,
       "sector": "bus-operators",
-      "slug": "from-tiktok-to-terminal-uncovering-hyper-local-influencers-to-drive-off-peak-ridership-by-22-leveraging-geo-tagged-social-media-data-to-pinpoint-authentic-voices-for-regional-bus-routes",
+      "slug": "bus-operators-tiktok-terminal-uncovering-hyper-local-influencers-drive",
       "title": "From TikTok to Terminal: Uncovering Hyper-Local Influencers to Drive Off-Peak Ridership by 22%",
       "subtitle": "Leveraging Geo-Tagged Social Media Data to Pinpoint Authentic Voices for Regional Bus Routes",
       "sectorName": "Bus Operators",
@@ -535,7 +535,7 @@
     {
       "id": 19,
       "sector": "car-rental",
-      "slug": "solving-the-one-way-rental-puzzle-balancing-fleet-logistics-with-competitor-inventory-intelligence-using-real-time-competitor-fleet-data-to-dynamically-price-one-way-rentals-turning-a-logistical-challenge-into-a-profit-center",
+      "slug": "car-rental-solving-one-way-rental-puzzle-balancing-fleet",
       "title": "Solving the One-Way Rental Puzzle: Balancing Fleet Logistics with Competitor Inventory Intelligence",
       "subtitle": "Using real-time competitor fleet data to dynamically price one-way rentals, turning a logistical challenge into a profit center.",
       "sectorName": "Car Rental",
@@ -544,7 +544,7 @@
     {
       "id": 27,
       "sector": "airlines",
-      "slug": "rescuing-underbooked-flights-a-22-revenue-lift-through-event-driven-promotional-pricing-leveraging-web-scraped-local-event-data-and-competitor-fare-monitoring-to-convert-distressed-inventory-into-profitable-bookings",
+      "slug": "airlines-rescuing-underbooked-flights-revenue-lift-through",
       "title": "Rescuing Underbooked Flights: A 22% Revenue Lift Through Event-Driven Promotional Pricing",
       "subtitle": "Leveraging Web-Scraped Local Event Data and Competitor Fare Monitoring to Convert Distressed Inventory into Profitable Bookings",
       "sectorName": "Airlines",
@@ -553,7 +553,7 @@
     {
       "id": 24,
       "sector": "hotels",
-      "slug": "slashing-perishable-inventory-waste-by-40-through-hyper-local-event-and-weather-scraping-how-a-boutique-hotel-chain-used-web-scraped-event-calendars-and-weather-forecasts-to-dynamically-adjust-on-site-f-and-b-and-amenity-stock-minimizing-waste-and-improving-guest-satisfaction",
+      "slug": "hotels-slashing-perishable-inventory-waste-through-hyper-local",
       "title": "Slashing Perishable Inventory Waste by 40% Through Hyper-Local Event & Weather Scraping",
       "subtitle": "How a boutique hotel chain used web-scraped event calendars and weather forecasts to dynamically adjust on-site F&B and amenity stock, minimizing waste and improving guest satisfaction.",
       "sectorName": "Hotels",
@@ -562,7 +562,7 @@
     {
       "id": 25,
       "sector": "airlines",
-      "slug": "pinpointing-high-impact-app-features-through-aggregated-customer-review-intelligence-transforming-an-airlines-mobile-app-roadmap-by-scraping-and-analyzing-user-feedback-from-app-stores-and-social-media",
+      "slug": "airlines-pinpointing-high-impact-app-features-through-aggregated",
       "title": "Pinpointing High-Impact App Features Through Aggregated Customer Review Intelligence",
       "subtitle": "Transforming an Airline's Mobile App Roadmap by Scraping and Analyzing User Feedback from App Stores and Social Media",
       "sectorName": "Airlines",
@@ -571,7 +571,7 @@
     {
       "id": 9,
       "sector": "e-commerce",
-      "slug": "decoding-product-launch-narratives-how-feature-level-sentiment-analysis-safeguarded-a-flagship-devices-market-entry-tracking-real-time-user-feedback-across-niche-tech-forums-and-social-media-to-proactively-manage-brand-perception-and-guide-post-launch-strategy",
+      "slug": "e-commerce-decoding-product-launch-narratives-feature-level-sentiment",
       "title": "Decoding Product Launch Narratives: How Feature-Level Sentiment Analysis Safeguarded a Flagship Device's Market Entry",
       "subtitle": "Tracking Real-Time User Feedback Across Niche Tech Forums and Social Media to Proactively Manage Brand Perception and Guide Post-Launch Strategy",
       "sectorName": "E-commerce",
@@ -580,7 +580,7 @@
     {
       "id": 10,
       "sector": "e-commerce",
-      "slug": "decoding-landed-costs-how-total-price-scraping-reduced-cart-abandonment-by-18-moving-beyond-item-price-to-uncover-hidden-shipping-fee-advantages-in-e-commerce",
+      "slug": "e-commerce-decoding-landed-costs-total-price-scraping-reduced-cart",
       "title": "Decoding Landed Costs: How Total Price Scraping Reduced Cart Abandonment by 18%",
       "subtitle": "Moving Beyond Item Price to Uncover Hidden Shipping Fee Advantages in E-commerce",
       "sectorName": "E-commerce",
@@ -589,7 +589,7 @@
     {
       "id": 8,
       "sector": "e-commerce",
-      "slug": "automating-eu-reach-compliance-how-ingredient-level-scraping-prevented-98-of-potential-cross-border-shipping-violations-using-real-time-regulatory-data-monitoring-to-safely-launch-a-health-and-beauty-catalog-in-the-european-market",
+      "slug": "e-commerce-automating-reach-compliance-ingredient-level-scraping-prevented",
       "title": "Automating EU REACH Compliance: How Ingredient-Level Scraping Prevented 98% of Potential Cross-Border Shipping Violations",
       "subtitle": "Using Real-Time Regulatory Data Monitoring to Safely Launch a Health & Beauty Catalog in the European Market",
       "sectorName": "E-commerce",
@@ -598,7 +598,7 @@
     {
       "id": 22,
       "sector": "hotels",
-      "slug": "unmasking-hidden-fees-how-ancillary-charge-scraping-increased-direct-bookings-by-22-a-competitive-pricing-strategy-focused-on-total-stay-cost-not-just-nightly-rates",
+      "slug": "hotels-unmasking-hidden-fees-ancillary-charge-scraping",
       "title": "Unmasking Hidden Fees: How Ancillary Charge Scraping Increased Direct Bookings by 22%",
       "subtitle": "A Competitive Pricing Strategy Focused on Total Stay Cost, Not Just Nightly Rates",
       "sectorName": "Hotels",
@@ -607,7 +607,7 @@
     {
       "id": 23,
       "sector": "hotels",
-      "slug": "from-vanity-metrics-to-verified-bookings-pinpointing-high-roi-influencers-with-audience-intent-analysis-how-a-boutique-hotel-chain-increased-influencer-driven-bookings-by-40-through-comment-and-audience-analysis",
+      "slug": "hotels-vanity-metrics-verified-bookings-pinpointing-high-roi",
       "title": "From Vanity Metrics to Verified Bookings: Pinpointing High-ROI Influencers with Audience Intent Analysis",
       "subtitle": "How a Boutique Hotel Chain Increased Influencer-Driven Bookings by 40% Through Comment and Audience Analysis",
       "sectorName": "Hotels",
@@ -616,7 +616,7 @@
     {
       "id": 11,
       "sector": "e-commerce",
-      "slug": "capturing-long-tail-surges-how-forum-scraping-boosted-hobbyist-sales-by-35-using-natural-language-processing-on-enthusiast-community-data-to-predict-demand-for-niche-products-before-they-trend-transforming-inventory-management",
+      "slug": "e-commerce-capturing-long-tail-surges-forum-scraping-boosted",
       "title": "Capturing Long-Tail Surges: How Forum Scraping Boosted Hobbyist Sales by 35%",
       "subtitle": "Using Natural Language Processing on enthusiast community data to predict demand for niche products before they trend, transforming inventory management.",
       "sectorName": "E-commerce",
@@ -625,7 +625,7 @@
     {
       "id": 85,
       "sector": "lead-generation",
-      "slug": "from-forum-lurkers-to-lead-magnets-identifying-high-conversion-influencers-through-community-authority-scraping-how-a-high-end-camera-gear-brand-moved-beyond-vanity-metrics-to-find-authentic-advocates-boosting-campaign-roi-by-75",
+      "slug": "lead-generation-forum-lurkers-lead-magnets-identifying-high-conversion",
       "title": "From Forum Lurkers to Lead Magnets: Identifying High-Conversion Influencers Through Community Authority Scraping",
       "subtitle": "How a high-end camera gear brand moved beyond vanity metrics to find authentic advocates, boosting campaign ROI by 75%.",
       "sectorName": "Lead Generation",
@@ -634,7 +634,7 @@
     {
       "id": 12,
       "sector": "food-delivery",
-      "slug": "mapping-the-hangry-index-a-geospatial-sentiment-analysis-to-optimize-delivery-zones-and-driver-training-using-location-tagged-review-data-to-link-negative-sentiment-hotspots-with-operational-deficiencies-and-improve-customer-satisfaction",
+      "slug": "food-delivery-mapping-hangry-index-geospatial-sentiment-analysis",
       "title": "Mapping the 'Hangry' Index: A Geospatial Sentiment Analysis to Optimize Delivery Zones and Driver Training",
       "subtitle": "Using location-tagged review data to link negative sentiment hotspots with operational deficiencies and improve customer satisfaction.",
       "sectorName": "Food Delivery",
@@ -643,7 +643,7 @@
     {
       "id": 6,
       "sector": "retail",
-      "slug": "from-complaints-to-competitive-edge-pinpointing-missing-features-in-outdoor-gear-via-review-analysis-leveraging-large-scale-customer-review-data-to-inform-r-and-d-and-capture-a-new-market-sub-segment-in-the-competitive-backpack-market",
+      "slug": "retail-complaints-competitive-edge-pinpointing-missing-features",
       "title": "From Complaints to Competitive Edge: Pinpointing Missing Features in Outdoor Gear via Review Analysis",
       "subtitle": "Leveraging large-scale customer review data to inform R&D and capture a new market sub-segment in the competitive backpack market.",
       "sectorName": "Retail",
@@ -652,7 +652,7 @@
     {
       "id": 1,
       "sector": "car-rental",
-      "slug": "beyond-vanity-metrics-matching-niche-travel-influencers-to-specific-vehicle-classes-for-a-40-roi-uplift-using-advanced-social-media-scraping-and-audience-analysis-to-connect-adventure-family-and-luxury-travel-influencers-with-the-perfect-vehicle-driving-qualified-leads",
+      "slug": "car-rental-beyond-vanity-metrics-matching-niche-travel",
       "title": "Beyond Vanity Metrics: Matching Niche Travel Influencers to Specific Vehicle Classes for a 40% ROI Uplift",
       "subtitle": "Using advanced social media scraping and audience analysis to connect adventure, family, and luxury travel influencers with the perfect vehicle, driving qualified leads.",
       "sectorName": "Car Rental",
@@ -661,7 +661,7 @@
     {
       "id": 4,
       "sector": "retail",
-      "slug": "winning-the-buy-box-how-real-time-marketplace-monitoring-increased-sales-by-35-a-deep-dive-into-competitive-pricing-intelligence-for-multi-seller-e-commerce-platforms",
+      "slug": "retail-winning-buy-box-real-time-marketplace-monitoring",
       "title": "Winning the Buy Box: How Real-Time Marketplace Monitoring Increased Sales by 35%",
       "subtitle": "A deep dive into competitive pricing intelligence for multi-seller e-commerce platforms",
       "sectorName": "Retail",
@@ -670,7 +670,7 @@
     {
       "id": 29,
       "sector": "bus-operators",
-      "slug": "event-driven-fare-optimization-boosting-off-peak-revenue-by-22-through-predictive-demand-analysis-leveraging-public-event-data-to-proactively-adjust-bus-fares-and-maximize-yield-on-high-demand-routes",
+      "slug": "bus-operators-event-driven-fare-optimization-boosting-off-peak-revenue",
       "title": "Event-Driven Fare Optimization: Boosting Off-Peak Revenue by 22% Through Predictive Demand Analysis",
       "subtitle": "Leveraging Public Event Data to Proactively Adjust Bus Fares and Maximize Yield on High-Demand Routes",
       "sectorName": "Bus Operators",
@@ -679,7 +679,7 @@
     {
       "id": 15,
       "sector": "car-rental",
-      "slug": "ensuring-fair-pricing-integrity-proactive-monitoring-of-anti-gouging-regulations-during-state-emergencies-how-a-national-car-rental-chain-used-real-time-data-to-avoid-fines-and-uphold-brand-trust-during-crises",
+      "slug": "car-rental-ensuring-fair-pricing-integrity-proactive-monitoring",
       "title": "Ensuring Fair Pricing Integrity: Proactive Monitoring of Anti-Gouging Regulations During State Emergencies",
       "subtitle": "How a National Car Rental Chain Used Real-Time Data to Avoid Fines and Uphold Brand Trust During Crises",
       "sectorName": "Car Rental",
@@ -688,7 +688,7 @@
     {
       "id": 30,
       "sector": "bus-operators",
-      "slug": "boosting-rider-satisfaction-by-30-through-onboard-amenity-gap-analysis-using-customer-review-data-to-guide-high-impact-amenity-investments-for-inter-city-bus-fleets",
+      "slug": "bus-operators-boosting-rider-satisfaction-through-onboard-amenity",
       "title": "Boosting Rider Satisfaction by 30% Through Onboard Amenity Gap Analysis",
       "subtitle": "Using Customer Review Data to Guide High-Impact Amenity Investments for Inter-City Bus Fleets",
       "sectorName": "Bus Operators",
@@ -697,7 +697,7 @@
     {
       "id": 20,
       "sector": "hotels",
-      "slug": "cutting-food-spoilage-by-30-with-predictive-f-and-b-supply-chain-intelligence-how-a-luxury-hotel-chain-used-real-time-supplier-and-event-data-to-optimize-perishable-goods-inventory",
+      "slug": "hotels-cutting-food-spoilage-predictive-supply-chain-intelligence",
       "title": "Cutting Food Spoilage by 30% with Predictive F&B Supply Chain Intelligence",
       "subtitle": "How a Luxury Hotel Chain Used Real-Time Supplier and Event Data to Optimize Perishable Goods Inventory",
       "sectorName": "Hotels",
@@ -706,7 +706,7 @@
     {
       "id": 18,
       "sector": "car-rental",
-      "slug": "pinpointing-high-roi-ev-fleet-deployment-by-mapping-charging-infrastructure-and-local-demand-signals-how-a-national-car-rental-firm-used-geospatial-and-sentiment-data-to-guide-a-multi-million-dollar-electric-vehicle-expansion-strategy",
+      "slug": "car-rental-pinpointing-high-roi-fleet-deployment-mapping-charging",
       "title": "Pinpointing High-ROI EV Fleet Deployment by Mapping Charging Infrastructure & Local Demand Signals",
       "subtitle": "How a National Car Rental Firm Used Geospatial and Sentiment Data to Guide a Multi-Million Dollar Electric Vehicle Expansion Strategy",
       "sectorName": "Car Rental",
@@ -715,7 +715,7 @@
     {
       "id": 26,
       "sector": "airlines",
-      "slug": "automating-acaa-and-eu-compliance-how-web-scraping-ensures-accurate-accessibility-information-for-a-global-airline-mitigating-regulatory-risk-and-improving-passenger-experience-by-monitoring-disability-service-disclosures",
+      "slug": "airlines-automating-acaa-compliance-web-scraping-ensures",
       "title": "Automating ACAA & EU Compliance: How Web Scraping Ensures Accurate Accessibility Information for a Global Airline",
       "subtitle": "Mitigating Regulatory Risk and Improving Passenger Experience by Monitoring Disability Service Disclosures",
       "sectorName": "Airlines",
@@ -724,7 +724,7 @@
     {
       "id": 3,
       "sector": "retail",
-      "slug": "from-dead-ends-to-deal-zones-boosting-basket-size-by-18-with-in-store-pathing-analysis-utilizing-web-scraped-public-floor-plans-and-wi-fi-signal-data-to-map-and-optimize-customer-journeys-within-large-format-stores",
+      "slug": "retail-dead-ends-deal-zones-boosting-basket-size-in-store",
       "title": "From Dead Ends to Deal Zones: Boosting Basket Size by 18% with In-Store Pathing Analysis",
       "subtitle": "Utilizing web-scraped public floor plans and Wi-Fi signal data to map and optimize customer journeys within large-format stores.",
       "sectorName": "Retail",
@@ -733,7 +733,7 @@
     {
       "id": 73,
       "sector": "car-rental",
-      "slug": "the-path-to-purchase-how-analyzing-customer-dwell-time-at-airport-rental-locations-increased-premium-upgrades-by-18-leveraging-public-event-schedules-and-in-location-sensors-to-guide-customers-toward-high-margin-ancillary-products",
+      "slug": "car-rental-path-purchase-analyzing-customer-dwell-time-airport-rental",
       "title": "The Path to Purchase: How Analyzing Customer Dwell Time at Airport Rental Locations Increased Premium Upgrades by 18%",
       "subtitle": "Leveraging public event schedules and in-location sensors to guide customers toward high-margin ancillary products.",
       "sectorName": "Car Rental",
@@ -742,7 +742,7 @@
     {
       "id": 74,
       "sector": "car-rental",
-      "slug": "decoding-traveler-intent-how-sentiment-analysis-on-niche-forums-uncovered-a-40-gap-in-business-vs-leisure-customer-satisfaction-leveraging-granular-sentiment-data-from-travel-forums-and-review-sites-to-tailor-fleet-and-service-offerings-for-distinct-customer-segments",
+      "slug": "car-rental-decoding-traveler-intent-sentiment-analysis-niche",
       "title": "Decoding Traveler Intent: How Sentiment Analysis on Niche Forums Uncovered a 40% Gap in Business vs. Leisure Customer Satisfaction",
       "subtitle": "Leveraging granular sentiment data from travel forums and review sites to tailor fleet and service offerings for distinct customer segments.",
       "sectorName": "Car Rental",
@@ -751,7 +751,7 @@
     {
       "id": 48,
       "sector": "e-commerce",
-      "slug": "dynamic-carrier-selection-slashing-delivery-exceptions-by-30-with-real-time-logistics-monitoring-leveraging-public-carrier-tracking-data-and-customer-delivery-feedback-to-dynamically-route-shipments-and-improve-customer-satisfaction",
+      "slug": "e-commerce-dynamic-carrier-selection-slashing-delivery-exceptions",
       "title": "Dynamic Carrier Selection: Slashing Delivery Exceptions by 30% with Real-Time Logistics Monitoring",
       "subtitle": "Leveraging public carrier tracking data and customer delivery feedback to dynamically route shipments and improve customer satisfaction.",
       "sectorName": "E-commerce",
@@ -760,7 +760,7 @@
     {
       "id": 95,
       "sector": "consumer-electronics",
-      "slug": "closing-the-innovation-gap-how-nlp-on-customer-reviews-drove-a-40-product-rating-increase-leveraging-large-scale-review-analysis-to-transform-a-stagnant-product-into-a-market-leader",
+      "slug": "consumer-electronics-closing-innovation-gap-nlp-customer-reviews-drove-product",
       "title": "Closing the Innovation Gap: How NLP on Customer Reviews Drove a 40% Product Rating Increase",
       "subtitle": "Leveraging Large-Scale Review Analysis to Transform a Stagnant Product into a Market Leader",
       "sectorName": "Consumer Electronics",
@@ -769,7 +769,7 @@
     {
       "id": 70,
       "sector": "car-rental",
-      "slug": "decoding-dwelling-time-how-geospatial-data-reshaped-an-airport-rental-counter-layout-to-boost-upsells-by-18-leveraging-foot-traffic-and-customer-pathing-data-to-optimize-high-margin-product-placement-and-reduce-queue-abandonment-at-major-airport-hubs",
+      "slug": "car-rental-decoding-dwelling-time-geospatial-data-reshaped",
       "title": "Decoding Dwelling Time: How Geospatial Data Reshaped an Airport Rental Counter Layout to Boost Upsells by 18%",
       "subtitle": "Leveraging foot traffic and customer pathing data to optimize high-margin product placement and reduce queue abandonment at major airport hubs.",
       "sectorName": "Car Rental",
@@ -778,7 +778,7 @@
     {
       "id": 56,
       "sector": "hotels",
-      "slug": "cutting-food-waste-by-22-how-real-time-scraping-of-local-supplier-inventories-transformed-hotel-f-and-b-operations-integrating-fragmented-artisanal-supplier-data-to-stabilize-farm-to-table-supply-chains",
+      "slug": "hotels-cutting-food-waste-real-time-scraping-local",
       "title": "Cutting Food Waste by 22%: How Real-Time Scraping of Local Supplier Inventories Transformed Hotel F&B Operations",
       "subtitle": "Integrating Fragmented Artisanal Supplier Data to Stabilize Farm-to-Table Supply Chains",
       "sectorName": "Hotels",
@@ -787,7 +787,7 @@
     {
       "id": 67,
       "sector": "airlines",
-      "slug": "reducing-gate-congestion-by-30-through-predictive-passenger-flow-analysis-leveraging-real-time-flight-data-and-terminal-maps-to-optimize-airport-gate-layouts-and-passenger-experience",
+      "slug": "airlines-reducing-gate-congestion-through-predictive-passenger",
       "title": "Reducing Gate Congestion by 30% through Predictive Passenger Flow Analysis",
       "subtitle": "Leveraging Real-Time Flight Data and Terminal Maps to Optimize Airport Gate Layouts and Passenger Experience",
       "sectorName": "Airlines",
@@ -796,7 +796,7 @@
     {
       "id": 52,
       "sector": "retail",
-      "slug": "pinpointing-critical-design-flaws-how-customer-review-analysis-drove-a-40-improvement-in-a-premium-backpack-lines-star-rating-leveraging-web-scraped-review-data-to-translate-common-user-complaints-into-actionable-product-development-insights-for-the-outdoor-gear-market",
+      "slug": "retail-pinpointing-critical-design-flaws-customer-review",
       "title": "Pinpointing Critical Design Flaws: How Customer Review Analysis Drove a 40% Improvement in a Premium Backpack Line's Star Rating",
       "subtitle": "Leveraging web-scraped review data to translate common user complaints into actionable product development insights for the outdoor gear market.",
       "sectorName": "Retail",
@@ -805,7 +805,7 @@
     {
       "id": 42,
       "sector": "e-commerce",
-      "slug": "preserving-brand-integrity-how-real-time-sentiment-tracking-uncovered-and-mitigated-sustainability-pr-risks-leveraging-web-scraping-to-monitor-discussions-on-sustainability-forums-social-media-and-eco-blogs-to-safeguard-brand-perception",
+      "slug": "e-commerce-preserving-brand-integrity-real-time-sentiment-tracking",
       "title": "Preserving Brand Integrity: How Real-Time Sentiment Tracking Uncovered and Mitigated Sustainability PR Risks",
       "subtitle": "Leveraging web scraping to monitor discussions on sustainability forums, social media, and eco-blogs to safeguard brand perception.",
       "sectorName": "E-commerce",
@@ -814,7 +814,7 @@
     {
       "id": 50,
       "sector": "retail",
-      "slug": "from-greenwashing-to-green-lighting-quantifying-the-roi-of-sustainable-messaging-in-fashion-retail-using-sentiment-analysis-of-forum-and-review-data-to-validate-a-brands-ethical-repositioning",
+      "slug": "retail-greenwashing-green-lighting-quantifying-roi-sustainable-messaging",
       "title": "From Greenwashing to Green-Lighting: Quantifying the ROI of Sustainable Messaging in Fashion Retail",
       "subtitle": "Using Sentiment Analysis of Forum and Review Data to Validate a Brand's Ethical Repositioning",
       "sectorName": "Retail",
@@ -823,7 +823,7 @@
     {
       "id": 80,
       "sector": "lead-generation",
-      "slug": "from-frustration-to-conversion-generating-high-intent-b2b-leads-by-monitoring-competitor-pain-points-leveraging-sentiment-analysis-of-public-forums-and-review-sites-to-identify-qualified-leads-ready-to-switch-solutions",
+      "slug": "lead-generation-frustration-conversion-generating-high-intent-b2b-leads",
       "title": "From Frustration to Conversion: Generating High-Intent B2B Leads by Monitoring Competitor Pain Points",
       "subtitle": "Leveraging sentiment analysis of public forums and review sites to identify qualified leads ready to switch solutions",
       "sectorName": "Lead Generation",
@@ -832,7 +832,7 @@
     {
       "id": 69,
       "sector": "airlines",
-      "slug": "slashing-aircraft-on-ground-aog-costs-by-automating-secondary-market-parts-discovery-leveraging-web-scraping-to-systematically-scan-niche-supplier-inventories-and-aviation-marketplaces-for-critical-mro-components",
+      "slug": "airlines-slashing-aircraft-on-ground-aog-costs-automating-secondary",
       "title": "Slashing Aircraft-on-Ground (AOG) Costs by Automating Secondary Market Parts Discovery",
       "subtitle": "Leveraging Web Scraping to Systematically Scan Niche Supplier Inventories and Aviation Marketplaces for Critical MRO Components.",
       "sectorName": "Airlines",
@@ -841,7 +841,7 @@
     {
       "id": 65,
       "sector": "airlines",
-      "slug": "unlocking-niche-routes-identifying-high-impact-travel-influencers-through-audience-affinity-analysis-leveraging-web-scraped-social-data-to-match-influencer-audiences-with-underserved-travel-destinations",
+      "slug": "airlines-unlocking-niche-routes-identifying-high-impact-travel",
       "title": "Unlocking Niche Routes: Identifying High-Impact Travel Influencers Through Audience Affinity Analysis",
       "subtitle": "Leveraging Web-Scraped Social Data to Match Influencer Audiences with Underserved Travel Destinations",
       "sectorName": "Airlines",
@@ -850,7 +850,7 @@
     {
       "id": 64,
       "sector": "airlines",
-      "slug": "unlocking-event-driven-demand-boosting-ancillary-revenue-by-22-with-targeted-bundle-pricing-how-a-leisure-airline-leveraged-real-time-event-and-competitor-data-to-create-dynamic-travel-packages-that-capture-high-value-niche-travel-markets",
+      "slug": "airlines-unlocking-event-driven-demand-boosting-ancillary-revenue",
       "title": "Unlocking Event-Driven Demand: Boosting Ancillary Revenue by 22% with Targeted Bundle Pricing",
       "subtitle": "How a leisure airline leveraged real-time event and competitor data to create dynamic travel packages that capture high-value, niche travel markets.",
       "sectorName": "Airlines",
@@ -859,7 +859,7 @@
     {
       "id": 55,
       "sector": "retail",
-      "slug": "maximizing-cart-value-a-dynamic-pricing-model-for-accessory-cross-sells-using-competitor-basket-analysis-to-boost-average-order-value-by-18-in-consumer-electronics",
+      "slug": "retail-maximizing-cart-value-dynamic-pricing-model",
       "title": "Maximizing Cart Value: A Dynamic Pricing Model for Accessory Cross-Sells",
       "subtitle": "Using Competitor Basket Analysis to Boost Average Order Value by 18% in Consumer Electronics",
       "sectorName": "Retail",
@@ -868,7 +868,7 @@
     {
       "id": 51,
       "sector": "retail",
-      "slug": "from-dead-zones-to-hotspots-increasing-basket-size-by-18-with-in-store-journey-mapping-leveraging-anonymized-wi-fi-connection-data-to-visualize-customer-flow-and-strategically-reposition-high-margin-products",
+      "slug": "retail-dead-zones-hotspots-increasing-basket-size-in-store-journey",
       "title": "From Dead Zones to Hotspots: Increasing Basket Size by 18% with In-Store Journey Mapping",
       "subtitle": "Leveraging anonymized Wi-Fi connection data to visualize customer flow and strategically reposition high-margin products.",
       "sectorName": "Retail",
@@ -877,7 +877,7 @@
     {
       "id": 45,
       "sector": "e-commerce",
-      "slug": "curbing-overstock-waste-by-30-through-predictive-analysis-of-seasonal-product-returns-using-public-review-and-social-media-data-to-forecast-return-rates-and-optimize-inventory",
+      "slug": "e-commerce-curbing-overstock-waste-through-predictive-analysis",
       "title": "Curbing Overstock Waste by 30% Through Predictive Analysis of Seasonal Product Returns",
       "subtitle": "Using Public Review and Social Media Data to Forecast Return Rates and Optimize Inventory",
       "sectorName": "E-commerce",
@@ -886,7 +886,7 @@
     {
       "id": 75,
       "sector": "car-rental",
-      "slug": "pinpointing-high-value-expansion-markets-by-triangulating-aviation-economic-and-event-data-how-a-premium-car-rental-company-discovered-untapped-high-margin-markets-by-analyzing-leading-indicators-of-business-and-luxury-travel-demand",
+      "slug": "car-rental-pinpointing-high-value-expansion-markets-triangulating-aviation",
       "title": "Pinpointing High-Value Expansion Markets by Triangulating Aviation, Economic, and Event Data",
       "subtitle": "How a premium car rental company discovered untapped, high-margin markets by analyzing leading indicators of business and luxury travel demand.",
       "sectorName": "Car Rental",
@@ -895,7 +895,7 @@
     {
       "id": 82,
       "sector": "lead-generation",
-      "slug": "transforming-lead-quality-how-sentiment-analysis-uncovered-high-intent-b2b-prospects-enriching-crm-data-with-public-forum-and-review-insights-to-prioritize-and-convert-leads",
+      "slug": "lead-generation-transforming-lead-quality-sentiment-analysis-uncovered",
       "title": "Transforming Lead Quality: How Sentiment Analysis Uncovered High-Intent B2B Prospects",
       "subtitle": "Enriching CRM data with public forum and review insights to prioritize and convert leads.",
       "sectorName": "Lead Generation",
@@ -904,7 +904,7 @@
     {
       "id": 90,
       "sector": "market-intelligence",
-      "slug": "achieving-market-integrity-by-automating-competitor-health-claim-compliance-audits-using-web-scraping-and-nlp-to-monitor-and-flag-non-compliant-marketing-language-in-the-nutraceuticals-industry",
+      "slug": "market-intelligence-achieving-market-integrity-automating-competitor-health",
       "title": "Achieving Market Integrity by Automating Competitor Health Claim Compliance Audits",
       "subtitle": "Using Web Scraping and NLP to Monitor and Flag Non-Compliant Marketing Language in the Nutraceuticals Industry",
       "sectorName": "Market Intelligence",
@@ -913,7 +913,7 @@
     {
       "id": 53,
       "sector": "retail",
-      "slug": "unlocking-hidden-revenue-dynamic-bundle-pricing-based-on-real-time-competitor-stockouts-leveraging-competitor-inventory-gaps-to-maximize-average-order-value-for-an-electronics-retailer",
+      "slug": "retail-unlocking-hidden-revenue-dynamic-bundle-pricing",
       "title": "Unlocking Hidden Revenue: Dynamic Bundle Pricing Based on Real-Time Competitor Stockouts",
       "subtitle": "Leveraging Competitor Inventory Gaps to Maximize Average Order Value for an Electronics Retailer",
       "sectorName": "Retail",
@@ -922,7 +922,7 @@
     {
       "id": 68,
       "sector": "airlines",
-      "slug": "closing-the-in-flight-experience-gap-how-customer-review-analysis-drove-a-15-nps-uplift-for-a-long-haul-carrier-using-nlp-to-pinpoint-high-value-feature-requests-and-re-prioritize-cabin-upgrade-investments",
+      "slug": "airlines-closing-in-flight-experience-gap-customer-review",
       "title": "Closing the In-Flight Experience Gap: How Customer Review Analysis Drove a 15% NPS Uplift for a Long-Haul Carrier",
       "subtitle": "Using NLP to pinpoint high-value feature requests and re-prioritize cabin upgrade investments.",
       "sectorName": "Airlines",
@@ -931,7 +931,7 @@
     {
       "id": 47,
       "sector": "e-commerce",
-      "slug": "boosting-conversion-rates-by-45-by-identifying-micro-influencers-with-high-audience-affinity-moving-beyond-follower-counts-to-find-authentic-brand-advocates-in-sustainable-ecommerce",
+      "slug": "e-commerce-boosting-conversion-rates-identifying-micro-influencers-high",
       "title": "Boosting Conversion Rates by 45% by Identifying Micro-Influencers with High Audience Affinity",
       "subtitle": "Moving Beyond Follower Counts to Find Authentic Brand Advocates in Sustainable Ecommerce",
       "sectorName": "E-commerce",
@@ -940,7 +940,7 @@
     {
       "id": 86,
       "sector": "lead-generation",
-      "slug": "proactive-lead-generation-identifying-distressed-shippers-by-monitoring-global-port-and-carrier-data-how-a-3pl-provider-increased-qualified-leads-by-40-using-targeted-web-scraping-of-supply-chain-disruptions",
+      "slug": "lead-generation-proactive-lead-generation-identifying-distressed-shippers",
       "title": "Proactive Lead Generation: Identifying Distressed Shippers by Monitoring Global Port & Carrier Data",
       "subtitle": "How a 3PL Provider Increased Qualified Leads by 40% Using Targeted Web Scraping of Supply Chain Disruptions",
       "sectorName": "Lead Generation",
@@ -949,7 +949,7 @@
     {
       "id": 46,
       "sector": "e-commerce",
-      "slug": "from-noise-to-signal-pinpointing-micro-influencers-with-organic-brand-advocacy-scoring-how-a-dtc-coffee-brand-grew-its-community-by-identifying-authentic-voices-in-niche-markets",
+      "slug": "e-commerce-noise-signal-pinpointing-micro-influencers-organic-brand",
       "title": "From Noise to Signal: Pinpointing Micro-Influencers with Organic Brand Advocacy Scoring",
       "subtitle": "How a DTC Coffee Brand Grew Its Community by Identifying Authentic Voices in Niche Markets",
       "sectorName": "E-commerce",
@@ -958,7 +958,7 @@
     {
       "id": 88,
       "sector": "home-services-and-repair",
-      "slug": "pinpointing-service-deserts-expanding-a-premium-appliance-repair-business-into-untapped-markets-using-geospatial-data-and-competitor-analysis-to-identify-high-demand-low-supply-regions-for-specialized-services",
+      "slug": "home-services-&-repair-pinpointing-service-deserts-expanding-premium-appliance",
       "title": "Pinpointing Service Deserts: Expanding a Premium Appliance Repair Business into Untapped Markets",
       "subtitle": "Using Geospatial Data and Competitor Analysis to Identify High-Demand, Low-Supply Regions for Specialized Services",
       "sectorName": "Home Services & Repair",
@@ -967,7 +967,7 @@
     {
       "id": 49,
       "sector": "retail",
-      "slug": "maximizing-cross-sell-revenue-by-18-through-store-in-store-foot-traffic-correlation-using-in-store-ble-beacon-and-public-wifi-analytics-to-map-customer-journeys-between-partnered-brand-experience-zones",
+      "slug": "retail-maximizing-cross-sell-revenue-through-store-in-store-foot",
       "title": "Maximizing Cross-Sell Revenue by 18% Through Store-in-Store Foot Traffic Correlation",
       "subtitle": "Using in-store BLE beacon and public WiFi analytics to map customer journeys between partnered brand experience zones.",
       "sectorName": "Retail",
@@ -976,7 +976,7 @@
     {
       "id": 76,
       "sector": "car-rental",
-      "slug": "maximizing-ancillary-revenue-by-18-through-deep-funnel-competitor-pricing-analysis-revealing-competitor-strategies-on-high-margin-add-ons-like-insurance-gps-and-child-seats",
+      "slug": "car-rental-maximizing-ancillary-revenue-through-deep-funnel",
       "title": "Maximizing Ancillary Revenue by 18% Through Deep Funnel Competitor Pricing Analysis",
       "subtitle": "Revealing Competitor Strategies on High-Margin Add-Ons like Insurance, GPS, and Child Seats.",
       "sectorName": "Car Rental",
@@ -985,7 +985,7 @@
     {
       "id": 58,
       "sector": "hotels",
-      "slug": "slashing-f-and-b-waste-by-30-using-event-driven-demand-forecasting-how-a-luxury-hotel-chain-leveraged-public-data-to-align-kitchen-inventory-with-real-world-guest-demand-preventing-spoilage-and-stockouts",
+      "slug": "hotels-slashing-waste-event-driven-demand-forecasting",
       "title": "Slashing F&B Waste by 30% Using Event-Driven Demand Forecasting",
       "subtitle": "How a luxury hotel chain leveraged public data to align kitchen inventory with real-world guest demand, preventing spoilage and stockouts.",
       "sectorName": "Hotels",
@@ -994,7 +994,7 @@
     {
       "id": 84,
       "sector": "lead-generation",
-      "slug": "mitigating-tcpa-risk-proactive-lead-funnel-sanitization-by-monitoring-do-not-call-and-litigator-databases-how-a-financial-services-lead-aggregator-used-automated-data-scraping-to-prevent-costly-compliance-violations-and-safely-scale-operations",
+      "slug": "lead-generation-mitigating-tcpa-risk-proactive-lead-funnel",
       "title": "Mitigating TCPA Risk: Proactive Lead Funnel Sanitization by Monitoring 'Do Not Call' & Litigator Databases",
       "subtitle": "How a financial services lead aggregator used automated data scraping to prevent costly compliance violations and safely scale operations.",
       "sectorName": "Lead Generation",
@@ -1003,7 +1003,7 @@
     {
       "id": 66,
       "sector": "airlines",
-      "slug": "boosting-ancillary-revenue-by-18-with-real-time-event-driven-upgrade-pricing-how-a-major-airline-leveraged-real-time-event-hotel-and-competitor-data-to-dynamically-price-last-minute-seat-upgrades-and-maximize-cabin-yield",
+      "slug": "airlines-boosting-ancillary-revenue-real-time-event-driven-upgrade",
       "title": "Boosting Ancillary Revenue by 18% with Real-Time Event-Driven Upgrade Pricing",
       "subtitle": "How a major airline leveraged real-time event, hotel, and competitor data to dynamically price last-minute seat upgrades and maximize cabin yield.",
       "sectorName": "Airlines",
@@ -1012,7 +1012,7 @@
     {
       "id": 71,
       "sector": "car-rental",
-      "slug": "navigating-urban-lezs-ensuring-fleet-compliance-and-eliminating-fines-through-automated-regulatory-scraping-how-a-major-car-rental-agency-automated-the-monitoring-of-low-emission-zone-regulations-across-50-european-cities-to-ensure-100-booking-compliance",
+      "slug": "car-rental-navigating-urban-lezs-ensuring-fleet-compliance",
       "title": "Navigating Urban LEZs: Ensuring Fleet Compliance and Eliminating Fines Through Automated Regulatory Scraping",
       "subtitle": "How a major car rental agency automated the monitoring of Low-Emission Zone regulations across 50+ European cities to ensure 100% booking compliance.",
       "sectorName": "Car Rental",
@@ -1021,7 +1021,7 @@
     {
       "id": 79,
       "sector": "lead-generation",
-      "slug": "solving-lead-cannibalization-dynamic-pricing-based-on-competitor-service-area-saturation-using-web-scraped-service-maps-and-local-ads-to-inform-a-fair-value-lead-pricing-engine",
+      "slug": "lead-generation-solving-lead-cannibalization-dynamic-pricing-based",
       "title": "Solving Lead Cannibalization: Dynamic Pricing Based on Competitor Service Area Saturation",
       "subtitle": "Using Web-Scraped Service Maps and Local Ads to Inform a Fair-Value Lead Pricing Engine",
       "sectorName": "Lead Generation",
@@ -1030,7 +1030,7 @@
     {
       "id": 57,
       "sector": "hotels",
-      "slug": "dynamic-lobby-monetization-boosting-ancillary-revenue-by-18-with-predictive-foot-traffic-analysis-transforming-hotel-common-areas-from-static-spaces-to-revenue-generating-hubs-by-scraping-public-event-data",
+      "slug": "hotels-dynamic-lobby-monetization-boosting-ancillary-revenue",
       "title": "Dynamic Lobby Monetization: Boosting Ancillary Revenue by 18% with Predictive Foot Traffic Analysis",
       "subtitle": "Transforming Hotel Common Areas from Static Spaces to Revenue-Generating Hubs by Scraping Public Event Data",
       "sectorName": "Hotels",
@@ -1039,7 +1039,7 @@
     {
       "id": 59,
       "sector": "hotels",
-      "slug": "decoding-digital-empathy-how-sentiment-analysis-of-management-responses-boosted-guest-loyalty-by-22-analyzing-public-review-responses-to-measure-and-improve-service-recovery-effectiveness-across-a-global-hotel-portfolio",
+      "slug": "hotels-decoding-digital-empathy-sentiment-analysis-management",
       "title": "Decoding Digital Empathy: How Sentiment Analysis of Management Responses Boosted Guest Loyalty by 22%",
       "subtitle": "Analyzing public review responses to measure and improve service recovery effectiveness across a global hotel portfolio.",
       "sectorName": "Hotels",
@@ -1048,7 +1048,7 @@
     {
       "id": 43,
       "sector": "e-commerce",
-      "slug": "closing-the-innovation-loop-how-a-smart-home-brand-pinpointed-a-key-feature-gap-using-competitor-review-analysis-leveraging-nlp-on-scraped-customer-reviews-to-drive-a-30-reduction-in-negative-feedback-and-guide-r-and-d",
+      "slug": "e-commerce-closing-innovation-loop-smart-home-brand-pinpointed-key",
       "title": "Closing the Innovation Loop: How a Smart Home Brand Pinpointed a Key Feature Gap Using Competitor Review Analysis",
       "subtitle": "Leveraging NLP on Scraped Customer Reviews to Drive a 30% Reduction in Negative Feedback and Guide R&D",
       "sectorName": "E-commerce",
@@ -1057,7 +1057,7 @@
     {
       "id": 63,
       "sector": "airlines",
-      "slug": "uncovering-destination-expert-influencers-to-drive-a-15-booking-lift-on-niche-routes-using-audience-affinity-and-content-analysis-to-match-micro-influencers-with-specific-airline-routes",
+      "slug": "airlines-uncovering-destination-expert-influencers-drive-booking-lift",
       "title": "Uncovering Destination-Expert Influencers to Drive a 15% Booking Lift on Niche Routes",
       "subtitle": "Using Audience Affinity and Content Analysis to Match Micro-Influencers with Specific Airline Routes",
       "sectorName": "Airlines",
@@ -1066,7 +1066,7 @@
     {
       "id": 62,
       "sector": "hotels",
-      "slug": "unlocking-boutique-hotel-growth-in-untapped-cities-via-bleisure-demand-signal-analysis-leveraging-public-data-to-forecast-hotel-demand-in-non-traditional-corporate-travel-destinations-and-identify-high-potential-secondary-markets",
+      "slug": "hotels-unlocking-boutique-hotel-growth-untapped-cities-via-bleisure",
       "title": "Unlocking Boutique Hotel Growth in Untapped Cities via 'Bleisure' Demand Signal Analysis",
       "subtitle": "Leveraging public data to forecast hotel demand in non-traditional corporate travel destinations and identify high-potential secondary markets.",
       "sectorName": "Hotels",
@@ -1075,7 +1075,7 @@
     {
       "id": 60,
       "sector": "hotels",
-      "slug": "pinpointing-prime-wellness-hotel-locations-by-mapping-local-health-and-amenity-ecosystems-how-a-boutique-hotel-group-used-web-scraped-data-to-find-untapped-markets-for-health-conscious-travelers",
+      "slug": "hotels-pinpointing-prime-wellness-hotel-locations-mapping",
       "title": "Pinpointing Prime Wellness Hotel Locations by Mapping Local Health & Amenity Ecosystems",
       "subtitle": "How a Boutique Hotel Group Used Web-Scraped Data to Find Untapped Markets for Health-Conscious Travelers",
       "sectorName": "Hotels",
@@ -1084,7 +1084,7 @@
     {
       "id": 87,
       "sector": "market-intelligence",
-      "slug": "pinpointing-profitable-land-parcels-for-eco-home-development-using-geospatial-and-regulatory-data-scraping-how-a-modular-construction-firm-leveraged-web-data-to-de-risk-a-50m-expansion-plan-by-automating-site-selection-intelligence",
+      "slug": "market-intelligence-pinpointing-profitable-land-parcels-eco-home-development",
       "title": "Pinpointing Profitable Land Parcels for Eco-Home Development Using Geospatial & Regulatory Data Scraping",
       "subtitle": "How a modular construction firm leveraged web data to de-risk a $50M expansion plan by automating site selection intelligence.",
       "sectorName": "Market Intelligence",
@@ -1093,7 +1093,7 @@
     {
       "id": 72,
       "sector": "car-rental",
-      "slug": "decoding-competitor-surcharges-how-granular-fee-scraping-uncovered-an-18-pricing-advantage-leveraging-web-data-to-model-the-total-cost-of-rental-not-just-the-advertised-daily-rate-for-a-strategic-market-repositioning",
+      "slug": "car-rental-decoding-competitor-surcharges-granular-fee-scraping",
       "title": "Decoding Competitor Surcharges: How Granular Fee Scraping Uncovered an 18% Pricing Advantage",
       "subtitle": "Leveraging web data to model the total cost of rental, not just the advertised daily rate, for a strategic market repositioning.",
       "sectorName": "Car Rental",
@@ -1102,7 +1102,7 @@
     {
       "id": 61,
       "sector": "hotels",
-      "slug": "reversing-a-15-booking-decline-by-decoding-guest-sentiment-whispers-how-a-luxury-hotel-chain-used-aspect-based-sentiment-analysis-of-online-reviews-to-pinpoint-and-rectify-critical-service-gaps",
+      "slug": "hotels-reversing-booking-decline-decoding-guest-sentiment-whispers",
       "title": "Reversing a 15% Booking Decline by Decoding Guest Sentiment Whispers",
       "subtitle": "How a luxury hotel chain used aspect-based sentiment analysis of online reviews to pinpoint and rectify critical service gaps.",
       "sectorName": "Hotels",
@@ -1111,7 +1111,7 @@
     {
       "id": 44,
       "sector": "e-commerce",
-      "slug": "escaping-price-wars-a-dynamic-pricing-model-based-on-competitor-stock-and-fulfillment-data-how-a-consumer-electronics-retailer-increased-profit-margins-by-18-using-real-time-competitor-availability-intelligence",
+      "slug": "e-commerce-escaping-price-wars-dynamic-pricing-model-based-competitor",
       "title": "Escaping Price Wars: A Dynamic Pricing Model Based on Competitor Stock & Fulfillment Data",
       "subtitle": "How a consumer electronics retailer increased profit margins by 18% using real-time competitor availability intelligence.",
       "sectorName": "E-commerce",
@@ -1120,7 +1120,7 @@
     {
       "id": 54,
       "sector": "retail",
-      "slug": "mapping-profitability-how-scraping-competitor-store-layouts-eliminated-dead-zones-and-increased-high-margin-sales-by-18-utilizing-publicly-available-store-maps-and-promotional-data-to-reverse-engineer-competitor-foot-traffic-strategies-and-optimize-product-placement",
+      "slug": "retail-mapping-profitability-scraping-competitor-store-layouts",
       "title": "Mapping Profitability: How Scraping Competitor Store Layouts Eliminated 'Dead Zones' and Increased High-Margin Sales by 18%",
       "subtitle": "Utilizing publicly available store maps and promotional data to reverse-engineer competitor foot traffic strategies and optimize product placement.",
       "sectorName": "Retail",
