@@ -5,8 +5,8 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const PRIVATE_CASES_DIR = path.join(__dirname, '../../public/private-case-studies');
-const SHARING_CONFIG_FILE = path.join(__dirname, '../../public/private-sharing-config.json');
+const PRIVATE_CASES_DIR = path.join(process.cwd(), 'public/private-case-studies');
+const SHARING_CONFIG_FILE = path.join(process.cwd(), 'public/private-sharing-config.json');
 
 export default async function handler(req, res) {
   // Only allow GET requests
