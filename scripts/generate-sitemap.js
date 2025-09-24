@@ -9,6 +9,45 @@ const __dirname = path.dirname(__filename);
 const BASE_URL = 'https://www.icebergdata.co'; // Production URL with www
 const casesDir = path.join(__dirname, '../public/articles/cases');
 
+// Maximum URL length (characters)
+const MAX_URL_LENGTH = 80;
+
+/**
+ * Shortens a title to create a more manageable URL slug
+ * @param {string} title - The original title
+ * @param {string} sector - The sector name
+ * @returns {string} - Shortened slug
+ */
+function createShortSlug(title, sector) {
+  // Remove common words that don't add SEO value
+  const stopWords = [
+    'how', 'a', 'an', 'the', 'by', 'with', 'using', 'to', 'for', 'from', 'in', 'on', 'at',
+    'and', 'or', 'but', 'so', 'yet', 'for', 'nor', 'of', 'is', 'are', 'was', 'were', 'be',
+    'been', 'being', 'have', 'has', 'had', 'do', 'does', 'did', 'will', 'would', 'could',
+    'should', 'may', 'might', 'must', 'can', 'this', 'that', 'these', 'those'
+  ];
+  
+  // Split title into words and filter out stop words
+  let words = title.toLowerCase()
+    .replace(/[^\w\s-]/g, '') // Remove special characters except hyphens
+    .split(/\s+/)
+    .filter(word => word.length > 2 && !stopWords.includes(word));
+  
+  // Take first 6-8 meaningful words
+  const meaningfulWords = words.slice(0, 8);
+  
+  // Ensure it's not too long
+  let slug = meaningfulWords.join('-');
+  
+  if (slug.length > MAX_URL_LENGTH - 20) { // Leave room for sector prefix
+    slug = meaningfulWords.slice(0, 6).join('-');
+  }
+  
+  // Add sector context
+  const sectorSlug = sector.toLowerCase().replace(/\s+/g, '-');
+  return `${sectorSlug}-${slug}`;
+}
+
 // Define service pages
 const servicePages = [
   {
@@ -64,7 +103,7 @@ async function generateCaseStudyIndex() {
         
         // Generate slug from title and subtitle
         const sectorSlug = slugify(caseData.Sector);
-        const titleSlug = slugify(`${caseData.Title}-${caseData.Subtitle}`);
+        const titleSlug = createShortSlug(caseData.Title, caseData.Sector);
         
         caseStudies.push({
           id,
