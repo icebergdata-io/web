@@ -25,7 +25,9 @@
     "dev:check-stories": "node scripts/check-processed-stories.js",
     "dev:improve-story": "node scripts/improve-single-story.js",
     "generate-monthly": "node scripts/generate-monthly-content.js",
-    "shorten-urls": "node scripts/shorten-future-urls.js"
+    "shorten-urls": "node scripts/shorten-future-urls.js",
+    "generate-social-cases": "node scripts/generate-social-media-cases.js",
+    "private-sharing": "node scripts/private-sharing-system.js"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.13",

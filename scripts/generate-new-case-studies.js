@@ -17,7 +17,7 @@ dotenv.config();
 // Standardized API key lookup
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 // Default model - can be overridden via --model parameter.
-const DEFAULT_MODEL = 'gemini-2.5-pro'; 
+const DEFAULT_MODEL = 'gemini-1.5-pro'; 
 
 // --- Script Settings ---
 const DELAY_BETWEEN_CALLS_MS = 1000; // 1 second

@@ -4,6 +4,7 @@ import Layout from './components/Layout';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import CaseStudy from './pages/CaseStudy';
+import PrivateCaseStudy from './pages/PrivateCaseStudy';
 import CaseStudies from './pages/CaseStudies';
 import PressCoverage from './pages/PressCoverage';
 import BookingConfirmation from './pages/BookingConfirmation';
@@ -31,6 +32,7 @@ function App() {
             <Route path="case-studies" element={<CaseStudies />} />
             <Route path="case-study" element={<Navigate to="/case-studies" replace />} />
             <Route path="case-study/:sector/:slug" element={<CaseStudy />} />
+            <Route path="private-case-study/:caseId/:accessToken" element={<PrivateCaseStudy />} />
             <Route path="press" element={<PressCoverage />} />
             <Route path="booking-confirmation" element={<BookingConfirmation />} />
             <Route path="car-rental" element={<CarRentalLanding />} />
