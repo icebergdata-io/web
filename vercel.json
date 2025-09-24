@@ -22,7 +22,7 @@
     },
     {
       "source": "/private-case-study/:caseId/:accessToken",
-      "destination": "/private-case-study/:caseId/:accessToken.html"
+      "destination": "/private-case-study.html"
     },
     {
       "source": "/((?!api/).*)",
