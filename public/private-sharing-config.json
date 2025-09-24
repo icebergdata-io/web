@@ -1,0 +1,32 @@
+{
+  "sharingEnabled": true,
+  "baseUrl": "https://www.icebergdata.co/private-case-study",
+  "accessTokens": {
+    "social-001": {
+      "token": "b768e75b2c739e198ce7c93bf5299628",
+      "filename": "social-media-001-instagram-influencer-verification.json",
+      "platform": "Instagram",
+      "title": "Instagram Influencer Verification: Boosting Campaign ROI by 45% Through Authentic Creator Identification",
+      "createdAt": "2025-09-24T23:04:04.234Z",
+      "accessCount": 0
+    },
+    "social-002": {
+      "token": "0def9d7372edca207b8fbb29d96f97d3",
+      "filename": "social-media-002-linkedin-b2b-leads.json",
+      "platform": "LinkedIn",
+      "title": "LinkedIn B2B Lead Generation: Converting 28% More Prospects Through Thought Leadership Analysis",
+      "createdAt": "2025-09-24T23:04:04.234Z",
+      "accessCount": 0
+    },
+    "social-003": {
+      "token": "1e453cceb1c32ffc9fe602303c116736",
+      "filename": "social-media-003-tiktok-viral-prediction.json",
+      "platform": "TikTok",
+      "title": "TikTok Viral Content Prediction: Boosting Brand Reach by 300% Through Trend Analysis",
+      "createdAt": "2025-09-24T23:04:04.234Z",
+      "accessCount": 0
+    }
+  },
+  "createdAt": "2025-09-24T23:04:04.231Z",
+  "lastUpdated": "2025-09-24T23:04:04.234Z"
+}
