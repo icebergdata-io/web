@@ -21,7 +21,11 @@
       "destination": "/case-study/:sector/:slug.html"
     },
     {
-      "source": "/(.*)",
+      "source": "/private-case-study/:caseId/:accessToken",
+      "destination": "/private-case-study/:caseId/:accessToken.html"
+    },
+    {
+      "source": "/((?!api/).*)",
       "destination": "/index.html"
     }
   ],
