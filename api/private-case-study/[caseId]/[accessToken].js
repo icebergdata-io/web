@@ -1,13 +1,3 @@
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const PRIVATE_CASES_DIR = path.join(__dirname, '../../../public/private-case-studies');
-const SHARING_CONFIG_FILE = path.join(__dirname, '../../../public/private-sharing-config.json');
-
 export default async function handler(req, res) {
   // Only allow GET requests
   if (req.method !== 'GET') {
@@ -22,12 +12,13 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Load sharing configuration
-    if (!fs.existsSync(SHARING_CONFIG_FILE)) {
+    // Load sharing configuration from public URL
+    const configResponse = await fetch(`${req.headers.origin || 'https://www.icebergdata.co'}/private-sharing-config.json`);
+    if (!configResponse.ok) {
       return res.status(404).json({ error: 'Sharing configuration not found' });
     }
 
-    const config = JSON.parse(fs.readFileSync(SHARING_CONFIG_FILE, 'utf8'));
+    const config = await configResponse.json();
     
     // Check if sharing is enabled
     if (!config.sharingEnabled) {
@@ -40,21 +31,13 @@ export default async function handler(req, res) {
       return res.status(403).json({ error: 'Invalid access token' });
     }
 
-    // Load case study
-    const caseStudyPath = path.join(PRIVATE_CASES_DIR, tokenData.filename);
-    if (!fs.existsSync(caseStudyPath)) {
+    // Load case study from public URL
+    const caseStudyResponse = await fetch(`${req.headers.origin || 'https://www.icebergdata.co'}/private-case-studies/${tokenData.filename}`);
+    if (!caseStudyResponse.ok) {
       return res.status(404).json({ error: 'Case study file not found' });
     }
 
-    const caseStudy = JSON.parse(fs.readFileSync(caseStudyPath, 'utf8'));
-
-    // Increment access count
-    tokenData.accessCount = (tokenData.accessCount || 0) + 1;
-    tokenData.lastAccessed = new Date().toISOString();
-    
-    // Save updated config
-    config.lastUpdated = new Date().toISOString();
-    fs.writeFileSync(SHARING_CONFIG_FILE, JSON.stringify(config, null, 2));
+    const caseStudy = await caseStudyResponse.json();
 
     // Return case study
     return res.status(200).json(caseStudy);
