@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Private Case Study - Iceberg Data</title>
     <meta name="robots" content="noindex, nofollow">
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/marked@4.3.0/marked.min.js"></script>
     <style>
         body {
@@ -93,13 +92,26 @@
 <body>
     <div id="root"></div>
 
-    <script type="text/babel">
-        const { useState, useEffect } = React;
+    <script>
+        const { useState, useEffect, createElement: h } = React;
 
         function PrivateCaseStudy() {
             const [caseData, setCaseData] = useState(null);
             const [loading, setLoading] = useState(true);
             const [error, setError] = useState(null);
+
+            // Safe markdown parsing function
+            function safeMarkdownParse(text) {
+                if (!text || typeof text !== 'string') {
+                    return '';
+                }
+                try {
+                    return marked.parse(text);
+                } catch (err) {
+                    console.warn('Markdown parsing error:', err);
+                    return text; // Return plain text if parsing fails
+                }
+            }
 
             useEffect(() => {
                 // Get caseId and accessToken from URL
@@ -148,85 +160,80 @@
             }, []);
 
             if (loading) {
-                return (
-                    <div className="container">
-                        <div className="loading">
-                            <h1>Loading private case study...</h1>
-                        </div>
-                    </div>
+                return h('div', { className: 'container' },
+                    h('div', { className: 'loading' },
+                        h('h1', null, 'Loading private case study...')
+                    )
                 );
             }
 
             if (error) {
-                return (
-                    <div className="container">
-                        <div className="header">
-                            <h1 className="title">Access Denied</h1>
-                            <div className="error">{error}</div>
-                            <p>Please ensure you have the correct link and access token.</p>
-                        </div>
-                    </div>
+                return h('div', { className: 'container' },
+                    h('div', { className: 'header' },
+                        h('h1', { className: 'title' }, 'Access Denied'),
+                        h('div', { className: 'error' }, error),
+                        h('p', null, 'Please ensure you have the correct link and access token.')
+                    )
                 );
             }
 
             if (!caseData) {
-                return (
-                    <div className="container">
-                        <div className="header">
-                            <h1 className="title">Case Study Not Found</h1>
-                            <p>The private case study you are looking for does not exist.</p>
-                        </div>
-                    </div>
+                return h('div', { className: 'container' },
+                    h('div', { className: 'header' },
+                        h('h1', { className: 'title' }, 'Case Study Not Found'),
+                        h('p', null, 'The private case study you are looking for does not exist.')
+                    )
                 );
             }
 
-            return (
-                <div className="container">
-                    <div className="header">
-                        <span className="badge">Private Case Study - {caseData.Sector}</span>
-                        <h1 className="title">{caseData.Title}</h1>
-                        <p className="subtitle">{caseData.Subtitle}</p>
-                    </div>
-
-                    <div className="content">
-                        <div className="section">
-                            <h2>Client Background</h2>
-                            <p>{caseData["Client Background"]}</p>
-                        </div>
-
-                        <div className="section">
-                            <h2>Challenge</h2>
-                            <p>{caseData.Challenge}</p>
-                        </div>
-
-                        <div className="section">
-                            <h2>Solution</h2>
-                            <div dangerouslySetInnerHTML={{ __html: marked.parse(caseData.Solution) }} />
-                        </div>
-
-                        <div className="section features">
-                            <h2>Key Features</h2>
-                            <ul>
-                                {caseData["Key Features"] && caseData["Key Features"].map((feature, index) => (
-                                    <li key={index}>{feature}</li>
-                                ))}
-                            </ul>
-                        </div>
-
-                        <div className="section">
-                            <h2>Business Impact</h2>
-                            <div dangerouslySetInnerHTML={{ __html: marked.parse(caseData["Business Impact"]) }} />
-                        </div>
-
-                        <div className="section">
-                            <p><strong>Publication Date:</strong> {caseData.publicationDate}</p>
-                        </div>
-                    </div>
-                </div>
+            return h('div', { className: 'container' },
+                h('div', { className: 'header' },
+                    h('span', { className: 'badge' }, `Private Case Study - ${caseData.Sector}`),
+                    h('h1', { className: 'title' }, caseData.Title),
+                    h('p', { className: 'subtitle' }, caseData.Subtitle)
+                ),
+                h('div', { className: 'content' },
+                    h('div', { className: 'section' },
+                        h('h2', null, 'Client Background'),
+                        h('p', null, caseData["Client Background"])
+                    ),
+                    h('div', { className: 'section' },
+                        h('h2', null, 'Challenge'),
+                        h('p', null, caseData.Challenge)
+                    ),
+                    h('div', { className: 'section' },
+                        h('h2', null, 'Solution'),
+                        h('div', { 
+                            dangerouslySetInnerHTML: { __html: safeMarkdownParse(caseData.Solution) }
+                        })
+                    ),
+                    h('div', { className: 'section features' },
+                        h('h2', null, 'Key Features'),
+                        h('ul', null,
+                            caseData["Key Features"] && caseData["Key Features"].map((feature, index) =>
+                                h('li', { key: index }, feature)
+                            )
+                        )
+                    ),
+                    h('div', { className: 'section' },
+                        h('h2', null, 'Business Impact'),
+                        h('div', { 
+                            dangerouslySetInnerHTML: { __html: safeMarkdownParse(caseData["Business Impact"]) }
+                        })
+                    ),
+                    h('div', { className: 'section' },
+                        h('p', null, 
+                            h('strong', null, 'Publication Date: '), 
+                            caseData.publicationDate
+                        )
+                    )
+                )
             );
         }
 
-        ReactDOM.render(<PrivateCaseStudy />, document.getElementById('root'));
+        // Use React 18 createRoot API
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(h(PrivateCaseStudy));
     </script>
 </body>
 </html>
