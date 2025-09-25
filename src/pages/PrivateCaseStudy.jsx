@@ -102,6 +102,17 @@ const PrivateCaseStudy = () => {
     );
   }
 
+  // Normalize problems list to an array of strings
+  const getProblemItems = () => {
+    const raw = caseStudy?.["Problems this solves"];
+    if (Array.isArray(raw)) {
+      return raw.filter(Boolean);
+    }
+    return String(raw || '')
+      .split(/(?=\d+\))/)
+      .filter(Boolean);
+  };
+
   return (
     <>
       <SEO 
@@ -192,19 +203,16 @@ const PrivateCaseStudy = () => {
             <div className="mb-8">
               <h3 className="font-bold mb-2">Problems Solved</h3>
               <div className="text-dark-700">
-                {(Array.isArray(caseStudy["Problems this solves"]) 
-                  ? caseStudy["Problems this solves"] 
-                  : (caseStudy["Problems this solves"] || '').split(/(?=\d+\))/).filter(Boolean)
-                  .map((item, index) => {
-                    const label = typeof item === 'string' ? (item.match(/^\d+/)?.[0] || String(index + 1)) : String(index + 1);
-                    const text = typeof item === 'string' ? item.replace(/^\d+\)\s*/, '') : String(item);
-                    return (
-                      <div key={index} className="flex items-start mb-2">
-                        <span className="font-semibold text-primary-600 mr-2 min-w-[2rem]">{label}.</span>
-                        <span>{text}</span>
-                      </div>
-                    );
-                  })}
+                {getProblemItems().map((item, index) => {
+                  const label = typeof item === 'string' ? (item.match(/^\d+/)?.[0] || String(index + 1)) : String(index + 1);
+                  const text = typeof item === 'string' ? item.replace(/^\d+\)\s*/, '') : String(item);
+                  return (
+                    <div key={index} className="flex items-start mb-2">
+                      <span className="font-semibold text-primary-600 mr-2 min-w-[2rem]">{label}.</span>
+                      <span>{text}</span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>

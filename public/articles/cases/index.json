@@ -1,6 +1,15 @@
 {
-  "total": 125,
+  "total": 126,
   "caseStudies": [
+    {
+      "id": 104,
+      "sector": "car-rental",
+      "slug": "car-rental-pinpointing-profitable-last-mile-tourism-hubs-geospatial",
+      "title": "Pinpointing Profitable 'Last-Mile' Tourism Hubs with Geospatial Demand Scraping",
+      "subtitle": "How a Regional Car Rental Player Identified Untapped Markets by Analyzing Competitor Gaps and Traveler Forum Data",
+      "sectorName": "Car Rental",
+      "publicationDate": "2025-09-26"
+    },
     {
       "id": 122,
       "sector": "grocery-retail",
