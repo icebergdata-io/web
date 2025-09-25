@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import SEO from '../components/SEO';
 import Logo from '../components/Logo';
+import { JsonView } from 'react-json-view-lite';
+import 'react-json-view-lite/dist/index.css';
 
 const PrivateCaseStudy = () => {
   const { caseId, accessToken } = useParams();
@@ -125,12 +127,8 @@ const PrivateCaseStudy = () => {
             </div>
           </div>
 
-          <div className="mb-12">
-            <div className="flex items-center gap-2 text-sm text-primary-600 mb-2">
-              <span className="bg-primary-100 px-2 py-1 rounded-full">{caseStudy.Platform}</span>
-              <span className="text-dark-400">•</span>
-              <span>{caseStudy.Use_Case}</span>
-            </div>
+          <div id="case-study-header" className="mb-12">
+            <div className="text-sm text-primary-600 mb-2">{caseStudy.Sector}</div>
             <h1 className="text-4xl md:text-5xl font-display font-bold text-dark-900 mb-4">
               {caseStudy.Title}
             </h1>
@@ -138,12 +136,28 @@ const PrivateCaseStudy = () => {
               {caseStudy.Subtitle}
             </p>
             <div className="text-sm text-dark-500">
-              Generated on {formatDate(caseStudy.publicationDate)}
+              Published on {formatDate(caseStudy.publicationDate)}
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-lg p-8 mb-8 relative">
-            <h2 className="text-2xl font-bold mb-4">Business Impact</h2>
+          <div className="bg-white rounded-2xl shadow-lg p-8 mb-8 relative business-impact-section">
+            <div className="absolute top-6 right-6">
+              <button 
+                onClick={() => {
+                  document.querySelector('.technical-details-section')?.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                  });
+                }}
+                className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors text-sm font-medium flex items-center gap-2"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+                Technical Details
+              </button>
+            </div>
+            <h2 className="text-2xl font-bold mb-4 pr-32">Business Impact</h2>
             <p className="text-dark-700 mb-6">{caseStudy["Business Impact"]}</p>
 
             <div className="grid md:grid-cols-2 gap-6 mb-8">
@@ -178,58 +192,48 @@ const PrivateCaseStudy = () => {
             <div className="mb-8">
               <h3 className="font-bold mb-2">Problems Solved</h3>
               <div className="text-dark-700">
-                {caseStudy["Problems this solves"].split(/(?=\d+\))/).map((item, index) => {
-                  if (item.trim()) {
+                {(Array.isArray(caseStudy["Problems this solves"]) 
+                  ? caseStudy["Problems this solves"] 
+                  : (caseStudy["Problems this solves"] || '').split(/(?=\d+\))/).filter(Boolean)
+                  .map((item, index) => {
+                    const label = typeof item === 'string' ? (item.match(/^\d+/)?.[0] || String(index + 1)) : String(index + 1);
+                    const text = typeof item === 'string' ? item.replace(/^\d+\)\s*/, '') : String(item);
                     return (
                       <div key={index} className="flex items-start mb-2">
-                        <span className="font-semibold text-primary-600 mr-2 min-w-[2rem]">
-                          {item.match(/^\d+/)?.[0]}.
-                        </span>
-                        <span>{item.replace(/^\d+\)\s*/, '')}</span>
+                        <span className="font-semibold text-primary-600 mr-2 min-w-[2rem]">{label}.</span>
+                        <span>{text}</span>
                       </div>
                     );
-                  }
-                  return null;
-                })}
+                  })}
               </div>
             </div>
           </div>
 
           <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
             <h2 className="text-2xl font-bold mb-4">Implementation & Results</h2>
-            <div className="text-dark-700 story-content space-y-6">
-              {caseStudy["Client Background"] && (
-                <div>
-                  <h3 className="font-bold mb-2">Client Background</h3>
-                  <p>{caseStudy["Client Background"]}</p>
-                </div>
-              )}
-              {caseStudy.Challenge && (
-                <div>
-                  <h3 className="font-bold mb-2">Challenge</h3>
-                  <p>{caseStudy.Challenge}</p>
-                </div>
-              )}
-              {caseStudy.Solution && (
-                <div>
-                  <h3 className="font-bold mb-2">Solution</h3>
-                  <p>{caseStudy.Solution}</p>
-                </div>
-              )}
-              {Array.isArray(caseStudy["Key Features"]) && caseStudy["Key Features"].length > 0 && (
-                <div>
-                  <h3 className="font-bold mb-2">Key Features</h3>
-                  <ul className="list-disc list-inside">
-                    {caseStudy["Key Features"].map((feature, index) => (
-                      <li key={index}>{feature}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
+            <div 
+              className="text-dark-700 story-content"
+              dangerouslySetInnerHTML={{ __html: caseStudy.Story }}
+            />
           </div>
 
-          <div className="bg-primary-50 rounded-2xl p-8">
+          <div className="bg-primary-50 rounded-2xl p-8 relative technical-details-section">
+            <div className="absolute top-6 right-6">
+              <button 
+                onClick={() => {
+                  document.querySelector('.business-impact-section')?.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                  });
+                }}
+                className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors text-sm font-medium flex items-center gap-2"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                </svg>
+                Business Impact
+              </button>
+            </div>
             <h2 className="text-2xl font-bold mb-6">Technical Details</h2>
             
             <div className="space-y-8">
@@ -241,15 +245,67 @@ const PrivateCaseStudy = () => {
               <div>
                 <h3 className="font-bold mb-2">Example Input JSON</h3>
                 <div className="bg-white p-4 rounded-xl overflow-x-auto">
-                  <pre className="text-sm">{JSON.stringify(caseStudy["Example_Input_JSON"], null, 2)}</pre>
+                  {caseStudy["Example_Input_JSON"] ? (
+                    <div className="schema-viewer">
+                      <JsonView 
+                        data={caseStudy["Example_Input_JSON"]}
+                        shouldExpandNode={(level) => level < 2}
+                      />
+                    </div>
+                  ) : (
+                    <pre className="text-sm">No input example provided.</pre>
+                  )}
                 </div>
+                <button 
+                  onClick={() => {
+                    const dataStr = JSON.stringify(caseStudy["Example_Input_JSON"] || {}, null, 2);
+                    const dataBlob = new Blob([dataStr], {type: 'application/json'});
+                    const url = URL.createObjectURL(dataBlob);
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = `${caseStudy.Title.replace(/[^a-zA-Z0-9]/g, '_')}_example_input.json`;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    URL.revokeObjectURL(url);
+                  }}
+                  className="mt-3 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors text-sm font-medium"
+                >
+                  📥 Download Example Input JSON
+                </button>
               </div>
               
               <div>
                 <h3 className="font-bold mb-2">Example Output JSON</h3>
                 <div className="bg-white p-4 rounded-xl overflow-x-auto">
-                  <pre className="text-sm">{JSON.stringify(caseStudy["Example_Output_JSON"], null, 2)}</pre>
+                  {caseStudy["Example_Output_JSON"] ? (
+                    <div className="schema-viewer">
+                      <JsonView 
+                        data={caseStudy["Example_Output_JSON"]}
+                        shouldExpandNode={(level) => level < 2}
+                      />
+                    </div>
+                  ) : (
+                    <pre className="text-sm">No output example provided.</pre>
+                  )}
                 </div>
+                <button 
+                  onClick={() => {
+                    const dataStr = JSON.stringify(caseStudy["Example_Output_JSON"] || {}, null, 2);
+                    const dataBlob = new Blob([dataStr], {type: 'application/json'});
+                    const url = URL.createObjectURL(dataBlob);
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = `${caseStudy.Title.replace(/[^a-zA-Z0-9]/g, '_')}_example_output.json`;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    URL.revokeObjectURL(url);
+                  }}
+                  className="mt-3 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors text-sm font-medium"
+                >
+                  📥 Download Example Output JSON
+                </button>
               </div>
             </div>
           </div>
