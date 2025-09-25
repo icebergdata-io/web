@@ -32,7 +32,6 @@ function App() {
             <Route path="case-studies" element={<CaseStudies />} />
             <Route path="case-study" element={<Navigate to="/case-studies" replace />} />
             <Route path="case-study/:sector/:slug" element={<CaseStudy />} />
-            <Route path="private-case-study/:caseId/:accessToken" element={<PrivateCaseStudy />} />
             <Route path="press" element={<PressCoverage />} />
             <Route path="booking-confirmation" element={<BookingConfirmation />} />
             <Route path="car-rental" element={<CarRentalLanding />} />
@@ -43,6 +42,7 @@ function App() {
             <Route path="refund-policy" element={<RefundPage />} />
             <Route path="*" element={<NotFound />} />
           </Route>
+          <Route path="private-case-study/:caseId/:accessToken" element={<PrivateCaseStudy />} />
         </Routes>
       </Router>
     </HelmetProvider>
