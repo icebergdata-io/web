@@ -178,7 +178,7 @@ const PrivateCaseStudy = () => {
               </div>
               <div>
                 <h3 className="font-bold mb-2">Use Case</h3>
-                <p className="text-dark-700">{caseStudy.Use_Case}</p>
+                <p className="text-dark-700">{caseStudy["Use Case"]}</p>
               </div>
               <div>
                 <h3 className="font-bold mb-2">Implementation Time</h3>
