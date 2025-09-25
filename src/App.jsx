@@ -6,6 +6,7 @@ import NotFound from './pages/NotFound';
 import CaseStudy from './pages/CaseStudy';
 import PrivateCaseStudy from './pages/PrivateCaseStudy';
 import CaseStudies from './pages/CaseStudies';
+import PrivateCaseStudies from './pages/PrivateCaseStudies';
 import PressCoverage from './pages/PressCoverage';
 import BookingConfirmation from './pages/BookingConfirmation';
 import ServicesPage from './pages/services';
@@ -30,6 +31,7 @@ function App() {
             <Route path="services/data-integration" element={<DataIntegrationPage />} />
             <Route path="services/custom-solutions" element={<CustomSolutionsPage />} />
             <Route path="case-studies" element={<CaseStudies />} />
+            <Route path="private-case-studies" element={<PrivateCaseStudies />} />
             <Route path="case-study" element={<Navigate to="/case-studies" replace />} />
             <Route path="case-study/:sector/:slug" element={<CaseStudy />} />
             <Route path="press" element={<PressCoverage />} />

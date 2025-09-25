@@ -135,6 +135,25 @@ const CaseStudiesDropdown = ({ onClose }) => (
             <p className="mt-1 text-sm text-slate-500">Browse our complete collection</p>
           </div>
         </Link>
+
+        <Link
+          to="/private-case-studies"
+          onClick={() => {
+            onClose();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          className="flex items-start rounded-lg p-3 hover:bg-slate-50"
+        >
+          <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-purple-500 to-purple-600 text-white shadow-lg ring-1 ring-purple-500/10">
+            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+          </div>
+          <div className="ml-4">
+            <p className="text-base font-medium text-slate-900">Private Case Studies</p>
+            <p className="mt-1 text-sm text-slate-500">Advanced social media solutions</p>
+          </div>
+        </Link>
       </div>
     </div>
   </div>
@@ -458,6 +477,16 @@ const Navbar = ({ scrolled }) => {
                     }}
                   >
                     All Case Studies
+                  </Link>
+                  <Link
+                    to="/private-case-studies"
+                    className="block px-4 py-3 rounded-lg text-dark-800 hover:text-primary-600 transition-colors"
+                    onClick={() => {
+                      setIsOpen(false);
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                  >
+                    Private Case Studies
                   </Link>
                 </div>
               </div>
