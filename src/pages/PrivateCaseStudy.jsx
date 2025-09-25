@@ -12,20 +12,33 @@ const PrivateCaseStudy = () => {
   useEffect(() => {
     const fetchPrivateCaseStudy = async () => {
       try {
-        const response = await fetch(`/api/private-case-study/${caseId}/${accessToken}`);
-        
-        if (!response.ok) {
-          if (response.status === 404) {
-            setError('Case study not found or access denied');
-          } else if (response.status === 403) {
-            setError('Invalid access token');
-          } else {
-            setError('Failed to load case study');
-          }
+        // Load sharing configuration from public file
+        const configResponse = await fetch('/private-sharing-config.json');
+        if (!configResponse.ok) {
+          setError('Unable to load sharing configuration');
           return;
         }
-        
-        const data = await response.json();
+
+        const config = await configResponse.json();
+        if (!config.sharingEnabled) {
+          setError('Private sharing is disabled');
+          return;
+        }
+
+        const tokenData = config.accessTokens?.[caseId];
+        if (!tokenData || tokenData.token !== accessToken) {
+          setError('Invalid access token');
+          return;
+        }
+
+        // Load the private case study JSON using the mapped filename
+        const caseResponse = await fetch(`/private-case-studies/${tokenData.filename}`);
+        if (!caseResponse.ok) {
+          setError('Case study not found');
+          return;
+        }
+
+        const data = await caseResponse.json();
         setCaseStudy(data);
       } catch (err) {
         setError('Network error occurred');
@@ -95,6 +108,7 @@ const PrivateCaseStudy = () => {
         keywords={`${caseStudy.Platform}, social media, private case study, data analytics, ${caseStudy.Use_Case}`}
         type="article"
         image={`https://www.icebergdata.co/logos/logo-large.png`}
+        noindex={true}
       />
       
       <div className="min-h-screen pt-24 pb-12 bg-gradient-to-b from-white to-light-50">
@@ -183,10 +197,36 @@ const PrivateCaseStudy = () => {
 
           <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
             <h2 className="text-2xl font-bold mb-4">Implementation & Results</h2>
-            <div 
-              className="text-dark-700 story-content"
-              dangerouslySetInnerHTML={{ __html: caseStudy.Story }}
-            />
+            <div className="text-dark-700 story-content space-y-6">
+              {caseStudy["Client Background"] && (
+                <div>
+                  <h3 className="font-bold mb-2">Client Background</h3>
+                  <p>{caseStudy["Client Background"]}</p>
+                </div>
+              )}
+              {caseStudy.Challenge && (
+                <div>
+                  <h3 className="font-bold mb-2">Challenge</h3>
+                  <p>{caseStudy.Challenge}</p>
+                </div>
+              )}
+              {caseStudy.Solution && (
+                <div>
+                  <h3 className="font-bold mb-2">Solution</h3>
+                  <p>{caseStudy.Solution}</p>
+                </div>
+              )}
+              {Array.isArray(caseStudy["Key Features"]) && caseStudy["Key Features"].length > 0 && (
+                <div>
+                  <h3 className="font-bold mb-2">Key Features</h3>
+                  <ul className="list-disc list-inside">
+                    {caseStudy["Key Features"].map((feature, index) => (
+                      <li key={index}>{feature}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
           </div>
 
           <div className="bg-primary-50 rounded-2xl p-8">
