@@ -17,25 +17,223 @@
   ],
   "Why it was better to outsource this solution": "Instagram's API limitations and rate restrictions make large-scale profile analysis impossible for in-house teams, while our specialized infrastructure handles millions of requests efficiently",
   "Example_Input_JSON": {
-    "profile_urls": ["https://instagram.com/beautyinfluencer1", "https://instagram.com/beautyinfluencer2"],
+    "profile_urls": [
+      "https://instagram.com/beautyinfluencer1",
+      "https://instagram.com/beautyinfluencer2",
+      "https://instagram.com/fashionista_jen",
+      "https://instagram.com/glowup_guru"
+    ],
     "verification_criteria": {
       "min_followers": 10000,
+      "max_followers": 500000,
       "min_engagement_rate": 3.0,
-      "max_fake_follower_percentage": 15
-    }
+      "max_fake_follower_percentage": 15,
+      "min_posts_last_30_days": 8,
+      "max_following_ratio": 0.1,
+      "required_verification_badges": ["blue_check", "business_account"],
+      "excluded_keywords": ["bot", "fake", "spam"],
+      "target_demographics": {
+        "age_range": [18, 35],
+        "gender_preference": "female",
+        "location_countries": ["US", "CA", "UK", "AU"]
+      }
+    },
+    "analysis_depth": "comprehensive",
+    "include_competitor_analysis": true,
+    "historical_data_months": 6
   },
   "Example_Output_JSON": {
+    "analysis_summary": {
+      "total_profiles_analyzed": 4,
+      "verified_authentic": 3,
+      "flagged_suspicious": 1,
+      "average_authenticity_score": 87.5,
+      "analysis_timestamp": "2025-01-15T14:30:00Z"
+    },
     "verified_influencers": [
       {
         "username": "beautyinfluencer1",
-        "followers": 45000,
-        "engagement_rate": 4.2,
-        "fake_follower_percentage": 8,
-        "authenticity_score": 92,
-        "recommended_for_campaign": true
+        "profile_url": "https://instagram.com/beautyinfluencer1",
+        "display_name": "Sarah Beauty",
+        "followers": {
+          "total": 45000,
+          "authentic": 41400,
+          "fake_percentage": 8.0,
+          "growth_rate_30d": 2.3,
+          "growth_rate_90d": 7.8
+        },
+        "engagement": {
+          "rate": 4.2,
+          "likes_avg": 1890,
+          "comments_avg": 95,
+          "saves_avg": 67,
+          "shares_avg": 23,
+          "engagement_quality_score": 8.7
+        },
+        "content_analysis": {
+          "posts_last_30_days": 12,
+          "avg_posts_per_week": 3.0,
+          "content_categories": ["beauty", "lifestyle", "skincare"],
+          "brand_mentions": 8,
+          "sponsored_content_percentage": 25.0,
+          "content_quality_score": 9.1
+        },
+        "audience_insights": {
+          "age_distribution": {
+            "18-24": 35,
+            "25-34": 45,
+            "35-44": 15,
+            "45+": 5
+          },
+          "gender_distribution": {
+            "female": 78,
+            "male": 22
+          },
+          "top_locations": [
+            {"country": "US", "percentage": 45},
+            {"country": "CA", "percentage": 18},
+            {"country": "UK", "percentage": 12}
+          ],
+          "interests": ["beauty", "fashion", "wellness", "travel"]
+        },
+        "authenticity_metrics": {
+          "overall_score": 92,
+          "follower_quality": 89,
+          "engagement_authenticity": 94,
+          "content_consistency": 91,
+          "growth_pattern_health": 88,
+          "interaction_quality": 95
+        },
+        "campaign_suitability": {
+          "recommended_for_campaign": true,
+          "suitability_score": 8.9,
+          "estimated_reach": 38000,
+          "estimated_engagement": 1596,
+          "cost_per_engagement": 0.31,
+          "brand_alignment_score": 9.2
+        },
+        "risk_assessment": {
+          "fake_follower_risk": "low",
+          "engagement_drop_risk": "low",
+          "brand_safety_risk": "minimal",
+          "algorithm_penalty_risk": "none"
+        },
+        "recommended_approach": {
+          "campaign_type": "product_showcase",
+          "content_style": "authentic_review",
+          "posting_schedule": "weekday_evenings",
+          "collaboration_terms": "gifted_product_plus_fee"
+        }
+      },
+      {
+        "username": "fashionista_jen",
+        "profile_url": "https://instagram.com/fashionista_jen",
+        "display_name": "Jennifer Style",
+        "followers": {
+          "total": 125000,
+          "authentic": 118750,
+          "fake_percentage": 5.0,
+          "growth_rate_30d": 1.8,
+          "growth_rate_90d": 6.2
+        },
+        "engagement": {
+          "rate": 3.8,
+          "likes_avg": 4750,
+          "comments_avg": 190,
+          "saves_avg": 380,
+          "shares_avg": 95,
+          "engagement_quality_score": 8.9
+        },
+        "content_analysis": {
+          "posts_last_30_days": 15,
+          "avg_posts_per_week": 3.8,
+          "content_categories": ["fashion", "lifestyle", "travel"],
+          "brand_mentions": 12,
+          "sponsored_content_percentage": 30.0,
+          "content_quality_score": 8.7
+        },
+        "audience_insights": {
+          "age_distribution": {
+            "18-24": 28,
+            "25-34": 52,
+            "35-44": 15,
+            "45+": 5
+          },
+          "gender_distribution": {
+            "female": 85,
+            "male": 15
+          },
+          "top_locations": [
+            {"country": "US", "percentage": 52},
+            {"country": "CA", "percentage": 15},
+            {"country": "UK", "percentage": 18}
+          ],
+          "interests": ["fashion", "beauty", "travel", "lifestyle"]
+        },
+        "authenticity_metrics": {
+          "overall_score": 89,
+          "follower_quality": 91,
+          "engagement_authenticity": 87,
+          "content_consistency": 88,
+          "growth_pattern_health": 90,
+          "interaction_quality": 89
+        },
+        "campaign_suitability": {
+          "recommended_for_campaign": true,
+          "suitability_score": 8.6,
+          "estimated_reach": 106250,
+          "estimated_engagement": 4038,
+          "cost_per_engagement": 0.25,
+          "brand_alignment_score": 8.8
+        },
+        "risk_assessment": {
+          "fake_follower_risk": "very_low",
+          "engagement_drop_risk": "low",
+          "brand_safety_risk": "minimal",
+          "algorithm_penalty_risk": "none"
+        },
+        "recommended_approach": {
+          "campaign_type": "lifestyle_integration",
+          "content_style": "aspirational_lifestyle",
+          "posting_schedule": "weekend_mornings",
+          "collaboration_terms": "paid_partnership"
+        }
       }
     ],
-    "campaign_roi_prediction": 145
+    "flagged_profiles": [
+      {
+        "username": "beautyinfluencer2",
+        "profile_url": "https://instagram.com/beautyinfluencer2",
+        "flag_reasons": [
+          "suspicious_follower_growth_pattern",
+          "low_engagement_quality",
+          "inconsistent_posting_schedule"
+        ],
+        "authenticity_score": 34,
+        "recommended_action": "exclude_from_campaign"
+      }
+    ],
+    "campaign_insights": {
+      "roi_prediction": 145,
+      "estimated_total_reach": 144250,
+      "estimated_total_engagement": 5634,
+      "recommended_budget_allocation": {
+        "beautyinfluencer1": 40,
+        "fashionista_jen": 60
+      },
+      "optimal_campaign_duration": "14_days",
+      "success_probability": 0.87
+    },
+    "competitor_analysis": {
+      "similar_influencers_identified": 23,
+      "market_gaps": [
+        "micro_influencers_under_50k",
+        "male_beauty_influencers",
+        "sustainable_beauty_advocates"
+      ],
+      "trending_hashtags": ["#cleanbeauty", "#skincareroutine", "#beautyhacks"],
+      "content_trends": ["skincare_routines", "product_reviews", "beauty_tutorials"]
+    }
   },
   "Matching algorithm used to integrate the data": "Multi-factor scoring algorithm combining engagement rate analysis, follower growth patterns, comment sentiment analysis, and demographic verification to calculate authenticity scores",
   "Story": "<p>A leading beauty brand was struggling with influencer marketing campaigns that consistently underperformed despite working with influencers who had large follower counts. After analyzing their campaign data, they discovered that 40% of their influencer partners had significant fake follower bases, leading to poor engagement and wasted ad spend.</p><p>The brand partnered with Iceberg Data to implement a comprehensive Instagram influencer verification system. Our solution scraped and analyzed over 50,000 Instagram profiles, collecting data on follower counts, engagement rates, post frequency, comment sentiment, and demographic information.</p><p>The system used advanced algorithms to detect fake followers by analyzing follower growth patterns, engagement consistency, and demographic distribution. Each influencer received an authenticity score based on multiple factors including engagement rate, follower quality, and content relevance.</p><p>Within three weeks, the brand had access to a verified database of authentic influencers. The results were transformative: campaign ROI increased by 45%, wasted ad spend decreased by 60%, and engagement rates improved by 35%. The brand now confidently invests in influencer partnerships knowing they're working with authentic creators who deliver real results.</p>",
