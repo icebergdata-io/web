@@ -50,15 +50,14 @@
     }
   },
   "Example_Output_JSON": {
-    "analysis_summary": {
-      "total_likers_analyzed": 18750,
+    "scraping_summary": {
+      "total_likers_collected": 18750,
       "unique_users": 12450,
-      "high_value_segments": 8,
-      "influencer_opportunities": 15,
-      "analysis_timestamp": "2025-01-15T16:45:00Z",
-      "confidence_score": 0.91
+      "posts_analyzed": 3,
+      "scraping_timestamp": "2025-01-15T16:45:00Z",
+      "data_quality_score": 0.92
     },
-    "liker_profiles": [
+    "raw_liker_profiles": [
       {
         "user_id": "user_123456789",
         "username": "fashion_lover_sarah",
@@ -72,49 +71,19 @@
           "is_verified": false,
           "is_business_account": true,
           "account_category": "fashion",
-          "account_age_days": 1200
+          "account_age_days": 1200,
+          "profile_picture_url": "https://instagram.com/fashion_lover_sarah/profile_pic.jpg",
+          "external_url": "https://sarah-fashion-blog.com",
+          "is_private": false,
+          "highlights_count": 15
         },
-        "demographics": {
-          "age_range": "25-34",
-          "gender": "female",
-          "location": {
-            "city": "New York",
-            "state": "NY",
-            "country": "US",
-            "timezone": "EST"
-          },
-          "language": "English",
-          "estimated_income": "middle_high"
-        },
-        "interests_analysis": {
-          "primary_interests": ["fashion", "sustainability", "lifestyle"],
-          "secondary_interests": ["beauty", "travel", "wellness"],
-          "brand_affinities": ["Patagonia", "Everlane", "Reformation"],
-          "content_preferences": ["sustainable_fashion", "outfit_ideas", "lifestyle_tips"],
-          "interest_score": 8.7
-        },
-        "engagement_behavior": {
-          "avg_likes_per_day": 45,
-          "avg_comments_per_day": 8,
-          "avg_shares_per_day": 3,
-          "engagement_consistency": 0.85,
-          "peak_activity_times": ["19:00-21:00", "12:00-14:00"],
-          "content_interaction_rate": 0.72
-        },
-        "value_segmentation": {
-          "purchase_intent_score": 8.2,
-          "brand_affinity_score": 9.1,
-          "influence_score": 7.8,
-          "customer_lifetime_value": "high",
-          "conversion_probability": 0.78,
-          "segment": "sustainable_fashion_enthusiast"
-        },
-        "behavioral_insights": {
-          "content_engagement_pattern": "high_engagement",
-          "brand_interaction_frequency": "weekly",
-          "purchase_behavior": "considered_buyer",
-          "social_influence": "micro_influencer_potential",
-          "content_creation": "active_creator"
+        "post_context": {
+          "post_id": "ABC123DEF456",
+          "post_url": "https://instagram.com/p/ABC123DEF456/",
+          "post_caption": "New sustainable fashion haul! Loving these eco-friendly pieces 💚",
+          "post_hashtags": ["#sustainablefashion", "#ecofriendly", "#fashion"],
+          "post_timestamp": "2025-01-14T19:30:00Z",
+          "liked_at": "2025-01-14T20:15:00Z"
         }
       },
       {
@@ -132,50 +101,40 @@
           "account_category": "fashion",
           "account_age_days": 650
         },
-        "demographics": {
-          "age_range": "28-35",
-          "gender": "male",
-          "location": {
-            "city": "San Francisco",
-            "state": "CA",
-            "country": "US",
-            "timezone": "PST"
-          },
-          "language": "English",
-          "estimated_income": "high"
-        },
-        "interests_analysis": {
-          "primary_interests": ["mens_fashion", "minimalism", "technology"],
-          "secondary_interests": ["fitness", "travel", "photography"],
-          "brand_affinities": ["Uniqlo", "Everlane", "Allbirds"],
-          "content_preferences": ["minimalist_style", "workwear", "tech_fashion"],
-          "interest_score": 7.9
-        },
-        "engagement_behavior": {
-          "avg_likes_per_day": 28,
-          "avg_comments_per_day": 5,
-          "avg_shares_per_day": 2,
-          "engagement_consistency": 0.72,
-          "peak_activity_times": ["18:00-20:00", "08:00-10:00"],
-          "content_interaction_rate": 0.65
-        },
-        "value_segmentation": {
-          "purchase_intent_score": 7.8,
-          "brand_affinity_score": 8.4,
-          "influence_score": 6.2,
-          "customer_lifetime_value": "medium_high",
-          "conversion_probability": 0.68,
-          "segment": "minimalist_mens_fashion"
-        },
-        "behavioral_insights": {
-          "content_engagement_pattern": "moderate_engagement",
-          "brand_interaction_frequency": "bi_weekly",
-          "purchase_behavior": "quality_focused",
-          "social_influence": "peer_influencer",
-          "content_creation": "occasional_creator"
+        "post_context": {
+          "post_id": "ABC123DEF456",
+          "post_url": "https://instagram.com/p/ABC123DEF456/",
+          "post_caption": "New sustainable fashion haul! Loving these eco-friendly pieces 💚",
+          "post_hashtags": ["#sustainablefashion", "#ecofriendly", "#fashion"],
+          "post_timestamp": "2025-01-14T19:30:00Z",
+          "liked_at": "2025-01-14T21:45:00Z"
         }
       }
     ],
+    "scraping_metadata": {
+      "scraping_session_id": "session_20250115_164500",
+      "scraping_duration_seconds": 180,
+      "rate_limit_hits": 3,
+      "failed_requests": 8,
+      "retry_attempts": 12,
+      "data_quality_issues": [
+        "5 user profiles were private and limited data collected",
+        "2 posts had incomplete liker data due to Instagram restrictions"
+      ],
+      "scraping_parameters": {
+        "max_likers_per_post": 1000,
+        "include_private_accounts": false,
+        "min_follower_count": 100,
+        "include_business_accounts": true
+      },
+      "technical_details": {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+        "proxy_used": true,
+        "captcha_encountered": true,
+        "blocked_requests": 5,
+        "success_rate": 0.94
+      }
+    },
     "audience_segments": [
       {
         "segment_id": "sustainable_fashion_enthusiasts",
