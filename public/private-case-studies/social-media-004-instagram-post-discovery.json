@@ -57,15 +57,14 @@
     "max_results_per_query": 5000
   },
   "Example_Output_JSON": {
-    "analysis_summary": {
-      "total_posts_analyzed": 18750,
+    "scraping_summary": {
+      "total_posts_collected": 18750,
       "unique_accounts_found": 1240,
-      "trending_hashtags_identified": 89,
-      "viral_content_opportunities": 23,
-      "analysis_timestamp": "2025-01-15T10:30:00Z",
-      "confidence_score": 0.92
+      "posts_analyzed": 4,
+      "scraping_timestamp": "2025-01-15T10:30:00Z",
+      "data_quality_score": 0.94
     },
-    "discovered_posts": [
+    "raw_posts": [
       {
         "post_id": "instagram_post_123456789",
         "post_url": "https://instagram.com/p/ABC123DEF456/",
@@ -76,7 +75,13 @@
           "following_count": 850,
           "is_verified": true,
           "is_business_account": true,
-          "account_category": "fashion"
+          "account_category": "fashion",
+          "profile_picture_url": "https://instagram.com/sustainable_style_co/profile_pic.jpg",
+          "bio": "Sustainable fashion advocate | Thrifted finds | Eco-friendly lifestyle",
+          "external_url": "https://sustainable-style-co.com",
+          "is_private": false,
+          "posts_count": 1250,
+          "highlights_count": 25
         },
         "post_metadata": {
           "post_type": "carousel",
@@ -93,39 +98,20 @@
           "mentions": ["@thriftstore", "@sustainablebrand"],
           "location": "Portland, Oregon",
           "posting_time": "2025-01-14T19:30:00Z",
-          "is_sponsored": false
+          "is_sponsored": false,
+          "media_urls": [
+            "https://instagram.com/p/ABC123DEF456/media1.jpg",
+            "https://instagram.com/p/ABC123DEF456/media2.jpg",
+            "https://instagram.com/p/ABC123DEF456/media3.jpg",
+            "https://instagram.com/p/ABC123DEF456/media4.jpg",
+            "https://instagram.com/p/ABC123DEF456/media5.jpg"
+          ]
         },
-        "engagement_metrics": {
+        "engagement_data": {
           "likes": 8750,
           "comments": 234,
           "shares": 156,
-          "saves": 892,
-          "total_engagement": 10032,
-          "engagement_rate": 8.03,
-          "engagement_quality_score": 9.2
-        },
-        "content_analysis": {
-          "content_categories": ["fashion", "sustainability", "lifestyle"],
-          "sentiment_score": 0.87,
-          "content_quality_score": 8.9,
-          "viral_potential_score": 8.7,
-          "trend_relevance_score": 9.1,
-          "brand_alignment_score": 8.8
-        },
-        "trend_insights": {
-          "trending_hashtags_used": ["#sustainablefashion", "#thriftedfinds"],
-          "emerging_trends": ["budget_sustainability", "thrift_hauls"],
-          "optimal_posting_time": "evening_weekdays",
-          "content_format_success": "carousel_posts"
-        },
-        "competitor_analysis": {
-          "similar_accounts": [
-            "eco_fashion_guru",
-            "green_lifestyle_blog",
-            "sustainable_wardrobe"
-          ],
-          "performance_vs_competitors": "above_average",
-          "unique_angle": "budget_focused_sustainability"
+          "saves": 892
         }
       },
       {
@@ -157,190 +143,40 @@
           "posting_time": "2025-01-13T14:15:00Z",
           "is_sponsored": false
         },
-        "engagement_metrics": {
+        "engagement_data": {
           "likes": 12450,
           "comments": 567,
           "shares": 234,
-          "saves": 1456,
-          "total_engagement": 14707,
-          "engagement_rate": 16.52,
-          "engagement_quality_score": 9.5
+          "saves": 1456
         },
-        "content_analysis": {
-          "content_categories": ["lifestyle", "sustainability", "education"],
-          "sentiment_score": 0.92,
-          "content_quality_score": 9.3,
-          "viral_potential_score": 9.1,
-          "trend_relevance_score": 9.4,
-          "brand_alignment_score": 9.0
-        },
-        "trend_insights": {
-          "trending_hashtags_used": ["#zerowaste", "#sustainableliving"],
-          "emerging_trends": ["beginner_sustainability", "easy_swaps"],
-          "optimal_posting_time": "afternoon_weekdays",
-          "content_format_success": "educational_reels"
-        },
-        "competitor_analysis": {
-          "similar_accounts": [
-            "sustainable_lifestyle",
-            "eco_warrior",
-            "green_living_tips"
-          ],
-          "performance_vs_competitors": "top_performer",
-          "unique_angle": "beginner_friendly_approach"
-        }
       }
     ],
-    "trending_hashtags": [
-      {
-        "hashtag": "#sustainablefashion",
-        "usage_count": 45600,
-        "growth_rate_7d": 23.5,
-        "growth_rate_30d": 89.2,
-        "engagement_avg": 4.2,
-        "trend_score": 8.9,
-        "related_hashtags": [
-          "#slowfashion",
-          "#ecofashion",
-          "#sustainableclothing"
-        ],
-        "peak_usage_times": ["19:00-21:00", "12:00-14:00"],
-        "top_performing_posts": 12
-      },
-      {
-        "hashtag": "#zerowaste",
-        "usage_count": 38900,
-        "growth_rate_7d": 18.7,
-        "growth_rate_30d": 67.3,
-        "engagement_avg": 5.8,
-        "trend_score": 8.6,
-        "related_hashtags": [
-          "#wastefree",
-          "#sustainableliving",
-          "#ecotips"
-        ],
-        "peak_usage_times": ["14:00-16:00", "20:00-22:00"],
-        "top_performing_posts": 8
-      }
-    ],
-    "viral_content_opportunities": [
-      {
-        "opportunity_id": "viral_opp_001",
-        "content_angle": "Budget-friendly sustainable fashion hauls",
-        "trending_hashtags": ["#sustainablefashion", "#thriftedfinds", "#budgetfashion"],
-        "success_probability": 0.78,
-        "estimated_reach": 50000,
-        "recommended_format": "carousel_post",
-        "optimal_posting_time": "19:30-20:30",
-        "target_audience": "budget_conscious_millennials",
-        "content_suggestions": [
-          "Before/after thrift transformations",
-          "Cost comparison: fast fashion vs sustainable",
-          "5 sustainable pieces under $50"
-        ]
-      },
-      {
-        "opportunity_id": "viral_opp_002",
-        "content_angle": "Beginner-friendly zero waste tips",
-        "trending_hashtags": ["#zerowaste", "#sustainableliving", "#ecotips"],
-        "success_probability": 0.85,
-        "estimated_reach": 75000,
-        "recommended_format": "educational_reel",
-        "optimal_posting_time": "14:00-15:00",
-        "target_audience": "sustainability_beginners",
-        "content_suggestions": [
-          "5 easy zero waste swaps",
-          "Common zero waste mistakes",
-          "Zero waste on a budget"
-        ]
-      }
-    ],
-    "competitor_analysis": {
-      "top_performing_competitors": [
-        {
-          "username": "sustainable_style_co",
-          "avg_engagement_rate": 8.03,
-          "content_frequency": "daily",
-          "top_content_types": ["carousel_posts", "educational_reels"],
-          "growth_rate_30d": 12.5,
-          "follower_quality_score": 8.9
-        },
-        {
-          "username": "zero_waste_queen",
-          "avg_engagement_rate": 16.52,
-          "content_frequency": "every_other_day",
-          "top_content_types": ["educational_reels", "lifestyle_posts"],
-          "growth_rate_30d": 18.7,
-          "follower_quality_score": 9.2
-        }
+    "scraping_metadata": {
+      "scraping_session_id": "session_20250115_103000",
+      "scraping_duration_seconds": 120,
+      "rate_limit_hits": 1,
+      "failed_requests": 5,
+      "retry_attempts": 8,
+      "data_quality_issues": [
+        "3 posts had incomplete caption data",
+        "2 accounts were private and limited data collected"
       ],
-      "market_gaps": [
-        "micro_influencer_collaborations",
-        "male_sustainability_content",
-        "corporate_sustainability_tips"
-      ],
-      "content_opportunities": [
-        "behind_the_scenes_sustainability",
-        "sustainability_challenges",
-        "expert_interviews"
-      ]
-    },
-    "optimal_posting_insights": {
-      "best_posting_times": {
-        "monday": ["19:00-21:00"],
-        "tuesday": ["19:00-21:00"],
-        "wednesday": ["14:00-16:00", "19:00-21:00"],
-        "thursday": ["19:00-21:00"],
-        "friday": ["19:00-21:00"],
-        "saturday": ["12:00-14:00"],
-        "sunday": ["14:00-16:00"]
+      "scraping_parameters": {
+        "max_posts_per_query": 5000,
+        "include_stories": false,
+        "include_igtv": false,
+        "min_engagement_threshold": 50
       },
-      "content_format_performance": {
-        "carousel_posts": {"avg_engagement": 6.8, "success_rate": 0.72},
-        "reels": {"avg_engagement": 12.4, "success_rate": 0.85},
-        "single_posts": {"avg_engagement": 4.2, "success_rate": 0.58}
-      },
-      "hashtag_strategy": {
-        "optimal_hashtag_count": 8,
-        "mix_recommendation": "3_trending_3_niche_2_brand",
-        "avoid_hashtags": ["#f4f", "#like4like", "#follow4follow"]
+      "technical_details": {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+        "proxy_used": true,
+        "captcha_encountered": false,
+        "blocked_requests": 2,
+        "success_rate": 0.96
       }
     },
-    "content_strategy_recommendations": {
-      "content_calendar_suggestions": [
-        {
-          "day": "Monday",
-          "content_type": "motivational_post",
-          "theme": "sustainability_motivation",
-          "hashtags": ["#sustainableliving", "#motivation", "#greenliving"]
-        },
-        {
-          "day": "Wednesday",
-          "content_type": "educational_reel",
-          "theme": "sustainability_tips",
-          "hashtags": ["#ecotips", "#sustainableliving", "#education"]
-        },
-        {
-          "day": "Friday",
-          "content_type": "carousel_post",
-          "theme": "sustainable_products",
-          "hashtags": ["#sustainablefashion", "#ecofriendly", "#productreview"]
-        }
-      ],
-      "content_mix_recommendation": {
-        "educational_content": 40,
-        "lifestyle_content": 30,
-        "product_content": 20,
-        "behind_scenes": 10
-      },
-      "engagement_strategy": {
-        "response_time_target": "2_hours",
-        "comment_engagement_rate": 0.15,
-        "story_interaction_frequency": "daily"
-      }
-    }
   },
-  "Matching algorithm used to integrate the data": "Advanced keyword matching combined with engagement velocity analysis, hashtag trend detection, and content similarity scoring to identify viral content patterns and optimal posting strategies",
+  "Matching algorithm used to integrate the data": "Direct Instagram API scraping and web scraping techniques to collect raw post data, user profiles, and engagement metrics without analytical processing",
   "Story": "<p>A digital marketing agency was struggling to keep up with Instagram's constantly changing algorithm and trending content. Their clients' posts were getting lost in the feed, and they couldn't identify what content was performing well in their niche.</p><p>The agency partnered with Iceberg Data to implement a comprehensive Instagram post discovery system. Our solution scraped and analyzed over 100,000 Instagram posts, collecting data on content performance, hashtag trends, posting times, and engagement patterns.</p><p>The system used advanced algorithms to identify trending content before it went viral, analyze competitor strategies, and predict optimal posting times. By tracking keyword-based searches and specific usernames, the agency could discover content opportunities that their competitors missed.</p><p>The results were transformative: client engagement rates increased by 65%, content research time decreased by 80%, and the agency identified 40% more viral content opportunities. The agency now creates data-driven content strategies that consistently outperform their competitors and deliver measurable ROI for their clients.</p>",
   "publicationDate": "2025-01-30",
   "isPrivate": true,
