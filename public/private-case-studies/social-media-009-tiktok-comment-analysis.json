@@ -54,19 +54,14 @@
     }
   },
   "Example_Output_JSON": {
-    "analysis_summary": {
-      "total_comments_analyzed": 18750,
+    "scraping_summary": {
+      "total_comments_collected": 18750,
       "unique_users": 5620,
-      "sentiment_distribution": {
-        "positive": 0.72,
-        "neutral": 0.21,
-        "negative": 0.07
-      },
-      "top_topics_identified": 15,
-      "analysis_timestamp": "2025-01-15T15:30:00Z",
-      "confidence_score": 0.91
+      "videos_analyzed": 4,
+      "scraping_timestamp": "2025-01-15T15:30:00Z",
+      "data_quality_score": 0.93
     },
-    "comment_analysis": [
+    "raw_comments": [
       {
         "comment_id": "comment_123456789",
         "video_url": "https://tiktok.com/@beauty_brand_co/video/123456789",
@@ -78,7 +73,8 @@
           "has_hashtag": false,
           "has_mention": false,
           "is_reply": false,
-          "reply_count": 3
+          "reply_count": 3,
+          "comment_type": "text"
         },
         "user_info": {
           "username": "skincare_lover_23",
@@ -87,38 +83,26 @@
           "following_count": 850,
           "is_verified": false,
           "is_business_account": false,
-          "account_age_days": 450
+          "account_age_days": 450,
+          "profile_picture_url": "https://tiktok.com/@skincare_lover_23/profile_pic.jpg",
+          "bio": "Skincare enthusiast | Beauty lover | Natural products advocate",
+          "is_private": false,
+          "posts_count": 89,
+          "likes_count": 12500
         },
-        "sentiment_analysis": {
-          "overall_sentiment": "positive",
-          "sentiment_score": 0.94,
-          "confidence": 0.96,
-          "emotions": ["joy", "satisfaction", "trust"],
-          "emotion_scores": {
-            "joy": 0.91,
-            "satisfaction": 0.93,
-            "trust": 0.89,
-            "anger": 0.01,
-            "sadness": 0.02
-          }
-        },
-        "topic_categorization": {
-          "primary_topic": "product_review",
-          "secondary_topics": ["skin_improvement", "product_recommendation"],
-          "topic_confidence": 0.93,
-          "keywords": ["product", "skin", "texture", "recommend"]
-        },
-        "engagement_metrics": {
-          "likes": 28,
+        "engagement_data": {
+          "likes": 23,
           "replies": 3,
-          "engagement_score": 0.87,
-          "influence_score": 0.45
+          "shares": 0,
+          "saves": 0
         },
-        "actionable_insights": {
-          "product_feedback": "positive_texture_review",
-          "customer_loyalty": "long_term_user",
-          "recommendation_potential": "high",
-          "follow_up_opportunity": "user_generated_content"
+        "video_context": {
+          "video_id": "123456789",
+          "video_url": "https://tiktok.com/@beauty_brand_co/video/123456789",
+          "video_caption": "New skincare routine that changed my life! Swipe to see the results...",
+          "video_hashtags": ["#skincare", "#beauty", "#natural"],
+          "video_mentions": ["@beautybrand"],
+          "video_timestamp": "2025-01-14T18:30:00Z"
         }
       },
       {
@@ -141,41 +125,53 @@
           "following_count": 1200,
           "is_verified": false,
           "is_business_account": false,
-          "account_age_days": 280
+          "account_age_days": 280,
+          "profile_picture_url": "https://tiktok.com/@sensitive_skin_girl/profile_pic.jpg",
+          "bio": "Sensitive skin advocate | Skincare tips | Product reviews",
+          "is_private": false,
+          "posts_count": 45,
+          "likes_count": 8900
         },
-        "sentiment_analysis": {
-          "overall_sentiment": "negative",
-          "sentiment_score": 0.25,
-          "confidence": 0.89,
-          "emotions": ["disappointment", "concern", "uncertainty"],
-          "emotion_scores": {
-            "disappointment": 0.81,
-            "concern": 0.68,
-            "uncertainty": 0.75,
-            "anger": 0.18,
-            "sadness": 0.26
-          }
-        },
-        "topic_categorization": {
-          "primary_topic": "product_issue",
-          "secondary_topics": ["skin_reaction", "customer_support"],
-          "topic_confidence": 0.90,
-          "keywords": ["break out", "skin type", "issue"]
-        },
-        "engagement_metrics": {
+        "engagement_data": {
           "likes": 15,
           "replies": 12,
-          "engagement_score": 0.71,
-          "influence_score": 0.32
+          "shares": 0,
+          "saves": 0
         },
-        "actionable_insights": {
-          "product_feedback": "negative_reaction_review",
-          "customer_support_needed": "high_priority",
-          "product_improvement": "sensitive_skin_formula",
-          "follow_up_opportunity": "direct_customer_service"
+        "video_context": {
+          "video_id": "123456789",
+          "video_url": "https://tiktok.com/@beauty_brand_co/video/123456789",
+          "video_caption": "New skincare routine that changed my life! Swipe to see the results...",
+          "video_hashtags": ["#skincare", "#beauty", "#natural"],
+          "video_mentions": ["@beautybrand"],
+          "video_timestamp": "2025-01-14T18:30:00Z"
         }
       }
     ],
+    "scraping_metadata": {
+      "scraping_session_id": "session_20250115_153000",
+      "scraping_duration_seconds": 75,
+      "rate_limit_hits": 1,
+      "failed_requests": 3,
+      "retry_attempts": 5,
+      "data_quality_issues": [
+        "2 comments had truncated text due to length",
+        "1 user profile was private and limited data collected"
+      ],
+      "scraping_parameters": {
+        "max_comments_per_video": 1000,
+        "include_replies": true,
+        "include_deleted_comments": false,
+        "min_comment_length": 3
+      },
+      "technical_details": {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+        "proxy_used": true,
+        "captcha_encountered": false,
+        "blocked_requests": 1,
+        "success_rate": 0.96
+      }
+    }
     "sentiment_trends": {
       "daily_sentiment": [
         {

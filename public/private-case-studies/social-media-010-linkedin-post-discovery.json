@@ -59,15 +59,14 @@
     "max_results_per_query": 6000
   },
   "Example_Output_JSON": {
-    "analysis_summary": {
-      "total_posts_analyzed": 22500,
+    "scraping_summary": {
+      "total_posts_collected": 22500,
       "unique_accounts_found": 1680,
-      "trending_hashtags_identified": 95,
-      "viral_content_opportunities": 28,
-      "analysis_timestamp": "2025-01-15T13:15:00Z",
-      "confidence_score": 0.93
+      "posts_analyzed": 4,
+      "scraping_timestamp": "2025-01-15T13:15:00Z",
+      "data_quality_score": 0.94
     },
-    "discovered_posts": [
+    "raw_posts": [
       {
         "post_id": "linkedin_post_123456789",
         "post_url": "https://linkedin.com/posts/tech_ceo_john_123456789",
@@ -79,7 +78,11 @@
           "connection_count": 5000,
           "is_verified": true,
           "is_business_account": true,
-          "account_category": "technology"
+          "account_category": "technology",
+          "profile_picture_url": "https://linkedin.com/in/tech_ceo_john/profile_pic.jpg",
+          "headline": "CEO at TechCorp | Technology Leadership | AI Innovation",
+          "location": "San Francisco, CA",
+          "industry": "Information Technology and Services"
         },
         "post_metadata": {
           "post_type": "article",
@@ -98,7 +101,7 @@
           "posting_time": "2025-01-14T08:30:00Z",
           "is_sponsored": false
         },
-        "engagement_metrics": {
+        "engagement_data": {
           "likes": 1250,
           "comments": 89,
           "shares": 156,
@@ -106,29 +109,6 @@
           "total_engagement": 1729,
           "engagement_rate": 3.84,
           "engagement_quality_score": 8.9
-        },
-        "content_analysis": {
-          "content_categories": ["technology", "leadership", "strategy"],
-          "sentiment_score": 0.88,
-          "content_quality_score": 9.1,
-          "viral_potential_score": 8.7,
-          "trend_relevance_score": 9.3,
-          "brand_alignment_score": 8.8
-        },
-        "trend_insights": {
-          "trending_hashtags_used": ["#artificialintelligence", "#businessstrategy"],
-          "emerging_trends": ["ai_leadership", "digital_transformation"],
-          "optimal_posting_time": "morning_weekdays",
-          "content_format_success": "long_form_articles"
-        },
-        "competitor_analysis": {
-          "similar_accounts": [
-            "business_strategy_sarah",
-            "innovation_leader_mike",
-            "tech_visionary"
-          ],
-          "performance_vs_competitors": "above_average",
-          "unique_angle": "ceo_perspective_ai"
         }
       },
       {
@@ -142,7 +122,11 @@
           "connection_count": 3000,
           "is_verified": false,
           "is_business_account": true,
-          "account_category": "business"
+          "account_category": "business",
+          "profile_picture_url": "https://linkedin.com/in/business_strategy_sarah/profile_pic.jpg",
+          "headline": "VP Strategy at GrowthCorp | Digital Transformation | Business Strategy",
+          "location": "New York, NY",
+          "industry": "Management Consulting"
         },
         "post_metadata": {
           "post_type": "post",
@@ -160,193 +144,40 @@
           "posting_time": "2025-01-13T14:15:00Z",
           "is_sponsored": false
         },
-        "engagement_metrics": {
+        "engagement_data": {
           "likes": 890,
           "comments": 67,
           "shares": 45,
-          "saves": 123,
-          "total_engagement": 1125,
-          "engagement_rate": 4.02,
-          "engagement_quality_score": 8.7
-        },
-        "content_analysis": {
-          "content_categories": ["business", "strategy", "leadership"],
-          "sentiment_score": 0.85,
-          "content_quality_score": 8.8,
-          "viral_potential_score": 8.4,
-          "trend_relevance_score": 9.1,
-          "brand_alignment_score": 8.9
-        },
-        "trend_insights": {
-          "trending_hashtags_used": ["#digitaltransformation", "#leadership"],
-          "emerging_trends": ["transformation_lessons", "change_management"],
-          "optimal_posting_time": "afternoon_weekdays",
-          "content_format_success": "lesson_based_posts"
-        },
-        "competitor_analysis": {
-          "similar_accounts": [
-            "tech_ceo_john",
-            "innovation_leader_mike",
-            "strategy_expert"
-          ],
-          "performance_vs_competitors": "top_performer",
-          "unique_angle": "practical_transformation_advice"
+          "saves": 123
         }
       }
     ],
-    "trending_hashtags": [
-      {
-        "hashtag": "#artificialintelligence",
-        "usage_count": 12500,
-        "growth_rate_7d": 35.2,
-        "growth_rate_30d": 145.8,
-        "engagement_avg": 4.2,
-        "trend_score": 9.1,
-        "related_hashtags": [
-          "#ai",
-          "#machinelearning",
-          "#technology"
-        ],
-        "peak_usage_times": ["08:00-10:00", "14:00-16:00"],
-        "top_performing_posts": 22
-      },
-      {
-        "hashtag": "#digitaltransformation",
-        "usage_count": 9800,
-        "growth_rate_7d": 28.7,
-        "growth_rate_30d": 118.3,
-        "engagement_avg": 3.8,
-        "trend_score": 8.8,
-        "related_hashtags": [
-          "#transformation",
-          "#innovation",
-          "#technology"
-        ],
-        "peak_usage_times": ["09:00-11:00", "15:00-17:00"],
-        "top_performing_posts": 18
-      }
-    ],
-    "viral_content_opportunities": [
-      {
-        "opportunity_id": "viral_opp_001",
-        "content_angle": "AI leadership insights from industry experts",
-        "trending_hashtags": ["#artificialintelligence", "#leadership", "#technology"],
-        "success_probability": 0.85,
-        "estimated_reach": 25000,
-        "recommended_format": "long_form_article",
-        "optimal_posting_time": "08:30-09:30",
-        "target_audience": "business_leaders",
-        "content_suggestions": [
-          "AI implementation challenges and solutions",
-          "Future of work with AI integration",
-          "Ethical considerations in AI adoption"
-        ]
-      },
-      {
-        "opportunity_id": "viral_opp_002",
-        "content_angle": "Digital transformation lessons learned",
-        "trending_hashtags": ["#digitaltransformation", "#leadership", "#change"],
-        "success_probability": 0.78,
-        "estimated_reach": 18000,
-        "recommended_format": "lesson_based_post",
-        "optimal_posting_time": "14:00-15:00",
-        "target_audience": "transformation_leaders",
-        "content_suggestions": [
-          "Common transformation mistakes to avoid",
-          "Building change-ready organizations",
-          "Measuring transformation success"
-        ]
-      }
-    ],
-    "competitor_analysis": {
-      "top_performing_competitors": [
-        {
-          "username": "tech_ceo_john",
-          "avg_engagement_rate": 3.84,
-          "content_frequency": "weekly",
-          "top_content_types": ["long_form_articles", "thought_leadership"],
-          "growth_rate_30d": 12.5,
-          "follower_quality_score": 9.2
-        },
-        {
-          "username": "business_strategy_sarah",
-          "avg_engagement_rate": 4.02,
-          "content_frequency": "bi_weekly",
-          "top_content_types": ["lesson_posts", "strategy_insights"],
-          "growth_rate_30d": 18.7,
-          "follower_quality_score": 8.9
-        }
+    "scraping_metadata": {
+      "scraping_session_id": "session_20250115_131500",
+      "scraping_duration_seconds": 150,
+      "rate_limit_hits": 1,
+      "failed_requests": 3,
+      "retry_attempts": 5,
+      "data_quality_issues": [
+        "2 posts had incomplete caption data",
+        "1 account was private and limited data collected"
       ],
-      "market_gaps": [
-        "micro_influencer_collaborations",
-        "industry_specific_insights",
-        "practical_implementation_guides"
-      ],
-      "content_opportunities": [
-        "behind_the_scenes_leadership",
-        "transformation_case_studies",
-        "expert_interviews"
-      ]
-    },
-    "optimal_posting_insights": {
-      "best_posting_times": {
-        "monday": ["08:00-10:00"],
-        "tuesday": ["08:00-10:00", "14:00-16:00"],
-        "wednesday": ["09:00-11:00", "15:00-17:00"],
-        "thursday": ["08:00-10:00", "14:00-16:00"],
-        "friday": ["08:00-10:00"],
-        "saturday": ["10:00-12:00"],
-        "sunday": ["10:00-12:00"]
+      "scraping_parameters": {
+        "max_posts_per_query": 6000,
+        "include_articles": true,
+        "include_posts": true,
+        "min_engagement_threshold": 50
       },
-      "content_format_performance": {
-        "long_form_articles": {"avg_engagement": 4.1, "success_rate": 0.78},
-        "lesson_posts": {"avg_engagement": 3.8, "success_rate": 0.72},
-        "regular_posts": {"avg_engagement": 3.2, "success_rate": 0.65}
-      },
-      "hashtag_strategy": {
-        "optimal_hashtag_count": 5,
-        "mix_recommendation": "2_trending_2_niche_1_brand",
-        "avoid_hashtags": ["#linkedin", "#networking", "#jobs"]
-      }
-    },
-    "content_strategy_recommendations": {
-      "content_calendar_suggestions": [
-        {
-          "day": "Monday",
-          "content_type": "motivational_post",
-          "theme": "week_start_motivation",
-          "hashtags": ["#motivation", "#leadership", "#monday"],
-          "optimal_time": "08:00-09:00"
-        },
-        {
-          "day": "Wednesday",
-          "content_type": "educational_article",
-          "theme": "industry_insights",
-          "hashtags": ["#education", "#insights", "#learning"],
-          "optimal_time": "09:00-10:00"
-        },
-        {
-          "day": "Friday",
-          "content_type": "lesson_post",
-          "theme": "weekend_reflection",
-          "hashtags": ["#lessons", "#reflection", "#growth"],
-          "optimal_time": "14:00-15:00"
-        }
-      ],
-      "content_mix_recommendation": {
-        "educational_content": 40,
-        "thought_leadership": 30,
-        "personal_insights": 20,
-        "industry_news": 10
-      },
-      "engagement_strategy": {
-        "response_time_target": "2_hours",
-        "comment_engagement_rate": 0.12,
-        "article_engagement_frequency": "weekly"
+      "technical_details": {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+        "proxy_used": true,
+        "captcha_encountered": false,
+        "blocked_requests": 0,
+        "success_rate": 0.98
       }
     }
   },
-  "Matching algorithm used to integrate the data": "Advanced keyword matching combined with engagement velocity analysis, hashtag trend detection, and content similarity scoring to identify viral content patterns and optimal posting strategies for B2B audiences",
+  "Matching algorithm used to integrate the data": "Direct LinkedIn API scraping and web scraping techniques to collect raw post data, user profiles, and engagement metrics without analytical processing",
   "Story": "<p>A B2B marketing agency was struggling to keep up with LinkedIn's constantly changing algorithm and trending professional content. Their clients' posts were getting lost in the feed, and they couldn't identify what content was performing well in their niche.</p><p>The agency partnered with Iceberg Data to implement a comprehensive LinkedIn post discovery system. Our solution scraped and analyzed over 80,000 LinkedIn posts, collecting data on content performance, hashtag trends, posting times, and engagement patterns.</p><p>The system used advanced algorithms to identify trending thought leadership content before it went viral, analyze competitor strategies, and predict optimal posting times. By tracking keyword-based searches and specific usernames, the agency could discover content opportunities that their competitors missed.</p><p>The results were transformative: client engagement rates increased by 70%, content research time decreased by 80%, and the agency identified 50% more thought leadership opportunities. The agency now creates data-driven content strategies that consistently outperform their competitors and deliver measurable ROI for their B2B clients.</p>",
   "publicationDate": "2025-03-01",
   "isPrivate": true,
