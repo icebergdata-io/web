@@ -52,16 +52,15 @@
     }
   },
   "Example_Output_JSON": {
-    "analysis_summary": {
-      "total_users_analyzed": 45000,
+    "scraping_summary": {
+      "total_users_collected": 45000,
       "unique_followers": 32000,
       "unique_following": 28000,
-      "high_value_segments": 12,
-      "growth_opportunities": 25,
-      "analysis_timestamp": "2025-01-15T18:30:00Z",
-      "confidence_score": 0.93
+      "accounts_analyzed": 4,
+      "scraping_timestamp": "2025-01-15T18:30:00Z",
+      "data_quality_score": 0.94
     },
-    "follower_analysis": [
+    "raw_follower_profiles": [
       {
         "user_id": "follower_123456789",
         "username": "wellness_enthusiast_emma",
@@ -75,53 +74,40 @@
           "is_verified": false,
           "is_business_account": true,
           "account_category": "wellness",
-          "account_age_days": 800
-        },
-        "demographics": {
-          "age_range": "28-35",
-          "gender": "female",
-          "location": {
-            "city": "Los Angeles",
-            "state": "CA",
-            "country": "US",
-            "timezone": "PST"
-          },
-          "language": "English",
-          "estimated_income": "middle_high"
-        },
-        "interests_analysis": {
-          "primary_interests": ["wellness", "yoga", "plant_based", "fitness"],
-          "secondary_interests": ["sustainability", "mindfulness", "healthy_living"],
-          "brand_affinities": ["Lululemon", "Whole Foods", "Peloton"],
-          "content_preferences": ["wellness_tips", "yoga_content", "healthy_recipes"],
-          "interest_score": 9.2
-        },
-        "engagement_behavior": {
-          "avg_likes_per_day": 65,
-          "avg_comments_per_day": 12,
-          "avg_shares_per_day": 5,
-          "engagement_consistency": 0.92,
-          "peak_activity_times": ["06:00-08:00", "19:00-21:00"],
-          "content_interaction_rate": 0.88
-        },
-        "quality_metrics": {
-          "influence_score": 8.7,
-          "brand_affinity_score": 9.4,
-          "growth_potential": 8.9,
-          "engagement_quality": 9.1,
-          "content_creation_activity": 0.85,
-          "segment": "wellness_enthusiast"
-        },
-        "relationship_analysis": {
-          "follows_our_brand": true,
-          "follows_competitors": ["competitor_a", "competitor_b"],
-          "mutual_connections": 45,
-          "engagement_with_our_content": "high",
-          "conversion_probability": 0.82
+          "account_age_days": 800,
+          "profile_picture_url": "https://instagram.com/wellness_enthusiast_emma/profile_pic.jpg",
+          "external_url": "https://wellnesswithemma.com",
+          "is_private": false,
+          "highlights_count": 15
         }
+      }
+    ],
+    "scraping_metadata": {
+      "scraping_session_id": "session_20250115_183000",
+      "scraping_duration_seconds": 300,
+      "rate_limit_hits": 4,
+      "failed_requests": 12,
+      "retry_attempts": 18,
+      "data_quality_issues": [
+        "8 user profiles were private and limited data collected",
+        "3 accounts had incomplete bio information"
+      ],
+      "scraping_parameters": {
+        "max_followers_per_account": 1000,
+        "include_private_accounts": false,
+        "min_follower_count": 100,
+        "include_business_accounts": true
       },
-      {
-        "user_id": "follower_987654321",
+      "technical_details": {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+        "proxy_used": true,
+        "captcha_encountered": true,
+        "blocked_requests": 8,
+        "success_rate": 0.92
+      }
+    }
+  },
+  "Matching algorithm used to integrate the data": "Direct Instagram API scraping and web scraping techniques to collect raw follower profiles and account metadata without analytical processing",
         "username": "sustainable_lifestyle_mike",
         "profile_url": "https://instagram.com/sustainable_lifestyle_mike",
         "profile_metadata": {
