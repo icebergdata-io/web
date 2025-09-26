@@ -54,19 +54,14 @@
     }
   },
   "Example_Output_JSON": {
-    "analysis_summary": {
-      "total_comments_analyzed": 12450,
-      "unique_users": 3890,
-      "sentiment_distribution": {
-        "positive": 0.68,
-        "neutral": 0.24,
-        "negative": 0.08
-      },
-      "top_topics_identified": 12,
-      "analysis_timestamp": "2025-01-15T14:20:00Z",
-      "confidence_score": 0.89
+    "scraping_summary": {
+      "total_comments_collected": 12450,
+      "unique_users_found": 3890,
+      "posts_analyzed": 4,
+      "scraping_timestamp": "2025-01-15T14:20:00Z",
+      "data_quality_score": 0.94
     },
-    "comment_analysis": [
+    "raw_comments": [
       {
         "comment_id": "comment_123456789",
         "post_url": "https://instagram.com/p/ABC123DEF456/",
@@ -78,7 +73,8 @@
           "has_hashtag": false,
           "has_mention": false,
           "is_reply": false,
-          "reply_count": 2
+          "reply_count": 2,
+          "comment_type": "text"
         },
         "user_info": {
           "username": "skincare_lover_23",
@@ -87,38 +83,24 @@
           "following_count": 850,
           "is_verified": false,
           "is_business_account": false,
-          "account_age_days": 450
+          "account_age_days": 450,
+          "profile_picture_url": "https://instagram.com/skincare_lover_23/profile_pic.jpg",
+          "bio": "Skincare enthusiast | Beauty lover | Natural products advocate",
+          "external_url": null,
+          "is_private": false
         },
-        "sentiment_analysis": {
-          "overall_sentiment": "positive",
-          "sentiment_score": 0.92,
-          "confidence": 0.94,
-          "emotions": ["joy", "satisfaction", "trust"],
-          "emotion_scores": {
-            "joy": 0.89,
-            "satisfaction": 0.91,
-            "trust": 0.87,
-            "anger": 0.02,
-            "sadness": 0.01
-          }
-        },
-        "topic_categorization": {
-          "primary_topic": "product_review",
-          "secondary_topics": ["skin_improvement", "product_recommendation"],
-          "topic_confidence": 0.91,
-          "keywords": ["product", "skin", "texture", "recommend"]
-        },
-        "engagement_metrics": {
+        "engagement_data": {
           "likes": 23,
           "replies": 2,
-          "engagement_score": 0.85,
-          "influence_score": 0.42
+          "shares": 0,
+          "saves": 0
         },
-        "actionable_insights": {
-          "product_feedback": "positive_texture_review",
-          "customer_loyalty": "long_term_user",
-          "recommendation_potential": "high",
-          "follow_up_opportunity": "user_generated_content"
+        "post_context": {
+          "post_id": "ABC123DEF456",
+          "post_caption": "New skincare routine that changed my life! Swipe to see the results...",
+          "post_hashtags": ["#skincare", "#beauty", "#natural"],
+          "post_mentions": ["@beautybrand"],
+          "post_timestamp": "2025-01-14T10:30:00Z"
         }
       },
       {
@@ -132,7 +114,8 @@
           "has_hashtag": false,
           "has_mention": false,
           "is_reply": false,
-          "reply_count": 8
+          "reply_count": 8,
+          "comment_type": "text"
         },
         "user_info": {
           "username": "sensitive_skin_girl",
@@ -141,268 +124,189 @@
           "following_count": 1200,
           "is_verified": false,
           "is_business_account": false,
-          "account_age_days": 280
+          "account_age_days": 280,
+          "profile_picture_url": "https://instagram.com/sensitive_skin_girl/profile_pic.jpg",
+          "bio": "Sensitive skin advocate | Skincare tips | Product reviews",
+          "external_url": "https://sensitive-skin-blog.com",
+          "is_private": false
         },
-        "sentiment_analysis": {
-          "overall_sentiment": "negative",
-          "sentiment_score": 0.23,
-          "confidence": 0.87,
-          "emotions": ["disappointment", "concern", "uncertainty"],
-          "emotion_scores": {
-            "disappointment": 0.78,
-            "concern": 0.65,
-            "uncertainty": 0.72,
-            "anger": 0.15,
-            "sadness": 0.23
-          }
-        },
-        "topic_categorization": {
-          "primary_topic": "product_issue",
-          "secondary_topics": ["skin_reaction", "customer_support"],
-          "topic_confidence": 0.88,
-          "keywords": ["break out", "skin type", "issue"]
-        },
-        "engagement_metrics": {
+        "engagement_data": {
           "likes": 12,
           "replies": 8,
-          "engagement_score": 0.67,
-          "influence_score": 0.28
+          "shares": 0,
+          "saves": 0
         },
-        "actionable_insights": {
-          "product_feedback": "negative_reaction_review",
-          "customer_support_needed": "high_priority",
-          "product_improvement": "sensitive_skin_formula",
-          "follow_up_opportunity": "direct_customer_service"
+        "post_context": {
+          "post_id": "ABC123DEF456",
+          "post_caption": "New skincare routine that changed my life! Swipe to see the results...",
+          "post_hashtags": ["#skincare", "#beauty", "#natural"],
+          "post_mentions": ["@beautybrand"],
+          "post_timestamp": "2025-01-14T10:30:00Z"
+        }
+      },
+      {
+        "comment_id": "comment_456789123",
+        "post_url": "https://instagram.com/p/ABC123DEF456/",
+        "comment_text": "Where can I buy this? The link in bio doesn't work 😭",
+        "comment_metadata": {
+          "timestamp": "2025-01-14T19:15:00Z",
+          "comment_length": 45,
+          "has_emoji": true,
+          "has_hashtag": false,
+          "has_mention": false,
+          "is_reply": false,
+          "reply_count": 1,
+          "comment_type": "text"
+        },
+        "user_info": {
+          "username": "beauty_shopper_99",
+          "display_name": "Lisa T.",
+          "follower_count": 320,
+          "following_count": 890,
+          "is_verified": false,
+          "is_business_account": false,
+          "account_age_days": 120,
+          "profile_picture_url": "https://instagram.com/beauty_shopper_99/profile_pic.jpg",
+          "bio": "Beauty lover | Shopping enthusiast",
+          "external_url": null,
+          "is_private": true
+        },
+        "engagement_data": {
+          "likes": 5,
+          "replies": 1,
+          "shares": 0,
+          "saves": 0
+        },
+        "post_context": {
+          "post_id": "ABC123DEF456",
+          "post_caption": "New skincare routine that changed my life! Swipe to see the results...",
+          "post_hashtags": ["#skincare", "#beauty", "#natural"],
+          "post_mentions": ["@beautybrand"],
+          "post_timestamp": "2025-01-14T10:30:00Z"
         }
       }
     ],
-    "sentiment_trends": {
-      "daily_sentiment": [
-        {
-          "date": "2025-01-14",
-          "positive_percentage": 0.72,
-          "neutral_percentage": 0.21,
-          "negative_percentage": 0.07,
-          "total_comments": 450
+    "post_metadata": [
+      {
+        "post_id": "ABC123DEF456",
+        "post_url": "https://instagram.com/p/ABC123DEF456/",
+        "post_caption": "New skincare routine that changed my life! Swipe to see the results...",
+        "post_hashtags": ["#skincare", "#beauty", "#natural"],
+        "post_mentions": ["@beautybrand"],
+        "post_timestamp": "2025-01-14T10:30:00Z",
+        "post_type": "carousel",
+        "media_count": 5,
+        "post_engagement": {
+          "likes": 1250,
+          "comments": 89,
+          "shares": 45,
+          "saves": 234
         },
-        {
-          "date": "2025-01-13",
-          "positive_percentage": 0.68,
-          "neutral_percentage": 0.25,
-          "negative_percentage": 0.07,
-          "total_comments": 380
-        }
-      ],
-      "sentiment_by_post": [
-        {
-          "post_url": "https://instagram.com/p/ABC123DEF456/",
-          "positive_percentage": 0.75,
-          "neutral_percentage": 0.20,
-          "negative_percentage": 0.05,
-          "total_comments": 1200,
-          "engagement_rate": 8.5
-        },
-        {
-          "post_url": "https://instagram.com/reel/JKL345MNO678/",
-          "positive_percentage": 0.82,
-          "neutral_percentage": 0.15,
-          "negative_percentage": 0.03,
-          "total_comments": 2100,
-          "engagement_rate": 12.3
-        }
-      ]
-    },
-    "topic_analysis": {
-      "top_topics": [
-        {
-          "topic": "product_review",
-          "frequency": 0.35,
-          "sentiment_distribution": {
-            "positive": 0.78,
-            "neutral": 0.18,
-            "negative": 0.04
-          },
-          "key_phrases": [
-            "love this product",
-            "highly recommend",
-            "works great",
-            "amazing results"
-          ],
-          "trend_direction": "increasing"
-        },
-        {
-          "topic": "product_issue",
-          "frequency": 0.12,
-          "sentiment_distribution": {
-            "positive": 0.15,
-            "neutral": 0.25,
-            "negative": 0.60
-          },
-          "key_phrases": [
-            "broke me out",
-            "didn't work",
-            "skin reaction",
-            "not for me"
-          ],
-          "trend_direction": "stable"
-        },
-        {
-          "topic": "ingredient_question",
-          "frequency": 0.18,
-          "sentiment_distribution": {
-            "positive": 0.45,
-            "neutral": 0.50,
-            "negative": 0.05
-          },
-          "key_phrases": [
-            "what ingredients",
-            "is it safe",
-            "contains",
-            "allergen free"
-          ],
-          "trend_direction": "increasing"
-        }
-      ],
-      "emerging_topics": [
-        {
-          "topic": "sustainability_concerns",
-          "frequency": 0.08,
-          "growth_rate": 0.25,
-          "key_phrases": ["eco friendly", "sustainable", "packaging", "environment"]
-        }
-      ]
-    },
-    "customer_insights": {
-      "pain_points": [
-        {
-          "pain_point": "skin_breakouts",
-          "frequency": 0.15,
-          "severity": "high",
-          "affected_skin_types": ["sensitive", "oily", "combination"],
-          "common_keywords": ["break out", "irritation", "redness", "acne"]
-        },
-        {
-          "pain_point": "product_availability",
-          "frequency": 0.08,
-          "severity": "medium",
-          "affected_regions": ["international", "rural_areas"],
-          "common_keywords": ["out of stock", "not available", "when restock"]
-        }
-      ],
-      "positive_feedback": [
-        {
-          "feedback_type": "skin_improvement",
-          "frequency": 0.28,
-          "key_phrases": ["skin looks better", "glowing", "smooth", "clear"],
-          "customer_segments": ["long_term_users", "first_time_buyers"]
-        },
-        {
-          "feedback_type": "product_texture",
-          "frequency": 0.22,
-          "key_phrases": ["smooth texture", "absorbs well", "not greasy", "lightweight"],
-          "customer_segments": ["all_skin_types"]
-        }
-      ],
-      "customer_segments": [
-        {
-          "segment": "loyal_customers",
-          "percentage": 0.35,
-          "characteristics": ["repeat_purchases", "positive_sentiment", "high_engagement"],
-          "common_feedback": "product_recommendations"
-        },
-        {
-          "segment": "new_customers",
-          "percentage": 0.25,
-          "characteristics": ["first_time_buyers", "mixed_sentiment", "question_heavy"],
-          "common_feedback": "product_questions"
-        },
-        {
-          "segment": "dissatisfied_customers",
-          "percentage": 0.08,
-          "characteristics": ["negative_sentiment", "product_issues", "support_needed"],
-          "common_feedback": "product_complaints"
-        }
-      ]
-    },
-    "actionable_recommendations": {
-      "immediate_actions": [
-        {
-          "action": "address_skin_breakout_concerns",
-          "priority": "high",
-          "description": "Create educational content about skin types and product suitability",
-          "target_audience": "sensitive_skin_customers",
-          "expected_impact": "reduce_negative_sentiment_by_20%"
-        },
-        {
-          "action": "improve_customer_support_response",
-          "priority": "high",
-          "description": "Implement faster response system for product-related questions",
-          "target_audience": "new_customers",
-          "expected_impact": "increase_customer_satisfaction_by_25%"
-        }
-      ],
-      "product_improvements": [
-        {
-          "improvement": "sensitive_skin_formula",
-          "customer_demand": 0.15,
-          "feasibility": "high",
-          "expected_impact": "reduce_negative_feedback_by_30%",
-          "development_timeline": "3_months"
-        },
-        {
-          "improvement": "eco_friendly_packaging",
-          "customer_demand": 0.08,
-          "feasibility": "medium",
-          "expected_impact": "improve_brand_perception_by_15%",
-          "development_timeline": "6_months"
-        }
-      ],
-      "content_strategy": [
-        {
-          "content_type": "educational_posts",
-          "focus": "skin_type_education",
-          "frequency": "weekly",
-          "expected_impact": "reduce_product_questions_by_40%"
-        },
-        {
-          "content_type": "customer_testimonials",
-          "focus": "success_stories",
-          "frequency": "bi_weekly",
-          "expected_impact": "increase_positive_sentiment_by_20%"
-        }
-      ]
-    },
-    "competitor_benchmarking": {
-      "sentiment_comparison": {
-        "our_brand": {
-          "positive": 0.68,
-          "neutral": 0.24,
-          "negative": 0.08
-        },
-        "competitor_a": {
-          "positive": 0.62,
-          "neutral": 0.28,
-          "negative": 0.10
-        },
-        "competitor_b": {
-          "positive": 0.71,
-          "neutral": 0.22,
-          "negative": 0.07
+        "post_owner": {
+          "username": "beautybrand",
+          "display_name": "Beauty Brand Co",
+          "follower_count": 125000,
+          "is_verified": true,
+          "is_business_account": true
         }
       },
-      "response_time_comparison": {
-        "our_brand": "4.2_hours",
-        "industry_average": "6.8_hours",
-        "best_in_class": "2.1_hours"
+      {
+        "post_id": "JKL345MNO678",
+        "post_url": "https://instagram.com/reel/JKL345MNO678/",
+        "post_caption": "Quick skincare routine for busy mornings! 3 steps to glowing skin ✨",
+        "post_hashtags": ["#skincare", "#morningroutine", "#beauty"],
+        "post_mentions": [],
+        "post_timestamp": "2025-01-13T14:20:00Z",
+        "post_type": "reel",
+        "media_count": 1,
+        "post_engagement": {
+          "likes": 2100,
+          "comments": 156,
+          "shares": 89,
+          "saves": 567
+        },
+        "post_owner": {
+          "username": "beautybrand",
+          "display_name": "Beauty Brand Co",
+          "follower_count": 125000,
+          "is_verified": true,
+          "is_business_account": true
+        }
+      }
+    ],
+    "user_profiles": [
+      {
+        "username": "skincare_lover_23",
+        "display_name": "Sarah M.",
+        "follower_count": 1200,
+        "following_count": 850,
+        "is_verified": false,
+        "is_business_account": false,
+        "account_age_days": 450,
+        "profile_picture_url": "https://instagram.com/skincare_lover_23/profile_pic.jpg",
+        "bio": "Skincare enthusiast | Beauty lover | Natural products advocate",
+        "external_url": null,
+        "is_private": false,
+        "posts_count": 89,
+        "highlights_count": 12
       },
-      "engagement_quality": {
-        "our_brand": 0.85,
-        "competitor_average": 0.78,
-        "improvement_opportunity": "high"
+      {
+        "username": "sensitive_skin_girl",
+        "display_name": "Emma K.",
+        "follower_count": 650,
+        "following_count": 1200,
+        "is_verified": false,
+        "is_business_account": false,
+        "account_age_days": 280,
+        "profile_picture_url": "https://instagram.com/sensitive_skin_girl/profile_pic.jpg",
+        "bio": "Sensitive skin advocate | Skincare tips | Product reviews",
+        "external_url": "https://sensitive-skin-blog.com",
+        "is_private": false,
+        "posts_count": 45,
+        "highlights_count": 8
+      },
+      {
+        "username": "beauty_shopper_99",
+        "display_name": "Lisa T.",
+        "follower_count": 320,
+        "following_count": 890,
+        "is_verified": false,
+        "is_business_account": false,
+        "account_age_days": 120,
+        "profile_picture_url": "https://instagram.com/beauty_shopper_99/profile_pic.jpg",
+        "bio": "Beauty lover | Shopping enthusiast",
+        "external_url": null,
+        "is_private": true,
+        "posts_count": 23,
+        "highlights_count": 5
+      }
+    ],
+    "scraping_metadata": {
+      "scraping_session_id": "session_20250115_142000",
+      "scraping_duration_seconds": 45,
+      "rate_limit_hits": 0,
+      "failed_requests": 2,
+      "retry_attempts": 3,
+      "data_quality_issues": [
+        "2 comments had truncated text due to length",
+        "1 user profile was private and limited data collected"
+      ],
+      "scraping_parameters": {
+        "max_comments_per_post": 1000,
+        "include_replies": true,
+        "include_deleted_comments": false,
+        "min_comment_length": 3
+      },
+      "technical_details": {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+        "proxy_used": false,
+        "captcha_encountered": false,
+        "blocked_requests": 0,
+        "success_rate": 0.98
       }
     }
   },
-  "Matching algorithm used to integrate the data": "Advanced natural language processing combined with sentiment analysis, topic modeling, and engagement scoring to categorize comments and identify actionable insights for brand improvement",
+  "Matching algorithm used to integrate the data": "Direct Instagram API scraping and web scraping techniques to collect raw comment data, user profiles, and post metadata without analytical processing",
   "Story": "<p>A beauty brand was struggling to understand customer feedback and brand sentiment across their Instagram content. With thousands of comments on each post, they couldn't manually analyze customer opinions, pain points, or emerging trends.</p><p>The brand partnered with Iceberg Data to implement a comprehensive Instagram comment analysis system. Our solution scraped and analyzed over 50,000 comments from selected posts and reels, using advanced NLP and sentiment analysis to categorize feedback and identify trends.</p><p>The system provided real-time insights into customer sentiment, product feedback, and brand perception. By analyzing comment patterns, the brand could identify product improvement opportunities, address customer concerns proactively, and optimize their content strategy based on customer preferences.</p><p>The results were remarkable: brand sentiment improved by 45%, customer service response time decreased by 60%, and the brand identified 25% more product improvement opportunities. The brand now uses data-driven insights to make informed decisions about product development, customer service, and content strategy.</p>",
   "publicationDate": "2025-02-05",
   "isPrivate": true,
