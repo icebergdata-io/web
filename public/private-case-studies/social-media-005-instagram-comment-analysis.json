@@ -23,34 +23,26 @@
       "https://instagram.com/reel/JKL345MNO678/",
       "https://instagram.com/p/PQR901STU234/"
     ],
-    "analysis_parameters": {
-      "comment_depth": "all_comments",
+    "scraping_parameters": {
+      "max_comments_per_post": 1000,
       "include_replies": true,
       "include_deleted_comments": false,
       "min_comment_length": 3,
-      "max_comments_per_post": 1000
+      "scraping_delay_seconds": 2
     },
-    "sentiment_analysis": {
-      "enabled": true,
-      "confidence_threshold": 0.7,
-      "include_emotion_detection": true,
-      "include_topic_categorization": true,
-      "language_detection": true
+    "data_collection": {
+      "include_user_profiles": true,
+      "include_post_metadata": true,
+      "include_engagement_data": true,
+      "include_timestamps": true
     },
-    "filtering_criteria": {
-      "exclude_spam": true,
-      "exclude_bot_comments": true,
-      "min_engagement_score": 0.1,
+    "filtering": {
       "date_range": {
         "start_date": "2025-01-01",
         "end_date": "2025-01-31"
-      }
-    },
-    "output_requirements": {
-      "include_user_metadata": true,
-      "include_engagement_metrics": true,
-      "include_trend_analysis": true,
-      "include_competitor_comparison": false
+      },
+      "min_comment_length": 3,
+      "exclude_private_accounts": false
     }
   },
   "Example_Output_JSON": {

@@ -29,32 +29,27 @@
       "green_lifestyle_blog",
       "zero_waste_queen"
     ],
-    "content_criteria": {
-      "post_types": ["posts", "reels", "stories"],
+    "scraping_parameters": {
+      "post_types": ["posts", "reels"],
+      "max_posts_per_query": 5000,
+      "scraping_delay_seconds": 3,
+      "include_stories": false
+    },
+    "data_collection": {
+      "include_hashtags": true,
+      "include_mentions": true,
+      "include_engagement_metrics": true,
+      "include_user_profiles": true,
+      "include_timestamps": true
+    },
+    "filtering": {
       "date_range": {
         "start_date": "2025-01-01",
         "end_date": "2025-01-31"
       },
-      "engagement_thresholds": {
-        "min_likes": 1000,
-        "min_comments": 50,
-        "min_shares": 20
-      },
-      "content_filters": {
-        "exclude_sponsored": false,
-        "include_carousel_posts": true,
-        "include_video_content": true
-      }
-    },
-    "analysis_parameters": {
-      "trend_analysis": true,
-      "hashtag_extraction": true,
-      "sentiment_analysis": true,
-      "competitor_comparison": true,
-      "optimal_timing_analysis": true
-    },
-    "output_format": "comprehensive",
-    "max_results_per_query": 5000
+      "min_engagement_threshold": 50,
+      "exclude_sponsored": false
+    }
   },
   "Example_Output_JSON": {
     "scraping_summary": {
