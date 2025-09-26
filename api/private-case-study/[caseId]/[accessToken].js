@@ -15,7 +15,11 @@ export default async function handler(req, res) {
     // Load sharing configuration from public URL
     const configResponse = await fetch('https://www.icebergdata.co/private-sharing-config.json');
     if (!configResponse.ok) {
-      return res.status(404).json({ error: 'Sharing configuration not found' });
+      return res.status(404).json({ 
+        error: 'Sharing configuration not found',
+        status: configResponse.status,
+        statusText: configResponse.statusText
+      });
     }
 
     const config = await configResponse.json();
