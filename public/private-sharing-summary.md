@@ -41,8 +41,35 @@
 - **Link:** https://www.icebergdata.co/private-case-study/social-003/1e453cceb1c32ffc9fe602303c116736
 - **Description:** Boosting Brand Reach by 300% Through Trend Analysis
 
+### TikTok Post Discovery
+- **Platform:** TikTok
+- **Link:** https://www.icebergdata.co/private-case-study/social-008/e1j2k3l4m5n6o7p8q9r0s1t2u3v4w5x6y7z8
+- **Description:** Boosting Content Strategy ROI by 80% Through Keyword-Based Video Scraping
+
+### TikTok Comment Analysis
+- **Platform:** TikTok
+- **Link:** https://www.icebergdata.co/private-case-study/social-009/f2k3l4m5n6o7p8q9r0s1t2u3v4w5x6y7z8a9
+- **Description:** Boosting Brand Sentiment by 50% Through Automated Comment Scraping and Sentiment Analysis
+
+## LinkedIn Case Studies
+
+### LinkedIn B2B Lead Generation
+- **Platform:** LinkedIn
+- **Link:** https://www.icebergdata.co/private-case-study/social-002/0def9d7372edca207b8fbb29d96f97d3
+- **Description:** Converting 28% More Prospects Through Thought Leadership Analysis
+
+### LinkedIn Post Discovery
+- **Platform:** LinkedIn
+- **Link:** https://www.icebergdata.co/private-case-study/social-010/g3l4m5n6o7p8q9r0s1t2u3v4w5x6y7z8a9b0
+- **Description:** Boosting B2B Content Strategy ROI by 70% Through Keyword-Based Post Scraping
+
+### LinkedIn Comment Analysis
+- **Platform:** LinkedIn
+- **Link:** https://www.icebergdata.co/private-case-study/social-011/h4m5n6o7p8q9r0s1t2u3v4w5x6y7z8a9b0c1
+- **Description:** Boosting B2B Brand Sentiment by 55% Through Automated Comment Scraping and Sentiment Analysis
+
 ---
 
-**Total Case Studies:** 7
+**Total Case Studies:** 11
 **Last Updated:** 2025-01-15
 **Access Level:** Private (requires access token)

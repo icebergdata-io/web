@@ -1,0 +1,410 @@
+{
+  "Title": "TikTok Comment Analysis: Boosting Brand Sentiment by 50% Through Automated Comment Scraping and Sentiment Analysis",
+  "Subtitle": "How a beauty brand used automated TikTok comment analysis to monitor brand sentiment, identify customer pain points, and improve product development, resulting in 50% better brand sentiment and 35% faster product iteration cycles",
+  "Business Impact": "Improved brand sentiment by 50%, reduced customer service response time by 65%, identified 30% more product improvement opportunities, and increased customer satisfaction scores by 40%",
+  "Sector": "Social Media - TikTok",
+  "Platform": "TikTok",
+  "Use Case": "comment scraping and sentiment analysis for brand monitoring",
+  "What data was collected": "TikTok comments from selected videos, including comment text, timestamps, user information, engagement metrics, sentiment scores, and topic categorization across 75,000+ comments",
+  "Why this matters": "TikTok comments provide invaluable insights into customer opinions, pain points, and brand perception, but manually analyzing thousands of comments is time-consuming and often misses important trends",
+  "Implementation time": "1 week",
+  "Problems this solves": [
+    "1) Eliminates manual comment monitoring that misses critical customer feedback",
+    "2) Identifies emerging customer pain points before they become major issues",
+    "3) Provides real-time brand sentiment tracking across all content",
+    "4) Discovers product improvement opportunities from customer feedback",
+    "5) Enables proactive customer service and reputation management"
+  ],
+  "Why it was better to outsource this solution": "TikTok's comment API has severe rate limitations and doesn't provide sentiment analysis, while our specialized infrastructure can process thousands of comments with advanced NLP and sentiment scoring",
+  "Example_Input_JSON": {
+    "target_videos": [
+      "https://tiktok.com/@beauty_brand_co/video/123456789",
+      "https://tiktok.com/@beauty_brand_co/video/987654321",
+      "https://tiktok.com/@beauty_brand_co/video/456789123",
+      "https://tiktok.com/@beauty_brand_co/video/789123456"
+    ],
+    "analysis_parameters": {
+      "comment_depth": "all_comments",
+      "include_replies": true,
+      "include_deleted_comments": false,
+      "min_comment_length": 3,
+      "max_comments_per_video": 1500
+    },
+    "sentiment_analysis": {
+      "enabled": true,
+      "confidence_threshold": 0.7,
+      "include_emotion_detection": true,
+      "include_topic_categorization": true,
+      "language_detection": true
+    },
+    "filtering_criteria": {
+      "exclude_spam": true,
+      "exclude_bot_comments": true,
+      "min_engagement_score": 0.1,
+      "date_range": {
+        "start_date": "2025-01-01",
+        "end_date": "2025-01-31"
+      }
+    },
+    "output_requirements": {
+      "include_user_metadata": true,
+      "include_engagement_metrics": true,
+      "include_trend_analysis": true,
+      "include_competitor_comparison": false
+    }
+  },
+  "Example_Output_JSON": {
+    "analysis_summary": {
+      "total_comments_analyzed": 18750,
+      "unique_users": 5620,
+      "sentiment_distribution": {
+        "positive": 0.72,
+        "neutral": 0.21,
+        "negative": 0.07
+      },
+      "top_topics_identified": 15,
+      "analysis_timestamp": "2025-01-15T15:30:00Z",
+      "confidence_score": 0.91
+    },
+    "comment_analysis": [
+      {
+        "comment_id": "comment_123456789",
+        "video_url": "https://tiktok.com/@beauty_brand_co/video/123456789",
+        "comment_text": "OMG this product is amazing! I've been using it for 2 weeks and my skin has never looked better. The texture is perfect and it doesn't break me out like other products did. Highly recommend! 💚✨",
+        "comment_metadata": {
+          "timestamp": "2025-01-14T20:45:00Z",
+          "comment_length": 156,
+          "has_emoji": true,
+          "has_hashtag": false,
+          "has_mention": false,
+          "is_reply": false,
+          "reply_count": 3
+        },
+        "user_info": {
+          "username": "skincare_lover_23",
+          "display_name": "Sarah M.",
+          "follower_count": 1200,
+          "following_count": 850,
+          "is_verified": false,
+          "is_business_account": false,
+          "account_age_days": 450
+        },
+        "sentiment_analysis": {
+          "overall_sentiment": "positive",
+          "sentiment_score": 0.94,
+          "confidence": 0.96,
+          "emotions": ["joy", "satisfaction", "trust"],
+          "emotion_scores": {
+            "joy": 0.91,
+            "satisfaction": 0.93,
+            "trust": 0.89,
+            "anger": 0.01,
+            "sadness": 0.02
+          }
+        },
+        "topic_categorization": {
+          "primary_topic": "product_review",
+          "secondary_topics": ["skin_improvement", "product_recommendation"],
+          "topic_confidence": 0.93,
+          "keywords": ["product", "skin", "texture", "recommend"]
+        },
+        "engagement_metrics": {
+          "likes": 28,
+          "replies": 3,
+          "engagement_score": 0.87,
+          "influence_score": 0.45
+        },
+        "actionable_insights": {
+          "product_feedback": "positive_texture_review",
+          "customer_loyalty": "long_term_user",
+          "recommendation_potential": "high",
+          "follow_up_opportunity": "user_generated_content"
+        }
+      },
+      {
+        "comment_id": "comment_987654321",
+        "video_url": "https://tiktok.com/@beauty_brand_co/video/123456789",
+        "comment_text": "I really wanted to love this but it made my skin break out after just 2 days. Maybe it's just not for my skin type? Anyone else have this issue?",
+        "comment_metadata": {
+          "timestamp": "2025-01-14T22:20:00Z",
+          "comment_length": 98,
+          "has_emoji": false,
+          "has_hashtag": false,
+          "has_mention": false,
+          "is_reply": false,
+          "reply_count": 12
+        },
+        "user_info": {
+          "username": "sensitive_skin_girl",
+          "display_name": "Emma K.",
+          "follower_count": 650,
+          "following_count": 1200,
+          "is_verified": false,
+          "is_business_account": false,
+          "account_age_days": 280
+        },
+        "sentiment_analysis": {
+          "overall_sentiment": "negative",
+          "sentiment_score": 0.25,
+          "confidence": 0.89,
+          "emotions": ["disappointment", "concern", "uncertainty"],
+          "emotion_scores": {
+            "disappointment": 0.81,
+            "concern": 0.68,
+            "uncertainty": 0.75,
+            "anger": 0.18,
+            "sadness": 0.26
+          }
+        },
+        "topic_categorization": {
+          "primary_topic": "product_issue",
+          "secondary_topics": ["skin_reaction", "customer_support"],
+          "topic_confidence": 0.90,
+          "keywords": ["break out", "skin type", "issue"]
+        },
+        "engagement_metrics": {
+          "likes": 15,
+          "replies": 12,
+          "engagement_score": 0.71,
+          "influence_score": 0.32
+        },
+        "actionable_insights": {
+          "product_feedback": "negative_reaction_review",
+          "customer_support_needed": "high_priority",
+          "product_improvement": "sensitive_skin_formula",
+          "follow_up_opportunity": "direct_customer_service"
+        }
+      }
+    ],
+    "sentiment_trends": {
+      "daily_sentiment": [
+        {
+          "date": "2025-01-14",
+          "positive_percentage": 0.75,
+          "neutral_percentage": 0.19,
+          "negative_percentage": 0.06,
+          "total_comments": 680
+        },
+        {
+          "date": "2025-01-13",
+          "positive_percentage": 0.71,
+          "neutral_percentage": 0.23,
+          "negative_percentage": 0.06,
+          "total_comments": 520
+        }
+      ],
+      "sentiment_by_video": [
+        {
+          "video_url": "https://tiktok.com/@beauty_brand_co/video/123456789",
+          "positive_percentage": 0.78,
+          "neutral_percentage": 0.18,
+          "negative_percentage": 0.04,
+          "total_comments": 1800,
+          "engagement_rate": 12.5
+        },
+        {
+          "video_url": "https://tiktok.com/@beauty_brand_co/video/987654321",
+          "positive_percentage": 0.82,
+          "neutral_percentage": 0.15,
+          "negative_percentage": 0.03,
+          "total_comments": 2100,
+          "engagement_rate": 15.3
+        }
+      ]
+    },
+    "topic_analysis": {
+      "top_topics": [
+        {
+          "topic": "product_review",
+          "frequency": 0.38,
+          "sentiment_distribution": {
+            "positive": 0.81,
+            "neutral": 0.16,
+            "negative": 0.03
+          },
+          "key_phrases": [
+            "love this product",
+            "highly recommend",
+            "works great",
+            "amazing results"
+          ],
+          "trend_direction": "increasing"
+        },
+        {
+          "topic": "product_issue",
+          "frequency": 0.11,
+          "sentiment_distribution": {
+            "positive": 0.12,
+            "neutral": 0.28,
+            "negative": 0.60
+          },
+          "key_phrases": [
+            "broke me out",
+            "didn't work",
+            "skin reaction",
+            "not for me"
+          ],
+          "trend_direction": "stable"
+        },
+        {
+          "topic": "ingredient_question",
+          "frequency": 0.19,
+          "sentiment_distribution": {
+            "positive": 0.48,
+            "neutral": 0.47,
+            "negative": 0.05
+          },
+          "key_phrases": [
+            "what ingredients",
+            "is it safe",
+            "contains",
+            "allergen free"
+          ],
+          "trend_direction": "increasing"
+        }
+      ],
+      "emerging_topics": [
+        {
+          "topic": "sustainability_concerns",
+          "frequency": 0.09,
+          "growth_rate": 0.28,
+          "key_phrases": ["eco friendly", "sustainable", "packaging", "environment"]
+        }
+      ]
+    },
+    "customer_insights": {
+      "pain_points": [
+        {
+          "pain_point": "skin_breakouts",
+          "frequency": 0.16,
+          "severity": "high",
+          "affected_skin_types": ["sensitive", "oily", "combination"],
+          "common_keywords": ["break out", "irritation", "redness", "acne"]
+        },
+        {
+          "pain_point": "product_availability",
+          "frequency": 0.07,
+          "severity": "medium",
+          "affected_regions": ["international", "rural_areas"],
+          "common_keywords": ["out of stock", "not available", "when restock"]
+        }
+      ],
+      "positive_feedback": [
+        {
+          "feedback_type": "skin_improvement",
+          "frequency": 0.31,
+          "key_phrases": ["skin looks better", "glowing", "smooth", "clear"],
+          "customer_segments": ["long_term_users", "first_time_buyers"]
+        },
+        {
+          "feedback_type": "product_texture",
+          "frequency": 0.24,
+          "key_phrases": ["smooth texture", "absorbs well", "not greasy", "lightweight"],
+          "customer_segments": ["all_skin_types"]
+        }
+      ],
+      "customer_segments": [
+        {
+          "segment": "loyal_customers",
+          "percentage": 0.38,
+          "characteristics": ["repeat_purchases", "positive_sentiment", "high_engagement"],
+          "common_feedback": "product_recommendations"
+        },
+        {
+          "segment": "new_customers",
+          "percentage": 0.28,
+          "characteristics": ["first_time_buyers", "mixed_sentiment", "question_heavy"],
+          "common_feedback": "product_questions"
+        },
+        {
+          "segment": "dissatisfied_customers",
+          "percentage": 0.07,
+          "characteristics": ["negative_sentiment", "product_issues", "support_needed"],
+          "common_feedback": "product_complaints"
+        }
+      ]
+    },
+    "actionable_recommendations": {
+      "immediate_actions": [
+        {
+          "action": "address_skin_breakout_concerns",
+          "priority": "high",
+          "description": "Create educational content about skin types and product suitability",
+          "target_audience": "sensitive_skin_customers",
+          "expected_impact": "reduce_negative_sentiment_by_25%"
+        },
+        {
+          "action": "improve_customer_support_response",
+          "priority": "high",
+          "description": "Implement faster response system for product-related questions",
+          "target_audience": "new_customers",
+          "expected_impact": "increase_customer_satisfaction_by_30%"
+        }
+      ],
+      "product_improvements": [
+        {
+          "improvement": "sensitive_skin_formula",
+          "customer_demand": 0.16,
+          "feasibility": "high",
+          "expected_impact": "reduce_negative_feedback_by_35%",
+          "development_timeline": "3_months"
+        },
+        {
+          "improvement": "eco_friendly_packaging",
+          "customer_demand": 0.09,
+          "feasibility": "medium",
+          "expected_impact": "improve_brand_perception_by_18%",
+          "development_timeline": "6_months"
+        }
+      ],
+      "content_strategy": [
+        {
+          "content_type": "educational_videos",
+          "focus": "skin_type_education",
+          "frequency": "weekly",
+          "expected_impact": "reduce_product_questions_by_45%"
+        },
+        {
+          "content_type": "customer_testimonials",
+          "focus": "success_stories",
+          "frequency": "bi_weekly",
+          "expected_impact": "increase_positive_sentiment_by_25%"
+        }
+      ]
+    },
+    "competitor_benchmarking": {
+      "sentiment_comparison": {
+        "our_brand": {
+          "positive": 0.72,
+          "neutral": 0.21,
+          "negative": 0.07
+        },
+        "competitor_a": {
+          "positive": 0.68,
+          "neutral": 0.25,
+          "negative": 0.07
+        },
+        "competitor_b": {
+          "positive": 0.75,
+          "neutral": 0.20,
+          "negative": 0.05
+        }
+      },
+      "response_time_comparison": {
+        "our_brand": "3.8_hours",
+        "industry_average": "6.2_hours",
+        "best_in_class": "1.9_hours"
+      },
+      "engagement_quality": {
+        "our_brand": 0.89,
+        "competitor_average": 0.82,
+        "improvement_opportunity": "high"
+      }
+    }
+  },
+  "Matching algorithm used to integrate the data": "Advanced natural language processing combined with sentiment analysis, topic modeling, and engagement scoring to categorize comments and identify actionable insights for brand improvement",
+  "Story": "<p>A beauty brand was struggling to understand customer feedback and brand sentiment across their TikTok content. With thousands of comments on each video, they couldn't manually analyze customer opinions, pain points, or emerging trends.</p><p>The brand partnered with Iceberg Data to implement a comprehensive TikTok comment analysis system. Our solution scraped and analyzed over 75,000 comments from selected videos, using advanced NLP and sentiment analysis to categorize feedback and identify trends.</p><p>The system provided real-time insights into customer sentiment, product feedback, and brand perception. By analyzing comment patterns, the brand could identify product improvement opportunities, address customer concerns proactively, and optimize their content strategy based on customer preferences.</p><p>The results were remarkable: brand sentiment improved by 50%, customer service response time decreased by 65%, and the brand identified 30% more product improvement opportunities. The brand now uses data-driven insights to make informed decisions about product development, customer service, and content strategy.</p>",
+  "publicationDate": "2025-02-25",
+  "isPrivate": true,
+  "sharingLevel": "private"
+}
