@@ -13,7 +13,10 @@ export default async function handler(req, res) {
 
   try {
     // Load sharing configuration from public URL
-    const configResponse = await fetch(`${req.headers.origin || 'https://www.icebergdata.co'}/private-sharing-config.json`);
+    const baseUrl = process.env.VERCEL_URL 
+      ? `https://${process.env.VERCEL_URL}` 
+      : 'https://www.icebergdata.co';
+    const configResponse = await fetch(`${baseUrl}/private-sharing-config.json`);
     if (!configResponse.ok) {
       return res.status(404).json({ error: 'Sharing configuration not found' });
     }
@@ -32,7 +35,7 @@ export default async function handler(req, res) {
     }
 
     // Load case study from public URL
-    const caseStudyResponse = await fetch(`${req.headers.origin || 'https://www.icebergdata.co'}/private-case-studies/${tokenData.filename}`);
+    const caseStudyResponse = await fetch(`${baseUrl}/private-case-studies/${tokenData.filename}`);
     if (!caseStudyResponse.ok) {
       return res.status(404).json({ error: 'Case study file not found' });
     }
