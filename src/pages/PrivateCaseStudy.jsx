@@ -33,10 +33,11 @@ const PrivateCaseStudy = () => {
           return;
         }
 
-        // Load the private case study JSON using the mapped filename
-        const caseResponse = await fetch(`/private-case-studies/${tokenData.filename}`);
+        // Load the private case study JSON using the API route
+        const caseResponse = await fetch(`/api/private-case-study/${caseId}/${accessToken}`);
         if (!caseResponse.ok) {
-          setError('Case study not found');
+          const errorData = await caseResponse.json();
+          setError(errorData.error || 'Case study not found');
           return;
         }
 
