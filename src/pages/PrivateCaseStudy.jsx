@@ -118,7 +118,7 @@ const PrivateCaseStudy = () => {
       <SEO 
         title={`${caseStudy.Title} - Private Case Study | Iceberg Data`}
         description={caseStudy.Subtitle}
-        keywords={`${caseStudy.Platform}, social media, private case study, data analytics, ${caseStudy.Use_Case}`}
+        keywords={`${caseStudy.Platform}, social media, private case study, data analytics, ${caseStudy["Use Case"]}`}
         type="article"
         image={`https://www.icebergdata.co/logos/logo-large.png`}
         noindex={true}
