@@ -1,426 +1,99 @@
 {
   "Title": "TikTok Post Discovery: Boosting Content Strategy ROI by 80% Through Keyword-Based Video Scraping",
-  "Subtitle": "How a digital marketing agency used automated TikTok post discovery to identify trending content, analyze competitor strategies, and optimize their client's video content calendar, resulting in 80% higher engagement rates and 60% more viral content",
-  "Business Impact": "Increased content engagement by 80%, identified 60% more viral content opportunities, reduced content research time by 85%, and improved competitor analysis accuracy by 95%",
+  "Subtitle": "How a digital marketing agency used automated TikTok video discovery to identify trending content, analyze competitor strategies, and optimize posting schedules, resulting in 80% higher content engagement and 60% more viral opportunities",
+  "Business Impact": "Increased content engagement by 80%, identified 60% more viral opportunities, reduced content research time by 85%, and improved posting schedule optimization by 70%",
   "Sector": "Social Media - TikTok",
   "Platform": "TikTok",
-  "Use Case": "keyword-based video post discovery and content strategy optimization",
-  "What data was collected": "TikTok videos, posts, and content matching specific keywords, including video metadata, engagement metrics, hashtags, captions, posting times, audio trends, and user information across 150,000+ videos",
-  "Why this matters": "TikTok's algorithm prioritizes trending content, but identifying what's trending requires analyzing thousands of videos. Manual research is time-consuming and often misses emerging trends before they peak",
-  "Implementation time": "2 weeks",
+  "Use Case": "post discovery and trend analysis for content strategy optimization",
+  "What data was collected": "TikTok videos including metadata, engagement metrics, hashtags, audio information, creator profiles, and posting timestamps across 28,500+ videos from keyword-based searches",
+  "Why this matters": "Understanding what content performs well on TikTok is crucial for content strategy success, but manually analyzing thousands of videos is time-consuming and often misses trending opportunities",
+  "Implementation time": "1 week",
   "Problems this solves": [
-    "1) Eliminates manual content research that takes hours and often misses trending topics",
-    "2) Identifies viral content patterns before competitors discover them",
-    "3) Provides data-driven insights for video content calendar optimization",
-    "4) Tracks competitor content strategies and performance metrics",
-    "5) Discovers trending hashtags, audio, and optimal posting times for maximum reach"
+    "1) Eliminates guesswork in content creation by providing data-driven insights",
+    "2) Identifies trending content before it goes viral",
+    "3) Analyzes competitor strategies to find content gaps",
+    "4) Optimizes posting schedules based on engagement patterns",
+    "5) Discovers new content opportunities through keyword analysis"
   ],
-  "Why it was better to outsource this solution": "TikTok's API has severe limitations and rate restrictions, while our specialized scraping infrastructure can analyze millions of videos efficiently without hitting platform limits",
+  "Why it was better to outsource this solution": "TikTok's API has limited access to trending data, while our specialized scraping infrastructure can analyze thousands of videos and identify patterns that predict viral success",
   "Example_Input_JSON": {
-    "search_queries": [
-      "fitness motivation",
-      "healthy lifestyle",
-      "workout routines",
-      "nutrition tips",
-      "wellness journey"
-    ],
-    "username_filters": [
-      "fitness_guru_jen",
-      "healthy_lifestyle_co",
-      "workout_motivation_mike",
-      "nutrition_expert_sarah"
+    "search_keywords": [
+      "fitness", 
+      "lifestyle", 
+      "beauty",
+      "sustainable_fashion",
+      "vintage_style",
+      "outfit_ideas"
     ],
     "scraping_parameters": {
-      "video_types": ["regular_videos", "duets"],
-      "max_videos_per_query": 8000,
-      "scraping_delay_seconds": 3,
-      "include_stitches": true
+      "max_videos_per_search": 10000,
+      "include_audio_data": true,
+      "include_creator_profiles": true,
+      "scraping_delay_seconds": 2
     },
     "data_collection": {
-      "include_hashtags": true,
-      "include_mentions": true,
+      "include_video_metadata": true,
       "include_engagement_metrics": true,
-      "include_user_profiles": true,
-      "include_audio_data": true,
+      "include_hashtags": true,
+      "include_audio_info": true,
+      "include_creator_info": true,
       "include_timestamps": true
     },
     "filtering": {
-      "date_range": {
-        "start_date": "2025-01-01",
-        "end_date": "2025-01-31"
-      },
-      "min_engagement_threshold": 100,
-      "exclude_sponsored": false
+      "min_engagement_threshold": 10000,
+      "date_range_days": 30,
+      "exclude_duplicate_content": true
     }
   },
   "Example_Output_JSON": {
     "scraping_summary": {
-      "total_videos_collected": 28500,
-      "unique_accounts_found": 1890,
-      "videos_analyzed": 4,
-      "scraping_timestamp": "2025-01-15T11:45:00Z",
-      "data_quality_score": 0.95
+      "total_videos_scraped": 28500,
+      "successful_scrapes": 28450,
+      "failed_scrapes": 50,
+      "total_creators_found": 1890,
+      "scraping_timestamp": "2025-01-15T11:45:00Z"
     },
-    "raw_videos": [
+    "raw_video_data": [
       {
-        "video_id": "tiktok_video_123456789",
-        "video_url": "https://tiktok.com/@fitness_guru_jen/video/123456789",
-        "account_info": {
-          "username": "fitness_guru_jen",
-          "display_name": "Jen Fitness",
-          "follower_count": 85000,
-          "following_count": 1200,
-          "is_verified": true,
-          "is_business_account": true,
-          "account_category": "fitness",
-          "profile_picture_url": "https://tiktok.com/@fitness_guru_jen/profile_pic.jpg",
-          "bio": "Fitness coach | Wellness advocate | Morning routine expert",
-          "is_private": false,
-          "posts_count": 1250,
-          "likes_count": 2500000
-        },
+        "video_id": "tiktok_video_987654321",
+        "video_url": "https://tiktok.com/@fitness_guru/video/987654321",
+        "creator_username": "@fitness_guru_jen",
+        "creator_profile_url": "https://tiktok.com/@fitness_guru_jen",
         "video_metadata": {
-          "video_type": "regular_video",
-          "duration_seconds": 45,
-          "caption": "5-minute morning routine that changed my life! 🌅 Start your day with energy and positivity. Try this for 7 days and see the difference! #morningroutine #fitnessmotivation #healthyhabits #wellness #selfcare",
-          "hashtags": [
-            "#morningroutine",
-            "#fitnessmotivation",
-            "#healthyhabits",
-            "#wellness",
-            "#selfcare",
-            "#energy",
-            "#positivity"
-          ],
-          "mentions": ["@wellness_coach", "@fitness_brand"],
-          "location": "Los Angeles, CA",
-          "posting_time": "2025-01-14T06:30:00Z",
-          "is_sponsored": false
+          "caption": "Morning workout routine! 💪✨ #fitness #workout #wellness",
+          "duration_seconds": 60,
+          "video_type": "single_video",
+          "hashtags": ["fitness", "workout", "wellness"],
+          "mentions": [],
+          "timestamp": "2025-01-14T08:30:00Z",
+          "scraped_at": "2025-01-15T11:45:00Z"
         },
-        "engagement_data": {
-          "likes": 12500,
-          "comments": 890,
-          "shares": 2340,
-          "saves": 5670
+        "engagement_metrics": {
+          "likes_count": 125000,
+          "comments_count": 8500,
+          "shares_count": 12000,
+          "views_count": 2500000
+        },
+        "audio_info": {
+          "audio_id": "audio_456789123",
+          "audio_title": "Workout Motivation",
+          "audio_creator": "@music_creator",
+          "audio_duration": 60
         }
       }
     ],
     "scraping_metadata": {
-      "scraping_session_id": "session_20250115_114500",
-      "scraping_duration_seconds": 200,
-      "rate_limit_hits": 2,
-      "failed_requests": 5,
-      "retry_attempts": 8,
-      "data_quality_issues": [
-        "3 videos had incomplete caption data",
-        "2 accounts were private and limited data collected"
-      ],
-      "scraping_parameters": {
-        "max_videos_per_query": 8000,
-        "include_audio_data": true,
-        "include_engagement_metrics": true,
-        "min_engagement_threshold": 100
-      },
-      "technical_details": {
-        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-        "proxy_used": true,
-        "captcha_encountered": false,
-        "blocked_requests": 1,
-        "success_rate": 0.97
-      }
+      "total_videos_requested": 28500,
+      "videos_successfully_scraped": 28450,
+      "videos_failed": 50,
+      "total_creators_found": 1890,
+      "scraping_duration_seconds": 180,
+      "rate_limit_delays": 25
     }
   },
-  "Matching algorithm used to integrate the data": "Direct TikTok API scraping and web scraping techniques to collect raw video data, user profiles, and engagement metrics without analytical processing",
-          "likes": 8750,
-          "comments": 456,
-          "shares": 234,
-          "saves": 1890,
-          "total_engagement": 11330,
-          "engagement_rate": 9.06,
-          "engagement_quality_score": 9.3
-        },
-        "content_analysis": {
-          "content_categories": ["fitness", "wellness", "lifestyle"],
-          "sentiment_score": 0.91,
-          "content_quality_score": 9.2,
-          "viral_potential_score": 8.9,
-          "trend_relevance_score": 9.4,
-          "brand_alignment_score": 8.8
-        },
-        "trend_insights": {
-          "trending_hashtags_used": ["#morningroutine", "#fitnessmotivation"],
-          "trending_audio_used": "Morning Motivation Mix",
-          "emerging_trends": ["morning_wellness", "quick_workouts"],
-          "optimal_posting_time": "early_morning",
-          "content_format_success": "educational_short_videos"
-        },
-        "competitor_analysis": {
-          "similar_accounts": [
-            "healthy_lifestyle_co",
-            "workout_motivation_mike",
-            "wellness_warrior"
-          ],
-          "performance_vs_competitors": "above_average",
-          "unique_angle": "morning_focus_wellness"
-        }
-      },
-      {
-        "video_id": "tiktok_video_987654321",
-        "video_url": "https://tiktok.com/@nutrition_expert_sarah/video/987654321",
-        "account_info": {
-          "username": "nutrition_expert_sarah",
-          "display_name": "Sarah Nutrition",
-          "follower_count": 120000,
-          "following_count": 800,
-          "is_verified": false,
-          "is_business_account": true,
-          "account_category": "nutrition"
-        },
-        "video_metadata": {
-          "video_type": "duet",
-          "duration_seconds": 32,
-          "caption": "POV: You're trying to eat healthy but don't know where to start 🥗 Here are 5 easy meal prep ideas that saved my life! #mealprep #healthyrecipes #nutrition #weightloss #healthyeating",
-          "hashtags": [
-            "#mealprep",
-            "#healthyrecipes",
-            "#nutrition",
-            "#weightloss",
-            "#healthyeating",
-            "#easyrecipes",
-            "#foodprep"
-          ],
-          "mentions": ["@mealprep_queen"],
-          "location": null,
-          "posting_time": "2025-01-13T19:15:00Z",
-          "is_sponsored": false
-        },
-        "audio_analysis": {
-          "audio_id": "audio_456789123",
-          "audio_name": "Cooking Vibes",
-          "audio_creator": "Kitchen Sounds",
-          "audio_usage_count": 78000,
-          "audio_trend_score": 9.1,
-          "audio_category": "lifestyle"
-        },
-        "engagement_metrics": {
-          "views": 189000,
-          "likes": 15600,
-          "comments": 890,
-          "shares": 567,
-          "saves": 3450,
-          "total_engagement": 20507,
-          "engagement_rate": 10.85,
-          "engagement_quality_score": 9.6
-        },
-        "content_analysis": {
-          "content_categories": ["nutrition", "cooking", "lifestyle"],
-          "sentiment_score": 0.89,
-          "content_quality_score": 9.4,
-          "viral_potential_score": 9.2,
-          "trend_relevance_score": 9.6,
-          "brand_alignment_score": 9.1
-        },
-        "trend_insights": {
-          "trending_hashtags_used": ["#mealprep", "#healthyrecipes"],
-          "trending_audio_used": "Cooking Vibes",
-          "emerging_trends": ["easy_meal_prep", "beginner_nutrition"],
-          "optimal_posting_time": "evening_weekdays",
-          "content_format_success": "educational_duets"
-        },
-        "competitor_analysis": {
-          "similar_accounts": [
-            "mealprep_queen",
-            "healthy_cooking_co",
-            "nutrition_guru"
-          ],
-          "performance_vs_competitors": "top_performer",
-          "unique_angle": "beginner_friendly_nutrition"
-        }
-      }
-    ],
-    "trending_hashtags": [
-      {
-        "hashtag": "#morningroutine",
-        "usage_count": 125000,
-        "growth_rate_7d": 45.2,
-        "growth_rate_30d": 180.5,
-        "engagement_avg": 8.7,
-        "trend_score": 9.3,
-        "related_hashtags": [
-          "#morningmotivation",
-          "#wellness",
-          "#healthyhabits"
-        ],
-        "peak_usage_times": ["06:00-08:00", "19:00-21:00"],
-        "top_performing_videos": 18
-      },
-      {
-        "hashtag": "#mealprep",
-        "usage_count": 98000,
-        "growth_rate_7d": 38.7,
-        "growth_rate_30d": 156.3,
-        "engagement_avg": 9.2,
-        "trend_score": 9.1,
-        "related_hashtags": [
-          "#healthyrecipes",
-          "#foodprep",
-          "#nutrition"
-        ],
-        "peak_usage_times": ["18:00-20:00", "12:00-14:00"],
-        "top_performing_videos": 15
-      }
-    ],
-    "trending_audio": [
-      {
-        "audio_id": "audio_987654321",
-        "audio_name": "Morning Motivation Mix",
-        "audio_creator": "Motivation Sounds",
-        "usage_count": 45000,
-        "growth_rate_7d": 52.3,
-        "growth_rate_30d": 210.8,
-        "trend_score": 9.4,
-        "audio_category": "motivational",
-        "peak_usage_times": ["06:00-08:00", "19:00-21:00"],
-        "top_performing_videos": 12
-      },
-      {
-        "audio_id": "audio_456789123",
-        "audio_name": "Cooking Vibes",
-        "audio_creator": "Kitchen Sounds",
-        "usage_count": 78000,
-        "growth_rate_7d": 41.8,
-        "growth_rate_30d": 167.2,
-        "trend_score": 8.9,
-        "audio_category": "lifestyle",
-        "peak_usage_times": ["18:00-20:00", "12:00-14:00"],
-        "top_performing_videos": 20
-      }
-    ],
-    "viral_content_opportunities": [
-      {
-        "opportunity_id": "viral_opp_001",
-        "content_angle": "Quick morning wellness routines",
-        "trending_hashtags": ["#morningroutine", "#wellness", "#healthyhabits"],
-        "trending_audio": "Morning Motivation Mix",
-        "success_probability": 0.82,
-        "estimated_reach": 75000,
-        "recommended_format": "educational_short_video",
-        "optimal_posting_time": "06:30-07:30",
-        "target_audience": "wellness_enthusiasts",
-        "content_suggestions": [
-          "5-minute morning stretches",
-          "Quick healthy breakfast ideas",
-          "Morning meditation techniques"
-        ]
-      },
-      {
-        "opportunity_id": "viral_opp_002",
-        "content_angle": "Easy meal prep for beginners",
-        "trending_hashtags": ["#mealprep", "#healthyrecipes", "#nutrition"],
-        "trending_audio": "Cooking Vibes",
-        "success_probability": 0.88,
-        "estimated_reach": 95000,
-        "recommended_format": "educational_duet",
-        "optimal_posting_time": "19:00-20:00",
-        "target_audience": "nutrition_beginners",
-        "content_suggestions": [
-          "3-ingredient healthy meals",
-          "Meal prep mistakes to avoid",
-          "Budget-friendly healthy recipes"
-        ]
-      }
-    ],
-    "competitor_analysis": {
-      "top_performing_competitors": [
-        {
-          "username": "fitness_guru_jen",
-          "avg_engagement_rate": 9.06,
-          "content_frequency": "daily",
-          "top_content_types": ["educational_videos", "morning_routines"],
-          "growth_rate_30d": 15.2,
-          "follower_quality_score": 9.1
-        },
-        {
-          "username": "nutrition_expert_sarah",
-          "avg_engagement_rate": 10.85,
-          "content_frequency": "every_other_day",
-          "top_content_types": ["educational_duets", "recipe_videos"],
-          "growth_rate_30d": 22.7,
-          "follower_quality_score": 9.4
-        }
-      ],
-      "market_gaps": [
-        "micro_influencer_collaborations",
-        "male_fitness_content",
-        "senior_wellness_content"
-      ],
-      "content_opportunities": [
-        "behind_the_scenes_wellness",
-        "wellness_challenges",
-        "expert_interviews"
-      ]
-    },
-    "optimal_posting_insights": {
-      "best_posting_times": {
-        "monday": ["06:00-08:00", "19:00-21:00"],
-        "tuesday": ["06:00-08:00", "19:00-21:00"],
-        "wednesday": ["06:00-08:00", "18:00-20:00"],
-        "thursday": ["06:00-08:00", "19:00-21:00"],
-        "friday": ["06:00-08:00", "19:00-21:00"],
-        "saturday": ["10:00-12:00", "20:00-22:00"],
-        "sunday": ["10:00-12:00", "19:00-21:00"]
-      },
-      "content_format_performance": {
-        "educational_short_videos": {"avg_engagement": 8.9, "success_rate": 0.78},
-        "duets": {"avg_engagement": 10.2, "success_rate": 0.85},
-        "regular_videos": {"avg_engagement": 7.4, "success_rate": 0.72}
-      },
-      "hashtag_strategy": {
-        "optimal_hashtag_count": 6,
-        "mix_recommendation": "2_trending_2_niche_2_brand",
-        "avoid_hashtags": ["#fyp", "#foryou", "#viral"]
-      }
-    },
-    "content_strategy_recommendations": {
-      "content_calendar_suggestions": [
-        {
-          "day": "Monday",
-          "content_type": "motivational_video",
-          "theme": "week_start_motivation",
-          "hashtags": ["#motivation", "#monday", "#wellness"],
-          "audio": "Motivation Sounds"
-        },
-        {
-          "day": "Wednesday",
-          "content_type": "educational_video",
-          "theme": "wellness_tips",
-          "hashtags": ["#wellness", "#tips", "#education"],
-          "audio": "Educational Vibes"
-        },
-        {
-          "day": "Friday",
-          "content_type": "duet_video",
-          "theme": "weekend_preparation",
-          "hashtags": ["#weekend", "#preparation", "#lifestyle"],
-          "audio": "Weekend Vibes"
-        }
-      ],
-      "content_mix_recommendation": {
-        "educational_content": 45,
-        "lifestyle_content": 30,
-        "motivational_content": 20,
-        "behind_scenes": 5
-      },
-      "engagement_strategy": {
-        "response_time_target": "1_hour",
-        "comment_engagement_rate": 0.18,
-        "duet_encouragement": "high"
-      }
-    }
-  },
-  "Matching algorithm used to integrate the data": "Advanced keyword matching combined with engagement velocity analysis, hashtag trend detection, audio trend analysis, and content similarity scoring to identify viral content patterns and optimal posting strategies",
-  "Story": "<p>A digital marketing agency was struggling to keep up with TikTok's constantly changing algorithm and trending content. Their clients' videos were getting lost in the feed, and they couldn't identify what content was performing well in their niche.</p><p>The agency partnered with Iceberg Data to implement a comprehensive TikTok post discovery system. Our solution scraped and analyzed over 150,000 TikTok videos, collecting data on content performance, hashtag trends, audio trends, posting times, and engagement patterns.</p><p>The system used advanced algorithms to identify trending content before it went viral, analyze competitor strategies, and predict optimal posting times. By tracking keyword-based searches and specific usernames, the agency could discover content opportunities that their competitors missed.</p><p>The results were transformative: client engagement rates increased by 80%, content research time decreased by 85%, and the agency identified 60% more viral content opportunities. The agency now creates data-driven content strategies that consistently outperform their competitors and deliver measurable ROI for their clients.</p>",
-  "publicationDate": "2025-02-20",
+  "Matching algorithm used to integrate the data": "TikTok video scraping with metadata extraction, engagement metrics capture, and audio information collection",
+  "Story": "<p>A digital marketing agency needed to collect comprehensive TikTok video data for trend analysis. They required video metadata, engagement metrics, creator information, and audio data to understand viral content patterns.</p><p>The agency partnered with Iceberg Data to implement a TikTok video scraping system. Our solution collected video metadata, engagement metrics, creator profiles, and audio information from target content.</p><p>The system successfully scraped 28,450 TikTok videos, collecting complete engagement data and creator information. Each video included metadata, hashtags, engagement metrics, and audio details.</p><p>Within 3 minutes, the agency had access to comprehensive raw data from all target videos, enabling them to analyze content patterns and identify trending elements based on actual performance metrics.</p>",
+  "publicationDate": "2025-01-15",
   "isPrivate": true,
   "sharingLevel": "private"
 }

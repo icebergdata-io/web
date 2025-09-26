@@ -13,13 +13,12 @@ export default async function handler(req, res) {
 
   try {
     // Load sharing configuration from public URL
-    const configResponse = await fetch('https://www.icebergdata.co/private-sharing-config.json');
+    const baseUrl = process.env.VERCEL_URL 
+      ? `https://${process.env.VERCEL_URL}` 
+      : 'https://www.icebergdata.co';
+    const configResponse = await fetch(`${baseUrl}/private-sharing-config.json`);
     if (!configResponse.ok) {
-      return res.status(404).json({ 
-        error: 'Sharing configuration not found',
-        status: configResponse.status,
-        statusText: configResponse.statusText
-      });
+      return res.status(404).json({ error: 'Sharing configuration not found' });
     }
 
     const config = await configResponse.json();
@@ -36,7 +35,7 @@ export default async function handler(req, res) {
     }
 
     // Load case study from public URL
-    const caseStudyResponse = await fetch(`https://www.icebergdata.co/private-case-studies/${tokenData.filename}`);
+    const caseStudyResponse = await fetch(`${baseUrl}/private-case-studies/${tokenData.filename}`);
     if (!caseStudyResponse.ok) {
       return res.status(404).json({ error: 'Case study file not found' });
     }
@@ -48,11 +47,6 @@ export default async function handler(req, res) {
 
   } catch (error) {
     console.error('Error serving private case study:', error);
-    return res.status(500).json({ 
-      error: 'Internal server error',
-      message: error.message,
-      caseId: caseId,
-      accessToken: accessToken ? accessToken.substring(0, 8) + '...' : 'missing'
-    });
+    return res.status(500).json({ error: 'Internal server error' });
   }
 }
