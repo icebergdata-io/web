@@ -62,16 +62,14 @@
     "max_results_per_query": 8000
   },
   "Example_Output_JSON": {
-    "analysis_summary": {
-      "total_videos_analyzed": 28500,
+    "scraping_summary": {
+      "total_videos_collected": 28500,
       "unique_accounts_found": 1890,
-      "trending_hashtags_identified": 125,
-      "trending_audio_identified": 67,
-      "viral_content_opportunities": 34,
-      "analysis_timestamp": "2025-01-15T11:45:00Z",
-      "confidence_score": 0.94
+      "videos_analyzed": 4,
+      "scraping_timestamp": "2025-01-15T11:45:00Z",
+      "data_quality_score": 0.95
     },
-    "discovered_videos": [
+    "raw_videos": [
       {
         "video_id": "tiktok_video_123456789",
         "video_url": "https://tiktok.com/@fitness_guru_jen/video/123456789",
@@ -82,7 +80,12 @@
           "following_count": 1200,
           "is_verified": true,
           "is_business_account": true,
-          "account_category": "fitness"
+          "account_category": "fitness",
+          "profile_picture_url": "https://tiktok.com/@fitness_guru_jen/profile_pic.jpg",
+          "bio": "Fitness coach | Wellness advocate | Morning routine expert",
+          "is_private": false,
+          "posts_count": 1250,
+          "likes_count": 2500000
         },
         "video_metadata": {
           "video_type": "regular_video",
@@ -102,16 +105,40 @@
           "posting_time": "2025-01-14T06:30:00Z",
           "is_sponsored": false
         },
-        "audio_analysis": {
-          "audio_id": "audio_987654321",
-          "audio_name": "Morning Motivation Mix",
-          "audio_creator": "Motivation Sounds",
-          "audio_usage_count": 45000,
-          "audio_trend_score": 8.7,
-          "audio_category": "motivational"
-        },
-        "engagement_metrics": {
-          "views": 125000,
+        "engagement_data": {
+          "likes": 12500,
+          "comments": 890,
+          "shares": 2340,
+          "saves": 5670
+        }
+      }
+    ],
+    "scraping_metadata": {
+      "scraping_session_id": "session_20250115_114500",
+      "scraping_duration_seconds": 200,
+      "rate_limit_hits": 2,
+      "failed_requests": 5,
+      "retry_attempts": 8,
+      "data_quality_issues": [
+        "3 videos had incomplete caption data",
+        "2 accounts were private and limited data collected"
+      ],
+      "scraping_parameters": {
+        "max_videos_per_query": 8000,
+        "include_audio_data": true,
+        "include_engagement_metrics": true,
+        "min_engagement_threshold": 100
+      },
+      "technical_details": {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+        "proxy_used": true,
+        "captcha_encountered": false,
+        "blocked_requests": 1,
+        "success_rate": 0.97
+      }
+    }
+  },
+  "Matching algorithm used to integrate the data": "Direct TikTok API scraping and web scraping techniques to collect raw video data, user profiles, and engagement metrics without analytical processing",
           "likes": 8750,
           "comments": 456,
           "shares": 234,
