@@ -21,7 +21,11 @@
       "destination": "/case-study/:sector/:slug.html"
     },
     {
-      "source": "/((?!api/|assets/|private-case-studies/|private-sharing-config.json).*)",
+      "source": "/private-case-study/:caseId/:accessToken",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/((?!api/).*)",
       "destination": "/index.html"
     }
   ],
@@ -57,9 +61,6 @@
   ],
   "functions": {
     "api/contact/index.js": {
-      "maxDuration": 10
-    },
-    "api/private-case-study/[caseId]/[accessToken].js": {
       "maxDuration": 10
     }
   },

@@ -12,79 +12,38 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Load sharing configuration from public URL (use a fixed URL for Vercel)
-    const baseUrl = process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
-      : process.env.NODE_ENV === 'development'
-        ? 'http://localhost:5173'
-        : 'https://www.icebergdata.co';
-
-    const configResponse = await fetch(`${baseUrl}/private-sharing-config.json`);
+    // Load sharing configuration from public URL
+    const configResponse = await fetch(`${req.headers.origin || 'https://www.icebergdata.co'}/private-sharing-config.json`);
     if (!configResponse.ok) {
       return res.status(404).json({ error: 'Sharing configuration not found' });
     }
 
     const config = await configResponse.json();
-
-    // Check if sharing is enabled (override with env var if needed)
-    const sharingEnabled = process.env.PRIVATE_SHARING_ENABLED !== undefined
-      ? process.env.PRIVATE_SHARING_ENABLED === 'true'
-      : config.sharingEnabled;
-
-    if (!sharingEnabled) {
+    
+    // Check if sharing is enabled
+    if (!config.sharingEnabled) {
       return res.status(403).json({ error: 'Private sharing is disabled' });
     }
 
     // Validate access token
     const tokenData = config.accessTokens[caseId];
-    if (!tokenData) {
-      return res.status(404).json({
-        error: `Case study '${caseId}' not found in configuration`,
-        availableCases: Object.keys(config.accessTokens)
-      });
-    }
-
-    if (tokenData.token !== accessToken) {
-      return res.status(403).json({
-        error: 'Invalid access token',
-        caseId: caseId,
-        expectedTokenPrefix: tokenData.token.substring(0, 8) + '...'
-      });
+    if (!tokenData || tokenData.token !== accessToken) {
+      return res.status(403).json({ error: 'Invalid access token' });
     }
 
     // Load case study from public URL
-    const caseStudyResponse = await fetch(`${baseUrl}/private-case-studies/${tokenData.filename}`);
+    const caseStudyResponse = await fetch(`${req.headers.origin || 'https://www.icebergdata.co'}/private-case-studies/${tokenData.filename}`);
     if (!caseStudyResponse.ok) {
-      return res.status(404).json({
-        error: `Case study file '${tokenData.filename}' not found`,
-        caseId: caseId,
-        filename: tokenData.filename,
-        baseUrl: baseUrl,
-        status: caseStudyResponse.status,
-        statusText: caseStudyResponse.statusText
-      });
+      return res.status(404).json({ error: 'Case study file not found' });
     }
 
-    let caseStudy;
-    try {
-      caseStudy = await caseStudyResponse.json();
-    } catch (parseError) {
-      return res.status(500).json({
-        error: 'Failed to parse case study JSON',
-        caseId: caseId,
-        filename: tokenData.filename,
-        parseError: parseError.message
-      });
-    }
+    const caseStudy = await caseStudyResponse.json();
 
     // Return case study
     return res.status(200).json(caseStudy);
 
   } catch (error) {
-    const logLevel = process.env.PRIVATE_SHARING_LOG_LEVEL || 'error';
-    if (logLevel === 'debug') {
-      console.error('Error serving private case study:', error);
-    }
+    console.error('Error serving private case study:', error);
     return res.status(500).json({ error: 'Internal server error' });
   }
 }
