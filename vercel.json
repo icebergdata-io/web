@@ -17,6 +17,10 @@
       "destination": "/case-studies.html"
     },
     {
+      "source": "/private-case-studies",
+      "destination": "/index.html"
+    },
+    {
       "source": "/case-study/:sector/:slug",
       "destination": "/case-study/:sector/:slug.html"
     },
