@@ -37,17 +37,45 @@ export default async function handler(req, res) {
 
     // Validate access token
     const tokenData = config.accessTokens[caseId];
-    if (!tokenData || tokenData.token !== accessToken) {
-      return res.status(403).json({ error: 'Invalid access token' });
+    if (!tokenData) {
+      return res.status(404).json({
+        error: `Case study '${caseId}' not found in configuration`,
+        availableCases: Object.keys(config.accessTokens)
+      });
+    }
+
+    if (tokenData.token !== accessToken) {
+      return res.status(403).json({
+        error: 'Invalid access token',
+        caseId: caseId,
+        expectedTokenPrefix: tokenData.token.substring(0, 8) + '...'
+      });
     }
 
     // Load case study from public URL
     const caseStudyResponse = await fetch(`${baseUrl}/private-case-studies/${tokenData.filename}`);
     if (!caseStudyResponse.ok) {
-      return res.status(404).json({ error: 'Case study file not found' });
+      return res.status(404).json({
+        error: `Case study file '${tokenData.filename}' not found`,
+        caseId: caseId,
+        filename: tokenData.filename,
+        baseUrl: baseUrl,
+        status: caseStudyResponse.status,
+        statusText: caseStudyResponse.statusText
+      });
     }
 
-    const caseStudy = await caseStudyResponse.json();
+    let caseStudy;
+    try {
+      caseStudy = await caseStudyResponse.json();
+    } catch (parseError) {
+      return res.status(500).json({
+        error: 'Failed to parse case study JSON',
+        caseId: caseId,
+        filename: tokenData.filename,
+        parseError: parseError.message
+      });
+    }
 
     // Return case study
     return res.status(200).json(caseStudy);

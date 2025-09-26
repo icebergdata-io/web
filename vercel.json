@@ -21,7 +21,7 @@
       "destination": "/case-study/:sector/:slug.html"
     },
     {
-      "source": "/((?!api/).*)",
+      "source": "/((?!api/|assets/|private-case-studies/|private-sharing-config.json).*)",
       "destination": "/index.html"
     }
   ],
