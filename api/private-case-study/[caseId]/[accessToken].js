@@ -15,7 +15,9 @@ export default async function handler(req, res) {
     // Load sharing configuration from public URL (use a fixed URL for Vercel)
     const baseUrl = process.env.VERCEL_URL
       ? `https://${process.env.VERCEL_URL}`
-      : 'https://www.icebergdata.co';
+      : process.env.NODE_ENV === 'development'
+        ? 'http://localhost:5173'
+        : 'https://www.icebergdata.co';
 
     const configResponse = await fetch(`${baseUrl}/private-sharing-config.json`);
     if (!configResponse.ok) {
@@ -24,8 +26,12 @@ export default async function handler(req, res) {
 
     const config = await configResponse.json();
 
-    // Check if sharing is enabled
-    if (!config.sharingEnabled) {
+    // Check if sharing is enabled (override with env var if needed)
+    const sharingEnabled = process.env.PRIVATE_SHARING_ENABLED !== undefined
+      ? process.env.PRIVATE_SHARING_ENABLED === 'true'
+      : config.sharingEnabled;
+
+    if (!sharingEnabled) {
       return res.status(403).json({ error: 'Private sharing is disabled' });
     }
 
@@ -47,7 +53,10 @@ export default async function handler(req, res) {
     return res.status(200).json(caseStudy);
 
   } catch (error) {
-    console.error('Error serving private case study:', error);
+    const logLevel = process.env.PRIVATE_SHARING_LOG_LEVEL || 'error';
+    if (logLevel === 'debug') {
+      console.error('Error serving private case study:', error);
+    }
     return res.status(500).json({ error: 'Internal server error' });
   }
 }
