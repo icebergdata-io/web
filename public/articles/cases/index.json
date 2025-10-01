@@ -1,6 +1,15 @@
 {
-  "total": 126,
+  "total": 127,
   "caseStudies": [
+    {
+      "id": 144,
+      "sector": "retail",
+      "slug": "retail-pinpointing-priorities-quantifying-feature-demand-50000",
+      "title": "Pinpointing R&D Priorities by Quantifying Feature Demand in 50,000+ Appliance Reviews",
+      "subtitle": "Transforming Unstructured Customer Feedback into a Competitive Product Roadmap for a Premium Kitchen Appliance Brand",
+      "sectorName": "Retail",
+      "publicationDate": "2025-10-01"
+    },
     {
       "id": 104,
       "sector": "car-rental",
