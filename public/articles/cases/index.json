@@ -1,6 +1,24 @@
 {
-  "total": 127,
+  "total": 129,
   "caseStudies": [
+    {
+      "id": 129,
+      "sector": "e-commerce",
+      "slug": "e-commerce-mitigating-last-mile-failures-hyper-local-event-scraping",
+      "title": "Mitigating Last-Mile Failures by 22% with Hyper-Local Event Scraping",
+      "subtitle": "How Real-Time Public Data on Road Closures, Weather, and Local Events Prevents Costly Delivery Exceptions for Perishable E-commerce",
+      "sectorName": "E-commerce",
+      "publicationDate": "2025-10-02"
+    },
+    {
+      "id": 150,
+      "sector": "manufacturing",
+      "slug": "manufacturing-closing-innovation-loop-slashing-power-tool-warranty-claims",
+      "title": "Closing the Innovation Loop: Slashing Power Tool Warranty Claims by 30% Using Forum Data",
+      "subtitle": "How a Leading Manufacturer Used Unstructured User Feedback from DIY Communities to Guide High-Impact R&D",
+      "sectorName": "Manufacturing",
+      "publicationDate": "2025-10-02"
+    },
     {
       "id": 144,
       "sector": "retail",
