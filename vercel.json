@@ -61,6 +61,17 @@
       "source": "/dm",
       "destination": "https://calendly.com/icedata/dm",
       "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "destination": "https://www.icebergdata.co/$1",
+      "permanent": true,
+      "has": [
+        {
+          "type": "host",
+          "value": "icebergdata.co"
+        }
+      ]
     }
   ],
   "functions": {
