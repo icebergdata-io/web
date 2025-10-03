@@ -1,6 +1,15 @@
 {
-  "total": 129,
+  "total": 130,
   "caseStudies": [
+    {
+      "id": 145,
+      "sector": "retail",
+      "slug": "retail-maximizing-margin-during-hyper-local-events-real-time",
+      "title": "Maximizing Margin During Hyper-Local Events: A Real-Time Pricing Strategy for Convenience Stores",
+      "subtitle": "Leveraging Public Event APIs and Competitor Data to Automate Price Adjustments on High-Demand SKUs",
+      "sectorName": "Retail",
+      "publicationDate": "2025-10-03"
+    },
     {
       "id": 129,
       "sector": "e-commerce",
