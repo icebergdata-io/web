@@ -1,6 +1,33 @@
 {
-  "total": 130,
+  "total": 133,
   "caseStudies": [
+    {
+      "id": 142,
+      "sector": "hotels",
+      "slug": "hotels-boosting-occupancy-through-total-cost-stay-tcs-intelligence",
+      "title": "Boosting Occupancy by 18% Through Total Cost of Stay (TCS) Intelligence",
+      "subtitle": "Revealing Competitors' Hidden Ancillary Fees to Optimize Rate-Setting and Marketing",
+      "sectorName": "Hotels",
+      "publicationDate": "2025-10-05"
+    },
+    {
+      "id": 147,
+      "sector": "lead-generation",
+      "slug": "lead-generation-surge-pricing-service-leads-boosting-lead",
+      "title": "Surge Pricing for Service Leads: Boosting Lead Revenue by 35% with Hyper-Local Event Monitoring",
+      "subtitle": "Using Real-Time Weather and Social Media Data to Dynamically Price Home Service Leads",
+      "sectorName": "Lead Generation",
+      "publicationDate": "2025-10-05"
+    },
+    {
+      "id": 153,
+      "sector": "electronics-retail",
+      "slug": "electronics-retail-boosting-refurbished-product-margins-via-condition-grade",
+      "title": "Boosting Refurbished Product Margins by 18% via Condition-Grade Competitor Pricing Analysis",
+      "subtitle": "Leveraging Web Scraping to Automate Pricing for Graded, Open-Box, and Used Electronics",
+      "sectorName": "Electronics Retail",
+      "publicationDate": "2025-10-05"
+    },
     {
       "id": 145,
       "sector": "retail",
