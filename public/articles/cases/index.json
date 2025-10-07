@@ -1,6 +1,24 @@
 {
-  "total": 133,
+  "total": 135,
   "caseStudies": [
+    {
+      "id": 132,
+      "sector": "e-commerce",
+      "slug": "e-commerce-frustration-five-stars-analyzing-review-data",
+      "title": "From Frustration to Five Stars: How Analyzing Review Data Pinpointed the Feature that Cut Product Returns by 68%",
+      "subtitle": "Using NLP on customer and competitor reviews to guide a successful V2 product launch for a premium robotic vacuum brand.",
+      "sectorName": "E-commerce",
+      "publicationDate": "2025-10-07"
+    },
+    {
+      "id": 148,
+      "sector": "healthcare",
+      "slug": "healthcare-enhancing-patient-adherence-scraping-user-reviews",
+      "title": "Enhancing Patient Adherence by Scraping User Reviews for Medical Device R&D",
+      "subtitle": "Pinpointing Critical CPAP Machine Design Flaws Through Unsolicited Patient Feedback Analysis",
+      "sectorName": "Healthcare",
+      "publicationDate": "2025-10-07"
+    },
     {
       "id": 142,
       "sector": "hotels",
