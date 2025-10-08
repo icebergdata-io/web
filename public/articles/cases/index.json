@@ -1,6 +1,33 @@
 {
-  "total": 135,
+  "total": 138,
   "caseStudies": [
+    {
+      "id": 131,
+      "sector": "e-commerce",
+      "slug": "e-commerce-proactive-compliance-eliminating-unauthorized-health-claims",
+      "title": "Proactive Compliance: Eliminating 95% of Unauthorized Health Claims for a Wellness E-commerce Platform",
+      "subtitle": "Using NLP-Powered Web Scraping to Continuously Audit User-Generated Content and Seller Listings for FDA/FTC Violations",
+      "sectorName": "E-commerce",
+      "publicationDate": "2025-10-08"
+    },
+    {
+      "id": 151,
+      "sector": "manufacturing",
+      "slug": "manufacturing-de-risking-global-supply-chains-automating-chemical",
+      "title": "De-risking Global Supply Chains by Automating Chemical Compliance Verification Across 15,000+ Components",
+      "subtitle": "Leveraging Web Scraping to Continuously Audit Bill of Materials Against Evolving Global Standards like REACH & RoHS",
+      "sectorName": "Manufacturing",
+      "publicationDate": "2025-10-08"
+    },
+    {
+      "id": 155,
+      "sector": "food-delivery",
+      "slug": "food-delivery-blanket-discounts-profit-hyper-local-promotion-strategy",
+      "title": "From Blanket Discounts to Profit: A Hyper-Local Promotion Strategy Fueled by Real-Time Data",
+      "subtitle": "Using real-time weather, local events, transit, and competitor data to optimize delivery zone profitability",
+      "sectorName": "Food Delivery",
+      "publicationDate": "2025-10-08"
+    },
     {
       "id": 132,
       "sector": "e-commerce",
