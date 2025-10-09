@@ -1,6 +1,15 @@
 {
-  "total": 138,
+  "total": 139,
   "caseStudies": [
+    {
+      "id": 128,
+      "sector": "e-commerce",
+      "slug": "e-commerce-complaint-competitive-edge-nlp-product-reviews",
+      "title": "From Complaint to Competitive Edge: How NLP on Product Reviews Prioritized a 30% User Retention Feature",
+      "subtitle": "Using Large-Scale Review Scraping to Identify and Validate High-Impact Features for a Smart Home Device Manufacturer.",
+      "sectorName": "E-commerce",
+      "publicationDate": "2025-10-09"
+    },
     {
       "id": 131,
       "sector": "e-commerce",
