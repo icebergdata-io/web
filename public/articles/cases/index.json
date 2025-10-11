@@ -1,6 +1,15 @@
 {
-  "total": 141,
+  "total": 142,
   "caseStudies": [
+    {
+      "id": 130,
+      "sector": "e-commerce",
+      "slug": "e-commerce-maximizing-aov-nlp-driven-accessory-bundling",
+      "title": "Maximizing AOV by 18% with NLP-Driven Accessory Bundling",
+      "subtitle": "Using Unstructured Review and Forum Data to Create High-Conversion Product Bundles",
+      "sectorName": "E-commerce",
+      "publicationDate": "2025-10-11"
+    },
     {
       "id": 133,
       "sector": "car-rental",
