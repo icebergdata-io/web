@@ -1,6 +1,15 @@
 {
-  "total": 142,
+  "total": 143,
   "caseStudies": [
+    {
+      "id": 149,
+      "sector": "healthcare",
+      "slug": "healthcare-strategic-clinic-placement-mapping-competitor-service",
+      "title": "Strategic Clinic Placement by Mapping Competitor Service Gaps and Regional Demand Signals",
+      "subtitle": "Using Web-Scraped Data to Identify High-Opportunity, Low-Competition Zones for New Dermatology Clinics",
+      "sectorName": "Healthcare",
+      "publicationDate": "2025-10-12"
+    },
     {
       "id": 130,
       "sector": "e-commerce",
