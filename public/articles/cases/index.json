@@ -1,6 +1,24 @@
 {
-  "total": 143,
+  "total": 145,
   "caseStudies": [
+    {
+      "id": 138,
+      "sector": "airlines",
+      "slug": "airlines-boosting-ancillary-revenue-passenger-flow-dwell",
+      "title": "Boosting Ancillary Revenue by 22% Using Passenger Flow & Dwell Time Analysis",
+      "subtitle": "Redesigning Airport Gate Layouts with Web-Scraped Flight Status and Geospatial Data",
+      "sectorName": "Airlines",
+      "publicationDate": "2025-10-13"
+    },
+    {
+      "id": 141,
+      "sector": "hotels",
+      "slug": "hotels-achieving-100-fee-disclosure-compliance-automating-ota-price",
+      "title": "Achieving 100% Fee Disclosure Compliance by Automating OTA Price Audits",
+      "subtitle": "De-risking a Major Hotel Group's Operations by Proactively Monitoring Mandatory Fee Transparency Across All Online Travel Agencies",
+      "sectorName": "Hotels",
+      "publicationDate": "2025-10-13"
+    },
     {
       "id": 149,
       "sector": "healthcare",
