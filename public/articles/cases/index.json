@@ -1,6 +1,15 @@
 {
-  "total": 145,
+  "total": 146,
   "caseStudies": [
+    {
+      "id": 154,
+      "sector": "consumer-electronics",
+      "slug": "consumer-electronics-pinpointing-market-entry-data-driven-approach-localized",
+      "title": "Pinpointing EU Market Entry: A Data-Driven Approach Using Localized Forum Analysis and Regulatory Scraping",
+      "subtitle": "How a Smart Home Innovator Identified its Most Profitable European Launch Market with 90% Confidence",
+      "sectorName": "Consumer Electronics",
+      "publicationDate": "2025-10-15"
+    },
     {
       "id": 138,
       "sector": "airlines",
