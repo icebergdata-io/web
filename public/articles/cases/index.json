@@ -1,6 +1,15 @@
 {
-  "total": 146,
+  "total": 147,
   "caseStudies": [
+    {
+      "id": 143,
+      "sector": "retail",
+      "slug": "retail-boosting-basket-value-mapping-in-store-customer-journeys",
+      "title": "Boosting Basket Value by 18% by Mapping In-Store Customer Journeys",
+      "subtitle": "Using Public Layout Schematics and Foot Traffic Data to Optimize High-Margin Product Placement",
+      "sectorName": "Retail",
+      "publicationDate": "2025-10-17"
+    },
     {
       "id": 154,
       "sector": "consumer-electronics",
