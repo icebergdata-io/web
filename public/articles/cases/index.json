@@ -1,6 +1,24 @@
 {
-  "total": 147,
+  "total": 149,
   "caseStudies": [
+    {
+      "id": 134,
+      "sector": "car-rental",
+      "slug": "car-rental-right-sizing-specialty-vehicle-fleets-competitor-availability",
+      "title": "Right-Sizing Specialty Vehicle Fleets Using Competitor Availability & Demand Signals",
+      "subtitle": "Leveraging Web-Scraped Competitor Fleet Data to Align Specialty Vehicle Supply with Latent Market Demand",
+      "sectorName": "Car Rental",
+      "publicationDate": "2025-10-18"
+    },
+    {
+      "id": 135,
+      "sector": "car-rental",
+      "slug": "car-rental-automating-multi-jurisdictional-surcharge-audits-compliance-shield",
+      "title": "Automating Multi-Jurisdictional Surcharge Audits: A Compliance Shield for Car Rental Aggregators",
+      "subtitle": "Leveraging Geo-Targeted Web Scraping to Ensure Partner Pricing Adheres to State-Specific Transparency Laws",
+      "sectorName": "Car Rental",
+      "publicationDate": "2025-10-18"
+    },
     {
       "id": 143,
       "sector": "retail",
