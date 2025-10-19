@@ -1,6 +1,15 @@
 {
-  "total": 149,
+  "total": 150,
   "caseStudies": [
+    {
+      "id": 127,
+      "sector": "e-commerce",
+      "slug": "e-commerce-scaling-authenticity-identifying-untapped-micro-influencers-lower",
+      "title": "Scaling Authenticity: Identifying Untapped Micro-Influencers for a 40% Lower CPA",
+      "subtitle": "Using Web Scraping to Uncover and Vet Genuine Brand Advocates from Organic Social Media Mentions in the Sustainable Fashion Niche",
+      "sectorName": "E-commerce",
+      "publicationDate": "2025-10-19"
+    },
     {
       "id": 134,
       "sector": "car-rental",
