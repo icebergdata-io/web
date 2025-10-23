@@ -1,6 +1,15 @@
 {
-  "total": 150,
+  "total": 151,
   "caseStudies": [
+    {
+      "id": 136,
+      "sector": "car-rental",
+      "slug": "car-rental-slashing-fleet-idle-time-through-predictive-regional-demand",
+      "title": "Slashing Fleet Idle Time by 30% Through Predictive Regional Demand Scraping",
+      "subtitle": "Leveraging Local Event and Flight Data to Proactively Relocate Vehicles and Maximize Utilization",
+      "sectorName": "Car Rental",
+      "publicationDate": "2025-10-23"
+    },
     {
       "id": 127,
       "sector": "e-commerce",
