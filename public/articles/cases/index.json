@@ -1,6 +1,33 @@
 {
-  "total": 151,
+  "total": 154,
   "caseStudies": [
+    {
+      "id": 139,
+      "sector": "airlines",
+      "slug": "airlines-obscure-routes-booked-flights-uncovering-niche",
+      "title": "From Obscure Routes to Booked Flights: Uncovering Niche Influencer Goldmines with Web Data",
+      "subtitle": "How a Budget Airline Boosted Load Factor on New Routes by Targeting Hyper-Specific Content Creators",
+      "sectorName": "Airlines",
+      "publicationDate": "2025-10-26"
+    },
+    {
+      "id": 140,
+      "sector": "hotels",
+      "slug": "hotels-cutting-spoilage-predictive-event-competitor-data",
+      "title": "Cutting F&B Spoilage by 22% with Predictive Event & Competitor Data",
+      "subtitle": "Using Hyper-Local External Data to Forecast Hotel Restaurant and Bar Inventory Needs",
+      "sectorName": "Hotels",
+      "publicationDate": "2025-10-26"
+    },
+    {
+      "id": 152,
+      "sector": "market-intelligence",
+      "slug": "market-intelligence-uncovering-micro-influencer-goldmines-driving-300-referral",
+      "title": "Uncovering Micro-Influencer Goldmines: Driving 300% Referral Traffic with Predictive Engagement Analysis",
+      "subtitle": "Using Web-Scraped Growth and Engagement Velocity to Identify High-ROI Influencer Partnerships for a DTC Brand",
+      "sectorName": "Market Intelligence",
+      "publicationDate": "2025-10-26"
+    },
     {
       "id": 136,
       "sector": "car-rental",
