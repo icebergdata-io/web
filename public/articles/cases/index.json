@@ -1,6 +1,15 @@
 {
-  "total": 154,
+  "total": 155,
   "caseStudies": [
+    {
+      "id": 156,
+      "sector": "home-services",
+      "slug": "home-services-pinpointing-underserved-suburbs-hvac-expansion-analyzing",
+      "title": "Pinpointing Underserved Suburbs for HVAC Expansion by Analyzing Municipal Permit Data",
+      "subtitle": "Leveraging public building permit databases and competitor service area scraping to forecast untapped market demand for heating and cooling services.",
+      "sectorName": "Home Services",
+      "publicationDate": "2025-10-28"
+    },
     {
       "id": 139,
       "sector": "airlines",
