@@ -1,6 +1,15 @@
 {
-  "total": 155,
+  "total": 156,
   "caseStudies": [
+    {
+      "id": 146,
+      "sector": "lead-generation",
+      "slug": "lead-generation-boosting-saas-conversions-firmographic-driven-dynamic-pricing",
+      "title": "Boosting SaaS Conversions by 40% with Firmographic-Driven Dynamic Pricing",
+      "subtitle": "Leveraging Public Company Data to Tailor Subscription Tiers and Maximize Customer Lifetime Value",
+      "sectorName": "Lead Generation",
+      "publicationDate": "2025-10-29"
+    },
     {
       "id": 156,
       "sector": "home-services",
