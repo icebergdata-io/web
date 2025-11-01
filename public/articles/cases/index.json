@@ -1,6 +1,24 @@
 {
-  "total": 156,
+  "total": 158,
   "caseStudies": [
+    {
+      "id": 164,
+      "sector": "car-rental",
+      "slug": "car-rental-redesigning-rental-funnel-increasing-add-on-sales",
+      "title": "Redesigning the Rental Funnel: Increasing Add-On Sales by 18% with Geospatial Foot Traffic Analysis",
+      "subtitle": "Transforming Airport Rental Kiosks from High-Stress Corridors to High-Revenue Zones",
+      "sectorName": "Car Rental",
+      "publicationDate": "2025-11-01"
+    },
+    {
+      "id": 185,
+      "sector": "food-delivery",
+      "slug": "food-delivery-boosting-off-peak-orders-through-hyper-local-weather",
+      "title": "Boosting Off-Peak Orders by 35% Through Hyper-Local Weather & Event-Based Pricing",
+      "subtitle": "Leveraging Real-Time Environmental Data to Convert Customer Hesitation into Sales",
+      "sectorName": "Food Delivery",
+      "publicationDate": "2025-11-01"
+    },
     {
       "id": 146,
       "sector": "lead-generation",
