@@ -1,6 +1,24 @@
 {
-  "total": 158,
+  "total": 160,
   "caseStudies": [
+    {
+      "id": 161,
+      "sector": "e-commerce",
+      "slug": "e-commerce-closing-innovation-gap-smart-feature-analysis",
+      "title": "Closing the Innovation Gap: How Smart Feature Analysis in Customer Reviews Redefined a Product Roadmap",
+      "subtitle": "Transforming a Smart Home Device from a Market Laggard to a Category Leader by Quantifying User-Requested Features",
+      "sectorName": "E-commerce",
+      "publicationDate": "2025-11-02"
+    },
+    {
+      "id": 166,
+      "sector": "car-rental",
+      "slug": "car-rental-queue-keys-streamlining-car-rental-pickups-geospatial-foot",
+      "title": "From Queue to Keys: Streamlining Car Rental Pickups with Geospatial Foot Traffic Analysis",
+      "subtitle": "Leveraging publicly available Wi-Fi and Bluetooth signal data to eliminate bottlenecks and enhance customer experience at high-volume airport locations.",
+      "sectorName": "Car Rental",
+      "publicationDate": "2025-11-02"
+    },
     {
       "id": 164,
       "sector": "car-rental",
