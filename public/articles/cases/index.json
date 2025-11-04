@@ -1,6 +1,15 @@
 {
-  "total": 160,
+  "total": 161,
   "caseStudies": [
+    {
+      "id": 171,
+      "sector": "hotels",
+      "slug": "hotels-unbundling-competitor-package-deals-data-driven-strategy",
+      "title": "Unbundling Competitor Package Deals: A Data-Driven Strategy to Boost Ancillary Revenue by 18%",
+      "subtitle": "Leveraging Web Scraping to Decode Competitor Bundled Offers and Inform Dynamic Ancillary Pricing",
+      "sectorName": "Hotels",
+      "publicationDate": "2025-11-04"
+    },
     {
       "id": 161,
       "sector": "e-commerce",
