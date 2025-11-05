@@ -1,6 +1,15 @@
 {
-  "total": 161,
+  "total": 162,
   "caseStudies": [
+    {
+      "id": 158,
+      "sector": "e-commerce",
+      "slug": "e-commerce-boosting-margin-event-driven-dynamic-pricing-fan-apparel",
+      "title": "Boosting Margin by 22% with Event-Driven Dynamic Pricing for Fan Apparel",
+      "subtitle": "Leveraging Real-Time Sports Data and Social Sentiment to Automate Pricing & Promotions",
+      "sectorName": "E-commerce",
+      "publicationDate": "2025-11-05"
+    },
     {
       "id": 171,
       "sector": "hotels",
