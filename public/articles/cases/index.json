@@ -1,6 +1,24 @@
 {
-  "total": 162,
+  "total": 164,
   "caseStudies": [
+    {
+      "id": 160,
+      "sector": "e-commerce",
+      "slug": "e-commerce-hack-feature-quantifying-unintended-product-uses",
+      "title": "From Hack to Feature: Quantifying Unintended Product Uses in Customer Reviews to Drive R&D",
+      "subtitle": "Leveraging NLP on review data to transform user-generated 'hacks' into the next generation of smart kitchen appliance features.",
+      "sectorName": "E-commerce",
+      "publicationDate": "2025-11-08"
+    },
+    {
+      "id": 162,
+      "sector": "e-commerce",
+      "slug": "e-commerce-pinpointing-european-market-entry-data-driven-analysis",
+      "title": "Pinpointing European Market Entry: A Data-Driven Analysis of Artisan E-commerce Niches",
+      "subtitle": "Utilizing Marketplace & Social Media Scraping to Identify a €5M Expansion Opportunity in Germany",
+      "sectorName": "E-commerce",
+      "publicationDate": "2025-11-08"
+    },
     {
       "id": 158,
       "sector": "e-commerce",
