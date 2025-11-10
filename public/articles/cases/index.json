@@ -1,6 +1,15 @@
 {
-  "total": 164,
+  "total": 165,
   "caseStudies": [
+    {
+      "id": 186,
+      "sector": "home-services",
+      "slug": "home-services-pinpointing-service-deserts-expanding-specialty-appliance",
+      "title": "Pinpointing Service Deserts: Expanding Specialty Appliance Repair into Untapped Markets",
+      "subtitle": "Leveraging Competitor Service Area Data and Local Search Queries to Identify Profitable New Territories",
+      "sectorName": "Home Services",
+      "publicationDate": "2025-11-10"
+    },
     {
       "id": 160,
       "sector": "e-commerce",
