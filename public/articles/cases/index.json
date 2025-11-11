@@ -1,6 +1,24 @@
 {
-  "total": 165,
+  "total": 167,
   "caseStudies": [
+    {
+      "id": 168,
+      "sector": "airlines",
+      "slug": "airlines-boosting-passenger-satisfaction-through-in-app-feature",
+      "title": "Boosting Passenger Satisfaction by 15% through In-App Feature Gap Analysis",
+      "subtitle": "Leveraging Web-Scraped Customer Reviews to Guide a Data-Driven Airline Product Roadmap",
+      "sectorName": "Airlines",
+      "publicationDate": "2025-11-11"
+    },
+    {
+      "id": 173,
+      "sector": "retail",
+      "slug": "retail-closing-feature-gap-review-scraping-lifted",
+      "title": "Closing the Feature Gap: How Review Scraping Lifted a Private-Label Smart Home Line's Sales by 18%",
+      "subtitle": "Using NLP on Competitor Customer Reviews to Prioritize High-Impact R&D Investments",
+      "sectorName": "Retail",
+      "publicationDate": "2025-11-11"
+    },
     {
       "id": 186,
       "sector": "home-services",
