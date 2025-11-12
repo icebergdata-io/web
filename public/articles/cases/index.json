@@ -1,6 +1,15 @@
 {
-  "total": 167,
+  "total": 168,
   "caseStudies": [
+    {
+      "id": 180,
+      "sector": "manufacturing",
+      "slug": "manufacturing-slashing-reverse-logistics-costs-real-time-carrier",
+      "title": "Slashing Reverse Logistics Costs by 30% Using Real-Time Carrier & Service Portal Aggregation",
+      "subtitle": "Transforming Unpredictable Component Returns into a Proactive, Cost-Efficient Reverse Supply Chain",
+      "sectorName": "Manufacturing",
+      "publicationDate": "2025-11-12"
+    },
     {
       "id": 168,
       "sector": "airlines",
