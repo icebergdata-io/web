@@ -1,6 +1,24 @@
 {
-  "total": 168,
+  "total": 170,
   "caseStudies": [
+    {
+      "id": 177,
+      "sector": "lead-generation",
+      "slug": "lead-generation-automating-tcpa-dnc-compliance-mitigating-legal",
+      "title": "Automating TCPA & DNC Compliance: Mitigating Legal Risk in High-Volume Lead Generation",
+      "subtitle": "Utilizing Real-Time Public Registry Scraping to Ensure Every Lead is Compliant Before Sale",
+      "sectorName": "Lead Generation",
+      "publicationDate": "2025-11-13"
+    },
+    {
+      "id": 184,
+      "sector": "consumer-electronics",
+      "slug": "consumer-electronics-redesigning-in-store-customer-journeys-sales-uplift",
+      "title": "Redesigning In-Store Customer Journeys: A 22% Sales Uplift in High-Margin Accessories Using Foot Traffic Heatmaps",
+      "subtitle": "Leveraging Scraped Local Event Data and Internal Sensor Feeds to Strategically Reposition Demo Stations and Accessory Displays",
+      "sectorName": "Consumer Electronics",
+      "publicationDate": "2025-11-13"
+    },
     {
       "id": 180,
       "sector": "manufacturing",
