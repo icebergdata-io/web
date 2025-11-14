@@ -1,6 +1,15 @@
 {
-  "total": 170,
+  "total": 171,
   "caseStudies": [
+    {
+      "id": 174,
+      "sector": "retail",
+      "slug": "retail-mapping-in-store-cold-zones-pathing-analysis",
+      "title": "Mapping In-Store 'Cold Zones': How Pathing Analysis Lifted High-Margin Sales by 22%",
+      "subtitle": "Transforming Anonymized Wi-Fi Data into Actionable Store Layout Redesigns for a National Home Improvement Retailer",
+      "sectorName": "Retail",
+      "publicationDate": "2025-11-14"
+    },
     {
       "id": 177,
       "sector": "lead-generation",
