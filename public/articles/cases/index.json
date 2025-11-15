@@ -1,6 +1,15 @@
 {
-  "total": 171,
+  "total": 172,
   "caseStudies": [
+    {
+      "id": 183,
+      "sector": "market-intelligence",
+      "slug": "market-intelligence-uncovering-niche-influencers-analyzing-unstructured-forum",
+      "title": "Uncovering Niche Influencers by Analyzing Unstructured Forum & Discord Data",
+      "subtitle": "Driving a 40% Engagement Uplift by Tapping into Authentic Hobbyist Communities",
+      "sectorName": "Market Intelligence",
+      "publicationDate": "2025-11-15"
+    },
     {
       "id": 174,
       "sector": "retail",
