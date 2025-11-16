@@ -1,6 +1,33 @@
 {
-  "total": 172,
+  "total": 175,
   "caseStudies": [
+    {
+      "id": 169,
+      "sector": "airlines",
+      "slug": "airlines-proactive-tarmac-delay-mitigation-aggregating-real-time",
+      "title": "Proactive Tarmac Delay Mitigation by Aggregating Real-Time Airport Operations Data",
+      "subtitle": "Using Real-Time Data Scraping to Predict and Prevent Costly DOT Tarmac Delay Violations",
+      "sectorName": "Airlines",
+      "publicationDate": "2025-11-16"
+    },
+    {
+      "id": 170,
+      "sector": "hotels",
+      "slug": "hotels-reducing-perishable-food-spoilage-real-time-supplier",
+      "title": "Reducing Perishable Food Spoilage by 30% with Real-Time Supplier Inventory Scraping",
+      "subtitle": "Leveraging public supplier data to dynamically adjust hotel kitchen procurement and minimize waste for a luxury hotel group.",
+      "sectorName": "Hotels",
+      "publicationDate": "2025-11-16"
+    },
+    {
+      "id": 172,
+      "sector": "hotels",
+      "slug": "hotels-closing-wellness-gap-hotel-chain-lifted-guest-satisfaction",
+      "title": "Closing the Wellness Gap: How a Hotel Chain Lifted Guest Satisfaction by 15% Using Review Sentiment Analysis",
+      "subtitle": "Leveraging Web-Scraped Guest Feedback to Prioritize High-Impact Amenity Investments",
+      "sectorName": "Hotels",
+      "publicationDate": "2025-11-16"
+    },
     {
       "id": 183,
       "sector": "market-intelligence",
