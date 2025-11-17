@@ -1,6 +1,24 @@
 {
-  "total": 175,
+  "total": 177,
   "caseStudies": [
+    {
+      "id": 175,
+      "sector": "retail",
+      "slug": "retail-slashing-last-mile-delivery-costs-hyper-local-event",
+      "title": "Slashing Last-Mile Delivery Costs by 18% with Hyper-Local Event Data Scraping",
+      "subtitle": "Transforming static delivery routes into dynamic, event-aware paths to boost efficiency and customer satisfaction.",
+      "sectorName": "Retail",
+      "publicationDate": "2025-11-17"
+    },
+    {
+      "id": 176,
+      "sector": "lead-generation",
+      "slug": "lead-generation-unlocking-uplift-qualified-leads-analyzing-competitor",
+      "title": "Unlocking a 30% Uplift in Qualified Leads by Analyzing Competitor Feature Gaps in B2B Software Reviews",
+      "subtitle": "Transforming Publicly Voiced Product Frustrations into Targeted Sales Opportunities",
+      "sectorName": "Lead Generation",
+      "publicationDate": "2025-11-17"
+    },
     {
       "id": 169,
       "sector": "airlines",
