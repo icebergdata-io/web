@@ -1,6 +1,42 @@
 {
-  "total": 177,
+  "total": 181,
   "caseStudies": [
+    {
+      "id": 157,
+      "sector": "e-commerce",
+      "slug": "e-commerce-reversing-sales-dip-pinpointing-greenwashing-accusations",
+      "title": "Reversing a 30% Sales Dip by Pinpointing Greenwashing Accusations with Sentiment Analysis",
+      "subtitle": "How a Sustainable E-commerce Brand Used Web-Scraped Review & Forum Data to Salvage a Product Launch",
+      "sectorName": "E-commerce",
+      "publicationDate": "2025-11-18"
+    },
+    {
+      "id": 163,
+      "sector": "car-rental",
+      "slug": "car-rental-closing-weekend-profit-gap-hyper-local-demand-sensing",
+      "title": "Closing the Weekend Profit Gap: A Hyper-Local Demand-Sensing Strategy for Dynamic Rental Pricing",
+      "subtitle": "Leveraging public event data and competitor fleet availability to automate pricing adjustments for maximum weekend occupancy.",
+      "sectorName": "Car Rental",
+      "publicationDate": "2025-11-18"
+    },
+    {
+      "id": 167,
+      "sector": "airlines",
+      "slug": "airlines-uncovering-latent-demand-identifying-high-yield-corporate",
+      "title": "Uncovering Latent Demand: Identifying High-Yield Corporate Travel Corridors with Cross-Industry Data Scraping",
+      "subtitle": "Using Web Data from Job Portals, Tech News, and Conference Listings to Prioritize New International Routes",
+      "sectorName": "Airlines",
+      "publicationDate": "2025-11-18"
+    },
+    {
+      "id": 182,
+      "sector": "market-intelligence",
+      "slug": "market-intelligence-increasing-station-utilization-through-geospatial-expansion",
+      "title": "Increasing EV Station Utilization by 40% Through Geospatial Expansion Analysis",
+      "subtitle": "Leveraging Competitor, Point-of-Interest, and Local Sentiment Data to De-Risk Infrastructure Investment",
+      "sectorName": "Market Intelligence",
+      "publicationDate": "2025-11-18"
+    },
     {
       "id": 175,
       "sector": "retail",
