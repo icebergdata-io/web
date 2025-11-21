@@ -1,6 +1,15 @@
 {
-  "total": 181,
+  "total": 182,
   "caseStudies": [
+    {
+      "id": 181,
+      "sector": "manufacturing",
+      "slug": "manufacturing-pinpointing-niche-technical-influencers-cnc-manufacturer",
+      "title": "Pinpointing Niche Technical Influencers: How a CNC Manufacturer Boosted Product Launch Reach by 400%",
+      "subtitle": "Leveraging Web Data to Discover and Vet Authentic 'Maker' Community Advocates",
+      "sectorName": "Manufacturing",
+      "publicationDate": "2025-11-21"
+    },
     {
       "id": 157,
       "sector": "e-commerce",
