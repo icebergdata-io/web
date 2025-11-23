@@ -1,6 +1,24 @@
 {
-  "total": 182,
+  "total": 184,
   "caseStudies": [
+    {
+      "id": 159,
+      "sector": "e-commerce",
+      "slug": "e-commerce-unlocking-niche-markets-data-scraping-identified",
+      "title": "Unlocking Niche Markets: How Data Scraping Identified Micro-Influencers with 300% Higher Engagement Rates",
+      "subtitle": "Pinpointing Authentic Voices in Crowded E-commerce Verticals to Drive Targeted Traffic and Conversions",
+      "sectorName": "E-commerce",
+      "publicationDate": "2025-11-23"
+    },
+    {
+      "id": 179,
+      "sector": "healthcare",
+      "slug": "healthcare-reducing-clinic-congestion-patient-flow-public",
+      "title": "Reducing Clinic Congestion by 22% Using Patient Flow & Public Data Triangulation",
+      "subtitle": "Correlating Internal Foot Traffic with Scraped Public Reviews and Transit Data to Redesign a High-Volume Outpatient Center",
+      "sectorName": "Healthcare",
+      "publicationDate": "2025-11-23"
+    },
     {
       "id": 181,
       "sector": "manufacturing",
