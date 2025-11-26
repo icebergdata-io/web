@@ -1,6 +1,15 @@
 {
-  "total": 184,
+  "total": 185,
   "caseStudies": [
+    {
+      "id": 178,
+      "sector": "healthcare",
+      "slug": "healthcare-winning-bid-securing-contract-win-rate-increase",
+      "title": "Winning the Bid: Securing a 12% Contract Win-Rate Increase Through Medical Device Tender Scraping",
+      "subtitle": "Leveraging Public Procurement Data to Uncover Competitor Pricing in the B2B Healthcare Market",
+      "sectorName": "Healthcare",
+      "publicationDate": "2025-11-26"
+    },
     {
       "id": 159,
       "sector": "e-commerce",
