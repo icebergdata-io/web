@@ -1,6 +1,15 @@
 {
-  "total": 185,
+  "total": 186,
   "caseStudies": [
+    {
+      "id": 165,
+      "sector": "car-rental",
+      "slug": "car-rental-queue-keys-halving-customer-wait-times-car-rental",
+      "title": "From Queue to Keys: Halving Customer Wait Times in Car Rental Lobbies with Foot Traffic Flow Analysis",
+      "subtitle": "Leveraging Public Geospatial and Review Data to Redesign High-Traffic Airport Rental Counters for Maximum Efficiency and Upsell Potential",
+      "sectorName": "Car Rental",
+      "publicationDate": "2025-11-29"
+    },
     {
       "id": 178,
       "sector": "healthcare",
