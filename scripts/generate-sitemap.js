@@ -9,6 +9,20 @@ const __dirname = path.dirname(__filename);
 const BASE_URL = 'https://www.icebergdata.co'; // Production URL with www
 const casesDir = path.join(__dirname, '../public/articles/cases');
 
+/**
+ * Escapes XML entities in a string
+ * @param {string} str - String to escape
+ * @returns {string} - XML-escaped string
+ */
+function escapeXml(str) {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
 // Maximum URL length (characters)
 const MAX_URL_LENGTH = 80;
 
@@ -200,7 +214,7 @@ async function generateSitemap() {
     <priority>0.5</priority>
   </url>
   ${sortedCaseStudies.map(study => `  <url>
-    <loc>${BASE_URL}/case-study/${study.sector}/${study.slug}</loc>
+    <loc>${escapeXml(`${BASE_URL}/case-study/${study.sector}/${study.slug}`)}</loc>
     <lastmod>${study.publicationDate || today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
