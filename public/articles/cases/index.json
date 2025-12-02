@@ -1,6 +1,24 @@
 {
-  "total": 186,
+  "total": 188,
   "caseStudies": [
+    {
+      "id": 191,
+      "sector": "e-commerce",
+      "slug": "e-commerce-mapping-unboxing-journey-dtc-brand-reversed-dip-loyalty",
+      "title": "Mapping the Unboxing Journey: How a DTC Brand Reversed a 15% Dip in Loyalty by Analyzing Video Sentiment",
+      "subtitle": "Leveraging Public Video and Social Media Data to Quantify the First Physical Touchpoint and Refine Packaging Strategy",
+      "sectorName": "E-commerce",
+      "publicationDate": "2025-12-02"
+    },
+    {
+      "id": 202,
+      "sector": "hotels",
+      "slug": "hotels-automating-resort-fee-disclosure-audits-ensure",
+      "title": "Automating Resort Fee Disclosure Audits to Ensure Compliance and Avoid Costly Fines",
+      "subtitle": "How a major hotel group used web scraping to monitor pricing transparency across hundreds of booking platforms and mitigate regulatory risk.",
+      "sectorName": "Hotels",
+      "publicationDate": "2025-12-02"
+    },
     {
       "id": 165,
       "sector": "car-rental",
