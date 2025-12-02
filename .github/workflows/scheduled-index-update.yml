@@ -34,20 +34,46 @@ jobs:
           echo "🔄 Regenerating case studies index..."
           node scripts/regenerate-index.js
 
-      - name: Check for changes (index file only)
+      - name: Validate sitemap XML
+        run: |
+          echo "🔍 Validating generated sitemap XML..."
+          if command -v xmllint &> /dev/null; then
+            xmllint --noout public/sitemap.xml
+            echo "✅ Sitemap XML is valid"
+          else
+            echo "⚠️ xmllint not available, skipping XML validation"
+          fi
+
+      - name: Check for changes (index and sitemap files)
         id: verify-changed-files
         shell: bash
         run: |
           set -euo pipefail
-          FILE="public/articles/cases/index.json"
-          # Make diff notice a newly created file without staging it
-          git add -N "$FILE" || true
-          if git diff --quiet --exit-code -- "$FILE"; then
-            echo 'changed=false' >> "$GITHUB_OUTPUT"
-            echo '✅ No changes to index file'
-          else
-            echo 'changed=true' >> "$GITHUB_OUTPUT"
+          INDEX_FILE="public/articles/cases/index.json"
+          SITEMAP_FILE="public/sitemap.xml"
+
+          # Check both files for changes
+          git add -N "$INDEX_FILE" "$SITEMAP_FILE" || true
+
+          INDEX_CHANGED=false
+          SITEMAP_CHANGED=false
+
+          if ! git diff --quiet --exit-code -- "$INDEX_FILE"; then
+            INDEX_CHANGED=true
             echo '📝 Changes detected in index file'
+          fi
+
+          if ! git diff --quiet --exit-code -- "$SITEMAP_FILE"; then
+            SITEMAP_CHANGED=true
+            echo '📝 Changes detected in sitemap file'
+          fi
+
+          if [[ "$INDEX_CHANGED" == "true" || "$SITEMAP_CHANGED" == "true" ]]; then
+            echo 'changed=true' >> "$GITHUB_OUTPUT"
+            echo '✅ Changes detected in index or sitemap files'
+          else
+            echo 'changed=false' >> "$GITHUB_OUTPUT"
+            echo '✅ No changes to index or sitemap files'
           fi
 
       - name: Commit and push changes
@@ -55,12 +81,12 @@ jobs:
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add public/articles/cases/index.json
-          git commit -m "🤖 Auto-update case studies index - reveal scheduled content"
+          git add public/articles/cases/index.json public/sitemap.xml
+          git commit -m "🤖 Auto-update case studies index and sitemap - reveal scheduled content"
           git push
-          echo "✅ Index updated and pushed to repository"
+          echo "✅ Index and sitemap updated and pushed to repository"
 
       - name: No changes message
         if: steps.verify-changed-files.outputs.changed == 'false'
         run: |
-          echo "ℹ️ No new case studies to reveal today"
+          echo "ℹ️ No new case studies to reveal today - index and sitemap unchanged"
