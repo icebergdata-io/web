@@ -1,6 +1,15 @@
 {
-  "total": 188,
+  "total": 189,
   "caseStudies": [
+    {
+      "id": 187,
+      "sector": "e-commerce",
+      "slug": "e-commerce-boosting-average-order-value-through-competitor-kit-bundle",
+      "title": "Boosting Average Order Value by 18% Through Competitor Kit & Bundle Price Analysis",
+      "subtitle": "Using Web-Scraped Data to Deconstruct Competitor Product Bundles and Optimize Pricing for Higher Margins",
+      "sectorName": "E-commerce",
+      "publicationDate": "2025-12-03"
+    },
     {
       "id": 191,
       "sector": "e-commerce",
