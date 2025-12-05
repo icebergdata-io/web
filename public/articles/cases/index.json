@@ -1,6 +1,42 @@
 {
-  "total": 189,
+  "total": 193,
   "caseStudies": [
+    {
+      "id": 189,
+      "sector": "e-commerce",
+      "slug": "e-commerce-hack-feature-scraping-user-reviews-uncovered-niche-smart",
+      "title": "From Hack to Feature: How Scraping User Reviews Uncovered a $2M Niche for a Smart Appliance Brand",
+      "subtitle": "Leveraging Natural Language Processing on Customer Feedback to Drive R&D and Target Untapped Markets",
+      "sectorName": "E-commerce",
+      "publicationDate": "2025-12-05"
+    },
+    {
+      "id": 206,
+      "sector": "lead-generation",
+      "slug": "lead-generation-data-deal-pinpointing-logistics-bottlenecks-generate",
+      "title": "From Data to Deal: Pinpointing Logistics Bottlenecks to Generate Qualified 3PL Sales Leads",
+      "subtitle": "Using Real-Time Port Congestion and Carrier Delay Data to Target Businesses with Inefficient Supply Chains",
+      "sectorName": "Lead Generation",
+      "publicationDate": "2025-12-05"
+    },
+    {
+      "id": 210,
+      "sector": "manufacturing",
+      "slug": "manufacturing-optimizing-just-in-time-inventory-perishable-adhesives-real-time",
+      "title": "Optimizing Just-in-Time Inventory for Perishable Adhesives with Real-Time Weather & Logistics Data",
+      "subtitle": "Leveraging external data feeds to prevent costly adhesive material spoilage in aerospace component assembly.",
+      "sectorName": "Manufacturing",
+      "publicationDate": "2025-12-05"
+    },
+    {
+      "id": 215,
+      "sector": "food-delivery",
+      "slug": "food-delivery-maximizing-order-volume-through-granular-fee",
+      "title": "Maximizing Order Volume by 18% Through Granular Fee & Promotion Intelligence",
+      "subtitle": "Deconstructing Competitor Total Order Costs to Win at Checkout",
+      "sectorName": "Food Delivery",
+      "publicationDate": "2025-12-05"
+    },
     {
       "id": 187,
       "sector": "e-commerce",
