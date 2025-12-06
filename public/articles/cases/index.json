@@ -1,6 +1,33 @@
 {
-  "total": 193,
+  "total": 196,
   "caseStudies": [
+    {
+      "id": 195,
+      "sector": "car-rental",
+      "slug": "car-rental-boosting-ancillary-revenue-through-granular-competitor",
+      "title": "Boosting Ancillary Revenue by 18% Through Granular Competitor Add-On Pricing Analysis",
+      "subtitle": "Moving Beyond Base Car Rental Rates to Capture Hidden Profit in Ancillary Services",
+      "sectorName": "Car Rental",
+      "publicationDate": "2025-12-06"
+    },
+    {
+      "id": 199,
+      "sector": "airlines",
+      "slug": "airlines-booking-baggage-claim-lifting-customer-satisfaction",
+      "title": "From Booking to Baggage Claim: Lifting Customer Satisfaction by 18% with Touchpoint Sentiment Analysis",
+      "subtitle": "Leveraging public travel forum and social media data to deconstruct the passenger journey and prioritize operational improvements.",
+      "sectorName": "Airlines",
+      "publicationDate": "2025-12-06"
+    },
+    {
+      "id": 214,
+      "sector": "consumer-electronics",
+      "slug": "consumer-electronics-maximizing-refurbished-electronics-margins-real-time-condition-based",
+      "title": "Maximizing Refurbished Electronics Margins by 18% with Real-Time Condition-Based Price Scraping",
+      "subtitle": "Automating Competitive Analysis for the Dynamic Second-Hand Gadget Market",
+      "sectorName": "Consumer Electronics",
+      "publicationDate": "2025-12-06"
+    },
     {
       "id": 189,
       "sector": "e-commerce",
