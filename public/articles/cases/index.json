@@ -1,6 +1,15 @@
 {
-  "total": 196,
+  "total": 197,
   "caseStudies": [
+    {
+      "id": 203,
+      "sector": "retail",
+      "slug": "retail-deconstructing-competitor-roi-pinpointing-high-value-influencers",
+      "title": "Deconstructing Competitor ROI: Pinpointing High-Value Influencers by Scraping DTC Campaign Performance",
+      "subtitle": "Leveraging Public Engagement Data to Reverse-Engineer Competitor Influencer Marketing Playbooks",
+      "sectorName": "Retail",
+      "publicationDate": "2025-12-08"
+    },
     {
       "id": 195,
       "sector": "car-rental",
