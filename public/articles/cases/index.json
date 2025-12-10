@@ -1,6 +1,33 @@
 {
-  "total": 197,
+  "total": 200,
   "caseStudies": [
+    {
+      "id": 190,
+      "sector": "e-commerce",
+      "slug": "e-commerce-quantifying-authenticity-tracking-greenwashing-accusations-validate",
+      "title": "Quantifying Authenticity: Tracking 'Greenwashing' Accusations to Validate a 15% Lift in Brand Trust",
+      "subtitle": "Using Niche Forum and Blog Scraping to Differentiate Genuine Customer Sentiment from Marketing Skepticism in Sustainable E-commerce",
+      "sectorName": "E-commerce",
+      "publicationDate": "2025-12-10"
+    },
+    {
+      "id": 193,
+      "sector": "car-rental",
+      "slug": "car-rental-frustration-feature-analyzing-100000-customer-reviews",
+      "title": "From Frustration to Feature: Analyzing 100,000+ Customer Reviews to Redefine the 'Premium' Car Rental Experience",
+      "subtitle": "Leveraging Large-Scale Sentiment Analysis to Pinpoint High-Demand, Low-Cost Digital Features for a Leading Car Rental Fleet",
+      "sectorName": "Car Rental",
+      "publicationDate": "2025-12-10"
+    },
+    {
+      "id": 211,
+      "sector": "manufacturing",
+      "slug": "manufacturing-workshop-wishlist-uncovering-maker-influencers-boost",
+      "title": "From Workshop to Wishlist: Uncovering 'Maker' Influencers to Boost CNC Machine Sales by 40%",
+      "subtitle": "Leveraging Social Media & Forum Data to Connect with Authentic B2B Creators and Technical Experts",
+      "sectorName": "Manufacturing",
+      "publicationDate": "2025-12-10"
+    },
     {
       "id": 203,
       "sector": "retail",
