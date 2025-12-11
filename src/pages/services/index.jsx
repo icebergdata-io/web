@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import SEO from '../../components/SEO';
 import PageLayout from '../../components/PageLayout';
+import { generateServiceBreadcrumbSchema } from '../../utils/serviceSchema';
 
 const services = [
   {
@@ -48,15 +50,64 @@ const ServicesPage = () => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
+  // Generate structured data for SEO
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.icebergdata.co/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Services",
+        "item": "https://www.icebergdata.co/services"
+      }
+    ]
+  };
+
+  const collectionPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Our Services",
+    "description": "Comprehensive data services including web scraping, data integration, and custom solutions for your business needs.",
+    "url": "https://www.icebergdata.co/services",
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": services.map((service, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "name": service.title,
+        "description": service.description,
+        "url": `https://www.icebergdata.co${service.link}`
+      }))
+    }
+  };
+
   return (
-    <PageLayout
-      title="Our Services - Iceberg Data | Web Scraping & Data Integration Solutions"
-      description="Explore our comprehensive data services including web scraping, data integration, and custom solutions for your business needs."
-      breadcrumbItems={[
-        { label: 'Home', to: '/' },
-        { label: 'Services' }
-      ]}
-    >
+    <>
+      {/* Structured Data */}
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(collectionPageSchema)}
+        </script>
+      </Helmet>
+      
+      <PageLayout
+        title="Our Services - Iceberg Data | Web Scraping & Data Integration Solutions"
+        description="Explore our comprehensive data services including web scraping, data integration, and custom solutions for your business needs."
+        breadcrumbItems={[
+          { label: 'Home', to: '/' },
+          { label: 'Services' }
+        ]}
+      >
       <SEO
         title="Our Services - Iceberg Data | Web Scraping & Data Integration Solutions"
         description="Explore our comprehensive data services including web scraping, data integration, and custom solutions for your business needs."
@@ -151,7 +202,8 @@ const ServicesPage = () => {
           </Link>
         </div>
       </div>
-    </PageLayout>
+      </PageLayout>
+    </>
   );
 };
 

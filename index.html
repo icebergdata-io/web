@@ -33,20 +33,6 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Iceberg Data",
-        "url": "https://www.icebergdata.co",
-        "logo": "https://www.icebergdata.co/og-logo.png",
-        "description": "Enterprise web scraping and data integration solutions provider, specializing in building and maintaining reliable data collection systems.",
-        "sameAs": [
-          "https://www.linkedin.com/company/icebergdataio/",
-          "https://x.com/icebergdata"
-        ]
-      }
-    </script>
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
         "@type": "WebSite",
         "name": "Iceberg Data",
         "url": "https://www.icebergdata.co",
@@ -64,7 +50,15 @@
         "name": "Enterprise Web Scraping Services",
         "provider": {
           "@type": "Organization",
-          "name": "Iceberg Data"
+          "@id": "https://www.icebergdata.co/#organization",
+          "name": "Iceberg Data",
+          "url": "https://www.icebergdata.co",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.icebergdata.co/og-logo.png",
+            "width": 1200,
+            "height": 1200
+          }
         },
         "serviceType": "Web Scraping & Data Collection",
         "description": "Professional web scraping service with daily automated data collection and maintenance. Enterprise-grade web scrapers built and maintained by experts.",
@@ -73,7 +67,40 @@
           "availability": "https://schema.org/InStock",
           "price": "Custom",
           "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "100+",
+          "bestRating": "5",
+          "worstRating": "1"
         }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": "https://www.icebergdata.co/#organization",
+        "name": "Iceberg Data",
+        "url": "https://www.icebergdata.co",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.icebergdata.co/og-logo.png",
+          "width": 1200,
+          "height": 1200
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "100+",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/company/icebergdataio/",
+          "https://x.com/icebergdata"
+        ]
       }
     </script>
     

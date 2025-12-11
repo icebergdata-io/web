@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import SEO from '../../components/SEO';
 import CalendlyPopup from '../../components/CalendlyPopup';
 import PageLayout from '../../components/PageLayout';
+import { generateServiceSchema, generateServiceBreadcrumbSchema } from '../../utils/serviceSchema';
 
 const features = [
   {
@@ -139,16 +141,41 @@ const WebScrapingPage = () => {
     }
   }, []);
 
+  // Generate structured data for SEO
+  const serviceSchema = generateServiceSchema({
+    name: "Web Scraping Solutions",
+    description: "Enterprise-grade web scraping infrastructure for reliable and scalable data extraction. Access premium networks, AI-powered solutions, and expert support with 24/7 monitoring.",
+    serviceType: "Web Scraping & Data Extraction",
+    url: "https://www.icebergdata.co/services/web-scraping",
+    aggregateRating: {
+      ratingValue: "4.9",
+      reviewCount: "100+"
+    }
+  });
+
+  const breadcrumbSchema = generateServiceBreadcrumbSchema("Web Scraping Solutions", "/services/web-scraping");
+
   return (
-    <PageLayout
-      title="Web Scraping Solutions - Iceberg Data | Enterprise Data Extraction"
-      description="Enterprise-grade web scraping infrastructure for reliable and scalable data extraction. Access premium networks, AI-powered solutions, and expert support."
-      breadcrumbItems={[
-        { label: 'Home', to: '/' },
-        { label: 'Services', to: '/services' },
-        { label: 'Web Scraping Solutions', to: '/services/web-scraping' }
-      ]}
-    >
+    <>
+      {/* Structured Data */}
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(serviceSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbSchema)}
+        </script>
+      </Helmet>
+      
+      <PageLayout
+        title="Web Scraping Solutions - Iceberg Data | Enterprise Data Extraction"
+        description="Enterprise-grade web scraping infrastructure for reliable and scalable data extraction. Access premium networks, AI-powered solutions, and expert support."
+        breadcrumbItems={[
+          { label: 'Home', to: '/' },
+          { label: 'Services', to: '/services' },
+          { label: 'Web Scraping Solutions', to: '/services/web-scraping' }
+        ]}
+      >
       <div id="web-scraping" className="container mx-auto px-4 py-16 sm:py-24 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
           <Link 
@@ -406,7 +433,8 @@ const WebScrapingPage = () => {
         isOpen={showCalendly}
         onClose={() => setShowCalendly(false)}
       />
-    </PageLayout>
+      </PageLayout>
+    </>
   );
 };
 

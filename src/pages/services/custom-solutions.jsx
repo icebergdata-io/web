@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import SEO from '../../components/SEO';
 import CalendlyPopup from '../../components/CalendlyPopup';
 import PageLayout from '../../components/PageLayout';
+import { generateServiceSchema, generateServiceBreadcrumbSchema } from '../../utils/serviceSchema';
 
 const benefits = [
   {
@@ -190,16 +192,41 @@ const CustomSolutionsPage = () => {
     }
   };
 
+  // Generate structured data for SEO
+  const serviceSchema = generateServiceSchema({
+    name: "Custom Solutions",
+    description: "Get custom-built data solutions designed specifically for your business needs. From architecture design to ongoing support, we've got you covered with scalable, future-proof solutions.",
+    serviceType: "Custom Data Solutions",
+    url: "https://www.icebergdata.co/services/custom-solutions",
+    aggregateRating: {
+      ratingValue: "4.9",
+      reviewCount: "100+"
+    }
+  });
+
+  const breadcrumbSchema = generateServiceBreadcrumbSchema("Custom Solutions", "/services/custom-solutions");
+
   return (
-    <PageLayout
-      title="Custom Solutions - Iceberg Data | Tailored Data Solutions"
-      description="Get custom-built data solutions designed specifically for your business needs. From architecture design to ongoing support, we've got you covered."
-      breadcrumbItems={[
-        { label: 'Home', to: '/' },
-        { label: 'Services', to: '/services' },
-        { label: 'Custom Solutions', to: '/services/custom-solutions' }
-      ]}
-    >
+    <>
+      {/* Structured Data */}
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(serviceSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbSchema)}
+        </script>
+      </Helmet>
+      
+      <PageLayout
+        title="Custom Solutions - Iceberg Data | Tailored Data Solutions"
+        description="Get custom-built data solutions designed specifically for your business needs. From architecture design to ongoing support, we've got you covered."
+        breadcrumbItems={[
+          { label: 'Home', to: '/' },
+          { label: 'Services', to: '/services' },
+          { label: 'Custom Solutions', to: '/services/custom-solutions' }
+        ]}
+      >
       <div id="custom-solutions" className="container mx-auto px-4 py-16 sm:py-24 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
           <Link 
@@ -499,7 +526,8 @@ const CustomSolutionsPage = () => {
         isOpen={showCalendly}
         onClose={() => setShowCalendly(false)}
       />
-    </PageLayout>
+      </PageLayout>
+    </>
   );
 };
 

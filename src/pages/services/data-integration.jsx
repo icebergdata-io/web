@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import SEO from '../../components/SEO';
 import CalendlyPopup from '../../components/CalendlyPopup';
 import PageLayout from '../../components/PageLayout';
+import { generateServiceSchema, generateServiceBreadcrumbSchema } from '../../utils/serviceSchema';
 
 const features = [
   {
@@ -215,16 +217,41 @@ const DataIntegrationPage = () => {
     setExpandedFeature(expandedFeature === featureId ? null : featureId);
   };
 
+  // Generate structured data for SEO
+  const serviceSchema = generateServiceSchema({
+    name: "Data Cleaning & Normalization",
+    description: "Advanced AI algorithms for data cleaning, standardization, and enrichment. Improve data accuracy by 99.9% and reduce preparation time by 80% with automated workflows.",
+    serviceType: "Data Integration & Cleaning",
+    url: "https://www.icebergdata.co/services/data-integration",
+    aggregateRating: {
+      ratingValue: "4.9",
+      reviewCount: "100+"
+    }
+  });
+
+  const breadcrumbSchema = generateServiceBreadcrumbSchema("Data Cleaning & Normalization", "/services/data-integration");
+
   return (
-    <PageLayout
-      title="Data Cleaning & Normalization - Iceberg Data | AI-Powered Data Quality"
-      description="Advanced AI algorithms for data cleaning, standardization, and enrichment. Improve data accuracy by 99.9% and reduce preparation time by 80%."
-      breadcrumbItems={[
-        { label: 'Home', to: '/' },
-        { label: 'Services', to: '/services' },
-        { label: 'Data Cleaning & Normalization', to: '/services/data-integration' }
-      ]}
-    >
+    <>
+      {/* Structured Data */}
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(serviceSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbSchema)}
+        </script>
+      </Helmet>
+      
+      <PageLayout
+        title="Data Cleaning & Normalization - Iceberg Data | AI-Powered Data Quality"
+        description="Advanced AI algorithms for data cleaning, standardization, and enrichment. Improve data accuracy by 99.9% and reduce preparation time by 80%."
+        breadcrumbItems={[
+          { label: 'Home', to: '/' },
+          { label: 'Services', to: '/services' },
+          { label: 'Data Cleaning & Normalization', to: '/services/data-integration' }
+        ]}
+      >
       <div id="data-integration" className="container mx-auto px-4 py-16 sm:py-24 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
           <Link 
@@ -417,7 +444,8 @@ const DataIntegrationPage = () => {
         isOpen={showCalendly}
         onClose={() => setShowCalendly(false)}
       />
-    </PageLayout>
+      </PageLayout>
+    </>
   );
 };
 
