@@ -29,7 +29,7 @@
       "destination": "/index.html"
     },
     {
-      "source": "/((?!api/).*)",
+      "source": "/:path*",
       "destination": "/index.html"
     }
   ],
