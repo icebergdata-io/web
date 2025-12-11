@@ -62,24 +62,37 @@ function createShortSlug(title, sector) {
   return `${sectorSlug}-${slug}`;
 }
 
-// Define service pages
-const servicePages = [
-  {
-    url: '/services',
-    priority: '0.9'
-  },
-  {
-    url: '/services/web-scraping',
-    priority: '0.8'
-  },
-  {
-    url: '/services/data-integration',
-    priority: '0.8'
-  },
-  {
-    url: '/services/custom-solutions',
-    priority: '0.8'
+/**
+ * Gets the last modified date (YYYY-MM-DD) for a source file
+ * Falls back to today's date if the file can't be read
+ * @param {string} relativePath - Relative path from repo root
+ * @returns {string}
+ */
+function getLastModified(relativePath) {
+  try {
+    const filePath = path.join(__dirname, '..', relativePath);
+    const stats = fs.statSync(filePath);
+    return stats.mtime.toISOString().split('T')[0];
+  } catch (error) {
+    console.warn(`⚠️ Could not determine last modified for ${relativePath}: ${error.message}`);
+    return new Date().toISOString().split('T')[0];
   }
+}
+
+const staticPages = [
+  { url: '/', priority: '1.0', changefreq: 'weekly', file: 'src/pages/Home.jsx' },
+  { url: '/press', priority: '0.8', changefreq: 'weekly', file: 'src/pages/PressCoverage.jsx' },
+  { url: '/services', priority: '0.9', changefreq: 'weekly', file: 'src/pages/services/index.jsx' },
+  { url: '/services/web-scraping', priority: '0.8', changefreq: 'weekly', file: 'src/pages/services/web-scraping.jsx' },
+  { url: '/services/data-integration', priority: '0.8', changefreq: 'weekly', file: 'src/pages/services/data-integration.jsx' },
+  { url: '/services/custom-solutions', priority: '0.8', changefreq: 'weekly', file: 'src/pages/services/custom-solutions.jsx' },
+  { url: '/car-rental', priority: '0.8', changefreq: 'monthly', file: 'src/pages/industry_landings/CarRentalLanding.jsx' },
+  { url: '/case-studies', priority: '0.9', changefreq: 'weekly', file: 'src/pages/CaseStudies.jsx', useLatestCaseStudyDate: true },
+  { url: '/privacy', priority: '0.5', changefreq: 'yearly', file: 'src/pages/PrivacyPage.jsx' },
+  { url: '/terms', priority: '0.5', changefreq: 'yearly', file: 'src/pages/TermsPage.jsx' },
+  { url: '/cookies', priority: '0.4', changefreq: 'yearly', file: 'src/pages/CookiesPage.jsx' },
+  { url: '/refund', priority: '0.4', changefreq: 'yearly', file: 'src/pages/RefundPage.jsx' },
+  { url: '/refund-policy', priority: '0.4', changefreq: 'yearly', file: 'src/pages/RefundPage.jsx' }
 ];
 
 async function generateCaseStudyIndex() {
@@ -181,44 +194,30 @@ async function generateSitemap() {
   const today = new Date().toISOString().split('T')[0];
 
   // Generate sitemap XML
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>${BASE_URL}/</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>${BASE_URL}/press</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  ${servicePages.map(page => `  <url>
-    <loc>${BASE_URL}${page.url}</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
+  const latestCaseStudyDate = sortedCaseStudies.find(study => study.publicationDate)?.publicationDate || today;
+
+  const staticEntries = staticPages.map(page => {
+    const lastmod = page.useLatestCaseStudyDate ? latestCaseStudyDate : getLastModified(page.file);
+    const loc = page.url === '/' ? `${BASE_URL}/` : `${BASE_URL}${page.url}`;
+    return `  <url>
+    <loc>${loc}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>${page.changefreq}</changefreq>
     <priority>${page.priority}</priority>
-  </url>`).join('\n')}
-  <url>
-    <loc>${BASE_URL}/case-studies</loc>
-    <lastmod>${sortedCaseStudies.length > 0 ? sortedCaseStudies[0].publicationDate : today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>${BASE_URL}/refund-policy</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  ${sortedCaseStudies.map(study => `  <url>
+  </url>`;
+  }).join('\n');
+
+  const caseStudyEntries = sortedCaseStudies.map(study => `  <url>
     <loc>${escapeXml(`${BASE_URL}/case-study/${study.sector}/${study.slug}`)}</loc>
     <lastmod>${study.publicationDate || today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>`).join('\n')}
+  </url>`).join('\n');
+
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${staticEntries}
+${caseStudyEntries}
 </urlset>`;
 
   // Write sitemap to file
