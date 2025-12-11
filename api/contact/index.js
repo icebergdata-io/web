@@ -1,4 +1,7 @@
 import { Resend } from 'resend';
+import { escapeHtml } from '../utils/escapeHtml.js';
+import { createRateLimiter } from '../utils/rateLimit.js';
+import { validateContactInput } from '../utils/validateInput.js';
 
 // Debug: Log environment check
 console.log('Environment Check:', {
@@ -46,10 +49,21 @@ export default async function handler(req, res) {
     url: req.url
   });
 
-  // Enable CORS
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  // Enable CORS - restrict to allowed origins
+  const allowedOrigins = [
+    'https://www.icebergdata.co',
+    'https://icebergdata.co',
+    'http://localhost:5173', // Vite dev server
+    'http://localhost:3000'  // Common dev port
+  ];
+  
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
   
   // Handle preflight
   if (req.method === 'OPTIONS') {
@@ -64,40 +78,31 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
+  // Apply rate limiting (5 requests per minute per IP)
+  const rateLimiter = createRateLimiter(5, 60000);
+  const rateLimitResult = rateLimiter(req, res);
+  if (rateLimitResult === false) {
+    return; // Rate limit exceeded, response already sent
+  }
+
   try {
     // Validate request body exists
     if (!req.body) {
       console.error('No request body received');
-      return res.status(400).json({ error: 'No request body' });
+      return res.status(400).json({ error: 'Invalid request' });
     }
 
-    // Debug: Log raw body
-    console.log('Raw request body:', typeof req.body, req.body);
-
-    const { name, email, company, phone, message } = req.body;
-
-    // Debug: Log parsed data
-    console.log('Parsed form data:', {
-      hasName: !!name,
-      hasEmail: !!email,
-      nameLength: name?.length,
-      emailLength: email?.length,
-      messageLength: message?.length,
-      bodyType: typeof req.body
-    });
-
-    // Validate required fields
-    if (!name || !email || !message) {
-      console.log('Validation failed:', {
-        missingName: !name,
-        missingEmail: !email,
-        missingMessage: !message
-      });
+    // Validate and sanitize input
+    const validation = validateContactInput(req.body);
+    if (!validation.valid) {
+      console.log('Validation failed:', validation.errors);
       return res.status(400).json({
-        error: 'Missing required fields',
-        details: { name: !name, email: !email, message: !message }
+        error: 'Validation failed',
+        errors: validation.errors
       });
     }
+
+    const { name, email, company, phone, message } = validation.sanitized;
 
     // Debug: Log before sending admin email
     console.log('Attempting to send admin email to:', 'david@icebergdata.co');
@@ -115,15 +120,15 @@ export default async function handler(req, res) {
           
           <div style="background: #f8f9fa; padding: 25px; border-radius: 8px; margin-bottom: 20px;">
             <h2 style="color: #0066cc; margin-top: 0; font-size: 20px;">Contact Details</h2>
-            <p style="margin: 10px 0;"><strong style="color: #555;">Name:</strong> ${name}</p>
-            <p style="margin: 10px 0;"><strong style="color: #555;">Email:</strong> ${email}</p>
-            <p style="margin: 10px 0;"><strong style="color: #555;">Company:</strong> ${company || 'Not provided'}</p>
-            <p style="margin: 10px 0;"><strong style="color: #555;">Phone:</strong> ${phone || 'Not provided'}</p>
+            <p style="margin: 10px 0;"><strong style="color: #555;">Name:</strong> ${escapeHtml(name)}</p>
+            <p style="margin: 10px 0;"><strong style="color: #555;">Email:</strong> ${escapeHtml(email)}</p>
+            <p style="margin: 10px 0;"><strong style="color: #555;">Company:</strong> ${escapeHtml(company || 'Not provided')}</p>
+            <p style="margin: 10px 0;"><strong style="color: #555;">Phone:</strong> ${escapeHtml(phone || 'Not provided')}</p>
           </div>
 
           <div style="background: #f8f9fa; padding: 25px; border-radius: 8px;">
             <h2 style="color: #0066cc; margin-top: 0; font-size: 20px;">Message</h2>
-            <p style="line-height: 1.6; white-space: pre-wrap;">${message}</p>
+            <p style="line-height: 1.6; white-space: pre-wrap;">${escapeHtml(message)}</p>
           </div>
           ${signature}
         </div>
@@ -154,7 +159,7 @@ export default async function handler(req, res) {
           </div>
           
           <div style="background: #f8f9fa; padding: 25px; border-radius: 8px; margin-bottom: 20px;">
-            <p style="margin-top: 0; font-size: 16px;">Dear ${name},</p>
+            <p style="margin-top: 0; font-size: 16px;">Dear ${escapeHtml(name)},</p>
             <p style="line-height: 1.6;">Thank you for your interest in Iceberg Data. I have received your message and will personally review it shortly. You can expect to hear back from me within 1-2 business days.</p>
             <p style="line-height: 1.6;">In the meantime, feel free to:</p>
             <ul style="line-height: 1.6;">
@@ -166,7 +171,7 @@ export default async function handler(req, res) {
 
           <div style="background: #f8f9fa; padding: 25px; border-radius: 8px;">
             <h2 style="color: #0066cc; margin-top: 0; font-size: 20px;">Your Message</h2>
-            <p style="line-height: 1.6; white-space: pre-wrap;">${message}</p>
+            <p style="line-height: 1.6; white-space: pre-wrap;">${escapeHtml(message)}</p>
           </div>
           ${signature}
         </div>
@@ -188,22 +193,19 @@ export default async function handler(req, res) {
       userEmailId: userEmail?.id
     });
   } catch (error) {
-    // Debug: Log detailed error information
-    console.error('Error details:', {
+    // Log detailed error information server-side only
+    console.error('Error sending email:', {
       name: error.name,
       message: error.message,
       code: error.code,
       stack: error.stack,
       resendError: error?.response?.data,
-      statusCode: error?.response?.status,
-      isResendError: error instanceof Error && error.name === 'ResendError'
+      statusCode: error?.response?.status
     });
 
+    // Return generic error to client
     return res.status(500).json({ 
-      error: 'Failed to send email',
-      details: error.message,
-      code: error.code,
-      type: error.name
+      error: 'Failed to send email. Please try again later.'
     });
   }
 } 

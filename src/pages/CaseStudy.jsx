@@ -6,6 +6,7 @@ import SEO from '../components/SEO';
 import { slugify } from '../utils/slugify';
 import { findCaseStudyBySlug, getRelatedCaseStudies } from '../utils/caseStudyUtils';
 import RecommendedCaseStudies from '../components/RecommendedCaseStudies';
+import { sanitizeHTML } from '../utils/sanitize';
 
 const formatDate = (dateString) => {
   return new Date(dateString).toLocaleDateString('en-US', {
@@ -243,7 +244,7 @@ const CaseStudy = () => {
             <h2 className="text-2xl font-bold mb-4">Implementation & Results</h2>
             <div 
               className="text-dark-700 story-content"
-              dangerouslySetInnerHTML={{ __html: caseData.Story }}
+              dangerouslySetInnerHTML={{ __html: sanitizeHTML(caseData.Story) }}
             />
           </div>
 

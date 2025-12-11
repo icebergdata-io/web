@@ -1,4 +1,7 @@
 import { Resend } from 'resend';
+import { escapeHtml } from '../utils/escapeHtml.js';
+import { createRateLimiter } from '../utils/rateLimit.js';
+import { validatePreCalendlyInput } from '../utils/validateInput.js';
 
 // Debug: Log environment check
 console.log('Environment Check:', {
@@ -44,10 +47,21 @@ export default async function handler(req, res) {
     body: req.body,
   });
 
-  // Enable CORS
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  // Enable CORS - restrict to allowed origins
+  const allowedOrigins = [
+    'https://www.icebergdata.co',
+    'https://icebergdata.co',
+    'http://localhost:5173', // Vite dev server
+    'http://localhost:3000'  // Common dev port
+  ];
+  
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
   
   // Handle preflight
   if (req.method === 'OPTIONS') {
@@ -60,18 +74,32 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
-  const { email, role, dataNeeds } = req.body;
-
-  if (!email) {
-    return res.status(400).json({ message: 'Email is required' });
+  // Apply rate limiting (5 requests per minute per IP)
+  const rateLimiter = createRateLimiter(5, 60000);
+  const rateLimitResult = rateLimiter(req, res);
+  if (rateLimitResult === false) {
+    return; // Rate limit exceeded, response already sent
   }
+
+  // Validate and sanitize input
+  const { email, role, dataNeeds } = req.body || {};
+  const validation = validatePreCalendlyInput(email, role, dataNeeds);
+  if (!validation.valid) {
+    console.log('Validation failed:', validation.errors);
+    return res.status(400).json({
+      error: 'Validation failed',
+      errors: validation.errors
+    });
+  }
+
+  const { email: sanitizedEmail, role: sanitizedRole, dataNeeds: sanitizedDataNeeds } = validation.sanitized;
 
   try {
     // Send notification email to admin
     const adminEmail = await resend.emails.send({
       from: 'david@web.icebergdata.co',
       to: 'david@icebergdata.co',
-      subject: `New Demo Request - ${email}`,
+      subject: `New Demo Request - ${escapeHtml(sanitizedEmail)}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #333;">
           <div style="background: linear-gradient(135deg, #0066cc, #0099ff); padding: 20px; border-radius: 8px; margin-bottom: 30px;">
@@ -83,15 +111,15 @@ export default async function handler(req, res) {
             <table style="width: 100%; border-collapse: collapse;">
               <tr>
                 <td style="padding: 8px 0; border-bottom: 1px solid #eee; width: 150px;"><strong>Email:</strong></td>
-                <td style="padding: 8px 0; border-bottom: 1px solid #eee;">${email}</td>
+                <td style="padding: 8px 0; border-bottom: 1px solid #eee;">${escapeHtml(sanitizedEmail)}</td>
               </tr>
               <tr>
                 <td style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>Role:</strong></td>
-                <td style="padding: 8px 0; border-bottom: 1px solid #eee;">${role || 'Not provided'}</td>
+                <td style="padding: 8px 0; border-bottom: 1px solid #eee;">${escapeHtml(sanitizedRole || 'Not provided')}</td>
               </tr>
               <tr>
                 <td style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>Data Needs:</strong></td>
-                <td style="padding: 8px 0; border-bottom: 1px solid #eee;">${dataNeeds || 'Not provided'}</td>
+                <td style="padding: 8px 0; border-bottom: 1px solid #eee;">${escapeHtml(sanitizedDataNeeds || 'Not provided')}</td>
               </tr>
             </table>
             <p style="margin: 20px 0 10px;">This lead is about to schedule a demo through Calendly.</p>
@@ -104,16 +132,17 @@ export default async function handler(req, res) {
     console.log('Admin email sent successfully:', adminEmail.id);
     res.status(200).json({ message: 'Email sent successfully' });
   } catch (error) {
-    console.error('Error details:', {
+    // Log detailed error information server-side only
+    console.error('Error sending email:', {
       name: error.name,
       message: error.message,
       code: error.code,
       stack: error.stack,
-      resendError: error?.response?.data,
+      resendError: error?.response?.data
     });
+    // Return generic error to client
     res.status(500).json({ 
-      message: 'Failed to send email',
-      error: error.message
+      error: 'Failed to send email. Please try again later.'
     });
   }
 } 

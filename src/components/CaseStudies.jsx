@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { JsonView } from 'react-json-view-lite';
 import 'react-json-view-lite/dist/index.css';
 import Logo from './Logo';
+import { sanitizeHTML } from '../utils/sanitize';
 
 const formatDate = (dateString) => {
   return new Date(dateString).toLocaleDateString('en-US', {
@@ -282,7 +283,7 @@ const CaseModal = ({ caseStudy, onClose, allCases, setSelectedCase, loadFullCase
             <h4 className="text-lg sm:text-xl font-bold text-dark-900 mb-3 sm:mb-4">The Story</h4>
             <div 
               className="text-dark-600 leading-relaxed story-content text-sm sm:text-base"
-              dangerouslySetInnerHTML={{ __html: caseStudy.Story }}
+              dangerouslySetInnerHTML={{ __html: sanitizeHTML(caseStudy.Story) }}
             />
             <motion.button
               whileHover={{ scale: 1.05 }}

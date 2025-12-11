@@ -4,6 +4,7 @@ import SEO from '../components/SEO';
 import Logo from '../components/Logo';
 import { JsonView } from 'react-json-view-lite';
 import 'react-json-view-lite/dist/index.css';
+import { sanitizeHTML } from '../utils/sanitize';
 
 const PrivateCaseStudy = () => {
   const { caseId, accessToken } = useParams();
@@ -232,7 +233,7 @@ const PrivateCaseStudy = () => {
             <h2 className="text-2xl font-bold mb-4">Implementation & Results</h2>
             <div 
               className="text-dark-700 story-content"
-              dangerouslySetInnerHTML={{ __html: caseStudy.Story }}
+              dangerouslySetInnerHTML={{ __html: sanitizeHTML(caseStudy.Story) }}
             />
           </div>
 

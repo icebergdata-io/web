@@ -1,7 +1,16 @@
+import { createRateLimiter } from '../../utils/rateLimit.js';
+
 export default async function handler(req, res) {
   // Only allow GET requests
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  // Apply rate limiting (10 requests per minute per IP for private case studies)
+  const rateLimiter = createRateLimiter(10, 60000);
+  const rateLimitResult = rateLimiter(req, res);
+  if (rateLimitResult === false) {
+    return; // Rate limit exceeded, response already sent
   }
 
   const { caseId, accessToken } = req.query;

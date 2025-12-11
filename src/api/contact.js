@@ -1,4 +1,5 @@
 import { Resend } from 'resend';
+import { escapeHtml } from '../api/utils/escapeHtml.js';
 
 const resend = new Resend(process.env.resend_api_key);
 
@@ -17,12 +18,12 @@ export default async function handler(req, res) {
       subject: 'New Contact Form Submission',
       html: `
         <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Company:</strong> ${company || 'Not provided'}</p>
-        <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
+        <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+        <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+        <p><strong>Company:</strong> ${escapeHtml(company || 'Not provided')}</p>
+        <p><strong>Phone:</strong> ${escapeHtml(phone || 'Not provided')}</p>
         <p><strong>Message:</strong></p>
-        <p>${message}</p>
+        <p>${escapeHtml(message)}</p>
       `
     });
 
@@ -33,11 +34,11 @@ export default async function handler(req, res) {
       subject: 'Thank you for contacting Iceberg Data',
       html: `
         <h2>Thank you for reaching out!</h2>
-        <p>Dear ${name},</p>
+        <p>Dear ${escapeHtml(name)},</p>
         <p>Thank you for your interest in Iceberg Data. We have received your message and will get back to you shortly.</p>
         <p>Here's a summary of your message:</p>
         <hr/>
-        <p>${message}</p>
+        <p>${escapeHtml(message)}</p>
         <hr/>
         <p>Best regards,</p>
         <p>David Martin<br/>Iceberg Data</p>

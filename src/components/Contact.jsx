@@ -25,10 +25,28 @@ const Contact = () => {
   };
 
   const validateForm = () => {
-    if (!formData.name.trim()) return 'Name is required';
-    if (!formData.email.trim()) return 'Email is required';
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) return 'Invalid email format';
-    if (!formData.message.trim()) return 'Message is required';
+    const name = formData.name.trim();
+    const email = formData.email.trim();
+    const message = formData.message.trim();
+    
+    if (!name) return 'Name is required';
+    if (name.length > 100) return 'Name must not exceed 100 characters';
+    
+    if (!email) return 'Email is required';
+    if (email.length > 254) return 'Email must not exceed 254 characters';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return 'Invalid email format';
+    
+    if (formData.company && formData.company.trim().length > 200) {
+      return 'Company name must not exceed 200 characters';
+    }
+    
+    if (formData.phone && formData.phone.trim().length > 50) {
+      return 'Phone number must not exceed 50 characters';
+    }
+    
+    if (!message) return 'Message is required';
+    if (message.length > 5000) return 'Message must not exceed 5000 characters';
+    
     return null;
   };
 
@@ -59,7 +77,8 @@ const Contact = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to send message');
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || 'Failed to send message');
       }
 
       setStatus({ loading: false, success: true, error: null });
@@ -79,7 +98,7 @@ const Contact = () => {
       setStatus({ 
         loading: false, 
         success: false, 
-        error: 'Failed to send message. Please try again later.'
+        error: error.message || 'Failed to send message. Please try again later.'
       });
     }
   };
