@@ -16,6 +16,7 @@ const routes = [
   '/services/data-integration',
   '/services/custom-solutions',
   '/case-studies',
+  '/careers',
   '/press',
   '/refund-policy'
 ];
@@ -285,6 +286,7 @@ function getPageTitle(route) {
     '/services/data-integration': 'Data Integration Services | ETL Solutions | Iceberg Data',
     '/services/custom-solutions': 'Custom Data Solutions | Enterprise Web Scraping | Iceberg Data',
     '/case-studies': 'Case Studies | Web Scraping Success Stories | Iceberg Data',
+    '/careers': 'Careers - Join Iceberg Data | Open Positions',
     '/press': 'Press Coverage | Iceberg Data in the News',
     '/refund-policy': 'Refund Policy | Iceberg Data'
   };
@@ -300,6 +302,7 @@ function getPageDescription(route) {
     '/services/data-integration': 'Enterprise data integration and ETL services. Seamlessly connect and transform your data sources for better insights.',
     '/services/custom-solutions': 'Custom data collection solutions tailored to your specific business needs. Enterprise-grade web scraping and data processing.',
     '/case-studies': 'Real-world case studies and success stories from our web scraping projects. See how we help businesses collect and analyze data.',
+    '/careers': 'Join our team of data engineers and help build the future of web scraping and data automation. Explore open positions at Iceberg Data. We\'re hiring data engineers, web scraping engineers, and sales development representatives.',
     '/press': 'Latest press coverage and media mentions of Iceberg Data. Read about our web scraping innovations and industry impact.',
     '/refund-policy': 'Our commitment to transparency and customer satisfaction. Learn about our refund policy and how we ensure your peace of mind.'
   };
@@ -315,6 +318,7 @@ function getPageKeywords(route) {
     '/services/data-integration': 'data integration services, ETL solutions, enterprise data integration, data transformation, data pipeline',
     '/services/custom-solutions': 'custom data solutions, enterprise web scraping, custom data collection, tailored data services',
     '/case-studies': 'case studies, web scraping success stories, data collection examples, enterprise data projects',
+    '/careers': 'careers, jobs, data engineer, web scraping engineer, python developer, remote jobs, Bogotá jobs, software engineer jobs, sales development representative, SDR jobs',
     '/press': 'press coverage, media mentions, Iceberg Data news, web scraping industry news',
     '/refund-policy': 'refund policy, money back guarantee, data accuracy, customer satisfaction, transparency'
   };
