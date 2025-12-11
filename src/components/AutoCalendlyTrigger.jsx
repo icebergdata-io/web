@@ -1,10 +1,28 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 const AutoCalendlyTrigger = ({ onTrigger }) => {
   const [hasTriggered, setHasTriggered] = useState(false);
   const [timeLeft, setTimeLeft] = useState(30);
   const [isTabActive, setIsTabActive] = useState(true);
+  const onTriggerRef = useRef(onTrigger);
+
+  // Keep ref updated
+  useEffect(() => {
+    onTriggerRef.current = onTrigger;
+  }, [onTrigger]);
+
+  // Trigger callback when timer reaches 0 (separate effect to avoid render-time state updates)
+  useEffect(() => {
+    if (timeLeft === 0 && !hasTriggered && isTabActive) {
+      setHasTriggered(true);
+      // Call onTrigger in next tick to avoid updating parent during render
+      const timeoutId = setTimeout(() => {
+        onTriggerRef.current();
+      }, 0);
+      return () => clearTimeout(timeoutId);
+    }
+  }, [timeLeft, hasTriggered, isTabActive]);
 
   useEffect(() => {
     // Handle tab visibility changes
@@ -17,14 +35,7 @@ const AutoCalendlyTrigger = ({ onTrigger }) => {
     // Count down every second
     const interval = setInterval(() => {
       if (isTabActive && !hasTriggered) {  // Only count down if tab is active and not triggered
-        setTimeLeft(prev => {
-          const newTime = Math.max(0, prev - 1);
-          if (newTime === 0 && !hasTriggered) {
-            onTrigger();
-            setHasTriggered(true);
-          }
-          return newTime;
-        });
+        setTimeLeft(prev => Math.max(0, prev - 1));
       }
     }, 1000);
 
@@ -32,7 +43,7 @@ const AutoCalendlyTrigger = ({ onTrigger }) => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       clearInterval(interval);
     };
-  }, [hasTriggered, onTrigger, isTabActive]);
+  }, [hasTriggered, isTabActive]);
 
   // Only show debug display in development
   if (!import.meta.env.DEV) {
