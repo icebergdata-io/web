@@ -29,18 +29,8 @@
       "destination": "/index.html"
     },
     {
-      "source": "/case-study/:sector/:slug.html",
-      "destination": "/case-study/:sector/:slug",
-      "permanent": true
-    },
-    {
       "source": "/case-study/:sector/:slug",
       "destination": "/case-study/:sector/:slug.html"
-    },
-    {
-      "source": "/careers/:jobId.html",
-      "destination": "/careers/:jobId",
-      "permanent": true
     },
     {
       "source": "/careers/:jobId",
@@ -109,6 +99,16 @@
     {
       "source": "/dm",
       "destination": "https://calendly.com/icedata/dm",
+      "permanent": true
+    },
+    {
+      "source": "/case-study/:sector/:slug.html",
+      "destination": "/case-study/:sector/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/careers/:jobId.html",
+      "destination": "/careers/:jobId",
       "permanent": true
     },
     {
