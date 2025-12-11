@@ -14,7 +14,8 @@ const SEO = ({
   const baseUrl = 'https://www.icebergdata.co';
   const canonicalUrl = `${baseUrl}${location.pathname}`;
   const siteName = 'Iceberg Data';
-  const googleVerification = process.env.REACT_APP_GOOGLE_SITE_VERIFICATION || '';
+  // Use Vite's import.meta.env instead of process.env for browser compatibility
+  const googleVerification = import.meta.env.VITE_GOOGLE_SITE_VERIFICATION || '';
 
   return (
     <Helmet>
