@@ -18,6 +18,9 @@ import TermsPage from './pages/TermsPage';
 import PrivacyPage from './pages/PrivacyPage';
 import CookiesPage from './pages/CookiesPage';
 import RefundPage from './pages/RefundPage';
+import Careers from './pages/Careers';
+import JobDetail from './pages/JobDetail';
+
 
 function App() {
   return (
@@ -42,6 +45,8 @@ function App() {
             <Route path="cookies" element={<CookiesPage />} />
             <Route path="refund" element={<RefundPage />} />
             <Route path="refund-policy" element={<RefundPage />} />
+            <Route path="careers" element={<Careers />} />
+            <Route path="careers/:jobId" element={<JobDetail />} />
             <Route path="*" element={<NotFound />} />
           </Route>
           <Route path="private-case-study/:caseId/:accessToken" element={<PrivateCaseStudy />} />

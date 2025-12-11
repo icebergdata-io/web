@@ -19,3 +19,40 @@ export function sanitizeHTML(dirty) {
   });
 }
 
+/**
+ * Validates job data structure (defense in depth - React already escapes HTML)
+ * Ensures job data has expected structure and types
+ * @param {Object} job - Job data object
+ * @returns {boolean} - True if job data is valid
+ */
+export function validateJobData(job) {
+  if (!job || typeof job !== 'object') {
+    return false;
+  }
+
+  // Check required string fields
+  const requiredStringFields = ['id', 'title', 'department', 'location', 'contractType', 'purpose'];
+  for (const field of requiredStringFields) {
+    if (!job[field] || typeof job[field] !== 'string') {
+      return false;
+    }
+  }
+
+  // Check required array fields
+  const requiredArrayFields = ['responsibilities', 'technicalRequirements', 'benefits'];
+  for (const field of requiredArrayFields) {
+    if (!Array.isArray(job[field])) {
+      return false;
+    }
+  }
+
+  // Validate technicalRequirements structure
+  if (!job.technicalRequirements || 
+      !Array.isArray(job.technicalRequirements.mustHave) ||
+      !Array.isArray(job.technicalRequirements.niceToHave)) {
+    return false;
+  }
+
+  return true;
+}
+

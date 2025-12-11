@@ -55,7 +55,7 @@ const Footer = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-dark-900 via-dark-800 to-dark-900 opacity-50"></div>
         <div className="absolute -left-64 bottom-0 w-[500px] h-[500px] bg-gradient-to-br from-primary-600/10 to-transparent rounded-full blur-3xl"></div>
         <div className="absolute -right-64 bottom-0 w-[500px] h-[500px] bg-gradient-to-bl from-accent-purple/10 to-transparent rounded-full blur-3xl"></div>
-        
+
         <div className="container mx-auto px-4 py-8 sm:py-16 relative z-10">
           {/* Main Footer Content */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-8 mb-8 sm:mb-12">
@@ -70,7 +70,7 @@ const Footer = () => {
               </p>
               {/* Social Links */}
               <div className="flex gap-3">
-                <a 
+                <a
                   href="https://www.linkedin.com/company/icebergdataio/"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -78,10 +78,10 @@ const Footer = () => {
                   aria-label="LinkedIn"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                   </svg>
                 </a>
-                <a 
+                <a
                   href="https://x.com/icebergdata"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -89,7 +89,7 @@ const Footer = () => {
                   aria-label="Twitter/X"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                   </svg>
                 </a>
               </div>
@@ -100,15 +100,15 @@ const Footer = () => {
               <h3 className="text-base sm:text-lg font-display font-bold mb-3 sm:mb-4 text-white/90 text-center sm:text-left">Quick Links</h3>
               <ul className="space-y-2 sm:space-y-3 text-center sm:text-left">
                 <li>
-                  <button 
-                    onClick={() => handleNavClick('about')} 
+                  <button
+                    onClick={() => handleNavClick('about')}
                     className="text-light-400 hover:text-white transition-colors"
                   >
                     About
                   </button>
                 </li>
                 <li>
-                  <Link 
+                  <Link
                     to="/services"
                     className="text-light-400 hover:text-white transition-colors"
                   >
@@ -116,7 +116,7 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link 
+                  <Link
                     to="/services/web-scraping#web-scraping"
                     className="text-light-400 hover:text-white transition-colors"
                   >
@@ -124,15 +124,15 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link 
+                  <Link
                     to="/services/data-integration#data-integration"
                     className="text-light-400 hover:text-white transition-colors"
                   >
-                   Data Normalization
+                    Data Normalization
                   </Link>
                 </li>
                 <li>
-                  <Link 
+                  <Link
                     to="/services/custom-solutions#custom-solutions"
                     className="text-light-400 hover:text-white transition-colors"
                   >
@@ -140,27 +140,35 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <button 
-                    onClick={() => handleNavClick('case-studies')} 
+                  <button
+                    onClick={() => handleNavClick('case-studies')}
                     className="text-light-400 hover:text-white transition-colors"
                   >
                     Case Studies
                   </button>
                 </li>
                 <li>
-                  <button 
-                    onClick={() => handleNavClick('faq')} 
+                  <button
+                    onClick={() => handleNavClick('faq')}
                     className="text-light-400 hover:text-white transition-colors"
                   >
                     FAQ
                   </button>
                 </li>
                 <li>
-                  <Link 
+                  <Link
                     to="/press"
                     className="text-light-400 hover:text-white transition-colors"
                   >
                     Press
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/careers"
+                    className="text-light-400 hover:text-white transition-colors"
+                  >
+                    Careers
                   </Link>
                 </li>
               </ul>
@@ -171,7 +179,7 @@ const Footer = () => {
               <h3 className="text-base sm:text-lg font-display font-bold mb-3 sm:mb-4 text-white/90">Contact</h3>
               <ul className="space-y-2 sm:space-y-3">
                 <li>
-                  <a 
+                  <a
                     href="mailto:info@iceberg-data.com"
                     className="text-light-400 hover:text-white transition-colors flex items-center gap-2 group"
                   >
@@ -182,7 +190,7 @@ const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <a 
+                  <a
                     href="https://wa.me/14383206634"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -210,14 +218,14 @@ const Footer = () => {
               <ul className="space-y-2 sm:space-y-3">
                 <li>
                   <div className="flex flex-col space-y-1">
-                    <button 
-                      onClick={() => setActiveModal('terms')} 
+                    <button
+                      onClick={() => setActiveModal('terms')}
                       className="text-light-400 hover:text-white transition-colors text-left"
                     >
                       Terms & Conditions
                     </button>
-                    <Link 
-                      to="/terms" 
+                    <Link
+                      to="/terms"
                       className="text-xs text-light-500 hover:text-light-300 transition-colors"
                     >
                       (View Full Page)
@@ -226,14 +234,14 @@ const Footer = () => {
                 </li>
                 <li>
                   <div className="flex flex-col space-y-1">
-                    <button 
-                      onClick={() => setActiveModal('privacy')} 
+                    <button
+                      onClick={() => setActiveModal('privacy')}
                       className="text-light-400 hover:text-white transition-colors text-left"
                     >
                       Privacy Policy
                     </button>
-                    <Link 
-                      to="/privacy" 
+                    <Link
+                      to="/privacy"
                       className="text-xs text-light-500 hover:text-light-300 transition-colors"
                     >
                       (View Full Page)
@@ -242,14 +250,14 @@ const Footer = () => {
                 </li>
                 <li>
                   <div className="flex flex-col space-y-1">
-                    <button 
-                      onClick={() => setActiveModal('cookies')} 
+                    <button
+                      onClick={() => setActiveModal('cookies')}
                       className="text-light-400 hover:text-white transition-colors text-left"
                     >
                       Cookie Policy
                     </button>
-                    <Link 
-                      to="/cookies" 
+                    <Link
+                      to="/cookies"
                       className="text-xs text-light-500 hover:text-light-300 transition-colors"
                     >
                       (View Full Page)
@@ -258,14 +266,14 @@ const Footer = () => {
                 </li>
                 <li>
                   <div className="flex flex-col space-y-1">
-                    <button 
-                      onClick={() => setActiveModal('refund')} 
+                    <button
+                      onClick={() => setActiveModal('refund')}
                       className="text-light-400 hover:text-white transition-colors text-left"
                     >
                       Refund Policy
                     </button>
-                    <Link 
-                      to="/refund-policy" 
+                    <Link
+                      to="/refund-policy"
                       className="text-xs text-light-500 hover:text-light-300 transition-colors"
                     >
                       (View Full Page)

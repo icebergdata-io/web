@@ -342,6 +342,13 @@ const Navbar = ({ scrolled }) => {
                 )}
               </div>
               <NavLink active={activeSection === 'faq'} onClick={(e) => handleNavClick('faq', e)}>FAQ</NavLink>
+              <Link
+                to="/careers"
+                className="px-3 py-2 rounded-xl text-dark-800 hover:text-primary-600 transition-colors"
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              >
+                Careers
+              </Link>
               <div className="ml-4">
                 <button
                   onClick={() => setShowCalendly(true)}
@@ -473,6 +480,16 @@ const Navbar = ({ scrolled }) => {
                 </div>
               </div>
               <MobileNavLink active={activeSection === 'faq'} onClick={(e) => handleNavClick('faq', e)}>FAQ</MobileNavLink>
+              <Link
+                to="/careers"
+                className="block w-full"
+                onClick={() => {
+                  setIsOpen(false);
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+              >
+                <MobileNavLink active={location.pathname === '/careers'}>Careers</MobileNavLink>
+              </Link>
               <div className="pt-4 px-2">
                 <button
                   onClick={() => {

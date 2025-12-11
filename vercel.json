@@ -108,6 +108,9 @@
   "functions": {
     "api/contact/index.js": {
       "maxDuration": 10
+    },
+    "api/applications/index.js": {
+      "maxDuration": 10
     }
   },
   "build": {
@@ -117,4 +120,4 @@
   "buildCommand": "node -v && npm run build:seo",
   "devCommand": "npm run dev",
   "installCommand": "npm install --legacy-peer-deps"
-} 
+}
