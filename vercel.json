@@ -21,6 +21,10 @@
       "destination": "/case-studies.html"
     },
     {
+      "source": "/careers",
+      "destination": "/careers.html"
+    },
+    {
       "source": "/private-case-studies",
       "destination": "/index.html"
     },
