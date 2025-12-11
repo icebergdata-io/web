@@ -38,16 +38,17 @@ export function validateJobData(job) {
     }
   }
 
-  // Check required array fields
-  const requiredArrayFields = ['responsibilities', 'technicalRequirements', 'benefits'];
+  // Check required array fields (technicalRequirements is an object, not an array)
+  const requiredArrayFields = ['responsibilities', 'benefits'];
   for (const field of requiredArrayFields) {
     if (!Array.isArray(job[field])) {
       return false;
     }
   }
 
-  // Validate technicalRequirements structure
+  // Validate technicalRequirements structure (it's an object with arrays inside)
   if (!job.technicalRequirements || 
+      typeof job.technicalRequirements !== 'object' ||
       !Array.isArray(job.technicalRequirements.mustHave) ||
       !Array.isArray(job.technicalRequirements.niceToHave)) {
     return false;
