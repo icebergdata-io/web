@@ -1,6 +1,6 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import { resolve, dirname } from 'path';
-import { fileURLToPath } from 'url';
+import { fileURLToPath, pathToFileURL } from 'url';
 import { slugify } from '../src/utils/slugify.js';
 import { readdirSync } from 'fs';
 
@@ -20,7 +20,7 @@ const routes = [
   '/refund-policy'
 ];
 
-function generateStaticHTML() {
+async function generateStaticHTML() {
   console.log('🚀 Generating static HTML files for SEO...');
   
   try {
@@ -120,6 +120,10 @@ function generateStaticHTML() {
     // Generate static HTML for case studies
     console.log('\n📚 Generating case study pages...');
     generateCaseStudyPages(distDir, cssPath, jsPath);
+    
+    // Generate static HTML for job detail pages
+    console.log('\n💼 Generating job detail pages...');
+    await generateJobDetailPages(distDir, cssPath, jsPath);
     
     console.log('\n🎉 Static HTML generation completed!');
     console.log('📁 Files generated in dist/ directory');
@@ -388,6 +392,138 @@ function getStructuredData(route) {
     "description": getPageDescription(route),
     "serviceType": "Web Scraping & Data Collection"
   });
+}
+
+async function generateJobDetailPages(distDir, cssPath, jsPath) {
+  try {
+    // Import jobsData using dynamic import
+    const jobsDataPath = resolve(__dirname, '../src/data/jobsData.js');
+    
+    if (!existsSync(jobsDataPath)) {
+      console.log('❌ Jobs data file not found.');
+      return;
+    }
+    
+    // Use dynamic import to load the ES module
+    const jobsDataUrl = pathToFileURL(jobsDataPath).href;
+    const jobsDataModule = await import(jobsDataUrl);
+    const jobOpenings = jobsDataModule.jobOpenings || [];
+    
+    // Create careers directory
+    const careersDir = resolve(distDir, 'careers');
+    if (!existsSync(careersDir)) {
+      mkdirSync(careersDir, { recursive: true });
+    }
+    
+    // Generate static HTML for each active job
+    jobOpenings.forEach(job => {
+      if (!job.isActive) {
+        return; // Skip inactive jobs
+      }
+      
+      try {
+        const jobId = job.id;
+        const jobTitle = job.title;
+        const jobDescription = job.purpose || `Join our team as a ${jobTitle} at Iceberg Data. ${job.department} position in ${job.location}.`;
+        
+        // Create job detail HTML file
+        const jobDetailHTML = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${jobTitle} - Careers at Iceberg Data</title>
+    <meta name="description" content="${jobDescription.substring(0, 160)}">
+    <meta name="keywords" content="${jobTitle}, ${job.department}, careers, jobs, Iceberg Data, ${job.location}, ${job.contractType}">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Iceberg Data">
+    <link rel="canonical" href="https://www.icebergdata.co/careers/${jobId}">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="${jobTitle} - Careers at Iceberg Data">
+    <meta property="og:description" content="${jobDescription.substring(0, 200)}">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.icebergdata.co/careers/${jobId}">
+    <meta property="og:image" content="https://www.icebergdata.co/logos/logo-large.png">
+    <meta property="og:site_name" content="Iceberg Data">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="${jobTitle} - Careers at Iceberg Data">
+    <meta name="twitter:description" content="${jobDescription.substring(0, 200)}">
+    <meta name="twitter:image" content="https://www.icebergdata.co/logos/logo-large.png">
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="${cssPath}" as="style">
+    <link rel="preload" href="${jsPath}" as="script">
+    
+    <!-- Load CSS -->
+    <link rel="stylesheet" href="${cssPath}">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      ${JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "JobPosting",
+        "title": jobTitle,
+        "description": jobDescription,
+        "identifier": {
+          "@type": "PropertyValue",
+          "name": "Iceberg Data",
+          "value": jobId
+        },
+        "datePosted": job.postedDate || new Date().toISOString().split('T')[0],
+        "employmentType": job.contractType,
+        "hiringOrganization": {
+          "@type": "Organization",
+          "name": "Iceberg Data",
+          "sameAs": "https://www.icebergdata.co",
+          "logo": "https://www.icebergdata.co/logos/logo-large.png"
+        },
+        "jobLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": job.location.split(',')[0],
+            "addressCountry": job.location.includes('Colombia') ? 'CO' : 'US'
+          }
+        },
+        "baseSalary": {
+          "@type": "MonetaryAmount",
+          "currency": "USD"
+        }
+      })}
+    </script>
+</head>
+<body>
+    <div id="root">
+        <!-- Minimal content for SEO - React will hydrate immediately -->
+        <div style="display: none;">
+            <h1>${jobTitle}</h1>
+            <p>${jobDescription}</p>
+            <p>Location: ${job.location}</p>
+            <p>Department: ${job.department}</p>
+            <p>Type: ${job.contractType}</p>
+        </div>
+    </div>
+    
+    <!-- Load the React app -->
+    <script type="module" src="${jsPath}"></script>
+</body>
+</html>`;
+        
+        const filepath = resolve(careersDir, `${jobId}.html`);
+        writeFileSync(filepath, jobDetailHTML);
+        console.log(`✅ Generated job detail: ${jobId}.html`);
+        
+      } catch (error) {
+        console.error(`❌ Error generating job detail ${job.id}:`, error);
+      }
+    });
+    
+  } catch (error) {
+    console.error('❌ Error generating job detail pages:', error);
+  }
 }
 
 generateStaticHTML(); 
