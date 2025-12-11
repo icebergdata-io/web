@@ -29,6 +29,10 @@
       "destination": "/case-study/:sector/:slug.html"
     },
     {
+      "source": "/careers/:jobId",
+      "destination": "/careers/:jobId.html"
+    },
+    {
       "source": "/private-case-study/:caseId/:accessToken",
       "destination": "/index.html"
     },
