@@ -201,7 +201,7 @@ function generateCaseStudyPages(distDir, cssPath, jsPath) {
     <title>${caseData.Title} - Iceberg Data Case Study</title>
     <meta name="description" content="${caseData["Business Impact"]}">
     <meta name="keywords" content="${caseData.Sector}, data analytics, case study, business intelligence, ${caseData.Title.toLowerCase()}">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="noindex, follow">
     <meta name="author" content="Iceberg Data">
     <link rel="canonical" href="https://www.icebergdata.co/case-study/${sectorSlug}/${titleSlug}">
     
@@ -445,7 +445,7 @@ async function generateJobDetailPages(distDir, cssPath, jsPath) {
     <title>${jobTitle} - Careers at Iceberg Data</title>
     <meta name="description" content="${jobDescription.substring(0, 160)}">
     <meta name="keywords" content="${jobTitle}, ${job.department}, careers, jobs, Iceberg Data, ${job.location}, ${job.contractType}">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="noindex, follow">
     <meta name="author" content="Iceberg Data">
     <link rel="canonical" href="https://www.icebergdata.co/careers/${jobId}">
     
