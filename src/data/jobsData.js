@@ -1,6 +1,6 @@
 export const jobOpenings = [
     {
-        id: "web-scraping-engineer-2024",
+        id: "web-scraping-engineer-2026",
         title: "Data Solutions & Automation Engineer",
         alternativeTitle: "Web Scraping Engineer",
         department: "Technology Development",
@@ -146,11 +146,11 @@ export const jobOpenings = [
 
         complianceNote: "Responsibility to comply with Terms of Service, copyright, robots.txt policies, and applicable data protection regulations (e.g., Law 1581 of 2012 in Colombia, GDPR if applicable). Escalate legal doubts before proceeding with new data sources.",
 
-        postedDate: "2024-12-11",
+        postedDate: "2026-01-15",
         isActive: true
     },
     {
-        id: "sdr-sales-development-2024",
+        id: "sdr-sales-development-2026",
         title: "Sales Development Representative (SDR)",
         alternativeTitle: "Business Development Representative",
         department: "Sales & Business Development",
