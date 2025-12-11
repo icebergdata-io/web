@@ -80,13 +80,16 @@ async function generateStaticHTML() {
     <meta property="og:description" content="${getPageDescription(route)}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.icebergdata.co${route}">
-    <meta property="og:image" content="https://www.icebergdata.co/logos/logo-large.png">
+    <meta property="og:image" content="https://www.icebergdata.co/og-logo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="1200">
+    <meta property="og:site_name" content="Iceberg Data">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="${getPageTitle(route)}">
     <meta name="twitter:description" content="${getPageDescription(route)}">
-    <meta name="twitter:image" content="https://www.icebergdata.co/logos/logo-large.png">
+    <meta name="twitter:image" content="https://www.icebergdata.co/og-logo.png">
     
     <!-- Preload critical assets -->
     <link rel="preload" href="${cssPath}" as="style">
@@ -207,13 +210,16 @@ function generateCaseStudyPages(distDir, cssPath, jsPath) {
     <meta property="og:description" content="${caseData["Business Impact"]}">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://www.icebergdata.co/case-study/${sectorSlug}/${titleSlug}">
-    <meta property="og:image" content="https://www.icebergdata.co/logos/logo-large.png">
+    <meta property="og:image" content="https://www.icebergdata.co/og-logo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="1200">
+    <meta property="og:site_name" content="Iceberg Data">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="${caseData.Title} - Iceberg Data Case Study">
     <meta name="twitter:description" content="${caseData["Business Impact"]}">
-    <meta name="twitter:image" content="https://www.icebergdata.co/logos/logo-large.png">
+    <meta name="twitter:image" content="https://www.icebergdata.co/og-logo.png">
     
     <!-- Preload critical assets -->
     <link rel="preload" href="${cssPath}" as="style">
@@ -448,14 +454,16 @@ async function generateJobDetailPages(distDir, cssPath, jsPath) {
     <meta property="og:description" content="${jobDescription.substring(0, 200)}">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://www.icebergdata.co/careers/${jobId}">
-    <meta property="og:image" content="https://www.icebergdata.co/logos/logo-large.png">
+    <meta property="og:image" content="https://www.icebergdata.co/og-logo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="1200">
     <meta property="og:site_name" content="Iceberg Data">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="${jobTitle} - Careers at Iceberg Data">
     <meta name="twitter:description" content="${jobDescription.substring(0, 200)}">
-    <meta name="twitter:image" content="https://www.icebergdata.co/logos/logo-large.png">
+    <meta name="twitter:image" content="https://www.icebergdata.co/og-logo.png">
     
     <!-- Preload critical assets -->
     <link rel="preload" href="${cssPath}" as="style">
