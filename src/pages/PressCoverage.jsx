@@ -61,12 +61,28 @@ const pressPublications = [
       { url: "https://diariodecapital.com/chile/iceberg-data-convierte-el-desorden-digital-en-organizacion/" },
       { url: "https://periodicprincipal.com/chile/iceberg-data-la-solucion-para-transformar-datos-publicos-en-decisiones-estrategicas/" }
     ]
+  },
+  // Global / International
+  {
+    country: "Global",
+    publications: [
+      { url: "https://www.csuitebrief.com/founder/david-martin-riveros-how-iceberg-data-is-helping-small-businesses-compete-with-giants-through-web-scraping/" },
+      { url: "https://www.wolfandgrayson.com/founder/david-martin-riveros-business-intelligence-to-scale-insights-using-iceberg-data-and-google-cloud/" },
+      { url: "https://www.randlesham.com/technology/david-martin-riveros-how-to-scrape-web-data-at-scale/" },
+      { url: "https://valiantceo.com/david-martin-riveros-ethical-legal-and-sustainable-web-data-collection/" },
+      { url: "https://www.msn.com/en-us/news/other/david-martin-riveros-how-to-deliver-tailored-data-solutions-across-multiple-industries/ar-AA1Jjs4U" },
+      { url: "https://ceoweekly.com/iceberg-data-how-david-martin-riveros-extracts-insights/" },
+      { url: "https://www.cxodispatch.com/thought-leadership/how-david-martin-riveros-helps-hotels-use-data-to-boost-bookings/" },
+      { url: "https://usreporter.com/david-martin-riveros-data-driven-decisions-for-enterprises/" },
+      { url: "https://nyweekly.com/business/david-martin-riveros-using-ai-to-unlock-government-updates/" },
+      { url: "https://www.digitaljournal.com/tech-science/how-david-martin-riveros-agentic-ai-revolutionizes-data-collection/article" }
+    ]
   }
 ];
 
 const PressCoverage = () => {
   const [showPublications, setShowPublications] = useState(false);
-  
+
   const getDomainName = (url) => {
     try {
       const domain = new URL(url).hostname.replace('www.', '');
@@ -78,7 +94,7 @@ const PressCoverage = () => {
 
   return (
     <>
-      <SEO 
+      <SEO
         title="Press Coverage - Iceberg Data in Global Media"
         description="Explore Iceberg Data's comprehensive media coverage across different countries. Read about our data solutions and industry insights in leading publications."
         keywords="press coverage, media coverage, news articles, Iceberg Data news, data analytics press"

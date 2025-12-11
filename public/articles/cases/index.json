@@ -1,6 +1,24 @@
 {
-  "total": 200,
+  "total": 202,
   "caseStudies": [
+    {
+      "id": 198,
+      "sector": "airlines",
+      "slug": "airlines-slashing-aircraft-ground-aog-incidents-through",
+      "title": "Slashing Aircraft on Ground (AOG) Incidents by 30% through Predictive MRO Inventory Forecasting",
+      "subtitle": "Leveraging Real-Time Flight, Weather, and Regulatory Data to Pre-Position Critical Aircraft Spare Parts",
+      "sectorName": "Airlines",
+      "publicationDate": "2025-12-12"
+    },
+    {
+      "id": 197,
+      "sector": "airlines",
+      "slug": "airlines-decoding-passenger-priorities-review-scraping-uncovered",
+      "title": "Decoding Passenger Priorities: How Review Scraping Uncovered a $5M Ancillary Revenue Opportunity",
+      "subtitle": "Leveraging Natural Language Processing on public travel forums to guide in-flight product strategy and enhance the passenger experience.",
+      "sectorName": "Airlines",
+      "publicationDate": "2025-12-11"
+    },
     {
       "id": 190,
       "sector": "e-commerce",

@@ -3,13 +3,16 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import CalendlyPopup from './CalendlyPopup';
 import Logo from './Logo';
 import PropTypes from 'prop-types';
+import { BookOpen, Star, Lock } from 'lucide-react';
+import webScrapingIcon from '../assets/icons/nav-web-scraping.png';
+import dataCleaningIcon from '../assets/icons/nav-data-cleaning.png';
+import customSolutionsIcon from '../assets/icons/nav-custom-solutions.png';
 
 const NavLink = ({ active, onClick, children }) => (
   <button
     onClick={onClick}
-    className={`px-3 py-2 rounded-xl text-dark-800 hover:text-primary-600 transition-colors ${
-      active ? 'bg-primary-50 text-primary-600 font-medium' : ''
-    }`}
+    className={`px-3 py-2 rounded-xl text-dark-800 hover:text-primary-600 transition-colors ${active ? 'bg-primary-50 text-primary-600 font-medium' : ''
+      }`}
   >
     {children}
   </button>
@@ -18,9 +21,8 @@ const NavLink = ({ active, onClick, children }) => (
 const MobileNavLink = ({ active, onClick, children }) => (
   <button
     onClick={onClick}
-    className={`block w-full text-left px-4 py-4 rounded-xl text-dark-800 hover:text-primary-600 transition-colors ${
-      active ? 'bg-primary-50 text-primary-600 font-medium' : ''
-    } touch-manipulation`}
+    className={`block w-full text-left px-4 py-4 rounded-xl text-dark-800 hover:text-primary-600 transition-colors ${active ? 'bg-primary-50 text-primary-600 font-medium' : ''
+      } touch-manipulation`}
   >
     {children}
   </button>
@@ -39,9 +41,7 @@ const ServicesDropdown = ({ onClose }) => (
           className="flex items-start rounded-lg p-3 hover:bg-slate-50"
         >
           <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg ring-1 ring-blue-500/10">
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-            </svg>
+            <img src={webScrapingIcon} alt="Web Scraping" className="h-6 w-6 object-contain" />
           </div>
           <div className="ml-4">
             <p className="text-base font-medium text-slate-900">Web Scraping Solutions</p>
@@ -58,9 +58,7 @@ const ServicesDropdown = ({ onClose }) => (
           className="flex items-start rounded-lg p-3 hover:bg-slate-50"
         >
           <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-purple-500 to-purple-600 text-white shadow-lg ring-1 ring-purple-500/10">
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-            </svg>
+            <img src={dataCleaningIcon} alt="Data Cleaning" className="h-6 w-6 object-contain" />
           </div>
           <div className="ml-4">
             <p className="text-base font-medium text-slate-900">Data Cleaning & Normalization</p>
@@ -77,10 +75,7 @@ const ServicesDropdown = ({ onClose }) => (
           className="flex items-start rounded-lg p-3 hover:bg-slate-50"
         >
           <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-pink-500 to-pink-600 text-white shadow-lg ring-1 ring-pink-500/10">
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
+            <img src={customSolutionsIcon} alt="Custom Solutions" className="h-6 w-6 object-contain" />
           </div>
           <div className="ml-4">
             <p className="text-base font-medium text-slate-900">Custom Solutions</p>
@@ -107,9 +102,7 @@ const CaseStudiesDropdown = ({ onClose }) => (
           className="flex items-start rounded-lg p-3 hover:bg-slate-50 text-left"
         >
           <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-green-500 to-green-600 text-white shadow-lg ring-1 ring-green-500/10">
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
+            <Star className="h-6 w-6" />
           </div>
           <div className="ml-4">
             <p className="text-base font-medium text-slate-900">Featured Case Studies</p>
@@ -126,9 +119,7 @@ const CaseStudiesDropdown = ({ onClose }) => (
           className="flex items-start rounded-lg p-3 hover:bg-slate-50"
         >
           <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-orange-500 to-orange-600 text-white shadow-lg ring-1 ring-orange-500/10">
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-            </svg>
+            <BookOpen className="h-6 w-6" />
           </div>
           <div className="ml-4">
             <p className="text-base font-medium text-slate-900">All Case Studies</p>
@@ -145,9 +136,7 @@ const CaseStudiesDropdown = ({ onClose }) => (
           className="flex items-start rounded-lg p-3 hover:bg-slate-50"
         >
           <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-purple-500 to-purple-600 text-white shadow-lg ring-1 ring-purple-500/10">
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-            </svg>
+            <Lock className="h-6 w-6" />
           </div>
           <div className="ml-4">
             <p className="text-base font-medium text-slate-900">Private Case Studies</p>
@@ -196,7 +185,7 @@ const Navbar = ({ scrolled }) => {
 
   const handleTouchMove = (e) => {
     if (!touchStart) return;
-    
+
     const touchEnd = e.touches[0].clientY;
     const diff = touchStart - touchEnd;
 
@@ -289,17 +278,16 @@ const Navbar = ({ scrolled }) => {
 
   return (
     <>
-      <nav 
-        className={`fixed w-full z-40 transition-all duration-300 ${
-          scrolled ? 'bg-white/80 backdrop-blur-lg border-b border-white/20' : 'bg-transparent'
-        }`}
+      <nav
+        className={`fixed w-full z-40 transition-all duration-300 ${scrolled ? 'bg-white/80 backdrop-blur-lg border-b border-white/20' : 'bg-transparent'
+          }`}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 md:py-4">
           <div className="flex justify-between items-center">
-            <Link 
-              to="/" 
+            <Link
+              to="/"
               className="relative group flex items-center gap-2 md:gap-3"
               onClick={(e) => {
                 if (location.pathname === '/') {
@@ -317,47 +305,45 @@ const Navbar = ({ scrolled }) => {
             <div className="hidden md:flex items-center space-x-1">
               <NavLink active={activeSection === 'about'} onClick={(e) => handleNavClick('about', e)}>About</NavLink>
               <NavLink active={activeSection === 'solutions'} onClick={(e) => handleNavClick('solutions', e)}>Solutions</NavLink>
-              <div 
+              <div
                 className="relative"
                 onMouseEnter={handleServicesDropdownEnter}
                 onMouseLeave={handleServicesDropdownLeave}
               >
                 <button
                   onClick={(e) => handleNavClick('services', e)}
-                  className={`px-3 py-2 rounded-xl text-dark-800 hover:text-primary-600 transition-colors ${
-                    location.pathname.includes('/services') || activeSection === 'services' ? 'bg-primary-50 text-primary-600 font-medium' : ''
-                  }`}
+                  className={`px-3 py-2 rounded-xl text-dark-800 hover:text-primary-600 transition-colors ${location.pathname.includes('/services') || activeSection === 'services' ? 'bg-primary-50 text-primary-600 font-medium' : ''
+                    }`}
                 >
                   Services
                 </button>
                 {showServicesDropdown && (
-                  <ServicesDropdown 
-                    onClose={() => setShowServicesDropdown(false)} 
+                  <ServicesDropdown
+                    onClose={() => setShowServicesDropdown(false)}
                   />
                 )}
               </div>
-              <div 
+              <div
                 className="relative"
                 onMouseEnter={handleCaseStudiesDropdownEnter}
                 onMouseLeave={handleCaseStudiesDropdownLeave}
               >
                 <button
                   onClick={(e) => handleNavClick('case-studies', e)}
-                  className={`px-3 py-2 rounded-xl text-dark-800 hover:text-primary-600 transition-colors ${
-                    location.pathname.includes('/case-studies') || activeSection === 'case-studies' ? 'bg-primary-50 text-primary-600 font-medium' : ''
-                  }`}
+                  className={`px-3 py-2 rounded-xl text-dark-800 hover:text-primary-600 transition-colors ${location.pathname.includes('/case-studies') || activeSection === 'case-studies' ? 'bg-primary-50 text-primary-600 font-medium' : ''
+                    }`}
                 >
                   Case Studies
                 </button>
                 {showCaseStudiesDropdown && (
-                  <CaseStudiesDropdown 
-                    onClose={() => setShowCaseStudiesDropdown(false)} 
+                  <CaseStudiesDropdown
+                    onClose={() => setShowCaseStudiesDropdown(false)}
                   />
                 )}
               </div>
               <NavLink active={activeSection === 'faq'} onClick={(e) => handleNavClick('faq', e)}>FAQ</NavLink>
               <div className="ml-4">
-                <button 
+                <button
                   onClick={() => setShowCalendly(true)}
                   className="group relative px-6 py-3 rounded-xl bg-gradient-to-r from-primary-600 via-accent-purple to-accent-purple hover:from-accent-purple hover:via-primary-600 hover:to-primary-600 text-white font-medium hover:shadow-lg transition-all duration-500 border border-white/20 bg-[length:200%_200%] bg-[0%_0%] hover:bg-[100%_100%]"
                 >
@@ -385,19 +371,16 @@ const Navbar = ({ scrolled }) => {
               >
                 <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
                   <span
-                    className={`absolute block h-0.5 w-6 bg-dark-800 transform transition duration-300 ease-in-out ${
-                      isOpen ? 'rotate-45' : '-translate-y-2'
-                    }`}
+                    className={`absolute block h-0.5 w-6 bg-dark-800 transform transition duration-300 ease-in-out ${isOpen ? 'rotate-45' : '-translate-y-2'
+                      }`}
                   ></span>
                   <span
-                    className={`absolute block h-0.5 w-6 bg-dark-800 transform transition duration-300 ease-in-out ${
-                      isOpen ? 'opacity-0' : 'opacity-100'
-                    }`}
+                    className={`absolute block h-0.5 w-6 bg-dark-800 transform transition duration-300 ease-in-out ${isOpen ? 'opacity-0' : 'opacity-100'
+                      }`}
                   ></span>
                   <span
-                    className={`absolute block h-0.5 w-6 bg-dark-800 transform transition duration-300 ease-in-out ${
-                      isOpen ? '-rotate-45' : 'translate-y-2'
-                    }`}
+                    className={`absolute block h-0.5 w-6 bg-dark-800 transform transition duration-300 ease-in-out ${isOpen ? '-rotate-45' : 'translate-y-2'
+                      }`}
                   ></span>
                 </div>
               </button>
@@ -405,17 +388,16 @@ const Navbar = ({ scrolled }) => {
           </div>
 
           <div
-            className={`md:hidden transition-all duration-300 ease-in-out bg-white/95 backdrop-blur-lg rounded-2xl border border-white/20 ${
-              isOpen
-                ? 'max-h-[calc(100vh-6rem)] opacity-100 mt-4 overflow-y-auto'
-                : 'max-h-0 opacity-0 overflow-hidden'
-            }`}
+            className={`md:hidden transition-all duration-300 ease-in-out bg-white/95 backdrop-blur-lg rounded-2xl border border-white/20 ${isOpen
+              ? 'max-h-[calc(100vh-6rem)] opacity-100 mt-4 overflow-y-auto'
+              : 'max-h-0 opacity-0 overflow-hidden'
+              }`}
           >
             <div className="py-6 px-4 space-y-2">
               <MobileNavLink active={activeSection === 'about'} onClick={(e) => handleNavClick('about', e)}>About</MobileNavLink>
               <MobileNavLink active={activeSection === 'solutions'} onClick={(e) => handleNavClick('solutions', e)}>Solutions</MobileNavLink>
-              <Link 
-                to="/services" 
+              <Link
+                to="/services"
                 className="block w-full"
                 onClick={() => setIsOpen(false)}
               >
@@ -512,9 +494,9 @@ const Navbar = ({ scrolled }) => {
         </div>
       </nav>
 
-      <CalendlyPopup 
-        isOpen={showCalendly} 
-        onClose={() => setShowCalendly(false)} 
+      <CalendlyPopup
+        isOpen={showCalendly}
+        onClose={() => setShowCalendly(false)}
       />
     </>
   );

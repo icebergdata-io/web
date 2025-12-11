@@ -1,8 +1,10 @@
+import { Hotel, Plane, Star, Palette, ShoppingBag, BarChart, TrendingUp, Layout, Home, Map, CircleDollarSign, Grid } from 'lucide-react';
+
 const travelSolutions = [
   {
     title: "Hotel Data Collection",
     description: "Comprehensive hotel data including rates, availability, amenities, and reviews from multiple OTAs and direct sources.",
-    icon: "🏨",
+    icon: <Hotel className="w-8 h-8 md:w-10 md:h-10" />,
     examples: [
       {
         name: "Booking.com Hotels Database",
@@ -75,7 +77,7 @@ const travelSolutions = [
   {
     title: "Flight Information",
     description: "Real-time flight prices, schedules, and availability across multiple airlines and booking platforms.",
-    icon: "✈️",
+    icon: <Plane className="w-8 h-8 md:w-10 md:h-10" />,
     examples: [
       {
         name: "Kayak Flights Database",
@@ -140,7 +142,7 @@ const travelSolutions = [
   {
     title: "Travel Reviews & Ratings",
     description: "Aggregated customer reviews, ratings, and sentiment analysis from various travel platforms.",
-    icon: "⭐",
+    icon: <Star className="w-8 h-8 md:w-10 md:h-10" />,
     examples: [
       {
         name: "TripAdvisor Reviews",
@@ -206,7 +208,7 @@ const travelSolutions = [
   {
     title: "UI Components & Modals",
     description: "Ready-to-use travel industry components and modal templates for seamless user experience.",
-    icon: "🎨",
+    icon: <Palette className="w-8 h-8 md:w-10 md:h-10" />,
     examples: [
       {
         name: "Booking Components",
@@ -271,7 +273,7 @@ const ecommerceSolutions = [
   {
     title: "Product Data Monitoring",
     description: "Track prices, inventory, and product details across multiple e-commerce platforms and marketplaces.",
-    icon: "🛍️",
+    icon: <ShoppingBag className="w-8 h-8 md:w-10 md:h-10" />,
     examples: [
       {
         name: "Amazon Products Database",
@@ -340,7 +342,7 @@ const ecommerceSolutions = [
   {
     title: "Competitor Analysis",
     description: "Monitor competitor pricing, promotions, and product launches with automated data collection.",
-    icon: "📊",
+    icon: <BarChart className="w-8 h-8 md:w-10 md:h-10" />,
     examples: [
       {
         name: "Price Comparison Database",
@@ -402,7 +404,7 @@ const ecommerceSolutions = [
   {
     title: "Market Intelligence",
     description: "Gather market trends, customer reviews, and product performance data for informed decision-making.",
-    icon: "📈",
+    icon: <TrendingUp className="w-8 h-8 md:w-10 md:h-10" />,
     examples: [
       {
         name: "Consumer Reviews Database",
@@ -462,7 +464,7 @@ const ecommerceSolutions = [
   {
     title: "Interface Components & Modals",
     description: "Comprehensive collection of e-commerce UI components and modal templates for enhanced shopping experience.",
-    icon: "🎯",
+    icon: <Layout className="w-8 h-8 md:w-10 md:h-10" />,
     examples: [
       {
         name: "Product Components",
@@ -524,7 +526,7 @@ const realEstateSolutions = [
   {
     title: "Property Listings Monitor",
     description: "Track real-time property listings, prices, and availability across multiple real estate platforms and MLS systems.",
-    icon: "🏠",
+    icon: <Home className="w-8 h-8 md:w-10 md:h-10" />,
     examples: [
       {
         name: "Zillow Properties Database",
@@ -592,7 +594,7 @@ const realEstateSolutions = [
   {
     title: "Market Analytics",
     description: "Collect and analyze property values, rental rates, and market trends for different locations and property types.",
-    icon: "📊",
+    icon: <Map className="w-8 h-8 md:w-10 md:h-10" />,
     examples: [
       {
         name: "Market Trends Database",
@@ -651,7 +653,7 @@ const realEstateSolutions = [
   {
     title: "Investment Insights",
     description: "Gather data on property investment opportunities, ROI metrics, and neighborhood analytics for informed decisions.",
-    icon: "💰",
+    icon: <CircleDollarSign className="w-8 h-8 md:w-10 md:h-10" />,
     examples: [
       {
         name: "Investment Properties",
@@ -710,7 +712,7 @@ const realEstateSolutions = [
   {
     title: "Property Interface & Modals",
     description: "Specialized real estate UI components and modal templates for property listing and management.",
-    icon: "🏗️",
+    icon: <Grid className="w-8 h-8 md:w-10 md:h-10" />,
     examples: [
       {
         name: "Property Components",

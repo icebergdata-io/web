@@ -2,12 +2,13 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PropTypes from 'prop-types';
 import Logo from './Logo';
+import { Database, Zap, Sparkles, Server, Clock, Target } from 'lucide-react';
 
 const problems = [
   {
     title: "Fragmented Data Sources",
     description: "Consolidates disparate data sources into one unified database, simplifying analysis.",
-    icon: "🔄",
+    icon: <Database className="w-6 h-6" />,
     gradient: "from-blue-500/20 to-purple-500/20",
     details: {
       title: "How We Handle Fragmented Data",
@@ -23,7 +24,7 @@ const problems = [
   {
     title: "Manual Data Collection",
     description: "Automates data acquisition, cutting labor costs and reducing human error.",
-    icon: "⚡",
+    icon: <Zap className="w-6 h-6" />,
     gradient: "from-purple-500/20 to-pink-500/20",
     details: {
       title: "Our Automation Solution",
@@ -39,7 +40,7 @@ const problems = [
   {
     title: "Data Inconsistencies",
     description: "Ensures high data quality through rigorous cleaning and normalization.",
-    icon: "✨",
+    icon: <Sparkles className="w-6 h-6" />,
     gradient: "from-pink-500/20 to-red-500/20",
     details: {
       title: "Data Quality Assurance",
@@ -55,7 +56,7 @@ const problems = [
   {
     title: "Complex Infrastructure",
     description: "Provides a scalable, turnkey solution without costly in-house infrastructure.",
-    icon: "🏗️",
+    icon: <Server className="w-6 h-6" />,
     gradient: "from-red-500/20 to-orange-500/20",
     details: {
       title: "Simplified Infrastructure",
@@ -71,7 +72,7 @@ const problems = [
   {
     title: "Slow Decision-Making",
     description: "Real-time data integration supports faster insights and quicker responses.",
-    icon: "⚡",
+    icon: <Clock className="w-6 h-6" />,
     gradient: "from-orange-500/20 to-yellow-500/20",
     details: {
       title: "Accelerated Decision Making",
@@ -87,7 +88,7 @@ const problems = [
   {
     title: "Data Integration Complexity",
     description: "Simplifies the process of combining multiple data sources with intelligent matching.",
-    icon: "🎯",
+    icon: <Target className="w-6 h-6" />,
     gradient: "from-yellow-500/20 to-green-500/20",
     details: {
       title: "Smart Integration Solutions",
@@ -204,7 +205,7 @@ const Problems = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 relative">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -225,7 +226,7 @@ const Problems = () => {
           </p>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           layout
           className="grid md:grid-cols-3 gap-8"
         >

@@ -34,6 +34,36 @@ export const pressArticles = [
     date: "2024"
   },
   {
+    title: "How Iceberg Data Is Helping Small Businesses Compete With Giants",
+    description: "Insights on helping small businesses compete through strategic web scraping",
+    link: "https://www.csuitebrief.com/founder/david-martin-riveros-how-iceberg-data-is-helping-small-businesses-compete-with-giants-through-web-scraping/",
+    date: "2024"
+  },
+  {
+    title: "Business Intelligence to Scale Insights",
+    description: "Leveraging Iceberg Data and Google Cloud for scalable business intelligence",
+    link: "https://www.wolfandgrayson.com/founder/david-martin-riveros-business-intelligence-to-scale-insights-using-iceberg-data-and-google-cloud/",
+    date: "2024"
+  },
+  {
+    title: "How to Scrape Web Data at Scale",
+    description: "Technical deep dive into scraping web data at an enterprise scale",
+    link: "https://www.randlesham.com/technology/david-martin-riveros-how-to-scrape-web-data-at-scale/",
+    date: "2024"
+  },
+  {
+    title: "Ethical, Legal, and Sustainable Web Data Collection",
+    description: "Navigating the complexities of ethical and legal web data collection",
+    link: "https://valiantceo.com/david-martin-riveros-ethical-legal-and-sustainable-web-data-collection/",
+    date: "2024"
+  },
+  {
+    title: "How to Deliver Tailored Data Solutions",
+    description: "Strategies for delivering custom data solutions across multiple industries",
+    link: "https://www.msn.com/en-us/news/other/david-martin-riveros-how-to-deliver-tailored-data-solutions-across-multiple-industries/ar-AA1Jjs4U",
+    date: "2024"
+  },
+  {
     title: "Iceberg Data Transforms Public Data into Strategic Decisions",
     description: "Learn how Iceberg Data is revolutionizing the way businesses leverage public data for strategic decision-making.",
     date: "March 2024",

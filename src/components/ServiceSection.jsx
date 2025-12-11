@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import Logo from './Logo';
 import CalendlyPopup from './CalendlyPopup';
 import PropTypes from 'prop-types';
+import automatedCollectionIcon from '../assets/icons/automated-collection.png';
+import dataCleaningIcon from '../assets/icons/data-cleaning.png';
+import integrationIcon from '../assets/icons/integration.png';
 
 const services = [
   {
@@ -32,7 +35,7 @@ const services = [
         "Competitive intelligence gathering"
       ]
     },
-    icon: "🤖"
+    icon: automatedCollectionIcon
   },
   {
     title: "Data Cleaning & Normalization",
@@ -60,7 +63,7 @@ const services = [
         "Healthcare records processing"
       ]
     },
-    icon: "✨"
+    icon: dataCleaningIcon
   },
   {
     title: "Seamless Integration & Delivery",
@@ -88,7 +91,7 @@ const services = [
         "Automated reporting systems"
       ]
     },
-    icon: "🔄"
+    icon: integrationIcon
   }
 ];
 
@@ -111,8 +114,8 @@ const DetailedPopup = ({ service, onClose, onGetStarted }) => {
       >
         <div className="flex justify-between items-start mb-6">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-primary-100 to-primary-50 rounded-xl flex items-center justify-center text-2xl">
-              {service.icon}
+            <div className="w-16 h-16 bg-gradient-to-br from-primary-100 to-primary-50 rounded-2xl flex items-center justify-center p-3 shadow-inner">
+              <img src={service.icon} alt={service.title} className="w-full h-full object-contain" />
             </div>
             <h3 className="text-2xl font-display font-bold text-dark-900">{service.title}</h3>
           </div>
@@ -235,7 +238,7 @@ const ServiceSection = () => {
   };
 
   const cardVariants = {
-    hidden: { 
+    hidden: {
       opacity: 0,
       y: 20
     },
@@ -281,7 +284,7 @@ const ServiceSection = () => {
         </div>
 
         {/* Service Cards */}
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -296,18 +299,18 @@ const ServiceSection = () => {
             >
               <div className="h-full bg-white rounded-2xl shadow-elevation-2 p-4 sm:p-6 flex flex-col transition-all duration-300 hover:shadow-elevation-3 hover:-translate-y-1">
                 <div className="text-4xl mb-4">
-                  <motion.div 
-                    className="w-10 sm:w-12 h-10 sm:h-12 bg-gradient-to-br from-primary-100 to-primary-50 rounded-xl flex items-center justify-center"
+                  <motion.div
+                    className="w-12 sm:w-16 h-12 sm:h-16 bg-gradient-to-br from-primary-100 to-primary-50 rounded-2xl flex items-center justify-center p-3 shadow-inner"
                     whileHover={{ scale: 1.05, rotate: 5 }}
                     transition={{ duration: 0.2 }}
                   >
-                    {service.icon}
+                    <img src={service.icon} alt={service.title} className="w-full h-full object-contain" />
                   </motion.div>
                 </div>
                 <h3 className="text-lg sm:text-xl font-display font-bold text-dark-900 mb-2 group-hover:text-primary-600 transition-colors">{service.title}</h3>
                 <p className="text-sm text-dark-600 leading-relaxed flex-grow">{service.description}</p>
                 <div className="mt-4 flex items-center justify-between">
-                  <button 
+                  <button
                     onClick={() => setSelectedService(service)}
                     className="text-primary-600 font-medium flex items-center gap-2 hover:translate-x-2 transition-transform"
                   >
@@ -321,7 +324,7 @@ const ServiceSection = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </motion.svg>
                   </button>
-                  <Link 
+                  <Link
                     to={service.link}
                     onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                     className="text-primary-600 font-medium flex items-center gap-2 hover:translate-x-2 transition-transform"
@@ -345,9 +348,9 @@ const ServiceSection = () => {
 
       <AnimatePresence>
         {selectedService && (
-          <DetailedPopup 
-            service={selectedService} 
-            onClose={() => setSelectedService(null)} 
+          <DetailedPopup
+            service={selectedService}
+            onClose={() => setSelectedService(null)}
             onGetStarted={() => {
               setSelectedService(null);
               setShowCalendly(true);
@@ -356,9 +359,9 @@ const ServiceSection = () => {
         )}
       </AnimatePresence>
 
-      <CalendlyPopup 
-        isOpen={showCalendly} 
-        onClose={() => setShowCalendly(false)} 
+      <CalendlyPopup
+        isOpen={showCalendly}
+        onClose={() => setShowCalendly(false)}
       />
     </section>
   );
