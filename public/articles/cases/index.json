@@ -1,15 +1,6 @@
 {
-  "total": 202,
+  "total": 201,
   "caseStudies": [
-    {
-      "id": 198,
-      "sector": "airlines",
-      "slug": "airlines-slashing-aircraft-ground-aog-incidents-through",
-      "title": "Slashing Aircraft on Ground (AOG) Incidents by 30% through Predictive MRO Inventory Forecasting",
-      "subtitle": "Leveraging Real-Time Flight, Weather, and Regulatory Data to Pre-Position Critical Aircraft Spare Parts",
-      "sectorName": "Airlines",
-      "publicationDate": "2025-12-12"
-    },
     {
       "id": 197,
       "sector": "airlines",
