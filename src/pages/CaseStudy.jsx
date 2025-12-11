@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { JsonView } from 'react-json-view-lite';
 import 'react-json-view-lite/dist/index.css';
 import SEO from '../components/SEO';
@@ -7,6 +7,8 @@ import { slugify } from '../utils/slugify';
 import { findCaseStudyBySlug, getRelatedCaseStudies } from '../utils/caseStudyUtils';
 import RecommendedCaseStudies from '../components/RecommendedCaseStudies';
 import { sanitizeHTML } from '../utils/sanitize';
+import { generateBreadcrumbSchema, getCaseStudyBreadcrumbs } from '../utils/breadcrumbs';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 const formatDate = (dateString) => {
   return new Date(dateString).toLocaleDateString('en-US', {
@@ -101,8 +103,15 @@ const CaseStudy = () => {
     return null; // Will be redirected by the useEffect above
   }
 
-  // Schema.org markup for the case study
-  const schemaData = {
+  // Generate breadcrumbs
+  const breadcrumbs = getCaseStudyBreadcrumbs(caseData);
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
+  
+  // Enhanced Article schema with better SEO
+  const articleUrl = `https://www.icebergdata.co/case-study/${caseData.sectorSlug || caseData.Sector?.toLowerCase().replace(/\s+/g, '-')}/${caseData.slug}`;
+  const articleImage = `https://www.icebergdata.co/logos/logo-large.png`;
+  
+  const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": caseData.Title,
@@ -110,18 +119,52 @@ const CaseStudy = () => {
     "articleBody": caseData.Story,
     "author": {
       "@type": "Organization",
-      "name": "Iceberg Data"
+      "@id": "https://www.icebergdata.co/#organization",
+      "name": "Iceberg Data",
+      "url": "https://www.icebergdata.co",
+      "logo": {
+        "@type": "ImageObject",
+        "url": articleImage
+      }
     },
     "publisher": {
       "@type": "Organization",
+      "@id": "https://www.icebergdata.co/#organization",
       "name": "Iceberg Data",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://icebergdata.co/logo.png"
+        "url": articleImage,
+        "width": 1200,
+        "height": 1200
       }
     },
+    "datePublished": caseData.publicationDate,
+    "dateModified": caseData.publicationDate || caseData.publicationDate,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": articleUrl
+    },
+    "image": {
+      "@type": "ImageObject",
+      "url": articleImage,
+      "width": 1200,
+      "height": 1200
+    },
     "industry": caseData.Sector,
-    "keywords": [caseData.Sector, "data analytics", "case study", "business intelligence"],
+    "keywords": [
+      caseData.Sector,
+      "data analytics",
+      "case study",
+      "business intelligence",
+      "web scraping",
+      "data extraction",
+      caseData.Title.toLowerCase()
+    ],
+    "about": {
+      "@type": "Thing",
+      "name": caseData.Sector
+    },
+    "inLanguage": "en-US"
   };
 
   return (
@@ -134,40 +177,29 @@ const CaseStudy = () => {
         image={`https://www.icebergdata.co/logos/logo-large.png`}
       />
       
+      {/* BreadcrumbList Schema */}
       <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Article",
-          "headline": caseData.Title,
-          "description": caseData.Subtitle,
-          "articleBody": caseData.Story,
-          "author": {
-            "@type": "Organization",
-            "name": "Iceberg Data"
-          },
-          "publisher": {
-            "@type": "Organization",
-            "name": "Iceberg Data",
-            "logo": {
-              "@type": "ImageObject",
-              "url": "https://www.icebergdata.co/logos/logo-large.png"
-            }
-          },
-          "datePublished": caseData.publicationDate,
-          "dateModified": caseData.publicationDate,
-          "industry": caseData.Sector,
-          "keywords": [caseData.Sector, "data analytics", "case study", "business intelligence", "web scraping"],
-          "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": `https://www.icebergdata.co/case-study/${caseData.Sector?.toLowerCase().replace(/\s+/g, '-')}/${caseData.slug}`
-          }
-        })}
+        {JSON.stringify(breadcrumbSchema)}
+      </script>
+      
+      {/* Enhanced Article Schema */}
+      <script type="application/ld+json">
+        {JSON.stringify(articleSchema)}
       </script>
       
       <div className="min-h-screen pt-24 pb-12 bg-gradient-to-b from-white to-light-50">
         <div className="max-w-4xl mx-auto px-4">
+          {/* Breadcrumb Navigation */}
+          <Breadcrumbs items={breadcrumbs} />
+          
           <div id="case-study-header" className="mb-12">
-            <div className="text-sm text-primary-600 mb-2">{caseData.Sector}</div>
+            <div className="text-sm text-primary-600 mb-2">
+              <Link to="/case-studies" className="hover:underline">Case Studies</Link>
+              {' / '}
+              <Link to={`/case-studies?sector=${encodeURIComponent(caseData.Sector)}`} className="hover:underline">
+                {caseData.Sector}
+              </Link>
+            </div>
             <h1 className="text-4xl md:text-5xl font-display font-bold text-dark-900 mb-4">
               {caseData.Title}
             </h1>
@@ -363,11 +395,64 @@ const CaseStudy = () => {
             </div>
           </div>
           
+          {/* Related Services Section */}
+          <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
+            <h2 className="text-2xl font-bold mb-6">Related Services</h2>
+            <div className="grid md:grid-cols-3 gap-4">
+              <Link 
+                to="/services/web-scraping" 
+                className="p-4 border border-gray-200 rounded-xl hover:border-primary-500 hover:bg-primary-50 transition-all group"
+              >
+                <h3 className="font-semibold text-dark-900 mb-2 group-hover:text-primary-600 transition-colors">
+                  Web Scraping Services
+                </h3>
+                <p className="text-sm text-dark-600">
+                  Custom web scraping solutions for your data needs
+                </p>
+              </Link>
+              <Link 
+                to="/services/data-integration" 
+                className="p-4 border border-gray-200 rounded-xl hover:border-primary-500 hover:bg-primary-50 transition-all group"
+              >
+                <h3 className="font-semibold text-dark-900 mb-2 group-hover:text-primary-600 transition-colors">
+                  Data Integration
+                </h3>
+                <p className="text-sm text-dark-600">
+                  Connect and unify data from multiple sources
+                </p>
+              </Link>
+              <Link 
+                to="/services/custom-solutions" 
+                className="p-4 border border-gray-200 rounded-xl hover:border-primary-500 hover:bg-primary-50 transition-all group"
+              >
+                <h3 className="font-semibold text-dark-900 mb-2 group-hover:text-primary-600 transition-colors">
+                  Custom Solutions
+                </h3>
+                <p className="text-sm text-dark-600">
+                  Tailored data solutions for your business
+                </p>
+              </Link>
+            </div>
+          </div>
+
           {/* Recommended Case Studies */}
           <RecommendedCaseStudies 
             relatedStudies={relatedStudies}
             currentSector={caseData.Sector}
           />
+          
+          {/* Back to Case Studies Link */}
+          <div className="mt-8 text-center">
+            <Link 
+              to="/case-studies" 
+              className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium transition-colors"
+            >
+              <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+              View All Case Studies
+            </Link>
+          </div>
         </div>
       </div>
     </>

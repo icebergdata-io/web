@@ -5,15 +5,16 @@ import PropTypes from 'prop-types';
 const SEO = ({ 
   title, 
   description,
-  image = 'https://icebergdata.co/og-image.jpg', // Default OG image
+  image = 'https://www.icebergdata.co/og-logo.png', // Default OG image
   type = 'website',
   keywords = 'web scraping, data extraction, business intelligence, data analytics',
   noindex = false
 }) => {
   const location = useLocation();
-  const baseUrl = 'https://icebergdata.co';
+  const baseUrl = 'https://www.icebergdata.co';
   const canonicalUrl = `${baseUrl}${location.pathname}`;
   const siteName = 'Iceberg Data';
+  const googleVerification = process.env.REACT_APP_GOOGLE_SITE_VERIFICATION || '';
 
   return (
     <Helmet>
@@ -25,7 +26,9 @@ const SEO = ({
       <link rel="canonical" href={canonicalUrl} />
       
       {/* Google Search Console Verification */}
-      <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" />
+      {googleVerification && (
+        <meta name="google-site-verification" content={googleVerification} />
+      )}
       
       {/* Robots Meta Tag */}
       {noindex ? (

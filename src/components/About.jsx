@@ -3,12 +3,13 @@ import Logo from './Logo';
 import InfoPopup from './InfoPopup';
 import CalendlyPopup from './CalendlyPopup';
 import DataIntegrationAnimation from '../../scripts/matching-animation';
+import { MultiPlatformIcon, PipelineIcon, IntegrationIcon, ScaleIcon, AiMatchingIcon } from './CustomIcons';
 
 const features = [
   {
     title: "Multi-Platform Scraping",
     description: "Extract data from both web and mobile applications, ensuring comprehensive data coverage across all digital platforms.",
-    icon: "📱",
+    icon: <MultiPlatformIcon />,
     details: {
       title: "Multi-Platform Scraping",
       description: "Our advanced scraping technology works across all digital platforms, from websites to mobile apps.",
@@ -34,7 +35,7 @@ const features = [
   {
     title: "End-to-End Pipeline",
     description: "We handle the complete data journey: from collection and cleaning to matching and integration into your systems.",
-    icon: "🔄",
+    icon: <PipelineIcon />,
     details: {
       title: "End-to-End Pipeline",
       description: "A comprehensive data pipeline that handles every step from collection to delivery.",
@@ -60,7 +61,7 @@ const features = [
   {
     title: "Multi-Source Integration",
     description: "Seamlessly combine data from diverse web sources into a single, coherent database with automated updates.",
-    icon: "🔗",
+    icon: <IntegrationIcon />,
     details: {
       title: "Multi-Source Integration",
       description: "Unify data from multiple sources into a single, coherent database with intelligent matching and alignment.",
@@ -86,7 +87,7 @@ const features = [
   {
     title: "Enterprise Scale",
     description: "Built for large-scale operations, processing millions of data points while maintaining accuracy and consistency.",
-    icon: "📈",
+    icon: <ScaleIcon />,
     details: {
       title: "Enterprise Scale",
       description: "Our infrastructure is built to handle enterprise-level data processing with high reliability and performance.",
@@ -124,7 +125,7 @@ const popupContent = {
       {
         title: "Fuzzy Matching",
         description: "Smart matching that accounts for variations in naming and formatting.",
-        icon: "��"
+        icon: ""
       },
       {
         title: "Confidence Scoring",
@@ -272,7 +273,7 @@ const About = () => {
       'Multi-Source Integration': 'dataAlignment',
       'Enterprise Scale': 'aiIntegration'
     };
-    
+
     const mappedType = featureTypeMap[feature.title];
     if (mappedType) {
       setPopup({
@@ -287,7 +288,7 @@ const About = () => {
       <div className="absolute inset-0 bg-gradient-conic from-white via-primary-50 to-white opacity-40"></div>
       <div className="absolute -left-64 top-32 w-[600px] h-[600px] bg-gradient-to-br from-accent-purple/20 to-primary-300/20 rounded-full blur-3xl animate-pulse-slow"></div>
       <div className="absolute -right-64 bottom-32 w-[600px] h-[600px] bg-gradient-to-tr from-accent-cyan/20 to-primary-300/20 rounded-full blur-3xl animate-pulse-slow delay-1000"></div>
-      
+
       <div className="relative max-w-7xl mx-auto px-4">
         <div className="text-center mb-20">
           <div className="flex justify-center mb-6">
@@ -306,7 +307,7 @@ const About = () => {
                 key={index}
                 className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
               >
-                <div className="text-4xl mb-4">{feature.icon}</div>
+                <div className="mb-6 flex justify-center md:justify-start">{feature.icon}</div>
                 <h3 className="text-xl font-bold text-dark-900 mb-3">{feature.title}</h3>
                 <p className="text-dark-700 mb-4">{feature.description}</p>
                 <button
@@ -323,31 +324,31 @@ const About = () => {
         <div className="mb-24 relative">
           <div className="absolute inset-0 bg-gradient-to-r from-primary-50 via-accent-purple/5 to-primary-50 rounded-3xl"></div>
           <div className="relative bg-white/80 backdrop-blur-sm border border-primary-100 rounded-3xl p-12 text-center">
-            <div className="text-6xl mb-8 mx-auto w-24 h-24 bg-gradient-to-br from-primary-100 to-transparent rounded-2xl flex items-center justify-center">
-              🧠
+            <div className="mb-8 mx-auto w-24 h-24 flex items-center justify-center">
+              <AiMatchingIcon />
             </div>
             <h3 className="text-3xl font-display font-bold text-dark-900 mb-6">
               Advanced AI Matching Technology
             </h3>
             <p className="text-xl text-dark-700 leading-relaxed max-w-4xl mx-auto mb-8">
-              What sets us apart is our proprietary AI-powered matching system. Unlike traditional data integration solutions, 
-              our advanced algorithms intelligently identify, match, and merge related data points across multiple sources, 
+              What sets us apart is our proprietary AI-powered matching system. Unlike traditional data integration solutions,
+              our advanced algorithms intelligently identify, match, and merge related data points across multiple sources,
               creating a single, unified database that&apos;s always accurate and up-to-date.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <button 
+              <button
                 onClick={(e) => handlePopupClick('entityMatching', e)}
                 className="px-4 py-2 bg-primary-50 text-primary-700 rounded-xl font-medium hover:bg-primary-100 transition-colors"
               >
                 Intelligent Entity Matching→
               </button>
-              <button 
+              <button
                 onClick={(e) => handlePopupClick('dataAlignment', e)}
                 className="px-4 py-2 bg-primary-50 text-primary-700 rounded-xl font-medium hover:bg-primary-100 transition-colors"
               >
                 Cross-Source Data Alignment→
               </button>
-              <button 
+              <button
                 onClick={(e) => handlePopupClick('deduplication', e)}
                 className="px-4 py-2 bg-primary-50 text-primary-700 rounded-xl font-medium hover:bg-primary-100 transition-colors"
               >
@@ -372,7 +373,7 @@ const About = () => {
               To empower enterprises with seamless access to unified web data through AI-powered matching and integration, enabling smarter, faster decision-making in an increasingly complex digital landscape.
             </p>
             <div className="pt-4">
-              <button 
+              <button
                 onClick={(e) => handlePopupClick('aiIntegration', e)}
                 className="inline-block px-4 py-2 bg-dark-900 text-white rounded-xl font-medium hover:bg-dark-800 transition-colors"
               >
@@ -386,7 +387,7 @@ const About = () => {
               We go beyond simple data collection. Our AI-driven pipeline intelligently matches and aligns data from multiple sources, handling the entire process from collection to integration. This means you get a single, coherent database that&apos;s always up-to-date and perfectly aligned.
             </p>
             <div className="pt-4">
-              <button 
+              <button
                 onClick={(e) => handlePopupClick('pipeline', e)}
                 className="inline-block px-4 py-2 bg-gradient-to-r from-primary-600 to-accent-purple text-white rounded-xl font-medium hover:shadow-lg transition-all duration-300"
               >
@@ -404,7 +405,7 @@ const About = () => {
             <p className="text-white/90 text-lg mb-8">
               Join industry leaders who trust us with their data integration needs
             </p>
-            <button 
+            <button
               onClick={() => setShowCalendly(true)}
               className="group relative px-10 py-4 rounded-xl text-lg font-bold overflow-hidden bg-white hover:scale-105 transition-all duration-300"
             >
@@ -422,7 +423,7 @@ const About = () => {
       {popup.type && (
         <InfoPopup
           isOpen={true}
-          title={popup.type.startsWith('feature-') 
+          title={popup.type.startsWith('feature-')
             ? features[parseInt(popup.type.split('-')[1])].details.title
             : popupContent[popup.type].title}
           description={popup.type.startsWith('feature-')
@@ -435,7 +436,7 @@ const About = () => {
           onClose={() => setPopup({ type: null, position: null })}
         />
       )}
-      
+
       {showCalendly && (
         <CalendlyPopup isOpen={showCalendly} onClose={() => setShowCalendly(false)} />
       )}
