@@ -307,31 +307,11 @@ const JobDetail = () => {
                                 </div>
                             </motion.div>
 
-                            {/* Selection Process */}
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.7 }}
-                                className="bg-white rounded-xl p-6 shadow-lg"
-                            >
-                                <h2 className="text-2xl font-bold text-dark-900 mb-4">Selection Process</h2>
-                                <ol className="space-y-3">
-                                    {job.selectionProcess.map((step, index) => (
-                                        <li key={index} className="flex items-start gap-3 text-dark-700">
-                                            <span className="flex-shrink-0 w-6 h-6 bg-primary-600 text-white rounded-full flex items-center justify-center text-sm font-medium">
-                                                {index + 1}
-                                            </span>
-                                            <span className="pt-0.5">{step}</span>
-                                        </li>
-                                    ))}
-                                </ol>
-                            </motion.div>
-
                             {/* Scope */}
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.8 }}
+                                transition={{ delay: 0.7 }}
                                 className="bg-white rounded-xl p-6 shadow-lg"
                             >
                                 <div className="grid md:grid-cols-2 gap-6">

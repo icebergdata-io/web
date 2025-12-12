@@ -291,7 +291,7 @@ export const jobOpenings = [
 
         complianceNote: "SDRs must adhere to data privacy regulations (GDPR, CAN-SPAM) in all outreach activities and maintain ethical sales practices aligned with company values.",
 
-        postedDate: "2024-12-11",
+        postedDate: "2026-01-15",
         isActive: true
     }
 ];

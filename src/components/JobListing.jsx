@@ -261,21 +261,6 @@ const JobListing = ({ job }) => {
                             </div>
                         </div>
 
-                        {/* Selection Process */}
-                        <div>
-                            <h4 className="text-xl font-bold text-dark-900 mb-4">Selection Process</h4>
-                            <ol className="space-y-2">
-                                {job.selectionProcess.map((step, idx) => (
-                                    <li key={idx} className="flex items-start gap-3 text-dark-700">
-                                        <span className="flex-shrink-0 w-6 h-6 bg-primary-600 text-white rounded-full flex items-center justify-center text-sm font-medium">
-                                            {idx + 1}
-                                        </span>
-                                        <span className="pt-0.5">{step}</span>
-                                    </li>
-                                ))}
-                            </ol>
-                        </div>
-
                         {/* Scope */}
                         <div className="grid md:grid-cols-2 gap-6">
                             <div>
