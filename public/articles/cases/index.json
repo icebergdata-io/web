@@ -1,6 +1,15 @@
 {
-  "total": 202,
+  "total": 203,
   "caseStudies": [
+    {
+      "id": 216,
+      "sector": "home-services",
+      "slug": "home-services-decoding-local-service-narratives-hyper-local-sentiment",
+      "title": "Decoding Local Service Narratives: How Hyper-Local Sentiment Analysis Reduced Customer Churn by 18%",
+      "subtitle": "Moving Beyond Generic Star Ratings to Uncover Granular Insights on Technician Professionalism and Pricing Perception in the Home Services Industry",
+      "sectorName": "Home Services",
+      "publicationDate": "2025-12-13"
+    },
     {
       "id": 198,
       "sector": "airlines",
