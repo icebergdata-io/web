@@ -47,12 +47,23 @@ function generateAction(analysis) {
   const actions = [];
 
   // Check indexing status
-  if (!analysis.indexing || analysis.indexing.verdict === 'FAIL') {
+  if (!analysis.indexing || analysis.indexing.verdict === 'FAIL' || analysis.indexing.verdict === 'NEUTRAL') {
+    const coverageState = analysis.indexing?.coverageState || '';
     if (analysis.accessibility?.accessible) {
-      actions.push('Request Indexing');
+      // Check if it's a case that needs indexing request
+      if (coverageState.includes('Discovered') || coverageState.includes('unknown') || coverageState.includes('Crawled')) {
+        actions.push('Request Indexing');
+      } else if (analysis.indexing.verdict === 'FAIL') {
+        actions.push('Request Indexing');
+      }
     } else {
       actions.push('Fix Accessibility First');
     }
+  }
+  
+  // Check for noindex tag issue
+  if (analysis.indexing?.coverageState?.includes('noindex')) {
+    actions.push('Remove noindex Tag');
   }
 
   // Check accessibility
@@ -63,6 +74,11 @@ function generateAction(analysis) {
   // Check sitemap inclusion
   if (!analysis.sitemap?.inSitemap) {
     actions.push('Add to Sitemap');
+  }
+  
+  // Check for duplicate canonical
+  if (analysis.indexing?.coverageState?.includes('Duplicate')) {
+    actions.push('Fix Canonical Tag');
   }
 
   // Check performance
@@ -101,6 +117,7 @@ function generateCSV(results) {
     'In Sitemap',
     'Sitemap Last Modified',
     'Accessible',
+    'Indexing Requested',
     'Action Needed'
   ];
 
@@ -123,6 +140,7 @@ function generateCSV(results) {
       escapeCSV(sitemap.inSitemap ? 'Yes' : 'No'),
       escapeCSV(sitemap.lastmod || ''),
       escapeCSV(accessibility.accessible ? 'Yes' : 'No'),
+      escapeCSV(analysis.indexingRequested ? 'Yes' : 'No'),
       escapeCSV(generateAction(analysis))
     ];
   });
@@ -155,6 +173,39 @@ async function authenticate() {
   });
   
   return await auth.getClient();
+}
+
+/**
+ * Request indexing for a URL via Google Search Console API
+ */
+async function requestIndexing(url, searchconsole) {
+  try {
+    const response = await searchconsole.urlInspection.index.requestIndexing({
+      requestBody: {
+        inspectionUrl: url,
+        siteUrl: PROPERTY_URL
+      }
+    });
+
+    if (response.data) {
+      return {
+        success: true,
+        inspectionUrl: response.data.inspectionUrl || url
+      };
+    }
+  } catch (error) {
+    // Indexing request may fail if:
+    // - URL was recently requested (rate limit)
+    // - URL is not eligible for indexing
+    // - Service account doesn't have permission
+    return {
+      success: false,
+      error: error.message,
+      code: error.code
+    };
+  }
+  
+  return { success: false, error: 'Unknown error' };
 }
 
 /**
@@ -311,7 +362,9 @@ async function analyzeUrl(url, searchconsole, silent = false) {
     sitemap: checkSitemap(url),
     accessibility: await checkAccessibility(url),
     indexing: null,
-    performance: null
+    performance: null,
+    indexingRequested: false,
+    indexingRequestResult: null
   };
 
   // Get indexing status
@@ -441,6 +494,10 @@ async function analyzeSitemapUrls(limit = null) {
   const results = [];
   const errors = [];
   const startTime = Date.now();
+  
+  // Check if auto-request indexing is enabled
+  const args = process.argv.slice(2);
+  const autoRequestIndexing = args.includes('--request-indexing');
 
   // Process batches sequentially with delay between them
   for (let i = 0; i < batches.length; i++) {
@@ -461,6 +518,48 @@ async function analyzeSitemapUrls(limit = null) {
     }
   }
 
+  // Request indexing for URLs that need it (if enabled)
+  if (autoRequestIndexing) {
+    console.log('\n📤 Requesting indexing for eligible URLs...');
+    const urlsToIndex = results.filter(r => {
+      if (r.failed || !r.indexing) return false;
+      const coverageState = r.indexing.coverageState || '';
+      const verdict = r.indexing.verdict || '';
+      return (
+        (verdict === 'FAIL' || verdict === 'NEUTRAL') &&
+        (coverageState.includes('Discovered') || 
+         coverageState.includes('unknown') || 
+         coverageState.includes('Crawled') ||
+         coverageState.includes('noindex')) &&
+        r.accessibility?.accessible &&
+        r.indexing.userCanRequestIndexing !== false
+      );
+    });
+
+    console.log(`   Found ${urlsToIndex.length} URLs eligible for indexing request`);
+    
+    for (let i = 0; i < urlsToIndex.length; i++) {
+      const url = urlsToIndex[i].url;
+      console.log(`   [${i + 1}/${urlsToIndex.length}] Requesting indexing: ${url}`);
+      const requestResult = await requestIndexing(url, searchconsole);
+      
+      // Find and update the result
+      const resultIndex = results.findIndex(r => r.url === url);
+      if (resultIndex !== -1) {
+        results[resultIndex].indexingRequested = requestResult.success;
+        results[resultIndex].indexingRequestResult = requestResult;
+      }
+      
+      // Rate limiting for indexing requests (Google allows 200 requests per day)
+      if (i < urlsToIndex.length - 1) {
+        await delay(2000); // 2 second delay between indexing requests
+      }
+    }
+    
+    const successfulRequests = results.filter(r => r.indexingRequested).length;
+    console.log(`\n✅ Successfully requested indexing for ${successfulRequests} URLs`);
+  }
+
   const totalTime = ((Date.now() - startTime) / 1000).toFixed(1);
 
   // Generate summary
@@ -477,6 +576,7 @@ async function analyzeSitemapUrls(limit = null) {
     hasPerformanceData: results.filter(r => r.performance?.success).length,
     totalClicks: results.reduce((sum, r) => sum + (r.performance?.clicks || 0), 0),
     totalImpressions: results.reduce((sum, r) => sum + (r.performance?.impressions || 0), 0),
+    indexingRequested: results.filter(r => r.indexingRequested).length,
     processingTime: `${totalTime}s`
   };
 
@@ -516,6 +616,10 @@ async function analyzeSitemapUrls(limit = null) {
   console.log(`  📈 URLs with data: ${summary.hasPerformanceData}`);
   console.log(`  👆 Total Clicks: ${summary.totalClicks}`);
   console.log(`  👁️  Total Impressions: ${summary.totalImpressions}`);
+  if (autoRequestIndexing && summary.indexingRequested > 0) {
+    console.log(`\nIndexing Requests:`);
+    console.log(`  📤 Indexing requested: ${summary.indexingRequested}`);
+  }
   console.log(`\n📁 Results saved to:`);
   console.log(`  ${resultsFile}`);
   console.log(`  ${summaryFile}`);

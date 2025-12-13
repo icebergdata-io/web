@@ -8,11 +8,12 @@ const SEO = ({
   image = 'https://www.icebergdata.co/og-logo.png', // Default OG image
   type = 'website',
   keywords = 'web scraping, data extraction, business intelligence, data analytics',
-  noindex = false
+  noindex = false,
+  canonical
 }) => {
   const location = useLocation();
   const baseUrl = 'https://www.icebergdata.co';
-  const canonicalUrl = `${baseUrl}${location.pathname}`;
+  const canonicalUrl = canonical || `${baseUrl}${location.pathname}`;
   const siteName = 'Iceberg Data';
   // Use Vite's import.meta.env instead of process.env for browser compatibility
   const googleVerification = import.meta.env.VITE_GOOGLE_SITE_VERIFICATION || '';
@@ -62,7 +63,8 @@ SEO.propTypes = {
   image: PropTypes.string,
   type: PropTypes.string,
   keywords: PropTypes.string,
-  noindex: PropTypes.bool
+  noindex: PropTypes.bool,
+  canonical: PropTypes.string
 };
 
 export default SEO; 

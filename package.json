@@ -29,7 +29,8 @@
     "generate-social-cases": "node scripts/generate-social-media-cases.js",
     "private-sharing": "node scripts/private-sharing-system.js",
     "validate-private-cases": "node scripts/validate-private-case-studies.js",
-    "check-indexing": "node scripts/check-google-indexing.js"
+    "check-indexing": "node scripts/check-google-indexing.js",
+    "request-indexing": "node scripts/request-indexing-batch.js"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.13",

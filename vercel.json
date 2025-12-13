@@ -97,6 +97,11 @@
   ],
   "redirects": [
     {
+      "source": "/refund",
+      "destination": "/refund-policy",
+      "permanent": true
+    },
+    {
       "source": "/dm",
       "destination": "https://calendly.com/icedata/dm",
       "permanent": true

@@ -47,6 +47,15 @@ npm run check-indexing -- --limit=10
 
 # Analyze all URLs (no limit)
 npm run check-indexing
+
+# Analyze and automatically request indexing for eligible URLs
+npm run check-indexing -- --request-indexing
+```
+
+### Request Indexing for Specific URLs
+```bash
+# Batch request indexing for problematic URLs
+npm run request-indexing
 ```
 
 ### Performance Features
@@ -81,12 +90,24 @@ npm run check-indexing
 
 ### Action Recommendations (Auto-Generated)
 The CSV includes an "Action Needed" column with automatic recommendations:
-- **Request Indexing** - URL is accessible but not indexed
+- **Request Indexing** - URL is accessible but not indexed (can be auto-requested with `--request-indexing`)
 - **Fix Accessibility** - HTTP status is not 200
 - **Add to Sitemap** - URL is not in sitemap
 - **Optimize Content for SEO** - Indexed but no traffic
 - **Request Recrawl** - Last crawl was more than 30 days ago
+- **Remove noindex Tag** - Page has noindex tag preventing indexing
+- **Fix Canonical Tag** - Duplicate content issue
 - **No Action** - Everything looks good
+
+### Automatic Indexing Requests
+When using `--request-indexing` flag, the script will automatically request indexing for URLs that:
+- Are accessible (HTTP 200)
+- Have status "Discovered - currently not indexed"
+- Have status "URL is unknown to Google"
+- Have status "Crawled - currently not indexed"
+- Have "noindex" coverage state
+
+**Note:** Google allows 200 indexing requests per day. The script includes rate limiting to respect this limit.
 
 ## Understanding the Results
 
