@@ -7,6 +7,12 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const DOMAIN = 'https://www.icebergdata.co';
+const SEO_FOLDER = path.join(__dirname, '../seo');
+
+// Ensure SEO folder exists
+if (!fs.existsSync(SEO_FOLDER)) {
+  fs.mkdirSync(SEO_FOLDER, { recursive: true });
+}
 
 // Generate padded social media image
 async function generatePaddedLogo() {
@@ -83,6 +89,24 @@ async function main() {
   // Write sitemap.xml
   fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), generateSitemap());
   console.log('✅ Generated sitemap.xml');
+
+  // Generate SEO report
+  const report = {
+    timestamp: new Date().toISOString(),
+    generatedFiles: {
+      robotsTxt: path.join(publicDir, 'robots.txt'),
+      sitemapXml: path.join(publicDir, 'sitemap.xml'),
+      ogLogo: path.join(publicDir, 'og-logo.png')
+    },
+    sitemapStats: {
+      totalUrls: pages.length,
+      lastModified: new Date().toISOString().split('T')[0]
+    }
+  };
+
+  const reportFile = path.join(SEO_FOLDER, `seo-files-generation-${new Date().toISOString().replace(/[:.]/g, '-').split('T')[0]}.json`);
+  fs.writeFileSync(reportFile, JSON.stringify(report, null, 2));
+  console.log(`✅ SEO generation report saved to: ${reportFile}`);
 }
 
 main().catch(console.error); 

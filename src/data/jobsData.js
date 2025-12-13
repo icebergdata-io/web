@@ -274,7 +274,7 @@ export const jobOpenings = [
             "Remote work flexibility with home office stipend",
             "Sales training and professional development programs",
             "Clear path to Account Executive or sales leadership roles",
-            "Health insurance and wellness benefits",
+            "Company rides from and to the office covered by the company",
             "Laptop and sales tools provided (LinkedIn Sales Navigator, CRM, etc.)",
             "Collaborative team environment with regular coaching"
         ],

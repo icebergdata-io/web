@@ -28,7 +28,8 @@
     "shorten-urls": "node scripts/shorten-future-urls.js",
     "generate-social-cases": "node scripts/generate-social-media-cases.js",
     "private-sharing": "node scripts/private-sharing-system.js",
-    "validate-private-cases": "node scripts/validate-private-case-studies.js"
+    "validate-private-cases": "node scripts/validate-private-case-studies.js",
+    "check-indexing": "node scripts/check-google-indexing.js"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.13",
@@ -60,6 +61,7 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.3",
+    "googleapis": "^168.0.0",
     "postcss": "^8.4.31",
     "puppeteer": "^24.22.0",
     "sharp": "^0.34.4",

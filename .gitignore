@@ -9,7 +9,7 @@
 # Production
 /dist
 /build
-
+*iceberg-atlas-c719b15e9a05*
 # Misc
 .DS_Store
 .env.local
@@ -43,3 +43,7 @@ yarn-error.log*
 *.backup.*
 *copy/
 *copy.*
+
+# SEO Analysis Results
+/seo/*.json
+!/seo/.gitkeep
