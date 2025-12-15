@@ -1,6 +1,15 @@
 {
-  "total": 203,
+  "total": 204,
   "caseStudies": [
+    {
+      "id": 196,
+      "sector": "car-rental",
+      "slug": "car-rental-redefining-rental-counter-customer-flow-analysis",
+      "title": "Redefining the Rental Counter: How Customer Flow Analysis Slashed Wait Times by 40%",
+      "subtitle": "Using web-scraped flight data and in-store analytics to optimize the physical customer journey for a major car rental provider.",
+      "sectorName": "Car Rental",
+      "publicationDate": "2025-12-15"
+    },
     {
       "id": 216,
       "sector": "home-services",
