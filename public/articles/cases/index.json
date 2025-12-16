@@ -1,6 +1,24 @@
 {
-  "total": 204,
+  "total": 206,
   "caseStudies": [
+    {
+      "id": 192,
+      "sector": "e-commerce",
+      "slug": "e-commerce-de-risking-international-expansion-pinpointing-high-roi-markets",
+      "title": "De-risking International Expansion: Pinpointing High-ROI Markets with Competitor & Logistics Data",
+      "subtitle": "How a Niche Electronics Retailer Used Web Data to Bypass Saturated Markets and Achieve a 35% Higher-Than-Projected Launch Revenue in Southeast Asia.",
+      "sectorName": "E-commerce",
+      "publicationDate": "2025-12-16"
+    },
+    {
+      "id": 194,
+      "sector": "car-rental",
+      "slug": "car-rental-gridlock-gains-scraped-geolocation-data-re-engineered",
+      "title": "From Gridlock to Gains: How Scraped Geolocation Data Re-engineered Car Rental Layouts for an 18% Revenue Lift",
+      "subtitle": "Leveraging public sentiment and foot traffic patterns to slash queue times and boost high-margin ancillary sales at airport locations.",
+      "sectorName": "Car Rental",
+      "publicationDate": "2025-12-16"
+    },
     {
       "id": 196,
       "sector": "car-rental",
