@@ -1,6 +1,15 @@
 {
-  "total": 206,
+  "total": 207,
   "caseStudies": [
+    {
+      "id": 209,
+      "sector": "healthcare",
+      "slug": "healthcare-decoding-prescriber-confidence-tracking-physician-sentiment",
+      "title": "Decoding Prescriber Confidence: Tracking Physician Sentiment to Accelerate New Drug Adoption",
+      "subtitle": "Utilizing NLP on Professional Medical Forums to Uncover Key Adoption Barriers and Boost Market Penetration by 18%",
+      "sectorName": "Healthcare",
+      "publicationDate": "2025-12-18"
+    },
     {
       "id": 192,
       "sector": "e-commerce",
