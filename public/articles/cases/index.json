@@ -1,6 +1,15 @@
 {
-  "total": 207,
+  "total": 208,
   "caseStudies": [
+    {
+      "id": 213,
+      "sector": "market-intelligence",
+      "slug": "market-intelligence-de-risking-global-expansion-automating-cross-border-e-commerce",
+      "title": "De-risking Global Expansion: Automating Cross-Border E-commerce Compliance Checks",
+      "subtitle": "Using Automated Data Extraction to Navigate International Product Labeling and Chemical Substance Regulations",
+      "sectorName": "Market Intelligence",
+      "publicationDate": "2025-12-20"
+    },
     {
       "id": 209,
       "sector": "healthcare",
