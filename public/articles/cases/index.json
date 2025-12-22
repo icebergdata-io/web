@@ -1,6 +1,15 @@
 {
-  "total": 208,
+  "total": 209,
   "caseStudies": [
+    {
+      "id": 204,
+      "sector": "retail",
+      "slug": "retail-discovering-high-engagement-micro-influencers-triple-campaign-reach",
+      "title": "Discovering High-Engagement Micro-Influencers to Triple Campaign Reach in Specialty Goods",
+      "subtitle": "Leveraging Public Social Data to Uncover Authentic Voices and Drive Targeted Sales for Niche Product Lines",
+      "sectorName": "Retail",
+      "publicationDate": "2025-12-22"
+    },
     {
       "id": 213,
       "sector": "market-intelligence",
