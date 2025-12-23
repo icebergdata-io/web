@@ -1,6 +1,15 @@
 {
-  "total": 209,
+  "total": 210,
   "caseStudies": [
+    {
+      "id": 208,
+      "sector": "healthcare",
+      "slug": "healthcare-pinpointing-prime-expansion-cities-orthopedic-clinics",
+      "title": "Pinpointing Prime Expansion Cities for Orthopedic Clinics by Quantifying Local Sports Activity & Competitor Saturation",
+      "subtitle": "Using Public Data to Build a 'Market Opportunity Score' for Specialized Healthcare Services",
+      "sectorName": "Healthcare",
+      "publicationDate": "2025-12-23"
+    },
     {
       "id": 204,
       "sector": "retail",
