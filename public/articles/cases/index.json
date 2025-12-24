@@ -1,6 +1,24 @@
 {
-  "total": 210,
+  "total": 212,
   "caseStudies": [
+    {
+      "id": 188,
+      "sector": "e-commerce",
+      "slug": "e-commerce-slashing-shipping-overheads-dynamic-carrier-rate-scraping",
+      "title": "Slashing Shipping Overheads by 18% with Dynamic Carrier Rate Scraping",
+      "subtitle": "Optimizing Last-Mile Logistics by Aggregating Real-Time Carrier Surcharges and Service Alerts",
+      "sectorName": "E-commerce",
+      "publicationDate": "2025-12-24"
+    },
+    {
+      "id": 205,
+      "sector": "retail",
+      "slug": "retail-cutting-demurrage-costs-through-predictive-port",
+      "title": "Cutting Demurrage Costs by 40% Through Predictive Port Schedule Scraping",
+      "subtitle": "Leveraging Public Shipping & Port Authority Data to Pre-emptively Reroute Inbound Retail Inventory",
+      "sectorName": "Retail",
+      "publicationDate": "2025-12-24"
+    },
     {
       "id": 208,
       "sector": "healthcare",
