@@ -1,6 +1,15 @@
 {
-  "total": 212,
+  "total": 213,
   "caseStudies": [
+    {
+      "id": 212,
+      "sector": "market-intelligence",
+      "slug": "market-intelligence-decoding-ingredient-sentiment-aligning-cpg-product",
+      "title": "Decoding Ingredient Sentiment: Aligning CPG Product Formulation with Shifting Consumer Health Perceptions",
+      "subtitle": "Proactively tracking public discourse around food ingredients to mitigate brand risk and guide R&D innovation.",
+      "sectorName": "Market Intelligence",
+      "publicationDate": "2025-12-25"
+    },
     {
       "id": 188,
       "sector": "e-commerce",
