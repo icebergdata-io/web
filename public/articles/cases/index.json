@@ -1,6 +1,15 @@
 {
-  "total": 213,
+  "total": 214,
   "caseStudies": [
+    {
+      "id": 200,
+      "sector": "hotels",
+      "slug": "hotels-decoding-boutique-experience-hotel-chain-pinpointed",
+      "title": "Decoding the 'Boutique Experience': How a Hotel Chain Pinpointed Niche Guest Sentiments to Increase Loyalty by 20%",
+      "subtitle": "Leveraging NLP on Review Data to Uncover High-Impact, Low-Cost Service Enhancements",
+      "sectorName": "Hotels",
+      "publicationDate": "2025-12-26"
+    },
     {
       "id": 212,
       "sector": "market-intelligence",
