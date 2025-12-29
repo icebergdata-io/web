@@ -1,6 +1,24 @@
 {
-  "total": 214,
+  "total": 216,
   "caseStudies": [
+    {
+      "id": 201,
+      "sector": "hotels",
+      "slug": "hotels-boosting-boutique-hotel-bookings-through-niche",
+      "title": "Boosting Boutique Hotel Bookings by 25% Through Niche Influencer Audience Affinity Analysis",
+      "subtitle": "Matching Hotel Ambiance with Micro-Influencer Demographics for Hyper-Targeted Campaigns",
+      "sectorName": "Hotels",
+      "publicationDate": "2025-12-29"
+    },
+    {
+      "id": 207,
+      "sector": "lead-generation",
+      "slug": "lead-generation-unlocking-high-intent-leads-mapping-influencer-audience",
+      "title": "Unlocking High-Intent Leads by Mapping Influencer Audience Overlap with Ideal Customer Profiles",
+      "subtitle": "Leveraging public social media data to find B2B influencers whose followers perfectly match a client's target buyer persona.",
+      "sectorName": "Lead Generation",
+      "publicationDate": "2025-12-29"
+    },
     {
       "id": 200,
       "sector": "hotels",
