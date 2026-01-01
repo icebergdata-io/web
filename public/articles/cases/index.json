@@ -1,6 +1,24 @@
 {
-  "total": 216,
+  "total": 218,
   "caseStudies": [
+    {
+      "id": 224,
+      "sector": "car-rental",
+      "slug": "car-rental-eliminating-price-display-violations-automating-multi-jurisdictional",
+      "title": "Eliminating Price Display Violations by Automating Multi-Jurisdictional Advertising Audits",
+      "subtitle": "Ensuring Car Rental Pricing Transparency Across All Digital Channels to Mitigate Regulatory Fines",
+      "sectorName": "Car Rental",
+      "publicationDate": "2026-01-01"
+    },
+    {
+      "id": 240,
+      "sector": "manufacturing",
+      "slug": "manufacturing-pinpointing-niche-b2b-influencers-increase-digital",
+      "title": "Pinpointing Niche B2B Influencers for a 40% Increase in Digital Engagement",
+      "subtitle": "How a Specialty Welding Equipment Manufacturer Used Social Data Scraping to Discover Authentic Brand Advocates",
+      "sectorName": "Manufacturing",
+      "publicationDate": "2026-01-01"
+    },
     {
       "id": 201,
       "sector": "hotels",
