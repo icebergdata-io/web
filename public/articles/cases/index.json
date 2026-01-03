@@ -1,6 +1,15 @@
 {
-  "total": 218,
+  "total": 219,
   "caseStudies": [
+    {
+      "id": 244,
+      "sector": "consumer-electronics",
+      "slug": "consumer-electronics-slashing-where-order-inquiries-through-predictive",
+      "title": "Slashing 'Where Is My Order?' Inquiries by 40% Through Predictive Last-Mile Logistics Monitoring",
+      "subtitle": "Using Real-Time Public Data to Proactively Manage High-Value Electronics Delivery Expectations",
+      "sectorName": "Consumer Electronics",
+      "publicationDate": "2026-01-03"
+    },
     {
       "id": 224,
       "sector": "car-rental",
