@@ -1,6 +1,24 @@
 {
-  "total": 219,
+  "total": 221,
   "caseStudies": [
+    {
+      "id": 226,
+      "sector": "car-rental",
+      "slug": "car-rental-forecasting-event-driven-rental-demand-guide-geographic",
+      "title": "Forecasting Event-Driven Rental Demand to Guide Geographic Expansion by 40%",
+      "subtitle": "Using Public Event & Competitor Availability Data to Identify Profitable New Markets",
+      "sectorName": "Car Rental",
+      "publicationDate": "2026-01-05"
+    },
+    {
+      "id": 237,
+      "sector": "lead-generation",
+      "slug": "lead-generation-pinpointing-underserved-enterprise-leads-scraping-competitor",
+      "title": "Pinpointing Underserved Enterprise Leads by Scraping Competitor SaaS Pricing Tiers",
+      "subtitle": "How Real-Time Pricing Intelligence Reveals High-Value Prospects Ready to Switch Providers",
+      "sectorName": "Lead Generation",
+      "publicationDate": "2026-01-05"
+    },
     {
       "id": 244,
       "sector": "consumer-electronics",
