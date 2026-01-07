@@ -1,6 +1,15 @@
 {
-  "total": 221,
+  "total": 222,
   "caseStudies": [
+    {
+      "id": 243,
+      "sector": "consumer-electronics",
+      "slug": "consumer-electronics-whispers-roadmaps-identifying-upsell-opportunity-analyzing",
+      "title": "From Whispers to Roadmaps: Identifying a $5M Upsell Opportunity by Analyzing Competitor Feature Reviews",
+      "subtitle": "How scraped review data from e-commerce sites pinpointed the most requested premium feature in the smart home market.",
+      "sectorName": "Consumer Electronics",
+      "publicationDate": "2026-01-07"
+    },
     {
       "id": 226,
       "sector": "car-rental",
