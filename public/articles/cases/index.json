@@ -1,6 +1,24 @@
 {
-  "total": 222,
+  "total": 224,
   "caseStudies": [
+    {
+      "id": 221,
+      "sector": "e-commerce",
+      "slug": "e-commerce-forecasting-sneaker-demand-slashing-overstock-social",
+      "title": "Forecasting Sneaker Demand: Slashing Overstock by 40% with Social Hype & Resale Market Data",
+      "subtitle": "Using real-time social sentiment and secondary market velocity to build a predictive inventory model for high-volatility products.",
+      "sectorName": "E-commerce",
+      "publicationDate": "2026-01-08"
+    },
+    {
+      "id": 245,
+      "sector": "food-delivery",
+      "slug": "food-delivery-pinpointing-hyper-local-influencers-triple-virtual-kitchen",
+      "title": "Pinpointing Hyper-Local Influencers to Triple Virtual Kitchen Launch Success",
+      "subtitle": "Leveraging Geospatial Social Media Scraping to Drive Targeted Orders for Delivery-Only Brands",
+      "sectorName": "Food Delivery",
+      "publicationDate": "2026-01-08"
+    },
     {
       "id": 243,
       "sector": "consumer-electronics",
