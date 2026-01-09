@@ -1,6 +1,15 @@
 {
-  "total": 224,
+  "total": 225,
   "caseStudies": [
+    {
+      "id": 242,
+      "sector": "logistics-and-cold-chain-management",
+      "slug": "logistics-&-cold-chain-management-mitigating-spoilage-through-predictive-port-congestion",
+      "title": "Mitigating Spoilage by 18% Through Predictive Port Congestion & Carrier Reliability Analysis",
+      "subtitle": "Using Real-Time Logistics Data to Proactively Reroute Perishable Goods Shipments",
+      "sectorName": "Logistics & Cold Chain Management",
+      "publicationDate": "2026-01-09"
+    },
     {
       "id": 221,
       "sector": "e-commerce",
