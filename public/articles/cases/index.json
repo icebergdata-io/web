@@ -1,6 +1,24 @@
 {
-  "total": 225,
+  "total": 227,
   "caseStudies": [
+    {
+      "id": 222,
+      "sector": "e-commerce",
+      "slug": "e-commerce-unmasking-true-competitor-pricing-total-landed-cost-analysis",
+      "title": "Unmasking True Competitor Pricing: How Total Landed Cost Analysis Increased Conversion by 18%",
+      "subtitle": "Moving Beyond Item-Level Price Scraping to Analyze Competitor Shipping Thresholds and Cart-Level Discounts",
+      "sectorName": "E-commerce",
+      "publicationDate": "2026-01-12"
+    },
+    {
+      "id": 225,
+      "sector": "car-rental",
+      "slug": "car-rental-slashing-vehicle-downtime-proactively-sourcing-oem",
+      "title": "Slashing Vehicle Downtime by 20% by Proactively Sourcing OEM Spare Parts",
+      "subtitle": "Leveraging real-time supplier inventory data to preemptively address maintenance needs and keep more cars on the road.",
+      "sectorName": "Car Rental",
+      "publicationDate": "2026-01-12"
+    },
     {
       "id": 242,
       "sector": "logistics-and-cold-chain-management",
