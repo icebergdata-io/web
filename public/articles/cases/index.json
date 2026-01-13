@@ -1,6 +1,24 @@
 {
-  "total": 227,
+  "total": 229,
   "caseStudies": [
+    {
+      "id": 220,
+      "sector": "e-commerce",
+      "slug": "e-commerce-mastering-perceived-value-analyzed-competitor-strike-through",
+      "title": "Mastering Perceived Value: How We Analyzed Competitor Strike-Through Pricing for a 22% Margin Uplift",
+      "subtitle": "Leveraging Web Scraping to Uncover the True Impact of Competitors' Promotional Pricing and Optimize Perceived Value",
+      "sectorName": "E-commerce",
+      "publicationDate": "2026-01-13"
+    },
+    {
+      "id": 246,
+      "sector": "home-services",
+      "slug": "home-services-automating-contractor-credential-verification-mitigate-compliance",
+      "title": "Automating Contractor Credential Verification to Mitigate 99% of Compliance Risk",
+      "subtitle": "How a National Home Services Platform Ensured Continuous Licensing and Insurance Compliance Across 50 States",
+      "sectorName": "Home Services",
+      "publicationDate": "2026-01-13"
+    },
     {
       "id": 222,
       "sector": "e-commerce",
