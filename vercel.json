@@ -107,6 +107,11 @@
       "permanent": true
     },
     {
+      "source": "/interview",
+      "destination": "https://calendar.app.google/UpNA2c7WWbQiBH4AA",
+      "permanent": true
+    },
+    {
       "source": "/case-study/:sector/:slug.html",
       "destination": "/case-study/:sector/:slug",
       "permanent": true
