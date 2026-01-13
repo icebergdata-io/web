@@ -2,81 +2,237 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.icebergdata.co/</loc>
-    <lastmod>2025-01-25</lastmod>
+    <lastmod>2026-01-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/press</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/services</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/services/web-scraping</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/services/data-integration</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/services/custom-solutions</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/car-rental</loc>
-    <lastmod>2025-07-29</lastmod>
+    <lastmod>2026-01-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/case-studies</loc>
-    <lastmod>2025-12-13</lastmod>
+    <lastmod>2026-01-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/privacy</loc>
-    <lastmod>2025-07-30</lastmod>
+    <lastmod>2026-01-13</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/terms</loc>
-    <lastmod>2025-07-30</lastmod>
+    <lastmod>2026-01-13</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/cookies</loc>
-    <lastmod>2025-07-30</lastmod>
+    <lastmod>2026-01-13</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/refund</loc>
-    <lastmod>2025-12-13</lastmod>
+    <lastmod>2026-01-13</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/refund-policy</loc>
-    <lastmod>2025-12-13</lastmod>
+    <lastmod>2026-01-13</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/e-commerce/e-commerce-mastering-perceived-value-analyzed-competitor-strike-through</loc>
+    <lastmod>2026-01-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/home-services/home-services-automating-contractor-credential-verification-mitigate-compliance</loc>
+    <lastmod>2026-01-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/e-commerce/e-commerce-unmasking-true-competitor-pricing-total-landed-cost-analysis</loc>
+    <lastmod>2026-01-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/car-rental/car-rental-slashing-vehicle-downtime-proactively-sourcing-oem</loc>
+    <lastmod>2026-01-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/logistics-and-cold-chain-management/logistics-&amp;-cold-chain-management-mitigating-spoilage-through-predictive-port-congestion</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/e-commerce/e-commerce-forecasting-sneaker-demand-slashing-overstock-social</loc>
+    <lastmod>2026-01-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/food-delivery/food-delivery-pinpointing-hyper-local-influencers-triple-virtual-kitchen</loc>
+    <lastmod>2026-01-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/consumer-electronics/consumer-electronics-whispers-roadmaps-identifying-upsell-opportunity-analyzing</loc>
+    <lastmod>2026-01-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/car-rental/car-rental-forecasting-event-driven-rental-demand-guide-geographic</loc>
+    <lastmod>2026-01-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/lead-generation/lead-generation-pinpointing-underserved-enterprise-leads-scraping-competitor</loc>
+    <lastmod>2026-01-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/consumer-electronics/consumer-electronics-slashing-where-order-inquiries-through-predictive</loc>
+    <lastmod>2026-01-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/car-rental/car-rental-eliminating-price-display-violations-automating-multi-jurisdictional</loc>
+    <lastmod>2026-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/manufacturing/manufacturing-pinpointing-niche-b2b-influencers-increase-digital</loc>
+    <lastmod>2026-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/hotels/hotels-boosting-boutique-hotel-bookings-through-niche</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/lead-generation/lead-generation-unlocking-high-intent-leads-mapping-influencer-audience</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/hotels/hotels-decoding-boutique-experience-hotel-chain-pinpointed</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/market-intelligence/market-intelligence-decoding-ingredient-sentiment-aligning-cpg-product</loc>
+    <lastmod>2025-12-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/e-commerce/e-commerce-slashing-shipping-overheads-dynamic-carrier-rate-scraping</loc>
+    <lastmod>2025-12-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/retail/retail-cutting-demurrage-costs-through-predictive-port</loc>
+    <lastmod>2025-12-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/healthcare/healthcare-pinpointing-prime-expansion-cities-orthopedic-clinics</loc>
+    <lastmod>2025-12-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/retail/retail-discovering-high-engagement-micro-influencers-triple-campaign-reach</loc>
+    <lastmod>2025-12-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/market-intelligence/market-intelligence-de-risking-global-expansion-automating-cross-border-e-commerce</loc>
+    <lastmod>2025-12-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/healthcare/healthcare-decoding-prescriber-confidence-tracking-physician-sentiment</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/e-commerce/e-commerce-de-risking-international-expansion-pinpointing-high-roi-markets</loc>
+    <lastmod>2025-12-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/car-rental/car-rental-gridlock-gains-scraped-geolocation-data-re-engineered</loc>
+    <lastmod>2025-12-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/car-rental/car-rental-redefining-rental-counter-customer-flow-analysis</loc>
+    <lastmod>2025-12-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/case-study/home-services/home-services-decoding-local-service-narratives-hyper-local-sentiment</loc>

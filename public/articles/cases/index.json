@@ -1,6 +1,240 @@
 {
-  "total": 203,
+  "total": 229,
   "caseStudies": [
+    {
+      "id": 220,
+      "sector": "e-commerce",
+      "slug": "e-commerce-mastering-perceived-value-analyzed-competitor-strike-through",
+      "title": "Mastering Perceived Value: How We Analyzed Competitor Strike-Through Pricing for a 22% Margin Uplift",
+      "subtitle": "Leveraging Web Scraping to Uncover the True Impact of Competitors' Promotional Pricing and Optimize Perceived Value",
+      "sectorName": "E-commerce",
+      "publicationDate": "2026-01-13"
+    },
+    {
+      "id": 246,
+      "sector": "home-services",
+      "slug": "home-services-automating-contractor-credential-verification-mitigate-compliance",
+      "title": "Automating Contractor Credential Verification to Mitigate 99% of Compliance Risk",
+      "subtitle": "How a National Home Services Platform Ensured Continuous Licensing and Insurance Compliance Across 50 States",
+      "sectorName": "Home Services",
+      "publicationDate": "2026-01-13"
+    },
+    {
+      "id": 222,
+      "sector": "e-commerce",
+      "slug": "e-commerce-unmasking-true-competitor-pricing-total-landed-cost-analysis",
+      "title": "Unmasking True Competitor Pricing: How Total Landed Cost Analysis Increased Conversion by 18%",
+      "subtitle": "Moving Beyond Item-Level Price Scraping to Analyze Competitor Shipping Thresholds and Cart-Level Discounts",
+      "sectorName": "E-commerce",
+      "publicationDate": "2026-01-12"
+    },
+    {
+      "id": 225,
+      "sector": "car-rental",
+      "slug": "car-rental-slashing-vehicle-downtime-proactively-sourcing-oem",
+      "title": "Slashing Vehicle Downtime by 20% by Proactively Sourcing OEM Spare Parts",
+      "subtitle": "Leveraging real-time supplier inventory data to preemptively address maintenance needs and keep more cars on the road.",
+      "sectorName": "Car Rental",
+      "publicationDate": "2026-01-12"
+    },
+    {
+      "id": 242,
+      "sector": "logistics-and-cold-chain-management",
+      "slug": "logistics-&-cold-chain-management-mitigating-spoilage-through-predictive-port-congestion",
+      "title": "Mitigating Spoilage by 18% Through Predictive Port Congestion & Carrier Reliability Analysis",
+      "subtitle": "Using Real-Time Logistics Data to Proactively Reroute Perishable Goods Shipments",
+      "sectorName": "Logistics & Cold Chain Management",
+      "publicationDate": "2026-01-09"
+    },
+    {
+      "id": 221,
+      "sector": "e-commerce",
+      "slug": "e-commerce-forecasting-sneaker-demand-slashing-overstock-social",
+      "title": "Forecasting Sneaker Demand: Slashing Overstock by 40% with Social Hype & Resale Market Data",
+      "subtitle": "Using real-time social sentiment and secondary market velocity to build a predictive inventory model for high-volatility products.",
+      "sectorName": "E-commerce",
+      "publicationDate": "2026-01-08"
+    },
+    {
+      "id": 245,
+      "sector": "food-delivery",
+      "slug": "food-delivery-pinpointing-hyper-local-influencers-triple-virtual-kitchen",
+      "title": "Pinpointing Hyper-Local Influencers to Triple Virtual Kitchen Launch Success",
+      "subtitle": "Leveraging Geospatial Social Media Scraping to Drive Targeted Orders for Delivery-Only Brands",
+      "sectorName": "Food Delivery",
+      "publicationDate": "2026-01-08"
+    },
+    {
+      "id": 243,
+      "sector": "consumer-electronics",
+      "slug": "consumer-electronics-whispers-roadmaps-identifying-upsell-opportunity-analyzing",
+      "title": "From Whispers to Roadmaps: Identifying a $5M Upsell Opportunity by Analyzing Competitor Feature Reviews",
+      "subtitle": "How scraped review data from e-commerce sites pinpointed the most requested premium feature in the smart home market.",
+      "sectorName": "Consumer Electronics",
+      "publicationDate": "2026-01-07"
+    },
+    {
+      "id": 226,
+      "sector": "car-rental",
+      "slug": "car-rental-forecasting-event-driven-rental-demand-guide-geographic",
+      "title": "Forecasting Event-Driven Rental Demand to Guide Geographic Expansion by 40%",
+      "subtitle": "Using Public Event & Competitor Availability Data to Identify Profitable New Markets",
+      "sectorName": "Car Rental",
+      "publicationDate": "2026-01-05"
+    },
+    {
+      "id": 237,
+      "sector": "lead-generation",
+      "slug": "lead-generation-pinpointing-underserved-enterprise-leads-scraping-competitor",
+      "title": "Pinpointing Underserved Enterprise Leads by Scraping Competitor SaaS Pricing Tiers",
+      "subtitle": "How Real-Time Pricing Intelligence Reveals High-Value Prospects Ready to Switch Providers",
+      "sectorName": "Lead Generation",
+      "publicationDate": "2026-01-05"
+    },
+    {
+      "id": 244,
+      "sector": "consumer-electronics",
+      "slug": "consumer-electronics-slashing-where-order-inquiries-through-predictive",
+      "title": "Slashing 'Where Is My Order?' Inquiries by 40% Through Predictive Last-Mile Logistics Monitoring",
+      "subtitle": "Using Real-Time Public Data to Proactively Manage High-Value Electronics Delivery Expectations",
+      "sectorName": "Consumer Electronics",
+      "publicationDate": "2026-01-03"
+    },
+    {
+      "id": 224,
+      "sector": "car-rental",
+      "slug": "car-rental-eliminating-price-display-violations-automating-multi-jurisdictional",
+      "title": "Eliminating Price Display Violations by Automating Multi-Jurisdictional Advertising Audits",
+      "subtitle": "Ensuring Car Rental Pricing Transparency Across All Digital Channels to Mitigate Regulatory Fines",
+      "sectorName": "Car Rental",
+      "publicationDate": "2026-01-01"
+    },
+    {
+      "id": 240,
+      "sector": "manufacturing",
+      "slug": "manufacturing-pinpointing-niche-b2b-influencers-increase-digital",
+      "title": "Pinpointing Niche B2B Influencers for a 40% Increase in Digital Engagement",
+      "subtitle": "How a Specialty Welding Equipment Manufacturer Used Social Data Scraping to Discover Authentic Brand Advocates",
+      "sectorName": "Manufacturing",
+      "publicationDate": "2026-01-01"
+    },
+    {
+      "id": 201,
+      "sector": "hotels",
+      "slug": "hotels-boosting-boutique-hotel-bookings-through-niche",
+      "title": "Boosting Boutique Hotel Bookings by 25% Through Niche Influencer Audience Affinity Analysis",
+      "subtitle": "Matching Hotel Ambiance with Micro-Influencer Demographics for Hyper-Targeted Campaigns",
+      "sectorName": "Hotels",
+      "publicationDate": "2025-12-29"
+    },
+    {
+      "id": 207,
+      "sector": "lead-generation",
+      "slug": "lead-generation-unlocking-high-intent-leads-mapping-influencer-audience",
+      "title": "Unlocking High-Intent Leads by Mapping Influencer Audience Overlap with Ideal Customer Profiles",
+      "subtitle": "Leveraging public social media data to find B2B influencers whose followers perfectly match a client's target buyer persona.",
+      "sectorName": "Lead Generation",
+      "publicationDate": "2025-12-29"
+    },
+    {
+      "id": 200,
+      "sector": "hotels",
+      "slug": "hotels-decoding-boutique-experience-hotel-chain-pinpointed",
+      "title": "Decoding the 'Boutique Experience': How a Hotel Chain Pinpointed Niche Guest Sentiments to Increase Loyalty by 20%",
+      "subtitle": "Leveraging NLP on Review Data to Uncover High-Impact, Low-Cost Service Enhancements",
+      "sectorName": "Hotels",
+      "publicationDate": "2025-12-26"
+    },
+    {
+      "id": 212,
+      "sector": "market-intelligence",
+      "slug": "market-intelligence-decoding-ingredient-sentiment-aligning-cpg-product",
+      "title": "Decoding Ingredient Sentiment: Aligning CPG Product Formulation with Shifting Consumer Health Perceptions",
+      "subtitle": "Proactively tracking public discourse around food ingredients to mitigate brand risk and guide R&D innovation.",
+      "sectorName": "Market Intelligence",
+      "publicationDate": "2025-12-25"
+    },
+    {
+      "id": 188,
+      "sector": "e-commerce",
+      "slug": "e-commerce-slashing-shipping-overheads-dynamic-carrier-rate-scraping",
+      "title": "Slashing Shipping Overheads by 18% with Dynamic Carrier Rate Scraping",
+      "subtitle": "Optimizing Last-Mile Logistics by Aggregating Real-Time Carrier Surcharges and Service Alerts",
+      "sectorName": "E-commerce",
+      "publicationDate": "2025-12-24"
+    },
+    {
+      "id": 205,
+      "sector": "retail",
+      "slug": "retail-cutting-demurrage-costs-through-predictive-port",
+      "title": "Cutting Demurrage Costs by 40% Through Predictive Port Schedule Scraping",
+      "subtitle": "Leveraging Public Shipping & Port Authority Data to Pre-emptively Reroute Inbound Retail Inventory",
+      "sectorName": "Retail",
+      "publicationDate": "2025-12-24"
+    },
+    {
+      "id": 208,
+      "sector": "healthcare",
+      "slug": "healthcare-pinpointing-prime-expansion-cities-orthopedic-clinics",
+      "title": "Pinpointing Prime Expansion Cities for Orthopedic Clinics by Quantifying Local Sports Activity & Competitor Saturation",
+      "subtitle": "Using Public Data to Build a 'Market Opportunity Score' for Specialized Healthcare Services",
+      "sectorName": "Healthcare",
+      "publicationDate": "2025-12-23"
+    },
+    {
+      "id": 204,
+      "sector": "retail",
+      "slug": "retail-discovering-high-engagement-micro-influencers-triple-campaign-reach",
+      "title": "Discovering High-Engagement Micro-Influencers to Triple Campaign Reach in Specialty Goods",
+      "subtitle": "Leveraging Public Social Data to Uncover Authentic Voices and Drive Targeted Sales for Niche Product Lines",
+      "sectorName": "Retail",
+      "publicationDate": "2025-12-22"
+    },
+    {
+      "id": 213,
+      "sector": "market-intelligence",
+      "slug": "market-intelligence-de-risking-global-expansion-automating-cross-border-e-commerce",
+      "title": "De-risking Global Expansion: Automating Cross-Border E-commerce Compliance Checks",
+      "subtitle": "Using Automated Data Extraction to Navigate International Product Labeling and Chemical Substance Regulations",
+      "sectorName": "Market Intelligence",
+      "publicationDate": "2025-12-20"
+    },
+    {
+      "id": 209,
+      "sector": "healthcare",
+      "slug": "healthcare-decoding-prescriber-confidence-tracking-physician-sentiment",
+      "title": "Decoding Prescriber Confidence: Tracking Physician Sentiment to Accelerate New Drug Adoption",
+      "subtitle": "Utilizing NLP on Professional Medical Forums to Uncover Key Adoption Barriers and Boost Market Penetration by 18%",
+      "sectorName": "Healthcare",
+      "publicationDate": "2025-12-18"
+    },
+    {
+      "id": 192,
+      "sector": "e-commerce",
+      "slug": "e-commerce-de-risking-international-expansion-pinpointing-high-roi-markets",
+      "title": "De-risking International Expansion: Pinpointing High-ROI Markets with Competitor & Logistics Data",
+      "subtitle": "How a Niche Electronics Retailer Used Web Data to Bypass Saturated Markets and Achieve a 35% Higher-Than-Projected Launch Revenue in Southeast Asia.",
+      "sectorName": "E-commerce",
+      "publicationDate": "2025-12-16"
+    },
+    {
+      "id": 194,
+      "sector": "car-rental",
+      "slug": "car-rental-gridlock-gains-scraped-geolocation-data-re-engineered",
+      "title": "From Gridlock to Gains: How Scraped Geolocation Data Re-engineered Car Rental Layouts for an 18% Revenue Lift",
+      "subtitle": "Leveraging public sentiment and foot traffic patterns to slash queue times and boost high-margin ancillary sales at airport locations.",
+      "sectorName": "Car Rental",
+      "publicationDate": "2025-12-16"
+    },
+    {
+      "id": 196,
+      "sector": "car-rental",
+      "slug": "car-rental-redefining-rental-counter-customer-flow-analysis",
+      "title": "Redefining the Rental Counter: How Customer Flow Analysis Slashed Wait Times by 40%",
+      "subtitle": "Using web-scraped flight data and in-store analytics to optimize the physical customer journey for a major car rental provider.",
+      "sectorName": "Car Rental",
+      "publicationDate": "2025-12-15"
+    },
     {
       "id": 216,
       "sector": "home-services",
