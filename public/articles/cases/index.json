@@ -1,6 +1,15 @@
 {
-  "total": 229,
+  "total": 230,
   "caseStudies": [
+    {
+      "id": 241,
+      "sector": "manufacturing",
+      "slug": "manufacturing-pinpointing-niche-b2b-influencers-cnc-tool",
+      "title": "Pinpointing Niche B2B Influencers: How a CNC Tool Manufacturer Increased Distributor Leads by 15% with Forum & Video Data",
+      "subtitle": "Leveraging Web Data to Uncover Technical Authorities in Specialized Manufacturing Communities",
+      "sectorName": "Manufacturing",
+      "publicationDate": "2026-01-14"
+    },
     {
       "id": 220,
       "sector": "e-commerce",
