@@ -1,6 +1,24 @@
 {
-  "total": 230,
+  "total": 232,
   "caseStudies": [
+    {
+      "id": 238,
+      "sector": "healthcare",
+      "slug": "healthcare-pinpointing-credible-hcp-influencers-boosting-otc",
+      "title": "Pinpointing Credible HCP Influencers: Boosting OTC Dermatological Brand Trust by 40%",
+      "subtitle": "Leveraging Web Data to Identify and Vet Authentic Healthcare Professional Influencers for a Leading Skincare Brand",
+      "sectorName": "Healthcare",
+      "publicationDate": "2026-01-16"
+    },
+    {
+      "id": 239,
+      "sector": "healthcare",
+      "slug": "healthcare-mitigating-off-label-promotion-risk-through-ai-powered",
+      "title": "Mitigating Off-Label Promotion Risk by 40% Through AI-Powered Web Monitoring",
+      "subtitle": "Proactively Identifying and Flagging Non-Compliant Pharmaceutical Marketing Claims Across Digital Channels",
+      "sectorName": "Healthcare",
+      "publicationDate": "2026-01-16"
+    },
     {
       "id": 241,
       "sector": "manufacturing",
