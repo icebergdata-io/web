@@ -1,6 +1,15 @@
 {
-  "total": 232,
+  "total": 233,
   "caseStudies": [
+    {
+      "id": 218,
+      "sector": "e-commerce",
+      "slug": "e-commerce-unmasking-hidden-fees-total-landed-cost-analysis-increased",
+      "title": "Unmasking Hidden Fees: How Total Landed Cost Analysis Increased Cart Conversion by 18%",
+      "subtitle": "Leveraging web scraping to benchmark competitor pricing beyond the sticker price, including shipping, taxes, and mandatory fees.",
+      "sectorName": "E-commerce",
+      "publicationDate": "2026-01-17"
+    },
     {
       "id": 238,
       "sector": "healthcare",
