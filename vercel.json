@@ -112,6 +112,11 @@
       "permanent": true
     },
     {
+      "source": "/test",
+      "destination": "https://calendar.app.google/QBsvxCi4z24MKkFX6",
+      "permanent": true
+    },
+    {
       "source": "/case-study/:sector/:slug.html",
       "destination": "/case-study/:sector/:slug",
       "permanent": true
