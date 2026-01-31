@@ -23,6 +23,10 @@ const generalFaqs = [
   {
     question: "Do you offer custom solutions?",
     answer: "Yes, we specialize in creating custom data integration solutions tailored to your specific needs. Our team works closely with you to understand your requirements and design the optimal solution."
+  },
+  {
+    question: "What kind of customer support do you provide?",
+    answer: "We offer dedicated customer support via email and video calls during business hours. Our team is available to assist with technical issues, integration questions, and ongoing optimization of your data pipelines."
   }
 ];
 
