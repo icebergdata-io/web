@@ -23,7 +23,6 @@ const LOGO_FILES = [
   'customer-logo-973e474c-994f-43ad-9a6f-baf7589fb968.png',
   'customer-logo-a05fa42a-e5c4-4f06-bf4d-7f52a7c3e603.png',
   'customer-logo-b6a3108a-cf98-4ed5-a272-34aae3d3bdbf.png',
-  'customer-logo-b80b821c-bf89-4271-a21c-71a6368b4b5b.png',
   'customer-logo-ba82b945-a289-4fa4-8bdc-c1cb45cc60e6.png',
   'customer-logo-ce1aae23-dc4b-45a6-bd8c-332382c48720.png',
   'customer-logo-d27eb58f-11d5-4fa8-a517-ab6e7a3aef4f.png',
