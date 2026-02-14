@@ -2,81 +2,225 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.icebergdata.co/</loc>
-    <lastmod>2026-01-18</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/press</loc>
-    <lastmod>2026-01-18</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/services</loc>
-    <lastmod>2026-01-18</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/services/web-scraping</loc>
-    <lastmod>2026-01-18</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/services/data-integration</loc>
-    <lastmod>2026-01-18</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/services/custom-solutions</loc>
-    <lastmod>2026-01-18</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/car-rental</loc>
-    <lastmod>2026-01-18</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/case-studies</loc>
-    <lastmod>2026-01-17</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/privacy</loc>
-    <lastmod>2026-01-18</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/terms</loc>
-    <lastmod>2026-01-18</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/cookies</loc>
-    <lastmod>2026-01-18</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/refund</loc>
-    <lastmod>2026-01-18</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/refund-policy</loc>
-    <lastmod>2026-01-18</lastmod>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/e-commerce/e-commerce-closing-innovation-loop-smart-home-brand-pinpointed-feature</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/airlines/airlines-pinpointing-high-conversion-influencers-analyzing-follower-travel</loc>
+    <lastmod>2026-02-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/e-commerce/e-commerce-mitigating-greenwashing-risk-proactive-compliance-monitoring</loc>
+    <lastmod>2026-02-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/e-commerce/e-commerce-mapping-global-demand-pinpointing-new-markets-artisanal-pet</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/manufacturing/manufacturing-unlocking-b2b-marketing-identifying-niche-maker</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/market-intelligence/market-intelligence-eliminating-stockouts-seasonal-goods-analyzing-weather</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/airlines/airlines-grounding-aog-delays-slashing-maintenance-downtime</loc>
+    <lastmod>2026-02-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/e-commerce/e-commerce-mitigating-last-mile-delivery-failures-scraping-real-time</loc>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/car-rental/car-rental-decoding-hidden-fees-narrative-hyper-local-sentiment</loc>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/manufacturing/manufacturing-accelerating-cycles-through-semantic-analysis-professional</loc>
+    <lastmod>2026-02-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/lead-generation/lead-generation-footfall-follow-up-tripling-in-store-consultation-leads</loc>
+    <lastmod>2026-02-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/airlines/airlines-slashing-aircraft-downtime-real-time-mro-parts-sourcing</loc>
+    <lastmod>2026-01-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/hotels/hotels-quantifying-brand-pillar-resonance-aligning-marketing</loc>
+    <lastmod>2026-01-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/hotels/hotels-ensuring-ada-compliance-across-digital-platforms</loc>
+    <lastmod>2026-01-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/lead-generation/lead-generation-automating-tcpa-compliance-real-time-dnc-list</loc>
+    <lastmod>2026-01-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/e-commerce/e-commerce-single-sales-smart-baskets-web-scraped-affinity</loc>
+    <lastmod>2026-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/car-rental/car-rental-pinpointing-high-yield-staycation-markets-aggregating-local</loc>
+    <lastmod>2026-01-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/retail/retail-maximizing-margin-high-demand-electronics-timing-promotions</loc>
+    <lastmod>2026-01-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/retail/retail-proactive-compliance-automating-state-level-shipping-regulation</loc>
+    <lastmod>2026-01-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/airlines/airlines-slashing-aircraft-ground-aog-time-real-time-global-parts</loc>
+    <lastmod>2026-01-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/airlines/airlines-pinpointing-high-value-in-flight-service-gaps-cross-platform</loc>
+    <lastmod>2026-01-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/e-commerce/e-commerce-decoding-shadow-prices-gaining-margin-uplift</loc>
+    <lastmod>2026-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/hotels/hotels-cutting-amenity-spoilage-predictive-demand-signals</loc>
+    <lastmod>2026-01-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.icebergdata.co/case-study/retail/retail-reducing-apparel-return-rates-competitor-aware-dynamic</loc>
+    <lastmod>2026-01-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.icebergdata.co/case-study/e-commerce/e-commerce-unmasking-hidden-fees-total-landed-cost-analysis-increased</loc>

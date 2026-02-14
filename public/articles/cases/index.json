@@ -1,6 +1,222 @@
 {
-  "total": 233,
+  "total": 257,
   "caseStudies": [
+    {
+      "id": 247,
+      "sector": "e-commerce",
+      "slug": "e-commerce-closing-innovation-loop-smart-home-brand-pinpointed-feature",
+      "title": "Closing the Innovation Loop: How a Smart Home Brand Pinpointed a $2M Feature Gap with Customer Review NLP",
+      "subtitle": "Transforming Raw Customer Feedback from E-commerce Sites into a Quantifiable R&D Roadmap",
+      "sectorName": "E-commerce",
+      "publicationDate": "2026-02-14"
+    },
+    {
+      "id": 259,
+      "sector": "airlines",
+      "slug": "airlines-pinpointing-high-conversion-influencers-analyzing-follower-travel",
+      "title": "Pinpointing High-Conversion Influencers by Analyzing Follower Travel Intent Signals",
+      "subtitle": "Moving Beyond Follower Counts to Drive a 40% Increase in Influencer-Led Bookings for Niche Routes",
+      "sectorName": "Airlines",
+      "publicationDate": "2026-02-13"
+    },
+    {
+      "id": 249,
+      "sector": "e-commerce",
+      "slug": "e-commerce-mitigating-greenwashing-risk-proactive-compliance-monitoring",
+      "title": "Mitigating Greenwashing Risk: Proactive Compliance Monitoring for Environmental Marketing Claims",
+      "subtitle": "Using Web Scraping to Automate the Verification of Eco-Friendly Claims and Avoid Costly Regulatory Fines",
+      "sectorName": "E-commerce",
+      "publicationDate": "2026-02-12"
+    },
+    {
+      "id": 251,
+      "sector": "e-commerce",
+      "slug": "e-commerce-mapping-global-demand-pinpointing-new-markets-artisanal-pet",
+      "title": "Mapping Global Demand: Pinpointing New Markets for Artisanal Pet Products with Cross-Platform Data Synthesis",
+      "subtitle": "How a Niche E-commerce Brand Used Web-Scraped Demand Signals and Logistics Data to Prioritize International Expansion and Avoid Costly Missteps",
+      "sectorName": "E-commerce",
+      "publicationDate": "2026-02-08"
+    },
+    {
+      "id": 271,
+      "sector": "manufacturing",
+      "slug": "manufacturing-unlocking-b2b-marketing-identifying-niche-maker",
+      "title": "Unlocking B2B Marketing: Identifying Niche 'Maker' Influencers for High-Value CNC & 3D Printing Equipment",
+      "subtitle": "How a Precision Tool Manufacturer Pinpointed High-ROI Technical Influencers Using Web Data Intelligence",
+      "sectorName": "Manufacturing",
+      "publicationDate": "2026-02-06"
+    },
+    {
+      "id": 273,
+      "sector": "market-intelligence",
+      "slug": "market-intelligence-eliminating-stockouts-seasonal-goods-analyzing-weather",
+      "title": "Eliminating Stockouts for Seasonal Goods by Analyzing Weather Forecast & Social Media Trend Data",
+      "subtitle": "Leveraging Public Data Signals to Proactively Adjust Supply Chains Ahead of Demand Surges for an Outdoor Apparel Retailer",
+      "sectorName": "Market Intelligence",
+      "publicationDate": "2026-02-06"
+    },
+    {
+      "id": 258,
+      "sector": "airlines",
+      "slug": "airlines-grounding-aog-delays-slashing-maintenance-downtime",
+      "title": "Grounding AOG Delays: Slashing Maintenance Downtime by 35% with Real-Time Parts Sourcing",
+      "subtitle": "Automating the global search for certified Maintenance, Repair, and Overhaul (MRO) components to accelerate aircraft return-to-service.",
+      "sectorName": "Airlines",
+      "publicationDate": "2026-02-05"
+    },
+    {
+      "id": 248,
+      "sector": "e-commerce",
+      "slug": "e-commerce-mitigating-last-mile-delivery-failures-scraping-real-time",
+      "title": "Mitigating Last-Mile Delivery Failures by Scraping Real-Time Carrier Performance Data",
+      "subtitle": "Dynamically Routing Shipments to Boost On-Time Delivery Rates and Customer Satisfaction",
+      "sectorName": "E-commerce",
+      "publicationDate": "2026-02-04"
+    },
+    {
+      "id": 255,
+      "sector": "car-rental",
+      "slug": "car-rental-decoding-hidden-fees-narrative-hyper-local-sentiment",
+      "title": "Decoding the 'Hidden Fees' Narrative: How Hyper-Local Sentiment Analysis Rebuilt Customer Trust",
+      "subtitle": "Using Web Data and Topic Modeling to Pinpoint the Core Drivers of Negative Brand Perception for a National Car Rental Chain",
+      "sectorName": "Car Rental",
+      "publicationDate": "2026-02-04"
+    },
+    {
+      "id": 270,
+      "sector": "manufacturing",
+      "slug": "manufacturing-accelerating-cycles-through-semantic-analysis-professional",
+      "title": "Accelerating R&D Cycles by 30% through Semantic Analysis of Professional User Reviews",
+      "subtitle": "Transforming anecdotal user feedback from forums and e-commerce sites into a quantifiable roadmap for product development.",
+      "sectorName": "Manufacturing",
+      "publicationDate": "2026-02-02"
+    },
+    {
+      "id": 266,
+      "sector": "lead-generation",
+      "slug": "lead-generation-footfall-follow-up-tripling-in-store-consultation-leads",
+      "title": "From Footfall to Follow-up: Tripling In-Store Consultation Leads by Mapping Showroom Customer Journeys",
+      "subtitle": "Leveraging Anonymized WiFi and Geolocation Data to Pinpoint and Eliminate Lead Generation Bottlenecks in a High-Value Retail Environment",
+      "sectorName": "Lead Generation",
+      "publicationDate": "2026-02-01"
+    },
+    {
+      "id": 229,
+      "sector": "airlines",
+      "slug": "airlines-slashing-aircraft-downtime-real-time-mro-parts-sourcing",
+      "title": "Slashing Aircraft Downtime by 40% with Real-Time MRO Parts Sourcing",
+      "subtitle": "Aggregating Global Spare Parts Inventories to Optimize Aviation Logistics and Minimize AOG Events",
+      "sectorName": "Airlines",
+      "publicationDate": "2026-01-29"
+    },
+    {
+      "id": 230,
+      "sector": "hotels",
+      "slug": "hotels-quantifying-brand-pillar-resonance-aligning-marketing",
+      "title": "Quantifying Brand Pillar Resonance: Aligning Marketing Spend with Guest Experience via Semantic Review Analysis",
+      "subtitle": "Transforming Vague Brand Concepts into Measurable KPIs for a Luxury Hotel Chain",
+      "sectorName": "Hotels",
+      "publicationDate": "2026-01-29"
+    },
+    {
+      "id": 231,
+      "sector": "hotels",
+      "slug": "hotels-ensuring-ada-compliance-across-digital-platforms",
+      "title": "Ensuring ADA Compliance Across Digital Platforms: A Data-Driven Audit for a Major Hotel Chain",
+      "subtitle": "Automating the verification of online accessibility statements and bookable accessible room availability to mitigate legal risk.",
+      "sectorName": "Hotels",
+      "publicationDate": "2026-01-29"
+    },
+    {
+      "id": 236,
+      "sector": "lead-generation",
+      "slug": "lead-generation-automating-tcpa-compliance-real-time-dnc-list",
+      "title": "Automating TCPA Compliance: How Real-Time DNC List Scraping Eliminated 99% of Violation Risks",
+      "subtitle": "Transforming a 48-hour manual verification process into an instant, automated compliance check for B2C lead pipelines.",
+      "sectorName": "Lead Generation",
+      "publicationDate": "2026-01-28"
+    },
+    {
+      "id": 219,
+      "sector": "e-commerce",
+      "slug": "e-commerce-single-sales-smart-baskets-web-scraped-affinity",
+      "title": "From Single Sales to Smart Baskets: How Web-Scraped Affinity Data Revolutionized Our Promotion Strategy",
+      "subtitle": "Using 'Frequently Bought Together' Data to Automate Profitable and Dynamic Product Bundles",
+      "sectorName": "E-commerce",
+      "publicationDate": "2026-01-27"
+    },
+    {
+      "id": 223,
+      "sector": "car-rental",
+      "slug": "car-rental-pinpointing-high-yield-staycation-markets-aggregating-local",
+      "title": "Pinpointing High-Yield 'Staycation' Markets by Aggregating Local Event and Transit Gap Data",
+      "subtitle": "A data-driven approach for car rental expansion beyond saturated airport locations by identifying untapped regional travel demand.",
+      "sectorName": "Car Rental",
+      "publicationDate": "2026-01-25"
+    },
+    {
+      "id": 233,
+      "sector": "retail",
+      "slug": "retail-maximizing-margin-high-demand-electronics-timing-promotions",
+      "title": "Maximizing Margin on High-Demand Electronics by Timing Promotions with Competitor Stock-Outs",
+      "subtitle": "Leveraging Real-Time Inventory Data to Shift from Reactive Price Matching to Proactive Profit Optimization",
+      "sectorName": "Retail",
+      "publicationDate": "2026-01-25"
+    },
+    {
+      "id": 235,
+      "sector": "retail",
+      "slug": "retail-proactive-compliance-automating-state-level-shipping-regulation",
+      "title": "Proactive Compliance: Automating State-Level Shipping Regulation Monitoring for Specialty Retail",
+      "subtitle": "Eliminating Compliance Fines and Reducing Canceled Orders by Scraping 50+ State Regulatory Portals for a Gourmet Retailer",
+      "sectorName": "Retail",
+      "publicationDate": "2026-01-25"
+    },
+    {
+      "id": 227,
+      "sector": "airlines",
+      "slug": "airlines-slashing-aircraft-ground-aog-time-real-time-global-parts",
+      "title": "Slashing Aircraft on Ground (AOG) Time by 35% with Real-Time Global Parts Sourcing",
+      "subtitle": "Aggregating Public Supplier Inventory Data to Proactively Resolve Maintenance Logistics",
+      "sectorName": "Airlines",
+      "publicationDate": "2026-01-23"
+    },
+    {
+      "id": 228,
+      "sector": "airlines",
+      "slug": "airlines-pinpointing-high-value-in-flight-service-gaps-cross-platform",
+      "title": "Pinpointing High-Value In-Flight Service Gaps from Cross-Platform Passenger Reviews",
+      "subtitle": "How Iceberg Data Helped a Leading European Airline Use NLP on Public Reviews to Prioritize Service Upgrades and Boost Ancillary Revenue",
+      "sectorName": "Airlines",
+      "publicationDate": "2026-01-21"
+    },
+    {
+      "id": 217,
+      "sector": "e-commerce",
+      "slug": "e-commerce-decoding-shadow-prices-gaining-margin-uplift",
+      "title": "Decoding Shadow Prices: Gaining a 15% Margin Uplift by Deconstructing Competitor Product Bundles",
+      "subtitle": "Using web scraping and NLP to calculate the 'true' component price within competitor kits and promotions for strategic counter-offers.",
+      "sectorName": "E-commerce",
+      "publicationDate": "2026-01-20"
+    },
+    {
+      "id": 232,
+      "sector": "hotels",
+      "slug": "hotels-cutting-amenity-spoilage-predictive-demand-signals",
+      "title": "Cutting Amenity Spoilage by 30% Using Predictive Demand Signals from Local Event and Competitor Data",
+      "subtitle": "How a Luxury Hotel Chain Aligned On-Hand Inventory with Real-Time Guest Demand Forecasts",
+      "sectorName": "Hotels",
+      "publicationDate": "2026-01-19"
+    },
+    {
+      "id": 234,
+      "sector": "retail",
+      "slug": "retail-reducing-apparel-return-rates-competitor-aware-dynamic",
+      "title": "Reducing Apparel Return Rates by 18% with Competitor-Aware Dynamic Pricing",
+      "subtitle": "Transforming the High Cost of Returns into a Competitive Pricing Advantage by Analyzing Market Signals and Public Customer Feedback",
+      "sectorName": "Retail",
+      "publicationDate": "2026-01-19"
+    },
     {
       "id": 218,
       "sector": "e-commerce",
