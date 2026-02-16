@@ -1,6 +1,24 @@
 {
-  "total": 257,
+  "total": 259,
   "caseStudies": [
+    {
+      "id": 253,
+      "sector": "car-rental",
+      "slug": "car-rental-pinpointing-niche-influencer-roi-analyzing-organic",
+      "title": "Pinpointing Niche Influencer ROI by Analyzing Organic Travel Content & Audience Affinity",
+      "subtitle": "Moving Beyond Follower Counts to Drive High-Conversion Car Rental Bookings with Micro-Influencers",
+      "sectorName": "Car Rental",
+      "publicationDate": "2026-02-16"
+    },
+    {
+      "id": 263,
+      "sector": "retail",
+      "slug": "retail-capturing-market-share-consumer-electronics-stock-aware",
+      "title": "Capturing Market Share in Consumer Electronics with Stock-Aware Dynamic Promotions",
+      "subtitle": "Leveraging Real-Time Competitor Inventory Data to Optimize Sales Events and Maximize Margins",
+      "sectorName": "Retail",
+      "publicationDate": "2026-02-16"
+    },
     {
       "id": 247,
       "sector": "e-commerce",
