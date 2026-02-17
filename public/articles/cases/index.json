@@ -1,6 +1,33 @@
 {
-  "total": 259,
+  "total": 262,
   "caseStudies": [
+    {
+      "id": 250,
+      "sector": "e-commerce",
+      "slug": "e-commerce-decoding-digital-unboxing-packaging-sentiment-analysis",
+      "title": "Decoding the Digital Unboxing: How Packaging Sentiment Analysis Drove an 8% Lift in Customer Loyalty",
+      "subtitle": "Tracking unstructured social media data to pinpoint and resolve hidden flaws in the post-purchase experience for a DTC electronics brand.",
+      "sectorName": "E-commerce",
+      "publicationDate": "2026-02-17"
+    },
+    {
+      "id": 252,
+      "sector": "e-commerce",
+      "slug": "e-commerce-pinpointing-southeast-asias-next-hobby-hub-validating-niche",
+      "title": "Pinpointing Southeast Asia's Next Hobby Hub: Validating Niche Market Viability with Hyper-Local Community Data",
+      "subtitle": "Using Web Scraping to Quantify Unstructured Community Engagement and De-risk International Expansion for a Specialty E-commerce Retailer",
+      "sectorName": "E-commerce",
+      "publicationDate": "2026-02-17"
+    },
+    {
+      "id": 260,
+      "sector": "hotels",
+      "slug": "hotels-de-risking-hospitality-ensuring-ada-compliance-across",
+      "title": "De-Risking Hospitality: Ensuring ADA Compliance Across Digital Channels with Automated Data Audits",
+      "subtitle": "How a Global Hotel Chain Mitigated Legal Exposure by Verifying Accessibility Feature Listings on Third-Party Travel Sites",
+      "sectorName": "Hotels",
+      "publicationDate": "2026-02-17"
+    },
     {
       "id": 253,
       "sector": "car-rental",
