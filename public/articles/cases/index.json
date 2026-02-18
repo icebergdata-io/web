@@ -1,6 +1,15 @@
 {
-  "total": 262,
+  "total": 263,
   "caseStudies": [
+    {
+      "id": 257,
+      "sector": "airlines",
+      "slug": "airlines-uncovering-micro-influencer-goldmines-analyzing-geotagged-travel",
+      "title": "Uncovering Micro-Influencer Goldmines by Analyzing Geotagged Travel Content",
+      "subtitle": "Moving Beyond Vanity Metrics to Find Authentic Brand Advocates for Key Expansion Routes",
+      "sectorName": "Airlines",
+      "publicationDate": "2026-02-18"
+    },
     {
       "id": 250,
       "sector": "e-commerce",
