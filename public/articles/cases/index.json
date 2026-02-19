@@ -1,6 +1,15 @@
 {
-  "total": 263,
+  "total": 264,
   "caseStudies": [
+    {
+      "id": 272,
+      "sector": "retail-home-improvement",
+      "slug": "retail---home-improvement-dead-zones-deal-zones-revitalizing-in-store",
+      "title": "From Dead Zones to Deal Zones: Revitalizing In-Store Layouts by Correlating Public Reviews with Heatmap Data",
+      "subtitle": "How a Home Improvement Giant Used NLP on Customer Reviews to Increase High-Margin Sales by 18%",
+      "sectorName": "Retail - Home Improvement",
+      "publicationDate": "2026-02-19"
+    },
     {
       "id": 257,
       "sector": "airlines",
