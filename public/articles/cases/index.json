@@ -1,6 +1,15 @@
 {
-  "total": 264,
+  "total": 265,
   "caseStudies": [
+    {
+      "id": 275,
+      "sector": "food-delivery",
+      "slug": "food-delivery-slicing-ingredient-costs-real-time-supplier-data",
+      "title": "Slicing Ingredient Costs: How Real-Time Supplier Data Reduced Food Waste by 20% for a Ghost Kitchen Network",
+      "subtitle": "Automating Procurement and Dynamic Menu Pricing by Aggregating B2B Supplier Inventories",
+      "sectorName": "Food Delivery",
+      "publicationDate": "2026-02-20"
+    },
     {
       "id": 272,
       "sector": "retail-home-improvement",
