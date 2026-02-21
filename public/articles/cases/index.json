@@ -1,6 +1,15 @@
 {
-  "total": 265,
+  "total": 266,
   "caseStudies": [
+    {
+      "id": 262,
+      "sector": "hotels",
+      "slug": "hotels-pinpointing-micro-influencer-roi-hyper-local-social-data",
+      "title": "Pinpointing Micro-Influencer ROI: How Hyper-Local Social Data Tripled Boutique Hotel Bookings",
+      "subtitle": "Leveraging Geo-Tagged Content and Engagement Metrics to Discover High-Impact, Niche Travel Influencers",
+      "sectorName": "Hotels",
+      "publicationDate": "2026-02-21"
+    },
     {
       "id": 275,
       "sector": "food-delivery",
