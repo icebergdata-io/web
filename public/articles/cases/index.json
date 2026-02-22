@@ -1,6 +1,15 @@
 {
-  "total": 266,
+  "total": 267,
   "caseStudies": [
+    {
+      "id": 267,
+      "sector": "lead-generation",
+      "slug": "lead-generation-mitigating-regulatory-risk-continuous-web-monitoring",
+      "title": "Mitigating Regulatory Risk: How Continuous Web Monitoring Secured a 99.8% Compliance Rate for a Financial Lead Gen Firm",
+      "subtitle": "Using Automated Web Scraping to Proactively Identify and Flag Non-Compliant Marketing Language Across Hundreds of Digital Assets",
+      "sectorName": "Lead Generation",
+      "publicationDate": "2026-02-22"
+    },
     {
       "id": 262,
       "sector": "hotels",
