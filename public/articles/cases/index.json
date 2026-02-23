@@ -1,6 +1,15 @@
 {
-  "total": 267,
+  "total": 268,
   "caseStudies": [
+    {
+      "id": 269,
+      "sector": "healthcare",
+      "slug": "healthcare-proactive-pharmacy-layout-redesign-increasing-otc",
+      "title": "Proactive Pharmacy Layout Redesign: Increasing OTC Sales by 22% Using Public Health Data Feeds",
+      "subtitle": "Leveraging Real-Time Local Health Trends to Optimize In-Store Patient Flow and Product Placement",
+      "sectorName": "Healthcare",
+      "publicationDate": "2026-02-23"
+    },
     {
       "id": 267,
       "sector": "lead-generation",
