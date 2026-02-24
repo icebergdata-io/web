@@ -1,6 +1,33 @@
 {
-  "total": 268,
+  "total": 271,
   "caseStudies": [
+    {
+      "id": 256,
+      "sector": "car-rental",
+      "slug": "car-rental-automating-cross-jurisdictional-pricing-compliance-eliminate-regulatory",
+      "title": "Automating Cross-Jurisdictional Pricing Compliance to Eliminate Regulatory Fines",
+      "subtitle": "How a leading car rental firm used automated data extraction to monitor and enforce advertising standards across hundreds of digital sales channels.",
+      "sectorName": "Car Rental",
+      "publicationDate": "2026-02-24"
+    },
+    {
+      "id": 264,
+      "sector": "retail",
+      "slug": "retail-discovering-golden-aisles-boosting-high-margin-product",
+      "title": "Discovering 'Golden Aisles': Boosting High-Margin Product Sales by 18% with In-Store Behavioral Data",
+      "subtitle": "Leveraging web-scraped device signals and public Wi-Fi analytics to reshape product placement and maximize profitability per square foot.",
+      "sectorName": "Retail",
+      "publicationDate": "2026-02-24"
+    },
+    {
+      "id": 268,
+      "sector": "healthcare",
+      "slug": "healthcare-boosting-otc-drug-revenue-through-real-time-competitor-price",
+      "title": "Boosting OTC Drug Revenue by 18% Through Real-Time Competitor Price Monitoring",
+      "subtitle": "A Dynamic Pricing Strategy for a Regional Pharmacy Chain to Compete with E-Commerce Giants",
+      "sectorName": "Healthcare",
+      "publicationDate": "2026-02-24"
+    },
     {
       "id": 269,
       "sector": "healthcare",
