@@ -192,7 +192,7 @@ const Contact = () => {
             
             {status.success && (
               <div className="mt-4 text-green-500 text-sm">
-                Message sent successfully! We'll get back to you soon.
+                Message sent! We'll get back to you within 1-2 business days.
               </div>
             )}
 

@@ -3,29 +3,11 @@ import { escapeHtml } from '../utils/escapeHtml.js';
 import { createRateLimiter } from '../utils/rateLimit.js';
 import { validateContactInput } from '../utils/validateInput.js';
 
-// Debug: Log environment check
-console.log('Environment Check:', {
-  hasResendKey: !!process.env.resend_api_key,
-  keyLength: process.env.resend_api_key?.length || 0,
-  nodeEnv: process.env.NODE_ENV,
-  vercelEnv: process.env.VERCEL_ENV,
-  allEnvKeys: Object.keys(process.env)
-});
-
-// Validate Resend API key before initializing
 if (!process.env.resend_api_key) {
-  console.error('CRITICAL: Missing Resend API key');
   throw new Error('Missing Resend API key');
 }
 
-let resend;
-try {
-  resend = new Resend(process.env.resend_api_key);
-  console.log('Resend client initialized successfully');
-} catch (error) {
-  console.error('Failed to initialize Resend client:', error);
-  throw error;
-}
+const resend = new Resend(process.env.resend_api_key);
 
 const signature = `
   <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eaeaea;">
@@ -41,20 +23,11 @@ const signature = `
 `;
 
 export default async function handler(req, res) {
-  // Debug: Log request details
-  console.log('Request Details:', {
-    method: req.method,
-    contentType: req.headers['content-type'],
-    contentLength: req.headers['content-length'],
-    url: req.url
-  });
-
-  // Enable CORS - restrict to allowed origins
   const allowedOrigins = [
     'https://www.icebergdata.co',
     'https://icebergdata.co',
-    'http://localhost:5173', // Vite dev server
-    'http://localhost:3000'  // Common dev port
+    'http://localhost:5173',
+    'http://localhost:3000'
   ];
   
   const origin = req.headers.origin;
@@ -65,37 +38,28 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   
-  // Handle preflight
   if (req.method === 'OPTIONS') {
-    console.log('Handling OPTIONS request');
     res.status(204).end();
     return;
   }
 
-  // Only allow POST
   if (req.method !== 'POST') {
-    console.log('Invalid method:', req.method);
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  // Apply rate limiting (5 requests per minute per IP)
   const rateLimiter = createRateLimiter(5, 60000);
   const rateLimitResult = rateLimiter(req, res);
   if (rateLimitResult === false) {
-    return; // Rate limit exceeded, response already sent
+    return;
   }
 
   try {
-    // Validate request body exists
     if (!req.body) {
-      console.error('No request body received');
       return res.status(400).json({ error: 'Invalid request' });
     }
 
-    // Validate and sanitize input
     const validation = validateContactInput(req.body);
     if (!validation.valid) {
-      console.log('Validation failed:', validation.errors);
       const isSpam = validation.errors._spam !== undefined;
       return res.status(400).json({
         error: isSpam ? 'Invalid request' : 'Validation failed',
@@ -105,11 +69,8 @@ export default async function handler(req, res) {
 
     const { name, email, company, phone, message } = validation.sanitized;
 
-    // Debug: Log before sending admin email
-    console.log('Attempting to send admin email to:', 'david@icebergdata.co');
-
-    // Send notification email to admin
-    const adminEmail = await resend.emails.send({
+    // Only send admin notification — no auto-reply to unverified addresses
+    await resend.emails.send({
       from: 'david@web.icebergdata.co',
       to: 'david@icebergdata.co',
       subject: 'New Contact Form Submission',
@@ -134,79 +95,13 @@ export default async function handler(req, res) {
           ${signature}
         </div>
       `
-    }).catch(error => {
-      console.error('Admin email failed:', error);
-      throw error;
     });
 
-    // Debug: Log admin email result
-    console.log('Admin email result:', {
-      success: !!adminEmail?.id,
-      emailId: adminEmail?.id
-    });
-
-    // Debug: Log before sending user email
-    console.log('Attempting to send confirmation email to:', email);
-
-    // Send confirmation email to user
-    const userEmail = await resend.emails.send({
-      from: 'david@web.icebergdata.co',
-      to: email,
-      subject: 'Thank you for contacting Iceberg Data',
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #333;">
-          <div style="background: linear-gradient(135deg, #0066cc, #0099ff); padding: 20px; border-radius: 8px; margin-bottom: 30px;">
-            <h1 style="color: white; margin: 0; font-size: 24px;">Thank You for Reaching Out!</h1>
-          </div>
-          
-          <div style="background: #f8f9fa; padding: 25px; border-radius: 8px; margin-bottom: 20px;">
-            <p style="margin-top: 0; font-size: 16px;">Dear ${escapeHtml(name)},</p>
-            <p style="line-height: 1.6;">Thank you for your interest in Iceberg Data. I have received your message and will personally review it shortly. You can expect to hear back from me within 1-2 business days.</p>
-            <p style="line-height: 1.6;">In the meantime, feel free to:</p>
-            <ul style="line-height: 1.6;">
-              <li>Schedule a quick call using my <a href="https://calendly.com/icedata/dm" style="color: #0066cc; text-decoration: none;">Calendly link</a></li>
-              <li>Check out our <a href="https://www.icebergdata.co" style="color: #0066cc; text-decoration: none;">website</a> for more information</li>
-              <li>Connect with me on <a href="https://linkedin.com/in/davidmartinriveros/" style="color: #0066cc; text-decoration: none;">LinkedIn</a></li>
-            </ul>
-          </div>
-
-          <div style="background: #f8f9fa; padding: 25px; border-radius: 8px;">
-            <h2 style="color: #0066cc; margin-top: 0; font-size: 20px;">Your Message</h2>
-            <p style="line-height: 1.6; white-space: pre-wrap;">${escapeHtml(message)}</p>
-          </div>
-          ${signature}
-        </div>
-      `
-    }).catch(error => {
-      console.error('User email failed:', error);
-      throw error;
-    });
-
-    // Debug: Log user email result
-    console.log('User email result:', {
-      success: !!userEmail?.id,
-      emailId: userEmail?.id
-    });
-
-    return res.status(200).json({ 
-      message: 'Emails sent successfully',
-      adminEmailId: adminEmail?.id,
-      userEmailId: userEmail?.id
-    });
+    return res.status(200).json({ message: 'Message sent successfully' });
   } catch (error) {
-    // Log detailed error information server-side only
-    console.error('Error sending email:', {
-      name: error.name,
-      message: error.message,
-      code: error.code,
-      stack: error.stack,
-      resendError: error?.response?.data,
-      statusCode: error?.response?.status
-    });
-
-    // Return generic error to client
+    console.error('Contact form error:', error.message);
     return res.status(500).json({ 
-      error: 'Failed to send email. Please try again later.'
+      error: 'Failed to send message. Please try again later.'
     });
   }
 } 
