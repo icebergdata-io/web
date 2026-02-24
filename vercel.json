@@ -107,6 +107,11 @@
       "permanent": true
     },
     {
+      "source": "/call",
+      "destination": "https://calendar.google.com/calendar/appointments/schedules/AcZssZ0EzPgHD5hPufj1nij96-oU_OzKnkOMz5tol0Txr94ChmFPluF6oXLJLHkDxKPFvWkIpJ1EP5KY",
+      "permanent": true
+    },
+    {
       "source": "/interview",
       "destination": "https://calendar.app.google/UpNA2c7WWbQiBH4AA",
       "permanent": true
