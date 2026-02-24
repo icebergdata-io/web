@@ -96,9 +96,10 @@ export default async function handler(req, res) {
     const validation = validateContactInput(req.body);
     if (!validation.valid) {
       console.log('Validation failed:', validation.errors);
+      const isSpam = validation.errors._spam !== undefined;
       return res.status(400).json({
-        error: 'Validation failed',
-        errors: validation.errors
+        error: isSpam ? 'Invalid request' : 'Validation failed',
+        errors: isSpam ? undefined : validation.errors
       });
     }
 

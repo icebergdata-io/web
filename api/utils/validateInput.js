@@ -1,6 +1,24 @@
 import validator from 'validator';
 
 /**
+ * Heuristic: text looks like random/garbage (e.g. uEGNBxeqMtcpLfwjt, SnpDHUMcPHLYDqsSS).
+ * Real names and messages usually have spaces or normal vowel/consonant balance.
+ */
+function looksLikeSpamText(str) {
+  if (!str || str.length < 6) return false;
+  const s = str.trim();
+  const letters = s.replace(/\s/g, '');
+  if (letters.length < 6) return false;
+  const vowels = (letters.match(/[aeiouAEIOU]/g) || []).length;
+  const vowelRatio = vowels / letters.length;
+  // Very low vowel ratio suggests random consonants
+  if (vowelRatio < 0.15) return true;
+  // Many consecutive consonants (e.g. 6+)
+  if (/[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]{6,}/i.test(s)) return true;
+  return false;
+}
+
+/**
  * Validation limits
  */
 const LIMITS = {
@@ -26,6 +44,12 @@ export function validateContactInput(data) {
   const errors = {};
   const sanitized = {};
 
+  // Honeypot: must be empty (bots often fill hidden fields)
+  if (data.website !== undefined && data.website !== null && String(data.website).trim() !== '') {
+    errors._spam = 'Invalid request';
+    return { valid: false, errors, sanitized: {} };
+  }
+
   // Validate name
   if (!data.name || typeof data.name !== 'string') {
     errors.name = 'Name is required';
@@ -35,6 +59,8 @@ export function validateContactInput(data) {
       errors.name = `Name must be at least ${LIMITS.name.min} character`;
     } else if (trimmedName.length > LIMITS.name.max) {
       errors.name = `Name must not exceed ${LIMITS.name.max} characters`;
+    } else if (looksLikeSpamText(trimmedName)) {
+      errors.name = 'Please enter a valid name';
     } else {
       sanitized.name = trimmedName;
     }
@@ -61,6 +87,8 @@ export function validateContactInput(data) {
     const trimmedCompany = data.company.trim();
     if (trimmedCompany.length > LIMITS.company.max) {
       errors.company = `Company name must not exceed ${LIMITS.company.max} characters`;
+    } else if (trimmedCompany.length >= 6 && looksLikeSpamText(trimmedCompany)) {
+      errors.company = 'Please enter a valid company name';
     } else {
       sanitized.company = trimmedCompany;
     }
@@ -89,6 +117,8 @@ export function validateContactInput(data) {
       errors.message = `Message must be at least ${LIMITS.message.min} character`;
     } else if (trimmedMessage.length > LIMITS.message.max) {
       errors.message = `Message must not exceed ${LIMITS.message.max} characters`;
+    } else if (looksLikeSpamText(trimmedMessage)) {
+      errors.message = 'Please enter a real message';
     } else {
       sanitized.message = trimmedMessage;
     }

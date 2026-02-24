@@ -10,6 +10,9 @@ const Contact = () => {
     message: ''
   });
 
+  // Honeypot: must stay empty. Bots often fill every field.
+  const [honeypot, setHoneypot] = useState('');
+
   const [status, setStatus] = useState({
     loading: false,
     success: false,
@@ -72,7 +75,8 @@ const Contact = () => {
           email: formData.email,
           company: formData.company,
           phone: formData.phone,
-          message: formData.message
+          message: formData.message,
+          website: honeypot
         }),
       });
 
@@ -119,6 +123,19 @@ const Contact = () => {
             </p>
           </div>
           <form onSubmit={handleSubmit} className="bg-white/70 backdrop-blur-lg p-8 rounded-3xl shadow-xl border border-white/20">
+            {/* Honeypot: hidden from users, bots often fill it */}
+            <div className="absolute -left-[9999px] w-1 h-1 overflow-hidden" aria-hidden="true">
+              <label htmlFor="website">Website</label>
+              <input
+                type="text"
+                id="website"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+              />
+            </div>
             <div className="grid md:grid-cols-2 gap-6">
               <input
                 type="text"
