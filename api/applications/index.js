@@ -26,7 +26,7 @@ const signature = `
     <div style="margin-top: 15px;">
       <a href="https://www.icebergdata.co" style="color: #0066cc; text-decoration: none; display: block; margin: 2px 0;">www.icebergdata.co</a>
       <a href="https://linkedin.com/in/davidmartinriveros/" style="color: #0066cc; text-decoration: none; display: block; margin: 2px 0;">linkedin.com/in/davidmartinriveros/</a>
-      <a href="https://calendly.com/icedata/dm" style="color: #0066cc; text-decoration: none; display: block; margin: 2px 0;">calendly.com/icedata/dm</a>
+      <a href="https://calendar.app.google/31yW5kUHxW93HzEh6" style="color: #0066cc; text-decoration: none; display: block; margin: 2px 0;">Schedule a meeting</a>
       <p style="margin: 2px 0; color: #666;">+1 (607) 358-0021</p>
     </div>
   </div>

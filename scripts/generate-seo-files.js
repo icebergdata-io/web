@@ -51,7 +51,7 @@ Crawl-delay: 1`;
 // Generate sitemap.xml
 const pages = [
   '',  // homepage
-  '/dm', // calendly redirect
+  '/dm', // scheduling redirect
 ];
 
 const generateSitemap = () => {
