@@ -1,6 +1,42 @@
 {
-  "total": 271,
+  "total": 275,
   "caseStudies": [
+    {
+      "id": 261,
+      "sector": "hotels",
+      "slug": "hotels-pinpointing-high-yield-expansion-cities-predictive-event",
+      "title": "Pinpointing High-Yield Expansion Cities Using Predictive Event & Business Data Analysis",
+      "subtitle": "How a boutique hotel chain outmaneuvered competitors by analyzing public data on corporate relocations, event calendars, and short-term rental market gaps.",
+      "sectorName": "Hotels",
+      "publicationDate": "2026-02-25"
+    },
+    {
+      "id": 265,
+      "sector": "retail",
+      "slug": "retail-unlocking-niche-markets-d2c-brand-doubled",
+      "title": "Unlocking Niche Markets: How a D2C Brand Doubled ROI Using Micro-Influencer Audience Analysis",
+      "subtitle": "Leveraging Web-Scraped Engagement Data to Identify High-Impact, Low-Cost Influencer Partnerships in Sustainable Home Goods",
+      "sectorName": "Retail",
+      "publicationDate": "2026-02-25"
+    },
+    {
+      "id": 274,
+      "sector": "consumer-electronics",
+      "slug": "consumer-electronics-prioritizing-next-product-iteration-review-data",
+      "title": "Prioritizing the Next Product Iteration: How Review Data Analysis Reduced R&D Missteps by 40%",
+      "subtitle": "Leveraging Large-Scale Customer Feedback from E-commerce and Forums to Pinpoint High-Demand, Missing Product Features",
+      "sectorName": "Consumer Electronics",
+      "publicationDate": "2026-02-25"
+    },
+    {
+      "id": 276,
+      "sector": "home-services",
+      "slug": "home-services-ensuring-100-advertising-compliance-web-scraping",
+      "title": "Ensuring 100% Advertising Compliance: How Web Scraping Eradicates Licensing Violations for a National HVAC Franchise",
+      "subtitle": "Automating the monitoring of state-specific contractor license disclosures across thousands of franchisee and competitor web pages.",
+      "sectorName": "Home Services",
+      "publicationDate": "2026-02-25"
+    },
     {
       "id": 256,
       "sector": "car-rental",
