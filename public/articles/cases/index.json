@@ -1,6 +1,15 @@
 {
-  "total": 275,
+  "total": 276,
   "caseStudies": [
+    {
+      "id": 254,
+      "sector": "car-rental",
+      "slug": "car-rental-pinpointing-profitable-last-mile-rental-hubs-analyzing",
+      "title": "Pinpointing Profitable 'Last-Mile' Rental Hubs by Analyzing Public Transit & Ride-Sharing Data",
+      "subtitle": "Leveraging hyperlocal mobility data to identify high-demand, low-competition zones for new neighborhood car rental locations.",
+      "sectorName": "Car Rental",
+      "publicationDate": "2026-02-27"
+    },
     {
       "id": 261,
       "sector": "hotels",
