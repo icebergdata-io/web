@@ -209,6 +209,14 @@ const Footer = () => {
                   </svg>
                   447 Broadway, 2nd Floor – 1978,<br />NY, New York, US, 10013
                 </li>
+                <li className="flex items-start gap-2 text-light-400">
+                  <svg className="w-5 h-5 text-light-500 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                  <span>
+                    Iceberg Data SAS<br />Cra 7 # 116-50, Bogota, Colombia<br />NIT 900.207.763-6
+                  </span>
+                </li>
               </ul>
             </div>
 
