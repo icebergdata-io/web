@@ -1,6 +1,15 @@
 {
-  "total": 276,
+  "total": 277,
   "caseStudies": [
+    {
+      "id": 296,
+      "sector": "lead-generation",
+      "slug": "lead-generation-pinpointing-high-growth-european-markets-scraping-localized",
+      "title": "Pinpointing High-Growth European Markets by Scraping Localized Job Postings and Tech Stack Data",
+      "subtitle": "Using Public Hiring Signals to Prioritize SaaS Market Entry and Generate Qualified Beachhead Leads",
+      "sectorName": "Lead Generation",
+      "publicationDate": "2026-03-02"
+    },
     {
       "id": 254,
       "sector": "car-rental",
