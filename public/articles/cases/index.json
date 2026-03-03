@@ -1,6 +1,15 @@
 {
-  "total": 277,
+  "total": 278,
   "caseStudies": [
+    {
+      "id": 302,
+      "sector": "electronics-manufacturing",
+      "slug": "electronics-manufacturing-predicting-component-shortages-monitoring-upstream-supplier",
+      "title": "Predicting Component Shortages by Monitoring Upstream Supplier Portals",
+      "subtitle": "Leveraging Real-Time Supplier Data to Proactively Manage High-Tech Manufacturing Pipelines",
+      "sectorName": "Electronics Manufacturing",
+      "publicationDate": "2026-03-03"
+    },
     {
       "id": 296,
       "sector": "lead-generation",
