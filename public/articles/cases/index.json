@@ -1,6 +1,15 @@
 {
-  "total": 278,
+  "total": 279,
   "caseStudies": [
+    {
+      "id": 285,
+      "sector": "car-rental",
+      "slug": "car-rental-ensuring-transparent-pricing-aligning-national-car",
+      "title": "Ensuring Transparent Pricing: Aligning a National Car Rental Fleet with State-Level Fee Disclosure Laws",
+      "subtitle": "Leveraging Web Scraping to Proactively Identify and Correct Non-Compliant Surcharges Across Hundreds of Digital Touchpoints",
+      "sectorName": "Car Rental",
+      "publicationDate": "2026-03-04"
+    },
     {
       "id": 302,
       "sector": "electronics-manufacturing",
