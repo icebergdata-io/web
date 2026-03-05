@@ -1,6 +1,15 @@
 {
-  "total": 279,
+  "total": 280,
   "caseStudies": [
+    {
+      "id": 300,
+      "sector": "manufacturing",
+      "slug": "manufacturing-slashing-mro-inventory-costs-web-scraped-equipment",
+      "title": "Slashing MRO Inventory Costs by 30% Using Web-Scraped Equipment Failure Signals",
+      "subtitle": "Transforming Unstructured Forum Data into Predictive Maintenance Insights for Heavy Machinery",
+      "sectorName": "Manufacturing",
+      "publicationDate": "2026-03-05"
+    },
     {
       "id": 285,
       "sector": "car-rental",
