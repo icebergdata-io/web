@@ -1,6 +1,42 @@
 {
-  "total": 280,
+  "total": 284,
   "caseStudies": [
+    {
+      "id": 279,
+      "sector": "e-commerce",
+      "slug": "e-commerce-footsteps-clicks-d2c-brand-increased-aov-pop-up-store",
+      "title": "From Footsteps to Clicks: How a D2C Brand Increased AOV by 15% Using Pop-Up Store Traffic Analysis",
+      "subtitle": "Translating Physical Product Interaction Data into a High-Converting E-commerce Website Layout",
+      "sectorName": "E-commerce",
+      "publicationDate": "2026-03-06"
+    },
+    {
+      "id": 283,
+      "sector": "car-rental",
+      "slug": "car-rental-capitalizing-competitor-blind-spots-mid-week-rate",
+      "title": "Capitalizing on Competitor Blind Spots: How Mid-Week Rate Scraping Drove an 18% Booking Uplift",
+      "subtitle": "Leveraging real-time competitive price data to turn non-peak inventory into a primary revenue driver for a regional car rental agency.",
+      "sectorName": "Car Rental",
+      "publicationDate": "2026-03-06"
+    },
+    {
+      "id": 289,
+      "sector": "airlines",
+      "slug": "airlines-automating-acaa-digital-compliance-web-scraping-averts-fines",
+      "title": "Automating ACAA Digital Compliance: How Web Scraping Averts Fines by Monitoring Accessibility Standards",
+      "subtitle": "Ensuring Web and Mobile App Accessibility for Passengers with Disabilities through Continuous DOM Analysis",
+      "sectorName": "Airlines",
+      "publicationDate": "2026-03-06"
+    },
+    {
+      "id": 298,
+      "sector": "healthcare",
+      "slug": "healthcare-boosting-pharmacy-otc-sales-correlating-public-health-data",
+      "title": "Boosting Pharmacy OTC Sales by 22% by Correlating Public Health Data with In-Store Patient Flow",
+      "subtitle": "Using Web-Scraped Local Health Data to Optimize Aisle Placement and Improve Patient Experience",
+      "sectorName": "Healthcare",
+      "publicationDate": "2026-03-06"
+    },
     {
       "id": 300,
       "sector": "manufacturing",
