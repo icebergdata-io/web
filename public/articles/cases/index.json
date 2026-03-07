@@ -1,6 +1,15 @@
 {
-  "total": 284,
+  "total": 285,
   "caseStudies": [
+    {
+      "id": 295,
+      "sector": "retail",
+      "slug": "retail-minimizing-fashion-overstock-forecasting-micro-trend-demand",
+      "title": "Minimizing Fashion Overstock by Forecasting Micro-Trend Demand Signals",
+      "subtitle": "Using Social Media and Competitor Product Data to Prevent End-of-Season Markdowns",
+      "sectorName": "Retail",
+      "publicationDate": "2026-03-07"
+    },
     {
       "id": 279,
       "sector": "e-commerce",
