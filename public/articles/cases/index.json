@@ -1,6 +1,15 @@
 {
-  "total": 285,
+  "total": 286,
   "caseStudies": [
+    {
+      "id": 284,
+      "sector": "car-rental",
+      "slug": "car-rental-neutralizing-hidden-fee-narrative-granular-sentiment",
+      "title": "Neutralizing the 'Hidden Fee' Narrative: How Granular Sentiment Analysis Pinpointed a 40% Drop in Negative Mentions",
+      "subtitle": "Transforming Customer Complaints into Actionable Policy Changes by Scraping Review and Forum Data",
+      "sectorName": "Car Rental",
+      "publicationDate": "2026-03-09"
+    },
     {
       "id": 295,
       "sector": "retail",
