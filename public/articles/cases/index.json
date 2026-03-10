@@ -1,6 +1,24 @@
 {
-  "total": 286,
+  "total": 288,
   "caseStudies": [
+    {
+      "id": 282,
+      "sector": "e-commerce",
+      "slug": "e-commerce-pinpointing-market-gaps-analyzing-competitor-product",
+      "title": "Pinpointing Market Gaps by Analyzing Competitor Product Return Signals",
+      "subtitle": "Using Public Review Data to De-Risk European Market Entry for an Online Fashion Retailer",
+      "sectorName": "E-commerce",
+      "publicationDate": "2026-03-10"
+    },
+    {
+      "id": 301,
+      "sector": "manufacturing",
+      "slug": "manufacturing-unlocking-niche-b2b-markets-pinpointing-micro-influencers",
+      "title": "Unlocking Niche B2B Markets: Pinpointing Micro-Influencers in Specialty Welding to Drive a 40% Increase in Lead Quality",
+      "subtitle": "How a welding equipment manufacturer used targeted data scraping to find authentic voices and bypass traditional marketing channels.",
+      "sectorName": "Manufacturing",
+      "publicationDate": "2026-03-10"
+    },
     {
       "id": 284,
       "sector": "car-rental",
