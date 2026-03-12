@@ -1,6 +1,15 @@
 {
-  "total": 288,
+  "total": 289,
   "caseStudies": [
+    {
+      "id": 288,
+      "sector": "airlines",
+      "slug": "airlines-pinpointing-high-roi-influencers-scraping-audience-affinity",
+      "title": "Pinpointing High-ROI Influencers by Scraping Audience Affinity Data",
+      "subtitle": "Moving Beyond Follower Counts to Drive Conversions for Niche Airline Routes",
+      "sectorName": "Airlines",
+      "publicationDate": "2026-03-12"
+    },
     {
       "id": 282,
       "sector": "e-commerce",
