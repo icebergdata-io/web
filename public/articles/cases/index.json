@@ -1,6 +1,15 @@
 {
-  "total": 289,
+  "total": 290,
   "caseStudies": [
+    {
+      "id": 281,
+      "sector": "e-commerce",
+      "slug": "e-commerce-automating-cross-border-compliance-preventing-non-compliant-electronics",
+      "title": "Automating Cross-Border Compliance: Preventing 98% of Non-Compliant Electronics Listings Through Regulatory Database Scraping",
+      "subtitle": "How a Global Electronics Marketplace Averted Regulatory Fines and Protected Consumers by Integrating Real-Time Safety Standard Data",
+      "sectorName": "E-commerce",
+      "publicationDate": "2026-03-13"
+    },
     {
       "id": 288,
       "sector": "airlines",
