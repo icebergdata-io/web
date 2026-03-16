@@ -1,6 +1,15 @@
 {
-  "total": 290,
+  "total": 291,
   "caseStudies": [
+    {
+      "id": 299,
+      "sector": "healthcare",
+      "slug": "healthcare-fortifying-pharma-compliance-automating-fair-balance",
+      "title": "Fortifying Pharma Compliance: Automating Fair Balance & Off-Label Claim Detection Across Digital Channels",
+      "subtitle": "Leveraging Web Scraping to Monitor Digital Marketing Materials for FDA Adherence and Mitigate Multi-Million Dollar Fines.",
+      "sectorName": "Healthcare",
+      "publicationDate": "2026-03-16"
+    },
     {
       "id": 281,
       "sector": "e-commerce",
