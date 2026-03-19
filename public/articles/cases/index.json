@@ -1,6 +1,15 @@
 {
-  "total": 291,
+  "total": 292,
   "caseStudies": [
+    {
+      "id": 278,
+      "sector": "e-commerce",
+      "slug": "e-commerce-pinpointing-market-entry-analyzing-hyper-local-sustainability",
+      "title": "Pinpointing EU Market Entry by Analyzing Hyper-Local Sustainability Trends and Regulatory Data",
+      "subtitle": "How a Sustainable Goods Retailer Used Web Data to De-risk European Expansion",
+      "sectorName": "E-commerce",
+      "publicationDate": "2026-03-19"
+    },
     {
       "id": 299,
       "sector": "healthcare",
