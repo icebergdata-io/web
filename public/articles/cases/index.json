@@ -1,6 +1,33 @@
 {
-  "total": 292,
+  "total": 295,
   "caseStudies": [
+    {
+      "id": 280,
+      "sector": "e-commerce",
+      "slug": "e-commerce-protecting-global-brand-value-identifying-grey",
+      "title": "Protecting Global Brand Value by Identifying Grey Market Sellers",
+      "subtitle": "How a Premium Electronics Brand Used Marketplace Data to Enforce MAP Policies and Stabilize Regional Sales",
+      "sectorName": "E-commerce",
+      "publicationDate": "2026-03-20"
+    },
+    {
+      "id": 292,
+      "sector": "hotels",
+      "slug": "hotels-forecast-fork-optimizing-hotel-supply-chains-real-time-event",
+      "title": "From Forecast to Fork: Optimizing Hotel F&B Supply Chains with Real-Time Event & Weather Data",
+      "subtitle": "How a luxury hotel chain leveraged public web data to slash food waste and boost F&B profitability.",
+      "sectorName": "Hotels",
+      "publicationDate": "2026-03-20"
+    },
+    {
+      "id": 297,
+      "sector": "lead-generation",
+      "slug": "lead-generation-unlocking-high-value-leads-real-time-saas-competitor",
+      "title": "Unlocking High-Value Leads with Real-Time SaaS Competitor Tier Analysis",
+      "subtitle": "How Scraping Competitor Pricing Tiers Reveals Strategic Enterprise Sales Opportunities",
+      "sectorName": "Lead Generation",
+      "publicationDate": "2026-03-20"
+    },
     {
       "id": 278,
       "sector": "e-commerce",
