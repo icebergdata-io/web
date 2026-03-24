@@ -1,6 +1,15 @@
 {
-  "total": 298,
+  "total": 299,
   "caseStudies": [
+    {
+      "id": 290,
+      "sector": "hotels",
+      "slug": "hotels-slashing-perishable-amenity-spoilage-via-hyper-local",
+      "title": "Slashing Perishable Amenity Spoilage by 15% via Hyper-Local Supplier Data Aggregation",
+      "subtitle": "Optimizing the 'Farm-to-Room' Supply Chain for Luxury Guest Experiences",
+      "sectorName": "Hotels",
+      "publicationDate": "2026-03-24"
+    },
     {
       "id": 286,
       "sector": "car-rental",
