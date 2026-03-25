@@ -1,6 +1,15 @@
 {
-  "total": 299,
+  "total": 300,
   "caseStudies": [
+    {
+      "id": 277,
+      "sector": "e-commerce",
+      "slug": "e-commerce-mitigating-stockouts-through-proactive-component-supply",
+      "title": "Mitigating Stockouts by 90% Through Proactive Component Supply Chain Monitoring",
+      "subtitle": "How a D2C Gadget Brand Used Web Data to Predict and Pivot Before Supply Chain Disruptions Hit",
+      "sectorName": "E-commerce",
+      "publicationDate": "2026-03-25"
+    },
     {
       "id": 290,
       "sector": "hotels",
