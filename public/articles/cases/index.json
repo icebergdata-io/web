@@ -1,6 +1,15 @@
 {
-  "total": 300,
+  "total": 301,
   "caseStudies": [
+    {
+      "id": 294,
+      "sector": "retail",
+      "slug": "retail-decoding-authenticity-scraping-niche-forums-uncovered",
+      "title": "Decoding Authenticity: How Scraping Niche Forums Uncovered a 35% Lift in 'Green' Brand Sentiment",
+      "subtitle": "Moving Beyond Star Ratings to Quantify Consumer Trust in Sustainability Claims for a Mid-Sized Fashion Retailer",
+      "sectorName": "Retail",
+      "publicationDate": "2026-03-27"
+    },
     {
       "id": 277,
       "sector": "e-commerce",
